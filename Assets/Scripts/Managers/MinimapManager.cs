@@ -7,21 +7,31 @@ public class MinimapManager : MonoBehaviour
 {
     public static bool IS_ENABLED = true;
     private static Material _indicatorMat;
-
     public float lineWidth;
-
     private Camera _minimapCam;
 
     private void Start()
     {
+        EnsureInitialized();
+    }
+
+    private bool EnsureInitialized()
+    {
+        if (_minimapCam == null)
+            _minimapCam = GetComponent<Camera>();
         if (_indicatorMat == null)
-            _indicatorMat = new Material(Shader.Find("Sprites/Default"));
-        _minimapCam = GetComponent<Camera>();
+        {
+            Shader shader = Shader.Find("Sprites/Default");
+            if (shader == null || _minimapCam == null)
+                return false;
+            _indicatorMat = new Material(shader);
+        }
+        return _minimapCam != null && _indicatorMat != null;
     }
 
     public void OnPostRender()
     {
-        if (!IS_ENABLED) return;
+        if (!IS_ENABLED || !EnsureInitialized()) return;
         (Vector3 minWorldPoint, Vector3 maxWorldPoint) = Utils.GetCameraWorldBounds();
         Vector3 minViewportPoint = _minimapCam.WorldToViewportPoint(minWorldPoint);
         Vector3 maxViewportPoint = _minimapCam.WorldToViewportPoint(maxWorldPoint);
@@ -34,7 +44,6 @@ public class MinimapManager : MonoBehaviour
         {
             _indicatorMat.SetPass(0);
             GL.LoadOrtho();
-
             GL.Begin(GL.QUADS);
             GL.Color(new Color(1f, 1f, 0.85f));
             {
@@ -42,17 +51,14 @@ public class MinimapManager : MonoBehaviour
                 GL.Vertex(new Vector3(minX, minY - lineWidth, 0));
                 GL.Vertex(new Vector3(maxX, minY - lineWidth, 0));
                 GL.Vertex(new Vector3(maxX, minY + lineWidth, 0));
-
                 GL.Vertex(new Vector3(minX + lineWidth, minY, 0));
                 GL.Vertex(new Vector3(minX - lineWidth, minY, 0));
                 GL.Vertex(new Vector3(minX - lineWidth, maxY, 0));
                 GL.Vertex(new Vector3(minX + lineWidth, maxY, 0));
-
                 GL.Vertex(new Vector3(minX, maxY + lineWidth, 0));
                 GL.Vertex(new Vector3(minX, maxY - lineWidth, 0));
                 GL.Vertex(new Vector3(maxX, maxY - lineWidth, 0));
                 GL.Vertex(new Vector3(maxX, maxY + lineWidth, 0));
-
                 GL.Vertex(new Vector3(maxX + lineWidth, minY, 0));
                 GL.Vertex(new Vector3(maxX - lineWidth, minY, 0));
                 GL.Vertex(new Vector3(maxX - lineWidth, maxY, 0));
@@ -62,5 +68,4 @@ public class MinimapManager : MonoBehaviour
         }
         GL.PopMatrix();
     }
-
 }
