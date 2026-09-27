@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -90,7 +90,9 @@ public class DebugConsole : MonoBehaviour
         "Instantiates multiple instances of a character unit (by reference code), using a Poisson disc sampling for random positioning.",
         "instantiate_characters <code> <amount>", (code, amount) =>
         {
-            SpawnCharacters(code, amount, Utils.MiddleOfScreenPointToWorld());
+            Vector3 center;
+            if (!TryGetSpawnCenter(out center)) return;
+            SpawnCharacters(code, amount, center);
         });
         new DebugCommand("list_era_units_v1", "Lists the Era Imperial v1 unit codes.", "list_era_units_v1", () =>
         {
@@ -98,6 +100,12 @@ public class DebugConsole : MonoBehaviour
                 _commandOutput = new List<string>();
             else
                 _commandOutput.Clear();
+
+            if (Globals.CHARACTER_DATA == null)
+            {
+                Debug.LogError("Character data is not loaded yet. Open the playable GameScene/Core scene, press Play, then run the debug command again.");
+                return;
+            }
 
             foreach (string code in EraUnitCodesV1())
             {
@@ -109,7 +117,9 @@ public class DebugConsole : MonoBehaviour
         });
         new DebugCommand("spawn_era_units_v1", "Spawns one of each Era Imperial v1 unit near the camera.", "spawn_era_units_v1", () =>
         {
-            Vector3 center = Utils.MiddleOfScreenPointToWorld();
+            Vector3 center;
+            if (!TryGetSpawnCenter(out center)) return;
+
             Vector3 offset = Vector3.left * 6f;
             foreach (string code in EraUnitCodesV1())
             {
@@ -180,12 +190,34 @@ public class DebugConsole : MonoBehaviour
         return true;
     }
 
+    private static bool TryGetSpawnCenter(out Vector3 center)
+    {
+        center = Vector3.zero;
+        int owner;
+        if (!TryPreparePlayerResources(out owner)) return false;
+
+        if (Utils.MainCamera == null)
+        {
+            Debug.LogError("Main camera is not ready. Open the playable GameScene/Core scene, press Play, then run the debug command again.");
+            return false;
+        }
+
+        center = Utils.MiddleOfScreenPointToWorld();
+        return true;
+    }
+
     private static void SpawnCharacters(string code, int amount, Vector3 center)
     {
         int owner;
         if (!TryPreparePlayerResources(out owner)) return;
 
         CharacterData d;
+        if (Globals.CHARACTER_DATA == null)
+        {
+            Debug.LogError("Character data is not loaded yet. Open the playable GameScene/Core scene, press Play, then run the debug command again.");
+            return;
+        }
+
         if (!Globals.CHARACTER_DATA.TryGetValue(code, out d))
         {
             Debug.LogError($"CharacterData not found for code '{code}'. Run Era Imperial > Unit Prefab Assistant > Criar unidades v1.");
