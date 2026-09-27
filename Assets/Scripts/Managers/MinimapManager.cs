@@ -19,6 +19,8 @@ public class MinimapManager : MonoBehaviour
     {
         if (_minimapCam == null)
             _minimapCam = GetComponent<Camera>();
+        if (GameManager.instance == null || GameManager.instance.mapWrapperCollider == null)
+            return false;
         if (_indicatorMat == null)
         {
             Shader shader = Shader.Find("Sprites/Default");
