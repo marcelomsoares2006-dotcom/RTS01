@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -22,8 +22,22 @@ public class DebugConsole : MonoBehaviour
 
     private List<string> _commandOutput;
 
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
+    private static void EnsureDebugConsole()
+    {
+        if (FindObjectOfType<DebugConsole>() != null)
+            return;
+
+        GameObject consoleObject = new GameObject("DebugConsole");
+        DontDestroyOnLoad(consoleObject);
+        consoleObject.AddComponent<DebugConsole>();
+    }
+
     private void Awake()
     {
+        DontDestroyOnLoad(gameObject);
+        _consoleInput = "";
+
         new DebugCommand("?", "Lists all available debug commands.", "?", () =>
         {
             _displayType = DisplayType.Help;
@@ -36,17 +50,23 @@ public class DebugConsole : MonoBehaviour
         });
         new DebugCommand<int>("add_gold", "Adds a given amount of gold to the current player.", "add_gold <amount>", (x) =>
         {
-            Globals.GAME_RESOURCES[GameManager.instance.gamePlayersParameters.myPlayerId][InGameResource.Gold].AddAmount(x);
+            int owner;
+            if (!TryPreparePlayerResources(out owner)) return;
+            Globals.GAME_RESOURCES[owner][InGameResource.Gold].AddAmount(x);
             EventManager.TriggerEvent("UpdatedResources");
         });
         new DebugCommand<int>("add_wood", "Adds a given amount of wood to the current player.", "add_wood <amount>", (x) =>
         {
-            Globals.GAME_RESOURCES[GameManager.instance.gamePlayersParameters.myPlayerId][InGameResource.Wood].AddAmount(x);
+            int owner;
+            if (!TryPreparePlayerResources(out owner)) return;
+            Globals.GAME_RESOURCES[owner][InGameResource.Wood].AddAmount(x);
             EventManager.TriggerEvent("UpdatedResources");
         });
         new DebugCommand<int>("add_stone", "Adds a given amount of stone to the current player.", "add_stone <amount>", (x) =>
         {
-            Globals.GAME_RESOURCES[GameManager.instance.gamePlayersParameters.myPlayerId][InGameResource.Stone].AddAmount(x);
+            int owner;
+            if (!TryPreparePlayerResources(out owner)) return;
+            Globals.GAME_RESOURCES[owner][InGameResource.Stone].AddAmount(x);
             EventManager.TriggerEvent("UpdatedResources");
         });
         new DebugCommand("list_players", "Lists all current players (with their IDs).", "list_players", () =>
@@ -70,15 +90,41 @@ public class DebugConsole : MonoBehaviour
         "Instantiates multiple instances of a character unit (by reference code), using a Poisson disc sampling for random positioning.",
         "instantiate_characters <code> <amount>", (code, amount) =>
         {
-            CharacterData d = Globals.CHARACTER_DATA[code];
-            int owner = GameManager.instance.gamePlayersParameters.myPlayerId;
-            List<Vector3> positions = Utils.SamplePositions(amount, 1.5f, Vector2.one * 15, Utils.MiddleOfScreenPointToWorld());
-            foreach (Vector3 pos in positions)
+            SpawnCharacters(code, amount, Utils.MiddleOfScreenPointToWorld());
+        });
+        new DebugCommand("list_era_units_v1", "Lists the Era Imperial v1 unit codes.", "list_era_units_v1", () =>
+        {
+            if (_commandOutput == null)
+                _commandOutput = new List<string>();
+            else
+                _commandOutput.Clear();
+
+            foreach (string code in EraUnitCodesV1())
             {
-                Character c = new Character(d, owner);
-                c.ComputeProduction();
-                c.Transform.GetComponent<UnityEngine.AI.NavMeshAgent>().Warp(pos);
+                string status = Globals.CHARACTER_DATA.ContainsKey(code) ? "loaded" : "missing";
+                _commandOutput.Add($"{code} - {status}");
             }
+
+            _displayType = DisplayType.Output;
+        });
+        new DebugCommand("spawn_era_units_v1", "Spawns one of each Era Imperial v1 unit near the camera.", "spawn_era_units_v1", () =>
+        {
+            Vector3 center = Utils.MiddleOfScreenPointToWorld();
+            Vector3 offset = Vector3.left * 6f;
+            foreach (string code in EraUnitCodesV1())
+            {
+                SpawnCharacters(code, 1, center + offset);
+                offset += Vector3.right * 3f;
+            }
+        });
+        new DebugCommand<int>("give_era_resources", "Adds the same resource amount to gold, wood and stone.", "give_era_resources <amount>", (amount) =>
+        {
+            int owner;
+            if (!TryPreparePlayerResources(out owner)) return;
+            Globals.GAME_RESOURCES[owner][InGameResource.Gold].AddAmount(amount);
+            Globals.GAME_RESOURCES[owner][InGameResource.Wood].AddAmount(amount);
+            Globals.GAME_RESOURCES[owner][InGameResource.Stone].AddAmount(amount);
+            EventManager.TriggerEvent("UpdatedResources");
         });
         new DebugCommand<int>("set_unit_formation_type", "Sets the unit formation type (by index).", "set_unit_formation_type <formation_index>", (x) =>
         {
@@ -104,6 +150,57 @@ public class DebugConsole : MonoBehaviour
         _displayType = DisplayType.None;
     }
 
+    private static IEnumerable<string> EraUnitCodesV1()
+    {
+        yield return "aldeao_v1";
+        yield return "soldado_espada_v1";
+        yield return "arqueiro_v1";
+        yield return "lanceiro_v1";
+        yield return "cavaleiro_v1";
+    }
+
+    private static bool TryPreparePlayerResources(out int owner)
+    {
+        owner = 0;
+        if (GameManager.instance == null || GameManager.instance.gamePlayersParameters == null)
+        {
+            Debug.LogError("GameManager is not ready. Open the playable GameScene/Core scene, press Play, then run the debug command again.");
+            return false;
+        }
+
+        GamePlayersParameters playersParameters = GameManager.instance.gamePlayersParameters;
+        int playersCount = playersParameters.players != null && playersParameters.players.Length > 0
+            ? playersParameters.players.Length
+            : 1;
+
+        owner = Mathf.Clamp(playersParameters.myPlayerId, 0, playersCount - 1);
+        if (Globals.GAME_RESOURCES == null || Globals.GAME_RESOURCES.Length < playersCount || Globals.GAME_RESOURCES[owner] == null)
+            Globals.InitializeGameResources(playersCount);
+
+        return true;
+    }
+
+    private static void SpawnCharacters(string code, int amount, Vector3 center)
+    {
+        int owner;
+        if (!TryPreparePlayerResources(out owner)) return;
+
+        CharacterData d;
+        if (!Globals.CHARACTER_DATA.TryGetValue(code, out d))
+        {
+            Debug.LogError($"CharacterData not found for code '{code}'. Run Era Imperial > Unit Prefab Assistant > Criar unidades v1.");
+            return;
+        }
+
+        List<Vector3> positions = Utils.SamplePositions(amount, 1.5f, Vector2.one * 15, center);
+        foreach (Vector3 pos in positions)
+        {
+            Character c = new Character(d, owner);
+            c.ComputeProduction();
+            c.Transform.GetComponent<UnityEngine.AI.NavMeshAgent>().Warp(pos);
+        }
+    }
+
     private void OnEnable()
     {
         EventManager.AddListener("<Input>ShowDebugConsole", _OnShowDebugConsole);
@@ -118,6 +215,12 @@ public class DebugConsole : MonoBehaviour
     {
         _showConsole = true;
         EventManager.TriggerEvent("PausedGame");
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F1) || Input.GetKeyDown(KeyCode.BackQuote))
+            _OnShowDebugConsole();
     }
 
     private void OnGUI()
@@ -264,6 +367,12 @@ public class DebugConsole : MonoBehaviour
                 }
                 else if (command is DebugCommand<string, int> dcStringInt)
                 {
+                    if (inputParts.Length < 3)
+                    {
+                        Debug.LogError("Missing parameter!");
+                        return;
+                    }
+
                     int i;
                     if (int.TryParse(inputParts[2], out i))
                         dcStringInt.Invoke(inputParts[1], i);
