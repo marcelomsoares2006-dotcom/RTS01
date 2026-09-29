@@ -74,3 +74,11 @@ _tmp
 _tmp.meta
 *.png~
 refs/
+/.review-backups/
+/TestResults/
+Tools/CharacterRigging/ThirdParty/
+/Tools/deps/vcpkg_installed/
+
+# Meshy source art and Blender working copies (large; kept outside git)
+/Tools/CharacterRigging/Inputs/
+/Tools/CharacterRigging/Working/

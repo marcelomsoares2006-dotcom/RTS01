@@ -102,17 +102,16 @@ public class BinarySerializable : ISerializable
         }
 
         IFormatter formatter = new BinaryFormatter();
-        FileStream s = new FileStream(filePath, FileMode.Open);
-        BinarySerializable d = (BinarySerializable)formatter.Deserialize(s);
-        s.Close();
-        return d;
+        using (FileStream s = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read))
+            return (BinarySerializable)formatter.Deserialize(s);
     }
 
     public static void Save(string filePath, BinarySerializable instance)
     {
         IFormatter formatter = new BinaryFormatter();
-        FileStream s = new FileStream(filePath, FileMode.Create);
-        formatter.Serialize(s, instance);
-        s.Close();
+        string directory = Path.GetDirectoryName(filePath);
+        if (!string.IsNullOrEmpty(directory)) Directory.CreateDirectory(directory);
+        using (FileStream s = new FileStream(filePath, FileMode.Create))
+            formatter.Serialize(s, instance);
     }
 }

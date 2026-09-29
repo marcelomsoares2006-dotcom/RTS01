@@ -18,8 +18,6 @@
 			ZTest Equal
  
 			CGPROGRAM
-			// Upgrade NOTE: excluded shader from DX11, OpenGL ES 2.0 because it uses unsized arrays
-			#pragma exclude_renderers d3d11 gles
 			#pragma vertex vert
 			#pragma fragment frag
  
@@ -62,8 +60,9 @@
 				float a = aFull + _SemiOpacity * aSemi;
 
 				// weird things happen to minimap if alpha value gets negative
-				_Color.a = max(0, _Color.a - a);
-				return _Color;
+				fixed4 color = _Color;
+				color.a = max(0, color.a - a);
+				return color;
 			}
 			ENDCG
 		}

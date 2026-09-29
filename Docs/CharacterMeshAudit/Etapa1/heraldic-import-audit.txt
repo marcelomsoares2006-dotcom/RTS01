@@ -1,0 +1,19 @@
+Heraldic Knight Unity import audit
+Editor: 6000.6.3f1  2026-09-28 20:57:27
+Render pipeline: Built-in
+NOTE Automatic humanoid mapping matches the expected 22-bone table.
+PASS scripts compiled (HeraldicKnightSetup/HeraldicKnightDemo loaded, no compilation failure)
+PASS texture Assets/CharacterRigging/HeraldicKnight/Textures/HeraldicKnight_BaseColor.png: 2048x2048, sRGB=True, format=BC7
+PASS material Assets/CharacterRigging/HeraldicKnight/Materials/HeraldicKnight_Mat.mat: shader=Standard, supported=True, mainTexture=HeraldicKnight_BaseColor, metallic=0, smoothness=0,18, emission=False
+PASS avatar HeraldicKnightAvatar: animationType=Human, isValid=True, isHuman=True
+PASS humanoid mapping: 22 bones, required missing=[], matches table=True; Chest=mixamorig:Spine1, Head=mixamorig:Head, Hips=mixamorig:Hips, LeftFoot=mixamorig:LeftFoot, LeftHand=mixamorig:LeftHand, LeftLowerArm=mixamorig:LeftForeArm, LeftLowerLeg=mixamorig:LeftLeg, LeftShoulder=mixamorig:LeftShoulder, LeftToes=mixamorig:LeftToeBase, LeftUpperArm=mixamorig:LeftArm, LeftUpperLeg=mixamorig:LeftUpLeg, Neck=mixamorig:Neck, RightFoot=mixamorig:RightFoot, RightHand=mixamorig:RightHand, RightLowerArm=mixamorig:RightForeArm, RightLowerLeg=mixamorig:RightLeg, RightShoulder=mixamorig:RightShoulder, RightToes=mixamorig:RightToeBase, RightUpperArm=mixamorig:RightArm, RightUpperLeg=mixamorig:RightUpLeg, Spine=mixamorig:Spine, UpperChest=mixamorig:Spine2
+PASS model Assets/CharacterRigging/HeraldicKnight/Models/HeraldicKnight.fbx: skinnedRenderers=1, vertices=15956, triangles=19609, bones=23, meshLocalBoundsSize=(0.848, 0.827, 1.700) m, material(remap)=HeraldicKnight_Mat, subMeshes=1
+PASS skin weights: maxInfluences=4, verticesWithoutWeights=0, totalWeights=40554
+PASS clip HK_Walking (Assets/CharacterRigging/HeraldicKnight/Models/HeraldicKnight@Walking.fbx): length=1,0833s expected 1,0833s, humanMotion=True, loop=True, hasRootCurves=False, avgSpeed=(0.00, 0.00, 0.00), sourceAvatar=HeraldicKnightAvatar
+PASS clip HK_Running (Assets/CharacterRigging/HeraldicKnight/Models/HeraldicKnight@Running.fbx): length=0,7083s expected 0,7083s, humanMotion=True, loop=True, hasRootCurves=False, avgSpeed=(0.00, 0.00, 0.00), sourceAvatar=HeraldicKnightAvatar
+PASS clip HK_Attack (Assets/CharacterRigging/HeraldicKnight/Models/HeraldicKnight@Attack.fbx): length=2,8333s expected 2,8333s, humanMotion=True, loop=False, hasRootCurves=False, avgSpeed=(0.00, 0.00, 0.00), sourceAvatar=HeraldicKnightAvatar
+PASS clip HK_TripleCombo (Assets/CharacterRigging/HeraldicKnight/Models/HeraldicKnight@Triple_Combo_Attack.fbx): length=4,3750s expected 4,3750s, humanMotion=True, loop=False, hasRootCurves=False, avgSpeed=(-0.06, 0.00, 0.42), sourceAvatar=HeraldicKnightAvatar
+PASS controller Assets/CharacterRigging/HeraldicKnight/Animation/HeraldicKnight.controller: states=[Walking:HK_Walking, Running:HK_Running, Attack:HK_Attack, TripleCombo:HK_TripleCombo], parameters=[Walk, Run, Attack, TripleCombo]
+PASS prefab Assets/CharacterRigging/HeraldicKnight/Prefabs/HeraldicKnight.prefab: animator=True, avatar=HeraldicKnightAvatar, controller=HeraldicKnight, applyRootMotion=False
+PASS demo scene Assets/CharacterRigging/HeraldicKnight/Scenes/HeraldicKnight_Demo.unity exists (not added to Build Settings)
+UNITY_IMPORT_AUDIT_PASSED

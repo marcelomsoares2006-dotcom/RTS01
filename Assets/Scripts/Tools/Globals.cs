@@ -53,6 +53,22 @@ public static class Globals
 
     public static void UpdateNavMeshSurface()
     {
+        if (NAV_MESH_SURFACE == null)
+        {
+            NavMeshSurface[] surfaces = UnityEngine.Object.FindObjectsOfType<NavMeshSurface>();
+            if (surfaces != null && surfaces.Length > 0)
+                NAV_MESH_SURFACE = surfaces[0];
+        }
+
+        if (NAV_MESH_SURFACE == null)
+            return;
+
+        if (NAV_MESH_SURFACE.navMeshData == null)
+        {
+            NAV_MESH_SURFACE.BuildNavMesh();
+            return;
+        }
+
         NAV_MESH_SURFACE.UpdateNavMesh(NAV_MESH_SURFACE.navMeshData);
     }
 
@@ -82,15 +98,20 @@ public static class Globals
 
     public static List<ResourceValue> ConvertXPCostToGameResources(int xpCost, IEnumerable<InGameResource> allowedResources)
     {
+        if (xpCost < 0) throw new System.ArgumentOutOfRangeException(nameof(xpCost));
+        if (allowedResources == null) throw new System.ArgumentNullException(nameof(allowedResources));
+        if (xpCost == 0) return new List<ResourceValue>();
         // distribute the xp cost between all possible resources, always
         // starting with 1 unit of every allowed resource type and then
         // picking the rest from allowed resource types
 
         // sort resources by xp cost
         List<InGameResource> sortedResources = allowedResources
+            .Distinct()
             .OrderBy(r => XP_CONVERSION_TO_RESOURCE[r])
             .ToList();
         int n = sortedResources.Count();
+        if (n == 0) return new List<ResourceValue>();
 
 
         Dictionary<InGameResource, int> xpCostToResources = new Dictionary<InGameResource, int>();

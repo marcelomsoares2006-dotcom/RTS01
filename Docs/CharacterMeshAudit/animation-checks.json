@@ -1,0 +1,288 @@
+[
+  {
+    "archive": "Meshy_AI_Heraldic_Knight_biped.zip",
+    "clip": "Meshy_AI_Heraldic_Knight_biped_Animation_Attack_withSkin.glb",
+    "meshes": 1,
+    "actions": [
+      "Attack"
+    ],
+    "vertices": 15937,
+    "unweighted": 0,
+    "max_influences": 4,
+    "weight_sum_min": 0.9999999478459358,
+    "weight_sum_max": 1.0000000447034836,
+    "sampled_frames": [
+      0.0,
+      17.0,
+      34.0,
+      51.0
+    ],
+    "max_deformation_delta": 1.8225064656754377,
+    "finite": true,
+    "passed": true
+  },
+  {
+    "archive": "Meshy_AI_Heraldic_Knight_biped.zip",
+    "clip": "Meshy_AI_Heraldic_Knight_biped_Animation_Running_withSkin.glb",
+    "meshes": 1,
+    "actions": [
+      "Running"
+    ],
+    "vertices": 15937,
+    "unweighted": 0,
+    "max_influences": 4,
+    "weight_sum_min": 0.9999999478459358,
+    "weight_sum_max": 1.0000000447034836,
+    "sampled_frames": [
+      0.0,
+      4.25,
+      8.5,
+      12.75
+    ],
+    "max_deformation_delta": 1.211900088366651,
+    "finite": true,
+    "passed": true
+  },
+  {
+    "archive": "Meshy_AI_Heraldic_Knight_biped.zip",
+    "clip": "Meshy_AI_Heraldic_Knight_biped_Animation_Triple_Combo_Attack_withSkin.glb",
+    "meshes": 1,
+    "actions": [
+      "Triple_Combo_Attack"
+    ],
+    "vertices": 15937,
+    "unweighted": 0,
+    "max_influences": 4,
+    "weight_sum_min": 0.9999999478459358,
+    "weight_sum_max": 1.0000000447034836,
+    "sampled_frames": [
+      0.0,
+      26.25,
+      52.5,
+      78.75
+    ],
+    "max_deformation_delta": 3.0255541860955852,
+    "finite": true,
+    "passed": true
+  },
+  {
+    "archive": "Meshy_AI_Heraldic_Knight_biped.zip",
+    "clip": "Meshy_AI_Heraldic_Knight_biped_Animation_Walking_withSkin.glb",
+    "meshes": 1,
+    "actions": [
+      "Walking"
+    ],
+    "vertices": 15937,
+    "unweighted": 0,
+    "max_influences": 4,
+    "weight_sum_min": 0.9999999478459358,
+    "weight_sum_max": 1.0000000447034836,
+    "sampled_frames": [
+      0.0,
+      6.5,
+      13.0,
+      19.5
+    ],
+    "max_deformation_delta": 0.7623413187446767,
+    "finite": true,
+    "passed": true
+  },
+  {
+    "archive": "Meshy_AI_medieval_knight_biped.zip",
+    "clip": "Meshy_AI_medieval_knight_biped_Animation_Attack_withSkin.glb",
+    "meshes": 1,
+    "actions": [
+      "Attack"
+    ],
+    "vertices": 84664,
+    "unweighted": 0,
+    "max_influences": 4,
+    "weight_sum_min": 0.9999999478459358,
+    "weight_sum_max": 1.0000000521540642,
+    "sampled_frames": [
+      0.0,
+      17.0,
+      34.0,
+      51.0
+    ],
+    "max_deformation_delta": 1.3062508485395126,
+    "finite": true,
+    "passed": true
+  },
+  {
+    "archive": "Meshy_AI_medieval_knight_biped.zip",
+    "clip": "Meshy_AI_medieval_knight_biped_Animation_Axe_Stance_withSkin.glb",
+    "meshes": 1,
+    "actions": [
+      "Axe_Stance"
+    ],
+    "vertices": 84664,
+    "unweighted": 0,
+    "max_influences": 4,
+    "weight_sum_min": 0.9999999478459358,
+    "weight_sum_max": 1.0000000521540642,
+    "sampled_frames": [
+      0.0,
+      37.0,
+      74.0,
+      111.0
+    ],
+    "max_deformation_delta": 1.6801475909853372,
+    "finite": true,
+    "passed": true
+  },
+  {
+    "archive": "Meshy_AI_medieval_knight_biped.zip",
+    "clip": "Meshy_AI_medieval_knight_biped_Animation_Charged_Slash_withSkin.glb",
+    "meshes": 1,
+    "actions": [
+      "Charged_Slash"
+    ],
+    "vertices": 84664,
+    "unweighted": 0,
+    "max_influences": 4,
+    "weight_sum_min": 0.9999999478459358,
+    "weight_sum_max": 1.0000000521540642,
+    "sampled_frames": [
+      0.0,
+      13.75,
+      27.5,
+      41.25
+    ],
+    "max_deformation_delta": 1.3796438823120547,
+    "finite": true,
+    "passed": true
+  },
+  {
+    "archive": "Meshy_AI_medieval_knight_biped.zip",
+    "clip": "Meshy_AI_medieval_knight_biped_Animation_Charged_Upward_Slash_withSkin.glb",
+    "meshes": 1,
+    "actions": [
+      "Charged_Upward_Slash"
+    ],
+    "vertices": 84664,
+    "unweighted": 0,
+    "max_influences": 4,
+    "weight_sum_min": 0.9999999478459358,
+    "weight_sum_max": 1.0000000521540642,
+    "sampled_frames": [
+      0.0,
+      19.5,
+      39.0,
+      58.5
+    ],
+    "max_deformation_delta": 1.4673789874490506,
+    "finite": true,
+    "passed": true
+  },
+  {
+    "archive": "Meshy_AI_medieval_knight_biped.zip",
+    "clip": "Meshy_AI_medieval_knight_biped_Animation_Chest_Pound_Taunt_withSkin.glb",
+    "meshes": 1,
+    "actions": [
+      "Chest_Pound_Taunt"
+    ],
+    "vertices": 84664,
+    "unweighted": 0,
+    "max_influences": 4,
+    "weight_sum_min": 0.9999999478459358,
+    "weight_sum_max": 1.0000000521540642,
+    "sampled_frames": [
+      0.0,
+      29.25,
+      58.5,
+      87.75
+    ],
+    "max_deformation_delta": 1.5588121883063046,
+    "finite": true,
+    "passed": true
+  },
+  {
+    "archive": "Meshy_AI_medieval_knight_biped.zip",
+    "clip": "Meshy_AI_medieval_knight_biped_Animation_Double_Combo_Attack_withSkin.glb",
+    "meshes": 1,
+    "actions": [
+      "Double_Combo_Attack"
+    ],
+    "vertices": 84664,
+    "unweighted": 0,
+    "max_influences": 4,
+    "weight_sum_min": 0.9999999478459358,
+    "weight_sum_max": 1.0000000521540642,
+    "sampled_frames": [
+      0.0,
+      17.25,
+      34.5,
+      51.75
+    ],
+    "max_deformation_delta": 1.66324691502707,
+    "finite": true,
+    "passed": true
+  },
+  {
+    "archive": "Meshy_AI_medieval_knight_biped.zip",
+    "clip": "Meshy_AI_medieval_knight_biped_Animation_Elderly_Shaky_Walk_withSkin.glb",
+    "meshes": 1,
+    "actions": [
+      "Elderly_Shaky_Walk"
+    ],
+    "vertices": 84664,
+    "unweighted": 0,
+    "max_influences": 4,
+    "weight_sum_min": 0.9999999478459358,
+    "weight_sum_max": 1.0000000521540642,
+    "sampled_frames": [
+      0.0,
+      17.5,
+      35.0,
+      52.5
+    ],
+    "max_deformation_delta": 0.6231010496746633,
+    "finite": true,
+    "passed": true
+  },
+  {
+    "archive": "Meshy_AI_medieval_knight_biped.zip",
+    "clip": "Meshy_AI_medieval_knight_biped_Animation_Running_withSkin.glb",
+    "meshes": 1,
+    "actions": [
+      "Running"
+    ],
+    "vertices": 84664,
+    "unweighted": 0,
+    "max_influences": 4,
+    "weight_sum_min": 0.9999999478459358,
+    "weight_sum_max": 1.0000000521540642,
+    "sampled_frames": [
+      0.0,
+      4.25,
+      8.5,
+      12.75
+    ],
+    "max_deformation_delta": 0.8570690809450366,
+    "finite": true,
+    "passed": true
+  },
+  {
+    "archive": "Meshy_AI_medieval_knight_biped.zip",
+    "clip": "Meshy_AI_medieval_knight_biped_Animation_Walking_withSkin.glb",
+    "meshes": 1,
+    "actions": [
+      "Walking"
+    ],
+    "vertices": 84664,
+    "unweighted": 0,
+    "max_influences": 4,
+    "weight_sum_min": 0.9999999478459358,
+    "weight_sum_max": 1.0000000521540642,
+    "sampled_frames": [
+      0.0,
+      6.5,
+      13.0,
+      19.5
+    ],
+    "max_deformation_delta": 0.5975279006499892,
+    "finite": true,
+    "passed": true
+  }
+]

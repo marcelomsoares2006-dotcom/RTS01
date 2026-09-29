@@ -3,80 +3,44 @@ using UnityEngine;
 
 public class TechnologyNodeActioners
 {
-
-    private static Dictionary<string, float> _MULTIPLIERS =
-        new Dictionary<string, float>();
-
-    private static Dictionary<string, System.Action> _ACTIONERS =
-        new Dictionary<string, System.Action>()
+    private static readonly Dictionary<string, float> Multipliers = new Dictionary<string, float>
     {
-        { "attack_booster", () =>
-        {
-            // store multiplier for future units
-            float multiplier = 2f;
-            _MULTIPLIERS["attack_booster"] = multiplier;
-
-            // re-assign my current units attack, if there are any
-            if (GameManager.instance == null) return;
-
-            int myPlayerId =
-                GameManager.instance.gamePlayersParameters.myPlayerId;
-            if (Unit.UNITS_BY_OWNER != null)
-                foreach (Unit unit in Unit.UNITS_BY_OWNER[myPlayerId])
-                    unit.SetAttackDamage((int) (unit.AttackDamage * multiplier));
-        } },
-        { "attack_booster_2", () =>
-        {
-            // store multiplier for future units
-            float multiplier = 4f;
-            _MULTIPLIERS["attack_booster"] = multiplier;
-
-            // re-assign my current units attack, if there are any
-            if (GameManager.instance == null) return;
-
-            int myPlayerId =
-                GameManager.instance.gamePlayersParameters.myPlayerId;
-            if (Unit.UNITS_BY_OWNER != null)
-                foreach (Unit unit in Unit.UNITS_BY_OWNER[myPlayerId])
-                    unit.SetAttackDamage((int) (unit.AttackDamage * multiplier));
-        } },
-        { "cost_reducer_buy", () =>
-        {
-            // store multiplier for future buys
-            _MULTIPLIERS["cost_reducer_buy"] = 0.9f;
-        } },
-        { "cost_reducer_buy_2", () =>
-        {
-            // store multiplier for future buys
-            _MULTIPLIERS["cost_reducer_buy"] = 0.8f;
-        } },
+        { "attack_booster", 1f },
+        { "cost_reducer_buy", 1f }
     };
+
+    public static void ResetMultipliers()
+    {
+        Multipliers["attack_booster"] = 1f;
+        Multipliers["cost_reducer_buy"] = 1f;
+    }
+
+    private static void SetAttackMultiplier(float multiplier)
+    {
+        // Second upgrade is 4x base damage, not another 4x on top of 2x.
+        float ratio = multiplier / Multipliers["attack_booster"];
+        Multipliers["attack_booster"] = multiplier;
+        if (GameManager.instance == null || Unit.UNITS_BY_OWNER == null) return;
+        int owner = GameManager.instance.gamePlayersParameters.myPlayerId;
+        if (!Unit.UNITS_BY_OWNER.TryGetValue(owner, out List<Unit> units)) return;
+        foreach (Unit unit in units)
+            if (unit.Transform != null)
+                unit.SetAttackDamage(Mathf.RoundToInt(unit.AttackDamage * ratio));
+    }
 
     public static void Apply(string code)
     {
-        System.Action action;
-        if (_ACTIONERS.TryGetValue(code, out action))
-            action();
-#if UNITY_EDITOR
-        else
-            Debug.LogWarning(
-                $"No actioner defined for tech tree node '{code}' - can't apply!");
-#endif
-    }
-
-    public static float GetMultiplier(string code)
-    {
-        float booster;
-        if (_MULTIPLIERS.TryGetValue(code, out booster))
-            return booster;
-        else
+        switch (code)
         {
-#if UNITY_EDITOR
-            Debug.LogWarning(
-                $"No booster defined for tech tree node '{code}' - using default of 1");
-#endif
-            return 1f;
+            case "attack_booster": SetAttackMultiplier(2f); break;
+            case "attack_booster_2": SetAttackMultiplier(4f); break;
+            case "cost_reducer_buy": Multipliers["cost_reducer_buy"] = 0.9f; break;
+            case "cost_reducer_buy_2": Multipliers["cost_reducer_buy"] = 0.8f; break;
+            case "root": break;
+            default: Debug.LogWarning($"No actioner defined for tech tree node '{code}'."); break;
         }
     }
 
+    public static float GetMultiplier(string code)
+        => Multipliers.TryGetValue(code, out float multiplier) ? multiplier : 1f;
 }

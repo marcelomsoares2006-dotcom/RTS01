@@ -1,0 +1,6 @@
+{
+    "name": "EraImperial.Compatibility",
+    "rootNamespace": "EraImperial.Compatibility",
+    "references": [],
+    "autoReferenced": true
+}

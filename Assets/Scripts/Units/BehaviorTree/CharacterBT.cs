@@ -3,7 +3,7 @@
 using BehaviorTree;
 
 [UnityEngine.RequireComponent(typeof(CharacterManager))]
-public class CharacterBT : Tree
+public class CharacterBT : RuntimeBehaviorTree
 {
     CharacterManager manager;
     private TaskTrySetDestinationOrTarget _trySetDestinationOrTargetNode;

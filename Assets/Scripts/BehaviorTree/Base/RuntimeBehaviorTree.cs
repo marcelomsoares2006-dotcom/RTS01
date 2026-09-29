@@ -2,9 +2,9 @@
 
 namespace BehaviorTree
 {
-    public abstract class Tree : MonoBehaviour
+    public abstract class RuntimeBehaviorTree : MonoBehaviour
     {
-        private Node _root = null;
+        private Node _root;
 
         protected void Start()
         {

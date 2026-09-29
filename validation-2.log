@@ -1,0 +1,30 @@
+[CoreBusinessMetrics] System persistent data directory not found: 
+[CoreBusinessMetrics] Unable to configure cache. Connection string was invalid or not specified.
+VBCSCompilerPreWarmer: watching VBCSCompiler (PID 23980)
+VBCSCompilerPreWarmer: pre-warm launched (dotnet PID 26528)
+VBCSCompiler prewarm took 16.95 ms
+Assertion failed on expression: 'SUCCEEDED(hr)'
+Assertion failed on expression: 'SUCCEEDED(hr)'
+Assertion failed on expression: 'ERROR_SUCCESS == status'
+[Licensing::Module] Trying to connect to existing licensing client channel...
+Built from '6000.6/staging' branch; Version is '6000.6.3f1 (45d8eee7de74) revision 4577518'; Using compiler version '194234433'; Build Type 'Release'
+[Licensing::IpcConnector] Connection to channel LicenseClient-User refused
+OS: 'Windows 11  (10.0.22631) Professional' Language: 'pt' Physical Memory: 32556 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
+System  architecture: x64
+Process architecture: x64
+Date: 2026-09-28T01:17:28Z
+[Licensing::Module] Successfully launched the LicensingClient (PId: 24772)
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\6000.6.3f1\Editor\Unity.exe
+-batchmode
+-nographics
+-quit
+-projectPath
+C:\Users\User\Downloads\Era Imperial\EraImperial-UnityRTS-Base\RTS01-Corrigido
+-logFile
+C:\Users\User\Downloads\Era Imperial\EraImperial-UnityRTS-Base\RTS01-Corrigido\validation-2.log
+Successfully changed project path to: C:\Users\User\Downloads\Era Imperial\EraImperial-UnityRTS-Base\RTS01-Corrigido
+C:/Users/User/Downloads/Era Imperial/EraImperial-UnityRTS-Base/RTS01-Corrigido
+[ExitDontLaunchBugReporter] Exiting without the bug reporter. Application will exit with return code 1

@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Farmhand",
+    "pass": true,
+    "triangles": 14980,
+    "bone_count": 23,
+    "max_influences": 4,
+    "height_metres": 1.8001385184652463,
+    "deformation_metres": 0.42274560720939525,
+    "accessories_checked": 0,
+    "discarded_degenerate_triangles": 19,
+    "source_unchanged": true
+  },
+  {
+    "name": "Spearman",
+    "pass": true,
+    "triangles": 19976,
+    "bone_count": 23,
+    "max_influences": 4,
+    "height_metres": 1.7997598579677287,
+    "deformation_metres": 0.4231176747882772,
+    "accessories_checked": 2,
+    "discarded_degenerate_triangles": 23,
+    "source_unchanged": true
+  }
+]

@@ -63,7 +63,9 @@ public class GameData : BinarySerializable
 
     public static GameData Load()
     {
-        _instance = (GameData) BinarySerializable.Load(_GetFilePath());
+        // A new match deliberately has no save yet; this is not a load failure.
+        string path = _GetFilePath();
+        _instance = System.IO.File.Exists(path) ? (GameData)BinarySerializable.Load(path) : null;
         return _instance;
     }
 

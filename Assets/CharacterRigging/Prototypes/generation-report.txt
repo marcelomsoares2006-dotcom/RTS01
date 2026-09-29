@@ -1,0 +1,5 @@
+Rigify 5.2 prototype generation
+These are blockout skinning fixtures, not finished character art.
+human: metaBones=159, controlRigBones=706, vertices=2336, weightGroups=160, glb=C:\Users\User\Downloads\Era Imperial\EraImperial-UnityRTS-Base\RTS01-Corrigido\Tools\CharacterRigging\Inputs\Human_SkinningFixture.glb, fbx=C:\Users\User\Downloads\Era Imperial\EraImperial-UnityRTS-Base\RTS01-Corrigido\Assets\CharacterRigging\Prototypes\Human_SkinnedPrototype.fbx
+horse: metaBones=70, controlRigBones=454, vertices=2628, weightGroups=80, glb=C:\Users\User\Downloads\Era Imperial\EraImperial-UnityRTS-Base\RTS01-Corrigido\Tools\CharacterRigging\Inputs\Horse_SkinningFixture.glb, fbx=C:\Users\User\Downloads\Era Imperial\EraImperial-UnityRTS-Base\RTS01-Corrigido\Assets\CharacterRigging\Prototypes\Horse_SkinnedPrototype.fbx
+wolf: metaBones=190, controlRigBones=823, vertices=2044, weightGroups=197, glb=C:\Users\User\Downloads\Era Imperial\EraImperial-UnityRTS-Base\RTS01-Corrigido\Tools\CharacterRigging\Inputs\Wolf_SkinningFixture.glb, fbx=C:\Users\User\Downloads\Era Imperial\EraImperial-UnityRTS-Base\RTS01-Corrigido\Assets\CharacterRigging\Prototypes\Wolf_SkinnedPrototype.fbx

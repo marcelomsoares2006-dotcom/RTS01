@@ -14,6 +14,7 @@ public class DebugConsole : MonoBehaviour
     }
 
     private static GUIStyle _logStyle;
+    private static DebugConsole _instance;
 
     private bool _showConsole = false;
     private string _consoleInput;
@@ -25,7 +26,7 @@ public class DebugConsole : MonoBehaviour
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
     private static void EnsureDebugConsole()
     {
-        if (FindObjectOfType<DebugConsole>() != null)
+        if (_instance != null)
             return;
 
         GameObject consoleObject = new GameObject("DebugConsole");
@@ -35,7 +36,14 @@ public class DebugConsole : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        // The legacy scene puts this component on the managers object. Persisting
+        // that object also persisted the entire old match when returning to menu.
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this);
+            return;
+        }
+        _instance = this;
         _consoleInput = "";
 
         new DebugCommand("?", "Lists all available debug commands.", "?", () =>
@@ -235,6 +243,7 @@ public class DebugConsole : MonoBehaviour
 
     private void OnEnable()
     {
+        if (_instance != this) return;
         EventManager.AddListener("<Input>ShowDebugConsole", _OnShowDebugConsole);
     }
 

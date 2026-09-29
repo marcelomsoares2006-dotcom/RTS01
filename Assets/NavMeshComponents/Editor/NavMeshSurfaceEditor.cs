@@ -8,6 +8,7 @@ using UnityEditor.IMGUI.Controls;
 using UnityEditor.SceneManagement;
 using UnityEditorInternal;
 using UnityEngine.AI;
+#pragma warning disable 0618, 0619
 using UnityEngine;
 
 namespace UnityEditor.AI

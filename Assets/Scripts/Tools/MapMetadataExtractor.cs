@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.SceneManagement;
@@ -57,3 +58,4 @@ public static class MapMetadataExtractor
         AssetDatabase.SaveAssets();
     }
 }
+#endif

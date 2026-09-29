@@ -1,0 +1,6 @@
+{
+    "name": "EraImperial.EditorTests",
+    "references": ["EraImperial.Compatibility"],
+    "includePlatforms": ["Editor"],
+    "optionalUnityReferences": ["TestAssemblies"]
+}

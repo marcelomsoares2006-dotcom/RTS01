@@ -24,7 +24,7 @@ public class CoreBooter : MonoBehaviour
 
     private void OnDisable()
     {
-        EventManager.AddListener("LoadedScene", _OnLoadedScene);
+        EventManager.RemoveListener("LoadedScene", _OnLoadedScene);
     }
 
     private void Start()
@@ -55,7 +55,7 @@ public class CoreBooter : MonoBehaviour
         while (t < 1f)
         {
             sceneTransitioner.color = Color.Lerp(Color.clear, Color.black, t);
-            t += Time.deltaTime;
+            t += Time.unscaledDeltaTime;
             yield return null;
         }
 
@@ -71,7 +71,7 @@ public class CoreBooter : MonoBehaviour
         while (t < 1f)
         {
             sceneTransitioner.color = Color.Lerp(Color.black, Color.clear, t);
-            t += Time.deltaTime;
+            t += Time.unscaledDeltaTime;
             yield return null;
         }
 
@@ -100,6 +100,7 @@ public class CoreBooter : MonoBehaviour
 
     private AsyncOperation _LoadMenu()
     {
+        Time.timeScale = 1f;
         AudioListener prevListener = Object.FindObjectOfType<AudioListener>();
         if (prevListener != null) prevListener.enabled = false;
         AsyncOperation op = SceneManager.LoadSceneAsync("MainMenu", LoadSceneMode.Additive);

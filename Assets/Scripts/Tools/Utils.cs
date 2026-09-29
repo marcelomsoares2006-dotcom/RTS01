@@ -198,6 +198,13 @@ public static class Utils
 
     public static (Vector3, Vector3) GetCameraWorldBounds()
     {
+        if (MainCamera == null ||
+            GameManager.instance == null ||
+            GameManager.instance.mapWrapperCollider == null)
+        {
+            return (Vector3.zero, Vector3.zero);
+        }
+
         Vector3 bottomLeftCorner = new Vector3(0f, 0f);
         Vector3 topRightCorner = new Vector3(1f, 1f);
         float dist = 1000f;

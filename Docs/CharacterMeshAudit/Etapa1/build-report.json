@@ -1,0 +1,251 @@
+{
+  "source": "Tools\\CharacterRigging\\Inputs\\Meshy_AI_Heraldic_Knight_biped.zip",
+  "fps": 24,
+  "clips": {
+    "Walking": {
+      "gltfDurationSeconds": 1.08333,
+      "blenderFrameRange": [
+        0.0,
+        26.0
+      ],
+      "worldSamples": {
+        "0": {
+          "minZ": -0.0078,
+          "maxZ": 1.7073,
+          "centroid": [
+            0.0291,
+            -0.0215,
+            0.7356
+          ]
+        },
+        "8": {
+          "minZ": -0.0303,
+          "maxZ": 1.6469,
+          "centroid": [
+            0.0516,
+            -0.0074,
+            0.6982
+          ]
+        },
+        "17": {
+          "minZ": 0.0073,
+          "maxZ": 1.6774,
+          "centroid": [
+            0.0369,
+            -0.0218,
+            0.7259
+          ]
+        },
+        "26": {
+          "minZ": -0.0078,
+          "maxZ": 1.7073,
+          "centroid": [
+            0.0291,
+            -0.0215,
+            0.7356
+          ]
+        }
+      },
+      "sampleFrames": [
+        0,
+        8,
+        17,
+        26
+      ],
+      "exportedDurationSeconds": 1.08333
+    },
+    "Running": {
+      "gltfDurationSeconds": 0.70833,
+      "blenderFrameRange": [
+        0.0,
+        17.0
+      ],
+      "worldSamples": {
+        "0": {
+          "minZ": -0.0105,
+          "maxZ": 1.6247,
+          "centroid": [
+            0.0443,
+            -0.005,
+            0.7852
+          ]
+        },
+        "5": {
+          "minZ": -0.0225,
+          "maxZ": 1.6493,
+          "centroid": [
+            0.0295,
+            -0.005,
+            0.7677
+          ]
+        },
+        "11": {
+          "minZ": 0.0197,
+          "maxZ": 1.6794,
+          "centroid": [
+            0.0323,
+            0.0095,
+            0.825
+          ]
+        },
+        "17": {
+          "minZ": -0.0105,
+          "maxZ": 1.6247,
+          "centroid": [
+            0.0443,
+            -0.005,
+            0.7852
+          ]
+        }
+      },
+      "sampleFrames": [
+        0,
+        5,
+        11,
+        17
+      ],
+      "exportedDurationSeconds": 0.70833
+    },
+    "Attack": {
+      "gltfDurationSeconds": 2.83333,
+      "blenderFrameRange": [
+        0.0,
+        68.0
+      ],
+      "worldSamples": {
+        "0": {
+          "minZ": -0.0504,
+          "maxZ": 1.4148,
+          "centroid": [
+            0.0215,
+            -0.1041,
+            0.584
+          ]
+        },
+        "22": {
+          "minZ": 0.008,
+          "maxZ": 1.9811,
+          "centroid": [
+            0.1165,
+            -0.2939,
+            0.9145
+          ]
+        },
+        "45": {
+          "minZ": -0.0713,
+          "maxZ": 1.1868,
+          "centroid": [
+            0.0206,
+            -0.3953,
+            0.4576
+          ]
+        },
+        "68": {
+          "minZ": -0.0531,
+          "maxZ": 1.4142,
+          "centroid": [
+            0.0224,
+            -0.1069,
+            0.5836
+          ]
+        }
+      },
+      "sampleFrames": [
+        0,
+        22,
+        45,
+        68
+      ],
+      "exportedDurationSeconds": 2.83333
+    },
+    "Triple_Combo_Attack": {
+      "gltfDurationSeconds": 4.375,
+      "blenderFrameRange": [
+        0.0,
+        105.0
+      ],
+      "worldSamples": {
+        "0": {
+          "minZ": 0.0834,
+          "maxZ": 1.5997,
+          "centroid": [
+            -0.0463,
+            -0.0271,
+            0.7824
+          ]
+        },
+        "35": {
+          "minZ": 0.0683,
+          "maxZ": 1.9323,
+          "centroid": [
+            0.1334,
+            -0.5577,
+            0.88
+          ]
+        },
+        "70": {
+          "minZ": 0.0703,
+          "maxZ": 1.617,
+          "centroid": [
+            0.295,
+            -2.0642,
+            0.7688
+          ]
+        },
+        "105": {
+          "minZ": 0.0801,
+          "maxZ": 1.5878,
+          "centroid": [
+            0.211,
+            -1.9995,
+            0.772
+          ]
+        }
+      },
+      "sampleFrames": [
+        0,
+        35,
+        70,
+        105
+      ],
+      "exportedDurationSeconds": 4.375
+    }
+  },
+  "unitConversionMaxDeltaMetres": 1.550354650272874e-05,
+  "textureSize": [
+    2048,
+    2048
+  ],
+  "bones": [
+    "mixamorig:Hips",
+    "mixamorig:LeftUpLeg",
+    "mixamorig:LeftLeg",
+    "mixamorig:LeftFoot",
+    "mixamorig:LeftToeBase",
+    "mixamorig:RightUpLeg",
+    "mixamorig:RightLeg",
+    "mixamorig:RightFoot",
+    "mixamorig:RightToeBase",
+    "mixamorig:Spine",
+    "mixamorig:Spine1",
+    "mixamorig:Spine2",
+    "mixamorig:LeftShoulder",
+    "mixamorig:LeftArm",
+    "mixamorig:LeftForeArm",
+    "mixamorig:LeftHand",
+    "mixamorig:RightShoulder",
+    "mixamorig:RightArm",
+    "mixamorig:RightForeArm",
+    "mixamorig:RightHand",
+    "mixamorig:Neck",
+    "mixamorig:Head",
+    "headfront"
+  ],
+  "vertices": 15937,
+  "triangles": 19609,
+  "maxInfluences": 4,
+  "minWeightSum": 0.9999999478459358,
+  "maxWeightSum": 1.0000000447034836,
+  "bindHeightMetres": 1.7,
+  "bindMinZ": 0.0
+}

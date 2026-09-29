@@ -39,6 +39,12 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        instance = this;
+        Time.timeScale = 1f;
+        Globals.NAV_MESH_SURFACE = null;
+        Globals.SELECTED_UNITS.Clear();
+        Unit.UNITS_BY_OWNER = new Dictionary<int, List<Unit>>();
+        TechnologyNodeActioners.ResetMultipliers();
         canvasScaleFactor = canvas.scaleFactor;
 
         DataHandler.LoadGameData();
@@ -46,8 +52,7 @@ public class GameManager : MonoBehaviour
 
         Globals.InitializeGameResources(gamePlayersParameters.players.Length);
 
-        Globals.NAV_MESH_SURFACE = GameObject.Find("Terrain").GetComponent<NavMeshSurface>();
-        Globals.UpdateNavMeshSurface();
+        StartCoroutine(_InitializeNavMeshWhenReady());
 
         // enable/disable FOV depending on game parameters
         fov.SetActive(gameGlobalParameters.enableFOV);
@@ -57,9 +62,34 @@ public class GameManager : MonoBehaviour
         gameIsPaused = false;
     }
 
-    public void Start()
+    private IEnumerator _InitializeNavMeshWhenReady()
     {
-        instance = this;
+        for (int attempt = 0; attempt < 120; attempt++)
+        {
+            NavMeshSurface[] surfaces = FindObjectsOfType<NavMeshSurface>();
+            foreach (NavMeshSurface surface in surfaces)
+            {
+                if (surface == null)
+                    continue;
+
+                Globals.NAV_MESH_SURFACE = surface;
+                Globals.UpdateNavMeshSurface();
+                yield break;
+            }
+
+            yield return null;
+        }
+
+        Debug.LogWarning("Nenhum NavMeshSurface foi encontrado após o carregamento do mapa.");
+    }
+
+    private void OnDestroy()
+    {
+        if (instance == this)
+        {
+            instance = null;
+            Globals.NAV_MESH_SURFACE = null;
+        }
     }
 
     private void _SetupMinimap()

@@ -1,0 +1,19 @@
+Assertion failed on expression: 'SUCCEEDED(hr)'
+Query 'MSFT_NetAdapter' failed. Error code = 0x80041003
+Query 'MSFT_NetAdapter' failed. Error code = 0x80041003
+[LicensingClient] Error "0x8000000a" attempting to connect to the Licensing Client on pipe: "LicenseClient-User"
+[Licensing::Module] Error: Failed to connect to channel: "LicenseClient-User"
+[Licensing::Module] Channel doesn't exist: "LicenseClient-User-2020.3.18"
+[Licensing::Module] Successfully launched the LicensingClient (PId: 20256)
+[Licensing::Module] Timed-out after 5.00s, waiting for channel: "LicenseClient-User-2020.3.18"
+IPC channel to LicensingClient doesn't exist; falling back to Legacy licensing
+Assertion failed on expression: 'SUCCEEDED(hr)'
+Query 'MSFT_NetAdapter' failed. Error code = 0x80041003
+Query 'MSFT_NetAdapter' failed. Error code = 0x80041003
+BatchMode: Unity has not been activated with a valid License. Could be a new activation or renewal...
+[UnityConnectServicesConfig] config is NOT valid, switching to default
+Request timed out while processing request "https://public-cdn.cloud.unity3d.com/config/production", HTTP error code 0
+.[UnityConnect] Request timed out.
+Cancelling DisplayDialog: Failed to activate/update license Missing or bad username or password. Please try again using valid credentials or contact support@unity3d.com
+This should not be called in batch mode.
+Exiting without the bug reporter. Application will terminate with return code 1

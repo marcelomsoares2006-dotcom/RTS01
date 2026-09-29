@@ -1,3 +1,4 @@
+#pragma warning disable 0618, 0619
 using UnityEditor.IMGUI.Controls;
 using UnityEditorInternal;
 using UnityEngine.AI;

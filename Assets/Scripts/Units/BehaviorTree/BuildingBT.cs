@@ -3,7 +3,7 @@
 using BehaviorTree;
 
 [UnityEngine.RequireComponent(typeof(BuildingManager))]
-public class BuildingBT : Tree
+public class BuildingBT : RuntimeBehaviorTree
 {
     BuildingManager manager;
 

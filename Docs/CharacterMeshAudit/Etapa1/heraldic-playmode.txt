@@ -1,0 +1,28 @@
+Heraldic Knight Play Mode check
+Unity 6000.6.3f1  2026-09-28 20:58:27
+Graphics: Direct3D11 / Radeon RX 580 Series
+WARNING (console): Unity is not designed to run with Administrator privileges.
+
+With elevated access, scripts in your project can modify system files, registry settings, or protected areas, even accidentally.
+This could make your system unstable or unbootable.
+
+Restart as a standard user for the safest experience.
+Scene HeraldicKnight_Demo playing; avatar human=True; material=HeraldicKnight_Mat/Standard; bones=23
+TestResults/heraldic-1-Walking-front.png: magenta pixels=0,000%
+TestResults/heraldic-1-Walking-rear.png: magenta pixels=0,000%
+Walking: state OK, normalizedTime=0,70, clipLength=1,083s, loop=True, maxVertexDelta=0,883 m, deformedHeight=1,672 m, lowestVertexY=-0,006 m, hipsOffsetFromRoot=0,014 m
+Walking: still in loop state (normalizedTime=0,93).
+TestResults/heraldic-2-Running-front.png: magenta pixels=0,000%
+TestResults/heraldic-2-Running-rear.png: magenta pixels=0,000%
+Running: state OK, normalizedTime=0,71, clipLength=0,708s, loop=True, maxVertexDelta=1,265 m, deformedHeight=1,665 m, lowestVertexY=0,006 m, hipsOffsetFromRoot=0,026 m
+Running: still in loop state (normalizedTime=1,00).
+TestResults/heraldic-3-Attack-front.png: magenta pixels=0,000%
+TestResults/heraldic-3-Attack-rear.png: magenta pixels=0,000%
+Attack: state OK, normalizedTime=0,27, clipLength=2,833s, loop=False, maxVertexDelta=1,576 m, deformedHeight=1,950 m, lowestVertexY=0,023 m, hipsOffsetFromRoot=0,062 m
+Attack: finished once (non-looping) and returned to Walking.
+TestResults/heraldic-4-TripleCombo-front.png: magenta pixels=0,000%
+TestResults/heraldic-4-TripleCombo-rear.png: magenta pixels=0,000%
+TripleCombo: state OK, normalizedTime=0,30, clipLength=4,375s, loop=False, maxVertexDelta=1,401 m, deformedHeight=1,752 m, lowestVertexY=0,072 m, hipsOffsetFromRoot=0,075 m
+TripleCombo: finished once (non-looping) and returned to Walking.
+Root drift: knight transform moved 0,000 m; max horizontal hips offset from root 0,075 m.
+HERALDIC_PLAYMODE_PASSED: 4 states, 0 console errors.

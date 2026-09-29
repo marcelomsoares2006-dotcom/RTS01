@@ -1,0 +1,3255 @@
+{
+  "assets": [
+    {
+      "id": 1,
+      "file": "Meshy_AI__villain_Dark_Knigh_0928222234_texture.blend",
+      "source": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Tools\\CharacterRigging\\Inputs\\Meshy_AI__villain_Dark_Knigh_0928222234_texture.blend",
+      "meshes": [
+        {
+          "object": "Mesh_0",
+          "vertices": 315538,
+          "triangles": 631114,
+          "polygons": 631114,
+          "uv_layers": 1,
+          "dimensions": [
+            1.9029109477996826,
+            0.4038650095462799,
+            1.873729944229126
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "materials": [
+            "Material_0"
+          ],
+          "vertex_groups": 0,
+          "vertices_with_weights": 0,
+          "armature": null,
+          "modifiers": [],
+          "components": {
+            "count": 1,
+            "largest_vertex_counts": [
+              315538
+            ]
+          }
+        }
+      ],
+      "armatures": [],
+      "actions": [],
+      "images": [
+        {
+          "name": "Image_0",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        },
+        {
+          "name": "Image_1",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        },
+        {
+          "name": "Image_2",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        }
+      ],
+      "triangles": 631114,
+      "vertices": 315538,
+      "preview": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Docs\\CharacterMeshAudit\\previews\\01.png"
+    },
+    {
+      "id": 2,
+      "file": "Meshy_AI_a_tree_0928223933_texture.blend",
+      "source": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Tools\\CharacterRigging\\Inputs\\Meshy_AI_a_tree_0928223933_texture.blend",
+      "meshes": [
+        {
+          "object": "Mesh_0",
+          "vertices": 1612711,
+          "triangles": 3283835,
+          "polygons": 3283835,
+          "uv_layers": 1,
+          "dimensions": [
+            1.3217499256134033,
+            1.375093936920166,
+            1.9982659816741943
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "materials": [
+            "Material_0"
+          ],
+          "vertex_groups": 0,
+          "vertices_with_weights": 0,
+          "armature": null,
+          "modifiers": [],
+          "components": {
+            "count": 11,
+            "largest_vertex_counts": [
+              1610851,
+              1201,
+              310,
+              237,
+              71,
+              10,
+              8,
+              7,
+              6,
+              5,
+              5
+            ]
+          }
+        }
+      ],
+      "armatures": [],
+      "actions": [],
+      "images": [
+        {
+          "name": "Image_0",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        },
+        {
+          "name": "Image_1",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        },
+        {
+          "name": "Image_2",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        }
+      ],
+      "triangles": 3283835,
+      "vertices": 1612711,
+      "preview": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Docs\\CharacterMeshAudit\\previews\\02.png"
+    },
+    {
+      "id": 3,
+      "file": "Meshy_AI_Armored_Knight_0928222022_texture.blend",
+      "source": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Tools\\CharacterRigging\\Inputs\\Meshy_AI_Armored_Knight_0928222022_texture.blend",
+      "meshes": [
+        {
+          "object": "Mesh_0",
+          "vertices": 383235,
+          "triangles": 767296,
+          "polygons": 767296,
+          "uv_layers": 1,
+          "dimensions": [
+            1.1499500274658203,
+            0.47227901220321655,
+            1.9035439491271973
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "materials": [
+            "Material_0"
+          ],
+          "vertex_groups": 0,
+          "vertices_with_weights": 0,
+          "armature": null,
+          "modifiers": [],
+          "components": {
+            "count": 11,
+            "largest_vertex_counts": [
+              383141,
+              17,
+              14,
+              11,
+              10,
+              10,
+              9,
+              9,
+              5,
+              5,
+              4
+            ]
+          }
+        }
+      ],
+      "armatures": [],
+      "actions": [],
+      "images": [
+        {
+          "name": "Image_0",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        },
+        {
+          "name": "Image_1",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        },
+        {
+          "name": "Image_2",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        }
+      ],
+      "triangles": 767296,
+      "vertices": 383235,
+      "preview": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Docs\\CharacterMeshAudit\\previews\\03.png"
+    },
+    {
+      "id": 4,
+      "file": "Meshy_AI_Azure_Crest_Knight_0928222110_texture.blend",
+      "source": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Tools\\CharacterRigging\\Inputs\\Meshy_AI_Azure_Crest_Knight_0928222110_texture.blend",
+      "meshes": [
+        {
+          "object": "Mesh_0",
+          "vertices": 257990,
+          "triangles": 516007,
+          "polygons": 516007,
+          "uv_layers": 1,
+          "dimensions": [
+            0.8590120077133179,
+            0.5885360240936279,
+            1.8979451656341553
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "materials": [
+            "Material_0"
+          ],
+          "vertex_groups": 0,
+          "vertices_with_weights": 0,
+          "armature": null,
+          "modifiers": [],
+          "components": {
+            "count": 2,
+            "largest_vertex_counts": [
+              257983,
+              7
+            ]
+          }
+        }
+      ],
+      "armatures": [],
+      "actions": [],
+      "images": [
+        {
+          "name": "Image_0",
+          "size": [
+            4096,
+            4096
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        },
+        {
+          "name": "Image_1",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        },
+        {
+          "name": "Image_2",
+          "size": [
+            4096,
+            4096
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        },
+        {
+          "name": "Image_3",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        }
+      ],
+      "triangles": 516007,
+      "vertices": 257990,
+      "preview": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Docs\\CharacterMeshAudit\\previews\\04.png"
+    },
+    {
+      "id": 5,
+      "file": "Meshy_AI_Azure_Knight_0928222239_texture.blend",
+      "source": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Tools\\CharacterRigging\\Inputs\\Meshy_AI_Azure_Knight_0928222239_texture.blend",
+      "meshes": [
+        {
+          "object": "Mesh_0",
+          "vertices": 343520,
+          "triangles": 687107,
+          "polygons": 687107,
+          "uv_layers": 1,
+          "dimensions": [
+            1.3551900386810303,
+            0.8786230087280273,
+            1.897737979888916
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "materials": [
+            "Material_0"
+          ],
+          "vertex_groups": 0,
+          "vertices_with_weights": 0,
+          "armature": null,
+          "modifiers": [],
+          "components": {
+            "count": 1,
+            "largest_vertex_counts": [
+              343520
+            ]
+          }
+        }
+      ],
+      "armatures": [],
+      "actions": [],
+      "images": [
+        {
+          "name": "Image_0",
+          "size": [
+            4096,
+            4096
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        },
+        {
+          "name": "Image_1",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        },
+        {
+          "name": "Image_2",
+          "size": [
+            4096,
+            4096
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        },
+        {
+          "name": "Image_3",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        }
+      ],
+      "triangles": 687107,
+      "vertices": 343520,
+      "preview": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Docs\\CharacterMeshAudit\\previews\\05.png"
+    },
+    {
+      "id": 6,
+      "file": "Meshy_AI_Azure_Knight_on_a_Ste_0928222245_texture.blend",
+      "source": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Tools\\CharacterRigging\\Inputs\\Meshy_AI_Azure_Knight_on_a_Ste_0928222245_texture.blend",
+      "meshes": [
+        {
+          "object": "Mesh_0",
+          "vertices": 290550,
+          "triangles": 581122,
+          "polygons": 581122,
+          "uv_layers": 1,
+          "dimensions": [
+            0.6249899864196777,
+            1.6118192672729492,
+            1.899231195449829
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "materials": [
+            "Material_0"
+          ],
+          "vertex_groups": 0,
+          "vertices_with_weights": 0,
+          "armature": null,
+          "modifiers": [],
+          "components": {
+            "count": 4,
+            "largest_vertex_counts": [
+              290525,
+              18,
+              4,
+              3
+            ]
+          }
+        }
+      ],
+      "armatures": [],
+      "actions": [],
+      "images": [
+        {
+          "name": "Image_0",
+          "size": [
+            4096,
+            4096
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        },
+        {
+          "name": "Image_1",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        },
+        {
+          "name": "Image_2",
+          "size": [
+            4096,
+            4096
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        },
+        {
+          "name": "Image_3",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        }
+      ],
+      "triangles": 581122,
+      "vertices": 290550,
+      "preview": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Docs\\CharacterMeshAudit\\previews\\06.png"
+    },
+    {
+      "id": 7,
+      "file": "Meshy_AI_Azure_Sentinel_0928222039_texture.blend",
+      "source": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Tools\\CharacterRigging\\Inputs\\Meshy_AI_Azure_Sentinel_0928222039_texture.blend",
+      "meshes": [
+        {
+          "object": "Mesh_0",
+          "vertices": 315638,
+          "triangles": 631293,
+          "polygons": 631293,
+          "uv_layers": 1,
+          "dimensions": [
+            1.1094499826431274,
+            0.8137792348861694,
+            1.8994662761688232
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "materials": [
+            "Material_0"
+          ],
+          "vertex_groups": 0,
+          "vertices_with_weights": 0,
+          "armature": null,
+          "modifiers": [],
+          "components": {
+            "count": 4,
+            "largest_vertex_counts": [
+              315609,
+              18,
+              7,
+              4
+            ]
+          }
+        }
+      ],
+      "armatures": [],
+      "actions": [],
+      "images": [
+        {
+          "name": "Image_0",
+          "size": [
+            4096,
+            4096
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        },
+        {
+          "name": "Image_1",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        },
+        {
+          "name": "Image_2",
+          "size": [
+            4096,
+            4096
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        },
+        {
+          "name": "Image_3",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        }
+      ],
+      "triangles": 631293,
+      "vertices": 315638,
+      "preview": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Docs\\CharacterMeshAudit\\previews\\07.png"
+    },
+    {
+      "id": 8,
+      "file": "Meshy_AI_Crimson_Knight_on_Hor_0928222051_texture.blend",
+      "source": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Tools\\CharacterRigging\\Inputs\\Meshy_AI_Crimson_Knight_on_Hor_0928222051_texture.blend",
+      "meshes": [
+        {
+          "object": "Mesh_0",
+          "vertices": 377921,
+          "triangles": 755873,
+          "polygons": 755873,
+          "uv_layers": 1,
+          "dimensions": [
+            1.1765398979187012,
+            1.3663461208343506,
+            1.8853023052215576
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "materials": [
+            "Material_0"
+          ],
+          "vertex_groups": 0,
+          "vertices_with_weights": 0,
+          "armature": null,
+          "modifiers": [],
+          "components": {
+            "count": 6,
+            "largest_vertex_counts": [
+              377813,
+              55,
+              32,
+              12,
+              6,
+              3
+            ]
+          }
+        }
+      ],
+      "armatures": [],
+      "actions": [],
+      "images": [
+        {
+          "name": "Image_0",
+          "size": [
+            4096,
+            4096
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        },
+        {
+          "name": "Image_1",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        },
+        {
+          "name": "Image_2",
+          "size": [
+            4096,
+            4096
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        },
+        {
+          "name": "Image_3",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        }
+      ],
+      "triangles": 755873,
+      "vertices": 377921,
+      "preview": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Docs\\CharacterMeshAudit\\previews\\08.png"
+    },
+    {
+      "id": 9,
+      "file": "Meshy_AI_Dark_Knight_0928222126_texture.blend",
+      "source": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Tools\\CharacterRigging\\Inputs\\Meshy_AI_Dark_Knight_0928222126_texture.blend",
+      "meshes": [
+        {
+          "object": "Mesh_0",
+          "vertices": 646826,
+          "triangles": 1297067,
+          "polygons": 1297067,
+          "uv_layers": 1,
+          "dimensions": [
+            1.8592640161514282,
+            0.47326600551605225,
+            1.9037799835205078
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "materials": [
+            "Material_0"
+          ],
+          "vertex_groups": 0,
+          "vertices_with_weights": 0,
+          "armature": null,
+          "modifiers": [],
+          "components": {
+            "count": 37,
+            "largest_vertex_counts": [
+              644689,
+              1394,
+              102,
+              77,
+              63,
+              60,
+              40,
+              40,
+              34,
+              32,
+              30,
+              29
+            ]
+          }
+        }
+      ],
+      "armatures": [],
+      "actions": [],
+      "images": [
+        {
+          "name": "Image_1",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        },
+        {
+          "name": "Image_2",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        },
+        {
+          "name": "texture",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        }
+      ],
+      "triangles": 1297067,
+      "vertices": 646826,
+      "preview": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Docs\\CharacterMeshAudit\\previews\\09.png"
+    },
+    {
+      "id": 10,
+      "file": "Meshy_AI_Frontlines_Knight_0928222124_texture.blend",
+      "source": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Tools\\CharacterRigging\\Inputs\\Meshy_AI_Frontlines_Knight_0928222124_texture.blend",
+      "meshes": [
+        {
+          "object": "Mesh_0",
+          "vertices": 390401,
+          "triangles": 780826,
+          "polygons": 780826,
+          "uv_layers": 1,
+          "dimensions": [
+            1.4464530944824219,
+            1.08501398563385,
+            1.8979599475860596
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "materials": [
+            "Material_0"
+          ],
+          "vertex_groups": 0,
+          "vertices_with_weights": 0,
+          "armature": null,
+          "modifiers": [],
+          "components": {
+            "count": 5,
+            "largest_vertex_counts": [
+              390227,
+              158,
+              6,
+              5,
+              5
+            ]
+          }
+        }
+      ],
+      "armatures": [],
+      "actions": [],
+      "images": [
+        {
+          "name": "Image_0",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        }
+      ],
+      "triangles": 780826,
+      "vertices": 390401,
+      "preview": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Docs\\CharacterMeshAudit\\previews\\10.png"
+    },
+    {
+      "id": 11,
+      "file": "Meshy_AI_Iron_Sentinel_0928222113_texture.blend",
+      "source": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Tools\\CharacterRigging\\Inputs\\Meshy_AI_Iron_Sentinel_0928222113_texture.blend",
+      "meshes": [
+        {
+          "object": "Mesh_0",
+          "vertices": 524625,
+          "triangles": 1051041,
+          "polygons": 1051041,
+          "uv_layers": 1,
+          "dimensions": [
+            0.7745449542999268,
+            0.42425596714019775,
+            1.8987462520599365
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "materials": [
+            "Material_0"
+          ],
+          "vertex_groups": 0,
+          "vertices_with_weights": 0,
+          "armature": null,
+          "modifiers": [],
+          "components": {
+            "count": 37,
+            "largest_vertex_counts": [
+              523821,
+              211,
+              73,
+              62,
+              59,
+              55,
+              51,
+              37,
+              24,
+              23,
+              20,
+              19
+            ]
+          }
+        }
+      ],
+      "armatures": [],
+      "actions": [],
+      "images": [
+        {
+          "name": "Image_0",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        },
+        {
+          "name": "Image_1",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        },
+        {
+          "name": "Image_2",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        },
+        {
+          "name": "Image_3",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        }
+      ],
+      "triangles": 1051041,
+      "vertices": 524625,
+      "preview": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Docs\\CharacterMeshAudit\\previews\\11.png"
+    },
+    {
+      "id": 12,
+      "file": "Meshy_AI_knight_horse_0928223644_texture.blend",
+      "source": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Tools\\CharacterRigging\\Inputs\\Meshy_AI_knight_horse_0928223644_texture.blend",
+      "meshes": [
+        {
+          "object": "Mesh_0",
+          "vertices": 499793,
+          "triangles": 1001521,
+          "polygons": 1001521,
+          "uv_layers": 1,
+          "dimensions": [
+            0.7083970308303833,
+            1.896241307258606,
+            1.2717829942703247
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "materials": [
+            "Material_0"
+          ],
+          "vertex_groups": 0,
+          "vertices_with_weights": 0,
+          "armature": null,
+          "modifiers": [],
+          "components": {
+            "count": 173,
+            "largest_vertex_counts": [
+              493086,
+              500,
+              401,
+              362,
+              310,
+              269,
+              221,
+              186,
+              176,
+              160,
+              154,
+              151
+            ]
+          }
+        }
+      ],
+      "armatures": [],
+      "actions": [],
+      "images": [
+        {
+          "name": "Image_0",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        },
+        {
+          "name": "Image_1",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        },
+        {
+          "name": "Image_2",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        },
+        {
+          "name": "Image_3",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        }
+      ],
+      "triangles": 1001521,
+      "vertices": 499793,
+      "preview": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Docs\\CharacterMeshAudit\\previews\\12.png"
+    },
+    {
+      "id": 13,
+      "file": "Meshy_AI_Medieval_Standby_0928222230_texture.blend",
+      "source": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Tools\\CharacterRigging\\Inputs\\Meshy_AI_Medieval_Standby_0928222230_texture.blend",
+      "meshes": [
+        {
+          "object": "Mesh_0",
+          "vertices": 377859,
+          "triangles": 757493,
+          "polygons": 757493,
+          "uv_layers": 1,
+          "dimensions": [
+            1.6462230682373047,
+            0.3614259958267212,
+            1.903548002243042
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "materials": [
+            "Material_0"
+          ],
+          "vertex_groups": 0,
+          "vertices_with_weights": 0,
+          "armature": null,
+          "modifiers": [],
+          "components": {
+            "count": 67,
+            "largest_vertex_counts": [
+              375433,
+              793,
+              196,
+              134,
+              83,
+              71,
+              54,
+              53,
+              52,
+              49,
+              46,
+              44
+            ]
+          }
+        }
+      ],
+      "armatures": [],
+      "actions": [],
+      "images": [
+        {
+          "name": "Image_0",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        }
+      ],
+      "triangles": 757493,
+      "vertices": 377859,
+      "preview": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Docs\\CharacterMeshAudit\\previews\\13.png"
+    },
+    {
+      "id": 14,
+      "file": "Meshy_AI_Medieval_Warrior_0928222215_texture.blend",
+      "source": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Tools\\CharacterRigging\\Inputs\\Meshy_AI_Medieval_Warrior_0928222215_texture.blend",
+      "meshes": [
+        {
+          "object": "Mesh_0",
+          "vertices": 680409,
+          "triangles": 1363156,
+          "polygons": 1363156,
+          "uv_layers": 1,
+          "dimensions": [
+            1.7664899826049805,
+            0.534142017364502,
+            1.903249979019165
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "materials": [
+            "Material_0"
+          ],
+          "vertex_groups": 0,
+          "vertices_with_weights": 0,
+          "armature": null,
+          "modifiers": [],
+          "components": {
+            "count": 52,
+            "largest_vertex_counts": [
+              649016,
+              30341,
+              158,
+              137,
+              89,
+              82,
+              65,
+              51,
+              42,
+              27,
+              23,
+              23
+            ]
+          }
+        }
+      ],
+      "armatures": [],
+      "actions": [],
+      "images": [
+        {
+          "name": "Image_0",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        },
+        {
+          "name": "Image_1",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        },
+        {
+          "name": "Image_2",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        }
+      ],
+      "triangles": 1363156,
+      "vertices": 680409,
+      "preview": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Docs\\CharacterMeshAudit\\previews\\14.png"
+    },
+    {
+      "id": 15,
+      "file": "Meshy_AI_Midnight_Knight_0928222236_texture.blend",
+      "source": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Tools\\CharacterRigging\\Inputs\\Meshy_AI_Midnight_Knight_0928222236_texture.blend",
+      "meshes": [
+        {
+          "object": "Mesh_0",
+          "vertices": 436433,
+          "triangles": 873317,
+          "polygons": 873317,
+          "uv_layers": 1,
+          "dimensions": [
+            1.8772202730178833,
+            0.4414712190628052,
+            2.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "materials": [
+            "Material_0"
+          ],
+          "vertex_groups": 0,
+          "vertices_with_weights": 0,
+          "armature": null,
+          "modifiers": [],
+          "components": {
+            "count": 19,
+            "largest_vertex_counts": [
+              436108,
+              73,
+              61,
+              44,
+              42,
+              15,
+              12,
+              10,
+              10,
+              8,
+              8,
+              8
+            ]
+          }
+        }
+      ],
+      "armatures": [],
+      "actions": [],
+      "images": [
+        {
+          "name": "Image_0",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        },
+        {
+          "name": "Image_1",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        },
+        {
+          "name": "Image_2",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        }
+      ],
+      "triangles": 873317,
+      "vertices": 436433,
+      "preview": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Docs\\CharacterMeshAudit\\previews\\15.png"
+    },
+    {
+      "id": 16,
+      "file": "Meshy_AI_Monolithic_Fragment_0928223828_texture.blend",
+      "source": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Tools\\CharacterRigging\\Inputs\\Meshy_AI_Monolithic_Fragment_0928223828_texture.blend",
+      "meshes": [
+        {
+          "object": "Mesh_0",
+          "vertices": 259953,
+          "triangles": 519898,
+          "polygons": 519898,
+          "uv_layers": 1,
+          "dimensions": [
+            1.3101270198822021,
+            1.281229019165039,
+            1.902432918548584
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "materials": [
+            "Material_0"
+          ],
+          "vertex_groups": 0,
+          "vertices_with_weights": 0,
+          "armature": null,
+          "modifiers": [],
+          "components": {
+            "count": 1,
+            "largest_vertex_counts": [
+              259953
+            ]
+          }
+        }
+      ],
+      "armatures": [],
+      "actions": [],
+      "images": [
+        {
+          "name": "Image_0",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        },
+        {
+          "name": "Image_1",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        },
+        {
+          "name": "Image_2",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        }
+      ],
+      "triangles": 519898,
+      "vertices": 259953,
+      "preview": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Docs\\CharacterMeshAudit\\previews\\16.png"
+    },
+    {
+      "id": 17,
+      "file": "Meshy_AI_Oak_Tree_0928223941_texture.blend",
+      "source": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Tools\\CharacterRigging\\Inputs\\Meshy_AI_Oak_Tree_0928223941_texture.blend",
+      "meshes": [
+        {
+          "object": "mesh_node",
+          "vertices": 872623,
+          "triangles": 1797450,
+          "polygons": 1797450,
+          "uv_layers": 1,
+          "dimensions": [
+            1.8620129823684692,
+            1.8063130378723145,
+            1.7611889839172363
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "materials": [
+            "material"
+          ],
+          "vertex_groups": 0,
+          "vertices_with_weights": 0,
+          "armature": null,
+          "modifiers": [],
+          "components": {
+            "count": 1,
+            "largest_vertex_counts": [
+              872623
+            ]
+          }
+        }
+      ],
+      "armatures": [],
+      "actions": [],
+      "images": [
+        {
+          "name": "base_color",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        },
+        {
+          "name": "metallic_roughness",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        },
+        {
+          "name": "normal",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        }
+      ],
+      "triangles": 1797450,
+      "vertices": 872623,
+      "preview": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Docs\\CharacterMeshAudit\\previews\\17.png"
+    },
+    {
+      "id": 18,
+      "file": "Meshy_AI_Red_Deer_Stag_0928222254_texture.blend",
+      "source": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Tools\\CharacterRigging\\Inputs\\Meshy_AI_Red_Deer_Stag_0928222254_texture.blend",
+      "meshes": [
+        {
+          "object": "Mesh_0",
+          "vertices": 95171,
+          "triangles": 190339,
+          "polygons": 190339,
+          "uv_layers": 1,
+          "dimensions": [
+            0.6303930282592773,
+            1.7088422775268555,
+            1.8992831707000732
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "materials": [
+            "Material_0"
+          ],
+          "vertex_groups": 0,
+          "vertices_with_weights": 0,
+          "armature": null,
+          "modifiers": [],
+          "components": {
+            "count": 1,
+            "largest_vertex_counts": [
+              95171
+            ]
+          }
+        }
+      ],
+      "armatures": [],
+      "actions": [],
+      "images": [
+        {
+          "name": "Image_0",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        },
+        {
+          "name": "Image_1",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        },
+        {
+          "name": "Image_2",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        }
+      ],
+      "triangles": 190339,
+      "vertices": 95171,
+      "preview": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Docs\\CharacterMeshAudit\\previews\\18.png"
+    },
+    {
+      "id": 19,
+      "file": "Meshy_AI_Rock_Formation_0928222335_texture.blend",
+      "source": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Tools\\CharacterRigging\\Inputs\\Meshy_AI_Rock_Formation_0928222335_texture.blend",
+      "meshes": [
+        {
+          "object": "Mesh_0",
+          "vertices": 2752,
+          "triangles": 5512,
+          "polygons": 5512,
+          "uv_layers": 1,
+          "dimensions": [
+            1.9162709712982178,
+            1.3143119812011719,
+            0.8359220027923584
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "materials": [
+            "Material_0"
+          ],
+          "vertex_groups": 0,
+          "vertices_with_weights": 0,
+          "armature": null,
+          "modifiers": [],
+          "components": {
+            "count": 2,
+            "largest_vertex_counts": [
+              2707,
+              45
+            ]
+          }
+        }
+      ],
+      "armatures": [],
+      "actions": [],
+      "images": [
+        {
+          "name": "Image_0",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        },
+        {
+          "name": "Image_1",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        },
+        {
+          "name": "Image_2",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        }
+      ],
+      "triangles": 5512,
+      "vertices": 2752,
+      "preview": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Docs\\CharacterMeshAudit\\previews\\19.png"
+    },
+    {
+      "id": 20,
+      "file": "Meshy_AI_Rock_Pile_0928222221_texture.blend",
+      "source": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Tools\\CharacterRigging\\Inputs\\Meshy_AI_Rock_Pile_0928222221_texture.blend",
+      "meshes": [
+        {
+          "object": "Mesh1.0",
+          "vertices": 2616,
+          "triangles": 5220,
+          "polygons": 5220,
+          "uv_layers": 1,
+          "dimensions": [
+            1.9086270332336426,
+            1.7863479852676392,
+            1.2952489852905273
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "materials": [
+            "Material_0.001"
+          ],
+          "vertex_groups": 0,
+          "vertices_with_weights": 0,
+          "armature": null,
+          "modifiers": [],
+          "components": {
+            "count": 1,
+            "largest_vertex_counts": [
+              2616
+            ]
+          }
+        }
+      ],
+      "armatures": [],
+      "actions": [],
+      "images": [
+        {
+          "name": "Baked_BaseColor",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        },
+        {
+          "name": "Baked_Emit",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        },
+        {
+          "name": "Baked_MetallicRoughness",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        },
+        {
+          "name": "normal",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        }
+      ],
+      "triangles": 5220,
+      "vertices": 2616,
+      "preview": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Docs\\CharacterMeshAudit\\previews\\20.png"
+    },
+    {
+      "id": 21,
+      "file": "Meshy_AI_Silver_Birch_Majesty_0928224015_texture.blend",
+      "source": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Tools\\CharacterRigging\\Inputs\\Meshy_AI_Silver_Birch_Majesty_0928224015_texture.blend",
+      "meshes": [
+        {
+          "object": "mesh_node",
+          "vertices": 1154106,
+          "triangles": 2331631,
+          "polygons": 2331631,
+          "uv_layers": 1,
+          "dimensions": [
+            1.674244999885559,
+            1.252871036529541,
+            1.891543984413147
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "materials": [
+            "material"
+          ],
+          "vertex_groups": 0,
+          "vertices_with_weights": 0,
+          "armature": null,
+          "modifiers": [],
+          "components": {
+            "count": 1,
+            "largest_vertex_counts": [
+              1154106
+            ]
+          }
+        }
+      ],
+      "armatures": [],
+      "actions": [],
+      "images": [
+        {
+          "name": "base_color",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        },
+        {
+          "name": "metallic_roughness",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        },
+        {
+          "name": "normal",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        }
+      ],
+      "triangles": 2331631,
+      "vertices": 1154106,
+      "preview": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Docs\\CharacterMeshAudit\\previews\\21.png"
+    },
+    {
+      "id": 22,
+      "file": "Meshy_AI_Spearman_0928222310_texture.blend",
+      "source": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Tools\\CharacterRigging\\Inputs\\Meshy_AI_Spearman_0928222310_texture.blend",
+      "meshes": [
+        {
+          "object": "Mesh_0",
+          "vertices": 233587,
+          "triangles": 467594,
+          "polygons": 467594,
+          "uv_layers": 1,
+          "dimensions": [
+            1.8097549676895142,
+            0.3536608815193176,
+            1.8982431888580322
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "materials": [
+            "Material_0"
+          ],
+          "vertex_groups": 0,
+          "vertices_with_weights": 0,
+          "armature": null,
+          "modifiers": [],
+          "components": {
+            "count": 6,
+            "largest_vertex_counts": [
+              211874,
+              13028,
+              8653,
+              15,
+              9,
+              8
+            ]
+          }
+        }
+      ],
+      "armatures": [],
+      "actions": [],
+      "images": [
+        {
+          "name": "Image_0",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        },
+        {
+          "name": "Image_1",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        },
+        {
+          "name": "Image_2",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        }
+      ],
+      "triangles": 467594,
+      "vertices": 233587,
+      "preview": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Docs\\CharacterMeshAudit\\previews\\22.png"
+    },
+    {
+      "id": 23,
+      "file": "Meshy_AI_Stag_0928222209_texture.blend",
+      "source": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Tools\\CharacterRigging\\Inputs\\Meshy_AI_Stag_0928222209_texture.blend",
+      "meshes": [
+        {
+          "object": "Mesh_0",
+          "vertices": 157607,
+          "triangles": 315186,
+          "polygons": 315186,
+          "uv_layers": 1,
+          "dimensions": [
+            1.0413329601287842,
+            1.8986762762069702,
+            1.8218631744384766
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "materials": [
+            "Material_0"
+          ],
+          "vertex_groups": 0,
+          "vertices_with_weights": 0,
+          "armature": null,
+          "modifiers": [],
+          "components": {
+            "count": 5,
+            "largest_vertex_counts": [
+              152861,
+              1255,
+              1232,
+              1138,
+              1121
+            ]
+          }
+        }
+      ],
+      "armatures": [],
+      "actions": [],
+      "images": [
+        {
+          "name": "Image_0",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        },
+        {
+          "name": "Image_1",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        },
+        {
+          "name": "Image_2",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        }
+      ],
+      "triangles": 315186,
+      "vertices": 157607,
+      "preview": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Docs\\CharacterMeshAudit\\previews\\23.png"
+    },
+    {
+      "id": 24,
+      "file": "Meshy_AI_Straw_Hat_Farmhand_0928222104_texture.blend",
+      "source": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Tools\\CharacterRigging\\Inputs\\Meshy_AI_Straw_Hat_Farmhand_0928222104_texture.blend",
+      "meshes": [
+        {
+          "object": "temp",
+          "vertices": 92734,
+          "triangles": 185021,
+          "polygons": 92914,
+          "uv_layers": 1,
+          "dimensions": [
+            1.586663007736206,
+            1.899285078048706,
+            0.430292010307312
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "materials": [
+            "Material"
+          ],
+          "vertex_groups": 0,
+          "vertices_with_weights": 0,
+          "armature": null,
+          "modifiers": [],
+          "components": {
+            "count": 65,
+            "largest_vertex_counts": [
+              92080,
+              90,
+              63,
+              29,
+              24,
+              20,
+              16,
+              15,
+              14,
+              14,
+              14,
+              13
+            ]
+          }
+        }
+      ],
+      "armatures": [],
+      "actions": [],
+      "images": [
+        {
+          "name": "texture_0.png",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "/tmp\\tmpeeoypqnp\\texture_0.png",
+          "missing": false
+        }
+      ],
+      "triangles": 185021,
+      "vertices": 92734,
+      "preview": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Docs\\CharacterMeshAudit\\previews\\24.png"
+    },
+    {
+      "id": 25,
+      "file": "Meshy_AI_Templar_Knight_Armor_0928222150_texture.blend",
+      "source": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Tools\\CharacterRigging\\Inputs\\Meshy_AI_Templar_Knight_Armor_0928222150_texture.blend",
+      "meshes": [
+        {
+          "object": "Mesh_0",
+          "vertices": 474317,
+          "triangles": 950753,
+          "polygons": 950753,
+          "uv_layers": 1,
+          "dimensions": [
+            1.60452401638031,
+            0.38324201107025146,
+            1.903918981552124
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "materials": [
+            "Material_0"
+          ],
+          "vertex_groups": 0,
+          "vertices_with_weights": 0,
+          "armature": null,
+          "modifiers": [],
+          "components": {
+            "count": 39,
+            "largest_vertex_counts": [
+              471366,
+              966,
+              897,
+              210,
+              148,
+              143,
+              140,
+              60,
+              44,
+              44,
+              35,
+              30
+            ]
+          }
+        }
+      ],
+      "armatures": [],
+      "actions": [],
+      "images": [
+        {
+          "name": "Image_0",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        }
+      ],
+      "triangles": 950753,
+      "vertices": 474317,
+      "preview": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Docs\\CharacterMeshAudit\\previews\\25.png"
+    },
+    {
+      "id": 26,
+      "file": "Meshy_AI_The_Silver_Knight_0928222200_texture.blend",
+      "source": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Tools\\CharacterRigging\\Inputs\\Meshy_AI_The_Silver_Knight_0928222200_texture.blend",
+      "meshes": [
+        {
+          "object": "Mesh_0",
+          "vertices": 298513,
+          "triangles": 597086,
+          "polygons": 597086,
+          "uv_layers": 1,
+          "dimensions": [
+            1.2408349514007568,
+            1.1601592302322388,
+            1.8986263275146484
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "materials": [
+            "Material_0"
+          ],
+          "vertex_groups": 0,
+          "vertices_with_weights": 0,
+          "armature": null,
+          "modifiers": [],
+          "components": {
+            "count": 1,
+            "largest_vertex_counts": [
+              298513
+            ]
+          }
+        }
+      ],
+      "armatures": [],
+      "actions": [],
+      "images": [
+        {
+          "name": "Image_0",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        },
+        {
+          "name": "Image_1",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        },
+        {
+          "name": "Image_2",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        },
+        {
+          "name": "Image_3",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        }
+      ],
+      "triangles": 597086,
+      "vertices": 298513,
+      "preview": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Docs\\CharacterMeshAudit\\previews\\26.png"
+    },
+    {
+      "id": 27,
+      "file": "Meshy_AI_tree_0928223909_texture.blend",
+      "source": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Tools\\CharacterRigging\\Inputs\\Meshy_AI_tree_0928223909_texture.blend",
+      "meshes": [
+        {
+          "object": "Mesh_0",
+          "vertices": 3053,
+          "triangles": 6307,
+          "polygons": 6307,
+          "uv_layers": 1,
+          "dimensions": [
+            1.1906960010528564,
+            1.1989679336547852,
+            1.899467945098877
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "materials": [
+            "Material_0"
+          ],
+          "vertex_groups": 0,
+          "vertices_with_weights": 0,
+          "armature": null,
+          "modifiers": [],
+          "components": {
+            "count": 2,
+            "largest_vertex_counts": [
+              3044,
+              9
+            ]
+          }
+        }
+      ],
+      "armatures": [],
+      "actions": [],
+      "images": [
+        {
+          "name": "Image_0",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        },
+        {
+          "name": "Image_1",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        },
+        {
+          "name": "Image_2",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        }
+      ],
+      "triangles": 6307,
+      "vertices": 3053,
+      "preview": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Docs\\CharacterMeshAudit\\previews\\27.png"
+    },
+    {
+      "id": 28,
+      "file": "Meshy_AI_tree_0928223914_texture.blend",
+      "source": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Tools\\CharacterRigging\\Inputs\\Meshy_AI_tree_0928223914_texture.blend",
+      "meshes": [
+        {
+          "object": "Mesh_0",
+          "vertices": 466843,
+          "triangles": 1001201,
+          "polygons": 1001201,
+          "uv_layers": 1,
+          "dimensions": [
+            1.9841680526733398,
+            1.812859058380127,
+            1.992218017578125
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "materials": [
+            "Material_0"
+          ],
+          "vertex_groups": 0,
+          "vertices_with_weights": 0,
+          "armature": null,
+          "modifiers": [],
+          "components": {
+            "count": 138,
+            "largest_vertex_counts": [
+              458381,
+              3154,
+              1637,
+              336,
+              207,
+              196,
+              154,
+              154,
+              123,
+              121,
+              116,
+              109
+            ]
+          }
+        }
+      ],
+      "armatures": [],
+      "actions": [],
+      "images": [
+        {
+          "name": "Image_0",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        }
+      ],
+      "triangles": 1001201,
+      "vertices": 466843,
+      "preview": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Docs\\CharacterMeshAudit\\previews\\28.png"
+    },
+    {
+      "id": 29,
+      "file": "Meshy_AI_tree_0928223917_texture.blend",
+      "source": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Tools\\CharacterRigging\\Inputs\\Meshy_AI_tree_0928223917_texture.blend",
+      "meshes": [
+        {
+          "object": "Mesh_0",
+          "vertices": 135681,
+          "triangles": 273866,
+          "polygons": 273866,
+          "uv_layers": 1,
+          "dimensions": [
+            1.891556978225708,
+            1.952340006828308,
+            1.9913530349731445
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "materials": [
+            "Material_0"
+          ],
+          "vertex_groups": 0,
+          "vertices_with_weights": 0,
+          "armature": null,
+          "modifiers": [],
+          "components": {
+            "count": 1145,
+            "largest_vertex_counts": [
+              63221,
+              7737,
+              5439,
+              4848,
+              4598,
+              4237,
+              3852,
+              3592,
+              3411,
+              2794,
+              2677,
+              2562
+            ]
+          }
+        }
+      ],
+      "armatures": [],
+      "actions": [],
+      "images": [
+        {
+          "name": "Image_0",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        }
+      ],
+      "triangles": 273866,
+      "vertices": 135681,
+      "preview": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Docs\\CharacterMeshAudit\\previews\\29.png"
+    },
+    {
+      "id": 30,
+      "file": "Meshy_AI_Warrior_in_Armor_0928223611_texture.blend",
+      "source": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Tools\\CharacterRigging\\Inputs\\Meshy_AI_Warrior_in_Armor_0928223611_texture.blend",
+      "meshes": [
+        {
+          "object": "Mesh_0",
+          "vertices": 510013,
+          "triangles": 1020143,
+          "polygons": 1020143,
+          "uv_layers": 1,
+          "dimensions": [
+            1.746366024017334,
+            0.7791789770126343,
+            1.9026540517807007
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "materials": [
+            "Material_0"
+          ],
+          "vertex_groups": 0,
+          "vertices_with_weights": 0,
+          "armature": null,
+          "modifiers": [],
+          "components": {
+            "count": 8,
+            "largest_vertex_counts": [
+              509102,
+              786,
+              77,
+              19,
+              12,
+              10,
+              4,
+              3
+            ]
+          }
+        }
+      ],
+      "armatures": [],
+      "actions": [],
+      "images": [
+        {
+          "name": "Image_0",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        },
+        {
+          "name": "Image_1",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        },
+        {
+          "name": "Image_2",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        }
+      ],
+      "triangles": 1020143,
+      "vertices": 510013,
+      "preview": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Docs\\CharacterMeshAudit\\previews\\30.png"
+    },
+    {
+      "id": 31,
+      "file": "Meshy_AI_Heraldic_Knight_biped_sample.glb",
+      "source": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Docs\\CharacterMeshAudit\\Meshy_AI_Heraldic_Knight_biped_sample.glb",
+      "meshes": [
+        {
+          "object": "char1",
+          "vertices": 15937,
+          "triangles": 19609,
+          "polygons": 19609,
+          "uv_layers": 1,
+          "dimensions": [
+            1.0382002592086792,
+            0.7337775230407715,
+            1.7147115468978882
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "materials": [
+            "Material_1"
+          ],
+          "vertex_groups": 23,
+          "vertices_with_weights": 15937,
+          "armature": "target_character",
+          "modifiers": [
+            "ARMATURE"
+          ],
+          "components": {
+            "count": 677,
+            "largest_vertex_counts": [
+              903,
+              679,
+              674,
+              629,
+              617,
+              297,
+              282,
+              253,
+              226,
+              218,
+              213,
+              197
+            ]
+          }
+        }
+      ],
+      "armatures": [
+        {
+          "object": "target_character",
+          "bones": 23
+        }
+      ],
+      "actions": [
+        {
+          "name": "Walking",
+          "frames": [
+            0.0,
+            26.0
+          ]
+        }
+      ],
+      "images": [
+        {
+          "name": "texture_0",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        }
+      ],
+      "triangles": 19609,
+      "vertices": 15937,
+      "preview": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Docs\\CharacterMeshAudit\\previews\\31.png"
+    },
+    {
+      "id": 32,
+      "file": "Meshy_AI_medieval_knight_biped_sample.glb",
+      "source": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Docs\\CharacterMeshAudit\\Meshy_AI_medieval_knight_biped_sample.glb",
+      "meshes": [
+        {
+          "object": "char1",
+          "vertices": 84664,
+          "triangles": 115527,
+          "polygons": 115527,
+          "uv_layers": 1,
+          "dimensions": [
+            0.7746942043304443,
+            0.4244069457054138,
+            1.7137914896011353
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "materials": [
+            "Material_1"
+          ],
+          "vertex_groups": 23,
+          "vertices_with_weights": 84664,
+          "armature": "target_character",
+          "modifiers": [
+            "ARMATURE"
+          ],
+          "components": {
+            "count": 3989,
+            "largest_vertex_counts": [
+              4262,
+              4030,
+              3978,
+              2900,
+              2632,
+              2491,
+              2295,
+              2152,
+              1773,
+              1249,
+              1090,
+              1081
+            ]
+          }
+        }
+      ],
+      "armatures": [
+        {
+          "object": "target_character",
+          "bones": 23
+        }
+      ],
+      "actions": [
+        {
+          "name": "Walking",
+          "frames": [
+            0.0,
+            26.0
+          ]
+        }
+      ],
+      "images": [
+        {
+          "name": "texture_0",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        },
+        {
+          "name": "texture_0.001",
+          "size": [
+            2048,
+            2048
+          ],
+          "packed": true,
+          "path": "",
+          "missing": false
+        }
+      ],
+      "triangles": 115527,
+      "vertices": 84664,
+      "preview": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Docs\\CharacterMeshAudit\\previews\\32.png"
+    }
+  ],
+  "archives": [
+    {
+      "file": "Meshy_AI_Heraldic_Knight_biped.zip",
+      "entries": [
+        {
+          "file": "Meshy_AI_Heraldic_Knight_biped/Meshy_AI_Heraldic_Knight_biped_Animation_Attack_withSkin.glb",
+          "meshes": 1,
+          "skins": [
+            {
+              "name": "Armature",
+              "joints": 23
+            }
+          ],
+          "joint_names": [
+            [
+              "mixamorig:Hips",
+              "mixamorig:LeftUpLeg",
+              "mixamorig:LeftLeg",
+              "mixamorig:LeftFoot",
+              "mixamorig:LeftToeBase",
+              "mixamorig:RightUpLeg",
+              "mixamorig:RightLeg",
+              "mixamorig:RightFoot",
+              "mixamorig:RightToeBase",
+              "mixamorig:Spine",
+              "mixamorig:Spine1",
+              "mixamorig:Spine2",
+              "mixamorig:LeftShoulder",
+              "mixamorig:LeftArm",
+              "mixamorig:LeftForeArm",
+              "mixamorig:LeftHand",
+              "mixamorig:RightShoulder",
+              "mixamorig:RightArm",
+              "mixamorig:RightForeArm",
+              "mixamorig:RightHand",
+              "mixamorig:Neck",
+              "mixamorig:Head",
+              "headfront"
+            ]
+          ],
+          "animations": [
+            {
+              "name": "Attack",
+              "channels": 46,
+              "duration_seconds": 2.8333332538604736
+            }
+          ],
+          "primitives": [
+            {
+              "vertices": 15937,
+              "indices": 58827,
+              "has_weights": true,
+              "has_joints": true,
+              "mode": 4
+            }
+          ],
+          "textures": 2,
+          "external_images": []
+        },
+        {
+          "file": "Meshy_AI_Heraldic_Knight_biped/Meshy_AI_Heraldic_Knight_biped_Animation_Running_withSkin.glb",
+          "meshes": 1,
+          "skins": [
+            {
+              "name": "Armature",
+              "joints": 23
+            }
+          ],
+          "joint_names": [
+            [
+              "mixamorig:Hips",
+              "mixamorig:LeftUpLeg",
+              "mixamorig:LeftLeg",
+              "mixamorig:LeftFoot",
+              "mixamorig:LeftToeBase",
+              "mixamorig:RightUpLeg",
+              "mixamorig:RightLeg",
+              "mixamorig:RightFoot",
+              "mixamorig:RightToeBase",
+              "mixamorig:Spine",
+              "mixamorig:Spine1",
+              "mixamorig:Spine2",
+              "mixamorig:LeftShoulder",
+              "mixamorig:LeftArm",
+              "mixamorig:LeftForeArm",
+              "mixamorig:LeftHand",
+              "mixamorig:RightShoulder",
+              "mixamorig:RightArm",
+              "mixamorig:RightForeArm",
+              "mixamorig:RightHand",
+              "mixamorig:Neck",
+              "mixamorig:Head",
+              "headfront"
+            ]
+          ],
+          "animations": [
+            {
+              "name": "Running",
+              "channels": 46,
+              "duration_seconds": 0.7083333134651184
+            }
+          ],
+          "primitives": [
+            {
+              "vertices": 15937,
+              "indices": 58827,
+              "has_weights": true,
+              "has_joints": true,
+              "mode": 4
+            }
+          ],
+          "textures": 2,
+          "external_images": []
+        },
+        {
+          "file": "Meshy_AI_Heraldic_Knight_biped/Meshy_AI_Heraldic_Knight_biped_Animation_Triple_Combo_Attack_withSkin.glb",
+          "meshes": 1,
+          "skins": [
+            {
+              "name": "Armature",
+              "joints": 23
+            }
+          ],
+          "joint_names": [
+            [
+              "mixamorig:Hips",
+              "mixamorig:LeftUpLeg",
+              "mixamorig:LeftLeg",
+              "mixamorig:LeftFoot",
+              "mixamorig:LeftToeBase",
+              "mixamorig:RightUpLeg",
+              "mixamorig:RightLeg",
+              "mixamorig:RightFoot",
+              "mixamorig:RightToeBase",
+              "mixamorig:Spine",
+              "mixamorig:Spine1",
+              "mixamorig:Spine2",
+              "mixamorig:LeftShoulder",
+              "mixamorig:LeftArm",
+              "mixamorig:LeftForeArm",
+              "mixamorig:LeftHand",
+              "mixamorig:RightShoulder",
+              "mixamorig:RightArm",
+              "mixamorig:RightForeArm",
+              "mixamorig:RightHand",
+              "mixamorig:Neck",
+              "mixamorig:Head",
+              "headfront"
+            ]
+          ],
+          "animations": [
+            {
+              "name": "Triple_Combo_Attack",
+              "channels": 46,
+              "duration_seconds": 4.375
+            }
+          ],
+          "primitives": [
+            {
+              "vertices": 15937,
+              "indices": 58827,
+              "has_weights": true,
+              "has_joints": true,
+              "mode": 4
+            }
+          ],
+          "textures": 2,
+          "external_images": []
+        },
+        {
+          "file": "Meshy_AI_Heraldic_Knight_biped/Meshy_AI_Heraldic_Knight_biped_Animation_Walking_withSkin.glb",
+          "meshes": 1,
+          "skins": [
+            {
+              "name": "Armature",
+              "joints": 23
+            }
+          ],
+          "joint_names": [
+            [
+              "mixamorig:Hips",
+              "mixamorig:LeftUpLeg",
+              "mixamorig:LeftLeg",
+              "mixamorig:LeftFoot",
+              "mixamorig:LeftToeBase",
+              "mixamorig:RightUpLeg",
+              "mixamorig:RightLeg",
+              "mixamorig:RightFoot",
+              "mixamorig:RightToeBase",
+              "mixamorig:Spine",
+              "mixamorig:Spine1",
+              "mixamorig:Spine2",
+              "mixamorig:LeftShoulder",
+              "mixamorig:LeftArm",
+              "mixamorig:LeftForeArm",
+              "mixamorig:LeftHand",
+              "mixamorig:RightShoulder",
+              "mixamorig:RightArm",
+              "mixamorig:RightForeArm",
+              "mixamorig:RightHand",
+              "mixamorig:Neck",
+              "mixamorig:Head",
+              "headfront"
+            ]
+          ],
+          "animations": [
+            {
+              "name": "Walking",
+              "channels": 46,
+              "duration_seconds": 1.0833333730697632
+            }
+          ],
+          "primitives": [
+            {
+              "vertices": 15937,
+              "indices": 58827,
+              "has_weights": true,
+              "has_joints": true,
+              "mode": 4
+            }
+          ],
+          "textures": 2,
+          "external_images": []
+        }
+      ]
+    },
+    {
+      "file": "Meshy_AI_medieval_knight_biped.zip",
+      "entries": [
+        {
+          "file": "Meshy_AI_medieval_knight_biped/Meshy_AI_medieval_knight_biped_Animation_Attack_withSkin.glb",
+          "meshes": 1,
+          "skins": [
+            {
+              "name": "Armature",
+              "joints": 23
+            }
+          ],
+          "joint_names": [
+            [
+              "mixamorig:Hips",
+              "mixamorig:LeftUpLeg",
+              "mixamorig:LeftLeg",
+              "mixamorig:LeftFoot",
+              "mixamorig:LeftToeBase",
+              "mixamorig:RightUpLeg",
+              "mixamorig:RightLeg",
+              "mixamorig:RightFoot",
+              "mixamorig:RightToeBase",
+              "mixamorig:Spine",
+              "mixamorig:Spine1",
+              "mixamorig:Spine2",
+              "mixamorig:LeftShoulder",
+              "mixamorig:LeftArm",
+              "mixamorig:LeftForeArm",
+              "mixamorig:LeftHand",
+              "mixamorig:RightShoulder",
+              "mixamorig:RightArm",
+              "mixamorig:RightForeArm",
+              "mixamorig:RightHand",
+              "mixamorig:Neck",
+              "mixamorig:Head",
+              "headfront"
+            ]
+          ],
+          "animations": [
+            {
+              "name": "Attack",
+              "channels": 46,
+              "duration_seconds": 2.8333332538604736
+            }
+          ],
+          "primitives": [
+            {
+              "vertices": 84664,
+              "indices": 346581,
+              "has_weights": true,
+              "has_joints": true,
+              "mode": 4
+            }
+          ],
+          "textures": 2,
+          "external_images": []
+        },
+        {
+          "file": "Meshy_AI_medieval_knight_biped/Meshy_AI_medieval_knight_biped_Animation_Axe_Stance_withSkin.glb",
+          "meshes": 1,
+          "skins": [
+            {
+              "name": "Armature",
+              "joints": 23
+            }
+          ],
+          "joint_names": [
+            [
+              "mixamorig:Hips",
+              "mixamorig:LeftUpLeg",
+              "mixamorig:LeftLeg",
+              "mixamorig:LeftFoot",
+              "mixamorig:LeftToeBase",
+              "mixamorig:RightUpLeg",
+              "mixamorig:RightLeg",
+              "mixamorig:RightFoot",
+              "mixamorig:RightToeBase",
+              "mixamorig:Spine",
+              "mixamorig:Spine1",
+              "mixamorig:Spine2",
+              "mixamorig:LeftShoulder",
+              "mixamorig:LeftArm",
+              "mixamorig:LeftForeArm",
+              "mixamorig:LeftHand",
+              "mixamorig:RightShoulder",
+              "mixamorig:RightArm",
+              "mixamorig:RightForeArm",
+              "mixamorig:RightHand",
+              "mixamorig:Neck",
+              "mixamorig:Head",
+              "headfront"
+            ]
+          ],
+          "animations": [
+            {
+              "name": "Axe_Stance",
+              "channels": 46,
+              "duration_seconds": 6.166666507720947
+            }
+          ],
+          "primitives": [
+            {
+              "vertices": 84664,
+              "indices": 346581,
+              "has_weights": true,
+              "has_joints": true,
+              "mode": 4
+            }
+          ],
+          "textures": 2,
+          "external_images": []
+        },
+        {
+          "file": "Meshy_AI_medieval_knight_biped/Meshy_AI_medieval_knight_biped_Animation_Charged_Slash_withSkin.glb",
+          "meshes": 1,
+          "skins": [
+            {
+              "name": "Armature",
+              "joints": 23
+            }
+          ],
+          "joint_names": [
+            [
+              "mixamorig:Hips",
+              "mixamorig:LeftUpLeg",
+              "mixamorig:LeftLeg",
+              "mixamorig:LeftFoot",
+              "mixamorig:LeftToeBase",
+              "mixamorig:RightUpLeg",
+              "mixamorig:RightLeg",
+              "mixamorig:RightFoot",
+              "mixamorig:RightToeBase",
+              "mixamorig:Spine",
+              "mixamorig:Spine1",
+              "mixamorig:Spine2",
+              "mixamorig:LeftShoulder",
+              "mixamorig:LeftArm",
+              "mixamorig:LeftForeArm",
+              "mixamorig:LeftHand",
+              "mixamorig:RightShoulder",
+              "mixamorig:RightArm",
+              "mixamorig:RightForeArm",
+              "mixamorig:RightHand",
+              "mixamorig:Neck",
+              "mixamorig:Head",
+              "headfront"
+            ]
+          ],
+          "animations": [
+            {
+              "name": "Charged_Slash",
+              "channels": 46,
+              "duration_seconds": 2.2916667461395264
+            }
+          ],
+          "primitives": [
+            {
+              "vertices": 84664,
+              "indices": 346581,
+              "has_weights": true,
+              "has_joints": true,
+              "mode": 4
+            }
+          ],
+          "textures": 2,
+          "external_images": []
+        },
+        {
+          "file": "Meshy_AI_medieval_knight_biped/Meshy_AI_medieval_knight_biped_Animation_Charged_Upward_Slash_withSkin.glb",
+          "meshes": 1,
+          "skins": [
+            {
+              "name": "Armature",
+              "joints": 23
+            }
+          ],
+          "joint_names": [
+            [
+              "mixamorig:Hips",
+              "mixamorig:LeftUpLeg",
+              "mixamorig:LeftLeg",
+              "mixamorig:LeftFoot",
+              "mixamorig:LeftToeBase",
+              "mixamorig:RightUpLeg",
+              "mixamorig:RightLeg",
+              "mixamorig:RightFoot",
+              "mixamorig:RightToeBase",
+              "mixamorig:Spine",
+              "mixamorig:Spine1",
+              "mixamorig:Spine2",
+              "mixamorig:LeftShoulder",
+              "mixamorig:LeftArm",
+              "mixamorig:LeftForeArm",
+              "mixamorig:LeftHand",
+              "mixamorig:RightShoulder",
+              "mixamorig:RightArm",
+              "mixamorig:RightForeArm",
+              "mixamorig:RightHand",
+              "mixamorig:Neck",
+              "mixamorig:Head",
+              "headfront"
+            ]
+          ],
+          "animations": [
+            {
+              "name": "Charged_Upward_Slash",
+              "channels": 46,
+              "duration_seconds": 3.25
+            }
+          ],
+          "primitives": [
+            {
+              "vertices": 84664,
+              "indices": 346581,
+              "has_weights": true,
+              "has_joints": true,
+              "mode": 4
+            }
+          ],
+          "textures": 2,
+          "external_images": []
+        },
+        {
+          "file": "Meshy_AI_medieval_knight_biped/Meshy_AI_medieval_knight_biped_Animation_Chest_Pound_Taunt_withSkin.glb",
+          "meshes": 1,
+          "skins": [
+            {
+              "name": "Armature",
+              "joints": 23
+            }
+          ],
+          "joint_names": [
+            [
+              "mixamorig:Hips",
+              "mixamorig:LeftUpLeg",
+              "mixamorig:LeftLeg",
+              "mixamorig:LeftFoot",
+              "mixamorig:LeftToeBase",
+              "mixamorig:RightUpLeg",
+              "mixamorig:RightLeg",
+              "mixamorig:RightFoot",
+              "mixamorig:RightToeBase",
+              "mixamorig:Spine",
+              "mixamorig:Spine1",
+              "mixamorig:Spine2",
+              "mixamorig:LeftShoulder",
+              "mixamorig:LeftArm",
+              "mixamorig:LeftForeArm",
+              "mixamorig:LeftHand",
+              "mixamorig:RightShoulder",
+              "mixamorig:RightArm",
+              "mixamorig:RightForeArm",
+              "mixamorig:RightHand",
+              "mixamorig:Neck",
+              "mixamorig:Head",
+              "headfront"
+            ]
+          ],
+          "animations": [
+            {
+              "name": "Chest_Pound_Taunt",
+              "channels": 46,
+              "duration_seconds": 4.875
+            }
+          ],
+          "primitives": [
+            {
+              "vertices": 84664,
+              "indices": 346581,
+              "has_weights": true,
+              "has_joints": true,
+              "mode": 4
+            }
+          ],
+          "textures": 2,
+          "external_images": []
+        },
+        {
+          "file": "Meshy_AI_medieval_knight_biped/Meshy_AI_medieval_knight_biped_Animation_Double_Combo_Attack_withSkin.glb",
+          "meshes": 1,
+          "skins": [
+            {
+              "name": "Armature",
+              "joints": 23
+            }
+          ],
+          "joint_names": [
+            [
+              "mixamorig:Hips",
+              "mixamorig:LeftUpLeg",
+              "mixamorig:LeftLeg",
+              "mixamorig:LeftFoot",
+              "mixamorig:LeftToeBase",
+              "mixamorig:RightUpLeg",
+              "mixamorig:RightLeg",
+              "mixamorig:RightFoot",
+              "mixamorig:RightToeBase",
+              "mixamorig:Spine",
+              "mixamorig:Spine1",
+              "mixamorig:Spine2",
+              "mixamorig:LeftShoulder",
+              "mixamorig:LeftArm",
+              "mixamorig:LeftForeArm",
+              "mixamorig:LeftHand",
+              "mixamorig:RightShoulder",
+              "mixamorig:RightArm",
+              "mixamorig:RightForeArm",
+              "mixamorig:RightHand",
+              "mixamorig:Neck",
+              "mixamorig:Head",
+              "headfront"
+            ]
+          ],
+          "animations": [
+            {
+              "name": "Double_Combo_Attack",
+              "channels": 46,
+              "duration_seconds": 2.875
+            }
+          ],
+          "primitives": [
+            {
+              "vertices": 84664,
+              "indices": 346581,
+              "has_weights": true,
+              "has_joints": true,
+              "mode": 4
+            }
+          ],
+          "textures": 2,
+          "external_images": []
+        },
+        {
+          "file": "Meshy_AI_medieval_knight_biped/Meshy_AI_medieval_knight_biped_Animation_Elderly_Shaky_Walk_withSkin.glb",
+          "meshes": 1,
+          "skins": [
+            {
+              "name": "Armature",
+              "joints": 23
+            }
+          ],
+          "joint_names": [
+            [
+              "mixamorig:Hips",
+              "mixamorig:LeftUpLeg",
+              "mixamorig:LeftLeg",
+              "mixamorig:LeftFoot",
+              "mixamorig:LeftToeBase",
+              "mixamorig:RightUpLeg",
+              "mixamorig:RightLeg",
+              "mixamorig:RightFoot",
+              "mixamorig:RightToeBase",
+              "mixamorig:Spine",
+              "mixamorig:Spine1",
+              "mixamorig:Spine2",
+              "mixamorig:LeftShoulder",
+              "mixamorig:LeftArm",
+              "mixamorig:LeftForeArm",
+              "mixamorig:LeftHand",
+              "mixamorig:RightShoulder",
+              "mixamorig:RightArm",
+              "mixamorig:RightForeArm",
+              "mixamorig:RightHand",
+              "mixamorig:Neck",
+              "mixamorig:Head",
+              "headfront"
+            ]
+          ],
+          "animations": [
+            {
+              "name": "Elderly_Shaky_Walk",
+              "channels": 46,
+              "duration_seconds": 2.9166667461395264
+            }
+          ],
+          "primitives": [
+            {
+              "vertices": 84664,
+              "indices": 346581,
+              "has_weights": true,
+              "has_joints": true,
+              "mode": 4
+            }
+          ],
+          "textures": 2,
+          "external_images": []
+        },
+        {
+          "file": "Meshy_AI_medieval_knight_biped/Meshy_AI_medieval_knight_biped_Animation_Running_withSkin.glb",
+          "meshes": 1,
+          "skins": [
+            {
+              "name": "Armature",
+              "joints": 23
+            }
+          ],
+          "joint_names": [
+            [
+              "mixamorig:Hips",
+              "mixamorig:LeftUpLeg",
+              "mixamorig:LeftLeg",
+              "mixamorig:LeftFoot",
+              "mixamorig:LeftToeBase",
+              "mixamorig:RightUpLeg",
+              "mixamorig:RightLeg",
+              "mixamorig:RightFoot",
+              "mixamorig:RightToeBase",
+              "mixamorig:Spine",
+              "mixamorig:Spine1",
+              "mixamorig:Spine2",
+              "mixamorig:LeftShoulder",
+              "mixamorig:LeftArm",
+              "mixamorig:LeftForeArm",
+              "mixamorig:LeftHand",
+              "mixamorig:RightShoulder",
+              "mixamorig:RightArm",
+              "mixamorig:RightForeArm",
+              "mixamorig:RightHand",
+              "mixamorig:Neck",
+              "mixamorig:Head",
+              "headfront"
+            ]
+          ],
+          "animations": [
+            {
+              "name": "Running",
+              "channels": 46,
+              "duration_seconds": 0.7083333134651184
+            }
+          ],
+          "primitives": [
+            {
+              "vertices": 84664,
+              "indices": 346581,
+              "has_weights": true,
+              "has_joints": true,
+              "mode": 4
+            }
+          ],
+          "textures": 2,
+          "external_images": []
+        },
+        {
+          "file": "Meshy_AI_medieval_knight_biped/Meshy_AI_medieval_knight_biped_Animation_Walking_withSkin.glb",
+          "meshes": 1,
+          "skins": [
+            {
+              "name": "Armature",
+              "joints": 23
+            }
+          ],
+          "joint_names": [
+            [
+              "mixamorig:Hips",
+              "mixamorig:LeftUpLeg",
+              "mixamorig:LeftLeg",
+              "mixamorig:LeftFoot",
+              "mixamorig:LeftToeBase",
+              "mixamorig:RightUpLeg",
+              "mixamorig:RightLeg",
+              "mixamorig:RightFoot",
+              "mixamorig:RightToeBase",
+              "mixamorig:Spine",
+              "mixamorig:Spine1",
+              "mixamorig:Spine2",
+              "mixamorig:LeftShoulder",
+              "mixamorig:LeftArm",
+              "mixamorig:LeftForeArm",
+              "mixamorig:LeftHand",
+              "mixamorig:RightShoulder",
+              "mixamorig:RightArm",
+              "mixamorig:RightForeArm",
+              "mixamorig:RightHand",
+              "mixamorig:Neck",
+              "mixamorig:Head",
+              "headfront"
+            ]
+          ],
+          "animations": [
+            {
+              "name": "Walking",
+              "channels": 46,
+              "duration_seconds": 1.0833333730697632
+            }
+          ],
+          "primitives": [
+            {
+              "vertices": 84664,
+              "indices": 346581,
+              "has_weights": true,
+              "has_joints": true,
+              "mode": 4
+            }
+          ],
+          "textures": 2,
+          "external_images": []
+        }
+      ]
+    }
+  ]
+}

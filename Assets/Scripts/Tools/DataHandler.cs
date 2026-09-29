@@ -44,7 +44,12 @@ public class DataHandler : MonoBehaviour
         // save game parameters
         GameParameters[] gameParametersList = Resources.LoadAll<GameParameters>("ScriptableObjects/Parameters");
         foreach (GameParameters parameters in gameParametersList)
-            parameters.SaveToFile();
+        {
+            if (parameters is GamePlayersParameters)
+                parameters.SaveToFile($"Games/{CoreDataHandler.instance.GameUID}/PlayerParameters");
+            else
+                parameters.SaveToFile();
+        }
 
         // save game scene data
         GameData.gameUid = CoreDataHandler.instance.GameUID;

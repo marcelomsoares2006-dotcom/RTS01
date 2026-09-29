@@ -1,0 +1,10 @@
+{
+  "name": "era-imperial-character-toolchain",
+  "version-string": "1.0.0",
+  "builtin-baseline": "1460b31b08c42cc2e9ac2c79f45ec8707e2675e2",
+  "dependencies": [
+    "vulkan-headers",
+    "vulkan-loader",
+    "shaderc"
+  ]
+}
