@@ -1,0 +1,22 @@
+[
+  {
+    "name": "ArmoredKnight",
+    "pass": true,
+    "triangles": 21985,
+    "bones": 23,
+    "max_influences": 4,
+    "height_metres": 1.7998421112133656,
+    "deformation_metres": 0.4382527746778199,
+    "source_unchanged": true
+  },
+  {
+    "name": "DarkKnight",
+    "pass": true,
+    "triangles": 21999,
+    "bones": 23,
+    "max_influences": 4,
+    "height_metres": 1.7997228145613917,
+    "deformation_metres": 0.4376934066734378,
+    "source_unchanged": true
+  }
+]

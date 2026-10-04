@@ -1,0 +1,4 @@
+Unity 6000.6.3f1
+PASS mounted controller: time=0,522, rider=(0.00, -0.17, -0.01), hips=(0.00, 1.25, -0.14), seat error=0,000m, legs bent.
+PASS 10 angle captures: magenta <0.5% each.
+STAGE5_MOUNTED_PASSED: 10 camera angles, 0 runtime errors.

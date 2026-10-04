@@ -1,0 +1,11 @@
+{
+  "name": "ArmoredKnight_MountedIdle",
+  "pass": true,
+  "bones": 23,
+  "vertices": 10579,
+  "frames": [
+    2.0,
+    25.0
+  ],
+  "note": "Seated hold pose only; horse movement/mounted attacks not validated"
+}

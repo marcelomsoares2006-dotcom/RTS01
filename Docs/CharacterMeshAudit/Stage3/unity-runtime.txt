@@ -1,0 +1,32 @@
+Unity 6000.6.3f1
+CLIP Horse: curves=200, length=1,500s
+ANIMATOR Horse: enabled=True, active=True, controller=Horse, layerWeight=1,00
+CONTROLLER Horse: stateHash=591710106, time=0,333, differenceFromRest=0,1152m
+PASS Horse: Avatar human=False, bones=19, vertices=53446
+CLIP RedDeer: curves=200, length=1,500s
+ANIMATOR RedDeer: enabled=True, active=True, controller=RedDeer, layerWeight=1,00
+CONTROLLER RedDeer: stateHash=591710106, time=0,333, differenceFromRest=0,1201m
+PASS RedDeer: Avatar human=False, bones=19, vertices=15007
+CLIP ArmoredKnight: curves=130, length=1,500s
+ANIMATOR ArmoredKnight: enabled=True, active=True, controller=ArmoredKnight, layerWeight=1,00
+CONTROLLER ArmoredKnight: stateHash=591710106, time=0,333, differenceFromRest=0,4334m
+PASS ArmoredKnight: Avatar human=True, bones=23, vertices=24657
+CLIP DarkKnight: curves=130, length=1,500s
+ANIMATOR DarkKnight: enabled=True, active=True, controller=DarkKnight, layerWeight=1,00
+CONTROLLER DarkKnight: stateHash=591710106, time=0,333, differenceFromRest=0,4393m
+PASS DarkKnight: Avatar human=True, bones=23, vertices=18344
+SAMPLE Horse: mesh=0,1152m, bone=23,815deg, state=0,333
+PASS Horse: deformation=0,1152m
+SAMPLE RedDeer: mesh=0,1201m, bone=23,815deg, state=0,333
+PASS RedDeer: deformation=0,1201m
+SAMPLE ArmoredKnight: mesh=0,4302m, bone=58,858deg, state=0,333
+PASS ArmoredKnight: deformation=0,4302m
+SAMPLE DarkKnight: mesh=0,4309m, bone=58,847deg, state=0,333
+PASS DarkKnight: deformation=0,4309m
+PASS HeraldicKnight: three mapped LODs.
+PASS Farmhand: three mapped LODs.
+PASS Spearman: three mapped LODs.
+PASS RedDeer: three mapped LODs.
+PASS mounted fit prefab: separate rider and horse rigs.
+PASS camera screenshot: magenta=0,000%.
+STAGE345_RUNTIME_PASSED: 0 runtime errors.

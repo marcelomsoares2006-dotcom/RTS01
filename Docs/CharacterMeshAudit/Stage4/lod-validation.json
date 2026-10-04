@@ -1,0 +1,90 @@
+[
+  {
+    "name": "HeraldicKnight",
+    "lod": 1,
+    "source_triangles": 19609,
+    "triangles": 9804,
+    "path": "Assets\\CharacterRigging\\LODs\\HeraldicKnight\\HeraldicKnight_LOD1.fbx",
+    "reimport_triangles": 9804,
+    "validated": true
+  },
+  {
+    "name": "HeraldicKnight",
+    "lod": 2,
+    "source_triangles": 19609,
+    "triangles": 4902,
+    "path": "Assets\\CharacterRigging\\LODs\\HeraldicKnight\\HeraldicKnight_LOD2.fbx",
+    "reimport_triangles": 4902,
+    "validated": true
+  },
+  {
+    "name": "Farmhand",
+    "lod": 1,
+    "source_triangles": 14980,
+    "triangles": 7489,
+    "path": "Assets\\CharacterRigging\\LODs\\Farmhand\\Farmhand_LOD1.fbx",
+    "reimport_triangles": 7470,
+    "validated": true
+  },
+  {
+    "name": "Farmhand",
+    "lod": 2,
+    "source_triangles": 14980,
+    "triangles": 3744,
+    "path": "Assets\\CharacterRigging\\LODs\\Farmhand\\Farmhand_LOD2.fbx",
+    "reimport_triangles": 3713,
+    "validated": true
+  },
+  {
+    "name": "Spearman",
+    "lod": 1,
+    "source_triangles": 17977,
+    "triangles": 8987,
+    "path": "Assets\\CharacterRigging\\LODs\\Spearman\\Spearman_LOD1.fbx",
+    "reimport_triangles": 8987,
+    "validated": true
+  },
+  {
+    "name": "Spearman",
+    "lod": 2,
+    "source_triangles": 17977,
+    "triangles": 7189,
+    "path": "Assets\\CharacterRigging\\LODs\\Spearman\\Spearman_LOD2.fbx",
+    "reimport_triangles": 7189,
+    "validated": true
+  },
+  {
+    "name": "Horse",
+    "lod": 1,
+    "source_triangles": 29842,
+    "triangles": 26919,
+    "skipped": true,
+    "reason": "Decimation could not meet LOD budget without rebuilding topology"
+  },
+  {
+    "name": "Horse",
+    "lod": 2,
+    "source_triangles": 29842,
+    "triangles": 26919,
+    "skipped": true,
+    "reason": "Decimation could not meet LOD budget without rebuilding topology"
+  },
+  {
+    "name": "RedDeer",
+    "lod": 1,
+    "source_triangles": 17999,
+    "triangles": 8999,
+    "path": "Assets\\CharacterRigging\\LODs\\RedDeer\\RedDeer_LOD1.fbx",
+    "reimport_triangles": 8999,
+    "validated": true
+  },
+  {
+    "name": "RedDeer",
+    "lod": 2,
+    "source_triangles": 17999,
+    "triangles": 4499,
+    "path": "Assets\\CharacterRigging\\LODs\\RedDeer\\RedDeer_LOD2.fbx",
+    "reimport_triangles": 4499,
+    "validated": true
+  }
+]

@@ -1,0 +1,640 @@
+[
+  {
+    "name": "ArmoredKnight",
+    "source": "Tools\\CharacterRigging\\Inputs\\Meshy_AI_Armored_Knight_0928222022_texture.blend",
+    "source_sha256": "9c3c9e6832b066528075eba644304061e1bdc8cbfd88f63cc5ec4e1280311ee7",
+    "source_triangles": 767296,
+    "body_triangles": 21999,
+    "total_triangles": 21999,
+    "height_metres": 1.8,
+    "deform_bones": 22,
+    "max_influences": 4,
+    "textures": {
+      "BaseColor": "Assets\\CharacterRigging\\Stage5\\ArmoredKnight\\Textures\\ArmoredKnight_BaseColor.png",
+      "Normal": "Assets\\CharacterRigging\\Stage5\\ArmoredKnight\\Textures\\ArmoredKnight_Normal.png",
+      "SourcePackedMap": "Assets\\CharacterRigging\\Stage5\\ArmoredKnight\\Textures\\ArmoredKnight_SourcePackedMap.png"
+    },
+    "accessories": [],
+    "joint_positions": [
+      {
+        "name": "Root",
+        "head": [
+          0,
+          0,
+          0
+        ],
+        "tail": [
+          0,
+          0,
+          0.15
+        ]
+      },
+      {
+        "name": "Hips",
+        "head": [
+          0,
+          0.035,
+          0.94
+        ],
+        "tail": [
+          0,
+          0.035,
+          1.065
+        ]
+      },
+      {
+        "name": "Spine",
+        "head": [
+          0,
+          0.035,
+          1.065
+        ],
+        "tail": [
+          0,
+          0.035,
+          1.2
+        ]
+      },
+      {
+        "name": "Spine1",
+        "head": [
+          0,
+          0.035,
+          1.2
+        ],
+        "tail": [
+          0,
+          0.035,
+          1.34
+        ]
+      },
+      {
+        "name": "Spine2",
+        "head": [
+          0,
+          0.035,
+          1.34
+        ],
+        "tail": [
+          0,
+          0.035,
+          1.45
+        ]
+      },
+      {
+        "name": "Neck",
+        "head": [
+          0,
+          0.035,
+          1.45
+        ],
+        "tail": [
+          0,
+          0.035,
+          1.55
+        ]
+      },
+      {
+        "name": "Head",
+        "head": [
+          0,
+          0.035,
+          1.55
+        ],
+        "tail": [
+          0,
+          0.035,
+          1.75
+        ]
+      },
+      {
+        "name": "LeftShoulder",
+        "head": [
+          0.06,
+          0.035,
+          1.42
+        ],
+        "tail": [
+          0.17955048769712448,
+          -0.004810004495084286,
+          1.3025177717208862
+        ]
+      },
+      {
+        "name": "LeftArm",
+        "head": [
+          0.17955048769712448,
+          -0.004810004495084286,
+          1.3025177717208862
+        ],
+        "tail": [
+          0.32645543217658995,
+          0.014294001273810863,
+          1.2264745235443115
+        ]
+      },
+      {
+        "name": "LeftForeArm",
+        "head": [
+          0.32645543217658995,
+          0.014294001273810863,
+          1.2264745235443115
+        ],
+        "tail": [
+          0.4624785289168358,
+          -0.003302524099126458,
+          1.1933122873306274
+        ]
+      },
+      {
+        "name": "LeftHand",
+        "head": [
+          0.4624785289168358,
+          -0.003302524099126458,
+          1.1933122873306274
+        ],
+        "tail": [
+          0.5223286914825439,
+          -0.003302524099126458,
+          1.1933122873306274
+        ]
+      },
+      {
+        "name": "LeftUpLeg",
+        "head": [
+          0.115,
+          0.04,
+          0.94
+        ],
+        "tail": [
+          0.165,
+          0.035,
+          0.52
+        ]
+      },
+      {
+        "name": "LeftLeg",
+        "head": [
+          0.165,
+          0.035,
+          0.52
+        ],
+        "tail": [
+          0.17,
+          0.09,
+          0.125
+        ]
+      },
+      {
+        "name": "LeftFoot",
+        "head": [
+          0.17,
+          0.09,
+          0.125
+        ],
+        "tail": [
+          0.17,
+          -0.085,
+          0.045
+        ]
+      },
+      {
+        "name": "LeftToeBase",
+        "head": [
+          0.17,
+          -0.085,
+          0.045
+        ],
+        "tail": [
+          0.17,
+          -0.16,
+          0.045
+        ]
+      },
+      {
+        "name": "RightShoulder",
+        "head": [
+          -0.06,
+          0.035,
+          1.42
+        ],
+        "tail": [
+          -0.17955048769712448,
+          -0.0024006508756428957,
+          1.292828917503357
+        ]
+      },
+      {
+        "name": "RightArm",
+        "head": [
+          -0.17955048769712448,
+          -0.0024006508756428957,
+          1.292828917503357
+        ],
+        "tail": [
+          -0.32645543217658995,
+          0.016683085821568966,
+          1.2256639003753662
+        ]
+      },
+      {
+        "name": "RightForeArm",
+        "head": [
+          -0.32645543217658995,
+          0.016683085821568966,
+          1.2256639003753662
+        ],
+        "tail": [
+          -0.4624785289168358,
+          -0.08108002692461014,
+          1.1061830520629883
+        ]
+      },
+      {
+        "name": "RightHand",
+        "head": [
+          -0.4624785289168358,
+          -0.08108002692461014,
+          1.1061830520629883
+        ],
+        "tail": [
+          -0.5223286914825439,
+          -0.0035365582443773746,
+          1.1738372445106506
+        ]
+      },
+      {
+        "name": "RightUpLeg",
+        "head": [
+          -0.115,
+          0.04,
+          0.94
+        ],
+        "tail": [
+          -0.165,
+          0.035,
+          0.52
+        ]
+      },
+      {
+        "name": "RightLeg",
+        "head": [
+          -0.165,
+          0.035,
+          0.52
+        ],
+        "tail": [
+          -0.17,
+          0.09,
+          0.125
+        ]
+      },
+      {
+        "name": "RightFoot",
+        "head": [
+          -0.17,
+          0.09,
+          0.125
+        ],
+        "tail": [
+          -0.17,
+          -0.085,
+          0.045
+        ]
+      },
+      {
+        "name": "RightToeBase",
+        "head": [
+          -0.17,
+          -0.085,
+          0.045
+        ],
+        "tail": [
+          -0.17,
+          -0.16,
+          0.045
+        ]
+      }
+    ],
+    "animation": "PoseCheck: diagnostic, not final gameplay movement"
+  },
+  {
+    "name": "DarkKnight",
+    "source": "Tools\\CharacterRigging\\Inputs\\Meshy_AI__villain_Dark_Knigh_0928222234_texture.blend",
+    "source_sha256": "098ae38fa9656555b30a586a83c562db1c0f51a5a1c9425c5b10e4c8e2ef4d59",
+    "source_triangles": 631114,
+    "body_triangles": 22000,
+    "total_triangles": 22000,
+    "height_metres": 1.8,
+    "deform_bones": 22,
+    "max_influences": 4,
+    "textures": {
+      "BaseColor": "Assets\\CharacterRigging\\Stage5\\DarkKnight\\Textures\\DarkKnight_BaseColor.png",
+      "Normal": "Assets\\CharacterRigging\\Stage5\\DarkKnight\\Textures\\DarkKnight_Normal.png",
+      "SourcePackedMap": "Assets\\CharacterRigging\\Stage5\\DarkKnight\\Textures\\DarkKnight_SourcePackedMap.png"
+    },
+    "accessories": [],
+    "joint_positions": [
+      {
+        "name": "Root",
+        "head": [
+          0,
+          0,
+          0
+        ],
+        "tail": [
+          0,
+          0,
+          0.15
+        ]
+      },
+      {
+        "name": "Hips",
+        "head": [
+          0,
+          0.035,
+          0.94
+        ],
+        "tail": [
+          0,
+          0.035,
+          1.065
+        ]
+      },
+      {
+        "name": "Spine",
+        "head": [
+          0,
+          0.035,
+          1.065
+        ],
+        "tail": [
+          0,
+          0.035,
+          1.2
+        ]
+      },
+      {
+        "name": "Spine1",
+        "head": [
+          0,
+          0.035,
+          1.2
+        ],
+        "tail": [
+          0,
+          0.035,
+          1.34
+        ]
+      },
+      {
+        "name": "Spine2",
+        "head": [
+          0,
+          0.035,
+          1.34
+        ],
+        "tail": [
+          0,
+          0.035,
+          1.45
+        ]
+      },
+      {
+        "name": "Neck",
+        "head": [
+          0,
+          0.035,
+          1.45
+        ],
+        "tail": [
+          0,
+          0.035,
+          1.55
+        ]
+      },
+      {
+        "name": "Head",
+        "head": [
+          0,
+          0.035,
+          1.55
+        ],
+        "tail": [
+          0,
+          0.035,
+          1.75
+        ]
+      },
+      {
+        "name": "LeftShoulder",
+        "head": [
+          0.06,
+          0.035,
+          1.42
+        ],
+        "tail": [
+          0.30158149838447573,
+          0.05271843075752258,
+          1.422798752784729
+        ]
+      },
+      {
+        "name": "LeftArm",
+        "head": [
+          0.30158149838447573,
+          0.05271843075752258,
+          1.422798752784729
+        ],
+        "tail": [
+          0.548329997062683,
+          0.043374981731176376,
+          1.336715579032898
+        ]
+      },
+      {
+        "name": "LeftForeArm",
+        "head": [
+          0.548329997062683,
+          0.043374981731176376,
+          1.336715579032898
+        ],
+        "tail": [
+          0.7768008291721343,
+          -0.1000567376613617,
+          1.333253264427185
+        ]
+      },
+      {
+        "name": "LeftHand",
+        "head": [
+          0.7768008291721343,
+          -0.1000567376613617,
+          1.333253264427185
+        ],
+        "tail": [
+          0.8773279953002929,
+          -0.0639311634004116,
+          1.34320729970932
+        ]
+      },
+      {
+        "name": "LeftUpLeg",
+        "head": [
+          0.115,
+          0.04,
+          0.94
+        ],
+        "tail": [
+          0.165,
+          0.035,
+          0.52
+        ]
+      },
+      {
+        "name": "LeftLeg",
+        "head": [
+          0.165,
+          0.035,
+          0.52
+        ],
+        "tail": [
+          0.17,
+          0.09,
+          0.125
+        ]
+      },
+      {
+        "name": "LeftFoot",
+        "head": [
+          0.17,
+          0.09,
+          0.125
+        ],
+        "tail": [
+          0.17,
+          -0.085,
+          0.045
+        ]
+      },
+      {
+        "name": "LeftToeBase",
+        "head": [
+          0.17,
+          -0.085,
+          0.045
+        ],
+        "tail": [
+          0.17,
+          -0.16,
+          0.045
+        ]
+      },
+      {
+        "name": "RightShoulder",
+        "head": [
+          -0.06,
+          0.035,
+          1.42
+        ],
+        "tail": [
+          -0.30158149838447573,
+          0.061395637691020966,
+          1.4227428436279297
+        ]
+      },
+      {
+        "name": "RightArm",
+        "head": [
+          -0.30158149838447573,
+          0.061395637691020966,
+          1.4227428436279297
+        ],
+        "tail": [
+          -0.548329997062683,
+          0.05171388387680054,
+          1.3401273488998413
+        ]
+      },
+      {
+        "name": "RightForeArm",
+        "head": [
+          -0.548329997062683,
+          0.05171388387680054,
+          1.3401273488998413
+        ],
+        "tail": [
+          -0.7768008291721343,
+          -0.09592147916555405,
+          1.3331762552261353
+        ]
+      },
+      {
+        "name": "RightHand",
+        "head": [
+          -0.7768008291721343,
+          -0.09592147916555405,
+          1.3331762552261353
+        ],
+        "tail": [
+          -0.8773279953002929,
+          -0.06450361013412476,
+          1.3445216417312622
+        ]
+      },
+      {
+        "name": "RightUpLeg",
+        "head": [
+          -0.115,
+          0.04,
+          0.94
+        ],
+        "tail": [
+          -0.165,
+          0.035,
+          0.52
+        ]
+      },
+      {
+        "name": "RightLeg",
+        "head": [
+          -0.165,
+          0.035,
+          0.52
+        ],
+        "tail": [
+          -0.17,
+          0.09,
+          0.125
+        ]
+      },
+      {
+        "name": "RightFoot",
+        "head": [
+          -0.17,
+          0.09,
+          0.125
+        ],
+        "tail": [
+          -0.17,
+          -0.085,
+          0.045
+        ]
+      },
+      {
+        "name": "RightToeBase",
+        "head": [
+          -0.17,
+          -0.085,
+          0.045
+        ],
+        "tail": [
+          -0.17,
+          -0.16,
+          0.045
+        ]
+      }
+    ],
+    "animation": "PoseCheck: diagnostic, not final gameplay movement"
+  }
+]

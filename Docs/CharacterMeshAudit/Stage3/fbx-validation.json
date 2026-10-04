@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Horse",
+    "pass": true,
+    "source_unchanged": true,
+    "triangles": 29842,
+    "discarded_faces": 158,
+    "bones": 19,
+    "max_influences": 4,
+    "height_metres": 1.655473317252472,
+    "deformation_metres": 0.11661064724619256,
+    "uv_layers": 1
+  },
+  {
+    "name": "RedDeer",
+    "pass": true,
+    "source_unchanged": true,
+    "triangles": 17999,
+    "discarded_faces": 0,
+    "bones": 19,
+    "max_influences": 4,
+    "height_metres": 1.7997968240379123,
+    "deformation_metres": 0.12158899481576459,
+    "uv_layers": 1
+  }
+]

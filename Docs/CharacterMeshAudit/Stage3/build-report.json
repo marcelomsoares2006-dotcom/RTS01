@@ -1,0 +1,35 @@
+[
+  {
+    "name": "Horse",
+    "source": "Tools\\CharacterRigging\\Inputs\\Meshy_AI_knight_horse_0928223644_texture.blend",
+    "source_sha256": "12f939854fa3e00c159177cde9cb68fd957b90085aa53ef43f1739577d1b4eef",
+    "source_triangles": 1001521,
+    "triangles": 30000,
+    "height_metres": 1.65,
+    "bone_count": 19,
+    "deform_bones": 18,
+    "textures": {
+      "BaseColor": "Assets\\CharacterRigging\\Stage3\\Horse\\Textures\\Horse_BaseColor.png",
+      "Source_1": "Assets\\CharacterRigging\\Stage3\\Horse\\Textures\\Horse_Source_1.png",
+      "Source_2": "Assets\\CharacterRigging\\Stage3\\Horse\\Textures\\Horse_Source_2.png",
+      "Source_3": "Assets\\CharacterRigging\\Stage3\\Horse\\Textures\\Horse_Source_3.png"
+    },
+    "rig": "Spatial FK quadruped; PoseCheck is diagnostic, not locomotion"
+  },
+  {
+    "name": "RedDeer",
+    "source": "Tools\\CharacterRigging\\Inputs\\Meshy_AI_Red_Deer_Stag_0928222254_texture.blend",
+    "source_sha256": "5f1323a2dd3cc56bb848f6e4fc7fd89ee21f4c1c29aacdc545c97d4a2b2da228",
+    "source_triangles": 190339,
+    "triangles": 17999,
+    "height_metres": 1.8,
+    "bone_count": 19,
+    "deform_bones": 18,
+    "textures": {
+      "BaseColor": "Assets\\CharacterRigging\\Stage3\\RedDeer\\Textures\\RedDeer_BaseColor.png",
+      "Source_1": "Assets\\CharacterRigging\\Stage3\\RedDeer\\Textures\\RedDeer_Source_1.png",
+      "Source_2": "Assets\\CharacterRigging\\Stage3\\RedDeer\\Textures\\RedDeer_Source_2.png"
+    },
+    "rig": "Spatial FK quadruped; PoseCheck is diagnostic, not locomotion"
+  }
+]

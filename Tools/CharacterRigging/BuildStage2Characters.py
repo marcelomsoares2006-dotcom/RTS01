@@ -64,6 +64,8 @@ def create_rig(body,name):
     points=[v.co for v in body.data.vertices]
     def arm_point(x):
         candidates=[p for p in points if abs(p.x-x)<width*.014 and p.z>1.1]
+        if not candidates:
+            candidates=sorted((p for p in points if p.z>1.1),key=lambda p:abs(p.x-x))[:64]
         assert candidates,('No arm sample',name,x)
         return (x,statistics.median(p.y for p in candidates),statistics.median(p.z for p in candidates))
     specs=[]

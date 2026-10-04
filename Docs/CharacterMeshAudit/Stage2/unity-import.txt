@@ -1,0 +1,3 @@
+Stage 2 import audit — Unity 6000.6.3f1
+PASS Farmhand: Humanoid valid, bones=23, vertices=14151, PoseCheck=1,500s, texture=Farmhand_BaseColor
+PASS Spearman: Humanoid valid, bones=23, vertices=21451, PoseCheck=1,500s, texture=Spearman_BaseColor

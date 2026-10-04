@@ -48,25 +48,15 @@ O setup Unity usa base colour e normal quando disponível; o mapa empacotado
 original do lanceiro foi conservado, sem conversão completa de metallic/smoothness.
 LODs e desempenho coletivo pertencem à etapa 4.
 
-## Bloqueio e retomada
+## Validação Unity
 
-O Editor lançado no ambiente restrito não conectou ao canal `LicenseClient-User`
-e não inicializou a licença (`TestResults/stage2-unity.log`). Somente o Editor de
-teste criado pelo Codex, PID 23936, foi encerrado.
+Após autorização explícita do usuário, o Editor 6000.6.3f1 executou a preparação
+e o Play Mode. Farmhand e Spearman tiveram Avatar Humanoid válido, 23 ossos e
+texturas importadas (`Stage2/unity-import.txt`). A deformação medida foi de
+0,0597/0,0438 m, sem erros de execução (`Stage2/unity-playmode.txt`,
+`STAGE2_PLAYMODE_PASSED`). As capturas reais `Stage2/unity-{rest,bend}.png`
+foram inspecionadas: sem rosa; acessórios visíveis. Os três testes unitários e
+o smoke test do jogo também passaram na nova execução de `Tools/Validate-Project.ps1`.
 
-A revisão automática rejeitou iniciar o Unity fora do ambiente restrito porque
-executaria scripts com privilégios de administrador, capazes de acessar arquivos
-e configurações fora do projeto. Foi solicitada autorização explícita ao usuário;
-nenhum caminho alternativo foi usado para contornar a rejeição.
-
-Em uma sessão Unity aberta como usuário padrão, o menu preparado é:
-`Tools > Character Rigging > Stage 2 > Build and Validate`.
-Ele deve criar materiais, Avatar Humanoid, controllers, prefabs e a cena
-`Assets/CharacterRigging/Stage2/Scenes/Stage2RigDemo.unity`, então testar Play Mode.
-Os resultados esperados são `Stage2/unity-import.txt`, `Stage2/unity-playmode.txt`
-e `Stage2/unity-{rest,bend}.png`. Não haviam sido gerados ao registrar este estado.
-
-Concluir somente após confirmar Avatar válido, poses e acessórios, texturas,
-Console sem erros e capturas reais do Unity. Corrigir qualquer falha encontrada.
-A revisão da etapa 1 está em `REVISAO_CLAUDE_ETAPA_1.md`. Não iniciar a etapa 3
-antes de terminar esta validação e receber instrução para avançar.
+Ainda faltam animações finais e revisão artística ampla de acessórios/roupas;
+esta aprovação se refere à integração técnica e à PoseCheck.

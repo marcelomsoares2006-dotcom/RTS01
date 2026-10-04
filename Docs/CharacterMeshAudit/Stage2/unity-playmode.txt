@@ -1,0 +1,4 @@
+Unity 6000.6.3f1
+PASS Farmhand: deformation=0,0597m; Humanoid=True; root=(-0.95, 0.03, 0.00)
+PASS Spearman: deformation=0,0438m; Humanoid=True; root=(0.95, 0.03, 0.00)
+STAGE2_PLAYMODE_PASSED: 0 runtime errors.

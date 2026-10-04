@@ -1,0 +1,26 @@
+Unity 6000.6.3f1
+PASS HeraldicKnight LOD0 front: foreground=19084, magenta=0
+PASS HeraldicKnight LOD1 front: foreground=19073, magenta=0
+PASS HeraldicKnight LOD2 front: foreground=18973, magenta=0
+PASS HeraldicKnight LOD0 side: foreground=15570, magenta=0
+PASS HeraldicKnight LOD1 side: foreground=15587, magenta=0
+PASS HeraldicKnight LOD2 side: foreground=15441, magenta=0
+PASS Farmhand LOD0 front: foreground=30927, magenta=0
+PASS Farmhand LOD1 front: foreground=31870, magenta=0
+PASS Farmhand LOD2 front: foreground=32348, magenta=0
+PASS Farmhand LOD0 side: foreground=24690, magenta=0
+PASS Farmhand LOD1 side: foreground=24684, magenta=0
+PASS Farmhand LOD2 side: foreground=24555, magenta=0
+PASS Spearman LOD0 front: foreground=56577, magenta=0
+PASS Spearman LOD1 front: foreground=56323, magenta=0
+PASS Spearman LOD2 front: foreground=56038, magenta=0
+PASS Spearman LOD0 side: foreground=27916, magenta=0
+PASS Spearman LOD1 side: foreground=27938, magenta=0
+PASS Spearman LOD2 side: foreground=27926, magenta=0
+PASS RedDeer LOD0 front: foreground=9860, magenta=0
+PASS RedDeer LOD1 front: foreground=9846, magenta=0
+PASS RedDeer LOD2 front: foreground=9732, magenta=0
+PASS RedDeer LOD0 side: foreground=30678, magenta=0
+PASS RedDeer LOD1 side: foreground=30690, magenta=0
+PASS RedDeer LOD2 side: foreground=30534, magenta=0
+STAGE4_LOD_VISUAL_CAPTURED: 24 images.
