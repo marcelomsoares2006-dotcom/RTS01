@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 using UnityEngine.AI;
 
 public enum InGameResource
@@ -50,6 +51,18 @@ public static class Globals
     public static UnitFormationType UNIT_FORMATION_TYPE = UnitFormationType.None;
 
     public static NavMeshSurface NAV_MESH_SURFACE;
+
+    public static bool TryWarpToNavMesh(NavMeshAgent agent, Vector3 requestedPosition, float sampleDistance = 4f)
+    {
+        if (agent == null || !agent.isActiveAndEnabled)
+            return false;
+        if (NAV_MESH_SURFACE == null || NAV_MESH_SURFACE.navMeshData == null)
+            UpdateNavMeshSurface();
+        NavMeshHit hit;
+        if (!NavMesh.SamplePosition(requestedPosition, out hit, sampleDistance, NavMesh.AllAreas))
+            return false;
+        return agent.Warp(hit.position) && agent.isOnNavMesh;
+    }
 
     public static void UpdateNavMeshSurface()
     {

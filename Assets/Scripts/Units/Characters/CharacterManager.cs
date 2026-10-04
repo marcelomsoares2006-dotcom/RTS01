@@ -26,16 +26,20 @@ public class CharacterManager : UnitManager
 
     public bool MoveTo(Vector3 targetPosition, bool playSound = true)
     {
+        if (agent == null || !agent.isActiveAndEnabled || !agent.isOnNavMesh)
+            return false;
         NavMeshPath path = new NavMeshPath();
-        agent.CalculatePath(targetPosition, path);
-        if (path.status == NavMeshPathStatus.PathInvalid)
+        if (!agent.CalculatePath(targetPosition, path))
+            return false;
+        if (path.status != NavMeshPathStatus.PathComplete)
         {
             if (playSound)
                 contextualSource.PlayOneShot(((CharacterData)Unit.Data).onMoveInvalidSound);
             return false;
         }
 
-        agent.destination = targetPosition;
+        if (!agent.SetDestination(targetPosition))
+            return false;
         if (playSound)
             contextualSource.PlayOneShot(((CharacterData)Unit.Data).onMoveValidSound);
         return true;

@@ -115,7 +115,12 @@ public class DataHandler : MonoBehaviour
                     CharacterData cd = Globals.CHARACTER_DATA[unit.code];
                     u = new Character(cd, p);
                     u.ComputeProduction();
-                    u.Transform.GetComponent<NavMeshAgent>().Warp(unit.position);
+                    if (!Globals.TryWarpToNavMesh(
+                        u.Transform.GetComponent<NavMeshAgent>(),
+                        unit.position, 8f))
+                    {
+                        Debug.LogWarning($"Could not restore character {unit.uid} on NavMesh at {unit.position}; keeping fallback position.");
+                    }
                 }
 
                 u.Uid = unit.uid;
