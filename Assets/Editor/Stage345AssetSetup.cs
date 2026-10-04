@@ -243,4 +243,62 @@ public static class Stage345AssetSetup
         }
         finally { UnityEngine.Object.DestroyImmediate(horse); }
     }
+
+    [MenuItem("Tools/Character Rigging/Stages 3-5/Configure Mounted Sockets")]
+    public static void ConfigureMountedSockets()
+    {
+        if (EditorApplication.isPlayingOrWillChangePlaymode)
+            throw new InvalidOperationException("Stop Play Mode first.");
+        const string path = Root + "/Stage5/MountedFitPrototype.prefab";
+        var prefab = AssetDatabase.LoadAssetAtPath<GameObject>(path);
+        Require(prefab != null, "Mounted prototype prefab is missing.");
+        var root = PrefabUtility.InstantiatePrefab(prefab) as GameObject;
+        try
+        {
+            PrefabUtility.UnpackPrefabInstance(root, PrefabUnpackMode.Completely,
+                InteractionMode.AutomatedAction);
+            var spine = root.GetComponentsInChildren<Transform>(true)
+                .FirstOrDefault(t => t.name == "Spine");
+            var rider = root.GetComponentsInChildren<Transform>(true)
+                .FirstOrDefault(t => t.name == "ArmoredKnight_Rider");
+            Require(spine != null && rider != null, "Mounted prototype lacks Spine or rider.");
+            var sockets = root.GetComponent<MountedSockets>() ?? root.AddComponent<MountedSockets>();
+            var saddle = FindOrCreate("SaddleRoot", spine);
+            saddle.localPosition = new Vector3(0f, .06f, .15f);
+            saddle.localRotation = Quaternion.identity;
+            var riderRoot = FindOrCreate("RiderRoot", saddle);
+            rider.SetParent(riderRoot, true);
+            sockets.saddleRoot = saddle;
+            sockets.riderRoot = riderRoot;
+            sockets.leftFootTarget = FindOrCreate("LeftStirrup", saddle);
+            sockets.rightFootTarget = FindOrCreate("RightStirrup", saddle);
+            sockets.leftHandTarget = FindOrCreate("LeftHandTarget", riderRoot);
+            sockets.rightHandTarget = FindOrCreate("RightHandTarget", riderRoot);
+            sockets.weaponMount = FindOrCreate("WeaponMount", riderRoot);
+            sockets.leftFootTarget.localPosition = new Vector3(-.18f, -.18f, .12f);
+            sockets.rightFootTarget.localPosition = new Vector3(.18f, -.18f, .12f);
+            sockets.leftHandTarget.localPosition = new Vector3(-.22f, .38f, .28f);
+            sockets.rightHandTarget.localPosition = new Vector3(.22f, .38f, .28f);
+            sockets.weaponMount.localPosition = new Vector3(.35f, .45f, -.08f);
+            var sync = root.GetComponent<MountedAnimatorSync>() ?? root.AddComponent<MountedAnimatorSync>();
+            sync.horseAnimator = root.GetComponent<Animator>();
+            sync.riderAnimator = rider.GetComponent<Animator>();
+            var ik = rider.gameObject.GetComponent<MountedIKController>() ?? rider.gameObject.AddComponent<MountedIKController>();
+            ik.riderAnimator = rider.GetComponent<Animator>();
+            ik.sockets = sockets;
+            PrefabUtility.SaveAsPrefabAsset(root, path);
+            AssetDatabase.SaveAssets();
+            Debug.Log("Mounted sockets configured: " + path);
+        }
+        finally { if (root != null) UnityEngine.Object.DestroyImmediate(root); }
+    }
+
+    static Transform FindOrCreate(string name, Transform parent)
+    {
+        var existing = parent.Find(name);
+        if (existing != null) return existing;
+        var obj = new GameObject(name);
+        obj.transform.SetParent(parent, false);
+        return obj.transform;
+    }
 }
