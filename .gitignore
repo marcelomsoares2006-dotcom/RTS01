@@ -82,3 +82,6 @@ Tools/CharacterRigging/ThirdParty/
 # Meshy source art and Blender working copies (large; kept outside git)
 /Tools/CharacterRigging/Inputs/
 /Tools/CharacterRigging/Working/
+/Tools/CharacterRigging/__pycache__/
+**/__pycache__/
+*.pyc
