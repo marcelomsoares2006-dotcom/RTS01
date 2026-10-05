@@ -83,7 +83,11 @@ public static class Stage5MountedRuntimeCheck
             Need(rider.runtimeAnimatorController!=null &&
                  rider.runtimeAnimatorController.name=="MountedIdle",
                  "Rider does not use mounted hold controller.");
-            Need(rider.transform.parent.name=="Spine","Rider not attached to horse Spine.");
+            var sockets=mount.GetComponent<MountedSockets>();
+            Need(sockets!=null && sockets.IsConfigured,"Mounted sockets are not configured.");
+            Need(rider.transform.parent==sockets.riderRoot &&
+                 sockets.riderRoot.parent==sockets.saddleRoot,
+                "Rider is not attached through RiderRoot/SaddleRoot.");
             var skins=mount.GetComponentsInChildren<SkinnedMeshRenderer>(true);
             Need(skins.Length==2 && skins.All(s=>s.sharedMaterial!=null &&
                  s.sharedMaterial.shader.isSupported),"Missing mounted skins/materials.");
@@ -94,8 +98,7 @@ public static class Stage5MountedRuntimeCheck
             var riderSkin=rider.GetComponentInChildren<SkinnedMeshRenderer>();
             var hip=riderSkin.bones.FirstOrDefault(b=>b.name=="mixamorig:Hips");
             Need(hip!=null,"Rider hips missing.");
-            var seatTarget=rider.transform.parent.position +
-                mount.TransformDirection(new Vector3(0,.06f,.15f));
+            var seatTarget=sockets.saddleRoot.position;
             float seatError=Vector3.Distance(hip.position,seatTarget);
             Need(seatError<.15f,$"Rider no longer aligned with saddle: {seatError:F3}m.");
             var thighs=riderSkin.bones.Where(b=>b.name.EndsWith("UpLeg")).ToArray();
