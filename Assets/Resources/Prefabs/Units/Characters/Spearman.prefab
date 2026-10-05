@@ -9,6 +9,7 @@ GameObject:
   - component: {fileID: 1000000003}
   - component: {fileID: 1000000004}
   - component: {fileID: 1000000005}
+  - component: {fileID: 1000000007}
   m_Layer: 12
   m_Name: Spearman
   m_TagString: Unit
@@ -49,9 +50,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bdf186d43afe4c7c801ab90d572e8b6, type: 3}
   selectionCircle: {fileID: 0}
   fov: {fileID: 0}
-  meshRenderer: {fileID: 0}
+  meshRenderer: {fileID: 1000000010}
   contextualSource: {fileID: 0}
-  animator: {fileID: 0}
+  animator: {fileID: 1000000009}
   agent: {fileID: 1000000005}
   characterCollider: {fileID: 1000000003}
 --- !u!1001 &1000000008
@@ -68,5 +69,15 @@ PrefabInstance:
 --- !u!4 &1000000006 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5031508816690788682, guid: f9a80a72e04d50d499780412ee2e6349, type: 3}
+  m_PrefabInstance: {fileID: 1000000008}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1000000009 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5343113280449820742, guid: f9a80a72e04d50d499780412ee2e6349, type: 3}
+  m_PrefabInstance: {fileID: 1000000008}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &1000000010 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2461785826399566123, guid: f9a80a72e04d50d499780412ee2e6349, type: 3}
   m_PrefabInstance: {fileID: 1000000008}
   m_PrefabAsset: {fileID: 0}

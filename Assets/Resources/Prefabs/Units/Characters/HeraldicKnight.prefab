@@ -9,6 +9,7 @@ GameObject:
   - component: {fileID: 2000000003}
   - component: {fileID: 2000000004}
   - component: {fileID: 2000000005}
+  - component: {fileID: 2000000007}
   m_Layer: 12
   m_Name: HeraldicKnight
   m_TagString: Unit
@@ -49,9 +50,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bdf186d43afe4c7c801ab90d572e8b6, type: 3}
   selectionCircle: {fileID: 0}
   fov: {fileID: 0}
-  meshRenderer: {fileID: 0}
+  meshRenderer: {fileID: 2000000010}
   contextualSource: {fileID: 0}
-  animator: {fileID: 0}
+  animator: {fileID: 2000000009}
   agent: {fileID: 2000000005}
   characterCollider: {fileID: 2000000003}
 --- !u!1001 &2000000008
@@ -68,5 +69,15 @@ PrefabInstance:
 --- !u!4 &2000000006 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f84565db9a8d91346aadaebeb5b09bec, type: 3}
+  m_PrefabInstance: {fileID: 2000000008}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2000000009 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: f84565db9a8d91346aadaebeb5b09bec, type: 3}
+  m_PrefabInstance: {fileID: 2000000008}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &2000000010 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8529555476607326966, guid: f84565db9a8d91346aadaebeb5b09bec, type: 3}
   m_PrefabInstance: {fileID: 2000000008}
   m_PrefabAsset: {fileID: 0}
