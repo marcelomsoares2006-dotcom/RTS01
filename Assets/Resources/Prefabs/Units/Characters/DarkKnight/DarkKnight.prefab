@@ -216,9 +216,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectionCircle: {fileID: 1541329661}
   fov: {fileID: 2773615677517416114}
-  meshRenderer: {fileID: 4893885829248897416}
+  meshRenderer: {fileID: 4954215567566254418}
   contextualSource: {fileID: 7928814290623769016}
-  animator: {fileID: 0}
+  animator: {fileID: 4954215567566254417}
   ownerMaterialSlotIndex: 0
   healthbar: {fileID: 0}
   agent: {fileID: 2810587783769693676}
@@ -551,6 +551,16 @@ PrefabInstance:
 --- !u!1 &4954215567566254416 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4954215567566254415, guid: cb335eda99a8ea74db729da003becdb9, type: 3}
+  m_PrefabInstance: {fileID: 4954215567566254415}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &4954215567566254417 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 906081795143545091, guid: cb335eda99a8ea74db729da003becdb9, type: 3}
+  m_PrefabInstance: {fileID: 4954215567566254415}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &4954215567566254418 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3642382039571557760, guid: cb335eda99a8ea74db729da003becdb9, type: 3}
   m_PrefabInstance: {fileID: 4954215567566254415}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &2315882008952818586 stripped
