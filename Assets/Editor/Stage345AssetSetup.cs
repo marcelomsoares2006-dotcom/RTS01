@@ -6,6 +6,7 @@ using UnityEditor.Animations;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 
 /// <summary>Imports the prepared animal and armour FBXs into isolated review prefabs.
@@ -283,6 +284,19 @@ public static class Stage345AssetSetup
             var sync = root.GetComponent<MountedAnimatorSync>() ?? root.AddComponent<MountedAnimatorSync>();
             sync.horseAnimator = root.GetComponent<Animator>();
             sync.riderAnimator = rider.GetComponent<Animator>();
+            var agent = root.GetComponent<NavMeshAgent>();
+            if (agent == null)
+                agent = root.AddComponent<NavMeshAgent>();
+            Require(agent != null, "Could not add NavMeshAgent to mounted root.");
+            agent.enabled = false;
+            agent.speed = 3.5f;
+            agent.acceleration = 12f;
+            agent.angularSpeed = 240f;
+            agent.stoppingDistance = .1f;
+            var movement = root.GetComponent<MountedMovementDriver>() ?? root.AddComponent<MountedMovementDriver>();
+            movement.agent = agent;
+            movement.animatorSync = sync;
+            movement.acceptCommands = false;
             var ik = rider.gameObject.GetComponent<MountedIKController>() ?? rider.gameObject.AddComponent<MountedIKController>();
             ik.riderAnimator = rider.GetComponent<Animator>();
             ik.sockets = sockets;
