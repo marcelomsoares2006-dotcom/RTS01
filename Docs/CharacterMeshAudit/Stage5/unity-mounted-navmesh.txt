@@ -1,2 +1,2 @@
 Unity 6000.6.3f1
-PASS mounted NavMesh movement: root=5,643m riderDelta=13,220m saddleDelta=13,220m riderOffsetError=0,000m saddleOffsetError=0,000m errors=0
+PASS mounted NavMesh movement: root=5,673m riderDelta=13,247m saddleDelta=13,247m riderOffsetError=0,000m saddleOffsetError=0,000m errors=0
