@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   code: spearman
   unitName: Spearman
-  description: Lanceiro de infantaria com lança e escudo.
+  description: "Lanceiro de infantaria com lan\xE7a e escudo."
   healthpoints: 45
-  prefab: {fileID: 100100000, guid: 4e8b6e4f7e4346a9b2d8c1f0a6e5b3c7, type: 3}
+  prefab: {fileID: 1000000001, guid: 4e8b6e4f7e4346a9b2d8c1f0a6e5b3c7, type: 3}
   sprite: {fileID: 0}
   cost:
   - code: 0
