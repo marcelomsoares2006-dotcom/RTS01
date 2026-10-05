@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using UnityEditor;
 using UnityEditor.SceneManagement;
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
@@ -57,6 +58,16 @@ public static class Stage5MountedNavMeshRuntimeCheck
             var driver = mount.GetComponent<MountedMovementDriver>();
             var sockets = mount.GetComponent<MountedSockets>();
             Need(agent != null && driver != null && sockets != null && sockets.IsConfigured, "Mounted movement components missing.");
+            var ik = sockets.riderRoot.GetComponentInChildren<MountedIKController>();
+            Need(ik != null && ik.sockets == sockets && ik.riderAnimator != null,
+                "Mounted IK controller is not linked to rider and sockets.");
+            Need(sockets.leftFootTarget != null && sockets.rightFootTarget != null &&
+                 sockets.leftHandTarget != null && sockets.rightHandTarget != null,
+                "Mounted IK targets are incomplete.");
+            var mountedController = AssetDatabase.LoadAssetAtPath<AnimatorController>(
+                "Assets/CharacterRigging/Stage5/Mounted/MountedIdle.controller");
+            Need(mountedController != null && mountedController.layers.Length > 0 &&
+                 mountedController.layers[0].iKPass, "Mounted Animator IK Pass is disabled.");
             int phase = SessionState.GetInt(Key + "Phase", 0);
             if (phase == 0)
             {
