@@ -30,7 +30,7 @@ public class BuildingManager : UnitManager
             other.gameObject.layer == Globals.FOV_LAYER
         )
             return;
-        _nCollisions--;
+        _nCollisions = Mathf.Max(0, _nCollisions - 1);
         CheckPlacement();
     }
 
@@ -51,7 +51,6 @@ public class BuildingManager : UnitManager
         if (_nCollisions > 0) return false;
 
         // get 4 bottom corner positions
-        Vector3 p = transform.position;
         Vector3 c = _collider.center;
         Vector3 e = _collider.size / 2f;
         float bottomHeight = c.y - e.y + 0.5f;
@@ -68,7 +67,7 @@ public class BuildingManager : UnitManager
         foreach (Vector3 corner in bottomCorners)
         {
             if (!Physics.Raycast(
-                p + corner,
+                transform.TransformPoint(corner),
                 Vector3.up * -1f,
                 2f,
                 Globals.TERRAIN_LAYER_MASK
@@ -80,7 +79,7 @@ public class BuildingManager : UnitManager
 
         // check building is within the current FOV bounds
         if (!Physics.Raycast(
-            p + Vector3.up * 100,
+            transform.position + Vector3.up * 100,
             -Vector3.up, 1000,
             Globals.FOV_LAYER_MASK))
             return false;

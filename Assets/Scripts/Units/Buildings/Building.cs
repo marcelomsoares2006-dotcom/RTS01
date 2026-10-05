@@ -105,14 +105,20 @@ public class Building : Unit
     {
         if (_isAlive) return;
 
-        _constructionHP = constructionHP;
+        _constructionHP = Mathf.Clamp(constructionHP, 0, MaxHP);
         float constructionRatio = _constructionHP / (float) MaxHP;
 
-        int meshIndex = Mathf.Max(
-            0,
-            (int)(_constructionMeshes.Length * constructionRatio) - 1);
-        Mesh m = _constructionMeshes[meshIndex];
-        _rendererMesh.sharedMesh = m;
+        if (_constructionMeshes == null || _constructionMeshes.Length == 0)
+        {
+            Debug.LogError($"'{Data.unitName}' has no construction meshes.");
+        }
+        else
+        {
+            int meshIndex = Mathf.Min(
+                _constructionMeshes.Length - 1,
+                Mathf.Max(0, (int)(_constructionMeshes.Length * constructionRatio) - 1));
+            _rendererMesh.sharedMesh = _constructionMeshes[meshIndex];
+        }
 
         if (constructionRatio >= 1)
             _SetAlive(fromSavedData);
