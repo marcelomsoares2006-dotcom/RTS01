@@ -307,6 +307,47 @@ public static class Stage345AssetSetup
         finally { if (root != null) UnityEngine.Object.DestroyImmediate(root); }
     }
 
+    [MenuItem("Tools/Character Rigging/Stages 3-5/Build Mounted NavMesh Review")]
+    public static void BuildMountedNavMeshReview()
+    {
+        if (EditorApplication.isPlayingOrWillChangePlaymode)
+            throw new InvalidOperationException("Stop Play Mode first.");
+        const string scenePath = Root + "/Stage5/MountedFitPrototypeNavMesh.unity";
+        var prefab = AssetDatabase.LoadAssetAtPath<GameObject>(Root + "/Stage5/MountedFitPrototype.prefab");
+        Require(prefab != null, "Mounted prototype prefab is missing.");
+        var scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
+        new GameObject("EventManager").AddComponent<EventManager>();
+        var ground = GameObject.CreatePrimitive(PrimitiveType.Plane);
+        ground.name = "Mounted NavMesh Ground";
+        ground.transform.localScale = Vector3.one * 2f;
+        ground.layer = 8;
+        var surface = ground.AddComponent<NavMeshSurface>();
+        surface.collectObjects = CollectObjects.All;
+        var mount = (GameObject)PrefabUtility.InstantiatePrefab(prefab);
+        mount.name = "MountedFitPrototype";
+        mount.transform.position = new Vector3(-3f, 0f, 0f);
+        var agent = mount.GetComponent<NavMeshAgent>();
+        var movement = mount.GetComponent<MountedMovementDriver>();
+        Require(agent != null && movement != null, "Mounted movement components are missing.");
+        agent.enabled = false;
+        movement.acceptCommands = true;
+        surface.BuildNavMesh();
+        agent.enabled = false;
+        var target = new GameObject("MountedDestination");
+        target.transform.position = new Vector3(3f, 0f, 0f);
+        var camera = new GameObject("Main Camera").AddComponent<Camera>();
+        camera.tag = "MainCamera";
+        camera.transform.position = new Vector3(0f, 8f, 10f);
+        camera.transform.LookAt(new Vector3(0f, 0f, 0f));
+        camera.orthographic = true; camera.orthographicSize = 6f;
+        var light = new GameObject("Key Light").AddComponent<Light>();
+        light.type = LightType.Directional; light.intensity = 1.2f;
+        light.transform.rotation = Quaternion.Euler(50f, -30f, 0f);
+        EditorSceneManager.SaveScene(scene, scenePath);
+        AssetDatabase.SaveAssets();
+        Debug.Log("Mounted NavMesh review scene saved: " + scenePath);
+    }
+
     static Transform FindOrCreate(string name, Transform parent)
     {
         var existing = parent.Find(name);
