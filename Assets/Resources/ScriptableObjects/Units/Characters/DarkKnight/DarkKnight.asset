@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d3d7baebcf3947ce9b0366a4348bef9, type: 3}
+  m_Name: DarkKnight
+  m_EditorClassIdentifier: 
+  code: dark_knight
+  unitName: Dark Knight
+  description: Variante jogável do cavaleiro sombrio.
+  healthpoints: 85
+  prefab: {fileID: 100100000, guid: 8c1e4f8a6b2d4e7f9a0c1b3d5e6f7081, type: 3}
+  sprite: {fileID: 0}
+  cost:
+  - code: 0
+    amount: 85
+  canProduce: 
+  skills: []
+  fieldOfView: 16
+  attackRange: 1.5
+  attackDamage: 38
+  attackRate: 1.5
+  onSelectSound: {fileID: 0}
+  onMoveValidSound: {fileID: 0}
+  onMoveInvalidSound: {fileID: 0}
+  buildRange: 0
+  buildPower: 0
+  buildRate: 0
