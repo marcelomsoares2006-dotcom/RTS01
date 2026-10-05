@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   code: dark_knight
   unitName: Dark Knight
-  description: Variante jogável do cavaleiro sombrio.
+  description: "Variante jog\xE1vel do cavaleiro sombrio."
   healthpoints: 85
-  prefab: {fileID: 100100000, guid: 8c1e4f8a6b2d4e7f9a0c1b3d5e6f7081, type: 3}
+  prefab: {fileID: 4893885829384556338, guid: 8c1e4f8a6b2d4e7f9a0c1b3d5e6f7081, type: 3}
   sprite: {fileID: 0}
   cost:
   - code: 0

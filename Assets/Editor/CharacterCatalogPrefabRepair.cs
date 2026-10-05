@@ -9,7 +9,9 @@ public static class CharacterCatalogPrefabRepair
         ("Assets/Resources/ScriptableObjects/Units/Characters/Spearman.asset",
             "Assets/Resources/Prefabs/Units/Characters/Spearman.prefab"),
         ("Assets/Resources/ScriptableObjects/Units/Characters/HeraldicKnight.asset",
-            "Assets/Resources/Prefabs/Units/Characters/HeraldicKnight.prefab")
+            "Assets/Resources/Prefabs/Units/Characters/HeraldicKnight.prefab"),
+        ("Assets/Resources/ScriptableObjects/Units/Characters/DarkKnight/DarkKnight.asset",
+            "Assets/Resources/Prefabs/Units/Characters/DarkKnight/DarkKnight.prefab")
     };
 
     [MenuItem("Tools/Character Rigging/Repair Character Catalog Prefabs")]
