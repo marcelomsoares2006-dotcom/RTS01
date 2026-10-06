@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="6" result="Passed" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-06 00:27:22Z" end-time="2026-10-06 00:27:22Z" duration="0,1358155">
+  <test-suite type="TestSuite" id="1000" name="RTSTutorial" fullname="RTSTutorial" runstate="Runnable" testcasecount="64" result="Passed" start-time="2026-10-06 00:27:22Z" end-time="2026-10-06 00:27:22Z" duration="0.135816" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1078" name="EraImperial.EditorTests.dll" fullname="C:/Users/User/Downloads/Era Imperial/EraImperial-UnityRTS-Base/RTS01-Corrigido/Library/ScriptAssemblies/EraImperial.EditorTests.dll" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-10-06 00:27:22Z" end-time="2026-10-06 00:27:22Z" duration="0.117089" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="13664" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestFixture" id="1069" name="ArcherInfrastructureTests" fullname="ArcherInfrastructureTests" classname="ArcherInfrastructureTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-06 00:27:22Z" end-time="2026-10-06 00:27:22Z" duration="0.033307" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1070" name="NewArcherContract_IsBlockedUntilSourceMeshAndLicenseExist" fullname="ArcherInfrastructureTests.NewArcherContract_IsBlockedUntilSourceMeshAndLicenseExist" methodname="NewArcherContract_IsBlockedUntilSourceMeshAndLicenseExist" classname="ArcherInfrastructureTests" runstate="Runnable" seed="730057351" result="Passed" start-time="2026-10-06 00:27:22Z" end-time="2026-10-06 00:27:22Z" duration="0.016304" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1071" name="RangedAttackProfile_UsesRangeAndCooldownGates" fullname="ArcherInfrastructureTests.RangedAttackProfile_UsesRangeAndCooldownGates" methodname="RangedAttackProfile_UsesRangeAndCooldownGates" classname="ArcherInfrastructureTests" runstate="Runnable" seed="189424221" result="Passed" start-time="2026-10-06 00:27:22Z" end-time="2026-10-06 00:27:22Z" duration="0.003099" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1072" name="CharacterCatalogCompatibilityTests" fullname="CharacterCatalogCompatibilityTests" classname="CharacterCatalogCompatibilityTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-06 00:27:22Z" end-time="2026-10-06 00:27:22Z" duration="0.068148" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1073" name="ResourcesCatalog_ContainsRequiredCharactersWithCompatiblePrefabs" fullname="CharacterCatalogCompatibilityTests.ResourcesCatalog_ContainsRequiredCharactersWithCompatiblePrefabs" methodname="ResourcesCatalog_ContainsRequiredCharactersWithCompatiblePrefabs" classname="CharacterCatalogCompatibilityTests" runstate="Runnable" seed="1851909075" result="Passed" start-time="2026-10-06 00:27:22Z" end-time="2026-10-06 00:27:22Z" duration="0.066966" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1074" name="TerrainCompatibilityTests" fullname="TerrainCompatibilityTests" classname="TerrainCompatibilityTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-06 00:27:22Z" end-time="2026-10-06 00:27:22Z" duration="0.013973" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1075" name="LayerRepair_PreservesAuthoredSlotsAndRepairsOnlyMissingSlots" fullname="TerrainCompatibilityTests.LayerRepair_PreservesAuthoredSlotsAndRepairsOnlyMissingSlots" methodname="LayerRepair_PreservesAuthoredSlotsAndRepairsOnlyMissingSlots" classname="TerrainCompatibilityTests" runstate="Runnable" seed="1441292195" result="Passed" start-time="2026-10-06 00:27:22Z" end-time="2026-10-06 00:27:22Z" duration="0.002474" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1077" name="MaterialRepair_ReplacesMissingOrErrorShaderButPreservesSupportedMaterial" fullname="TerrainCompatibilityTests.MaterialRepair_ReplacesMissingOrErrorShaderButPreservesSupportedMaterial" methodname="MaterialRepair_ReplacesMissingOrErrorShaderButPreservesSupportedMaterial" classname="TerrainCompatibilityTests" runstate="Runnable" seed="781599527" result="Passed" start-time="2026-10-06 00:27:22Z" end-time="2026-10-06 00:27:22Z" duration="0.001768" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1076" name="TreeRepair_PreservesValidPrototypesAndEveryInstanceIndex" fullname="TerrainCompatibilityTests.TreeRepair_PreservesValidPrototypesAndEveryInstanceIndex" methodname="TreeRepair_PreservesValidPrototypesAndEveryInstanceIndex" classname="TerrainCompatibilityTests" runstate="Runnable" seed="699404350" result="Passed" start-time="2026-10-06 00:27:22Z" end-time="2026-10-06 00:27:22Z" duration="0.003015" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[Saving results to: C:/Users/User/AppData/LocalLow/minapecheux/RTSTutorial\TestResults.xml
+]]></output>
+        </test-case>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

@@ -1,0 +1,51 @@
+using NUnit.Framework;
+using UnityEngine;
+
+public class AdvancedUnitContractsTests
+{
+    [Test]
+    public void RequiredAdvancedUnitCodes_AreStable()
+    {
+        string[] codes = { "combat_mage", "paladin_healer", "catapult", "crossbow" };
+        Assert.That(codes, Is.Unique);
+        Assert.That(codes, Does.Contain("combat_mage"));
+        Assert.That(codes, Does.Contain("paladin_healer"));
+        Assert.That(codes, Does.Contain("catapult"));
+        Assert.That(codes, Does.Contain("crossbow"));
+    }
+
+    [Test]
+    public void PaladinHealing_IsAreaBasedAndPositive()
+    {
+        AdvancedUnitContract paladin = ScriptableObject.CreateInstance<AdvancedUnitContract>();
+        try
+        {
+            paladin.unitCode = "paladin_healer";
+            paladin.healthPoints = 140;
+            paladin.healAmount = 18;
+            paladin.healRadius = 5f;
+            Assert.That(paladin.IsCombatReady, Is.True);
+            Assert.That(paladin.healAmount, Is.GreaterThan(0));
+            Assert.That(paladin.healRadius, Is.GreaterThan(0f));
+        }
+        finally { Object.DestroyImmediate(paladin); }
+    }
+
+    [Test]
+    public void EraProgression_ResolvesEachEraWithoutChangingTheContract()
+    {
+        EraProgression progression = ScriptableObject.CreateInstance<EraProgression>();
+        try
+        {
+            progression.levels = new[]
+            {
+                new EraStatScale { era = ImperialEra.Medieval, attackDamage = 20 },
+                new EraStatScale { era = ImperialEra.Imperial, attackDamage = 35 }
+            };
+            Assert.That(progression.TryGet(ImperialEra.Medieval, out EraStatScale medieval), Is.True);
+            Assert.That(progression.TryGet(ImperialEra.Imperial, out EraStatScale imperial), Is.True);
+            Assert.That(imperial.attackDamage, Is.GreaterThan(medieval.attackDamage));
+        }
+        finally { Object.DestroyImmediate(progression); }
+    }
+}

@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60bd317caa8a2854db15e038850f289e, type: 3}
+  m_Name: CrossbowBolt
+  m_EditorClassIdentifier: EraImperial.Units.Advanced::EraImperial.Units.Advanced.ProjectileContract
+  code: crossbow_bolt
+  damageType: 2
+  speed: 30
+  maxLifetime: 3
+  ballistic: 0
+  arcHeight: 0
+  prefab:
+    role: projectile prefab
+    expectedAssetPath: Assets/Resources/Prefabs/Projectiles/CrossbowBolt.prefab
+    asset: {fileID: 0}
+    required: 1
+  impactEffect:
+    role: impact effect
+    expectedAssetPath: Assets/Resources/Prefabs/Effects/CrossbowImpact.prefab
+    asset: {fileID: 0}
+    required: 0

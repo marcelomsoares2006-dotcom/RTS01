@@ -1,0 +1,19 @@
+Unity 6000.6.3f1
+Scenario 1: new match Map1
+Scenario 1: worker moved 12,69 meters.
+TestResults/scenario-1-game.png: magenta pixels=0,000%
+TestResults/scenario-1-minimap.png: magenta pixels=0,000%
+Scenario 1: rendered game/minimap; navigation path complete; units=3.
+Scenario 1: PASSED including paused return to menu.
+Scenario 2: new match Map2
+Scenario 2: worker moved 10,89 meters.
+TestResults/scenario-2-game.png: magenta pixels=0,000%
+TestResults/scenario-2-minimap.png: magenta pixels=0,000%
+Scenario 2: rendered game/minimap; navigation path complete; units=3.
+Scenario 2: PASSED including paused return to menu.
+Scenario 3: reload saved Map1
+TestResults/scenario-3-game.png: magenta pixels=0,000%
+TestResults/scenario-3-minimap.png: magenta pixels=0,000%
+Scenario 3: rendered game/minimap; navigation path complete; units=3.
+Scenario 3: PASSED including paused return to menu.
+PLAYMODE_SMOKE_PASSED: 3 scenarios, 0 runtime errors.

@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b06addd59b7c6844caa31b7aff80ad64, type: 3}
+  m_Name: CombatMage
+  m_EditorClassIdentifier: EraImperial.Units.Mage::EraImperial.Units.Mage.CombatMageContract
+  code: combat_mage
+  unitName: Mago de Combate
+  description: "Conjurador de ataque m\xE1gico \xE0 dist\xE2ncia."
+  dataKind: 0
+  cost:
+  - resource: Gold
+    amount: 70
+  - resource: Stone
+    amount: 30
+  fieldOfView: 16
+  visual:
+    prefab:
+      role: prefab
+      expectedAssetPath: Assets/Resources/Prefabs/Units/Characters/CombatMage.prefab
+      asset: {fileID: 0}
+      required: 1
+    meshes:
+    - role: malha-fonte do corpo
+      expectedAssetPath: Assets/CharacterRigging/CombatMage/CombatMage.fbx
+      asset: {fileID: 0}
+      required: 1
+    effects:
+    - role: "efeito de conjura\xE7\xE3o"
+      expectedAssetPath: Assets/Resources/Prefabs/Effects/CombatMageCast.prefab
+      asset: {fileID: 0}
+      required: 1
+    - role: efeito de impacto
+      expectedAssetPath: Assets/Resources/Prefabs/Effects/CombatMageImpact.prefab
+      asset: {fileID: 0}
+      required: 1
+    sockets:
+    - socketName: CastPoint
+      expectedTransformPath: Sockets/CastPoint
+      required: 1
+    - socketName: StaffMount
+      expectedTransformPath: Sockets/StaffMount
+      required: 1
+    animations:
+    - state: Idle
+      animatorParameter: Running
+      clip: {fileID: 0}
+      required: 1
+    - state: Run
+      animatorParameter: Running
+      clip: {fileID: 0}
+      required: 1
+    - state: Cast
+      animatorParameter: Attacking
+      clip: {fileID: 0}
+      required: 1
+    - state: Hit
+      animatorParameter: Hit
+      clip: {fileID: 0}
+      required: 1
+  buildSettingsApproved: 0
+  tiers:
+  - era: 0
+    healthpoints: 22
+    attackDamage: 18
+    attackRange: 8
+    attackCooldown: 2.4
+  - era: 1
+    healthpoints: 28
+    attackDamage: 24
+    attackRange: 9
+    attackCooldown: 2.2
+  - era: 2
+    healthpoints: 34
+    attackDamage: 31
+    attackRange: 10
+    attackCooldown: 2
+  - era: 3
+    healthpoints: 42
+    attackDamage: 40
+    attackRange: 11
+    attackCooldown: 1.8
+  projectile: {fileID: 11400000, guid: 8a51a4ed7a4d8cd4682c594498e61aae, type: 2}

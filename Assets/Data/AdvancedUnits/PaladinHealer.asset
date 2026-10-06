@@ -1,0 +1,111 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3617f43f90dbda14f8750ff50f48f3b1, type: 3}
+  m_Name: PaladinHealer
+  m_EditorClassIdentifier: EraImperial.Units.Paladin::EraImperial.Units.Paladin.PaladinHealerContract
+  code: paladin_healer
+  unitName: Paladino Curador
+  description: Guerreiro corpo a corpo que cura aliados ao redor.
+  dataKind: 0
+  cost:
+  - resource: Gold
+    amount: 80
+  - resource: Wood
+    amount: 20
+  fieldOfView: 16
+  visual:
+    prefab:
+      role: prefab
+      expectedAssetPath: Assets/Resources/Prefabs/Units/Characters/PaladinHealer.prefab
+      asset: {fileID: 0}
+      required: 1
+    meshes:
+    - role: malha-fonte do corpo
+      expectedAssetPath: Assets/CharacterRigging/PaladinHealer/PaladinHealer.fbx
+      asset: {fileID: 0}
+      required: 1
+    effects:
+    - role: efeito de aura de cura
+      expectedAssetPath: Assets/Resources/Prefabs/Effects/PaladinHealAura.prefab
+      asset: {fileID: 0}
+      required: 1
+    sockets:
+    - socketName: WeaponMount
+      expectedTransformPath: Sockets/WeaponMount
+      required: 1
+    - socketName: ShieldMount
+      expectedTransformPath: Sockets/ShieldMount
+      required: 1
+    - socketName: HealAuraCenter
+      expectedTransformPath: Sockets/HealAuraCenter
+      required: 1
+    animations:
+    - state: Idle
+      animatorParameter: Running
+      clip: {fileID: 0}
+      required: 1
+    - state: Run
+      animatorParameter: Running
+      clip: {fileID: 0}
+      required: 1
+    - state: Attack
+      animatorParameter: Attacking
+      clip: {fileID: 0}
+      required: 1
+    - state: Hit
+      animatorParameter: Hit
+      clip: {fileID: 0}
+      required: 1
+    - state: Heal
+      animatorParameter: Healing
+      clip: {fileID: 0}
+      required: 1
+  buildSettingsApproved: 0
+  tiers:
+  - era: 0
+    healthpoints: 70
+    attackDamage: 16
+    attackRange: 1.5
+    attackCooldown: 1.8
+    healAmount: 6
+    healRadius: 4
+    healCooldown: 3
+    maxHealPerTarget: 18
+  - era: 1
+    healthpoints: 90
+    attackDamage: 20
+    attackRange: 1.5
+    attackCooldown: 1.7
+    healAmount: 9
+    healRadius: 4.5
+    healCooldown: 2.8
+    maxHealPerTarget: 27
+  - era: 2
+    healthpoints: 115
+    attackDamage: 25
+    attackRange: 1.5
+    attackCooldown: 1.6
+    healAmount: 13
+    healRadius: 5
+    healCooldown: 2.5
+    maxHealPerTarget: 39
+  - era: 3
+    healthpoints: 145
+    attackDamage: 31
+    attackRange: 1.5
+    attackCooldown: 1.5
+    healAmount: 18
+    healRadius: 6
+    healCooldown: 2.2
+    maxHealPerTarget: 54
+  healCapWindowSeconds: 10
+  canHealSelf: 0

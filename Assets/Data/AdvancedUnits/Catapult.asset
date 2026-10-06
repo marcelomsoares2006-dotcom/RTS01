@@ -1,0 +1,101 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f219d062d7e3d234d92a83bf3c18947c, type: 3}
+  m_Name: Catapult
+  m_EditorClassIdentifier: EraImperial.Units.Siege::EraImperial.Units.Siege.CatapultContract
+  code: catapult
+  unitName: Catapulta
+  description: "Artilharia pesada de cerco, com ataque de \xE1rea e alcance m\xEDnimo."
+  dataKind: 0
+  cost:
+  - resource: Gold
+    amount: 120
+  - resource: Wood
+    amount: 100
+  - resource: Stone
+    amount: 40
+  fieldOfView: 22
+  visual:
+    prefab:
+      role: prefab
+      expectedAssetPath: Assets/Resources/Prefabs/Units/Characters/Catapult.prefab
+      asset: {fileID: 0}
+      required: 1
+    meshes:
+    - role: malha-fonte da catapulta
+      expectedAssetPath: Assets/CharacterRigging/Catapult/Catapult.fbx
+      asset: {fileID: 0}
+      required: 1
+    effects:
+    - role: efeito de disparo
+      expectedAssetPath: Assets/Resources/Prefabs/Effects/CatapultFire.prefab
+      asset: {fileID: 0}
+      required: 1
+    sockets:
+    - socketName: ProjectileSpawn
+      expectedTransformPath: Sockets/ProjectileSpawn
+      required: 1
+    - socketName: ArmPivot
+      expectedTransformPath: Sockets/ArmPivot
+      required: 1
+    animations:
+    - state: Idle
+      animatorParameter: Running
+      clip: {fileID: 0}
+      required: 1
+    - state: Move
+      animatorParameter: Running
+      clip: {fileID: 0}
+      required: 1
+    - state: Fire
+      animatorParameter: Attacking
+      clip: {fileID: 0}
+      required: 1
+    - state: Reload
+      animatorParameter: Reloading
+      clip: {fileID: 0}
+      required: 1
+  buildSettingsApproved: 0
+  tiers:
+  - era: 0
+    healthpoints: 60
+    attackDamage: 45
+    attackRange: 20
+    attackCooldown: 6
+    minimumRange: 8
+    radialDamage: 25
+    blastRadius: 3
+  - era: 1
+    healthpoints: 80
+    attackDamage: 60
+    attackRange: 22
+    attackCooldown: 5.5
+    minimumRange: 8
+    radialDamage: 34
+    blastRadius: 3.5
+  - era: 2
+    healthpoints: 105
+    attackDamage: 78
+    attackRange: 24
+    attackCooldown: 5
+    minimumRange: 8
+    radialDamage: 45
+    blastRadius: 4
+  - era: 3
+    healthpoints: 135
+    attackDamage: 100
+    attackRange: 26
+    attackCooldown: 4.5
+    minimumRange: 8
+    radialDamage: 58
+    blastRadius: 4.5
+  projectile: {fileID: 11400000, guid: 00f0c15c24086af4ab3575c9afe2a4f0, type: 2}

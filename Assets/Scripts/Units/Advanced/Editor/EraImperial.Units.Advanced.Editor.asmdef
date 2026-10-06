@@ -1,0 +1,20 @@
+{
+    "name": "EraImperial.Units.Advanced.Editor",
+    "rootNamespace": "EraImperial.Units.Advanced.Editor",
+    "references": [
+        "EraImperial.Units.Advanced",
+        "EraImperial.Units.Mage",
+        "EraImperial.Units.Paladin",
+        "EraImperial.Units.Siege",
+        "EraImperial.Units.Crossbow"
+    ],
+    "includePlatforms": ["Editor"],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

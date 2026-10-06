@@ -1,0 +1,67 @@
+using System;
+using UnityEngine;
+
+public enum ImperialEra
+{
+    Ancient = 1,
+    Classical = 2,
+    Medieval = 3,
+    Imperial = 4
+}
+
+[CreateAssetMenu(fileName = "AdvancedUnitContract", menuName = "Era Imperial/Units/Advanced Unit Contract")]
+public sealed class AdvancedUnitContract : ScriptableObject
+{
+    public string unitCode;
+    public string displayName;
+    public ImperialEra minimumEra = ImperialEra.Medieval;
+    public int healthPoints = 100;
+    public int attackDamage = 10;
+    public float attackRange = 2f;
+    public float attackRate = 1f;
+    public int healAmount;
+    public float healRadius;
+    public bool isSiege;
+    public bool hasSourceMesh;
+    public bool hasPrefab;
+
+    public bool IsCombatReady => !string.IsNullOrWhiteSpace(unitCode)
+        && healthPoints > 0 && attackDamage >= 0 && attackRange >= 0f && attackRate > 0f;
+
+    public bool IsVisualIntegrationReady => hasSourceMesh && hasPrefab;
+}
+
+[Serializable]
+public struct EraStatScale
+{
+    public ImperialEra era;
+    public int healthPoints;
+    public int attackDamage;
+    public float attackRange;
+    public float attackRate;
+    public int healAmount;
+}
+
+[CreateAssetMenu(fileName = "EraProgression", menuName = "Era Imperial/Units/Era Progression")]
+public sealed class EraProgression : ScriptableObject
+{
+    public EraStatScale[] levels;
+
+    public bool TryGet(ImperialEra era, out EraStatScale result)
+    {
+        if (levels != null)
+        {
+            foreach (EraStatScale level in levels)
+            {
+                if (level.era == era)
+                {
+                    result = level;
+                    return true;
+                }
+            }
+        }
+
+        result = default;
+        return false;
+    }
+}

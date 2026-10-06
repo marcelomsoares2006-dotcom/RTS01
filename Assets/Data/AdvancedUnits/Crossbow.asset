@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c8608913335b8442b68fc3302db860d, type: 3}
+  m_Name: Crossbow
+  m_EditorClassIdentifier: EraImperial.Units.Crossbow::EraImperial.Units.Crossbow.CrossbowContract
+  code: crossbow
+  unitName: Balestra
+  description: Ataque perfurante de longo alcance.
+  dataKind: 0
+  cost:
+  - resource: Gold
+    amount: 60
+  - resource: Wood
+    amount: 40
+  fieldOfView: 20
+  visual:
+    prefab:
+      role: prefab
+      expectedAssetPath: Assets/Resources/Prefabs/Units/Characters/Crossbow.prefab
+      asset: {fileID: 0}
+      required: 1
+    meshes:
+    - role: malha-fonte da balestra
+      expectedAssetPath: Assets/CharacterRigging/Crossbow/Crossbow.fbx
+      asset: {fileID: 0}
+      required: 1
+    effects: []
+    sockets:
+    - socketName: BoltSpawn
+      expectedTransformPath: Sockets/BoltSpawn
+      required: 1
+    - socketName: WeaponMount
+      expectedTransformPath: Sockets/WeaponMount
+      required: 1
+    animations:
+    - state: Idle
+      animatorParameter: Running
+      clip: {fileID: 0}
+      required: 1
+    - state: Run
+      animatorParameter: Running
+      clip: {fileID: 0}
+      required: 1
+    - state: Shoot
+      animatorParameter: Attacking
+      clip: {fileID: 0}
+      required: 1
+    - state: Reload
+      animatorParameter: Reloading
+      clip: {fileID: 0}
+      required: 1
+  buildSettingsApproved: 0
+  tiers:
+  - era: 0
+    healthpoints: 28
+    attackDamage: 22
+    attackRange: 14
+    attackCooldown: 3.2
+    armorPenetration: 0.15
+  - era: 1
+    healthpoints: 35
+    attackDamage: 29
+    attackRange: 15.5
+    attackCooldown: 2.9
+    armorPenetration: 0.25
+  - era: 2
+    healthpoints: 43
+    attackDamage: 37
+    attackRange: 17
+    attackCooldown: 2.6
+    armorPenetration: 0.35
+  - era: 3
+    healthpoints: 52
+    attackDamage: 47
+    attackRange: 18.5
+    attackCooldown: 2.3
+    armorPenetration: 0.5
+  projectile: {fileID: 11400000, guid: 3d984b8b9ec634c49b2b1fadad23b340, type: 2}

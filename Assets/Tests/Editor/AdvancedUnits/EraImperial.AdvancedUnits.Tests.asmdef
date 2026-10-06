@@ -1,0 +1,13 @@
+{
+    "name": "EraImperial.AdvancedUnits.Tests",
+    "references": [
+        "EraImperial.Units.Advanced",
+        "EraImperial.Units.Mage",
+        "EraImperial.Units.Paladin",
+        "EraImperial.Units.Siege",
+        "EraImperial.Units.Crossbow",
+        "EraImperial.Units.Advanced.Editor"
+    ],
+    "includePlatforms": ["Editor"],
+    "optionalUnityReferences": ["TestAssemblies"]
+}

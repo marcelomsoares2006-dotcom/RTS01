@@ -1,0 +1,14 @@
+{
+    "name": "EraImperial.Units.Mage",
+    "rootNamespace": "EraImperial.Units.Mage",
+    "references": ["EraImperial.Units.Advanced"],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
