@@ -1,0 +1,94 @@
+Unity 6000.6.3f1 - 2026-10-06 15:51
+PASS Map1 encontrado
+Partida nova em Map1 iniciada
+PASS Globals.CHARACTER_DATA contem 'catapult'
+PASS Ponto inicial no NavMesh
+PASS Catapulta instanciada com CharacterManager, CatapultCombatController, AdvancedUnitEraBinding e AdvancedUnitAnimatorDriver
+PASS Catapulta posicionada no NavMesh
+PASS Visual da Catapulta presente sob Mesh
+PASS projectileSpawn real (filho do osso Arm)
+PASS Catapulta nasce com os valores da era Ancient: vida 60, dano 45, alcance 20
+Captura playmode-front: pixels magenta = 0
+Captura playmode-back: pixels magenta = 0
+Captura playmode-side: pixels magenta = 0
+PASS Estado inicial do Animator: Idle
+PASS worker (dono 1) posicionado no NavMesh
+Alvo a 5,0 m (alcance minimo 8 m)
+PASS TryHandleAttack trata o ataque (nunca dano instantaneo)
+PASS Nao dispara abaixo do alcance minimo (5 m < 8 m): sem tiro, sem projetil, sem dano
+Alvo a 23,5 m (alcance maximo 20 m)
+PASS Nao dispara alem do alcance maximo (23,5 m > 20 m)
+PASS worker (dono 1) posicionado no NavMesh
+PASS worker (dono 1) posicionado no NavMesh
+PASS worker (dono 1) posicionado no NavMesh
+PASS worker (dono 0) posicionado no NavMesh
+Cluster: alvo direto a 14,0 m; vizinhos inimigos a 1,50 / 2,40 / 5,50 m; aliado a 1,00 m; raio da explosao 3 m
+PASS Geometria do teste: 2 inimigos dentro do raio (queda), 1 fora, 1 aliado dentro
+PASS Dentro do alcance: a catapulta inicia o disparo (animacao Fire)
+PASS Sem dano nem projetil enquanto o braco ainda sobe (dano nao e instantaneo)
+Pedra saiu 0,42 s depois do inicio (releaseDelay 0,40 s); socket em (37.44, 32.65, 46.20) (inicio (37.44, 31.17, 44.57))
+PASS Pedra sai no instante configurado (releaseDelay)
+PASS Na saida o ProjectileSpawn acompanhou o braco: altura 1,17 -> 2,65 m
+PASS Animator em Fire na saida da pedra
+PASS Projetil CatapultBoulder em voo (AdvancedProjectile adicionado em runtime ao prefab sem scripts)
+PASS O projetil nasce no socket ProjectileSpawn (na concha)
+PASS Efeito de disparo (evento CatapultRelease do clipe) instanciado
+PASS Efeito de disparo (poeira/fumaca) no ProjectileSpawn, com particulas ativas
+Captura playmode-fire: pixels magenta = 0
+Voo: 53 amostras em 1,02 s; apice 6,7 m acima da reta origem-alvo; indice do apice 20
+PASS Projetil balistico em arco: sobe, passa por um apice e desce (apice > 4 m acima da reta)
+PASS Altura monotonicamente crescente ate o apice e decrescente depois
+PASS Projetil termina perto do alvo (erro horizontal 0,05 m)
+PASS Efeito de impacto instanciado no ponto de impacto
+Captura playmode-impact-flash: pixels magenta = 0
+PASS Efeito de impacto com particulas ativas (poeira, fragmentos, flash)
+Captura playmode-impact: pixels magenta = 0
+Dano: direto 45; radial 12 (esperado 12) e 5 (esperado 5); fora do raio 0; aliado 0; CatapultCombatController.LastDirectDamage=45, LastRadialHits=2
+PASS Dano direto no alvo = dano da era (45)
+PASS Dano radial com queda linear com a distancia nos vizinhos inimigos (mais perto, mais dano)
+PASS Inimigo fora do raio da explosao nao sofre dano
+PASS Aliado dentro do raio nao sofre dano
+PASS Registro do controlador: 1 impacto direto e acertos radiais nos vizinhos
+PASS Um unico disparo ate aqui
+PASS Respeita a recarga: novo pedido logo apos o tiro nao dispara
+PASS Ainda em recarga 5,7 s depois do tiro: nao dispara
+PASS Recarga de 6,0 s concluida: dispara de novo
+Sequencia de estados do Animator: Fire > Reload > Idle > Fire > Reload > Idle
+PASS Animator: Fire > Reload > Idle em cada disparo
+PASS Nenhum projetil restante
+PASS Dano recebido aciona o trigger Damaged e o estado Hit
+PASS Destino de caminhada no NavMesh
+PASS Comando de movimento aceito
+Movimento: 3,8 m em 2,5 s; velocidade do agente 2,50 m/s; parametro Speed 2,48
+PASS Catapulta lenta: andou 3,8 m, Speed 2,48 (agente com velocidade maxima 2,5)
+PASS Animator em Move
+PASS As rodas giram durante o movimento (38,8 graus em 0,12 s)
+Captura playmode-move: pixels magenta = 0
+PASS Parada: Speed volta a ~0
+PASS Era Classical: vida 80, dano 60, alcance 22 (contrato: 80/60/22)
+PASS Era Medieval: vida 105, dano 78, alcance 24 (contrato: 105/78/24)
+PASS Era Imperial: vida 135, dano 100, alcance 26 (contrato: 135/100/26)
+PASS Volta a Ancient
+PASS worker (dono 1) posicionado no NavMesh
+Behavior tree reativado; inimigo parado a 13 m
+PASS O behavior tree (UnitManager.Attack -> IAttackHandler) conduziu um disparo da catapulta
+PASS Dano do disparo do BT = 45
+PASS LODGroup presente na unidade em jogo
+PASS 3 renderers de LOD na unidade em jogo
+LOD em jogo, zoom ortografico 8: pixels LOD0/1/2 = 521/0/0 -> LOD0
+LOD em jogo, zoom ortografico 18: pixels LOD0/1/2 = 0/84/0 -> LOD1
+LOD em jogo, zoom ortografico 26: pixels LOD0/1/2 = 0/0/38 -> LOD2
+PASS Troca de LOD pelo zoom da camera do jogo: 8 > LOD0, 18 > LOD1, 26 > LOD2
+PASS A unidade e removida ao zerar a vida
+PASS AdvancedUnitDeathEffect instanciou o prefab de morte
+PASS Prefab de morte no lugar e na orientacao da unidade
+PASS A animacao Destroy toca sozinha desde o inicio
+PASS Poeira do colapso ativa
+Captura playmode-destroy-start: pixels magenta = 0
+Captura playmode-destroy-mid: pixels magenta = 0
+PASS Destroy chegou ao fim
+PASS A estrutura desabou: o braco esta 0,86 m do lugar original
+Captura playmode-destroy-end: pixels magenta = 0
+PASS Permanece desabada (pose final mantida)
+PASS 0 erros de runtime no Console
+CATAPULT_PLAYMODE_PASSED

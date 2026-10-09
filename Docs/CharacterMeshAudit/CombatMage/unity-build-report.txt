@@ -1,0 +1,14 @@
+CombatMage - Unity build report (2026-10-06 16:04)
+- Mapeamento humanoide automatico coincide com a tabela esperada (22 ossos).
+- Clip Idle: 8,400s, loop=True, humanoid=True
+- Clip Walk: 1,042s, loop=True, humanoid=True
+- Clip Run: 0,625s, loop=True, humanoid=True
+- Clip Cast: CombatMageRelease em 0,767s (esperado 0,767s), duracao 1,767s
+- Clip Cast: 1,767s, loop=False, humanoid=True
+- Clip Hit: 1,033s, loop=False, humanoid=True
+- Clip Death: 5,767s, loop=False, humanoid=True
+- CombatMage_Staff: rotacao de importacao identidade (0,00 graus)
+- Cajado: StaffMount pos local (-0.012, 0.069, 0.005), rot local (1.5, 15.4, 190.7) (mao direita)
+- CharacterData registrado: Assets/Resources/ScriptableObjects/Units/Characters/CombatMage.asset
+Wrapper: Assets/Resources/Prefabs/Units/Characters/CombatMage.prefab
+CharacterData: Assets/Resources/ScriptableObjects/Units/Characters/CombatMage.asset code=combat_mage

@@ -1,0 +1,254 @@
+PASS LICENSE.md documenta o modelo procedural (obra do projeto, sem terceiros)
+PASS Nenhuma entrada de terceiros em Tools/CharacterRigging/Inputs/Catapult
+PASS Avatar Generic valido (Catapult.fbx)
+PASS Clip Idle: Generic copiando o avatar da Catapult
+PASS Clip Idle: importado, 3,00s
+PASS Clip Idle: loop = True
+PASS Clip Idle: curvas nos ossos Arm e Wheel_*
+PASS Clip Move: Generic copiando o avatar da Catapult
+PASS Clip Move: importado, 1,13s
+PASS Clip Move: loop = True
+PASS Clip Move: curvas nos ossos Arm e Wheel_*
+PASS Clip Reload: Generic copiando o avatar da Catapult
+PASS Clip Reload: importado, 2,57s
+PASS Clip Reload: loop = False
+PASS Clip Reload: curvas nos ossos Arm e Wheel_*
+PASS Clip Fire: Generic copiando o avatar da Catapult
+PASS Clip Fire: importado, 1,10s
+PASS Clip Fire: loop = False
+PASS Clip Fire: curvas nos ossos Arm e Wheel_*
+PASS Clip Hit: Generic copiando o avatar da Catapult
+PASS Clip Hit: importado, 0,47s
+PASS Clip Hit: loop = False
+PASS Clip Hit: curvas nos ossos Arm e Wheel_*
+PASS Clip Destroy: Generic copiando o avatar da Catapult
+PASS Clip Destroy: importado, 2,37s
+PASS Clip Destroy: loop = False
+PASS Clip Destroy: curvas nos ossos Arm e Wheel_*
+PASS Fire: evento CatapultRelease em 0,400s de 1,100s
+PASS CatapultVisual.prefab existe
+PASS Animator com avatar, controller e root motion desligado
+PASS CatapultAnimationEvents no GameObject do Animator
+PASS Visual chega ao Unity sem rotacao de importacao
+PASS Osso Root presente
+PASS Osso Arm presente
+PASS Osso Wheel_FL presente
+PASS Osso Wheel_FR presente
+PASS Osso Wheel_BL presente
+PASS Osso Wheel_BR presente
+PASS Osso Winch presente
+PASS ProjectileSpawn existe e e filho do osso Arm
+PASS LODGroup com 3 niveis
+PASS 3 SkinnedMeshRenderer (LOD0/1/2): Catapult_LOD0, Catapult_LOD1, Catapult_LOD2
+INFO Triangulos LOD0/1/2: 4976 / 1036 / 408
+PASS LODs dentro do orcamento (<= 8k/3k/1k) e estritamente decrescentes: 4976 > 1036 > 408
+PASS Catapult_LOD0: 9 ossos, rootBone ok, vertices sem peso normalizado = 0, >4 influencias = 0
+PASS Catapult_LOD0: UVs validas (finitas, [0,1], triangulos degenerados em UV 0/4976)
+PASS Catapult_LOD0: normais presentes
+PASS Catapult_LOD0: material valido Catapult_Wood (Standard)
+PASS Catapult_LOD0: material valido Catapult_Iron (Standard)
+PASS Catapult_LOD0: material valido Catapult_Rope (Standard)
+PASS Catapult_LOD0: material valido Catapult_Stone (Standard)
+PASS Catapult_LOD0: 4 materiais (madeira, ferro, corda, pedra; o LOD2 dispensa o ferro)
+PASS Catapult_LOD1: 9 ossos, rootBone ok, vertices sem peso normalizado = 0, >4 influencias = 0
+PASS Catapult_LOD1: UVs validas (finitas, [0,1], triangulos degenerados em UV 0/1036)
+PASS Catapult_LOD1: normais presentes
+PASS Catapult_LOD1: material valido Catapult_Wood (Standard)
+PASS Catapult_LOD1: material valido Catapult_Rope (Standard)
+PASS Catapult_LOD1: material valido Catapult_Iron (Standard)
+PASS Catapult_LOD1: material valido Catapult_Stone (Standard)
+PASS Catapult_LOD1: 4 materiais (madeira, ferro, corda, pedra; o LOD2 dispensa o ferro)
+PASS Catapult_LOD2: 9 ossos, rootBone ok, vertices sem peso normalizado = 0, >4 influencias = 0
+PASS Catapult_LOD2: UVs validas (finitas, [0,1], triangulos degenerados em UV 0/408)
+PASS Catapult_LOD2: normais presentes
+PASS Catapult_LOD2: material valido Catapult_Wood (Standard)
+PASS Catapult_LOD2: material valido Catapult_Rope (Standard)
+PASS Catapult_LOD2: material valido Catapult_Stone (Standard)
+PASS Catapult_LOD2: 3 materiais (madeira, ferro, corda, pedra; o LOD2 dispensa o ferro)
+INFO Tamanho (LOD0, mundo, pose armada): (2.30, 2.05, 3.23) m
+PASS Dimensoes ~3,2 x 2,2 x ~2-2,6 m (comprimento ao longo de Z = frente)
+PASS Origem no chao (base em y=0,000)
+PASS Estados: Idle, Move, Fire, Reload, Hit
+PASS Parametro Speed
+PASS Parametro Fire
+PASS Parametro Damaged
+PASS Parametro Running
+PASS Parametro Attacking
+PASS Parametro Hit
+PASS Tipos: Fire/Damaged trigger, Speed float
+PASS Fire (trigger) leva a Fire
+PASS Fluxo Fire -> Reload -> Idle
+PASS Speed alterna Idle <-> Move
+PASS Damaged leva a Hit e volta a Idle
+PASS Move acompanha o parametro Speed (rodas giram conforme a velocidade)
+PASS Cada estado usa o clipe certo
+INFO hierarquia  pos=(0.00, 0.00, 0.00) rot=(0, 0, 0) escala=(1.00, 1.00, 1.00)
+INFO hierarquia CatapultArmature pos=(0.00, 0.00, 0.00) rot=(270, 0, 0) escala=(1.00, 1.00, 1.00)
+INFO hierarquia CatapultArmature/Root pos=(0.00, 0.00, 0.00) rot=(270, 0, 0) escala=(1.00, 1.00, 1.00)
+INFO hierarquia CatapultArmature/Root/Arm pos=(0.00, 1.20, 0.10) rot=(282, 180, 180) escala=(1.00, 1.00, 1.00)
+INFO hierarquia CatapultArmature/Root/Arm/Ammo pos=(0.00, 1.17, -1.35) rot=(270, 0, 0) escala=(1.00, 1.00, 1.00)
+INFO hierarquia CatapultArmature/Root/Arm/ProjectileSpawn pos=(0.00, 1.17, -1.35) rot=(270, 0, 0) escala=(1.00, 1.00, 1.00)
+INFO hierarquia CatapultArmature/Root/Rope pos=(0.00, 0.85, -1.10) rot=(80, 0, 0) escala=(1.00, 1.00, 1.00)
+INFO hierarquia CatapultArmature/Root/Wheel_BL pos=(-1.03, 0.46, -1.00) rot=(270, 0, 0) escala=(1.00, 1.00, 1.00)
+INFO hierarquia CatapultArmature/Root/Wheel_BR pos=(1.03, 0.46, -1.00) rot=(270, 0, 0) escala=(1.00, 1.00, 1.00)
+INFO hierarquia CatapultArmature/Root/Wheel_FL pos=(-1.03, 0.46, 1.00) rot=(270, 0, 0) escala=(1.00, 1.00, 1.00)
+INFO hierarquia CatapultArmature/Root/Wheel_FR pos=(1.03, 0.46, 1.00) rot=(270, 0, 0) escala=(1.00, 1.00, 1.00)
+INFO hierarquia CatapultArmature/Root/Winch pos=(0.00, 0.77, -1.12) rot=(270, 0, 0) escala=(1.00, 1.00, 1.00)
+INFO Fire curva: path='CatapultArmature' prop=m_LocalRotation.x
+INFO Fire curva: path='CatapultArmature' prop=m_LocalRotation.y
+INFO Fire curva: path='CatapultArmature' prop=m_LocalRotation.z
+INFO Fire curva: path='CatapultArmature' prop=m_LocalRotation.w
+INFO Fire curva: path='CatapultArmature/Root' prop=m_LocalRotation.x
+INFO Fire curva: path='CatapultArmature/Root' prop=m_LocalRotation.y
+PASS Move: Wheel_FL gira 90 graus em um quarto do ciclo
+PASS ProjectileSpawn acompanha o braco: y 1,17 (armada) -> 2,64 (disparo); pivo parado
+INFO ProjectileSpawn no disparo: (0.00, 2.64, 0.32); no repouso: (0.00, 1.17, -1.34)
+PASS ProjectileSpawn vai de tras (z=-1,34) para perto da vertical, mais a frente (z=0,32): braco varre para +Z (frente)
+PASS Destroy: o braco termina 0,86 m do lugar de repouso (desabado)
+PASS Deformacao Fire@0,40s: vertices do osso Arm (1044) se deslocam ate 2,56 m (minimo 1,20)
+PASS Deformacao Fire@0,40s: vertices do osso Ammo (240) se deslocam ate 2,41 m (minimo 1,20)
+PASS Deformacao Reload@1,00s: vertices do osso Arm (1044) se deslocam ate 1,89 m (minimo 0,80)
+PASS Deformacao Reload@1,00s: vertices do osso Winch (540) se deslocam ate 0,06 m (minimo 0,01)
+PASS Deformacao Move@0,28s: vertices do osso Wheel_FL (912) se deslocam ate 0,66 m (minimo 0,25)
+PASS Deformacao Move@0,28s: vertices do osso Wheel_BR (912) se deslocam ate 0,65 m (minimo 0,25)
+PASS Deformacao Hit@0,07s: vertices do osso Root (3142) se deslocam ate 0,02 m (minimo 0,00)
+PASS Deformacao Destroy@2,30s: vertices do osso Arm (1044) se deslocam ate 3,76 m (minimo 1,00)
+PASS Deformacao Destroy@2,30s: vertices do osso Wheel_FR (912) se deslocam ate 1,28 m (minimo 0,80)
+PASS Deformacao Destroy@2,30s: vertices do osso Wheel_BR (912) se deslocam ate 1,39 m (minimo 0,80)
+PASS Deformacao Destroy@2,30s: vertices do osso Root (3142) se deslocam ate 0,75 m (minimo 0,10)
+PASS Render front: ok (pixels distintos 406167, magenta 0)
+PASS Render back: ok (pixels distintos 404029, magenta 0)
+PASS Render side: ok (pixels distintos 362542, magenta 0)
+PASS Render q-front: ok (pixels distintos 514350, magenta 0)
+PASS Render q-rear: ok (pixels distintos 513620, magenta 0)
+PASS LOD0: renderiza (pixels distintos 514350, magenta 0)
+PASS LOD1: renderiza (pixels distintos 514580, magenta 0)
+PASS LOD2: renderiza (pixels distintos 514854, magenta 0)
+INFO LOD screen heights: 0,330, 0,150, 0,000
+PASS LODs com limiares decrescentes
+PASS Pose Fire@0,00s: renderiza (pixels distintos 346068, magenta 0)
+PASS Pose Fire@0,25s: renderiza (pixels distintos 352575, magenta 0)
+PASS Pose Fire@0,40s: renderiza (pixels distintos 351041, magenta 0)
+PASS Pose Fire@0,50s: renderiza (pixels distintos 350054, magenta 0)
+PASS Pose Reload@0,15s: renderiza (pixels distintos 350669, magenta 0)
+PASS Pose Reload@1,00s: renderiza (pixels distintos 351822, magenta 0)
+PASS Pose Reload@1,80s: renderiza (pixels distintos 346152, magenta 0)
+PASS Pose Reload@2,55s: renderiza (pixels distintos 346066, magenta 0)
+PASS Pose Hit@0,08s: renderiza (pixels distintos 514432, magenta 0)
+PASS Pose Move@0,30s: renderiza (pixels distintos 514461, magenta 0)
+PASS Pose Destroy@0,45s: renderiza (pixels distintos 514848, magenta 0)
+PASS Pose Destroy@1,00s: renderiza (pixels distintos 513447, magenta 0)
+PASS Pose Destroy@2,35s: renderiza (pixels distintos 513262, magenta 0)
+PASS Prefabs CatapultBoulder, CatapultFire e CatapultImpact existem
+PASS Projetil sem scripts (AdvancedProjectile e adicionado em runtime)
+PASS Projetil e um prefab separado (a malha da pedra nao faz parte do wrapper)
+PASS Pedra com ~0,4 m: (0.41, 0.40, 0.37) m
+PASS Pedra low-poly: 320 triangulos
+PASS Material valido: CatapultBoulder/CatapultBoulder -> Fx_Smoke (Legacy Shaders/Particles/Alpha Blended)
+PASS Material valido: CatapultBoulder/Stone -> Catapult_Stone (Standard)
+PASS Material valido: CatapultFire/Dust -> Fx_Smoke (Legacy Shaders/Particles/Alpha Blended)
+PASS Material valido: CatapultFire/Flash -> Fx_Flash (Legacy Shaders/Particles/Additive)
+PASS Material valido: CatapultImpact/Flash -> Fx_Flash (Legacy Shaders/Particles/Additive)
+PASS Material valido: CatapultImpact/Dust -> Fx_Smoke (Legacy Shaders/Particles/Alpha Blended)
+PASS Material valido: CatapultImpact/Debris -> Catapult_Stone (Standard)
+PASS Material valido: CatapultImpact/Sparks -> Fx_Spark (Legacy Shaders/Particles/Additive)
+PASS Material valido: CatapultCollapseDust/Dust -> Fx_Smoke (Legacy Shaders/Particles/Alpha Blended)
+PASS Material valido: CatapultCollapseDust/Splinters -> Catapult_Wood (Standard)
+PASS CatapultFire: 2 sistemas de particulas com rajada
+PASS CatapultFire/Dust: material e malha atribuidos
+PASS CatapultFire/Flash: material e malha atribuidos
+PASS CatapultFire: vida maxima 3,1 s (< 6 s)
+PASS CatapultImpact: 4 sistemas de particulas com rajada
+PASS CatapultImpact/Flash: material e malha atribuidos
+PASS CatapultImpact/Dust: material e malha atribuidos
+PASS CatapultImpact/Debris: material e malha atribuidos
+PASS CatapultImpact/Sparks: material e malha atribuidos
+PASS CatapultImpact: vida maxima 4,2 s (< 6 s)
+PASS Impacto: poeira, fragmentos e flash
+PASS Textura de particula Fx_Smoke com alfa
+PASS Textura de particula Fx_Flash com alfa
+PASS Textura de particula Fx_Spark com alfa
+PASS Catapult.prefab (wrapper da unidade) existe
+PASS Wrapper com tag Unit e layer 12
+PASS Wrapper tem CharacterManager
+PASS Wrapper tem CharacterBT
+PASS Wrapper tem FogRendererToggler
+PASS Wrapper tem AdvancedUnitEraBinding
+PASS Wrapper tem AdvancedUnitAnimatorDriver
+PASS Wrapper tem CatapultCombatController
+PASS Wrapper tem AdvancedUnitDeathEffect
+PASS BoxCollider cobre a catapulta: centro (0.00, 1.15, 0.00) tamanho (2.30, 2.30, 3.30)
+PASS NavMeshAgent lento: velocidade 2,5, raio 1, altura 2,2
+PASS AudioSource e Mesh/MinimapIcon presentes
+PASS Anel de time presente
+PASS Anel do time com raio ~ pegada: diametro 3,00 m
+PASS CharacterManager.meshRenderer e animator atribuidos
+PASS selectionCircle e fov atribuidos
+PASS CatapultCombatController: contrato, animator, projectileSpawn, releaseDelay=0,40, sourceHeight=1,30
+PASS projectileSpawn aponta para o socket real
+PASS releaseDelay (0,400s) = instante do evento de disparo do clipe (0,400s)
+PASS AdvancedUnitEraBinding.contract = Catapult.asset
+PASS AdvancedUnitAnimatorDriver.animator atribuido
+PASS AdvancedUnitDeathEffect.deathPrefab = CatapultDestroyed.prefab
+PASS Prefab de morte toca Destroy sozinho (estado padrao)
+PASS Prefab de morte tem poeira do colapso
+PASS Material valido: Catapult wrapper/MinimapIcon -> MinimapIcon (Unlit/Color)
+PASS Material valido: Catapult wrapper/Catapult_LOD0 -> Catapult_Wood (Standard)
+PASS Material valido: Catapult wrapper/Catapult_LOD0 -> Catapult_Iron (Standard)
+PASS Material valido: Catapult wrapper/Catapult_LOD0 -> Catapult_Rope (Standard)
+PASS Material valido: Catapult wrapper/Catapult_LOD0 -> Catapult_Stone (Standard)
+PASS Material valido: Catapult wrapper/Catapult_LOD1 -> Catapult_Wood (Standard)
+PASS Material valido: Catapult wrapper/Catapult_LOD1 -> Catapult_Rope (Standard)
+PASS Material valido: Catapult wrapper/Catapult_LOD1 -> Catapult_Iron (Standard)
+PASS Material valido: Catapult wrapper/Catapult_LOD1 -> Catapult_Stone (Standard)
+PASS Material valido: Catapult wrapper/Catapult_LOD2 -> Catapult_Wood (Standard)
+PASS Material valido: Catapult wrapper/Catapult_LOD2 -> Catapult_Rope (Standard)
+PASS Material valido: Catapult wrapper/Catapult_LOD2 -> Catapult_Stone (Standard)
+PASS Material valido: Catapult wrapper/TeamRing -> AdvancedTeamRing (Unlit/Color)
+PASS Material valido: Catapult wrapper/FOV -> FOV (Standard)
+PASS Material valido: CatapultDestroyed/Catapult_LOD0 -> Catapult_Wood (Standard)
+PASS Material valido: CatapultDestroyed/Catapult_LOD0 -> Catapult_Iron (Standard)
+PASS Material valido: CatapultDestroyed/Catapult_LOD0 -> Catapult_Rope (Standard)
+PASS Material valido: CatapultDestroyed/Catapult_LOD0 -> Catapult_Stone (Standard)
+PASS Material valido: CatapultDestroyed/Catapult_LOD1 -> Catapult_Wood (Standard)
+PASS Material valido: CatapultDestroyed/Catapult_LOD1 -> Catapult_Rope (Standard)
+PASS Material valido: CatapultDestroyed/Catapult_LOD1 -> Catapult_Iron (Standard)
+PASS Material valido: CatapultDestroyed/Catapult_LOD1 -> Catapult_Stone (Standard)
+PASS Material valido: CatapultDestroyed/Catapult_LOD2 -> Catapult_Wood (Standard)
+PASS Material valido: CatapultDestroyed/Catapult_LOD2 -> Catapult_Rope (Standard)
+PASS Material valido: CatapultDestroyed/Catapult_LOD2 -> Catapult_Stone (Standard)
+PASS Material valido: CatapultDestroyed/Dust -> Fx_Smoke (Legacy Shaders/Particles/Alpha Blended)
+PASS Material valido: CatapultDestroyed/Splinters -> Catapult_Wood (Standard)
+PASS Animator do wrapper usa Catapult.controller
+PASS CharacterData 'catapult' referencia o wrapper
+PASS Catalogo Resources carrega 'catapult' (10 personagens)
+PASS Codigos de personagem unicos: archer, catapult, combat_mage, crossbow, dark_knight, heraldic_knight, paladin_healer, soldier, spearman, worker
+PASS CharacterData com os valores Ancient do contrato (vida 60, dano 45, alcance 20)
+PASS Contrato Catapult.asset existe
+PASS Contrato valido (dados de jogo): OK
+PASS Contrato com visual pronto (unidade + projetil): pronto
+PASS visual.prefab = wrapper jogavel Catapult.prefab
+PASS Animacao Idle (Speed) = clipe real Catapult@Idle
+PASS Animacao Move (Speed) = clipe real Catapult@Move
+PASS Animacao Fire (Fire) = clipe real Catapult@Fire
+PASS Animacao Reload (Fire) = clipe real Catapult@Reload
+PASS Animacao Hit (Damaged) = clipe real Catapult@Hit
+PASS Animacao Destroy ((prefab de morte)) = clipe real Catapult@Destroy
+PASS visual.animations = Idle, Move, Reload, Fire, Hit, Destroy
+PASS Socket ProjectileSpawn em 'Mesh/CatapultVisual/CatapultArmature/Root/Arm/ProjectileSpawn' (Transform.Find a partir da raiz do wrapper)
+PASS Socket ArmPivot em 'Mesh/CatapultVisual/CatapultArmature/Root/Arm' (Transform.Find a partir da raiz do wrapper)
+PASS Efeito 'efeito de disparo' -> Assets/CharacterRigging/Catapult/Prefabs/CatapultFire.prefab
+PASS Efeito 'efeito de impacto' -> Assets/CharacterRigging/Catapult/Prefabs/CatapultImpact.prefab
+PASS Efeitos cobrem disparo e impacto
+PASS Malha 'malha-fonte da catapulta' -> Assets/CharacterRigging/Catapult/Models/Catapult.fbx
+PASS Projetil (contrato separado) valido e com prefab + impacto reais
+PASS ProjectileContract aponta para CatapultBoulder.prefab e CatapultImpact.prefab
+PASS Projetil balistico em arco (contrato separado)
+PASS 4 eras em ordem: Ancient, Classical, Medieval, Imperial
+PASS Progressao por era: vida e dano crescem; alcance nao diminui; recarga nao aumenta
+INFO Eras: Ancient: vida 60, dano 45, alcance 20, recarga 6 | Classical: vida 80, dano 60, alcance 22, recarga 5,5 | Medieval: vida 105, dano 78, alcance 24, recarga 5 | Imperial: vida 135, dano 100, alcance 26, recarga 4,5
+PASS BuildUnitDataFields(Ancient): vida 60, dano 45, alcance 20
+PASS BuildUnitDataFields(Classical): vida 80, dano 60, alcance 22
+PASS BuildUnitDataFields(Medieval): vida 105, dano 78, alcance 24
+PASS BuildUnitDataFields(Imperial): vida 135, dano 100, alcance 26
+CATAPULT_AUDIT_PASSED

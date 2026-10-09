@@ -28,41 +28,53 @@ MonoBehaviour:
     prefab:
       role: prefab
       expectedAssetPath: Assets/Resources/Prefabs/Units/Characters/Catapult.prefab
-      asset: {fileID: 0}
+      asset: {fileID: 7631915786550148237, guid: 7875d54e89e56bf438451f3d88ad43e3, type: 3}
       required: 1
     meshes:
     - role: malha-fonte da catapulta
-      expectedAssetPath: Assets/CharacterRigging/Catapult/Catapult.fbx
-      asset: {fileID: 0}
+      expectedAssetPath: Assets/CharacterRigging/Catapult/Models/Catapult.fbx
+      asset: {fileID: 919132149155446097, guid: 744c037b8ba68ce40ad4f20f61c43d96, type: 3}
       required: 1
     effects:
     - role: efeito de disparo
-      expectedAssetPath: Assets/Resources/Prefabs/Effects/CatapultFire.prefab
-      asset: {fileID: 0}
+      expectedAssetPath: Assets/CharacterRigging/Catapult/Prefabs/CatapultFire.prefab
+      asset: {fileID: 1329935865424211870, guid: db30ea6c651a0d940a08fd550f5b3cb7, type: 3}
+      required: 1
+    - role: efeito de impacto
+      expectedAssetPath: Assets/CharacterRigging/Catapult/Prefabs/CatapultImpact.prefab
+      asset: {fileID: 8667835221514259699, guid: 1588c0fe4326c554484ffbfecc9d768b, type: 3}
       required: 1
     sockets:
     - socketName: ProjectileSpawn
-      expectedTransformPath: Sockets/ProjectileSpawn
+      expectedTransformPath: Mesh/CatapultVisual/CatapultArmature/Root/Arm/ProjectileSpawn
       required: 1
     - socketName: ArmPivot
-      expectedTransformPath: Sockets/ArmPivot
+      expectedTransformPath: Mesh/CatapultVisual/CatapultArmature/Root/Arm
       required: 1
     animations:
     - state: Idle
-      animatorParameter: Running
-      clip: {fileID: 0}
+      animatorParameter: Speed
+      clip: {fileID: -623603649343465320, guid: e8e1548dc1a70dd40913be8bd93b49c5, type: 3}
       required: 1
     - state: Move
-      animatorParameter: Running
-      clip: {fileID: 0}
+      animatorParameter: Speed
+      clip: {fileID: -623603649343465320, guid: a15449bd626687141a40e97cce790099, type: 3}
       required: 1
     - state: Fire
-      animatorParameter: Attacking
-      clip: {fileID: 0}
+      animatorParameter: Fire
+      clip: {fileID: -623603649343465320, guid: d02ba68411eb38f449ed5fcd7dfcffce, type: 3}
       required: 1
     - state: Reload
-      animatorParameter: Reloading
-      clip: {fileID: 0}
+      animatorParameter: Fire
+      clip: {fileID: -623603649343465320, guid: d6a4f843ea3c78a4d93f8d70c19f3d89, type: 3}
+      required: 1
+    - state: Hit
+      animatorParameter: Damaged
+      clip: {fileID: -623603649343465320, guid: ee3bbefa5fba7374c98692a9caa23b82, type: 3}
+      required: 1
+    - state: Destroy
+      animatorParameter: (prefab de morte)
+      clip: {fileID: -623603649343465320, guid: 636fe83f6b62b0d448374a90dfeec546, type: 3}
       required: 1
   buildSettingsApproved: 0
   tiers:

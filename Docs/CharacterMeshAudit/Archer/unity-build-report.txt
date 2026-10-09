@@ -1,0 +1,18 @@
+Archer - Unity build report (2026-10-05 21:39)
+- Mapeamento humanoide automatico coincide com a tabela esperada (22 ossos).
+- Clip Idle: 8,400s, loop=True, humanoid=True
+- Clip Walk: 1,042s, loop=True, humanoid=True
+- Clip Run: 0,625s, loop=True, humanoid=True
+- Clip Aim: 3,767s, loop=True, humanoid=True
+- Clip DrawString: ArcherArrowGrab em 0,400s (esperado 0,400s), duracao 3,200s
+- Clip DrawString: ArcherArrowNock em 1,400s (esperado 1,400s), duracao 3,200s
+- Clip DrawString: 3,200s, loop=False, humanoid=True
+- Clip Fire: ArcherArrowRelease em 0,400s (esperado 0,400s), duracao 1,400s
+- Clip Fire: ArcherAttackEnd em 1,300s (esperado 1,300s), duracao 1,400s
+- Clip Fire: 1,400s, loop=False, humanoid=True
+- Archer_Bow: rotacao de importacao identidade (0,00 graus)
+- Archer_Quiver: rotacao de importacao identidade (0,00 graus)
+- Archer_Arrow: rotacao de importacao identidade (0,00 graus)
+- Arco: pos local (0.015, 0.068, -0.003), rot local (298.5, 95.1, 68.0) (mao esquerda)
+Wrapper: Assets/Resources/Prefabs/Units/Characters/Archer.prefab
+CharacterData: Assets/Resources/ScriptableObjects/Units/Characters/Archer.asset code=archer

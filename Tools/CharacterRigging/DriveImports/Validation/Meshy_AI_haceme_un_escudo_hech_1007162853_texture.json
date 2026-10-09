@@ -1,0 +1,19 @@
+{
+  "asset": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Tools\\CharacterRigging\\DriveImports\\Extracted\\MagicShield\\Meshy_AI_haceme_un_escudo_hech_1007162853_texture_fbx\\Meshy_AI_haceme_un_escudo_hech_1007162853_texture.fbx",
+  "passed": true,
+  "meshes": [
+    {
+      "name": "Mesh_0",
+      "triangles": 9998,
+      "vertices": 4998,
+      "uv_layers": 1,
+      "materials": [
+        "Material.001"
+      ],
+      "skinned": false
+    }
+  ],
+  "armatures": [],
+  "errors": [],
+  "warnings": []
+}

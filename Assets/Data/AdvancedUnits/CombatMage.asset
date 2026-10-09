@@ -26,45 +26,57 @@ MonoBehaviour:
     prefab:
       role: prefab
       expectedAssetPath: Assets/Resources/Prefabs/Units/Characters/CombatMage.prefab
-      asset: {fileID: 0}
+      asset: {fileID: 9071002786956175371, guid: 12e00ecd3d8b17a42a7d711be6459f2d, type: 3}
       required: 1
     meshes:
     - role: malha-fonte do corpo
-      expectedAssetPath: Assets/CharacterRigging/CombatMage/CombatMage.fbx
-      asset: {fileID: 0}
+      expectedAssetPath: Assets/CharacterRigging/CombatMage/Models/CombatMage.fbx
+      asset: {fileID: 919132149155446097, guid: f30b48bd57c9be84188cc1ee00dacc92, type: 3}
+      required: 1
+    - role: cajado
+      expectedAssetPath: Assets/CharacterRigging/CombatMage/Accessories/CombatMage_Staff.fbx
+      asset: {fileID: 919132149155446097, guid: ffeeaf871d230f8449aa255285e6f2a7, type: 3}
       required: 1
     effects:
     - role: "efeito de conjura\xE7\xE3o"
-      expectedAssetPath: Assets/Resources/Prefabs/Effects/CombatMageCast.prefab
-      asset: {fileID: 0}
+      expectedAssetPath: Assets/CharacterRigging/CombatMage/Prefabs/CombatMageCast.prefab
+      asset: {fileID: 4450221429053613014, guid: 81d8329fc45f5e945aa363e220c11091, type: 3}
       required: 1
     - role: efeito de impacto
-      expectedAssetPath: Assets/Resources/Prefabs/Effects/CombatMageImpact.prefab
-      asset: {fileID: 0}
+      expectedAssetPath: Assets/CharacterRigging/CombatMage/Prefabs/CombatMageImpact.prefab
+      asset: {fileID: 8237096407221926621, guid: 4dfb8f212b9e0684d9e5cc2ef93eb910, type: 3}
       required: 1
     sockets:
     - socketName: CastPoint
-      expectedTransformPath: Sockets/CastPoint
+      expectedTransformPath: Mesh/CombatMageVisual/CombatMage_Armature/Hips/Spine02/Spine01/Spine/RightShoulder/RightArm/RightForeArm/RightHand/StaffMount/Staff/CastPoint
       required: 1
     - socketName: StaffMount
-      expectedTransformPath: Sockets/StaffMount
+      expectedTransformPath: Mesh/CombatMageVisual/CombatMage_Armature/Hips/Spine02/Spine01/Spine/RightShoulder/RightArm/RightForeArm/RightHand/StaffMount
       required: 1
     animations:
     - state: Idle
-      animatorParameter: Running
-      clip: {fileID: 0}
+      animatorParameter: Speed
+      clip: {fileID: -623603649343465320, guid: ab5a3eb3b31efe742b89b62c430fb52c, type: 3}
+      required: 1
+    - state: Walk
+      animatorParameter: Speed
+      clip: {fileID: -623603649343465320, guid: 421948add94b71d458465c3cad638bea, type: 3}
       required: 1
     - state: Run
-      animatorParameter: Running
-      clip: {fileID: 0}
+      animatorParameter: Speed
+      clip: {fileID: -623603649343465320, guid: cdf3572feabde044aa2876e321d4c90f, type: 3}
       required: 1
     - state: Cast
-      animatorParameter: Attacking
-      clip: {fileID: 0}
+      animatorParameter: Fire
+      clip: {fileID: -623603649343465320, guid: eecb9158cb7f8d94c9253cd8d54a1b9b, type: 3}
       required: 1
     - state: Hit
-      animatorParameter: Hit
-      clip: {fileID: 0}
+      animatorParameter: Damaged
+      clip: {fileID: -623603649343465320, guid: 79b99d091c6c6eb4486f5704a4a41a3b, type: 3}
+      required: 1
+    - state: Death
+      animatorParameter: AdvancedUnitDeathEffect
+      clip: {fileID: -623603649343465320, guid: e456976a9eab9d247b8bb08080a57937, type: 3}
       required: 1
   buildSettingsApproved: 0
   tiers:

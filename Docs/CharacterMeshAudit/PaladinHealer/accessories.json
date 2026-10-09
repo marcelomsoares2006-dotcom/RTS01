@@ -1,0 +1,34 @@
+{
+  "objects": [
+    {
+      "name": "PaladinHealer_Sword",
+      "triangles": 610,
+      "dimensions_m": [
+        0.256,
+        1.042,
+        0.06
+      ],
+      "materials": [
+        "PaladinHealer_Steel",
+        "PaladinHealer_Gold",
+        "PaladinHealer_Leather"
+      ]
+    },
+    {
+      "name": "PaladinHealer_Shield",
+      "triangles": 1716,
+      "dimensions_m": [
+        0.508,
+        0.194,
+        0.774
+      ],
+      "materials": [
+        "PaladinHealer_Steel",
+        "PaladinHealer_Gold",
+        "PaladinHealer_Leather",
+        "PaladinHealer_Wood",
+        "PaladinHealer_Linen"
+      ]
+    }
+  ]
+}

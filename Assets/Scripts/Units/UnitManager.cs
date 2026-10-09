@@ -83,8 +83,19 @@ public class UnitManager : MonoBehaviour
         meshRenderer.materials = materials;
     }
 
+    private IAttackHandler _attackHandler;
+    private bool _attackHandlerResolved;
+
     public void Attack(Transform target)
     {
+        // unidades com ataque proprio (ex.: Archer, que dispara um projetil) assumem o ataque
+        if (!_attackHandlerResolved)
+        {
+            _attackHandler = GetComponent<IAttackHandler>();
+            _attackHandlerResolved = true;
+        }
+        if (_attackHandler != null && _attackHandler.TryHandleAttack(target)) return;
+
         UnitManager um = target.GetComponent<UnitManager>();
         if (um == null) return;
         um.TakeHit(Unit.AttackDamage);

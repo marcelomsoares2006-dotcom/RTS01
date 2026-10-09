@@ -3,6 +3,7 @@ using System.Linq;
 using EraImperial.Units.Advanced;
 using EraImperial.Units.Advanced.Editor;
 using NUnit.Framework;
+using UnityEngine;
 using UnityEditor;
 
 namespace EraImperial.AdvancedUnits.Tests
@@ -44,14 +45,29 @@ namespace EraImperial.AdvancedUnits.Tests
         }
 
         [Test]
-        public void ContractAssets_ArePendingVisuallyAndNotApprovedForBuild()
+        public void ContractAssets_VisualReadinessIsRealOrExplicitlyPending()
         {
             foreach (AdvancedUnitContract contract in LoadContracts())
             {
-                Assert.That(contract.visual.prefab.asset == null, Is.True, contract.code);
-                Assert.That(contract.IsVisualReady, Is.False, contract.code);
-                Assert.That(contract.buildSettingsApproved, Is.False, contract.code);
-                Assert.That(contract.CanBeAddedToBuildSettings, Is.False, contract.code);
+                VisualReadinessReport report = contract.EvaluateVisuals();
+                // consistencia: "pronto" so existe quando o prefab do contrato e um asset real em disco
+                GameObject prefab = contract.visual.prefab.asset as GameObject;
+                if (report.IsReady)
+                {
+                    Assert.That(prefab != null, Is.True, contract.code + ": pronto sem prefab");
+                    string path = AssetDatabase.GetAssetPath(prefab);
+                    Assert.That(path, Does.StartWith("Assets/Resources/Prefabs/Units/Characters/"), contract.code);
+                    Assert.That(System.IO.File.Exists(path), Is.True, contract.code + ": prefab inexistente em disco");
+                    Assert.That(contract.visual.prefab.expectedAssetPath, Is.EqualTo(path), contract.code);
+                }
+                else
+                {
+                    Assert.That(report.Missing, Is.Not.Empty, contract.code);
+                    Assert.That(contract.CanBeAddedToBuildSettings, Is.False, contract.code);
+                }
+                // um contrato so pode ser aprovado para o Build Settings se estiver realmente pronto
+                if (contract.buildSettingsApproved)
+                    Assert.That(contract.IsGameplayValid && report.IsReady, Is.True, contract.code + ": aprovado sem estar pronto");
             }
         }
     }

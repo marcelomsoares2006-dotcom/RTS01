@@ -1,0 +1,50 @@
+{
+  "objects": [
+    {
+      "name": "Archer_Bow",
+      "triangles": 876,
+      "dimensions_m": [
+        0.045,
+        0.159,
+        1.445
+      ],
+      "materials": [
+        "Archer_Wood",
+        "Archer_Leather"
+      ]
+    },
+    {
+      "name": "Archer_Quiver",
+      "triangles": 1040,
+      "dimensions_m": [
+        0.466,
+        0.518,
+        0.745
+      ],
+      "materials": [
+        "Archer_Leather",
+        "Archer_AshShaft",
+        "Archer_Feather"
+      ]
+    },
+    {
+      "name": "Archer_Arrow",
+      "triangles": 160,
+      "dimensions_m": [
+        0.03,
+        0.728,
+        0.035
+      ],
+      "materials": [
+        "Archer_AshShaft",
+        "Archer_Steel",
+        "Archer_Feather"
+      ]
+    }
+  ],
+  "quiverOriginCharacterSpaceBlender": [
+    0.0,
+    0.0,
+    1.27
+  ]
+}

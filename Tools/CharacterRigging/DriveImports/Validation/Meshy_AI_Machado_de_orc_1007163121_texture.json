@@ -1,0 +1,19 @@
+{
+  "asset": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Tools\\CharacterRigging\\DriveImports\\Extracted\\OrcAxe\\Meshy_AI_Machado_de_orc_1007163121_texture_fbx\\Meshy_AI_Machado_de_orc_1007163121_texture.fbx",
+  "passed": true,
+  "meshes": [
+    {
+      "name": "Mesh_0",
+      "triangles": 10000,
+      "vertices": 5002,
+      "uv_layers": 1,
+      "materials": [
+        "Material.001"
+      ],
+      "skinned": false
+    }
+  ],
+  "armatures": [],
+  "errors": [],
+  "warnings": []
+}

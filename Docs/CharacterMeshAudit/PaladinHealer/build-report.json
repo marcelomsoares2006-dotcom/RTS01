@@ -1,0 +1,160 @@
+{
+  "license": "Meshy via chave de API do usuario (ver Docs/CharacterMeshAudit/PaladinHealer/LICENSE.md)",
+  "clips": {
+    "Idle": {
+      "source": "SwordShield-Idle.fbx",
+      "sourceFrames": [
+        1,
+        77
+      ],
+      "loop": true,
+      "retargetMaxHandFootErrorM": 0.0611,
+      "frames": [
+        1,
+        77
+      ],
+      "seconds": 2.5333,
+      "fps": 30,
+      "maxVertexDisplacementM": 0.032,
+      "minZ": -0.0359,
+      "maxZ": 1.6701
+    },
+    "Attack": {
+      "source": "SwordShield-Slash.fbx",
+      "sourceFrames": [
+        1,
+        46
+      ],
+      "loop": false,
+      "retargetMaxHandFootErrorM": 0.0777,
+      "frames": [
+        1,
+        46
+      ],
+      "seconds": 1.5,
+      "fps": 30,
+      "maxVertexDisplacementM": 1.5041,
+      "minZ": -0.0357,
+      "maxZ": 1.6866
+    },
+    "Hit": {
+      "source": "React-Large-From-Left.fbx",
+      "sourceFrames": [
+        1,
+        32
+      ],
+      "loop": false,
+      "retargetMaxHandFootErrorM": 0.0866,
+      "frames": [
+        1,
+        32
+      ],
+      "seconds": 1.0333,
+      "fps": 30,
+      "maxVertexDisplacementM": 0.7892,
+      "minZ": -0.0313,
+      "maxZ": 1.6518
+    },
+    "Death": {
+      "source": "Dying.fbx",
+      "sourceFrames": [
+        1,
+        174
+      ],
+      "loop": false,
+      "retargetMaxHandFootErrorM": 0.0828,
+      "frames": [
+        1,
+        174
+      ],
+      "seconds": 5.7667,
+      "fps": 30,
+      "maxVertexDisplacementM": 2.931,
+      "minZ": -0.161,
+      "maxZ": 1.8444
+    },
+    "Walk": {
+      "source": "Meshy nativo",
+      "loop": true,
+      "frames": [
+        1,
+        26
+      ],
+      "seconds": 1.0417,
+      "fps": 24,
+      "maxVertexDisplacementM": 0.6038,
+      "minZ": 0.0218,
+      "maxZ": 1.8735
+    },
+    "Run": {
+      "source": "Meshy nativo",
+      "loop": true,
+      "frames": [
+        1,
+        16
+      ],
+      "seconds": 0.625,
+      "fps": 24,
+      "maxVertexDisplacementM": 0.9558,
+      "minZ": 0.0249,
+      "maxZ": 1.8533
+    },
+    "Heal": {
+      "source": "criado em Blender (build_heal)",
+      "loop": false,
+      "frames": [
+        1,
+        38
+      ],
+      "seconds": 1.2333,
+      "fps": 30,
+      "maxVertexDisplacementM": 1.07,
+      "minZ": -0.0357,
+      "maxZ": 1.9518
+    }
+  },
+  "textureSize": [
+    2048,
+    2048
+  ],
+  "metalSmoothStats": {
+    "metalMean": 0.1259,
+    "metalMax": 0.2965,
+    "smoothMean": 0.3625
+  },
+  "bones": [
+    "Hips",
+    "Spine02",
+    "Spine01",
+    "Spine",
+    "neck",
+    "Head",
+    "head_end",
+    "headfront",
+    "LeftShoulder",
+    "LeftArm",
+    "LeftForeArm",
+    "LeftHand",
+    "RightShoulder",
+    "RightArm",
+    "RightForeArm",
+    "RightHand",
+    "LeftUpLeg",
+    "LeftLeg",
+    "LeftFoot",
+    "LeftToeBase",
+    "RightUpLeg",
+    "RightLeg",
+    "RightFoot",
+    "RightToeBase"
+  ],
+  "vertices": 35268,
+  "trianglesLOD0": 31000,
+  "maxInfluences": 4,
+  "minWeightSum": 1.0,
+  "maxWeightSum": 1.0,
+  "bindHeightM": 1.85,
+  "bindMinZ": -0.0,
+  "trianglesLOD1": 9300,
+  "trianglesLOD2": 3100
+}

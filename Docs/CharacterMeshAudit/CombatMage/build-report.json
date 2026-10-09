@@ -1,0 +1,146 @@
+{
+  "license": {},
+  "clips": {
+    "Idle": {
+      "source": "Idle.fbx",
+      "sourceFrames": [
+        1,
+        253
+      ],
+      "loop": true,
+      "retargetMaxHandFootErrorM": 0.074,
+      "frames": [
+        1,
+        253
+      ],
+      "seconds": 8.4,
+      "fps": 30,
+      "maxVertexDisplacementM": 0.0183,
+      "minZ": -0.0456,
+      "maxZ": 1.7506
+    },
+    "Hit": {
+      "source": "Standing-React-Large-From-Left.fbx",
+      "sourceFrames": [
+        1,
+        32
+      ],
+      "loop": false,
+      "retargetMaxHandFootErrorM": 0.0726,
+      "frames": [
+        1,
+        32
+      ],
+      "seconds": 1.0333,
+      "fps": 30,
+      "maxVertexDisplacementM": 0.7601,
+      "minZ": -0.0593,
+      "maxZ": 1.575
+    },
+    "Death": {
+      "source": "Dying.fbx",
+      "sourceFrames": [
+        1,
+        174
+      ],
+      "loop": false,
+      "retargetMaxHandFootErrorM": 0.0747,
+      "liftedMaxM": 0.1693,
+      "minZBeforeLift": -0.1493,
+      "minZAfterLift": 0.02,
+      "frames": [
+        1,
+        174
+      ],
+      "seconds": 5.7667,
+      "fps": 30,
+      "maxVertexDisplacementM": 2.7366,
+      "minZ": 0.02,
+      "maxZ": 1.8034
+    },
+    "Cast": {
+      "source": "Idle.fbx + procedural arms",
+      "sourceFrames": [
+        1,
+        54
+      ],
+      "loop": false,
+      "releaseFrame": 24,
+      "releaseSeconds": 0.7667,
+      "frames": [
+        1,
+        54
+      ],
+      "seconds": 1.7667,
+      "fps": 30,
+      "maxVertexDisplacementM": 1.2278,
+      "minZ": -0.0456,
+      "maxZ": 1.8141
+    },
+    "Walk": {
+      "source": "Meshy native",
+      "loop": true,
+      "frames": [
+        1,
+        26
+      ],
+      "seconds": 1.0417,
+      "fps": 24,
+      "maxVertexDisplacementM": 0.5765,
+      "minZ": -0.0081,
+      "maxZ": 1.7818
+    },
+    "Run": {
+      "source": "Meshy native",
+      "loop": true,
+      "frames": [
+        1,
+        16
+      ],
+      "seconds": 0.625,
+      "fps": 24,
+      "maxVertexDisplacementM": 0.91,
+      "minZ": 0.0029,
+      "maxZ": 1.7678
+    }
+  },
+  "textureSize": [
+    2048,
+    2048
+  ],
+  "bones": [
+    "Hips",
+    "Spine02",
+    "Spine01",
+    "Spine",
+    "neck",
+    "Head",
+    "head_end",
+    "headfront",
+    "LeftShoulder",
+    "LeftArm",
+    "LeftForeArm",
+    "LeftHand",
+    "RightShoulder",
+    "RightArm",
+    "RightForeArm",
+    "RightHand",
+    "LeftUpLeg",
+    "LeftLeg",
+    "LeftFoot",
+    "LeftToeBase",
+    "RightUpLeg",
+    "RightLeg",
+    "RightFoot",
+    "RightToeBase"
+  ],
+  "vertices": 31879,
+  "trianglesLOD0": 30939,
+  "maxInfluences": 4,
+  "minWeightSum": 1.0,
+  "maxWeightSum": 1.0,
+  "bindHeightM": 1.76,
+  "bindMinZ": 0.0,
+  "trianglesLOD1": 9500,
+  "trianglesLOD2": 4200
+}

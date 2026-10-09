@@ -1,0 +1,19 @@
+Crossbow - Unity build report (2026-10-06 15:55)
+- Avatar generico valido (Crossbow.fbx).
+- Clip Idle: 2,000s, loop=True, eventos=0
+- Clip Move: 4,000s, loop=True, eventos=0
+- Clip Reload: 1,400s, loop=False, eventos=0
+- Clip Fire: 0,800s, loop=False, eventos=1
+- Clip Hit: 0,600s, loop=False, eventos=0
+- Clip Destroy: 2,000s, loop=False, eventos=0
+- Fire: CrossbowRelease em 0,200s (releaseDelay 0,200s).
+- CrossbowMuzzle.prefab criado (fumaca/poeira leve, 2 sistemas).
+- CrossbowImpact.prefab criado (faiscas + poeira, textura procedural suave).
+- CrossbowBolt.prefab criado (pivo na ponta; corpo se estende para tras).
+- Mascara da camada Hit: somente 'CrossbowRig/Root' ativo.
+- Socket BoltSpawn: Mesh/CrossbowVisual/CrossbowRig/Root/Sockets/BoltSpawn
+- Socket WeaponMount: Mesh/CrossbowVisual/CrossbowRig/Root/Sockets/WeaponMount
+- Contrato vinculado: prefab, malhas, efeitos, sockets, animacoes e projetil.
+- CharacterData registrado: Assets/Resources/ScriptableObjects/Units/Characters/Crossbow.asset code=crossbow
+Wrapper: Assets/Resources/Prefabs/Units/Characters/Crossbow.prefab
+CharacterData: Assets/Resources/ScriptableObjects/Units/Characters/Crossbow.asset code=crossbow

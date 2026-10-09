@@ -1,0 +1,342 @@
+Unity 6000.6.3f1 - 2026-10-06 22:20:42
+CONSOLE Warning: Unity is not designed to run with Administrator privileges.
+
+With elevated access, scripts in your project can modify system files, registry settings, or protected areas, even accidentally.
+This could make your system unstable or unbootable.
+
+Restart as a standard user for the safest experience.
+PASS [Map1.0] metadados do mapa Map1
+INFO [Map1] nova partida iniciada
+CONSOLE Warning: The tree Tree Type7 01 must use the Nature/Soft Occlusion shader. Otherwise billboarding/lighting will not work correctly.
+CONSOLE Warning: File "C:\Users\User\Downloads\Era Imperial\EraImperial-UnityRTS-Base\RTS01-Corrigido\TestResults\PHIndepData-20261007-012042\00_Global Parameters.data" not found! Getting default values.
+CONSOLE Warning: File "C:\Users\User\Downloads\Era Imperial\EraImperial-UnityRTS-Base\RTS01-Corrigido\TestResults\PHIndepData-20261007-012042\02_Sound Parameters.data" not found! Getting default values.
+CONSOLE Warning: File "C:\Users\User\Downloads\Era Imperial\EraImperial-UnityRTS-Base\RTS01-Corrigido\TestResults\PHIndepData-20261007-012042\03_Keyboard Mapping.data" not found! Getting default values.
+PASS [Map1.1] Globals.CHARACTER_DATA contem paladin_healer no Map1
+INFO [Map1] meu jogador 0, jogador inimigo 1, jogadores 2
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+PASS [Map1.2] instancia pelo catalogo com PaladinHealBehaviour, PaladinMeleeAttackController, binding, animator e agente no NavMesh
+PASS [Map1.3] era Ancient aplicada: HP 70/70
+PASS [Map1.3b] visual do paladino com corpo (3 LODs), espada e escudo
+INFO [Map1.fps] taxa de quadros no batch: 62,9 fps; tempo de jogo/parede = 1,00
+PASS [Map1.3c] sem scripts ausentes na instancia
+PASS [Map1.3d] agente: velocidade 4, raio 0,5
+PASS [Map1.4] Ancient: vida max 70/70, dano 16/16, alcance 1,5/1,5
+PASS [Map1.4b] Ancient: binding.CurrentTier = tier da era
+PASS [Map1.4] Classical: vida max 90/90, dano 20/20, alcance 1,5/1,5
+PASS [Map1.4b] Classical: binding.CurrentTier = tier da era
+PASS [Map1.4] Medieval: vida max 115/115, dano 25/25, alcance 1,5/1,5
+PASS [Map1.4b] Medieval: binding.CurrentTier = tier da era
+PASS [Map1.4] Imperial: vida max 145/145, dano 31/31, alcance 1,5/1,5
+PASS [Map1.4b] Imperial: binding.CurrentTier = tier da era
+PASS [Map1.5] ordem de movimento aceita
+PASS [Map1.5b] moveu 8,0 m em 5 s (velocidade max 4,00 m/s)
+PASS [Map1.5c] Animator tocou Walk/Run durante o deslocamento
+INFO [Map1.5] clipe ao chegar: Idle, speed anim 0,00
+PASS [Map1.5d] voltou ao Idle ao parar (Idle)
+PASS [Map1.cap] paladin-front: pixels magenta 0,0000%
+PASS [Map1.cap] paladin-back: pixels magenta 0,0000%
+PASS [Map1.cap] paladin-side: pixels magenta 0,0000%
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+INFO [Map1.Ancient] distancias reais ao paladino: aliadoIn 3,40, aliadoIn2 2,00, aliadoFora(borda) 4,70, aliadoLonge 10,00, inimigo 2,20; raio 4
+PASS [Map1.Ancient.g] geometria do teste valida (dois aliados dentro, dois fora, inimigo dentro)
+PASS [Map1.Ancient.1] pulso de cura ocorreu (apos 0,02 s)
+PASS [Map1.Ancient.2] aliados dentro do raio curados em exatamente 6: +6 e +6
+PASS [Map1.Ancient.3] aliados fora do raio nao curados (fora 0, longe 0)
+PASS [Map1.Ancient.4] inimigo (outro dono) dentro do raio NAO curado (0)
+PASS [Map1.Ancient.5] paladino nao se cura (HP 66 -> 66)
+PASS [Map1.Ancient.6] alvos no pulso = 2 (LastPulseTargets 2)
+PASS [Map1.Ancient.7] efeito de cura instanciado (1)
+PASS [Map1.Ancient.8] efeito escalado ao raio: 8,00 x 8,00 (esperado 8,00)
+INFO [Map1.Ancient.8] efeito em (39.94, 31.20, 55.92) (paladino em (39.94, 30.00, 55.92); altura do efeito sobre o paladino 1,20 m)
+PASS [Map1.Ancient.9] camada de cura toca o clipe Heal (Heal), camada base Hit
+PASS [Map1.cap] play-Map1-heal-Ancient-a.png: pixels magenta 0,0000%
+PASS [Map1.cap] play-Map1-heal-Ancient-b.png: pixels magenta 0,0000%
+PASS [Map1.cap] play-Map1-heal-Ancient-near.png: pixels magenta 0,0000%
+PASS [Map1.Ancient.10] intervalo entre pulsos >= cooldown 3 s (medidos: 3,01, 3,01; 3 pulsos)
+PASS [Map1.Ancient.11] nao ha mais pulsos que o cooldown permite em 7,2 s
+PASS [Map1.Ancient.12] cura acumulada do alvo (18) <= limite por alvo 18 (janela 10 s)
+PASS [Map1.Ancient.13] efeito de cura e destruido (nao vaza)
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+INFO [Map1.Classical] distancias reais ao paladino: aliadoIn 3,90, aliadoIn2 2,00, aliadoFora(borda) 5,20, aliadoLonge 10,50, inimigo 2,20; raio 4,5
+PASS [Map1.Classical.g] geometria do teste valida (dois aliados dentro, dois fora, inimigo dentro)
+PASS [Map1.Classical.1] pulso de cura ocorreu (apos 0,05 s)
+PASS [Map1.Classical.2] aliados dentro do raio curados em exatamente 9: +9 e +9
+PASS [Map1.Classical.3] aliados fora do raio nao curados (fora 0, longe 0)
+PASS [Map1.Classical.4] inimigo (outro dono) dentro do raio NAO curado (0)
+PASS [Map1.Classical.5] paladino nao se cura (HP 86 -> 86)
+PASS [Map1.Classical.6] alvos no pulso = 2 (LastPulseTargets 2)
+PASS [Map1.Classical.7] efeito de cura instanciado (1)
+PASS [Map1.Classical.8] efeito escalado ao raio: 9,00 x 9,00 (esperado 9,00)
+INFO [Map1.Classical.8] efeito em (39.94, 31.20, 55.92) (paladino em (39.94, 30.00, 55.92); altura do efeito sobre o paladino 1,20 m)
+PASS [Map1.Classical.9] camada de cura toca o clipe Heal (Heal), camada base Hit
+PASS [Map1.Classical.10] intervalo entre pulsos >= cooldown 2,8 s (medidos: 2,81, 2,81; 3 pulsos)
+PASS [Map1.Classical.11] nao ha mais pulsos que o cooldown permite em 6,7 s
+PASS [Map1.Classical.12] cura acumulada do alvo (27) <= limite por alvo 27 (janela 10 s)
+PASS [Map1.Classical.13] efeito de cura e destruido (nao vaza)
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+INFO [Map1.Medieval] distancias reais ao paladino: aliadoIn 4,40, aliadoIn2 2,00, aliadoFora(borda) 5,70, aliadoLonge 11,00, inimigo 2,20; raio 5
+PASS [Map1.Medieval.g] geometria do teste valida (dois aliados dentro, dois fora, inimigo dentro)
+PASS [Map1.Medieval.1] pulso de cura ocorreu (apos 0,02 s)
+PASS [Map1.Medieval.2] aliados dentro do raio curados em exatamente 13: +13 e +13
+PASS [Map1.Medieval.3] aliados fora do raio nao curados (fora 0, longe 0)
+PASS [Map1.Medieval.4] inimigo (outro dono) dentro do raio NAO curado (0)
+PASS [Map1.Medieval.5] paladino nao se cura (HP 111 -> 111)
+PASS [Map1.Medieval.6] alvos no pulso = 2 (LastPulseTargets 2)
+PASS [Map1.Medieval.7] efeito de cura instanciado (1)
+PASS [Map1.Medieval.8] efeito escalado ao raio: 10,00 x 10,00 (esperado 10,00)
+INFO [Map1.Medieval.8] efeito em (39.94, 31.20, 55.92) (paladino em (39.94, 30.00, 55.92); altura do efeito sobre o paladino 1,20 m)
+PASS [Map1.Medieval.9] camada de cura toca o clipe Heal (Heal), camada base Hit
+PASS [Map1.Medieval.10] intervalo entre pulsos >= cooldown 2,5 s (medidos: 2,51, 2,51; 3 pulsos)
+PASS [Map1.Medieval.11] nao ha mais pulsos que o cooldown permite em 6,0 s
+PASS [Map1.Medieval.12] cura acumulada do alvo (39) <= limite por alvo 39 (janela 10 s)
+PASS [Map1.Medieval.13] efeito de cura e destruido (nao vaza)
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+INFO [Map1.Imperial] distancias reais ao paladino: aliadoIn 5,40, aliadoIn2 2,00, aliadoFora(borda) 6,70, aliadoLonge 12,00, inimigo 2,20; raio 6
+PASS [Map1.Imperial.g] geometria do teste valida (dois aliados dentro, dois fora, inimigo dentro)
+PASS [Map1.Imperial.1] pulso de cura ocorreu (apos 0,02 s)
+PASS [Map1.Imperial.2] aliados dentro do raio curados em exatamente 18: +18 e +18
+PASS [Map1.Imperial.3] aliados fora do raio nao curados (fora 0, longe 0)
+PASS [Map1.Imperial.4] inimigo (outro dono) dentro do raio NAO curado (0)
+PASS [Map1.Imperial.5] paladino nao se cura (HP 141 -> 141)
+PASS [Map1.Imperial.6] alvos no pulso = 2 (LastPulseTargets 2)
+PASS [Map1.Imperial.7] efeito de cura instanciado (1)
+PASS [Map1.Imperial.8] efeito escalado ao raio: 12,00 x 12,00 (esperado 12,00)
+INFO [Map1.Imperial.8] efeito em (39.94, 31.20, 55.92) (paladino em (39.94, 30.00, 55.92); altura do efeito sobre o paladino 1,20 m)
+PASS [Map1.Imperial.9] camada de cura toca o clipe Heal (Heal), camada base Hit
+PASS [Map1.cap] play-Map1-heal-Imperial-a.png: pixels magenta 0,0000%
+PASS [Map1.cap] play-Map1-heal-Imperial-b.png: pixels magenta 0,0000%
+PASS [Map1.Imperial.10] intervalo entre pulsos >= cooldown 2,2 s (medidos: 2,21, 2,21; 3 pulsos)
+PASS [Map1.Imperial.11] nao ha mais pulsos que o cooldown permite em 5,3 s
+PASS [Map1.Imperial.12] cura acumulada do alvo (54) <= limite por alvo 54 (janela 10 s)
+PASS [Map1.Imperial.13] efeito de cura e destruido (nao vaza)
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+INFO [Map1.cap] linha do tempo das curas: t=2,0s +6, t=5,0s +6, t=8,0s +6, t=14,0s +6, t=17,0s +6, t=20,0s +6
+PASS [Map1.cap1] na 1a janela de 10 s o alvo recebeu 18 (teto 18 = 3 curas de 6)
+PASS [Map1.cap2] a cura retoma depois que a janela expira
+PASS [Map1.cap3] cada cura individual = 6 (6,6,6,6,6,6)
+PASS [Map1.cap4] cura nunca excede a vida maxima (HP 500/500)
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+INFO [Map1.x] paladino inimigo: aliado meu a 2,50 m, aliado dele a 3,54 m
+PASS [Map1.x1] paladino inimigo NAO curou unidade de outro dono (HP 1)
+PASS [Map1.x2] paladino inimigo curou o proprio aliado (HP 19, pulsos 3)
+PASS [Map1.idle] sem aliado ferido nao ha pulso (pulsos 19 -> 19)
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+PASS [Map1.cap] play-Map1-attack-a.png: pixels magenta 0,0000%
+PASS [Map1.cap] play-Map1-attack-b.png: pixels magenta 0,0000%
+PASS [Map1.m1] BT: o paladino foi ate o inimigo (primeiro golpe em 2,5 s) e deu 6 golpes; distancia ao alvo 2,16 m
+INFO [Map1.m] golpes (tempo de jogo, dano, era): 2,49s/16/Ancient | 4,39s/16/Ancient | 6,29s/16/Ancient | 8,22s/16/Ancient | 10,13s/16/Ancient | 12,04s/16/Ancient | 13,66s/31/Imperial | 15,28s/31/Imperial | 16,90s/31/Imperial | 18,52s/31/Imperial | 20,13s/31/Imperial | 21,75s/31/Imperial | 23,38s/31/Imperial | 25,27s/20/Classical | 27,21s/20/Classical | 29,11s/20/Classical | 31,02s/20/Classical | 32,93s/20/Classical
+INFO [Map1.m] intervalos Ancient: 1,90, 1,90, 1,93, 1,91, 1,91; Imperial: 1,62, 1,62, 1,62, 1,61, 1,62, 1,63; Classical: 1,93, 1,90, 1,92, 1,91
+PASS [Map1.m2] Ancient: nenhum golpe mais rapido que o cooldown 1,8 s (min 1,90)
+PASS [Map1.m3] Ancient: cadencia media 1,91 s ~ cooldown 1,8 s (+ sondagem 0.25 s); max 1,93
+PASS [Map1.m2] Imperial (trocada apos o spawn e em combate): nenhum golpe mais rapido que o cooldown 1,5 s (min 1,61)
+PASS [Map1.m3] Imperial (trocada apos o spawn e em combate): cadencia media 1,62 s ~ cooldown 1,5 s (+ sondagem 0.25 s); max 1,63
+PASS [Map1.m2] Classical (trocada de novo): nenhum golpe mais rapido que o cooldown 1,7 s (min 1,90)
+PASS [Map1.m3] Classical (trocada de novo): cadencia media 1,91 s ~ cooldown 1,7 s (+ sondagem 0.25 s); max 1,93
+PASS [Map1.m4] Imperial bate mais rapido que Ancient (1,62 < 1,91)
+PASS [Map1.m5] Ancient: dano por golpe 16 = AttackDamage do contrato 16
+PASS [Map1.m5] Imperial: dano por golpe 31 = AttackDamage do contrato 31
+PASS [Map1.m5] Classical: dano por golpe 20 = AttackDamage do contrato 20
+PASS [Map1.m6] golpes do controlador (18) == golpes observados (18)
+FAIL [Map1.m7] entradas no estado Attack do Animator (12) acompanham os golpes (18); a animacao nao reinicia a cada sondagem de 0.25 s
+PASS [Map1.m8] cura continua funcionando durante o combate corpo a corpo (pulsos +1); aliado ferido HP 7
+PASS [Map1.m9] golpes ocorreram a curta distancia (2,16 m; alcance 1,5 + tamanho do alvo)
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+PASS [Map1.f1] o paladino nao ataca aliado do mesmo dono (HP 500 -> 500)
+PASS [Map1.d1] AdvancedUnitAnimatorDriver registrou a reacao a dano
+PASS [Map1.d2] Animator entrou na reacao a dano (Hit)
+PASS [Map1.k1] unidade original destruida ao zerar a vida
+PASS [Map1.k2] prefab de morte instanciado (PaladinHealerDeath(Clone))
+PASS [Map1.k3] prefab de morte toca o clipe Death sozinho (Death)
+PASS [Map1.k4] prefab de morte aparece onde a unidade morreu (desvio 0,00 m)
+PASS [Map1.cap] death-a magenta 0,0000%
+PASS [Map1.cap] death-b magenta 0,0000%
+INFO [Map1.k5] estado do clipe da morte aos 1.8 s: Death; normalizedTime 0,35
+PASS [Map1.k6] prefab de morte e removido apos 7,8 s
+INFO [Map1.end] fim do teste do paladino no Map1
+PASS [Map2.0] metadados do mapa Map2
+INFO [Map2] nova partida iniciada
+CONSOLE Warning: The tree Tree Type7 01 must use the Nature/Soft Occlusion shader. Otherwise billboarding/lighting will not work correctly.
+CONSOLE Warning: File "C:\Users\User\Downloads\Era Imperial\EraImperial-UnityRTS-Base\RTS01-Corrigido\TestResults\PHIndepData-20261007-012042\00_Global Parameters.data" not found! Getting default values.
+CONSOLE Warning: File "C:\Users\User\Downloads\Era Imperial\EraImperial-UnityRTS-Base\RTS01-Corrigido\TestResults\PHIndepData-20261007-012042\02_Sound Parameters.data" not found! Getting default values.
+CONSOLE Warning: File "C:\Users\User\Downloads\Era Imperial\EraImperial-UnityRTS-Base\RTS01-Corrigido\TestResults\PHIndepData-20261007-012042\03_Keyboard Mapping.data" not found! Getting default values.
+PASS [Map2.1] Globals.CHARACTER_DATA contem paladin_healer no Map2
+INFO [Map2] meu jogador 0, jogador inimigo 1, jogadores 2
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+PASS [Map2.2] instancia pelo catalogo com PaladinHealBehaviour, PaladinMeleeAttackController, binding, animator e agente no NavMesh
+PASS [Map2.3] era Ancient aplicada: HP 70/70
+PASS [Map2.3b] visual do paladino com corpo (3 LODs), espada e escudo
+INFO [Map2.fps] taxa de quadros no batch: 22,0 fps; tempo de jogo/parede = 1,00
+PASS [Map2.3c] sem scripts ausentes na instancia
+PASS [Map2.3d] agente: velocidade 4, raio 0,5
+PASS [Map2.4] Ancient: vida max 70/70, dano 16/16, alcance 1,5/1,5
+PASS [Map2.4b] Ancient: binding.CurrentTier = tier da era
+PASS [Map2.4] Classical: vida max 90/90, dano 20/20, alcance 1,5/1,5
+PASS [Map2.4b] Classical: binding.CurrentTier = tier da era
+PASS [Map2.4] Medieval: vida max 115/115, dano 25/25, alcance 1,5/1,5
+PASS [Map2.4b] Medieval: binding.CurrentTier = tier da era
+PASS [Map2.4] Imperial: vida max 145/145, dano 31/31, alcance 1,5/1,5
+PASS [Map2.4b] Imperial: binding.CurrentTier = tier da era
+PASS [Map2.5] ordem de movimento aceita
+PASS [Map2.5b] moveu 8,0 m em 5 s (velocidade max 4,00 m/s)
+PASS [Map2.5c] Animator tocou Walk/Run durante o deslocamento
+INFO [Map2.5] clipe ao chegar: Idle, speed anim 0,00
+PASS [Map2.5d] voltou ao Idle ao parar (Idle)
+PASS [Map2.cap] paladin-front: pixels magenta 0,0000%
+PASS [Map2.cap] paladin-back: pixels magenta 0,0000%
+PASS [Map2.cap] paladin-side: pixels magenta 0,0000%
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+INFO [Map2.Ancient] distancias reais ao paladino: aliadoIn 3,40, aliadoIn2 2,00, aliadoFora(borda) 4,70, aliadoLonge 10,00, inimigo 2,20; raio 4
+PASS [Map2.Ancient.g] geometria do teste valida (dois aliados dentro, dois fora, inimigo dentro)
+PASS [Map2.Ancient.1] pulso de cura ocorreu (apos 0,05 s)
+PASS [Map2.Ancient.2] aliados dentro do raio curados em exatamente 6: +6 e +6
+PASS [Map2.Ancient.3] aliados fora do raio nao curados (fora 0, longe 0)
+PASS [Map2.Ancient.4] inimigo (outro dono) dentro do raio NAO curado (0)
+PASS [Map2.Ancient.5] paladino nao se cura (HP 66 -> 66)
+PASS [Map2.Ancient.6] alvos no pulso = 2 (LastPulseTargets 2)
+PASS [Map2.Ancient.7] efeito de cura instanciado (1)
+PASS [Map2.Ancient.8] efeito escalado ao raio: 8,00 x 8,00 (esperado 8,00)
+INFO [Map2.Ancient.8] efeito em (52.00, 31.36, 144.50) (paladino em (52.00, 30.16, 144.50); altura do efeito sobre o paladino 1,20 m)
+PASS [Map2.Ancient.9] camada de cura toca o clipe Heal (Heal), camada base Hit
+PASS [Map2.cap] play-Map2-heal-Ancient-a.png: pixels magenta 0,0000%
+PASS [Map2.cap] play-Map2-heal-Ancient-b.png: pixels magenta 0,0000%
+PASS [Map2.cap] play-Map2-heal-Ancient-near.png: pixels magenta 0,0000%
+PASS [Map2.Ancient.10] intervalo entre pulsos >= cooldown 3 s (medidos: 3,04, 3,04; 3 pulsos)
+PASS [Map2.Ancient.11] nao ha mais pulsos que o cooldown permite em 7,2 s
+PASS [Map2.Ancient.12] cura acumulada do alvo (18) <= limite por alvo 18 (janela 10 s)
+PASS [Map2.Ancient.13] efeito de cura e destruido (nao vaza)
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+INFO [Map2.Classical] distancias reais ao paladino: aliadoIn 3,90, aliadoIn2 2,00, aliadoFora(borda) 5,20, aliadoLonge 10,50, inimigo 2,20; raio 4,5
+PASS [Map2.Classical.g] geometria do teste valida (dois aliados dentro, dois fora, inimigo dentro)
+PASS [Map2.Classical.1] pulso de cura ocorreu (apos 0,05 s)
+PASS [Map2.Classical.2] aliados dentro do raio curados em exatamente 9: +9 e +9
+PASS [Map2.Classical.3] aliados fora do raio nao curados (fora 0, longe 0)
+PASS [Map2.Classical.4] inimigo (outro dono) dentro do raio NAO curado (0)
+PASS [Map2.Classical.5] paladino nao se cura (HP 86 -> 86)
+PASS [Map2.Classical.6] alvos no pulso = 2 (LastPulseTargets 2)
+PASS [Map2.Classical.7] efeito de cura instanciado (1)
+PASS [Map2.Classical.8] efeito escalado ao raio: 9,00 x 9,00 (esperado 9,00)
+INFO [Map2.Classical.8] efeito em (52.00, 31.36, 144.50) (paladino em (52.00, 30.16, 144.50); altura do efeito sobre o paladino 1,20 m)
+PASS [Map2.Classical.9] camada de cura toca o clipe Heal (Heal), camada base Hit
+PASS [Map2.Classical.10] intervalo entre pulsos >= cooldown 2,8 s (medidos: 2,80, 2,83; 3 pulsos)
+PASS [Map2.Classical.11] nao ha mais pulsos que o cooldown permite em 6,7 s
+PASS [Map2.Classical.12] cura acumulada do alvo (27) <= limite por alvo 27 (janela 10 s)
+PASS [Map2.Classical.13] efeito de cura e destruido (nao vaza)
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+INFO [Map2.Medieval] distancias reais ao paladino: aliadoIn 4,40, aliadoIn2 2,00, aliadoFora(borda) 5,70, aliadoLonge 11,00, inimigo 2,20; raio 5
+PASS [Map2.Medieval.g] geometria do teste valida (dois aliados dentro, dois fora, inimigo dentro)
+PASS [Map2.Medieval.1] pulso de cura ocorreu (apos 0,05 s)
+PASS [Map2.Medieval.2] aliados dentro do raio curados em exatamente 13: +13 e +13
+PASS [Map2.Medieval.3] aliados fora do raio nao curados (fora 0, longe 0)
+PASS [Map2.Medieval.4] inimigo (outro dono) dentro do raio NAO curado (0)
+PASS [Map2.Medieval.5] paladino nao se cura (HP 111 -> 111)
+PASS [Map2.Medieval.6] alvos no pulso = 2 (LastPulseTargets 2)
+PASS [Map2.Medieval.7] efeito de cura instanciado (1)
+PASS [Map2.Medieval.8] efeito escalado ao raio: 10,00 x 10,00 (esperado 10,00)
+INFO [Map2.Medieval.8] efeito em (52.00, 31.36, 144.50) (paladino em (52.00, 30.16, 144.50); altura do efeito sobre o paladino 1,20 m)
+PASS [Map2.Medieval.9] camada de cura toca o clipe Heal (Heal), camada base Hit
+PASS [Map2.Medieval.10] intervalo entre pulsos >= cooldown 2,5 s (medidos: 2,54, 2,52; 3 pulsos)
+PASS [Map2.Medieval.11] nao ha mais pulsos que o cooldown permite em 6,0 s
+PASS [Map2.Medieval.12] cura acumulada do alvo (39) <= limite por alvo 39 (janela 10 s)
+PASS [Map2.Medieval.13] efeito de cura e destruido (nao vaza)
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+INFO [Map2.Imperial] distancias reais ao paladino: aliadoIn 5,40, aliadoIn2 2,00, aliadoFora(borda) 6,70, aliadoLonge 12,00, inimigo 2,20; raio 6
+PASS [Map2.Imperial.g] geometria do teste valida (dois aliados dentro, dois fora, inimigo dentro)
+PASS [Map2.Imperial.1] pulso de cura ocorreu (apos 0,05 s)
+PASS [Map2.Imperial.2] aliados dentro do raio curados em exatamente 18: +18 e +18
+PASS [Map2.Imperial.3] aliados fora do raio nao curados (fora 0, longe 0)
+PASS [Map2.Imperial.4] inimigo (outro dono) dentro do raio NAO curado (0)
+PASS [Map2.Imperial.5] paladino nao se cura (HP 141 -> 141)
+PASS [Map2.Imperial.6] alvos no pulso = 2 (LastPulseTargets 2)
+PASS [Map2.Imperial.7] efeito de cura instanciado (1)
+PASS [Map2.Imperial.8] efeito escalado ao raio: 12,00 x 12,00 (esperado 12,00)
+INFO [Map2.Imperial.8] efeito em (52.00, 31.36, 144.50) (paladino em (52.00, 30.16, 144.50); altura do efeito sobre o paladino 1,20 m)
+PASS [Map2.Imperial.9] camada de cura toca o clipe Heal (Heal), camada base Hit
+PASS [Map2.cap] play-Map2-heal-Imperial-a.png: pixels magenta 0,0000%
+PASS [Map2.cap] play-Map2-heal-Imperial-b.png: pixels magenta 0,0000%
+PASS [Map2.Imperial.10] intervalo entre pulsos >= cooldown 2,2 s (medidos: 2,20, 2,21; 3 pulsos)
+PASS [Map2.Imperial.11] nao ha mais pulsos que o cooldown permite em 5,3 s
+PASS [Map2.Imperial.12] cura acumulada do alvo (54) <= limite por alvo 54 (janela 10 s)
+PASS [Map2.Imperial.13] efeito de cura e destruido (nao vaza)
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+INFO [Map2.cap] linha do tempo das curas: t=1,9s +6, t=4,9s +6, t=7,9s +6, t=14,0s +6, t=17,0s +6, t=20,0s +6
+PASS [Map2.cap1] na 1a janela de 10 s o alvo recebeu 18 (teto 18 = 3 curas de 6)
+PASS [Map2.cap2] a cura retoma depois que a janela expira
+PASS [Map2.cap3] cada cura individual = 6 (6,6,6,6,6,6)
+PASS [Map2.cap4] cura nunca excede a vida maxima (HP 500/500)
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+INFO [Map2.x] paladino inimigo: aliado meu a 2,50 m, aliado dele a 3,54 m
+PASS [Map2.x1] paladino inimigo NAO curou unidade de outro dono (HP 1)
+PASS [Map2.x2] paladino inimigo curou o proprio aliado (HP 19, pulsos 3)
+PASS [Map2.idle] sem aliado ferido nao ha pulso (pulsos 19 -> 19)
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+PASS [Map2.cap] play-Map2-attack-a.png: pixels magenta 0,0000%
+PASS [Map2.cap] play-Map2-attack-b.png: pixels magenta 0,0000%
+PASS [Map2.m1] BT: o paladino foi ate o inimigo (primeiro golpe em 2,5 s) e deu 6 golpes; distancia ao alvo 2,15 m
+INFO [Map2.m] golpes (tempo de jogo, dano, era): 2,52s/16/Ancient | 4,38s/16/Ancient | 6,29s/16/Ancient | 8,20s/16/Ancient | 10,07s/16/Ancient | 11,93s/16/Ancient | 13,55s/31/Imperial | 15,14s/31/Imperial | 16,73s/31/Imperial | 18,32s/31/Imperial | 19,92s/31/Imperial | 21,50s/31/Imperial | 23,05s/31/Imperial | 24,91s/20/Classical | 26,77s/20/Classical | 28,64s/20/Classical | 30,49s/20/Classical | 32,38s/20/Classical
+INFO [Map2.m] intervalos Ancient: 1,86, 1,91, 1,91, 1,87, 1,86; Imperial: 1,59, 1,59, 1,59, 1,60, 1,58, 1,55; Classical: 1,86, 1,87, 1,85, 1,89
+PASS [Map2.m2] Ancient: nenhum golpe mais rapido que o cooldown 1,8 s (min 1,86)
+PASS [Map2.m3] Ancient: cadencia media 1,88 s ~ cooldown 1,8 s (+ sondagem 0.25 s); max 1,91
+PASS [Map2.m2] Imperial (trocada apos o spawn e em combate): nenhum golpe mais rapido que o cooldown 1,5 s (min 1,55)
+PASS [Map2.m3] Imperial (trocada apos o spawn e em combate): cadencia media 1,58 s ~ cooldown 1,5 s (+ sondagem 0.25 s); max 1,60
+PASS [Map2.m2] Classical (trocada de novo): nenhum golpe mais rapido que o cooldown 1,7 s (min 1,85)
+PASS [Map2.m3] Classical (trocada de novo): cadencia media 1,87 s ~ cooldown 1,7 s (+ sondagem 0.25 s); max 1,89
+PASS [Map2.m4] Imperial bate mais rapido que Ancient (1,58 < 1,88)
+PASS [Map2.m5] Ancient: dano por golpe 16 = AttackDamage do contrato 16
+PASS [Map2.m5] Imperial: dano por golpe 31 = AttackDamage do contrato 31
+PASS [Map2.m5] Classical: dano por golpe 20 = AttackDamage do contrato 20
+PASS [Map2.m6] golpes do controlador (18) == golpes observados (18)
+FAIL [Map2.m7] entradas no estado Attack do Animator (12) acompanham os golpes (18); a animacao nao reinicia a cada sondagem de 0.25 s
+PASS [Map2.m8] cura continua funcionando durante o combate corpo a corpo (pulsos +1); aliado ferido HP 7
+PASS [Map2.m9] golpes ocorreram a curta distancia (2,15 m; alcance 1,5 + tamanho do alvo)
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+PASS [Map2.f1] o paladino nao ataca aliado do mesmo dono (HP 500 -> 500)
+PASS [Map2.d1] AdvancedUnitAnimatorDriver registrou a reacao a dano
+PASS [Map2.d2] Animator entrou na reacao a dano (Hit)
+PASS [Map2.k1] unidade original destruida ao zerar a vida
+PASS [Map2.k2] prefab de morte instanciado (PaladinHealerDeath(Clone))
+PASS [Map2.k3] prefab de morte toca o clipe Death sozinho (Death)
+PASS [Map2.k4] prefab de morte aparece onde a unidade morreu (desvio 0,00 m)
+PASS [Map2.cap] death-a magenta 0,0000%
+PASS [Map2.cap] death-b magenta 0,0000%
+INFO [Map2.k5] estado do clipe da morte aos 1.8 s: Death; normalizedTime 0,37
+PASS [Map2.k6] prefab de morte e removido apos 7,7 s
+INFO [Map2.end] fim do teste do paladino no Map2
+RESUMO PLAY: 232 PASS, 2 FAIL, 0 erros de console, 65 avisos de console

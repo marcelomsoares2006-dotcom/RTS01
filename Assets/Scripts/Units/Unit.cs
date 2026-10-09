@@ -40,6 +40,8 @@ public class Unit
     protected int _owner;
     protected int _attackDamage;
     protected float _attackRange;
+    // maximo de vida definido pela era (unidades avancadas); 0 = usa UnitData.healthpoints
+    protected int _maxHealthOverride;
 
     public Unit(UnitData data, int owner) : this(data, owner, new List<ResourceValue>() { }) { }
     public Unit(UnitData data, int owner, List<ResourceValue> production)
@@ -92,6 +94,20 @@ public class Unit
     public void SetPosition(Vector3 position)
     {
         _transform.position = position;
+    }
+
+    /// <summary>
+    /// Aplica as estatisticas da era atual (unidades avancadas). Mantem a proporcao de vida atual e respeita
+    /// o multiplicador de tecnologia de ataque, como o construtor.
+    /// </summary>
+    public void SetEraStats(int maxHealth, int attackDamage, float attackRange)
+    {
+        float healthRatio = MaxHP > 0 ? _currentHealth / (float) MaxHP : 1f;
+        _maxHealthOverride = Mathf.Max(1, maxHealth);
+        _currentHealth = Mathf.Max(1, Mathf.RoundToInt(healthRatio * _maxHealthOverride));
+        _attackDamage = (int) (attackDamage * TechnologyNodeActioners.GetMultiplier("attack_booster"));
+        _attackRange = attackRange;
+        _levelUpData = _GetLevelUpData();
     }
 
     public void SetAttackDamage(int dmg)
@@ -259,7 +275,7 @@ public class Unit
     public string Code { get => _data.code; }
     public Transform Transform { get => _transform; }
     public int HP { get => _currentHealth; set => _currentHealth = value; }
-    public int MaxHP { get => _data.healthpoints; }
+    public int MaxHP { get => _maxHealthOverride > 0 ? _maxHealthOverride : _data.healthpoints; }
     public int Level { get => _level; set { _level = value; } }
     public bool LevelMaxedOut { get => _levelMaxedOut; }
     public UnitLevelUpData LevelUpData { get => _levelUpData; }

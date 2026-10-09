@@ -1,0 +1,16 @@
+Catapult - Unity build report (2026-10-06 15:55)
+- Instante de disparo (Blender): 0,400s
+- Clip Idle: 3,000s loop=True legacy=False humanoid=False
+- Clip Move: 1,133s loop=True legacy=False humanoid=False
+- Clip Reload: 2,567s loop=False legacy=False humanoid=False
+- Fire: evento CatapultRelease em 0,400s (esperado 0,400s), duracao 1,100s
+- Clip Fire: 1,100s loop=False legacy=False humanoid=False
+- Clip Hit: 0,467s loop=False legacy=False humanoid=False
+- Clip Destroy: 2,367s loop=False legacy=False humanoid=False
+- ProjectileSpawn veio do FBX (filho de Arm).
+- SelectionCircle: orthographicSize x3
+- Socket ProjectileSpawn: Mesh/CatapultVisual/CatapultArmature/Root/Arm/ProjectileSpawn
+- Socket ArmPivot (osso Arm, pivo do braco): Mesh/CatapultVisual/CatapultArmature/Root/Arm
+- CharacterData registrado: Assets/Resources/ScriptableObjects/Units/Characters/Catapult.asset
+Wrapper: Assets/Resources/Prefabs/Units/Characters/Catapult.prefab
+CharacterData: Assets/Resources/ScriptableObjects/Units/Characters/Catapult.asset code=catapult

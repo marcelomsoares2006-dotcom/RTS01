@@ -20,11 +20,11 @@ MonoBehaviour:
   arcHeight: 0
   prefab:
     role: projectile prefab
-    expectedAssetPath: Assets/Resources/Prefabs/Projectiles/CrossbowBolt.prefab
-    asset: {fileID: 0}
+    expectedAssetPath: Assets/CharacterRigging/Crossbow/Prefabs/CrossbowBolt.prefab
+    asset: {fileID: 235752700610264836, guid: 5370a38dbcce3724fbefa15aa88b2ae7, type: 3}
     required: 1
   impactEffect:
     role: impact effect
-    expectedAssetPath: Assets/Resources/Prefabs/Effects/CrossbowImpact.prefab
-    asset: {fileID: 0}
+    expectedAssetPath: Assets/CharacterRigging/Crossbow/Prefabs/CrossbowImpact.prefab
+    asset: {fileID: 2663148622126885370, guid: 2a3bb3884b569f546afedf883c166d4e, type: 3}
     required: 0

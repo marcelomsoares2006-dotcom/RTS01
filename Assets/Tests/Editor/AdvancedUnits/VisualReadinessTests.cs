@@ -40,7 +40,7 @@ namespace EraImperial.AdvancedUnits.Tests
         }
 
         [Test]
-        public void ShippedDefaults_DeclareExpectedPathsOnly_NoneResolved_AndNoneExistOnDisk()
+        public void Defaults_DeclareExpectedPaths_AndExistingShippedAssetsAreIntegrated()
         {
             foreach (AdvancedUnitContract contract in _set.All)
             {
@@ -59,8 +59,16 @@ namespace EraImperial.AdvancedUnits.Tests
                     Assert.That(r.asset == null, Is.True, $"{contract.code}: {r.role}");
                     Assert.That(r.expectedAssetPath, Does.StartWith("Assets/"), $"{contract.code}: {r.role}");
                     string onDisk = Path.GetFullPath(Path.Combine(Application.dataPath, "..", r.expectedAssetPath));
-                    Assert.That(File.Exists(onDisk), Is.False,
-                        $"{contract.code}: '{r.expectedAssetPath}' passou a existir; atribua o asset ao contrato em vez de deixá-lo apenas declarado");
+                    // Os Defaults são referências de proposta, portanto permanecem não resolvidos em memória.
+                    // Quando um asset já foi criado no projeto, o contrato gravado precisa apontar para o visual integrado.
+                    if (File.Exists(onDisk))
+                    {
+                        string contractPath = "Assets/Data/AdvancedUnits/" + contract.name + ".asset";
+                        AdvancedUnitContract shipped = UnityEditor.AssetDatabase.LoadAssetAtPath<AdvancedUnitContract>(contractPath);
+                        Assert.That(shipped, Is.Not.Null, $"{contract.code}: '{r.expectedAssetPath}' existe mas o contrato gravado nao foi encontrado");
+                        Assert.That(shipped.IsVisualReady, Is.True,
+                            $"{contract.code}: '{r.expectedAssetPath}' existe em disco mas o contrato gravado nao esta com o visual pronto");
+                    }
                 }
             }
         }

@@ -144,6 +144,10 @@ public class DebugConsole : MonoBehaviour
             Globals.GAME_RESOURCES[owner][InGameResource.Stone].AddAmount(amount);
             EventManager.TriggerEvent("UpdatedResources");
         });
+        new DebugCommand<int>("set_advanced_era", "Sets the era used by advanced units (0 Ancient, 1 Classical, 2 Medieval, 3 Imperial).", "set_advanced_era <0-3>", (x) =>
+        {
+            AdvancedEraState.Set((EraImperial.Units.Advanced.ImperialEra)Mathf.Clamp(x, 0, 3));
+        });
         new DebugCommand<int>("set_unit_formation_type", "Sets the unit formation type (by index).", "set_unit_formation_type <formation_index>", (x) =>
         {
             Globals.UNIT_FORMATION_TYPE = (UnitFormationType)x;

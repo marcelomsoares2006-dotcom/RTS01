@@ -1,0 +1,18 @@
+{
+  "boulder": {
+    "triangles": 320,
+    "dimensions": [
+      0.407,
+      0.373,
+      0.397
+    ]
+  },
+  "debris": {
+    "triangles": 20,
+    "dimensions": [
+      0.948,
+      0.53,
+      0.769
+    ]
+  }
+}

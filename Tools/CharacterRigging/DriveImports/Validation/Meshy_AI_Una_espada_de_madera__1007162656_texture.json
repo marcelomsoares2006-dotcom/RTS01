@@ -1,0 +1,23 @@
+{
+  "asset": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\Tools\\CharacterRigging\\DriveImports\\Extracted\\WoodSword\\Meshy_AI_Una_espada_de_madera__1007162656_texture_fbx\\Meshy_AI_Una_espada_de_madera__1007162656_texture.fbx",
+  "passed": false,
+  "meshes": [
+    {
+      "name": "Mesh_0",
+      "triangles": 82818,
+      "vertices": 41412,
+      "uv_layers": 1,
+      "materials": [
+        "Material.001"
+      ],
+      "skinned": false
+    }
+  ],
+  "armatures": [],
+  "errors": [
+    "Mesh_0: 2 non-manifold edges"
+  ],
+  "warnings": [
+    "Mesh_0: 4 open boundary edges"
+  ]
+}

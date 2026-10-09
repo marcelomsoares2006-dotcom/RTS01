@@ -1,0 +1,216 @@
+PASS LICENSE.md documenta Meshy, Mixamo e cajado procedural
+PASS Malha-fonte (glb Meshy) e tarefas Meshy presentes em Tools/CharacterRigging/Inputs/CombatMage
+PASS Scripts de reconstrucao presentes
+PASS Avatar humanoide valido (CombatMage.fbx)
+PASS Clip Idle: Humanoid copiando o avatar do CombatMage
+PASS Clip Idle: importado, humanoide, 8,40s, loop=True
+PASS Clip Walk: Humanoid copiando o avatar do CombatMage
+PASS Clip Walk: importado, humanoide, 1,04s, loop=True
+PASS Clip Run: Humanoid copiando o avatar do CombatMage
+PASS Clip Run: importado, humanoide, 0,63s, loop=True
+PASS Clip Cast: Humanoid copiando o avatar do CombatMage
+PASS Clip Cast: importado, humanoide, 1,77s, loop=False
+PASS Clip Hit: Humanoid copiando o avatar do CombatMage
+PASS Clip Hit: importado, humanoide, 1,03s, loop=False
+PASS Clip Death: Humanoid copiando o avatar do CombatMage
+PASS Clip Death: importado, humanoide, 5,77s, loop=False
+PASS CombatMageVisual.prefab existe
+PASS Animator com avatar, controller e root motion desligado
+PASS CombatMageStaffEffects com orbe e efeitos ligados
+PASS LODGroup com 3 niveis
+PASS 3 SkinnedMeshRenderer (LOD0/1/2): CombatMage_LOD0, CombatMage_LOD1, CombatMage_LOD2
+INFO Triangulos LOD0/1/2: 30939 / 9500 / 4200
+PASS Triangulos estritamente decrescentes por LOD e LOD0 <= 31 k
+PASS LOD1 < 40% e LOD2 < 50% do nivel anterior
+PASS CombatMage_LOD0: 24 ossos, rootBone ok, vertices sem peso normalizado = 0
+PASS CombatMage_LOD0: UV presentes (31843)
+PASS CombatMage_LOD0: material CombatMage_Mat
+PASS CombatMage_LOD0: no maximo 4 influencias por vertice (max 4)
+PASS CombatMage_LOD1: 24 ossos, rootBone ok, vertices sem peso normalizado = 0
+PASS CombatMage_LOD1: UV presentes (13583)
+PASS CombatMage_LOD1: material CombatMage_Mat
+PASS CombatMage_LOD1: no maximo 4 influencias por vertice (max 4)
+PASS CombatMage_LOD2: 24 ossos, rootBone ok, vertices sem peso normalizado = 0
+PASS CombatMage_LOD2: UV presentes (6578)
+PASS CombatMage_LOD2: material CombatMage_Mat
+PASS CombatMage_LOD2: no maximo 4 influencias por vertice (max 4)
+PASS Prefabs CombatMageBolt, Impact, Cast e Death existem
+PASS Material valido: CombatMageVisual/Staff -> CombatMage_StaffWood (Standard)
+PASS Material valido: CombatMageVisual/Staff -> CombatMage_StaffLeather (Standard)
+PASS Material valido: CombatMageVisual/Staff -> CombatMage_StaffBronze (Standard)
+PASS Material valido: CombatMageVisual/Charge -> CombatMage_FxSpark (Legacy Shaders/Particles/Additive)
+PASS Material valido: CombatMageVisual/Core -> CombatMage_FxGlow (Legacy Shaders/Particles/Additive)
+PASS Material valido: CombatMageVisual/ReleaseBurst -> CombatMage_FxGlow (Legacy Shaders/Particles/Additive)
+PASS Material valido: CombatMageVisual/ReleaseSparks -> CombatMage_FxSpark (Legacy Shaders/Particles/Additive)
+PASS Material valido: CombatMageVisual/Orb -> CombatMage_Orb (Standard)
+PASS Material valido: CombatMageVisual/CombatMage_LOD0 -> CombatMage_Mat (Standard)
+PASS Material valido: CombatMageVisual/CombatMage_LOD1 -> CombatMage_Mat (Standard)
+PASS Material valido: CombatMageVisual/CombatMage_LOD2 -> CombatMage_Mat (Standard)
+PASS Material valido: CombatMageBolt/Core -> CombatMage_BoltCore (Standard)
+PASS Material valido: CombatMageBolt/Glow -> CombatMage_FxGlow (Legacy Shaders/Particles/Additive)
+PASS Material valido: CombatMageBolt/Sparks -> CombatMage_FxSpark (Legacy Shaders/Particles/Additive)
+PASS Material valido: CombatMageBolt/Trail -> CombatMage_FxTrail (Legacy Shaders/Particles/Additive)
+PASS Material valido: CombatMageImpact/Flash -> CombatMage_FxGlow (Legacy Shaders/Particles/Additive)
+PASS Material valido: CombatMageImpact/Ring -> CombatMage_FxRing (Legacy Shaders/Particles/Additive)
+PASS Material valido: CombatMageImpact/Sparks -> CombatMage_FxSpark (Legacy Shaders/Particles/Additive)
+PASS Material valido: CombatMageImpact/Motes -> CombatMage_FxGlow (Legacy Shaders/Particles/Additive)
+PASS Material valido: CombatMageCast/Charge -> CombatMage_FxSpark (Legacy Shaders/Particles/Additive)
+PASS Material valido: CombatMageCast/Core -> CombatMage_FxGlow (Legacy Shaders/Particles/Additive)
+PASS Material valido: CombatMageCast/ReleaseBurst -> CombatMage_FxGlow (Legacy Shaders/Particles/Additive)
+PASS Material valido: CombatMageCast/ReleaseSparks -> CombatMage_FxSpark (Legacy Shaders/Particles/Additive)
+PASS Material valido: CombatMageDeath/Staff -> CombatMage_StaffWood (Standard)
+PASS Material valido: CombatMageDeath/Staff -> CombatMage_StaffLeather (Standard)
+PASS Material valido: CombatMageDeath/Staff -> CombatMage_StaffBronze (Standard)
+PASS Material valido: CombatMageDeath/Charge -> CombatMage_FxSpark (Legacy Shaders/Particles/Additive)
+PASS Material valido: CombatMageDeath/Core -> CombatMage_FxGlow (Legacy Shaders/Particles/Additive)
+PASS Material valido: CombatMageDeath/ReleaseBurst -> CombatMage_FxGlow (Legacy Shaders/Particles/Additive)
+PASS Material valido: CombatMageDeath/ReleaseSparks -> CombatMage_FxSpark (Legacy Shaders/Particles/Additive)
+PASS Material valido: CombatMageDeath/Orb -> CombatMage_Orb (Standard)
+PASS Material valido: CombatMageDeath/CombatMage_LOD0 -> CombatMage_Mat (Standard)
+PASS Material valido: CombatMageDeath/CombatMage_LOD1 -> CombatMage_Mat (Standard)
+PASS Material valido: CombatMageDeath/CombatMage_LOD2 -> CombatMage_Mat (Standard)
+PASS Material valido: CombatMage/MinimapIcon -> MinimapIcon (Unlit/Color)
+PASS Material valido: CombatMage/Staff -> CombatMage_StaffWood (Standard)
+PASS Material valido: CombatMage/Staff -> CombatMage_StaffLeather (Standard)
+PASS Material valido: CombatMage/Staff -> CombatMage_StaffBronze (Standard)
+PASS Material valido: CombatMage/Charge -> CombatMage_FxSpark (Legacy Shaders/Particles/Additive)
+PASS Material valido: CombatMage/Core -> CombatMage_FxGlow (Legacy Shaders/Particles/Additive)
+PASS Material valido: CombatMage/ReleaseBurst -> CombatMage_FxGlow (Legacy Shaders/Particles/Additive)
+PASS Material valido: CombatMage/ReleaseSparks -> CombatMage_FxSpark (Legacy Shaders/Particles/Additive)
+PASS Material valido: CombatMage/Orb -> CombatMage_Orb (Standard)
+PASS Material valido: CombatMage/CombatMage_LOD0 -> CombatMage_Mat (Standard)
+PASS Material valido: CombatMage/CombatMage_LOD1 -> CombatMage_Mat (Standard)
+PASS Material valido: CombatMage/CombatMage_LOD2 -> CombatMage_Mat (Standard)
+PASS Material valido: CombatMage/TeamRing -> AdvancedTeamRing (Unlit/Color)
+PASS Material valido: CombatMage/FOV -> FOV (Standard)
+PASS CombatMage_Mat com textura base e normal map
+PASS Textura importada: CombatMage_BaseColor
+PASS Textura importada: CombatMage_Normal
+PASS Textura importada: CombatMage_FxGlow
+PASS Textura importada: CombatMage_FxRing
+PASS Textura importada: CombatMage_FxSpark
+PASS Textura importada: CombatMage_FxStreak
+PASS StaffMount e filho do osso da mao direita
+PASS Cajado e objeto separado (filho de StaffMount) com CastPoint e Orb
+PASS Cajado nao faz parte da malha do corpo
+PASS Orbe com material emissivo
+PASS Cajado dentro do orcamento de props (2076 triangulos, <= 8 k)
+PASS CastPoint na ponta do cajado (altura 1,82 m no Idle)
+PASS Estados: Locomotion, Cast, Hit
+PASS Parametro Speed
+PASS Parametro Fire
+PASS Parametro Damaged
+PASS Parametro Heal
+PASS Parametro bool Running (behavior tree)
+PASS Parametro bool Attacking (behavior tree)
+PASS Parametro trigger Hit (behavior tree, sem transicoes)
+PASS Fire -> Cast
+PASS Damaged -> Hit
+PASS Locomocao por BlendTree em Speed (Idle/Walk/Run)
+PASS Prefab de morte toca Death sozinho (estado padrao)
+INFO Arestas medidas: 44703
+PASS Deformacao Idle: arestas p1%=0,73 p99%=1,51 p99.9%=2,33 max=4,05 (>x3: 0,035%), deslocamento max 0,32 m, altura 1,79 m, finito=True
+PASS Deformacao Walk: arestas p1%=0,70 p99%=1,60 p99.9%=2,62 max=14,40 (>x3: 0,055%), deslocamento max 0,67 m, altura 1,79 m, finito=True
+PASS Deformacao Run: arestas p1%=0,53 p99%=1,96 p99.9%=3,73 max=16,57 (>x3: 0,220%), deslocamento max 1,10 m, altura 1,75 m, finito=True
+PASS Deformacao Cast: arestas p1%=0,64 p99%=1,92 p99.9%=3,86 max=8,22 (>x3: 0,246%), deslocamento max 1,12 m, altura 1,94 m, finito=True
+PASS Deformacao Hit: arestas p1%=0,61 p99%=2,12 p99.9%=3,75 max=13,62 (>x3: 0,277%), deslocamento max 1,00 m, altura 1,63 m, finito=True
+PASS Deformacao Death: arestas p1%=0,58 p99%=2,09 p99.9%=3,96 max=14,17 (>x3: 0,278%), deslocamento max 2,75 m, altura 1,78 m, finito=True
+PASS Cajado preso a mao em Idle@0,00s: distancia punho-mao 0,070 m
+PASS Cajado preso a mao em Walk@0,50s: distancia punho-mao 0,070 m
+PASS Cajado preso a mao em Run@0,30s: distancia punho-mao 0,070 m
+PASS Cajado preso a mao em Cast@0,40s: distancia punho-mao 0,070 m
+PASS Cajado preso a mao em Cast@0,77s: distancia punho-mao 0,070 m
+PASS Cajado preso a mao em Cast@1,30s: distancia punho-mao 0,070 m
+PASS Cajado preso a mao em Hit@0,30s: distancia punho-mao 0,070 m
+PASS No disparo o orbe aponta para a frente (cos 0,94)
+INFO Cast@disparo (espaco do personagem): mao direita (0.27, 1.02, 0.29), cotovelo direito (0.24, 1.25, 0.20), mao esquerda (-0.37, 1.45, 0.49)
+INFO Malha da mao direita no disparo: 1329 vertices, centro (0.25, 0.99, 0.17), osso (0.27, 1.02, 0.29)
+PASS No disparo as duas maos avancam para a frente (a mao do cajado e a mao livre)
+INFO LOD screen heights: 0,170, 0,100, 0,000
+PASS LODs com limiares decrescentes
+PASS LOD0 front: renderiza (primeiro plano 37641px, magenta 0px)
+PASS LOD0 back: renderiza (primeiro plano 35650px, magenta 0px)
+PASS LOD0 side: renderiza (primeiro plano 26141px, magenta 0px)
+PASS LOD1 front: renderiza (primeiro plano 37332px, magenta 0px)
+PASS LOD1 back: renderiza (primeiro plano 35227px, magenta 0px)
+PASS LOD1 side: renderiza (primeiro plano 25865px, magenta 0px)
+PASS LOD2 front: renderiza (primeiro plano 35516px, magenta 0px)
+PASS LOD2 back: renderiza (primeiro plano 33992px, magenta 0px)
+PASS LOD2 side: renderiza (primeiro plano 25129px, magenta 0px)
+PASS Pose Idle@1,00s front: renderiza (fg 37743px, magenta 0px)
+PASS Pose Idle@1,00s side: renderiza (fg 26207px, magenta 0px)
+PASS Pose Walk@0,30s front: renderiza (fg 35053px, magenta 0px)
+PASS Pose Walk@0,30s side: renderiza (fg 35226px, magenta 0px)
+PASS Pose Run@0,20s front: renderiza (fg 29947px, magenta 0px)
+PASS Pose Run@0,20s side: renderiza (fg 28043px, magenta 0px)
+PASS Pose Cast@0,25s front: renderiza (fg 46640px, magenta 0px)
+PASS Pose Cast@0,25s side: renderiza (fg 37719px, magenta 0px)
+PASS Pose Cast@0,25s threeq: renderiza (fg 38293px, magenta 0px)
+PASS Close-up Cast@0,25s: renderiza (fg 111424px, magenta 0px)
+PASS Pose Cast@0,45s front: renderiza (fg 46010px, magenta 0px)
+PASS Pose Cast@0,45s side: renderiza (fg 38169px, magenta 0px)
+PASS Pose Cast@0,45s threeq: renderiza (fg 37119px, magenta 0px)
+PASS Close-up Cast@0,45s: renderiza (fg 118075px, magenta 0px)
+PASS Pose Cast@0,77s front: renderiza (fg 49932px, magenta 0px)
+PASS Pose Cast@0,77s side: renderiza (fg 37352px, magenta 0px)
+PASS Pose Cast@0,77s threeq: renderiza (fg 39719px, magenta 0px)
+PASS Close-up Cast@0,77s: renderiza (fg 100828px, magenta 0px)
+PASS Pose Cast@1,10s front: renderiza (fg 35924px, magenta 0px)
+PASS Pose Cast@1,10s side: renderiza (fg 32006px, magenta 0px)
+PASS Pose Cast@1,10s threeq: renderiza (fg 32173px, magenta 0px)
+PASS Close-up Cast@1,10s: renderiza (fg 100556px, magenta 0px)
+PASS Pose Hit@0,30s front: renderiza (fg 30340px, magenta 0px)
+PASS Pose Hit@0,30s side: renderiza (fg 33060px, magenta 0px)
+PASS Pose Death@2,00s front: renderiza (fg 42767px, magenta 0px)
+PASS Pose Death@2,00s side: renderiza (fg 25054px, magenta 0px)
+PASS Pose Death@5,70s front: renderiza (fg 34864px, magenta 0px)
+PASS Pose Death@5,70s side: renderiza (fg 6314px, magenta 0px)
+PASS Death termina com o corpo deitado (quadril a 0,23 m)
+PASS Death: nenhum vertice abaixo do piso em todo o clipe (minimo 0,019 m)
+PASS Prefab de morte com CombatMageDeathGrounding (alinha ao terreno)
+PASS CombatMage.prefab (wrapper da unidade) existe
+PASS Wrapper com tag Unit e layer 12
+PASS Wrapper tem CharacterManager
+PASS Wrapper tem CharacterBT
+PASS Wrapper tem FogRendererToggler
+PASS Wrapper tem AdvancedUnitEraBinding
+PASS Wrapper tem AdvancedUnitAnimatorDriver
+PASS Wrapper tem ProjectileAttackController
+PASS Wrapper tem AdvancedUnitDeathEffect
+PASS Wrapper tem NavMeshAgent, BoxCollider e AudioSource
+PASS Colisor/agente ajustados a pegada do humanoide (caixa (0.80, 1.90, 0.80), raio 0,4)
+PASS Caminho Mesh/MinimapIcon (exigido por Unit) existe
+PASS CharacterManager.meshRenderer atribuido (anel do time)
+PASS CharacterManager.animator atribuido
+PASS selectionCircle, fov e contextualSource atribuidos
+PASS FogRendererToggler.mesh atribuido
+PASS Contrato CombatMage.asset carregado
+PASS Contrato: dados de jogo validos (OK)
+PASS Contrato: visual 100% real (pronto)
+PASS Contrato aponta para o wrapper jogavel
+PASS Contrato: malhas (corpo e cajado) apontam para os FBX reais
+PASS Contrato: efeitos (conjuracao, impacto) apontam para os prefabs reais
+PASS Contrato: efeitos = CombatMageCast e CombatMageImpact
+PASS Socket 'CastPoint' resolve em Transform.Find: Mesh/CombatMageVisual/CombatMage_Armature/Hips/Spine02/Spine01/Spine/RightShoulder/RightArm/RightForeArm/RightHand/StaffMount/Staff/CastPoint
+PASS Socket 'StaffMount' resolve em Transform.Find: Mesh/CombatMageVisual/CombatMage_Armature/Hips/Spine02/Spine01/Spine/RightShoulder/RightArm/RightForeArm/RightHand/StaffMount
+PASS Contrato: animacoes Idle, Walk, Run, Cast, Hit, Death
+PASS Contrato: clipes importados reais por estado
+PASS Contrato: Cast -> Fire, Hit -> Damaged
+PASS Projetil separado: contrato aponta para CombatMageBolt e impacto reais
+PASS CombatMageBolt: orbe + particulas + rastro (TrailRenderer)
+PASS CombatMageImpact: 4 sistemas de particulas
+PASS AdvancedUnitEraBinding e ProjectileAttackController usam o contrato CombatMage
+PASS projectileSpawn = CastPoint do cajado
+PASS Animator ligado ao ataque e ao driver
+PASS releaseDelay (0,77s) = evento de disparo do clipe Cast (0,77s)
+PASS AdvancedUnitDeathEffect usa o prefab de morte
+PASS Contrato: 4 eras em ordem
+PASS Progressao Ancient->Classical: vida 22->28, dano 18->24, alcance 8->9
+PASS Progressao Classical->Medieval: vida 28->34, dano 24->31, alcance 9->10
+PASS Progressao Medieval->Imperial: vida 34->42, dano 31->40, alcance 10->11
+PASS CharacterData 'combat_mage' referencia o wrapper
+FAIL CharacterData com os valores Ancient do contrato
+PASS Catalogo Resources carrega 'combat_mage' (10 personagens)
+PASS Codigos de personagem unicos: archer, catapult, combat_mage, crossbow, dark_knight, heraldic_knight, paladin_healer, soldier, spearman, worker
+PASS Nada de CombatMage no Build Settings
+COMBATMAGE_AUDIT_FAILED failures=1

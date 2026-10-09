@@ -1,0 +1,23 @@
+{
+  "asset": "Tools\\CharacterRigging\\DriveImports\\Repaired\\WoodSword_Repaired.fbx",
+  "passed": false,
+  "meshes": [
+    {
+      "name": "WoodSword_Repaired",
+      "triangles": 9938,
+      "vertices": 4972,
+      "uv_layers": 1,
+      "materials": [
+        "Material.001"
+      ],
+      "skinned": false
+    }
+  ],
+  "armatures": [],
+  "errors": [
+    "WoodSword_Repaired: 2 non-manifold edges"
+  ],
+  "warnings": [
+    "WoodSword_Repaired: 4 open boundary edges"
+  ]
+}

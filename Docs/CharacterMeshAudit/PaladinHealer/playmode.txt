@@ -1,0 +1,87 @@
+Unity 6000.6.3f1
+PASS Map1 encontrado
+Partida nova em Map1 iniciada
+PASS Globals.CHARACTER_DATA contem 'paladin_healer'
+PASS Globals.CHARACTER_DATA contem 'soldier' (aliados e inimigos de teste)
+PASS Posicao no NavMesh perto de (37.44, 30.00, 48.42)
+PASS Paladino instanciado com CharacterManager, AdvancedUnitEraBinding e PaladinHealBehaviour
+PASS Paladino posicionado no NavMesh
+PASS Visual do Paladino presente sob Mesh
+PASS Sockets WeaponMount, ShieldMount e HealAuraCenter na unidade em jogo
+PASS Era Ancient aplicada: vida 70/70, dano 16
+PASS Posicao no NavMesh perto de (43.62, 30.00, 53.77)
+PASS Comando de movimento aceito
+PASS Paladino andou 9,3 m pelo NavMesh
+PASS Parametro Speed do Animator = 3,84 (locomocao ativa)
+Captura playmode-walk: pixels magenta = 0
+PASS Posicao no NavMesh perto de (45.62, 30.01, 53.77)
+PASS soldier (dono 0) posicionado no NavMesh
+PASS Posicao no NavMesh perto de (43.62, 30.01, 57.37)
+PASS soldier (dono 0) posicionado no NavMesh
+PASS Posicao no NavMesh perto de (38.62, 30.01, 53.77)
+PASS soldier (dono 0) posicionado no NavMesh
+PASS Posicao no NavMesh perto de (42.12, 30.01, 52.27)
+PASS soldier (dono 1) posicionado no NavMesh
+Distancias planas: aliado dentro 2,00 m, aliado na borda 3,60 m, aliado fora 5,00 m, inimigo 2,12 m (raio Ancient 4,0)
+PASS Cenario: 2 aliados dentro do raio, 1 aliado fora (no alcance da era Imperial), 1 inimigo ferido dentro do raio
+PASS Donos: aliados = dono do paladino; inimigo = outro dono
+[diag] editor=26s jogo=13,1s quadro=6217 dt=0,015 escala=1
+PASS Inimigo ferido dentro do raio nunca e curado
+PASS Aliado fora do raio (Ancient 4 m) nao e curado
+PASS O paladino nao se cura (canHealSelf desligado)
+Pulso 1 em t=13,09: alvos=2, curado total=12, aliado dentro HP=10, borda HP=10
+PASS Cada pulso cura no maximo os 2 aliados dentro do raio
+PASS Efeito de cura instanciado na cena (1)
+PASS Efeito escalado para o raio da era Ancient: (2r,1,2r) = (8.00, 1.00, 8.00)
+PASS Efeito com particulas
+PASS Limite de cura por alvo respeitado (<= 18 em 10 s)
+Captura playmode-heal: pixels magenta = 0
+Pulso 2 em t=15,93: alvos=2, curado total=24, aliado dentro HP=16, borda HP=16
+Pulso 3 em t=18,93: alvos=2, curado total=36, aliado dentro HP=22, borda HP=22
+PASS Pelo menos 3 pulsos em ~9 s (3)
+PASS Cooldown de cura respeitado entre pulsos 1 e 2: 2,84 s (Ancient 3,0 s; o instante e lido por polling do editor, tolerancia 0,4 s)
+PASS Cooldown de cura respeitado entre pulsos 2 e 3: 2,99 s (Ancient 3,0 s; o instante e lido por polling do editor, tolerancia 0,4 s)
+PASS Periodo medio entre pulsos 2,92 s >= 2,85 s
+PASS Aliados dentro do raio curaram exatamente o limite por alvo: +18 / +18
+PASS Total curado = 36 (2 alvos x 18), obtido 36
+PASS Fim da fase Ancient: inimigo e aliado fora do raio continuam com HP 4
+PASS Camada de cura do Animator tocou o estado Heal (Heal > (?) > Empty > (Heal) > Heal > (?) > Empty > (Heal) > Heal > (?) > Empty)
+PASS Era Imperial aplicada ao paladino: vida maxima 145, dano 31
+Captura playmode-heal-imperial-start: pixels magenta = 0
+Captura playmode-heal-imperial: pixels magenta = 0
+PASS Aliado a 5 m curado na era Imperial (+18, cura 18 por pulso)
+PASS Inimigo continua sem cura na era Imperial
+PASS Posicao no NavMesh perto de (45.38, 30.01, 59.50)
+PASS soldier (dono 1) posicionado no NavMesh
+Inimigo de combate a 6,0 m com HP 500; alcance do paladino 1,5 m
+Golpe 1: dano 31 (HP 500 -> 469) a 2,16 m
+PASS Dano do golpe = AttackDamage do paladino (31)
+PASS Golpe corpo a corpo a 2,16 m
+Captura playmode-attack: pixels magenta = 0
+Golpe 2: dano 31 (HP 469 -> 438) a 2,16 m
+PASS Dano do golpe = AttackDamage do paladino (31)
+PASS Golpe corpo a corpo a 2,16 m
+Estados do Animator: Locomotion > Attack > (Locomotion) > Locomotion
+PASS Animator entrou no estado Attack (trigger Hit do behavior tree)
+PASS Dano total acumulado coerente com os golpes
+PASS 0 erros de runtime no Console ate aqui
+Captura playmode-front: pixels magenta = 0
+Captura playmode-back: pixels magenta = 0
+Captura playmode-side: pixels magenta = 0
+PASS LODGroup presente na unidade em jogo
+PASS 3 renderers de LOD na unidade em jogo
+LOD em jogo, zoom ortografico 8: pixels LOD0/1/2 = 263/0/0 -> LOD0
+LOD em jogo, zoom ortografico 18: pixels LOD0/1/2 = 0/41/0 -> LOD1
+LOD em jogo, zoom ortografico 26: pixels LOD0/1/2 = 0/0/15 -> LOD2
+PASS Troca de LOD pelo zoom da camera do jogo: 8 > LOD0, 18 > LOD1, 26 > LOD2
+PASS Prefab de morte instanciado no lugar da unidade
+PASS Objeto PaladinHealerDeath(Clone) na cena
+PASS Prefab de morte toca o estado Death sozinho (normalizedTime 0,11)
+Captura playmode-death-start: pixels magenta = 0
+PASS Prefab de morte instanciado no lugar da unidade
+PASS Objeto PaladinHealerDeath(Clone) na cena
+PASS Prefab de morte toca o estado Death sozinho (normalizedTime 0,50)
+PASS Animacao de morte avancou (normalizedTime 0,50)
+Captura playmode-death: pixels magenta = 0
+PASS 0 erros de runtime no Console
+PALADINHEALER_PLAYMODE_PASSED

@@ -1,0 +1,51 @@
+{
+  "schema": "era-imperial.character-preparation/v1",
+  "characterId": "archer",
+  "displayName": "Arqueiro",
+  "status": "integrated-validated",
+  "updated": "2026-10-05",
+  "source": {
+    "provided": true,
+    "path": "Tools/CharacterRigging/Inputs/Archer/archer_rigged.glb",
+    "generator": "Meshy: text-to-image (referencia em pose A) -> image-to-3D (30.000 triangulos, PBR) -> auto-rig humanoide",
+    "meshyTasks": "Tools/CharacterRigging/Inputs/Archer/*_task.json",
+    "licenseConfirmed": true,
+    "license": {
+      "mesh": "Meshy: acesso a API exige plano pago (Pro+), e em planos pagos o usuario e dono dos ativos gerados (plano gratuito seria CC BY 4.0). A chave de API do usuario funcionou, logo a geracao ocorreu sob plano pago. O plano da conta nao e legivel pela API: conferir em meshy.ai/settings se necessario.",
+      "animations": "Clipes Idle, Aim, DrawString e Fire derivados de animacoes Mixamo (Adobe). Uso comercial livre em jogos; proibido redistribuir os arquivos de animacao como pacote de assets. Walk e Run sao do rig Meshy.",
+      "accessories": "Arco, aljava e flecha modelados proceduralmente neste projeto (Tools/CharacterRigging/BuildArcherAccessories.py); sem terceiros.",
+      "fullText": "Docs/CharacterMeshAudit/Archer/LICENSE.md"
+    }
+  },
+  "plannedRoot": "Assets/CharacterRigging/Archer",
+  "requiredArtifacts": [
+    "Assets/CharacterRigging/Archer/Models/Archer.fbx",
+    "Assets/CharacterRigging/Archer/Models/Archer.glb",
+    "Assets/CharacterRigging/Archer/Models/Archer@Idle.fbx",
+    "Assets/CharacterRigging/Archer/Models/Archer@Walk.fbx",
+    "Assets/CharacterRigging/Archer/Models/Archer@Aim.fbx",
+    "Assets/CharacterRigging/Archer/Models/Archer@DrawString.fbx",
+    "Assets/CharacterRigging/Archer/Models/Archer@Fire.fbx",
+    "Assets/CharacterRigging/Archer/Accessories/Archer_Bow.fbx",
+    "Assets/CharacterRigging/Archer/Accessories/Archer_Quiver.fbx",
+    "Assets/CharacterRigging/Archer/Accessories/Archer_Arrow.fbx",
+    "Assets/CharacterRigging/Archer/Prefabs/ArcherVisual.prefab",
+    "Assets/Resources/Prefabs/Units/Characters/Archer.prefab",
+    "Assets/Resources/ScriptableObjects/Units/Characters/Archer.asset",
+    "Docs/CharacterMeshAudit/Archer/unity-audit.txt",
+    "Docs/CharacterMeshAudit/Archer/export-verification.json",
+    "TestResults/archer-playmode.txt"
+  ],
+  "requiredAttachmentPoints": ["LeftHand/Bow", "UpperChest/Quiver", "RightHand/HeldArrow (script)"],
+  "validationGates": [
+    "source-and-license-present",
+    "humanoid-avatar-valid",
+    "skinned-mesh-deforms",
+    "accessories-follow-sockets",
+    "no-pink-materials",
+    "lod-switch-in-game-camera",
+    "ranged-attack-through-character-bt",
+    "playmode-with-zero-errors"
+  ],
+  "invariants": { "mustNotModifyExistingCharacters": true, "mustNotInventMissingMesh": true, "mustNotAddToBuildSettingsBeforeValidation": true }
+}

@@ -1,0 +1,124 @@
+PASS Avatar humanoide valido (Archer.fbx)
+PASS Clip Idle: Humanoid copiando o avatar do Archer
+PASS Clip Idle: importado, humanoide, 8,40s
+PASS Clip Walk: Humanoid copiando o avatar do Archer
+PASS Clip Walk: importado, humanoide, 1,04s
+PASS Clip Run: Humanoid copiando o avatar do Archer
+PASS Clip Run: importado, humanoide, 0,63s
+PASS Clip Aim: Humanoid copiando o avatar do Archer
+PASS Clip Aim: importado, humanoide, 3,77s
+PASS Clip DrawString: Humanoid copiando o avatar do Archer
+PASS Clip DrawString: importado, humanoide, 3,20s
+PASS Clip Fire: Humanoid copiando o avatar do Archer
+PASS Clip Fire: importado, humanoide, 1,40s
+PASS ArcherVisual.prefab existe
+PASS Animator com avatar, controller e root motion desligado
+PASS ArcherAnimationEvents no GameObject do Animator
+PASS LODGroup com 3 niveis
+PASS 3 SkinnedMeshRenderer (LOD0/1/2): Archer_LOD0, Archer_LOD1, Archer_LOD2
+INFO Triangulos LOD0/1/2: 30912 / 9273 / 3091
+PASS Orcamento de triangulos decrescente por LOD
+PASS Archer_LOD0: 24 ossos, rootBone ok, vertices sem peso normalizado = 0
+PASS Archer_LOD0: material Archer_Mat
+PASS Archer_LOD1: 24 ossos, rootBone ok, vertices sem peso normalizado = 0
+PASS Archer_LOD1: material Archer_Mat
+PASS Archer_LOD2: 24 ossos, rootBone ok, vertices sem peso normalizado = 0
+PASS Archer_LOD2: material Archer_Mat
+PASS Material valido: ArcherVisual/Bow -> Archer_Wood (Standard)
+PASS Material valido: ArcherVisual/Bow -> Archer_Leather (Standard)
+PASS Material valido: ArcherVisual/BowString -> Archer_String (Unlit/Color)
+PASS Material valido: ArcherVisual/Quiver -> Archer_Leather (Standard)
+PASS Material valido: ArcherVisual/Quiver -> Archer_AshShaft (Standard)
+PASS Material valido: ArcherVisual/Quiver -> Archer_Feather (Standard)
+PASS Material valido: ArcherVisual/Archer_LOD0 -> Archer_Mat (Standard)
+PASS Material valido: ArcherVisual/Archer_LOD1 -> Archer_Mat (Standard)
+PASS Material valido: ArcherVisual/Archer_LOD2 -> Archer_Mat (Standard)
+PASS Material valido: ArcherVisual/HeldArrow -> Archer_AshShaft (Standard)
+PASS Material valido: ArcherVisual/HeldArrow -> Archer_Steel (Standard)
+PASS Material valido: ArcherVisual/HeldArrow -> Archer_Feather (Standard)
+PASS Material valido: ArcherArrowProjectile/Arrow -> Archer_AshShaft (Standard)
+PASS Material valido: ArcherArrowProjectile/Arrow -> Archer_Steel (Standard)
+PASS Material valido: ArcherArrowProjectile/Arrow -> Archer_Feather (Standard)
+PASS Material valido: Archer/MinimapIcon -> MinimapIcon (Unlit/Color)
+PASS Material valido: Archer/Bow -> Archer_Wood (Standard)
+PASS Material valido: Archer/Bow -> Archer_Leather (Standard)
+PASS Material valido: Archer/BowString -> Archer_String (Unlit/Color)
+PASS Material valido: Archer/Quiver -> Archer_Leather (Standard)
+PASS Material valido: Archer/Quiver -> Archer_AshShaft (Standard)
+PASS Material valido: Archer/Quiver -> Archer_Feather (Standard)
+PASS Material valido: Archer/Archer_LOD0 -> Archer_Mat (Standard)
+PASS Material valido: Archer/Archer_LOD1 -> Archer_Mat (Standard)
+PASS Material valido: Archer/Archer_LOD2 -> Archer_Mat (Standard)
+PASS Material valido: Archer/HeldArrow -> Archer_AshShaft (Standard)
+PASS Material valido: Archer/HeldArrow -> Archer_Steel (Standard)
+PASS Material valido: Archer/HeldArrow -> Archer_Feather (Standard)
+PASS Material valido: Archer/TeamRing -> Archer_TeamRing (Unlit/Color)
+PASS Material valido: Archer/FOV -> FOV (Standard)
+PASS Archer_Mat com textura base e normal map
+PASS Arco e objeto separado, filho da mao esquerda
+PASS Aljava e objeto separado, filha do tronco (UpperChest)
+PASS Flecha da mao existe e comeca oculta
+PASS Acessorios nao fazem parte da malha do corpo
+PASS Estados: Locomotion, DrawString, Aim, Fire
+PASS Parametros Speed e Hit
+INFO Controle: bake em bind vs sharedMesh, diferenca max 0,0000 m
+INFO Arestas medidas: 45105
+PASS Deformacao Idle: arestas p1%=0,74 p99%=1,35 p99.9%=1,76 max=3,00 (>x3: 0,000%), deslocamento max 0,43 m, altura 1,78 m, finito=True
+PASS Deformacao Walk: arestas p1%=0,71 p99%=1,41 p99.9%=1,99 max=6,49 (>x3: 0,008%), deslocamento max 0,67 m, altura 1,79 m, finito=True
+PASS Deformacao Run: arestas p1%=0,60 p99%=1,63 p99.9%=2,69 max=7,11 (>x3: 0,056%), deslocamento max 1,04 m, altura 1,75 m, finito=True
+PASS Deformacao Aim: arestas p1%=0,55 p99%=2,00 p99.9%=3,48 max=6,32 (>x3: 0,197%), deslocamento max 1,26 m, altura 1,72 m, finito=True
+PASS Deformacao DrawString: arestas p1%=0,62 p99%=1,68 p99.9%=2,94 max=6,15 (>x3: 0,090%), deslocamento max 1,28 m, altura 1,76 m, finito=True
+PASS Deformacao Fire: arestas p1%=0,67 p99%=1,62 p99.9%=2,74 max=5,66 (>x3: 0,068%), deslocamento max 1,25 m, altura 1,75 m, finito=True
+PASS Soquetes em DrawString@0,0s: arco-mao 0,07 m, aljava-tronco 0,10 m
+PASS Soquetes em DrawString@1,4s: arco-mao 0,07 m, aljava-tronco 0,10 m
+PASS Soquetes em Fire@0,4s: arco-mao 0,07 m, aljava-tronco 0,10 m
+PASS Soquetes em Fire@1,2s: arco-mao 0,07 m, aljava-tronco 0,10 m
+INFO LOD screen heights: 0,140, 0,075, 0,000
+PASS LODs com limiares decrescentes
+PASS LOD0 front: renderiza (primeiro plano 34358px, magenta 0px)
+PASS LOD0 back: renderiza (primeiro plano 36869px, magenta 0px)
+PASS LOD1 front: renderiza (primeiro plano 33995px, magenta 0px)
+PASS LOD1 back: renderiza (primeiro plano 36694px, magenta 0px)
+PASS LOD2 front: renderiza (primeiro plano 31556px, magenta 0px)
+PASS LOD2 back: renderiza (primeiro plano 34487px, magenta 0px)
+PASS Pose Idle@1,00s front: renderiza (fg 31961px, magenta 0px)
+PASS Pose Idle@1,00s side: renderiza (fg 28289px, magenta 0px)
+PASS Pose Walk@0,30s front: renderiza (fg 32671px, magenta 0px)
+PASS Pose Walk@0,30s side: renderiza (fg 28579px, magenta 0px)
+PASS Close-up Run: renderiza (fg 95881px, magenta 0px)
+PASS Pose Run@0,20s front: renderiza (fg 32748px, magenta 0px)
+PASS Pose Run@0,20s side: renderiza (fg 25632px, magenta 0px)
+PASS Close-up Aim: renderiza (fg 78416px, magenta 0px)
+PASS Pose Aim@1,00s front: renderiza (fg 26037px, magenta 0px)
+PASS Pose Aim@1,00s side: renderiza (fg 35554px, magenta 0px)
+PASS Pose DrawString@0,45s front: renderiza (fg 25682px, magenta 0px)
+PASS Pose DrawString@0,45s side: renderiza (fg 35651px, magenta 0px)
+PASS Pose DrawString@1,30s front: renderiza (fg 23908px, magenta 0px)
+PASS Pose DrawString@1,30s side: renderiza (fg 35560px, magenta 0px)
+PASS Close-up DrawString: renderiza (fg 83598px, magenta 0px)
+PASS Pose DrawString@2,40s front: renderiza (fg 26503px, magenta 0px)
+PASS Pose DrawString@2,40s side: renderiza (fg 36223px, magenta 0px)
+PASS Pose Fire@0,10s front: renderiza (fg 27919px, magenta 0px)
+PASS Pose Fire@0,10s side: renderiza (fg 35239px, magenta 0px)
+PASS Pose Fire@0,55s front: renderiza (fg 26106px, magenta 0px)
+PASS Pose Fire@0,55s side: renderiza (fg 35492px, magenta 0px)
+PASS Pose Fire@1,10s front: renderiza (fg 25675px, magenta 0px)
+PASS Pose Fire@1,10s side: renderiza (fg 36109px, magenta 0px)
+PASS Archer.prefab (wrapper da unidade) existe
+PASS Wrapper com tag Unit e layer 12
+PASS Wrapper tem CharacterManager
+PASS Wrapper tem CharacterBT
+PASS Wrapper tem FogRendererToggler
+PASS Wrapper tem ArcherCombatController
+PASS Wrapper tem NavMeshAgent, BoxCollider e AudioSource
+PASS Caminho Mesh/MinimapIcon (exigido por Unit) existe
+PASS CharacterManager.meshRenderer atribuido (anel do time)
+PASS CharacterManager.animator atribuido
+PASS selectionCircle, fov e contextualSource atribuidos
+PASS ArcherCombatController com todas as referencias
+PASS FogRendererToggler.mesh atribuido
+PASS CharacterData 'archer' referencia o wrapper
+PASS CharacterData com ataque a distancia (alcance 12)
+PASS Catalogo Resources carrega 'archer' (6 personagens)
+PASS Codigos de personagem unicos: archer, dark_knight, heraldic_knight, soldier, spearman, worker
+ARCHER_AUDIT_PASSED

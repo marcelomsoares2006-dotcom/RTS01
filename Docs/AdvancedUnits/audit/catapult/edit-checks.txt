@@ -1,0 +1,199 @@
+Unity 6000.6.3f1 - 2026-10-08 23:09:40
+PASS [1.1] malha-fonte existe: Assets/CharacterRigging/Catapult/Models/Catapult.fbx (227 KB)
+PASS [1.2] LICENSE.md existe
+PASS [1.3] LICENSE declara obra do projeto, sem terceiros
+PASS [1.4] nao existe Inputs/Catapult (coerente com modelagem procedural: nenhum arquivo de entrada de terceiros)
+INFO [1.5] imports de BuildCatapult.py: bmesh, bpy, json, math, mathutils, numpy, pathlib, random, zlib
+PASS [1.5b] BuildCatapult.py so importa bpy/numpy/stdlib (sem rede/terceiros): 
+PASS [1.6] scripts de build sem URL/rede/Mixamo/Meshy/Sketchfab
+PASS [1.7] 0 segredos em 78 arquivos de texto da unidade
+INFO [1.8] extensoes de arquivo em Assets/CharacterRigging/Catapult: .controller .cs .fbx .mat .png .prefab
+PASS [2.1] Catapult.fbx importado como Generic (maquina; Avatar humanoide nao se aplica)
+PASS [2.2] Avatar generico valido (isValid=True, isHuman=False)
+PASS [2.3] FBX tem 3 SkinnedMeshRenderer(s)
+INFO [2.4] ossos usados pelo skin: Ammo, Arm, Root, Rope, Wheel_BL, Wheel_BR, Wheel_FL, Wheel_FR, Winch
+PASS [2.5] esqueleto contem Root, Arm, Ammo, Winch, Rope e as 4 Wheel_*: faltando=
+PASS [2.6] hierarquia coerente: Arm descende de Root
+PASS [2.7.Idle] clipe Idle: importador Generic, clip real, humanMotion=false, duracao 3 s, loop=True
+PASS [2.8.Idle] clipe Idle: 110 curvas em 11 ossos; caminhos nao resolvidos no esqueleto=0
+PASS [2.7.Move] clipe Move: importador Generic, clip real, humanMotion=false, duracao 1.133 s, loop=True
+PASS [2.8.Move] clipe Move: 110 curvas em 11 ossos; caminhos nao resolvidos no esqueleto=0
+PASS [2.7.Reload] clipe Reload: importador Generic, clip real, humanMotion=false, duracao 2.567 s, loop=False
+PASS [2.8.Reload] clipe Reload: 110 curvas em 11 ossos; caminhos nao resolvidos no esqueleto=0
+PASS [2.7.Fire] clipe Fire: importador Generic, clip real, humanMotion=false, duracao 1.1 s, loop=False
+PASS [2.8.Fire] clipe Fire: 110 curvas em 11 ossos; caminhos nao resolvidos no esqueleto=0
+PASS [2.7.Hit] clipe Hit: importador Generic, clip real, humanMotion=false, duracao 0.467 s, loop=False
+PASS [2.8.Hit] clipe Hit: 110 curvas em 11 ossos; caminhos nao resolvidos no esqueleto=0
+PASS [2.7.Destroy] clipe Destroy: importador Generic, clip real, humanMotion=false, duracao 2.367 s, loop=False
+PASS [2.8.Destroy] clipe Destroy: 110 curvas em 11 ossos; caminhos nao resolvidos no esqueleto=0
+PASS [3.Catapult_LOD0(Catapult_LOD0)] Catapult_LOD0(Catapult_LOD0): 8640 verts, sem peso=0, >4 influencias=0, soma!=1=0 (pior desvio 0,0000), max influencias=1, indices invalidos=0, bindposes=9/ossos=9
+PASS [3.Catapult_LOD1(Catapult_LOD1)] Catapult_LOD1(Catapult_LOD1): 1588 verts, sem peso=0, >4 influencias=0, soma!=1=0 (pior desvio 0,0000), max influencias=1, indices invalidos=0, bindposes=9/ossos=9
+PASS [3.Catapult_LOD2(Catapult_LOD2)] Catapult_LOD2(Catapult_LOD2): 718 verts, sem peso=0, >4 influencias=0, soma!=1=0 (pior desvio 0,0000), max influencias=1, indices invalidos=0, bindposes=9/ossos=9
+PASS [3.count] 3 SkinnedMeshRenderers no wrapper (todos os LODs)
+INFO [3.rigid] MeshRenderers rigidos no wrapper (fora FX): 0
+PASS [4.uv.Catapult_LOD0] Catapult_LOD0: UV 8640/8640 finitas, faixa u[0.002,1] v[0,1], triangulos UV degenerados 0/4976
+PASS [4.uv.Catapult_LOD1] Catapult_LOD1: UV 1588/1588 finitas, faixa u[0.002,1] v[0,1], triangulos UV degenerados 0/1036
+PASS [4.uv.Catapult_LOD2] Catapult_LOD2: UV 718/718 finitas, faixa u[0.002,1] v[0,1], triangulos UV degenerados 0/408
+PASS [4.mat.MinimapIcon] MinimapIcon: shader Unlit/Color isSupported=True
+PASS [4.mat.Catapult_Wood] Catapult_Wood: shader Standard isSupported=True tex=Catapult_Wood 1024x1024
+PASS [4.mat.Catapult_Iron] Catapult_Iron: shader Standard isSupported=True tex=Catapult_Iron 256x256
+PASS [4.mat.Catapult_Rope] Catapult_Rope: shader Standard isSupported=True tex=Catapult_Rope 512x512
+PASS [4.mat.Catapult_Stone] Catapult_Stone: shader Standard isSupported=True tex=Catapult_Stone 256x256
+PASS [4.mat.AdvancedTeamRing] AdvancedTeamRing: shader Unlit/Color isSupported=True
+PASS [4.mat.FOV] FOV: shader Standard isSupported=True SEM textura (cor RGBA(1.000, 1.000, 1.000, 1.000))
+PASS [4.mat.Fx_Smoke] Fx_Smoke: shader Legacy Shaders/Particles/Alpha Blended isSupported=True tex=Fx_Smoke 128x128
+PASS [4.mat.Fx_Flash] Fx_Flash: shader Legacy Shaders/Particles/Additive isSupported=True tex=Fx_Flash 128x128
+PASS [4.mat.Fx_Spark] Fx_Spark: shader Legacy Shaders/Particles/Additive isSupported=True tex=Fx_Spark 128x128
+PASS [4.tex.Catapult_Iron.png] Catapult_Iron.png 256x256: magenta=0,000%, brilho medio 56.339, desvio 6.435 (nao uniforme)
+PASS [4.tex.Catapult_Rope.png] Catapult_Rope.png 512x512: magenta=0,000%, brilho medio 85.352, desvio 23.424 (nao uniforme)
+PASS [4.tex.Catapult_Stone.png] Catapult_Stone.png 256x256: magenta=0,000%, brilho medio 86.856, desvio 12.773 (nao uniforme)
+PASS [4.tex.Catapult_Wood.png] Catapult_Wood.png 1024x1024: magenta=0,000%, brilho medio 63.769, desvio 15.484 (nao uniforme)
+PASS [4.tex.Fx_Flash.png] Fx_Flash.png 128x128: magenta=0,000%, brilho medio 209.92, desvio 67.711 (nao uniforme)
+PASS [4.tex.Fx_Smoke.png] Fx_Smoke.png 128x128: magenta=0,000%, brilho medio 200.059, desvio 51.247 (nao uniforme)
+PASS [4.tex.Fx_Spark.png] Fx_Spark.png 128x128: magenta=0,000%, brilho medio 195.685, desvio 45.951 (nao uniforme)
+PASS [5.1] LODGroups no wrapper: 1
+PASS [5.2] LODGroup com 3 niveis
+INFO [5.lod0] LOD0: 4976 triangulos, 1 renderers, limiar 0.33
+INFO [5.lod1] LOD1: 1036 triangulos, 1 renderers, limiar 0.15
+INFO [5.lod2] LOD2: 408 triangulos, 1 renderers, limiar 0
+PASS [5.3] triangulos estritamente decrescentes: 4976 > 1036 > 408
+PASS [5.4] limites da especificacao (props <= 8k/3k/1k): 4976/1036/408
+PASS [5.5] limiares de transicao decrescentes e coerentes: 0.33 > 0.15 > 0
+PASS [5.6] renderers de corpo fora do LODGroup: 0
+PASS [6.0] wrapper existe
+PASS [6.1] CharacterManager na raiz
+PASS [6.2] NavMeshAgent: vel 2.5, raio 1, altura 2.2, acel 4, giro 110
+INFO [6.3a] LOD0 bounds tamanho (2.3, 2.05, 3.225) centro (-0.02, 1.025, 0); collider centro (0, 1.15, 0) tamanho (2.3, 2.3, 3.3)
+PASS [6.3] BoxCollider coerente com o modelo (largura/altura/comprimento dentro de 0,8..1,4x)
+PASS [6.3b] BoxCollider.isTrigger=True igual ao do Soldier (True): padrao do jogo (selecao por OnMouseDown)
+PASS [6.4] AdvancedUnitEraBinding -> Catapult.asset (code=catapult)
+PASS [6.5] AdvancedUnitAnimatorDriver
+PASS [6.6] CatapultCombatController: contrato ok, projectileSpawn=Mesh/CatapultVisual/CatapultArmature/Root/Arm/ProjectileSpawn, animator=True, releaseDelay=0.4, turnSpeed=90
+PASS [6.7] AdvancedUnitDeathEffect -> CatapultDestroyed (vida 20 s)
+PASS [6.8] scripts ausentes (Missing) no wrapper: 0
+PASS [6.8b.CatapultVisual] CatapultVisual.prefab: existe e sem scripts ausentes
+PASS [6.8b.CatapultBoulder] CatapultBoulder.prefab: existe e sem scripts ausentes
+PASS [6.8b.CatapultFire] CatapultFire.prefab: existe e sem scripts ausentes
+PASS [6.8b.CatapultImpact] CatapultImpact.prefab: existe e sem scripts ausentes
+PASS [6.8b.CatapultDestroyed] CatapultDestroyed.prefab: existe e sem scripts ausentes
+PASS [6.8b.CatapultCollapseDust] CatapultCollapseDust.prefab: existe e sem scripts ausentes
+INFO [6.9] componentes da raiz do Soldier ausentes no wrapper:  | extras no wrapper: AdvancedUnitEraBinding,AdvancedUnitAnimatorDriver,CatapultCombatController,AdvancedUnitDeathEffect
+PASS [6.10] exatamente 1 Animator (no visual): 1
+PASS [6.11] UnitManager.animator aponta para o Animator do visual
+INFO [6.12] UnitManager.meshRenderer=TeamRing bounds (3, 0, 3) (MeshSize usado no alcance efetivo)
+INFO [6.13] TeamRing: presente, escala (1, 1, 1), malha TeamRing_1.50 (3, 0, 3)
+INFO [6.14] layer do wrapper: Unit; layer do Soldier: Unit
+PASS [6.15] layer igual ao do Soldier
+PASS [7.find.ProjectileSpawn] socket ProjectileSpawn em 'Mesh/CatapultVisual/CatapultArmature/Root/Arm/ProjectileSpawn': local (0, 1.169, -1.345)
+PASS [7.find.ArmPivot] socket ArmPivot em 'Mesh/CatapultVisual/CatapultArmature/Root/Arm': local (0, 1.2, 0.1)
+INFO [7.1] ProjectileSpawn em repouso (local do wrapper) (0, 1.169, -1.345); corpo bounds local min/max: (-1.17, 0, -1.613) .. (1.13, 2.05, 1.613)
+PASS [7.2] ProjectileSpawn e filho do osso Arm (acompanha o braco)
+PASS [7.3] ProjectileSpawn centrado em X (|x|<0,3) e a altura plausivel em repouso (1.169 m)
+INFO [7.4] trajetoria do socket no clipe Fire (local do wrapper): t=0:(0, 1.169, -1.345) t=0.1:(0, 1.115, -1.342) t=0.2:(0, 1.472, -1.322) t=0.3:(0, 2.245, -0.911) t=0.4:(0, 2.641, 0.32) t=0.5:(0, 2.516, 0.647) t=0.7:(0, 2.51, 0.7) t=1:(0, 2.512, 0.704)
+PASS [7.5] na soltura (t=0,4 s) o socket esta bem acima da posicao armada (2.641 > 1.169 + 0,8)
+PASS [7.6] na soltura o socket avancou/subiu (z -1.345->0.32, y 1.169->2.641): pedra sai a frente da catapulta
+PASS [7.7] distancia socket-pivo do braco constante (1.445..1.445): rigidamente preso ao braco
+PASS [7.8] origem do projetil na soltura nao esta atras do chassi (z=0.32)
+PASS [8.contract.Idle] contrato: Idle (param Speed) -> Idle 3 s, 110 curvas
+PASS [8.contract.Move] contrato: Move (param Speed) -> Move 1.133 s, 110 curvas
+PASS [8.contract.Fire] contrato: Fire (param Fire) -> Fire 1.1 s, 110 curvas
+PASS [8.contract.Reload] contrato: Reload (param Fire) -> Reload 2.567 s, 110 curvas
+PASS [8.contract.Hit] contrato: Hit (param Damaged) -> Hit 0.467 s, 110 curvas
+PASS [8.contract.Destroy] contrato: Destroy (param (prefab de morte)) -> Destroy 2.367 s, 110 curvas
+PASS [8.src.Idle] Idle vem de Assets/CharacterRigging/Catapult/Models/Catapult@Idle.fbx
+PASS [8.src.Move] Move vem de Assets/CharacterRigging/Catapult/Models/Catapult@Move.fbx
+PASS [8.src.Fire] Fire vem de Assets/CharacterRigging/Catapult/Models/Catapult@Fire.fbx
+PASS [8.src.Reload] Reload vem de Assets/CharacterRigging/Catapult/Models/Catapult@Reload.fbx
+PASS [8.src.Hit] Hit vem de Assets/CharacterRigging/Catapult/Models/Catapult@Hit.fbx
+PASS [8.src.Destroy] Destroy vem de Assets/CharacterRigging/Catapult/Models/Catapult@Destroy.fbx
+PASS [8.ctrl] AnimatorController: Assets/CharacterRigging/Catapult/Animation/Catapult.controller
+PASS [8.params] parametros: Running:Bool, Attacking:Bool, Hit:Trigger, Speed:Float, Fire:Trigger, Damaged:Trigger, Heal:Trigger
+PASS [8.paramtypes] tipos dos parametros corretos (Speed float, Fire/Hit/Damaged trigger, Running/Attacking bool)
+      layer 0 'Base Layer' peso 0 mask=- default=Idle
+        estado Idle motion=Idle speed=1
+          -> Move exitTime=- dur=0.15 cond=[Speed Greater 0.15]
+          -> Fire exitTime=- dur=0 cond=[Fire If 0]
+          -> Hit exitTime=- dur=0.05 cond=[Damaged If 0]
+        estado Move motion=Move speed=0.392 speedParam=Speed(ativo)
+          -> Idle exitTime=- dur=0.2 cond=[Speed Less 0.1]
+          -> Fire exitTime=- dur=0 cond=[Fire If 0]
+          -> Hit exitTime=- dur=0.05 cond=[Damaged If 0]
+        estado Fire motion=Fire speed=1
+          -> Reload exitTime=1 dur=0 cond=[]
+        estado Reload motion=Reload speed=1
+          -> Idle exitTime=1 dur=0.15 cond=[]
+        estado Hit motion=Hit speed=1
+          -> Fire exitTime=- dur=0 cond=[Fire If 0]
+          -> Idle exitTime=0.95 dur=0.1 cond=[]
+PASS [8.state.Idle] estado Idle com AnimationClip real (Idle)
+PASS [8.state.Move] estado Move com AnimationClip real (Move)
+PASS [8.state.Fire] estado Fire com AnimationClip real (Fire)
+PASS [8.state.Reload] estado Reload com AnimationClip real (Reload)
+PASS [8.state.Hit] estado Hit com AnimationClip real (Hit)
+PASS [8.transparams] todas as condicoes de transicao usam parametros declarados
+PASS [8.idlemove] Idle->Move por Speed>x e Move->Idle por Speed<x
+PASS [8.fire] trigger Fire leva ao estado Fire
+PASS [8.firereload] Fire -> Reload -> Idle
+PASS [8.hit] trigger Damaged leva ao estado Hit
+PASS [8.cycle] ciclo Fire (1.1) + Reload (2.567) = 3.667 s < menor cooldown (4.5 s)
+INFO [8.events] eventos do clipe Fire: CatapultRelease@0.4
+PASS [8.release] evento CatapultRelease em t = releaseDelay (0.4 s)
+PASS [8.eventsink] CatapultAnimationEvents no GameObject do Animator (recebe o evento)
+PASS [8.eventfields] CatapultAnimationEvents: projectileSpawn e fireEffectPrefab ligados (efeito de disparo = CatapultFire)
+PASS [8.sample.Idle] clipe Idle muda a pose (maior variacao: braco 0.654 graus, roda 0 graus, raiz 0.38)
+PASS [8.sample.Move] clipe Move muda a pose (maior variacao: braco 2.242 graus, roda 180 graus, raiz 1.116)
+PASS [8.sample.Reload] clipe Reload muda a pose (maior variacao: braco 116.2 graus, roda 0 graus, raiz 0.217)
+PASS [8.sample.Fire] clipe Fire muda a pose (maior variacao: braco 116.617 graus, roda 0 graus, raiz 3.596)
+PASS [8.sample.Hit] clipe Hit muda a pose (maior variacao: braco 1.814 graus, roda 0.583 graus, raiz 2.841)
+PASS [8.sample.Destroy] clipe Destroy muda a pose (maior variacao: braco 111.999 graus, roda 6 graus, raiz 46.928)
+PASS [8.death] prefab de morte: controller com estado padrao = clipe Destroy (Destroy)
+INFO [8.destroyloop] Destroy loopTime=False (esperado false: permanece desabado)
+PASS [8.destroynoloop] Destroy nao e laco
+PASS [9.1] prefab da pedra e contrato do projetil existem
+PASS [9.2] pedra com malha propria: CatapultBoulder 320 tris, tamanho (0.407, 0.397, 0.373)
+PASS [9.3] pedra sem collider/rigidbody (voo controlado por AdvancedProjectile)
+PASS [9.4] contrato do projetil -> prefab da pedra
+PASS [9.5] contrato do projetil -> CatapultImpact
+PASS [9.6] contrato balistico: ballistic=True, arco 8 m, vel 14 m/s, tipo Siege, vida max 8 s
+PASS [9.7] ProjectileContract: Validate().IsValid e EvaluateVisuals().IsReady
+PASS [9.8] efeito de impacto real com 4 sistemas de particulas: Flash, Dust, Debris, Sparks
+PASS [9.9] efeito de disparo real com 2 sistemas de particulas: Dust, Flash
+PASS [9.10] AdvancedProjectile e adicionado em runtime (prefab nao o carrega): ok
+PASS [9.11] contrato da catapulta aponta para o contrato do projetil separado
+PASS [10.1] Validate().IsValid OK
+PASS [10.2] IsVisualReady (unidade + projetil): pronto
+PASS [10.3] contrato.visual.prefab = wrapper Resources/Prefabs/Units/Characters/Catapult.prefab
+PASS [10.mesh.malha-fonte da catapulta] malha 'malha-fonte da catapulta' -> Assets/CharacterRigging/Catapult/Models/Catapult.fbx
+PASS [10.fx.efeito de disparo] efeito 'efeito de disparo' -> Assets/CharacterRigging/Catapult/Prefabs/CatapultFire.prefab
+PASS [10.fx.efeito de impacto] efeito 'efeito de impacto' -> Assets/CharacterRigging/Catapult/Prefabs/CatapultImpact.prefab
+PASS [10.4] buildSettingsApproved=false (nao aprovado para Build Settings)
+PASS [10.5] dataKind = Character (unidade movel)
+PASS [10.6] CharacterData catapult -> mesmo wrapper
+PASS [10.7] CharacterData Ancient: vida 60/60, dano 45/45, alcance 20/20, FOV 22, attackRate 0.25 (poll do BT; esperado 0,25)
+PASS [10.8] attackRate do CharacterData = AttackPollSeconds (0,25) -- cadencia real e do controlador
+PASS [10.9] custo do CharacterData = custo do contrato: Gold 120, Wood 100, Stone 40
+PASS [10.10] UnitData com code 'catapult' em Resources: 1 (Assets/Resources/ScriptableObjects/Units/Characters/Catapult.asset)
+INFO [10.11] codigos duplicados no catalogo inteiro: nenhum
+PASS [10.12] Build Settings nao menciona catapulta: Core, MainMenu, GameScene, Map1, Map2
+      eras: Ancient vida 60 dano 45 radial 25 raio 3 alcance 8..20 recarga 6 | Classical vida 80 dano 60 radial 34 raio 3.5 alcance 8..22 recarga 5.5 | Medieval vida 105 dano 78 radial 45 raio 4 alcance 8..24 recarga 5 | Imperial vida 135 dano 100 radial 58 raio 4.5 alcance 8..26 recarga 4.5
+PASS [11.1] Ancient: vida 60, dano 45, alcance 8..20 m, recarga 6 s (especificacao)
+PASS [11.2] progressao estritamente crescente em vida/dano/alcance/dano radial, raio nao decrescente, recarga estritamente decrescente
+PASS [11.3] radial < direto e minimo < maximo em todas as eras
+PASS [11.4] EraProgressionRules (via Validate) sem problemas
+PASS [14.1] GUIDs referenciados por 19 arquivos da unidade: 72 referencias distintas, 0 sem destino
+PASS [14.2] referencias de objeto quebradas (instanceID != 0 e nulo) nos assets da unidade: 0
+PASS [14.3] arquivos sem .meta: 0
+PASS [14.4] tipos 'Catapult*' declarados mais de uma vez: nenhum
+INFO [14.4b] tipos duplicados envolvendo arquivos da catapulta: nenhum
+PASS [14.5] arquivos .cs da catapulta com nome duplicado: 0
+PASS [14.6] prefabs da catapulta sem dependencia de assets de outras unidades: 0
+      bounds LOD0 em repouso (BakeMesh): tamanho (2.3, 2.053, 3.226) centro (-0.02, 1.025, 0.001)
+      pedra: tamanho (0.407, 0.397, 0.373)
+      prefab de morte: 3 SkinnedMeshRenderers: Catapult_LOD0, Catapult_LOD1, Catapult_LOD2; LODGroup=True
+      Destroy t=0 bounds (2.3, 2.83, 3.225) centro (-0.02, 1.415, 0)
+      Destroy t=0.5 bounds (2.788, 2.567, 3.336) centro (0.208, 1.221, 0.045)
+      Destroy t=1 bounds (3.24, 2.396, 3.849) centro (0.403, 0.777, 0.186)
+      Destroy t=1.6 bounds (3.531, 2.764, 3.807) centro (0.53, 0.578, 0.098)
+      Destroy t=2.367 bounds (3.531, 2.764, 3.807) centro (0.53, 0.578, 0.098)
+PASS [13.1] 60 renders proprios (frente/costas/lados/3-4/topo/iso/LODs/poses/pedra/efeitos/destruicao): pior fracao magenta = 0,0000%
+RESUMO EDIT: 154 PASS, 0 FAIL

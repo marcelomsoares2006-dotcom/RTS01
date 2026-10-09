@@ -1,0 +1,142 @@
+{
+  "license": {},
+  "clips": {
+    "Idle": {
+      "source": "07-Idle.fbx",
+      "sourceFrames": [
+        1,
+        253
+      ],
+      "loop": true,
+      "retargetMaxHandFootErrorM": 0.1195,
+      "frames": [
+        1,
+        253
+      ],
+      "seconds": 8.4,
+      "fps": 30,
+      "maxVertexDisplacementM": 0.0189,
+      "minZ": -0.0146,
+      "maxZ": 1.7706
+    },
+    "Aim": {
+      "source": "09-Standing-Aim-Idle-01.fbx",
+      "sourceFrames": [
+        1,
+        114
+      ],
+      "loop": true,
+      "retargetMaxHandFootErrorM": 0.1153,
+      "frames": [
+        1,
+        114
+      ],
+      "seconds": 3.7667,
+      "fps": 30,
+      "maxVertexDisplacementM": 0.0305,
+      "minZ": -0.0263,
+      "maxZ": 1.702
+    },
+    "DrawString": {
+      "source": "01-Shooting-Arrow.fbx",
+      "sourceFrames": [
+        1,
+        97
+      ],
+      "loop": false,
+      "retargetMaxHandFootErrorM": 0.1385,
+      "frames": [
+        1,
+        97
+      ],
+      "seconds": 3.2,
+      "fps": 30,
+      "maxVertexDisplacementM": 1.3573,
+      "minZ": -0.0078,
+      "maxZ": 2.0269
+    },
+    "Fire": {
+      "source": "01-Shooting-Arrow.fbx",
+      "sourceFrames": [
+        109,
+        151
+      ],
+      "loop": false,
+      "retargetMaxHandFootErrorM": 0.1115,
+      "frames": [
+        1,
+        43
+      ],
+      "seconds": 1.4,
+      "fps": 30,
+      "maxVertexDisplacementM": 0.9508,
+      "minZ": -0.0078,
+      "maxZ": 1.7392
+    },
+    "Walk": {
+      "source": "Meshy native",
+      "loop": true,
+      "frames": [
+        1,
+        26
+      ],
+      "seconds": 1.0417,
+      "fps": 24,
+      "maxVertexDisplacementM": 0.5882,
+      "minZ": 0.0195,
+      "maxZ": 1.802
+    },
+    "Run": {
+      "source": "Meshy native",
+      "loop": true,
+      "frames": [
+        1,
+        16
+      ],
+      "seconds": 0.625,
+      "fps": 24,
+      "maxVertexDisplacementM": 0.9282,
+      "minZ": 0.0231,
+      "maxZ": 1.7825
+    }
+  },
+  "textureSize": [
+    2048,
+    2048
+  ],
+  "bones": [
+    "Hips",
+    "Spine02",
+    "Spine01",
+    "Spine",
+    "neck",
+    "Head",
+    "head_end",
+    "headfront",
+    "LeftShoulder",
+    "LeftArm",
+    "LeftForeArm",
+    "LeftHand",
+    "RightShoulder",
+    "RightArm",
+    "RightForeArm",
+    "RightHand",
+    "LeftUpLeg",
+    "LeftLeg",
+    "LeftFoot",
+    "LeftToeBase",
+    "RightUpLeg",
+    "RightLeg",
+    "RightFoot",
+    "RightToeBase"
+  ],
+  "vertices": 30596,
+  "trianglesLOD0": 30912,
+  "maxInfluences": 4,
+  "minWeightSum": 1.0,
+  "maxWeightSum": 1.0,
+  "bindHeightM": 1.78,
+  "bindMinZ": -0.0,
+  "trianglesLOD1": 9273,
+  "trianglesLOD2": 3091
+}

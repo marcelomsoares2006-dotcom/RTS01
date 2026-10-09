@@ -20,11 +20,11 @@ MonoBehaviour:
   arcHeight: 8
   prefab:
     role: projectile prefab
-    expectedAssetPath: Assets/Resources/Prefabs/Projectiles/CatapultBoulder.prefab
-    asset: {fileID: 0}
+    expectedAssetPath: Assets/CharacterRigging/Catapult/Prefabs/CatapultBoulder.prefab
+    asset: {fileID: 5458952297871382345, guid: 8c81a3104ad64614cac733c2b1a12dc1, type: 3}
     required: 1
   impactEffect:
     role: impact effect
-    expectedAssetPath: Assets/Resources/Prefabs/Effects/CatapultImpact.prefab
-    asset: {fileID: 0}
+    expectedAssetPath: Assets/CharacterRigging/Catapult/Prefabs/CatapultImpact.prefab
+    asset: {fileID: 8667835221514259699, guid: 1588c0fe4326c554484ffbfecc9d768b, type: 3}
     required: 1

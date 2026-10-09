@@ -1,0 +1,496 @@
+Unity 6000.6.3f1 - 2026-10-08 23:10:18
+PASS [1.1] FBX do corpo existe (3506444 bytes)
+PASS [1.2] FBX da espada e do escudo existem
+PASS [1.3] entrada paladinhealer_rigged.glb presente
+PASS [1.3] entrada walking.glb presente
+PASS [1.3] entrada running.glb presente
+PASS [1.3] entrada ref1.png presente
+PASS [1.3] entrada img1_task.json presente
+PASS [1.3] entrada i3d_task.json presente
+PASS [1.3] entrada rig_task.json presente
+PASS [1.4] entrada Mixamo SwordShield-Idle.fbx presente
+PASS [1.4] entrada Mixamo SwordShield-Slash.fbx presente
+PASS [1.4] entrada Mixamo React-Large-From-Left.fbx presente
+PASS [1.4] entrada Mixamo Dying.fbx presente
+PASS [1.5] LICENSE.md cita Meshy, Mixamo, Heal (Blender) e espada/escudo procedurais
+PASS [1.5b] BuildPaladinHealer.py usa SwordShield-Idle.fbx
+PASS [1.5b] BuildPaladinHealer.py usa SwordShield-Slash.fbx
+PASS [1.5b] BuildPaladinHealer.py usa React-Large-From-Left.fbx
+PASS [1.5b] BuildPaladinHealer.py usa Dying.fbx
+PASS [1.5c] LICENSE.md nomeia os 4 clipes Mixamo usados
+INFO [1.5d] arquivos Mixamo em Inputs NAO usados pelo build: Injured-Walking.fbx, SwordShield-Attack.fbx
+PASS [1.6] tarefas Meshy texto->imagem, imagem->3D e rig com status SUCCEEDED
+PASS [1.7] nenhuma chave de API gravada (padroes msy_/Bearer/sk-/MESHY_API_KEY=)
+FAIL [1.8] nenhuma URL assinada temporaria (Signature=/Key-Pair-Id=) gravada ACHADO(S): Tools/CharacterRigging/Inputs/PaladinHealer\ref1.url.txt
+INFO [1.9] rigged.glb de entrada=13463904 bytes; Assets .glb=15746464 bytes; importador do .glb em Assets: AssetImporter
+INFO [1.10] imagem de referencia ref1.png 1208240 bytes; textura base 622925 bytes
+PASS [2.1] corpo importado como Humanoid (Human)
+PASS [2.2] Avatar do corpo valido e humanoide
+PASS [2.3] ossos humanoides obrigatorios mapeados
+INFO [2.3] ossos humanoides mapeados: 22 -> Hips=Hips, Spine=Spine02, Chest=Spine01, UpperChest=Spine, Neck=neck, Head=Head, LeftShoulder=LeftShoulder, LeftUpperArm=LeftArm, LeftLowerArm=LeftForeArm, LeftHand=LeftHand, RightShoulder=RightShoulder, RightUpperArm=RightArm, RightLowerArm=RightForeArm, RightHand=RightHand, LeftUpperLeg=LeftUpLeg, LeftLowerLeg=LeftLeg, LeftFoot=LeftFoot, LeftToes=LeftToeBase, RightUpperLeg=RightUpLeg, RightLowerLeg=RightLeg, RightFoot=RightFoot, RightToes=RightToeBase
+INFO [2.3] avatar: hasRootMotionDof/skeleton bones=29
+PASS [2.4] Idle: FBX do clipe importado como Humanoid
+PASS [2.5] Idle: AnimationClip humanoide (2,53 s)
+PASS [2.6] Idle: avatar do clipe = avatar do corpo (copiado) ou proprio valido
+PASS [2.4] Walk: FBX do clipe importado como Humanoid
+PASS [2.5] Walk: AnimationClip humanoide (1,04 s)
+PASS [2.6] Walk: avatar do clipe = avatar do corpo (copiado) ou proprio valido
+PASS [2.4] Run: FBX do clipe importado como Humanoid
+PASS [2.5] Run: AnimationClip humanoide (0,63 s)
+PASS [2.6] Run: avatar do clipe = avatar do corpo (copiado) ou proprio valido
+PASS [2.4] Attack: FBX do clipe importado como Humanoid
+PASS [2.5] Attack: AnimationClip humanoide (1,50 s)
+PASS [2.6] Attack: avatar do clipe = avatar do corpo (copiado) ou proprio valido
+PASS [2.4] Heal: FBX do clipe importado como Humanoid
+PASS [2.5] Heal: AnimationClip humanoide (1,23 s)
+PASS [2.6] Heal: avatar do clipe = avatar do corpo (copiado) ou proprio valido
+PASS [2.4] Hit: FBX do clipe importado como Humanoid
+PASS [2.5] Hit: AnimationClip humanoide (1,03 s)
+PASS [2.6] Hit: avatar do clipe = avatar do corpo (copiado) ou proprio valido
+PASS [2.4] Death: FBX do clipe importado como Humanoid
+PASS [2.5] Death: AnimationClip humanoide (5,77 s)
+PASS [2.6] Death: avatar do clipe = avatar do corpo (copiado) ou proprio valido
+PASS [2.7] Idle: 130 curvas, 42 com variacao > 0.01 (clipe nao vazio/estatico)
+INFO [2.7] Idle: 2,53 s, 30 fps, loopTime=True, loopPose=True, eventos=0, costura(muscle) max=0,001 (UpperChest Left-Right) media=0,0001, RootT inicio=(0,04,0,86,0,00) fim=(0,04,0,86,0,00)
+PASS [2.8] Idle: loop ligado e costura do ciclo suave (max 0,001 em UpperChest Left-Right; limiar 0.08)
+PASS [2.9] Idle: deriva horizontal da raiz ao longo do ciclo 0,000 (unid. de altura do avatar) < 0.15
+PASS [2.7] Walk: 130 curvas, 83 com variacao > 0.01 (clipe nao vazio/estatico)
+INFO [2.7] Walk: 1,04 s, 24 fps, loopTime=True, loopPose=True, eventos=0, costura(muscle) max=0,044 (Left Lower Leg Stretch) media=0,0047, RootT inicio=(-0,01,1,00,0,02) fim=(-0,01,1,00,0,02)
+PASS [2.8] Walk: loop ligado e costura do ciclo suave (max 0,044 em Left Lower Leg Stretch; limiar 0.08)
+PASS [2.9] Walk: deriva horizontal da raiz ao longo do ciclo 0,001 (unid. de altura do avatar) < 0.15
+PASS [2.7] Run: 130 curvas, 83 com variacao > 0.01 (clipe nao vazio/estatico)
+INFO [2.7] Run: 0,63 s, 24 fps, loopTime=True, loopPose=True, eventos=0, costura(muscle) max=0,178 (Right Foot Twist In-Out) media=0,0157, RootT inicio=(-0,01,0,97,0,02) fim=(-0,01,0,97,0,02)
+FAIL [2.8] Run: loop ligado e costura do ciclo suave (max 0,178 em Right Foot Twist In-Out; limiar 0.08)
+PASS [2.9] Run: deriva horizontal da raiz ao longo do ciclo 0,001 (unid. de altura do avatar) < 0.15
+PASS [2.7] Attack: 130 curvas, 84 com variacao > 0.01 (clipe nao vazio/estatico)
+INFO [2.7] Attack: 1,50 s, 30 fps, loopTime=False, loopPose=False, eventos=0, costura(muscle) max=0,001 (Neck Turn Left-Right) media=0,0000, RootT inicio=(0,04,0,86,0,00) fim=(0,04,0,86,0,00)
+PASS [2.8] Attack: nao-loop
+PASS [2.7] Heal: 130 curvas, 46 com variacao > 0.01 (clipe nao vazio/estatico)
+INFO [2.7] Heal: 1,23 s, 30 fps, loopTime=False, loopPose=False, eventos=0, costura(muscle) max=0,001 (RightHandQ.z) media=0,0001, RootT inicio=(0,04,0,86,0,00) fim=(0,04,0,86,0,00)
+PASS [2.8] Heal: nao-loop
+PASS [2.7] Hit: 130 curvas, 82 com variacao > 0.01 (clipe nao vazio/estatico)
+INFO [2.7] Hit: 1,03 s, 30 fps, loopTime=False, loopPose=False, eventos=0, costura(muscle) max=0,004 (LeftHandQ.z) media=0,0002, RootT inicio=(0,05,0,85,0,03) fim=(0,05,0,85,0,03)
+PASS [2.8] Hit: nao-loop
+PASS [2.7] Death: 130 curvas, 84 com variacao > 0.01 (clipe nao vazio/estatico)
+INFO [2.7] Death: 5,77 s, 30 fps, loopTime=False, loopPose=False, eventos=0, costura(muscle) max=1,187 (Right Toes Up-Down) media=0,1837, RootT inicio=(0,00,0,97,-0,01) fim=(-0,21,0,08,1,50)
+PASS [2.8] Death: nao-loop
+PASS [3.0] FBX tem 3 SkinnedMeshRenderers (esperado >=3 LODs)
+PASS [3.1] PaladinHealer_LOD0 (31000 tri, 35249 vert): todos os vertices tem entrada de pesos
+PASS [3.2] PaladinHealer_LOD0 (31000 tri, 35249 vert): 0 vertices sem peso (achados 0)
+PASS [3.3] PaladinHealer_LOD0 (31000 tri, 35249 vert): no maximo 4 influencias (max 4)
+PASS [3.4] PaladinHealer_LOD0 (31000 tri, 35249 vert): soma dos pesos ~1 (pior desvio 1,79E-007, vertices fora 0)
+PASS [3.5] PaladinHealer_LOD0 (31000 tri, 35249 vert): 24 ossos, nenhum nulo
+PASS [3.6] PaladinHealer_LOD0 (31000 tri, 35249 vert): bindposes == ossos
+PASS [3.7] PaladinHealer_LOD0 (31000 tri, 35249 vert): UVs presentes e finitas (35121 distintas, NaN 0, fora de 0..1: 0)
+PASS [3.8] PaladinHealer_LOD0 (31000 tri, 35249 vert): normais presentes
+INFO [3.8] PaladinHealer_LOD0 (31000 tri, 35249 vert): tangentes presentes; blendshapes 0
+PASS [3.1] PaladinHealer_LOD1 (9300 tri, 13930 vert): todos os vertices tem entrada de pesos
+PASS [3.2] PaladinHealer_LOD1 (9300 tri, 13930 vert): 0 vertices sem peso (achados 0)
+PASS [3.3] PaladinHealer_LOD1 (9300 tri, 13930 vert): no maximo 4 influencias (max 4)
+PASS [3.4] PaladinHealer_LOD1 (9300 tri, 13930 vert): soma dos pesos ~1 (pior desvio 1,79E-007, vertices fora 0)
+PASS [3.5] PaladinHealer_LOD1 (9300 tri, 13930 vert): 24 ossos, nenhum nulo
+PASS [3.6] PaladinHealer_LOD1 (9300 tri, 13930 vert): bindposes == ossos
+PASS [3.7] PaladinHealer_LOD1 (9300 tri, 13930 vert): UVs presentes e finitas (13390 distintas, NaN 0, fora de 0..1: 0)
+PASS [3.8] PaladinHealer_LOD1 (9300 tri, 13930 vert): normais presentes
+INFO [3.8] PaladinHealer_LOD1 (9300 tri, 13930 vert): tangentes presentes; blendshapes 0
+PASS [3.1] PaladinHealer_LOD2 (3100 tri, 5259 vert): todos os vertices tem entrada de pesos
+PASS [3.2] PaladinHealer_LOD2 (3100 tri, 5259 vert): 0 vertices sem peso (achados 0)
+PASS [3.3] PaladinHealer_LOD2 (3100 tri, 5259 vert): no maximo 4 influencias (max 4)
+PASS [3.4] PaladinHealer_LOD2 (3100 tri, 5259 vert): soma dos pesos ~1 (pior desvio 1,79E-007, vertices fora 0)
+PASS [3.5] PaladinHealer_LOD2 (3100 tri, 5259 vert): 24 ossos, nenhum nulo
+PASS [3.6] PaladinHealer_LOD2 (3100 tri, 5259 vert): bindposes == ossos
+PASS [3.7] PaladinHealer_LOD2 (3100 tri, 5259 vert): UVs presentes e finitas (5181 distintas, NaN 0, fora de 0..1: 0)
+PASS [3.8] PaladinHealer_LOD2 (3100 tri, 5259 vert): normais presentes
+INFO [3.8] PaladinHealer_LOD2 (3100 tri, 5259 vert): tangentes presentes; blendshapes 0
+INFO [3.9] triangulos por SMR (ordem alfabetica): 31000 / 9300 / 3100 | nomes: PaladinHealer_LOD0,PaladinHealer_LOD1,PaladinHealer_LOD2
+PASS [3.10] FBX tem LODGroup com 3 niveis
+PASS [3.11] triangulos por LOD estritamente decrescentes: 31000 > 9300 > 3100
+PASS [3.12] LOD0 <= 31k triangulos (31000)
+PASS [3.13] limiares do LODGroup do FBX decrescentes: 0,250, 0,125, 0,010
+PASS [3.14] PaladinHealer_Sword: 610 triangulos (<=8k)
+INFO [3.15] PaladinHealer_Sword/PaladinHealer_Sword: 610 tri, UVs ausentes (cor solida), submeshes 3
+PASS [3.14] PaladinHealer_Shield: 1716 triangulos (<=8k)
+INFO [3.15] PaladinHealer_Shield/PaladinHealer_Shield: 1716 tri, UVs ausentes (cor solida), submeshes 5
+PASS [4.0] PaladinHealer.prefab carrega
+PASS [4.1] PaladinHealer.prefab/MinimapIcon: shader 'Unlit/Color' suportado
+PASS [4.1] PaladinHealer.prefab/PaladinHealer_Steel: shader 'Standard' suportado
+PASS [4.1] PaladinHealer.prefab/PaladinHealer_Linen: shader 'Standard' suportado
+PASS [4.1] PaladinHealer.prefab/PaladinHealer_Wood: shader 'Standard' suportado
+PASS [4.1] PaladinHealer.prefab/PaladinHealer_Gold: shader 'Standard' suportado
+PASS [4.1] PaladinHealer.prefab/PaladinHealer_Leather: shader 'Standard' suportado
+PASS [4.1] PaladinHealer.prefab/PaladinHealer_Mat: shader 'Standard' suportado
+PASS [4.1] PaladinHealer.prefab/PaladinHealer_Mat: textura principal atribuida (PaladinHealer_BaseColor 2048x2048)
+PASS [4.1] PaladinHealer.prefab/AdvancedTeamRing: shader 'Unlit/Color' suportado
+PASS [4.1] PaladinHealer.prefab/FOV: shader 'Standard' suportado
+PASS [4.0] PaladinHealerVisual.prefab carrega
+PASS [4.1] PaladinHealerVisual.prefab/PaladinHealer_Steel: shader 'Standard' suportado
+PASS [4.1] PaladinHealerVisual.prefab/PaladinHealer_Linen: shader 'Standard' suportado
+PASS [4.1] PaladinHealerVisual.prefab/PaladinHealer_Wood: shader 'Standard' suportado
+PASS [4.1] PaladinHealerVisual.prefab/PaladinHealer_Gold: shader 'Standard' suportado
+PASS [4.1] PaladinHealerVisual.prefab/PaladinHealer_Leather: shader 'Standard' suportado
+PASS [4.1] PaladinHealerVisual.prefab/PaladinHealer_Mat: shader 'Standard' suportado
+PASS [4.1] PaladinHealerVisual.prefab/PaladinHealer_Mat: textura principal atribuida (PaladinHealer_BaseColor 2048x2048)
+PASS [4.0] PaladinHealerDeath.prefab carrega
+PASS [4.1] PaladinHealerDeath.prefab/PaladinHealer_Steel: shader 'Standard' suportado
+PASS [4.1] PaladinHealerDeath.prefab/PaladinHealer_Linen: shader 'Standard' suportado
+PASS [4.1] PaladinHealerDeath.prefab/PaladinHealer_Wood: shader 'Standard' suportado
+PASS [4.1] PaladinHealerDeath.prefab/PaladinHealer_Gold: shader 'Standard' suportado
+PASS [4.1] PaladinHealerDeath.prefab/PaladinHealer_Leather: shader 'Standard' suportado
+PASS [4.1] PaladinHealerDeath.prefab/PaladinHealer_Mat: shader 'Standard' suportado
+PASS [4.1] PaladinHealerDeath.prefab/PaladinHealer_Mat: textura principal atribuida (PaladinHealer_BaseColor 2048x2048)
+PASS [4.0] PaladinHealAura.prefab carrega
+PASS [4.1] PaladinHealAura.prefab/PaladinHealAura_Disc: shader 'Legacy Shaders/Particles/Additive' suportado
+PASS [4.1] PaladinHealAura.prefab/PaladinHealAura_Disc: textura principal atribuida (PaladinHealAura_Disc 512x512)
+PASS [4.1] PaladinHealAura.prefab/PaladinHealAura_RingTrail: shader 'Legacy Shaders/Particles/Additive' suportado
+PASS [4.1] PaladinHealAura.prefab/PaladinHealAura_RingTrail: textura principal atribuida (PaladinHealAura_Ring 512x512)
+PASS [4.1] PaladinHealAura.prefab/PaladinHealAura_Ring: shader 'Legacy Shaders/Particles/Additive' suportado
+PASS [4.1] PaladinHealAura.prefab/PaladinHealAura_Ring: textura principal atribuida (PaladinHealAura_Ring 512x512)
+PASS [4.1] PaladinHealAura.prefab/PaladinHealAura_Mote: shader 'Legacy Shaders/Particles/Additive' suportado
+PASS [4.1] PaladinHealAura.prefab/PaladinHealAura_Mote: textura principal atribuida (PaladinHealAura_Mote 128x128)
+PASS [4.2] PaladinHealer_Sword.fbx/PaladinHealer_Steel: shader 'Standard' suportado
+PASS [4.2] PaladinHealer_Sword.fbx/PaladinHealer_Gold: shader 'Standard' suportado
+PASS [4.2] PaladinHealer_Sword.fbx/PaladinHealer_Leather: shader 'Standard' suportado
+PASS [4.2] PaladinHealer_Shield.fbx/PaladinHealer_Steel: shader 'Standard' suportado
+PASS [4.2] PaladinHealer_Shield.fbx/PaladinHealer_Linen: shader 'Standard' suportado
+PASS [4.2] PaladinHealer_Shield.fbx/PaladinHealer_Wood: shader 'Standard' suportado
+PASS [4.2] PaladinHealer_Shield.fbx/PaladinHealer_Gold: shader 'Standard' suportado
+PASS [4.2] PaladinHealer_Shield.fbx/PaladinHealer_Leather: shader 'Standard' suportado
+PASS [4.3] Materials/PaladinHealAura_Disc: shader 'Legacy Shaders/Particles/Additive' suportado
+PASS [4.5] PaladinHealAura_Disc: material de efeito tem textura (PaladinHealAura_Disc)
+PASS [4.3] Materials/PaladinHealAura_Mote: shader 'Legacy Shaders/Particles/Additive' suportado
+PASS [4.5] PaladinHealAura_Mote: material de efeito tem textura (PaladinHealAura_Mote)
+PASS [4.3] Materials/PaladinHealAura_Ring: shader 'Legacy Shaders/Particles/Additive' suportado
+PASS [4.5] PaladinHealAura_Ring: material de efeito tem textura (PaladinHealAura_Ring)
+PASS [4.3] Materials/PaladinHealAura_RingTrail: shader 'Legacy Shaders/Particles/Additive' suportado
+PASS [4.5] PaladinHealAura_RingTrail: material de efeito tem textura (PaladinHealAura_Ring)
+PASS [4.3] Materials/PaladinHealer_Gold: shader 'Standard' suportado
+PASS [4.4] PaladinHealer_Gold: cor principal nao e magenta (RGBA(0.900, 0.700, 0.240, 1.000))
+PASS [4.3] Materials/PaladinHealer_Leather: shader 'Standard' suportado
+PASS [4.4] PaladinHealer_Leather: cor principal nao e magenta (RGBA(0.220, 0.120, 0.060, 1.000))
+PASS [4.3] Materials/PaladinHealer_Linen: shader 'Standard' suportado
+PASS [4.4] PaladinHealer_Linen: cor principal nao e magenta (RGBA(0.900, 0.880, 0.820, 1.000))
+PASS [4.3] Materials/PaladinHealer_Mat: shader 'Standard' suportado
+PASS [4.4] PaladinHealer_Mat: cor principal nao e magenta (RGBA(1.000, 1.000, 1.000, 1.000))
+PASS [4.3] Materials/PaladinHealer_Steel: shader 'Standard' suportado
+PASS [4.4] PaladinHealer_Steel: cor principal nao e magenta (RGBA(0.660, 0.680, 0.720, 1.000))
+PASS [4.3] Materials/PaladinHealer_Wood: shader 'Standard' suportado
+PASS [4.4] PaladinHealer_Wood: cor principal nao e magenta (RGBA(0.400, 0.250, 0.120, 1.000))
+PASS [4.6] PaladinHealer_Mat: base + normal + metal/suavidade atribuidos
+PASS [4.7] PaladinHealAura_Disc.png 512x512: magenta 0,000%
+PASS [4.7] PaladinHealAura_Mote.png 128x128: magenta 0,000%
+PASS [4.7] PaladinHealAura_Ring.png 512x512: magenta 0,000%
+PASS [4.7] PaladinHealer_BaseColor.png 2048x2048: magenta 0,000%
+PASS [4.7] PaladinHealer_MetallicSmooth.png 2048x2048: magenta 0,000%
+PASS [4.7] PaladinHealer_Normal.png 2048x2048: magenta 0,134%
+PASS [6.0] wrapper PaladinHealer.prefab carrega
+PASS [6.1] nenhum script ausente (Missing) na hierarquia do wrapper (0)
+PASS [6.2] sem referencias quebradas em componentes do wrapper 
+PASS [6.3] CharacterManager presente
+PASS [6.4] NavMeshAgent presente
+INFO [6.4] agente: raio 0,5, altura 2, velocidade 4, accel 8, stoppingDistance 0,5, angularSpeed 180
+PASS [6.5] BoxCollider presente
+INFO [6.5] BoxCollider size (0.90, 2.00, 0.90) center (0.00, 1.00, 0.00); corpo (bounds dos SMR, pose do prefab) size (1.35, 2.12, 0.74) center (0.00, 0.87, -0.01)
+PASS [6.6] altura do BoxCollider coerente com a do modelo (2,00 vs 2,12)
+PASS [6.7] largura/profundidade do BoxCollider plausiveis (0,90 x 0,90)
+PASS [6.8] BoxCollider apoiado no chao (centro y 1,00)
+PASS [6.9] AdvancedUnitEraBinding.contract = PaladinHealer.asset
+PASS [6.10] AdvancedUnitAnimatorDriver com Animator
+PASS [6.11] PaladinHealBehaviour com o contrato correto
+PASS [6.12] PaladinHealBehaviour tem Animator com controller
+PASS [6.13] effectOrigin = socket HealAuraCenter do contrato (Mesh/PaladinHealerVisual/HealAuraCenter)
+PASS [6.13b] healEffectPrefab = PaladinHealAura.prefab (Assets/Resources/Prefabs/Effects/PaladinHealAura.prefab)
+FAIL [6.14] PaladinMeleeAttackController presente (cadencia do golpe = cooldown da era)
+FAIL [6.15] exatamente 1 IAttackHandler na raiz (0)
+PASS [6.16] AdvancedUnitDeathEffect com prefab de morte (PaladinHealerDeath)
+PASS [6.17] prefab de morte tem Animator + controller + avatar
+PASS [6.18] prefab de morte sem colisor nem agente (nao bloqueia o jogo)
+INFO [6.17] lifetime do efeito de morte 8s; renderers do prefab de morte: Shield, Sword, PaladinHealer_LOD0, PaladinHealer_LOD1, PaladinHealer_LOD2
+PASS [6.19] deathPrefab = PaladinHealerDeath.prefab
+PASS [6.20] wrapper tem todos os componentes de raiz do Soldier (faltam: nenhum)
+INFO [6.20] componentes do wrapper: AdvancedUnitAnimatorDriver, AdvancedUnitDeathEffect, AdvancedUnitEraBinding, AudioSource, BoxCollider, CharacterBT, CharacterManager, FogRendererToggler, NavMeshAgent, PaladinHealBehaviour, Rigidbody, Transform
+PASS [6.21] layer/tag iguais ao Soldier (Unit/Unit vs Unit/Unit)
+PASS [6.22] CharacterManager: meshRenderer, animator, agent e characterCollider atribuidos
+PASS [6.23] CharacterManager: selectionCircle e fov atribuidos
+INFO [6.22] meshRenderer(anel de time)=TeamRing bounds (1.10, 0.00, 1.10)
+PASS [6.24] anel de time (Assets/CharacterRigging/PaladinHealer/Prefabs/PaladinHealer_TeamRing.asset): 96 triangulos voltados para cima, 0 para baixo (visivel de cima)
+INFO [6.24] raio do anel (bounds) 0,55 m; agente raio 0,5
+PASS [6.25] LODGroup no wrapper com 3 niveis
+PASS [6.26] wrapper: triangulos por LOD estritamente decrescentes 31000 > 9300 > 3100
+PASS [6.27] wrapper: limiares coerentes 0,170, 0,100, 0,000
+INFO [6.27] LODGroup size 2,115979, fadeMode None, animateCrossFading False
+INFO [6.28] renderer Mesh/PaladinHealerVisual/PaladinHealer_Armature/Hips/Spine02/Spine01/Spine/LeftShoulder/LeftArm/LeftForeArm/ShieldMount/Shield (nos LODs: )
+INFO [6.28] renderer Mesh/PaladinHealerVisual/PaladinHealer_Armature/Hips/Spine02/Spine01/Spine/RightShoulder/RightArm/RightForeArm/RightHand/WeaponMount/Sword (nos LODs: )
+PASS [6.29] escala da raiz = 1
+PASS [7.1] socket 'WeaponMount' existe em Mesh/PaladinHealerVisual/PaladinHealer_Armature/Hips/Spine02/Spine01/Spine/RightShoulder/RightArm/RightForeArm/RightHand/WeaponMount
+PASS [7.1] socket 'ShieldMount' existe em Mesh/PaladinHealerVisual/PaladinHealer_Armature/Hips/Spine02/Spine01/Spine/LeftShoulder/LeftArm/LeftForeArm/ShieldMount
+PASS [7.1] socket 'HealAuraCenter' existe em Mesh/PaladinHealerVisual/HealAuraCenter
+INFO [7.0] Sockets: WeaponMount pai=RightHand, ShieldMount pai=LeftForeArm, HealAuraCenter pai=PaladinHealerVisual
+INFO [7.2] WeaponMount world (0.525, 0.988, 0.006); mao direita (0.483, 1.061, -0.006); dist 0,085
+PASS [7.3] HealAuraCenter no tronco (local (0.00, 1.20, 0.00); altura do peito 0.9-1.5 m)
+PASS [7.4] espada e filha de WeaponMount (Mesh/PaladinHealerVisual/PaladinHealer_Armature/Hips/Spine02/Spine01/Spine/RightShoulder/RightArm/RightForeArm/RightHand/WeaponMount/Sword)
+PASS [7.5] escudo e filho de ShieldMount (Mesh/PaladinHealerVisual/PaladinHealer_Armature/Hips/Spine02/Spine01/Spine/LeftShoulder/LeftArm/LeftForeArm/ShieldMount)
+PASS [7.6] WeaponMount descende do osso RightHand do avatar
+PASS [7.7] ShieldMount descende do osso LeftLowerArm (antebraco) do avatar
+PASS [7.8] espada com comprimento plausivel 1,03 m (0.7-1.4)
+PASS [7.9] cabo (WeaponMount) a 0,085 m do osso da mao (< 0.15)
+INFO [7.10] espada: bounds mundo size (0.45, 1.03, 0.42) center (0.60, 0.62, 0.11); escala local (1.000, 1.000, 1.000)
+PASS [7.11] escudo com tamanho plausivel (0.66, 0.63, 0.89)
+INFO [7.12] escudo: center (-0.47, 1.17, -0.12); antebraco (-0.33, 1.26, -0.06); mao esquerda (-0.50, 1.06, 0.00); dist centro->antebraco 0,17 m
+PASS [7.13] centro do escudo a 0,17 m do antebraco (< 0.6)
+PASS [8.0] controller do wrapper e um AnimatorController (Assets/CharacterRigging/PaladinHealer/Animation/PaladinHealer.controller)
+PASS [8.0b] Animator com avatar humanoide e sem root motion
+INFO [8.1] parametros: Running:Bool, Attacking:Bool, Hit:Trigger, Speed:Float, Fire:Trigger, Damaged:Trigger, Heal:Trigger
+PASS [8.1] parametro Speed (Float)
+PASS [8.1] parametro Heal (Trigger)
+PASS [8.1] parametro Damaged (Trigger)
+PASS [8.1] parametro Running (Bool)
+PASS [8.1] parametro Attacking (Bool)
+PASS [8.1] parametro Hit (Trigger)
+INFO [8.1] layers: 0:Base Layer peso=0 blend=Override mask=nenhuma sync=-1 | 1:Heal peso=1 blend=Override mask=PaladinHealer_UpperBody sync=-1
+PASS [8.1m] camada Heal: mascara sem pernas, com tronco/bracos (pernas off, tronco+bracos on; cabeca True, raiz False)
+INFO [8.2] layer 0 estados=Locomotion{Locomotion},Attack{Attack},HitReact{Hit}, default=Locomotion
+INFO [8.2] BlendTree 'Locomotion' param=Speed tipo=Simple1D: Idle@0,00, Walk@1,50, Run@4,00
+INFO [8.3] L0 Locomotion -> Attack [Hit:If:0] exit=False(0,90) dur=0,10 interrupt=None
+INFO [8.3] L0 Attack -> Locomotion [] exit=True(0,90) dur=0,15 interrupt=None
+INFO [8.3] L0 HitReact -> Locomotion [] exit=True(0,85) dur=0,15 interrupt=None
+INFO [8.3] L0 ANY -> HitReact [Damaged:If:0] exit=False dur=0,06 canTransitionToSelf=False
+INFO [8.2] layer 1 estados=Empty{vazio},Heal{Heal}, default=Empty
+INFO [8.3] L1 Empty -> Heal [Heal:If:0] exit=False(0,90) dur=0,08 interrupt=None
+INFO [8.3] L1 Heal -> Empty [] exit=True(0,92) dur=0,15 interrupt=None
+PASS [8.4] todas as condicoes de transicao usam parametros declarados
+PASS [8.5] contrato: clipe 'Idle' real, duracao 2,53 s, parametro declarado 'Speed'
+PASS [8.6] controller do wrapper usa o clipe do contrato 'Idle'
+PASS [8.6b] contrato 'Idle' declara o parametro 'Speed' -> existe no controller? sim
+PASS [8.5] contrato: clipe 'Walk' real, duracao 1,04 s, parametro declarado 'Speed'
+PASS [8.6] controller do wrapper usa o clipe do contrato 'Walk'
+PASS [8.6b] contrato 'Walk' declara o parametro 'Speed' -> existe no controller? sim
+PASS [8.5] contrato: clipe 'Run' real, duracao 0,63 s, parametro declarado 'Speed'
+PASS [8.6] controller do wrapper usa o clipe do contrato 'Run'
+PASS [8.6b] contrato 'Run' declara o parametro 'Speed' -> existe no controller? sim
+PASS [8.5] contrato: clipe 'Attack' real, duracao 1,50 s, parametro declarado 'Hit'
+PASS [8.6] controller do wrapper usa o clipe do contrato 'Attack'
+PASS [8.6b] contrato 'Attack' declara o parametro 'Hit' -> existe no controller? sim
+PASS [8.5] contrato: clipe 'Heal' real, duracao 1,23 s, parametro declarado 'Heal'
+PASS [8.6] controller do wrapper usa o clipe do contrato 'Heal'
+PASS [8.6b] contrato 'Heal' declara o parametro 'Heal' -> existe no controller? sim
+PASS [8.5] contrato: clipe 'Hit' real, duracao 1,03 s, parametro declarado 'Damaged'
+PASS [8.6] controller do wrapper usa o clipe do contrato 'Hit'
+PASS [8.6b] contrato 'Hit' declara o parametro 'Damaged' -> existe no controller? sim
+PASS [8.5] contrato: clipe 'Death' real, duracao 5,77 s, parametro declarado 'AdvancedUnitDeathEffect'
+INFO [8.6c] estados exigidos pelo contrato: Idle, Walk, Run, Attack, Heal, Hit, Death; clipes importados: Idle, Walk, Run, Attack, Heal, Hit, Death
+PASS [8.7] controller de morte: estado padrao toca o clipe Death do contrato
+PASS [8.8] Speed=0 -> Locomotion tocando Idle (Locomotion/Idle)
+INFO [8.9] Speed=1.5 -> Locomotion/Walk; Speed=4.0 -> Locomotion/Run
+PASS [8.9] Speed 1.5 -> Walk (Locomotion/Walk)
+PASS [8.10] Speed 4.0 (velocidade do agente) -> Run (Locomotion/Run)
+PASS [8.11] Speed volta a 0 -> Idle (Locomotion/Idle)
+PASS [8.12] trigger Hit (BT) -> Attack (Attack)
+PASS [8.13] apos o Attack volta a Locomotion/Idle (Locomotion/Idle)
+PASS [8.14] trigger Damaged -> reacao a dano (HitReact)
+PASS [8.15] apos a reacao volta a Idle (Locomotion/Idle)
+PASS [8.16] existe camada de cura (indice 1)
+INFO [8.16] camada Heal: peso 1 estado em repouso 'Empty' -> apos trigger 'Heal', clipes Heal:1,00
+PASS [8.17] trigger Heal -> camada de cura toca o clipe Heal (Heal)
+PASS [8.17b] camada base nao e perturbada pelo Heal (Locomotion/Idle)
+PASS [8.18] apos o Heal a camada volta ao repouso (Empty)
+PASS [8.19] Running/Attacking (BT) nao alteram o estado (Locomotion/Idle)
+INFO [8.20] Hit seguido de Heal: estado base Attack, camada heal Heal
+PASS [8.21] apos Hit+Heal tudo volta ao repouso (Locomotion/Idle / Empty)
+PASS [8.22] Idle: loopTime ligado
+PASS [8.22] Walk: loopTime ligado
+PASS [8.22] Run: loopTime ligado
+PASS [8.23] Attack: loopTime desligado
+PASS [8.23] Heal: loopTime desligado
+PASS [8.23] Hit: loopTime desligado
+PASS [8.23] Death: loopTime desligado
+PASS [9.1] PaladinHealAura.prefab carrega
+PASS [9.2] PaladinHealAuraEffect com ring, ringTrail e disc atribuidos
+PASS [9.3] efeito tem 1 sistema(s) de particulas
+PASS [9.4] particulas terminam em 2,70 s (<= 3 s, o Destroy do PaladinHealBehaviour)
+INFO [9.4] particulas 'Motes': loop=False, dur=1,2, vida=1,5, simulacao=World, scalingMode=Shape, forma=Circle raio=0,50, max=200, emissao=0/s bursts=2, gravidade=0
+INFO [9.5] duracao 1,4 s, expandTime 0,75 s, trailDelay 0,18
+PASS [9.6] expansao termina antes do fim, e o efeito dura <= 3 s (Destroy em 3 s)
+PASS [9.7] diametro do efeito (anel/disco) em escala 1 = 1,000 x 1,000 (esperado 1.000)
+INFO [9.7] altura do efeito (y) 0,020; centro (0.00, -1.15, 0.00)
+PASS [9.8] textura do anel: pico em 0,87 do raio do quad, borda visivel ate 0,94 (anel visivel ~ no raio de cura quando o quad = 2R)
+PASS [10.1] Validate().IsValid: OK
+PASS [10.2] IsVisualReady: pronto
+PASS [10.3] contrato.prefab = wrapper em Resources
+INFO [10.4] contrato.meshes: malha-fonte do corpo -> Assets/CharacterRigging/PaladinHealer/Models/PaladinHealer.fbx (esperado Assets/CharacterRigging/PaladinHealer/Models/PaladinHealer.fbx); espada -> Assets/CharacterRigging/PaladinHealer/Accessories/PaladinHealer_Sword.fbx (esperado Assets/CharacterRigging/PaladinHealer/Accessories/PaladinHealer_Sword.fbx); escudo -> Assets/CharacterRigging/PaladinHealer/Accessories/PaladinHealer_Shield.fbx (esperado Assets/CharacterRigging/PaladinHealer/Accessories/PaladinHealer_Shield.fbx)
+PASS [10.4] contrato.meshes: todas resolvidas
+PASS [10.4b] contrato.meshes inclui o FBX do corpo
+PASS [10.4c] contrato.meshes inclui espada e escudo
+PASS [10.5] efeito 'efeito de aura de cura' aponta para Assets/Resources/Prefabs/Effects/PaladinHealAura.prefab (esperado Assets/Resources/Prefabs/Effects/PaladinHealAura.prefab)
+PASS [10.5] efeito 'prefab de morte' aponta para Assets/CharacterRigging/PaladinHealer/Prefabs/PaladinHealerDeath.prefab (esperado Assets/CharacterRigging/PaladinHealer/Prefabs/PaladinHealerDeath.prefab)
+PASS [10.6] animacao 'Idle' aponta para PaladinHealer@Idle.fbx
+PASS [10.6] animacao 'Walk' aponta para PaladinHealer@Walk.fbx
+PASS [10.6] animacao 'Run' aponta para PaladinHealer@Run.fbx
+PASS [10.6] animacao 'Attack' aponta para PaladinHealer@Attack.fbx
+PASS [10.6] animacao 'Heal' aponta para PaladinHealer@Heal.fbx
+PASS [10.6] animacao 'Hit' aponta para PaladinHealer@Hit.fbx
+PASS [10.6] animacao 'Death' aponta para PaladinHealer@Death.fbx
+PASS [10.7] paladino corpo a corpo: sem projetil no contrato
+PASS [10.8] buildSettingsApproved=false (nada no Build Settings por decisao do coordenador)
+PASS [10.9] 4 tiers de era
+PASS [10.11] exatamente 1 CharacterData com code=paladin_healer: Assets/Resources/ScriptableObjects/Units/Characters/PaladinHealer.asset
+PASS [10.12] CharacterData.prefab = wrapper do contrato
+PASS [10.13] CharacterData = Ancient (vida 70/70, dano 16/16, alcance 1,5/1,5)
+FAIL [10.13b] CharacterData.attackRate = 1,8 = AttackPollSeconds (0,25); cooldown real da era vem do controlador (Ancient 1,8)
+PASS [10.14] CharacterData: custo e FOV iguais ao contrato
+INFO [10.14] custo CharacterData: Gold x80, Wood x20; contrato: Gold x80, Wood x20
+INFO [10.15] CharacterData.sprite VAZIO (sem icone de UI); sons: select=False, move=False; unitName=Paladino Curador
+PASS [10.17] wrapper e um prefab regular
+PASS [10.18] Build Settings nao contem nada do Paladin
+PASS [10.19] Ancient: BuildUnitDataFields = tier
+PASS [10.19] Classical: BuildUnitDataFields = tier
+PASS [10.19] Medieval: BuildUnitDataFields = tier
+PASS [10.19] Imperial: BuildUnitDataFields = tier
+PASS [11.1] Ancient: vida 70/70, dano 16/16, cura 6/6, raio 4/4, cooldown golpe 1,8/1,8
+INFO [11.1] Ancient: alcance 1,5, cooldown de cura 3, limite por alvo 18 (= 3,0 curas)
+PASS [11.1] Classical: vida 90/90, dano 20/20, cura 9/9, raio 4,5/4,5, cooldown golpe 1,7/1,7
+INFO [11.1] Classical: alcance 1,5, cooldown de cura 2,8, limite por alvo 27 (= 3,0 curas)
+PASS [11.1] Medieval: vida 115/115, dano 25/25, cura 13/13, raio 5/5, cooldown golpe 1,6/1,6
+INFO [11.1] Medieval: alcance 1,5, cooldown de cura 2,5, limite por alvo 39 (= 3,0 curas)
+PASS [11.1] Imperial: vida 145/145, dano 31/31, cura 18/18, raio 6/6, cooldown golpe 1,5/1,5
+INFO [11.1] Imperial: alcance 1,5, cooldown de cura 2,2, limite por alvo 54 (= 3,0 curas)
+PASS [11.2] Classical: vida, dano, cura, raio e limite crescem; cooldowns diminuem em relacao a Ancient
+PASS [11.2] Medieval: vida, dano, cura, raio e limite crescem; cooldowns diminuem em relacao a Classical
+PASS [11.2] Imperial: vida, dano, cura, raio e limite crescem; cooldowns diminuem em relacao a Medieval
+PASS [11.3] alcance de ataque corpo a corpo <= 2 m em todas as eras
+PASS [11.4] canHealSelf=false (o paladino nao se cura)
+PASS [11.5] janela do limite por alvo = 10 s
+PASS [14.1] referencias por GUID resolvidas: 174 verificadas em 21 arquivos, 0 quebradas 
+PASS [14.2] sem tipos Paladin* duplicados (14 tipos: PaladinHealerIndependentAudit, PaladinHealerAudit, PaladinHealerPlayModeCheck, PaladinHealerSetup, PaladinHealAuraEffect, PaladinEraTier, PaladinHealerContract, PaladinHealerDefaults, PaladinHealing, PaladinHealController, PaladinHealingTests, PaladinHealBehaviour, PaladinMeleeAttackController, PaladinHealerVisualTests)
+PASS [14.3] PaladinHealer.prefab: 1 no projeto (Assets/Resources/Prefabs/Units/Characters/PaladinHealer.prefab)
+PASS [14.3] PaladinHealer.controller: 1 no projeto (Assets/CharacterRigging/PaladinHealer/Animation/PaladinHealer.controller)
+PASS [14.3] PaladinHealer.fbx: 1 no projeto (Assets/CharacterRigging/PaladinHealer/Models/PaladinHealer.fbx)
+PASS [14.3] PaladinHealAura.prefab: 1 no projeto (Assets/Resources/Prefabs/Effects/PaladinHealAura.prefab)
+INFO [14.3] PaladinHealer.asset: Assets/Data/AdvancedUnits/PaladinHealer.asset, Assets/Resources/ScriptableObjects/Units/Characters/PaladinHealer.asset (contrato em Data + CharacterData em Resources: nomes iguais por convencao)
+PASS [14.5] GUIDs de .meta unicos na pasta da unidade (46)
+PASS [14.6] todo arquivo da unidade tem .meta (0 sem)
+PASS [13.0] SampleAnimation move o osso da mao (1,488 m entre Idle@0 e Attack@0.6) - validade dos renders de pose
+PASS [13.m] LOD0-front: pixels magenta 0,0000%
+PASS [13.m] LOD0-back: pixels magenta 0,0000%
+PASS [13.m] LOD0-side: pixels magenta 0,0000%
+PASS [13.m] LOD1-front: pixels magenta 0,0000%
+PASS [13.m] LOD1-back: pixels magenta 0,0000%
+PASS [13.m] LOD1-side: pixels magenta 0,0000%
+PASS [13.m] LOD2-front: pixels magenta 0,0000%
+PASS [13.m] LOD2-back: pixels magenta 0,0000%
+PASS [13.m] LOD2-side: pixels magenta 0,0000%
+PASS [13.m] pose-Idle-0,00-front: pixels magenta 0,0000%
+PASS [13.m] pose-Idle-0,00-side: pixels magenta 0,0000%
+PASS [13.m] pose-Idle-0,50-front: pixels magenta 0,0000%
+PASS [13.m] pose-Idle-0,50-side: pixels magenta 0,0000%
+PASS [13.m] pose-Walk-0,00-front: pixels magenta 0,0000%
+PASS [13.m] pose-Walk-0,00-side: pixels magenta 0,0000%
+PASS [13.m] pose-Walk-0,50-front: pixels magenta 0,0000%
+PASS [13.m] pose-Walk-0,50-side: pixels magenta 0,0000%
+PASS [13.m] pose-Run-0,00-front: pixels magenta 0,0000%
+PASS [13.m] pose-Run-0,00-side: pixels magenta 0,0000%
+PASS [13.m] pose-Run-0,50-front: pixels magenta 0,0000%
+PASS [13.m] pose-Run-0,50-side: pixels magenta 0,0000%
+PASS [13.m] pose-Attack-0,15-front: pixels magenta 0,0000%
+PASS [13.m] pose-Attack-0,15-side: pixels magenta 0,0000%
+PASS [13.m] pose-Attack-0,30-front: pixels magenta 0,0000%
+PASS [13.m] pose-Attack-0,30-side: pixels magenta 0,0000%
+PASS [13.m] pose-Attack-0,45-front: pixels magenta 0,0000%
+PASS [13.m] pose-Attack-0,45-side: pixels magenta 0,0000%
+PASS [13.m] pose-Attack-0,60-front: pixels magenta 0,0000%
+PASS [13.m] pose-Attack-0,60-side: pixels magenta 0,0000%
+PASS [13.m] pose-Attack-0,75-front: pixels magenta 0,0000%
+PASS [13.m] pose-Attack-0,75-side: pixels magenta 0,0000%
+PASS [13.m] pose-Attack-0,90-front: pixels magenta 0,0000%
+PASS [13.m] pose-Attack-0,90-side: pixels magenta 0,0000%
+PASS [13.m] pose-Heal-0,20-front: pixels magenta 0,0000%
+PASS [13.m] pose-Heal-0,20-side: pixels magenta 0,0000%
+PASS [13.m] pose-Heal-0,40-front: pixels magenta 0,0000%
+PASS [13.m] pose-Heal-0,40-side: pixels magenta 0,0000%
+PASS [13.m] pose-Heal-0,60-front: pixels magenta 0,0000%
+PASS [13.m] pose-Heal-0,60-side: pixels magenta 0,0000%
+PASS [13.m] pose-Heal-0,80-front: pixels magenta 0,0000%
+PASS [13.m] pose-Heal-0,80-side: pixels magenta 0,0000%
+PASS [13.m] pose-Hit-0,20-front: pixels magenta 0,0000%
+PASS [13.m] pose-Hit-0,20-side: pixels magenta 0,0000%
+PASS [13.m] pose-Hit-0,50-front: pixels magenta 0,0000%
+PASS [13.m] pose-Hit-0,50-side: pixels magenta 0,0000%
+PASS [13.m] pose-Death-0,15-front: pixels magenta 0,0000%
+PASS [13.m] pose-Death-0,15-side: pixels magenta 0,0000%
+PASS [13.m] pose-Death-0,40-front: pixels magenta 0,0000%
+PASS [13.m] pose-Death-0,40-side: pixels magenta 0,0000%
+PASS [13.m] pose-Death-0,70-front: pixels magenta 0,0000%
+PASS [13.m] pose-Death-0,70-side: pixels magenta 0,0000%
+PASS [13.m] pose-Death-1,00-front: pixels magenta 0,0000%
+PASS [13.m] pose-Death-1,00-side: pixels magenta 0,0000%
+PASS [13.m] close-sword-front: pixels magenta 0,0000%
+PASS [13.m] close-sword-right: pixels magenta 0,0000%
+PASS [13.m] close-sword-left: pixels magenta 0,0000%
+PASS [13.m] close-sword-back: pixels magenta 0,0000%
+PASS [13.m] close-shield-front: pixels magenta 0,0000%
+PASS [13.m] close-shield-right: pixels magenta 0,0000%
+PASS [13.m] close-shield-left: pixels magenta 0,0000%
+PASS [13.m] close-shield-back: pixels magenta 0,0000%
+INFO [13.m] magenta: maior fracao 0,0000% em LOD0-front
+INFO [12b.0] SMRs: PaladinHealer_LOD0=31000, PaladinHealer_LOD1=9300, PaladinHealer_LOD2=3100
+INFO [12b.1] espada: ponta a 0,91 m do ponto de cabo (WeaponMount)
+INFO [12b.Idle] Idle: aresta/bind p99 medio 1,78; max 10,05 (t=2,53s); min 0,13; #arestas>2.0 (max) 398, >3.0 75, <0.4 106 de 62366
+INFO [12b.Idle] Idle: espada: cabo-mao 0,085..0,085 m; ponta y min 0,76 m; ponta acima da cabeca max -0,62 m; lamina x corpo dist min 0,238 m; pico de velocidade da ponta 0,2 m/s em t=1,95s de 2,53s; escudo: vertices do corpo dentro da caixa do escudo (max, amostra 1/3) 1106
+INFO [12b.Idle] Idle: aresta mais longa em pose 0,266 m; arestas "espeto" (> 10 cm em pose, < 5 cm no repouso), max por amostra: 2
+FAIL [12b.d] Idle: deformacao: aresta mais longa 0,266 m (limite 0.20), arestas-espeto (>10 cm vindas de < 5 cm) 2 (limite 20)
+PASS [12b.s] Idle: espada permanece na mao (cabo-mao max 0,085 m)
+PASS [12b.g] Idle: ponta da espada nao atravessa o chao (y min 0,76 m)
+INFO [12b.Walk] Walk: aresta/bind p99 medio 1,48; max 8,54 (t=0,26s); min 0,04; #arestas>2.0 (max) 320, >3.0 59, <0.4 150 de 62366
+INFO [12b.Walk] Walk: espada: cabo-mao 0,085..0,085 m; ponta y min -0,02 m; ponta acima da cabeca max -1,33 m; lamina x corpo dist min 0,010 m; pico de velocidade da ponta 5,9 m/s em t=0,93s de 1,04s; escudo: vertices do corpo dentro da caixa do escudo (max, amostra 1/3) 1336
+INFO [12b.Walk] Walk: aresta mais longa em pose 0,287 m; arestas "espeto" (> 10 cm em pose, < 5 cm no repouso), max por amostra: 0
+FAIL [12b.d] Walk: deformacao: aresta mais longa 0,287 m (limite 0.20), arestas-espeto (>10 cm vindas de < 5 cm) 0 (limite 20)
+PASS [12b.s] Walk: espada permanece na mao (cabo-mao max 0,085 m)
+PASS [12b.g] Walk: ponta da espada nao atravessa o chao (y min -0,02 m)
+INFO [12b.Run] Run: aresta/bind p99 medio 1,80; max 11,98 (t=0,05s); min 0,03; #arestas>2.0 (max) 754, >3.0 166, <0.4 422 de 62366
+INFO [12b.Run] Run: espada: cabo-mao 0,085..0,085 m; ponta y min 0,06 m; ponta acima da cabeca max -0,08 m; lamina x corpo dist min 0,099 m; pico de velocidade da ponta 19,0 m/s em t=0,22s de 0,63s; escudo: vertices do corpo dentro da caixa do escudo (max, amostra 1/3) 1583
+INFO [12b.Run] Run: aresta mais longa em pose 0,299 m; arestas "espeto" (> 10 cm em pose, < 5 cm no repouso), max por amostra: 4
+FAIL [12b.d] Run: deformacao: aresta mais longa 0,299 m (limite 0.20), arestas-espeto (>10 cm vindas de < 5 cm) 4 (limite 20)
+PASS [12b.s] Run: espada permanece na mao (cabo-mao max 0,085 m)
+PASS [12b.g] Run: ponta da espada nao atravessa o chao (y min 0,06 m)
+INFO [12b.Attack] Attack: aresta/bind p99 medio 2,07; max 13,52 (t=0,50s); min 0,04; #arestas>2.0 (max) 1019, >3.0 284, <0.4 276 de 62366
+INFO [12b.Attack] Attack: espada: cabo-mao 0,085..0,085 m; ponta y min -0,36 m; ponta acima da cabeca max 1,01 m; lamina x corpo dist min 0,014 m; pico de velocidade da ponta 39,1 m/s em t=0,59s de 1,50s; escudo: vertices do corpo dentro da caixa do escudo (max, amostra 1/3) 1211
+INFO [12b.Attack] Attack: aresta mais longa em pose 0,272 m; arestas "espeto" (> 10 cm em pose, < 5 cm no repouso), max por amostra: 13
+FAIL [12b.d] Attack: deformacao: aresta mais longa 0,272 m (limite 0.20), arestas-espeto (>10 cm vindas de < 5 cm) 13 (limite 20)
+PASS [12b.s] Attack: espada permanece na mao (cabo-mao max 0,085 m)
+FAIL [12b.g] Attack: ponta da espada nao atravessa o chao (y min -0,36 m)
+INFO [12b.Heal] Heal: aresta/bind p99 medio 2,01; max 10,05 (t=0,15s); min 0,04; #arestas>2.0 (max) 766, >3.0 182, <0.4 430 de 62366
+INFO [12b.Heal] Heal: espada: cabo-mao 0,085..0,085 m; ponta y min 0,80 m; ponta acima da cabeca max 1,16 m; lamina x corpo dist min 0,238 m; pico de velocidade da ponta 10,9 m/s em t=0,18s de 1,23s; escudo: vertices do corpo dentro da caixa do escudo (max, amostra 1/3) 1084
+INFO [12b.Heal] Heal: aresta mais longa em pose 0,266 m; arestas "espeto" (> 10 cm em pose, < 5 cm no repouso), max por amostra: 4
+FAIL [12b.d] Heal: deformacao: aresta mais longa 0,266 m (limite 0.20), arestas-espeto (>10 cm vindas de < 5 cm) 4 (limite 20)
+PASS [12b.s] Heal: espada permanece na mao (cabo-mao max 0,085 m)
+PASS [12b.g] Heal: ponta da espada nao atravessa o chao (y min 0,80 m)
+INFO [12b.Hit] Hit: aresta/bind p99 medio 1,79; max 8,72 (t=0,82s); min 0,02; #arestas>2.0 (max) 537, >3.0 102, <0.4 168 de 62366
+INFO [12b.Hit] Hit: espada: cabo-mao 0,085..0,085 m; ponta y min 0,12 m; ponta acima da cabeca max -0,72 m; lamina x corpo dist min 0,165 m; pico de velocidade da ponta 3,3 m/s em t=0,24s de 1,03s; escudo: vertices do corpo dentro da caixa do escudo (max, amostra 1/3) 1241
+INFO [12b.Hit] Hit: aresta mais longa em pose 0,263 m; arestas "espeto" (> 10 cm em pose, < 5 cm no repouso), max por amostra: 2
+FAIL [12b.d] Hit: deformacao: aresta mais longa 0,263 m (limite 0.20), arestas-espeto (>10 cm vindas de < 5 cm) 2 (limite 20)
+PASS [12b.s] Hit: espada permanece na mao (cabo-mao max 0,085 m)
+PASS [12b.g] Hit: ponta da espada nao atravessa o chao (y min 0,12 m)
+INFO [12b.Death] Death: aresta/bind p99 medio 1,71; max 11,30 (t=3,60s); min 0,03; #arestas>2.0 (max) 690, >3.0 143, <0.4 509 de 62366
+INFO [12b.Death] Death: espada: cabo-mao 0,085..0,085 m; ponta y min -0,44 m; ponta acima da cabeca max -0,30 m; lamina x corpo dist min 0,005 m; pico de velocidade da ponta 4,1 m/s em t=3,24s de 5,77s; escudo: vertices do corpo dentro da caixa do escudo (max, amostra 1/3) 1470
+INFO [12b.Death] Death: aresta mais longa em pose 0,283 m; arestas "espeto" (> 10 cm em pose, < 5 cm no repouso), max por amostra: 2
+FAIL [12b.d] Death: deformacao: aresta mais longa 0,283 m (limite 0.20), arestas-espeto (>10 cm vindas de < 5 cm) 2 (limite 20)
+PASS [12b.s] Death: espada permanece na mao (cabo-mao max 0,085 m)
+PASS [12b.g] Death: ponta da espada nao atravessa o chao (y min -0,44 m)
+INFO [9b.Ancient] raio de cura 4,0 m: particulas vivas amostradas 319; alcance horizontal max 4,00 m (100% do raio); altura 0,07..1,67 m; efeito instanciado em y=1,20 m (HealAuraCenter)
+PASS [9b.1] Ancient: particulas ficam dentro do raio de cura (max 4,00 m <= 4,40)
+PASS [9b.2] Ancient: anel expandido tem raio 4,00 m = raio de cura 4,00 m
+INFO [9b.Imperial] raio de cura 6,0 m: particulas vivas amostradas 320; alcance horizontal max 6,00 m (100% do raio); altura 0,07..1,71 m; efeito instanciado em y=1,20 m (HealAuraCenter)
+PASS [9b.1] Imperial: particulas ficam dentro do raio de cura (max 6,00 m <= 6,60)
+PASS [9b.2] Imperial: anel expandido tem raio 6,00 m = raio de cura 6,00 m
+PASS [9b.m] fx-Ancient-0,20-oblique: pixels magenta 0,0000%
+PASS [9b.m] fx-Ancient-0,45-oblique: pixels magenta 0,0000%
+PASS [9b.m] fx-Ancient-0,75-oblique: pixels magenta 0,0000%
+PASS [9b.m] fx-Ancient-1,15-oblique: pixels magenta 0,0000%
+PASS [9b.m] fx-Ancient-0,45-side: pixels magenta 0,0000%
+PASS [9b.m] fx-Ancient-0,45-top: pixels magenta 0,0000%
+PASS [9b.m] fx-Imperial-0,20-oblique: pixels magenta 0,0000%
+PASS [9b.m] fx-Imperial-0,45-oblique: pixels magenta 0,0000%
+PASS [9b.m] fx-Imperial-0,75-oblique: pixels magenta 0,0000%
+PASS [9b.m] fx-Imperial-1,15-oblique: pixels magenta 0,0000%
+PASS [9b.m] fx-Imperial-0,45-side: pixels magenta 0,0000%
+PASS [9b.m] fx-Imperial-0,45-top: pixels magenta 0,0000%
+RESUMO EDIT: 398 PASS, 13 FAIL

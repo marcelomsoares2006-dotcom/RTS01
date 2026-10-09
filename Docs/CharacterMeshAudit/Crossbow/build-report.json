@@ -1,0 +1,102 @@
+{
+  "parts": {
+    "Body_LOD0": 798,
+    "WheelL_LOD0": 760,
+    "WheelR_LOD0": 760,
+    "LimbL_LOD0": 340,
+    "LimbR_LOD0": 340,
+    "String_LOD0": 246,
+    "Bolt_LOD0": 66,
+    "Winch_LOD0": 316,
+    "Trigger_LOD0": 24,
+    "Crossbow_LOD1": 2329,
+    "Crossbow_LOD2": 882,
+    "Crossbow_Bolt": 66
+  },
+  "lods": {
+    "LOD0": 3650,
+    "LOD1": 2329,
+    "LOD2": 882
+  },
+  "bones": [
+    "Root",
+    "Wheel_L",
+    "Wheel_R",
+    "LimbL",
+    "LimbL_Tip",
+    "LimbR",
+    "LimbR_Tip",
+    "String",
+    "Bolt",
+    "Winch",
+    "Trigger"
+  ],
+  "bounds_blender": {
+    "min": [
+      -0.893,
+      -1.155,
+      0.0
+    ],
+    "max": [
+      0.893,
+      1.29,
+      1.47
+    ],
+    "size_m": [
+      1.786,
+      2.445,
+      1.47
+    ]
+  },
+  "sockets_blender": {
+    "BoltSpawn": [
+      0.0,
+      -1.05,
+      1.0575
+    ],
+    "WeaponMount": [
+      0.0,
+      -0.93,
+      1.1
+    ]
+  },
+  "release_frame": 6,
+  "fps": 30,
+  "clips": {
+    "Idle": {
+      "frames": 60,
+      "seconds": 2.0,
+      "loop": true
+    },
+    "Move": {
+      "frames": 120,
+      "seconds": 4.0,
+      "loop": true
+    },
+    "Reload": {
+      "frames": 42,
+      "seconds": 1.4,
+      "loop": false
+    },
+    "Fire": {
+      "frames": 24,
+      "seconds": 0.8,
+      "loop": false
+    },
+    "Hit": {
+      "frames": 18,
+      "seconds": 0.6,
+      "loop": false
+    },
+    "Destroy": {
+      "frames": 60,
+      "seconds": 2.0,
+      "loop": false
+    }
+  },
+  "bolt_dimensions_m": [
+    0.0624,
+    0.606,
+    0.062
+  ]
+}

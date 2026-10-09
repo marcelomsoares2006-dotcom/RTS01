@@ -20,11 +20,11 @@ MonoBehaviour:
   arcHeight: 0
   prefab:
     role: projectile prefab
-    expectedAssetPath: Assets/Resources/Prefabs/Projectiles/CombatMageBolt.prefab
-    asset: {fileID: 0}
+    expectedAssetPath: Assets/CharacterRigging/CombatMage/Prefabs/CombatMageBolt.prefab
+    asset: {fileID: 2370503677922196832, guid: e5ea1043d29c35343a09031825be2154, type: 3}
     required: 1
   impactEffect:
     role: impact effect
-    expectedAssetPath: Assets/Resources/Prefabs/Effects/CombatMageImpact.prefab
-    asset: {fileID: 0}
+    expectedAssetPath: Assets/CharacterRigging/CombatMage/Prefabs/CombatMageImpact.prefab
+    asset: {fileID: 8237096407221926621, guid: 4dfb8f212b9e0684d9e5cc2ef93eb910, type: 3}
     required: 1

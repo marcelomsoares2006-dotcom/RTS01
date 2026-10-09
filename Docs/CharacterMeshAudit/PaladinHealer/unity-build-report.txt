@@ -1,0 +1,15 @@
+PaladinHealer - Unity build report (2026-10-06 15:55)
+- Mapeamento humanoide automatico coincide com a tabela esperada (22 ossos).
+- Clip Idle: 2,533s, loop=True, humanoide=True
+- Clip Walk: 1,042s, loop=True, humanoide=True
+- Clip Run: 0,625s, loop=True, humanoide=True
+- Clip Attack: 1,500s, loop=False, humanoide=True
+- Clip Heal: 1,233s, loop=False, humanoide=True
+- Clip Hit: 1,033s, loop=False, humanoide=True
+- Clip Death: 5,767s, loop=False, humanoide=True
+- PaladinHealer_Sword: rotacao de importacao identidade (0,00 graus)
+- PaladinHealer_Shield: rotacao de importacao identidade (0,00 graus)
+- CharacterData registrado: Assets/Resources/ScriptableObjects/Units/Characters/PaladinHealer.asset code=paladin_healer
+Wrapper: Assets/Resources/Prefabs/Units/Characters/PaladinHealer.prefab
+CharacterData: Assets/Resources/ScriptableObjects/Units/Characters/PaladinHealer.asset code=paladin_healer
+Contrato: valido=True visualPronto=True

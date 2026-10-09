@@ -51,7 +51,9 @@ public class CheckUnitInRange : Node
         }
 
         float d = Vector3.Distance(_manager.transform.position, target.position);
-        bool isInRange = (d - _targetSize) <= _range;
+        // alcance de ataque lido ao vivo: eras/niveis alteram Unit.AttackRange depois que o BT foi criado
+        float range = _checkAttack ? _manager.Unit.AttackRange : _range;
+        bool isInRange = (d - _targetSize) <= range;
         _state = isInRange ? NodeState.SUCCESS : NodeState.FAILURE;
 
         if (isInRange)

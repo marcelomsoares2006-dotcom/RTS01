@@ -26,37 +26,57 @@ MonoBehaviour:
     prefab:
       role: prefab
       expectedAssetPath: Assets/Resources/Prefabs/Units/Characters/Crossbow.prefab
-      asset: {fileID: 0}
+      asset: {fileID: 7164544155611575238, guid: ee8b3ada4b8025b45a75971c378833de, type: 3}
       required: 1
     meshes:
     - role: malha-fonte da balestra
-      expectedAssetPath: Assets/CharacterRigging/Crossbow/Crossbow.fbx
-      asset: {fileID: 0}
+      expectedAssetPath: Assets/CharacterRigging/Crossbow/Models/Crossbow.fbx
+      asset: {fileID: 919132149155446097, guid: 23f563a46e824484ebf0fe09d3140994, type: 3}
       required: 1
-    effects: []
+    - role: malha do virote
+      expectedAssetPath: Assets/CharacterRigging/Crossbow/Accessories/Crossbow_Bolt.fbx
+      asset: {fileID: 919132149155446097, guid: 748a9cf3a199b3f42ac9361d894fa0d9, type: 3}
+      required: 1
+    effects:
+    - role: efeito de disparo (fumaca e poeira leve)
+      expectedAssetPath: Assets/CharacterRigging/Crossbow/Prefabs/CrossbowMuzzle.prefab
+      asset: {fileID: 302383253144160151, guid: 75e3eaf38b52f4c45926ecd78ad2d3f1, type: 3}
+      required: 1
+    - role: prefab de destruicao
+      expectedAssetPath: Assets/CharacterRigging/Crossbow/Prefabs/CrossbowDeath.prefab
+      asset: {fileID: 6103152261242023490, guid: 366284985255065439a8b180ee50dfe9, type: 3}
+      required: 1
     sockets:
     - socketName: BoltSpawn
-      expectedTransformPath: Sockets/BoltSpawn
+      expectedTransformPath: Mesh/CrossbowVisual/CrossbowRig/Root/Sockets/BoltSpawn
       required: 1
     - socketName: WeaponMount
-      expectedTransformPath: Sockets/WeaponMount
+      expectedTransformPath: Mesh/CrossbowVisual/CrossbowRig/Root/Sockets/WeaponMount
       required: 1
     animations:
     - state: Idle
-      animatorParameter: Running
-      clip: {fileID: 0}
+      animatorParameter: Speed
+      clip: {fileID: -623603649343465320, guid: a0a9c1472e581c544a0b29d4f8d49731, type: 3}
       required: 1
-    - state: Run
-      animatorParameter: Running
-      clip: {fileID: 0}
-      required: 1
-    - state: Shoot
-      animatorParameter: Attacking
-      clip: {fileID: 0}
+    - state: Move
+      animatorParameter: Speed
+      clip: {fileID: -623603649343465320, guid: 0de95facf52733d428bec121fc5ccbd8, type: 3}
       required: 1
     - state: Reload
-      animatorParameter: Reloading
-      clip: {fileID: 0}
+      animatorParameter: Fire
+      clip: {fileID: -623603649343465320, guid: 1046e610f80615344abf91c5bd87abad, type: 3}
+      required: 1
+    - state: Fire
+      animatorParameter: Fire
+      clip: {fileID: -623603649343465320, guid: 0ca4335c30fd9694fa7b9249e9de99d5, type: 3}
+      required: 1
+    - state: Hit
+      animatorParameter: Damaged
+      clip: {fileID: -623603649343465320, guid: f86f3619fa1344a428c45a67cd722e53, type: 3}
+      required: 1
+    - state: Destroy
+      animatorParameter:
+      clip: {fileID: -623603649343465320, guid: 9e3c9fa61346566439b00e79fbe703a3, type: 3}
       required: 1
   buildSettingsApproved: 0
   tiers:

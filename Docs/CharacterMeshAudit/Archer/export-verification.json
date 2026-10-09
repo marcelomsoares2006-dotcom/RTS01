@@ -1,0 +1,24 @@
+{
+  "results": [
+    "PASS Archer.fbx: 1 armature com 24 ossos ([24])",
+    "PASS Archer.fbx: malhas LOD ['Archer_LOD0', 'Archer_LOD1', 'Archer_LOD2'] com [30912, 9273, 3091] triangulos",
+    "PASS Archer.fbx: grupos de vertices (pesos) presentes em todos os LODs",
+    "PASS Archer.fbx: malhas ligadas ao armature",
+    "PASS Archer.fbx: altura ~1.78 m (dim (1.17, 0.38, 1.78))",
+    "PASS Archer.fbx: bind pose sem animacao",
+    "PASS Archer@Idle.fbx: 24 ossos, acao com ~8.4s (obtido 8.4)",
+    "PASS Archer@Walk.fbx: 24 ossos, acao com ~1.0417s (obtido 1.0416666666666667)",
+    "PASS Archer@Run.fbx: 24 ossos, acao com ~0.625s (obtido 0.625)",
+    "PASS Archer@Aim.fbx: 24 ossos, acao com ~3.7667s (obtido 3.7666666666666666)",
+    "PASS Archer@DrawString.fbx: 24 ossos, acao com ~3.2s (obtido 3.2)",
+    "PASS Archer@Fire.fbx: 24 ossos, acao com ~1.4s (obtido 1.4)",
+    "PASS Archer.glb: 1 armature, 24 ossos",
+    "PASS Archer.glb: malha LOD0 ([30912] triangulos)",
+    "PASS Archer.glb: animacoes ['Aim', 'Armature|clip0|baselayer', 'DrawString', 'Fire', 'Idle', 'Run', 'Walk']",
+    "PASS Archer.glb: textura 2K embutida ([('Archer_BaseColor', (2048, 2048)), ('Image_1', (2048, 2048)), ('normal', (2048, 2048))])",
+    "PASS Archer_Bow.fbx: objeto separado (876 triangulos, empties ['Bow_NockPoint', 'Bow_TipBottom', 'Bow_TipTop'])",
+    "PASS Archer_Quiver.fbx: objeto separado (1040 triangulos, empties ['Quiver_Mouth'])",
+    "PASS Archer_Arrow.fbx: objeto separado (160 triangulos, empties [])"
+  ],
+  "failures": []
+}

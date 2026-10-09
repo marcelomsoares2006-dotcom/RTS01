@@ -1,0 +1,188 @@
+Unity 6000.6.3f1 - 2026-10-06 15:57:27
+CONSOLE Warning: Unity is not designed to run with Administrator privileges.
+
+With elevated access, scripts in your project can modify system files, registry settings, or protected areas, even accidentally.
+This could make your system unstable or unbootable.
+
+Restart as a standard user for the safest experience.
+PASS [Map1.0] metadados do mapa Map1
+INFO [Map1] nova partida iniciada
+CONSOLE Warning: The tree Tree Type7 01 must use the Nature/Soft Occlusion shader. Otherwise billboarding/lighting will not work correctly.
+CONSOLE Warning: File "C:\Users\User\Downloads\Era Imperial\EraImperial-UnityRTS-Base\RTS01-Corrigido\TestResults\CMIndepData-20261006-185727\00_Global Parameters.data" not found! Getting default values.
+CONSOLE Warning: File "C:\Users\User\Downloads\Era Imperial\EraImperial-UnityRTS-Base\RTS01-Corrigido\TestResults\CMIndepData-20261006-185727\02_Sound Parameters.data" not found! Getting default values.
+CONSOLE Warning: File "C:\Users\User\Downloads\Era Imperial\EraImperial-UnityRTS-Base\RTS01-Corrigido\TestResults\CMIndepData-20261006-185727\03_Keyboard Mapping.data" not found! Getting default values.
+PASS [Map1.1] Globals.CHARACTER_DATA contem combat_mage no Map1
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+PASS [Map1.2] instancia pelo catalogo com controlador, binding, animator e agente no NavMesh
+PASS [Map1.3] era Ancient aplicada: HP 22/22
+PASS [Map1.3b] visual do mago presente
+INFO [Map1.fps] taxa de quadros no batch: 64,1 fps; tempo de jogo/parede = 1,00
+PASS [Map1.3c] sem scripts ausentes na instancia
+PASS [Map1.4] Ancient: MaxHP 22, dano 18, alcance 8 = contrato (22/18/8)
+PASS [Map1.4b] Ancient: cooldown efetivo do controlador = 2,4 (contrato 2,4)
+PASS [Map1.4] Classical: MaxHP 28, dano 24, alcance 9 = contrato (28/24/9)
+PASS [Map1.4b] Classical: cooldown efetivo do controlador = 2,2 (contrato 2,2)
+PASS [Map1.4] Medieval: MaxHP 34, dano 31, alcance 10 = contrato (34/31/10)
+PASS [Map1.4b] Medieval: cooldown efetivo do controlador = 2 (contrato 2)
+PASS [Map1.4] Imperial: MaxHP 42, dano 40, alcance 11 = contrato (42/40/11)
+PASS [Map1.4b] Imperial: cooldown efetivo do controlador = 1,8 (contrato 1,8)
+PASS [Map1.5] ordem de movimento aceita
+PASS [13.pose] Map1-play-pose-Walk-Run-front: magenta 0,0000%
+PASS [13.pose] Map1-play-pose-Walk-Run-side: magenta 0,0000%
+PASS [13.pose] Map1-play-pose-Walk-Run-threeq: magenta 0,0000%
+PASS [Map1.5b] moveu 8,0 m pelo NavMesh
+PASS [Map1.5c] Animator Speed max 4,20, clipe em movimento 'Walk'
+PASS [Map1.5d] parado volta ao Idle (clipe 'Idle', Speed 0,00)
+PASS [13.play] Map1-play-idle-front: magenta 0,0000%
+PASS [13.play] Map1-play-idle-back: magenta 0,0000%
+PASS [13.play] Map1-play-idle-side: magenta 0,0000%
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+INFO [Map1.6d] diag: desdeUltimoDisparo=+Infinito, tamanhoAlvo=0,71, alcanceTier=8, distancia=10,50
+PASS [Map1.6] alvo a 10,5 m (> alcance 8 + tamanho) nao dispara (disparos 0, dano 0)
+INFO [Map1.7d] diag: IsFiring=False, desdeUltimoDisparo=+Infinito, tamanhoAlvo=0,71, alcanceTier=11, era=Imperial
+PASS [Map1.7] Imperial: alvo a 10,0 m (alem do alcance Ancient) e atingido (HP 30 -> -10, dano 40; esperado 40 menos resistencia)
+INFO [Map1.7] dano do projetil na era Imperial: 40 (Unit.AttackDamage=40)
+PASS [Map1.7b] LastDamage 40 = dano da era Imperial
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+PASS [Map1.8] ataque inicia conjuracao: IsFiring=True, clipe 'Cast'
+PASS [Map1.8b] nenhum dano nem projetil antes da liberacao (0.25 s)
+PASS [Map1.8c] liberacao do projetil em 0,78 s (releaseDelay 0,7666667)
+PASS [Map1.8d] projetil real instanciado em voo
+PASS [Map1.8e] dano so na chegada: impacto em 1,06 s, 0,28 s apos a liberacao (distancia 6,0 m / vel 16 = 0,38 s)
+PASS [Map1.8f] dano Ancient = 18 (HP 30 -> 12)
+PASS [Map1.8g] aliado ao lado do alvo nao sofreu dano (HP 30)
+PASS [Map1.8h] nenhum projetil sobrando apos o impacto
+PASS [13.pose] Map1-play-pose-Cast-charge-front: magenta 0,0000%
+PASS [13.pose] Map1-play-pose-Cast-charge-side: magenta 0,0000%
+PASS [13.pose] Map1-play-pose-Cast-charge-threeq: magenta 0,0000%
+PASS [13.play] render-Map1-attack-charge.png: magenta 0,0000%
+PASS [7.7p] no instante da liberacao o CastPoint esta 1,21 m a frente do tronco (local (0.21, 1.36, 1.21))
+PASS [7.8p] altura do CastPoint na liberacao: 1,36 m
+INFO [7.7p] origem do projetil (mundo) (40.15, 31.36, 57.13); alvo (39.94, 30.00, 61.92)
+PASS [13.play] render-Map1-attack-bolt.png: magenta 0,0000%
+PASS [13.pose] Map1-play-pose-Cast-release-front: magenta 0,0000%
+PASS [13.pose] Map1-play-pose-Cast-release-side: magenta 0,0000%
+PASS [13.pose] Map1-play-pose-Cast-release-threeq: magenta 0,0000%
+PASS [13.play] render-Map1-attack-impact.png: magenta 0,0000%
+INFO [Map1.7.6] trajeto do CastPoint durante o Cast: t=0,00: local(0,24,1,87,0,04) | t=0,24: local(0,27,1,84,-0,33) | t=0,45: local(0,29,1,77,-0,62) | t=0,63: local(0,26,1,79,0,60) | t=0,87: local(0,20,1,35,1,22) | t=1,06: local(0,21,1,35,1,22)
+INFO [Map1.cap] capturas de ataque:carga=True, projetil=True, impacto=True
+PASS [Map1.9] recarga: 4 disparos em 9 s com tentativa a cada 0,05 s; intervalos 2,41, 2,44, 2,46 (cooldown 2.4)
+PASS [Map1.9b] recarga Imperial: intervalos 1,83, 1,89, 1,77 (cooldown 1.8)
+PASS [Map1.10] atacar aliado nao causa dano (HP 30 -> 30)
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+PASS [Map1.11] alvo destruido durante o voo / alvo nulo: sem erros e sem projetil preso
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+PASS [Map1.12] alvo com pouca vida morre pelo projetil
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+INFO [Map1.13] CharacterData.attackRate (poll do BT) = 0,25
+PASS [Map1.13] cadencia via CharacterBT na era Ancient (mudada apos o spawn): 5 disparos, intervalos 2,44, 2,47, 2,44, 2,43 (cooldown da era 2,4)
+PASS [Map1.13b] Ancient: dano acumulado no alvo 90 (dano por tiro 18)
+PASS [Map1.13] cadencia via CharacterBT na era Imperial (mudada apos o spawn): 4 disparos, intervalos 1,92, 1,90, 1,90 (cooldown da era 1,8)
+PASS [Map1.13b] Imperial: dano acumulado no alvo 160 (dano por tiro 40)
+PASS [13.pose] Map1-play-pose-Hit-front: magenta 0,0000%
+PASS [13.pose] Map1-play-pose-Hit-side: magenta 0,0000%
+PASS [13.pose] Map1-play-pose-Hit-threeq: magenta 0,0000%
+PASS [Map1.14] dano -> reacao Hit (clipe 'Hit', reacoes 5)
+PASS [Map1.14b] volta ao Idle apos Hit ('Idle')
+PASS [13.play] Map1-play-after-hit-idle-front: magenta 0,0000%
+PASS [13.play] Map1-play-after-hit-idle-back: magenta 0,0000%
+PASS [13.play] Map1-play-after-hit-idle-side: magenta 0,0000%
+INFO [Map1.15] LODGroup lodCount=3; thresholds=0,170, 0,100, 0,000
+PASS [Map1.16] morte instancia o prefab de morte
+PASS [Map1.16b] prefab de morte toca 'Death' na posicao da unidade
+PASS [13.play] Map1-death: magenta 0,0000%
+PASS [13.play] Map1-end-death: magenta 0,0000%
+PASS [Map1.16c] animacao de morte chega ao fim e permanece na pose final
+PASS [Map1.16d] prefab de morte removido apos o lifetime
+PASS [Map2.0] metadados do mapa Map2
+INFO [Map2] nova partida iniciada
+CONSOLE Warning: The tree Tree Type7 01 must use the Nature/Soft Occlusion shader. Otherwise billboarding/lighting will not work correctly.
+CONSOLE Warning: File "C:\Users\User\Downloads\Era Imperial\EraImperial-UnityRTS-Base\RTS01-Corrigido\TestResults\CMIndepData-20261006-185727\00_Global Parameters.data" not found! Getting default values.
+CONSOLE Warning: File "C:\Users\User\Downloads\Era Imperial\EraImperial-UnityRTS-Base\RTS01-Corrigido\TestResults\CMIndepData-20261006-185727\02_Sound Parameters.data" not found! Getting default values.
+CONSOLE Warning: File "C:\Users\User\Downloads\Era Imperial\EraImperial-UnityRTS-Base\RTS01-Corrigido\TestResults\CMIndepData-20261006-185727\03_Keyboard Mapping.data" not found! Getting default values.
+PASS [Map2.1] Globals.CHARACTER_DATA contem combat_mage no Map2
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+PASS [Map2.2] instancia pelo catalogo com controlador, binding, animator e agente no NavMesh
+PASS [Map2.3] era Ancient aplicada: HP 22/22
+PASS [Map2.3b] visual do mago presente
+INFO [Map2.fps] taxa de quadros no batch: 21,9 fps; tempo de jogo/parede = 0,99
+PASS [Map2.3c] sem scripts ausentes na instancia
+PASS [Map2.4] Ancient: MaxHP 22, dano 18, alcance 8 = contrato (22/18/8)
+PASS [Map2.4b] Ancient: cooldown efetivo do controlador = 2,4 (contrato 2,4)
+PASS [Map2.4] Classical: MaxHP 28, dano 24, alcance 9 = contrato (28/24/9)
+PASS [Map2.4b] Classical: cooldown efetivo do controlador = 2,2 (contrato 2,2)
+PASS [Map2.4] Medieval: MaxHP 34, dano 31, alcance 10 = contrato (34/31/10)
+PASS [Map2.4b] Medieval: cooldown efetivo do controlador = 2 (contrato 2)
+PASS [Map2.4] Imperial: MaxHP 42, dano 40, alcance 11 = contrato (42/40/11)
+PASS [Map2.4b] Imperial: cooldown efetivo do controlador = 1,8 (contrato 1,8)
+PASS [Map2.5] ordem de movimento aceita
+PASS [13.pose] Map2-play-pose-Walk-Run-front: magenta 0,0000%
+PASS [13.pose] Map2-play-pose-Walk-Run-side: magenta 0,0000%
+PASS [13.pose] Map2-play-pose-Walk-Run-threeq: magenta 0,0000%
+PASS [Map2.5b] moveu 8,0 m pelo NavMesh
+PASS [Map2.5c] Animator Speed max 4,20, clipe em movimento 'Walk'
+PASS [Map2.5d] parado volta ao Idle (clipe 'Idle', Speed 0,00)
+PASS [13.play] Map2-play-idle-front: magenta 0,0000%
+PASS [13.play] Map2-play-idle-back: magenta 0,0000%
+PASS [13.play] Map2-play-idle-side: magenta 0,0000%
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+INFO [Map2.6d] diag: desdeUltimoDisparo=+Infinito, tamanhoAlvo=0,71, alcanceTier=8, distancia=10,50
+PASS [Map2.6] alvo a 10,5 m (> alcance 8 + tamanho) nao dispara (disparos 0, dano 0)
+INFO [Map2.7d] diag: IsFiring=False, desdeUltimoDisparo=+Infinito, tamanhoAlvo=0,71, alcanceTier=11, era=Imperial
+PASS [Map2.7] Imperial: alvo a 10,0 m (alem do alcance Ancient) e atingido (HP 30 -> -10, dano 40; esperado 40 menos resistencia)
+INFO [Map2.7] dano do projetil na era Imperial: 40 (Unit.AttackDamage=40)
+PASS [Map2.7b] LastDamage 40 = dano da era Imperial
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+PASS [Map2.8] ataque inicia conjuracao: IsFiring=True, clipe 'Cast'
+PASS [Map2.8b] nenhum dano nem projetil antes da liberacao (0.25 s)
+PASS [Map2.8c] liberacao do projetil em 0,78 s (releaseDelay 0,7666667)
+PASS [Map2.8d] projetil real instanciado em voo
+PASS [Map2.8e] dano so na chegada: impacto em 1,05 s, 0,27 s apos a liberacao (distancia 6,0 m / vel 16 = 0,38 s)
+PASS [Map2.8f] dano Ancient = 18 (HP 30 -> 12)
+PASS [Map2.8g] aliado ao lado do alvo nao sofreu dano (HP 30)
+PASS [Map2.8h] nenhum projetil sobrando apos o impacto
+PASS [13.pose] Map2-play-pose-Cast-charge-front: magenta 0,0000%
+PASS [13.pose] Map2-play-pose-Cast-charge-side: magenta 0,0000%
+PASS [13.pose] Map2-play-pose-Cast-charge-threeq: magenta 0,0000%
+PASS [13.play] render-Map2-attack-charge.png: magenta 0,0000%
+PASS [7.7p] no instante da liberacao o CastPoint esta 1,22 m a frente do tronco (local (0.21, 1.35, 1.22))
+PASS [7.8p] altura do CastPoint na liberacao: 1,35 m
+INFO [7.7p] origem do projetil (mundo) (52.21, 31.51, 145.72); alvo (52.00, 30.39, 150.50)
+PASS [13.pose] Map2-play-pose-Cast-release-front: magenta 0,0000%
+PASS [13.pose] Map2-play-pose-Cast-release-side: magenta 0,0000%
+PASS [13.pose] Map2-play-pose-Cast-release-threeq: magenta 0,0000%
+PASS [13.play] render-Map2-attack-bolt.png: magenta 0,0000%
+PASS [13.play] render-Map2-attack-impact.png: magenta 0,0000%
+INFO [Map2.7.6] trajeto do CastPoint durante o Cast: t=0,00: local(0,24,1,87,0,04) | t=0,22: local(0,26,1,86,-0,21) | t=0,44: local(0,29,1,77,-0,61) | t=0,69: local(0,24,1,64,0,90) | t=0,82: local(0,21,1,35,1,22) | t=1,09: local(0,21,1,35,1,22)
+INFO [Map2.cap] capturas de ataque:carga=True, projetil=True, impacto=True
+PASS [Map2.9] recarga: 4 disparos em 9 s com tentativa a cada 0,05 s; intervalos 2,48, 2,42, 2,41 (cooldown 2.4)
+PASS [Map2.9b] recarga Imperial: intervalos 1,87, 1,84, 1,83 (cooldown 1.8)
+PASS [Map2.10] atacar aliado nao causa dano (HP 30 -> 30)
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+PASS [Map2.11] alvo destruido durante o voo / alvo nulo: sem erros e sem projetil preso
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+PASS [Map2.12] alvo com pouca vida morre pelo projetil
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+INFO [Map2.13] CharacterData.attackRate (poll do BT) = 0,25
+PASS [Map2.13] cadencia via CharacterBT na era Ancient (mudada apos o spawn): 5 disparos, intervalos 2,56, 2,48, 2,45, 2,58 (cooldown da era 2,4)
+PASS [Map2.13b] Ancient: dano acumulado no alvo 90 (dano por tiro 18)
+PASS [Map2.13] cadencia via CharacterBT na era Imperial (mudada apos o spawn): 4 disparos, intervalos 1,90, 1,88, 1,89 (cooldown da era 1,8)
+PASS [Map2.13b] Imperial: dano acumulado no alvo 160 (dano por tiro 40)
+PASS [13.pose] Map2-play-pose-Hit-front: magenta 0,0000%
+PASS [13.pose] Map2-play-pose-Hit-side: magenta 0,0000%
+PASS [13.pose] Map2-play-pose-Hit-threeq: magenta 0,0000%
+PASS [Map2.14] dano -> reacao Hit (clipe 'Hit', reacoes 5)
+PASS [Map2.14b] volta ao Idle apos Hit ('Idle')
+PASS [13.play] Map2-play-after-hit-idle-front: magenta 0,0000%
+PASS [13.play] Map2-play-after-hit-idle-back: magenta 0,0000%
+PASS [13.play] Map2-play-after-hit-idle-side: magenta 0,0000%
+INFO [Map2.15] LODGroup lodCount=3; thresholds=0,170, 0,100, 0,000
+PASS [Map2.16] morte instancia o prefab de morte
+PASS [Map2.16b] prefab de morte toca 'Death' na posicao da unidade
+PASS [13.play] Map2-death: magenta 0,0000%
+PASS [13.play] Map2-end-death: magenta 0,0000%
+PASS [Map2.16c] animacao de morte chega ao fim e permanece na pose final
+PASS [Map2.16d] prefab de morte removido apos o lifetime
+RESUMO PLAY: 138 PASS, 0 FAIL, 0 erros de console, 23 avisos de console

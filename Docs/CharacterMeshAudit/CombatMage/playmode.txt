@@ -1,0 +1,78 @@
+Unity 6000.6.3f1
+PASS Map1 encontrado
+Partida nova em Map1 iniciada
+PASS Era inicial = Ancient
+PASS Globals.CHARACTER_DATA contem 'combat_mage'
+PASS Ponto inicial no NavMesh
+PASS CombatMage instanciado com CharacterManager e componentes avancados
+PASS CombatMage posicionado no NavMesh
+PASS Visual do CombatMage presente sob Mesh
+PASS projectileSpawn (CastPoint) pertence a unidade instanciada
+PASS Era Ancient: Unit vida 22, dano 18, alcance 8 = tier (22/18/8)
+PASS Binding aplicou a era Ancient
+PASS Era Classical: Unit vida 28, dano 24, alcance 9 = tier (28/24/9)
+PASS Binding aplicou a era Classical
+PASS Era Medieval: Unit vida 34, dano 31, alcance 10 = tier (34/31/10)
+PASS Binding aplicou a era Medieval
+PASS Era Imperial: Unit vida 42, dano 40, alcance 11 = tier (42/40/11)
+PASS Binding aplicou a era Imperial
+PASS Era restaurada para Ancient (vida 22, dano 18)
+Captura playmode-idle-front: pixels magenta = 0
+Captura playmode-idle-back: pixels magenta = 0
+Captura playmode-idle-side: pixels magenta = 0
+PASS Destino de caminhada no NavMesh
+PASS Comando de movimento aceito
+PASS CombatMage andou 9,6 m pelo NavMesh
+PASS Parametro Speed do Animator = 3,96 (locomocao ativa)
+Captura playmode-walk: pixels magenta = 0
+PASS Posicao do inimigo (perto) no NavMesh
+PASS Inimigo (perto) posicionado no NavMesh
+PASS Posicao do inimigo (longe) no NavMesh
+PASS Inimigo (longe) posicionado no NavMesh
+Inimigo perto a 6,0 m, longe a 14,0 m; alcance Ancient 8 m; HP inimigos 5000
+PASS Inimigo proximo fora do corpo a corpo e dentro do alcance de conjuracao
+PASS Inimigo distante fora do alcance de conjuracao
+PASS Handler assume o ataque (nunca dano instantaneo)
+PASS Fora do alcance: nenhuma conjuracao, nenhum projetil e nenhum dano
+PASS Fora do alcance: Animator nao entra em Cast
+PASS Sem dano durante a conjuracao (dano nao e instantaneo)
+PASS Controlador em disparo enquanto o Animator toca Cast
+Captura playmode-cast: pixels magenta = 0
+Esfera liberada 0,79 s apos o inicio (releaseDelay 0,77 s)
+PASS Instante do disparo = releaseDelay
+PASS Mago virado para o alvo no disparo (erro 0,0 graus)
+PASS Projetil em voo apos o disparo
+PASS Projetil ainda em voo: alvo sem dano
+Captura playmode-bolt: pixels magenta = 0
+PASS Dano aplicado so na chegada do projetil
+PASS Dano da esfera = dano Ancient (18)
+Captura playmode-impact: pixels magenta = 0
+PASS Recarga respeitada: ordem durante a recarga (2,4 s) nao dispara
+PASS Intervalo entre disparos 3,67 s >= recarga Ancient 2,4 s
+PASS Segundo disparo causou 18 de dano (HP 4982 -> 4964)
+PASS Era Imperial: dano 40 e alcance 11
+PASS Era Imperial: esfera causou 40 de dano (HP 4964 -> 4924)
+PASS Inimigo distante (14,0 m) segue fora do alcance Imperial (11 m)
+PASS Era devolvida a Ancient
+Behavior tree do mago religada; alvo parado a 6,0 m
+Captura playmode-bt-cast: pixels magenta = 0
+PASS O mago atacou a distancia pelo behavior tree (distancia minima 6,0 m)
+PASS Cada esfera do BT causou 18 de dano (2 esferas, HP 4924 -> 4888)
+PASS Recarga respeitada no ataque autonomo (intervalo 2,43 s)
+PASS Sem conjuracao em curso antes do teste de dano
+PASS Mago recebeu 3 de dano
+PASS AdvancedUnitAnimatorDriver registrou a reacao ao dano (trigger Damaged)
+PASS Animator entrou no estado Hit apos o dano
+Captura playmode-hit: pixels magenta = 0
+PASS Nenhuma morte registrada antes do teste
+PASS Prefab de morte instanciado no lugar da unidade (DeathsSpawned = 1)
+PASS Prefab de morte toca o estado Death sozinho
+Captura playmode-death: pixels magenta = 0
+PASS LODGroup presente na unidade em jogo
+PASS 3 renderers de LOD na unidade em jogo
+LOD em jogo, zoom ortografico 8: pixels LOD0/1/2 = 312/0/0 -> LOD0
+LOD em jogo, zoom ortografico 18: pixels LOD0/1/2 = 0/57/0 -> LOD1
+LOD em jogo, zoom ortografico 26: pixels LOD0/1/2 = 0/0/21 -> LOD2
+PASS Troca de LOD pelo zoom da camera do jogo: 8 > LOD0, 18 > LOD1, 26 > LOD2
+PASS 0 erros de runtime no Console
+COMBATMAGE_PLAYMODE_PASSED

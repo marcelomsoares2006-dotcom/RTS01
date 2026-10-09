@@ -1,0 +1,356 @@
+Unity 6000.6.3f1 - 2026-10-08 23:11:52
+PASS [1.1] FBX da balestra existe (320652 bytes)
+PASS [1.2] FBX do virote existe
+PASS [1.3] clipe Crossbow@Idle.fbx presente
+PASS [1.3] clipe Crossbow@Move.fbx presente
+PASS [1.3] clipe Crossbow@Reload.fbx presente
+PASS [1.3] clipe Crossbow@Fire.fbx presente
+PASS [1.3] clipe Crossbow@Hit.fbx presente
+PASS [1.3] clipe Crossbow@Destroy.fbx presente
+PASS [1.4] nao ha pasta de entradas de terceiros (Inputs/Crossbow) - coerente com 'procedural, sem terceiros'
+PASS [1.5] BuildCrossbow.py nao importa malhas externas nem acessa a rede
+PASS [1.6] BuildCrossbow.py nao referencia Mixamo/Meshy
+PASS [1.7] LICENSE.md declara obra procedural sem terceiros
+PASS [1.8] nenhum segredo/chave nos 19 arquivos de texto da unidade
+PASS [1.9] nenhum arquivo de terceiros pelo nome entre os 33 arquivos da unidade
+PASS [2.1] Crossbow.fbx importado como Generic (Generic)
+PASS [2.1] Crossbow@Destroy.fbx importado como Generic (Generic)
+PASS [2.1] Crossbow@Fire.fbx importado como Generic (Generic)
+PASS [2.1] Crossbow@Hit.fbx importado como Generic (Generic)
+PASS [2.1] Crossbow@Idle.fbx importado como Generic (Generic)
+PASS [2.1] Crossbow@Move.fbx importado como Generic (Generic)
+PASS [2.1] Crossbow@Reload.fbx importado como Generic (Generic)
+PASS [2.2] Avatar do corpo valido e generico (isValid=True, isHuman=False) - maquina, nao humanoide: coerente
+PASS [2.3] osso 'Root' existe na hierarquia importada
+PASS [2.3] osso 'Wheel_L' existe na hierarquia importada
+PASS [2.3] osso 'Wheel_R' existe na hierarquia importada
+PASS [2.3] osso 'LimbL' existe na hierarquia importada
+PASS [2.3] osso 'LimbL_Tip' existe na hierarquia importada
+PASS [2.3] osso 'LimbR' existe na hierarquia importada
+PASS [2.3] osso 'LimbR_Tip' existe na hierarquia importada
+PASS [2.3] osso 'String' existe na hierarquia importada
+PASS [2.3] osso 'Bolt' existe na hierarquia importada
+PASS [2.3] osso 'Winch' existe na hierarquia importada
+PASS [2.3] osso 'Trigger' existe na hierarquia importada
+PASS [2.4] todos os SkinnedMeshRenderer tem rootBone e ossos validos (11 skinned)
+INFO [2.5] SkinnedMeshRenderers: Body_LOD0[11 ossos], Bolt_LOD0[11 ossos], Crossbow_LOD1[11 ossos], Crossbow_LOD2[11 ossos], LimbL_LOD0[11 ossos], LimbR_LOD0[11 ossos], String_LOD0[11 ossos], Trigger_LOD0[11 ossos], WheelL_LOD0[11 ossos], WheelR_LOD0[11 ossos], Winch_LOD0[11 ossos]
+INFO [2.6] bounds LOD0 do FBX (local): centro (0, 0.735, -0.068) tamanho (1.832, 1.47, 2.445)
+PASS [2.6] escala em metros plausivel para balista de carreta ((1.832, 1.47, 2.445))
+PASS [2.7] Idle: AnimationClip Generic real (Idle, 2 s, humanMotion=False)
+INFO [2.7] Idle: importer avatarSetup=CopyFromOther sourceAvatar=CrossbowAvatar loopTime=True
+PASS [2.7] Move: AnimationClip Generic real (Move, 4 s, humanMotion=False)
+INFO [2.7] Move: importer avatarSetup=CopyFromOther sourceAvatar=CrossbowAvatar loopTime=True
+PASS [2.7] Reload: AnimationClip Generic real (Reload, 1.4 s, humanMotion=False)
+INFO [2.7] Reload: importer avatarSetup=CopyFromOther sourceAvatar=CrossbowAvatar loopTime=False
+PASS [2.7] Fire: AnimationClip Generic real (Fire, 0.8 s, humanMotion=False)
+INFO [2.7] Fire: importer avatarSetup=CopyFromOther sourceAvatar=CrossbowAvatar loopTime=False
+PASS [2.7] Hit: AnimationClip Generic real (Hit, 0.6 s, humanMotion=False)
+INFO [2.7] Hit: importer avatarSetup=CopyFromOther sourceAvatar=CrossbowAvatar loopTime=False
+PASS [2.7] Destroy: AnimationClip Generic real (Destroy, 2 s, humanMotion=False)
+INFO [2.7] Destroy: importer avatarSetup=CopyFromOther sourceAvatar=CrossbowAvatar loopTime=False
+PASS [3.0] CrossbowVisual.prefab carregado
+PASS [5.1] LODGroup com 3 niveis no prefab visual
+INFO [5.2] LOD0: limiar 0.21, 9 renderers: Body_LOD0,Bolt_LOD0,LimbL_LOD0,LimbR_LOD0,String_LOD0,Trigger_LOD0,WheelL_LOD0,WheelR_LOD0,Winch_LOD0
+PASS [3.1] LOD0/Body_LOD0: malha atribuida
+PASS [3.2] LOD0/Body_LOD0: UVs finitas (1437/1437), degenerados 0,0%, fora de [0,1] 63,5%
+PASS [3.3] LOD0/Body_LOD0: pesos ok (vertices 1437, sem peso 0, soma != 1 em 0 (max desvio 0,0000), max influencias 1, ossos 11/bindposes 11)
+PASS [3.1] LOD0/Bolt_LOD0: malha atribuida
+PASS [3.2] LOD0/Bolt_LOD0: UVs finitas (89/89), degenerados 0,0%, fora de [0,1] 7,9%
+PASS [3.3] LOD0/Bolt_LOD0: pesos ok (vertices 89, sem peso 0, soma != 1 em 0 (max desvio 0,0000), max influencias 1, ossos 11/bindposes 11)
+PASS [3.1] LOD0/LimbL_LOD0: malha atribuida
+PASS [3.2] LOD0/LimbL_LOD0: UVs finitas (279/279), degenerados 0,0%, fora de [0,1] 12,9%
+PASS [3.3] LOD0/LimbL_LOD0: pesos ok (vertices 279, sem peso 0, soma != 1 em 0 (max desvio 0,0000), max influencias 2, ossos 11/bindposes 11)
+PASS [3.1] LOD0/LimbR_LOD0: malha atribuida
+PASS [3.2] LOD0/LimbR_LOD0: UVs finitas (279/279), degenerados 0,0%, fora de [0,1] 12,9%
+PASS [3.3] LOD0/LimbR_LOD0: pesos ok (vertices 279, sem peso 0, soma != 1 em 0 (max desvio 0,0000), max influencias 2, ossos 11/bindposes 11)
+PASS [3.1] LOD0/String_LOD0: malha atribuida
+PASS [3.2] LOD0/String_LOD0: UVs finitas (252/252), degenerados 0,0%, fora de [0,1] 64,3%
+PASS [3.3] LOD0/String_LOD0: pesos ok (vertices 252, sem peso 0, soma != 1 em 0 (max desvio 0,0000), max influencias 2, ossos 11/bindposes 11)
+PASS [3.1] LOD0/Trigger_LOD0: malha atribuida
+PASS [3.2] LOD0/Trigger_LOD0: UVs finitas (48/48), degenerados 0,0%, fora de [0,1] 75,0%
+PASS [3.3] LOD0/Trigger_LOD0: pesos ok (vertices 48, sem peso 0, soma != 1 em 0 (max desvio 0,0000), max influencias 1, ossos 11/bindposes 11)
+PASS [3.1] LOD0/WheelL_LOD0: malha atribuida
+PASS [3.2] LOD0/WheelL_LOD0: UVs finitas (1278/1278), degenerados 0,0%, fora de [0,1] 60,7%
+PASS [3.3] LOD0/WheelL_LOD0: pesos ok (vertices 1278, sem peso 0, soma != 1 em 0 (max desvio 0,0000), max influencias 1, ossos 11/bindposes 11)
+PASS [3.1] LOD0/WheelR_LOD0: malha atribuida
+PASS [3.2] LOD0/WheelR_LOD0: UVs finitas (1278/1278), degenerados 0,0%, fora de [0,1] 61,0%
+PASS [3.3] LOD0/WheelR_LOD0: pesos ok (vertices 1278, sem peso 0, soma != 1 em 0 (max desvio 0,0000), max influencias 1, ossos 11/bindposes 11)
+PASS [3.1] LOD0/Winch_LOD0: malha atribuida
+PASS [3.2] LOD0/Winch_LOD0: UVs finitas (412/412), degenerados 0,0%, fora de [0,1] 8,7%
+PASS [3.3] LOD0/Winch_LOD0: pesos ok (vertices 412, sem peso 0, soma != 1 em 0 (max desvio 0,0000), max influencias 1, ossos 11/bindposes 11)
+INFO [5.2] LOD1: limiar 0.12, 1 renderers: Crossbow_LOD1
+PASS [3.1] LOD1/Crossbow_LOD1: malha atribuida
+PASS [3.2] LOD1/Crossbow_LOD1: UVs finitas (3651/3651), degenerados 0,0%, fora de [0,1] 52,6%
+PASS [3.3] LOD1/Crossbow_LOD1: pesos ok (vertices 3651, sem peso 0, soma != 1 em 0 (max desvio 0,0000), max influencias 2, ossos 11/bindposes 11)
+INFO [5.2] LOD2: limiar 0, 1 renderers: Crossbow_LOD2
+PASS [3.1] LOD2/Crossbow_LOD2: malha atribuida
+PASS [3.2] LOD2/Crossbow_LOD2: UVs finitas (1485/1485), degenerados 0,0%, fora de [0,1] 59,0%
+PASS [3.3] LOD2/Crossbow_LOD2: pesos ok (vertices 1485, sem peso 0, soma != 1 em 0 (max desvio 0,0000), max influencias 2, ossos 11/bindposes 11)
+PASS [5.3] triangulos estritamente decrescentes: LOD0=3650 > LOD1=2329 > LOD2=882
+PASS [5.4] orcamento de props (<= 8000 / 3000 / 1000)
+FAIL [5.5] limiares do LODGroup decrescentes e coerentes (0.21 > 0.12 > 0)
+PASS [5.6] nenhum renderer de malha fora do LODGroup
+PASS [5.7] malhas do LOD0 do prefab sao sub-assets do FBX da balestra
+PASS [4.1] material Crossbow_Iron: shader 'Standard' suportado
+PASS [4.2] material Crossbow_Iron: textura principal atribuida (Crossbow_Iron 256x256)
+PASS [4.1] material Crossbow_DarkWood: shader 'Standard' suportado
+PASS [4.2] material Crossbow_DarkWood: textura principal atribuida (Crossbow_Wood 512x512)
+PASS [4.1] material Crossbow_Wood: shader 'Standard' suportado
+PASS [4.2] material Crossbow_Wood: textura principal atribuida (Crossbow_Wood 512x512)
+PASS [4.1] material Crossbow_Feather: shader 'Standard' suportado
+FAIL [4.2] material Crossbow_Feather: textura principal atribuida (NENHUMA)
+PASS [4.1] material Crossbow_Rope: shader 'Standard' suportado
+PASS [4.2] material Crossbow_Rope: textura principal atribuida (Crossbow_Rope 128x128)
+PASS [4.1] material Crossbow_SmokeFx: shader 'Legacy Shaders/Particles/Alpha Blended' suportado
+INFO [4.2] material Crossbow_SmokeFx: shader Legacy Shaders/Particles/Alpha Blended, textura Crossbow_Smoke, cor (n/a)
+PASS [4.1] material Crossbow_SparkFx: shader 'Legacy Shaders/Particles/Additive' suportado
+INFO [4.2] material Crossbow_SparkFx: shader Legacy Shaders/Particles/Additive, textura Crossbow_Spark, cor (n/a)
+PASS [4.1] material MinimapIcon: shader 'Unlit/Color' suportado
+INFO [4.2] material MinimapIcon: shader Unlit/Color, textura (sem), cor RGBA(1.000, 1.000, 1.000, 1.000)
+PASS [4.1] material AdvancedTeamRing: shader 'Unlit/Color' suportado
+INFO [4.2] material AdvancedTeamRing: shader Unlit/Color, textura (sem), cor RGBA(1.000, 1.000, 1.000, 1.000)
+PASS [4.1] material FOV: shader 'Standard' suportado
+FAIL [4.2] material FOV: textura principal atribuida (NENHUMA)
+PASS [4.3] Crossbow_Iron.png tamanho 84 KB
+PASS [4.3] Crossbow_Rope.png tamanho 30 KB
+PASS [4.3] Crossbow_Smoke.png tamanho 10 KB
+PASS [4.3] Crossbow_Spark.png tamanho 2 KB
+PASS [4.3] Crossbow_Wood.png tamanho 368 KB
+PASS [6.0] wrapper Crossbow.prefab carregado
+INFO [6.1] componentes da raiz: Transform, BoxCollider, Rigidbody, CharacterManager, CharacterBT, NavMeshAgent, FogRendererToggler, AudioSource, AdvancedUnitEraBinding, AdvancedUnitAnimatorDriver, ProjectileAttackController, AdvancedUnitDeathEffect
+PASS [6.1] raiz tem CharacterManager
+PASS [6.1] raiz tem NavMeshAgent
+PASS [6.1] raiz tem BoxCollider
+PASS [6.1] raiz tem AdvancedUnitEraBinding
+PASS [6.1] raiz tem AdvancedUnitAnimatorDriver
+PASS [6.1] raiz tem ProjectileAttackController
+PASS [6.1] raiz tem AdvancedUnitDeathEffect
+PASS [6.1] raiz tem CharacterBT
+PASS [6.2] nenhum script ausente (Missing) em toda a hierarquia do wrapper
+PASS [6.3] wrapper contem todos os componentes da raiz do Soldier
+PASS [6.3b] layer/tag iguais ao Soldier (Unit/Unit)
+INFO [6.4] bounds visual (mundo, wrapper na origem): centro (0, 0.735, -0.068) tamanho (1.832, 1.47, 2.445)
+INFO [6.4] BoxCollider: centro (0, 0.75, -0.07) tamanho (1.8, 1.5, 2.45)
+PASS [6.4] BoxCollider ((1.8, 1.5, 2.45)) coerente com o modelo ((1.832, 1.47, 2.445))
+PASS [6.4b] centro do BoxCollider cobre o centro do modelo
+INFO [6.5] NavMeshAgent: velocidade 3,5, raio 0,9, altura 1,5, aceleracao 8, angularSpeed 240
+PASS [6.5] NavMeshAgent plausivel (raio 0,9, velocidade 3,5)
+PASS [6.6] AdvancedUnitEraBinding aponta para o contrato Crossbow.asset
+PASS [6.7] ProjectileAttackController.contract = contrato Crossbow
+PASS [6.7b] ProjectileAttackController.animator referencia o Animator do visual
+PASS [6.7c] projectileSpawn = socket BoltSpawn (Mesh/CrossbowVisual/CrossbowRig/Root/Sockets/BoltSpawn)
+PASS [6.8] AnimatorDriver usa o mesmo Animator (ou o encontra por filho)
+PASS [6.9] AdvancedUnitDeathEffect.deathPrefab = CrossbowDeath.prefab
+INFO [6.10] releaseDelay=0.2 sourceHeight=1.05 turnSpeed=150
+INFO [6.11] UnitManager: ok
+PASS [6.12] Animator usa Crossbow.controller
+PASS [6.13] Animator tem Avatar valido
+PASS [6.14] Animator sem root motion (a unidade e movida pelo NavMeshAgent)
+PASS [6.15] visual esta em Mesh/CrossbowVisual
+PASS [6.16] exatamente um Animator no wrapper (1)
+INFO [6.17] renderer Mesh/MinimapIcon (MeshRenderer) enabled=True layer=Minimap
+INFO [6.17] renderer Mesh/CrossbowVisual/Body_LOD0 (SkinnedMeshRenderer) enabled=True layer=Default
+INFO [6.17] renderer Mesh/CrossbowVisual/Bolt_LOD0 (SkinnedMeshRenderer) enabled=True layer=Default
+INFO [6.17] renderer Mesh/CrossbowVisual/Crossbow_LOD1 (SkinnedMeshRenderer) enabled=True layer=Default
+INFO [6.17] renderer Mesh/CrossbowVisual/Crossbow_LOD2 (SkinnedMeshRenderer) enabled=True layer=Default
+INFO [6.17] renderer Mesh/CrossbowVisual/CrossbowRig/Root/Sockets/BoltSpawn/MuzzleFx/Puff (ParticleSystemRenderer) enabled=True layer=Default
+INFO [6.17] renderer Mesh/CrossbowVisual/CrossbowRig/Root/Sockets/BoltSpawn/MuzzleFx/Dust (ParticleSystemRenderer) enabled=True layer=Default
+INFO [6.17] renderer Mesh/CrossbowVisual/LimbL_LOD0 (SkinnedMeshRenderer) enabled=True layer=Default
+INFO [6.17] renderer Mesh/CrossbowVisual/LimbR_LOD0 (SkinnedMeshRenderer) enabled=True layer=Default
+INFO [6.17] renderer Mesh/CrossbowVisual/String_LOD0 (SkinnedMeshRenderer) enabled=True layer=Default
+INFO [6.17] renderer Mesh/CrossbowVisual/Trigger_LOD0 (SkinnedMeshRenderer) enabled=True layer=Default
+INFO [6.17] renderer Mesh/CrossbowVisual/WheelL_LOD0 (SkinnedMeshRenderer) enabled=True layer=Default
+INFO [6.17] renderer Mesh/CrossbowVisual/WheelR_LOD0 (SkinnedMeshRenderer) enabled=True layer=Default
+INFO [6.17] renderer Mesh/CrossbowVisual/Winch_LOD0 (SkinnedMeshRenderer) enabled=True layer=Default
+INFO [6.17] renderer Mesh/TeamRing (MeshRenderer) enabled=True layer=Default
+PASS [7.1] socket BoltSpawn: Transform.Find('Mesh/CrossbowVisual/CrossbowRig/Root/Sockets/BoltSpawn') a partir do wrapper
+PASS [7.1] socket WeaponMount: Transform.Find('Mesh/CrossbowVisual/CrossbowRig/Root/Sockets/WeaponMount') a partir do wrapper
+INFO [7.2] corpo LOD0 (sem virote/corda): (-0.916, 0, -1.29) .. (0.916, 1.47, 1.155)
+INFO [7.2] BoltSpawn mundo (0, 1.058, 1.05) | WeaponMount (0, 1.1, 0.93)
+PASS [7.2] BoltSpawn centrado no eixo X (0)
+PASS [7.3] BoltSpawn a altura plausivel do trilho (1.058 m)
+INFO [7.4] virote carregado (Bolt_LOD0): (-0.031, 1.032, 0.444) .. (0.031, 1.094, 1.05)
+PASS [7.4] BoltSpawn fica na ponta frontal do virote carregado (distancia 0.005 m)
+PASS [7.5] BoltSpawn a frente do centro do virote (z 1.05 >= 0.747)
+PASS [7.6] WeaponMount proximo do corpo/cabecote (distancia ao centro 1.062 m)
+PASS [7.7] BoltSpawn na metade dianteira (+Z) do modelo (z 1.05 > centro -0.068)
+INFO [7.8] BoltSpawn forward (mundo) = (0, 0, 1)
+PASS [8.0] Crossbow.controller carregado
+INFO [8.1] parametros: Running:Bool, Attacking:Bool, Hit:Trigger, Speed:Float, Fire:Trigger, Damaged:Trigger, Heal:Trigger
+PASS [8.1] parametro Speed (Float)
+PASS [8.1] parametro Fire (Trigger)
+PASS [8.1] parametro Damaged (Trigger)
+PASS [8.1] parametro Running (Bool)
+PASS [8.1] parametro Attacking (Bool)
+PASS [8.1] parametro Hit (Trigger)
+INFO [8.2] camada 'Base Layer' peso 0 modo Override mascara - default=Idle
+INFO [8.2]   estado Idle: clip Idle 2s speed 1 param -
+INFO [8.2]     -> Move exit=False@0.9 dur=0.1 cond=[Speed Greater 0.25]
+INFO [8.2]     -> Fire exit=False@0.9 dur=0.04 cond=[Fire If 0]
+INFO [8.2]   estado Move: clip Move 4s speed 1.157 param Speed
+INFO [8.2]     -> Idle exit=False@0.9 dur=0.1 cond=[Speed Less 0.12]
+INFO [8.2]     -> Fire exit=False@0.9 dur=0.04 cond=[Fire If 0]
+INFO [8.2]   estado Fire: clip Fire 0.8s speed 1 param -
+INFO [8.2]     -> Reload exit=True@1 dur=0 cond=[]
+INFO [8.2]   estado Reload: clip Reload 1.4s speed 1 param -
+INFO [8.2]     -> Idle exit=True@1 dur=0 cond=[]
+INFO [8.2] camada 'Hit' peso 1 modo Override mascara CrossbowHitMask default=Empty
+INFO [8.2]   estado Empty: clip (nenhum) speed 1 param -
+INFO [8.2]     -> Hit exit=False@0.9 dur=0.02 cond=[Damaged If 0]
+INFO [8.2]   estado Hit: clip Hit 0.6s speed 1 param -
+INFO [8.2]     -> Empty exit=True@1 dur=0.05 cond=[]
+PASS [8.3] estado 'Idle' existe no controller e usa o clip do contrato (Idle)
+PASS [8.3] estado 'Move' existe no controller e usa o clip do contrato (Move)
+PASS [8.3] estado 'Reload' existe no controller e usa o clip do contrato (Reload)
+PASS [8.3] estado 'Fire' existe no controller e usa o clip do contrato (Fire)
+PASS [8.3] estado 'Hit' existe no controller e usa o clip do contrato (Hit)
+PASS [8.4] CrossbowDeath.controller toca o clip Destroy do contrato
+PASS [8.5] Idle -> Move por Speed > limiar
+PASS [8.5b] Move -> Idle por Speed < limiar
+PASS [8.5c] Idle/Move -> Fire pelo trigger Fire
+PASS [8.5d] Fire -> Reload -> Idle por tempo de saida
+PASS [8.6] ciclo de animacao Fire+Reload (2.2 s) cabe no cooldown da era Ancient (3.2 s; folga 1 s)
+PASS [8.6] ciclo de animacao Fire+Reload (2.2 s) cabe no cooldown da era Classical (2.9 s; folga 0.7 s)
+PASS [8.6] ciclo de animacao Fire+Reload (2.2 s) cabe no cooldown da era Medieval (2.6 s; folga 0.4 s)
+PASS [8.6] ciclo de animacao Fire+Reload (2.2 s) cabe no cooldown da era Imperial (2.3 s; folga 0.1 s)
+PASS [8.7] Idle: 2 s, 120 curvas, 11 variam, 7320 chaves, NaN 0, frameRate 30, loop=True
+PASS [8.8] Idle: clipe em loop
+INFO [8.7] Idle: ossos animados -> Root,LimbL,LimbL_Tip,LimbR,LimbR_Tip,String,Bolt
+PASS [8.7] Move: 4 s, 120 curvas, 22 variam, 14520 chaves, NaN 0, frameRate 30, loop=True
+PASS [8.8] Move: clipe em loop
+INFO [8.7] Move: ossos animados -> Root,Wheel_L,Wheel_R,LimbL,LimbL_Tip,LimbR,LimbR_Tip,String,Bolt,Trigger
+PASS [8.7] Reload: 1.4 s, 120 curvas, 20 variam, 5160 chaves, NaN 0, frameRate 30, loop=False
+INFO [8.7] Reload: ossos animados -> Root,LimbL,LimbL_Tip,LimbR,LimbR_Tip,String,Bolt,Winch,Trigger
+PASS [8.7] Fire: 0.8 s, 120 curvas, 21 variam, 3000 chaves, NaN 0, frameRate 30, loop=False
+INFO [8.9] Fire: eventos CrossbowRelease@0.2s
+INFO [8.7] Fire: ossos animados -> Root,LimbL,LimbL_Tip,LimbR,LimbR_Tip,String,Bolt,Winch,Trigger
+PASS [8.7] Hit: 0.6 s, 120 curvas, 14 variam, 2280 chaves, NaN 0, frameRate 30, loop=False
+INFO [8.7] Hit: ossos animados -> Root,LimbL,LimbL_Tip,LimbR,LimbR_Tip,String
+PASS [8.7] Destroy: 2 s, 120 curvas, 40 variam, 7320 chaves, NaN 0, frameRate 30, loop=False
+INFO [8.7] Destroy: ossos animados -> Root,Wheel_L,Wheel_R,LimbL,LimbL_Tip,LimbR,LimbR_Tip,String,Bolt,Winch,Trigger
+PASS [8.10] Fire tem evento CrossbowRelease
+PASS [8.11] releaseDelay do controlador (0.2 s) coincide com o evento de soltura (0.2 s)
+PASS [8.12] CrossbowFireEffects no mesmo GameObject do Animator (recebe o evento)
+INFO [8.13] Idle t=0: bolt.bounds.center=(0, 1.063, 0.747) size=(0.062, 0.062, 0.606) scale=(1, 1, 1) tipL=(-0.5, 1.075, 0.844) string=(0, 1.058, 0.46)
+INFO [8.13] Fire t=0: tipL=(-0.5, 1.075, 0.844) string=(0, 1.058, 0.46) boltScale=(1, 1, 1) bolt.bounds.center=(0, 1.063, 0.747) size=(0.062, 0.062, 0.606) scale=(1, 1, 1)
+INFO [8.13] Fire t=0.1: tipL=(-0.5, 1.075, 0.844) string=(0, 1.058, 0.46) boltScale=(1, 1, 1) bolt.bounds.center=(0, 1.063, 0.747) size=(0.062, 0.062, 0.606) scale=(1, 1, 1)
+INFO [8.13] Fire t=0.2: tipL=(-0.505, 1.086, 0.843) string=(0, 1.065, 0.61) boltScale=(0.001, 0.001, 0.001) bolt.bounds.center=(0, 1.063, 0.747) size=(0.062, 0.062, 0.606) scale=(0.001, 0.001, 0.001)
+INFO [8.13] Fire t=0.25: tipL=(-0.508, 1.082, 0.87) string=(0, 1.064, 0.744) boltScale=(0.001, 0.001, 0.001) bolt.bounds.center=(0, 1.063, 0.747) size=(0.062, 0.062, 0.606) scale=(0.001, 0.001, 0.001)
+INFO [8.13] Fire t=0.3: tipL=(-0.508, 1.08, 0.877) string=(0, 1.062, 0.764) boltScale=(0.001, 0.001, 0.001) bolt.bounds.center=(0, 1.063, 0.747) size=(0.062, 0.062, 0.606) scale=(0.001, 0.001, 0.001)
+INFO [8.13] Fire t=0.5: tipL=(-0.507, 1.076, 0.883) string=(0, 1.058, 0.752) boltScale=(0.001, 0.001, 0.001) bolt.bounds.center=(0, 1.063, 0.747) size=(0.062, 0.062, 0.606) scale=(0.001, 0.001, 0.001)
+INFO [8.13] Fire t=0.8: tipL=(-0.507, 1.075, 0.885) string=(0, 1.058, 0.754) boltScale=(0.001, 0.001, 0.001) bolt.bounds.center=(0, 1.063, 0.747) size=(0.062, 0.062, 0.606) scale=(0.001, 0.001, 0.001)
+PASS [8.14] Fire: corda move 0.304 m, ponta do braco 0.035 m entre 0,05 s e 0,3 s
+PASS [8.15] Fire: virote visivel antes da soltura (True) e oculto apos (True)
+PASS [8.16] Reload: virote some no inicio (True) e reaparece no fim (True); corda se move 0.252 m
+PASS [8.17] fim de Reload ~ Idle (corda diferenca 0 m)
+PASS [8.17b] fim de Fire ~ inicio de Reload (corda diferenca 0 m)
+PASS [8.18] Move: roda gira 90 graus em 1/4 do clipe
+PASS [8.19] Destroy: raiz muda (rotacao 15.8 graus, deslocamento 0.118 m); bounds final (2.116, 2.204, 2.703)
+PASS [8.20] Idle: pose finita, ponto mais baixo y=-0.5 m, extensao max 4.08 m
+PASS [8.20] Move: pose finita, ponto mais baixo y=-0.5 m, extensao max 4.08 m
+PASS [8.20] Reload: pose finita, ponto mais baixo y=-0.5 m, extensao max 4.08 m
+PASS [8.20] Fire: pose finita, ponto mais baixo y=-0.5 m, extensao max 4.08 m
+PASS [8.20] Hit: pose finita, ponto mais baixo y=-0.5 m, extensao max 4.08 m
+PASS [8.20] Destroy: pose finita, ponto mais baixo y=-0.5 m, extensao max 4.08 m
+PASS [9.0] ProjectileContract CrossbowBolt carregado
+PASS [9.1] prefab do virote e real e e o esperado
+PASS [9.2] contrato: dano Piercing, reto=True, velocidade 30 m/s, vida 3 s
+PASS [9.3] virote tem malha real (Bolt:66tris)
+INFO [9.4] bounds do virote (prefab em origem): (-0.031, -0.026, -0.606)..(0.031, 0.036, 0)
+PASS [9.4] virote 0,4-1 m de comprimento ao longo de +Z (tamanho (0.062, 0.062, 0.606))
+PASS [9.5] virote sem collider/rigidbody (a trajetoria e do AdvancedProjectile)
+PASS [9.6] efeito de impacto real com particulas (2 sistemas)
+INFO [9.6] impacto/Sparks: loop=False duracao=0.6 vida=0.45 max=28
+INFO [9.6] impacto/Dust: loop=False duracao=0.6 vida=1 max=12
+PASS [9.7] efeito de disparo real
+PASS [9.8] codigo 'crossbow' registrado em AdvancedUnitCodes
+PASS [10.1] contrato Validate().IsValid
+PASS [10.2] contrato IsVisualReady
+PASS [10.3] contrato.visual.prefab = wrapper Resources
+PASS [10.4] referencia 'malha-fonte da balestra' real em Assets/CharacterRigging/Crossbow/Models/Crossbow.fbx
+PASS [10.4] referencia 'malha do virote' real em Assets/CharacterRigging/Crossbow/Accessories/Crossbow_Bolt.fbx
+PASS [10.4] referencia 'efeito de disparo (fumaca e poeira leve)' real em Assets/CharacterRigging/Crossbow/Prefabs/CrossbowMuzzle.prefab
+PASS [10.4] referencia 'prefab de destruicao' real em Assets/CharacterRigging/Crossbow/Prefabs/CrossbowDeath.prefab
+PASS [10.5] animacao 'Idle' -> Assets/CharacterRigging/Crossbow/Models/Crossbow@Idle.fbx (2 s)
+PASS [10.5] animacao 'Move' -> Assets/CharacterRigging/Crossbow/Models/Crossbow@Move.fbx (4 s)
+PASS [10.5] animacao 'Reload' -> Assets/CharacterRigging/Crossbow/Models/Crossbow@Reload.fbx (1.4 s)
+PASS [10.5] animacao 'Fire' -> Assets/CharacterRigging/Crossbow/Models/Crossbow@Fire.fbx (0.8 s)
+PASS [10.5] animacao 'Hit' -> Assets/CharacterRigging/Crossbow/Models/Crossbow@Hit.fbx (0.6 s)
+PASS [10.5] animacao 'Destroy' -> Assets/CharacterRigging/Crossbow/Models/Crossbow@Destroy.fbx (2 s)
+PASS [10.6] contrato aponta para ProjectileContract CrossbowBolt
+PASS [10.7] buildSettingsApproved = false (nao aprovada para Build Settings)
+PASS [10.8] CharacterData do catalogo carregado
+PASS [10.9] CharacterData.prefab = mesmo wrapper do contrato
+FAIL [10.10] CharacterData = era Ancient (PV 28, dano 22, alcance 14, ataque 0,25, FOV 20)
+PASS [10.11] custo do CharacterData tem as mesmas entradas do contrato (Gold:60,Wood:40 vs Gold:60,Wood:40)
+PASS [10.12] exatamente um CharacterData com codigo 'crossbow' no projeto: Assets/Resources/ScriptableObjects/Units/Characters/Crossbow.asset
+PASS [10.13] codigos unicos no catalogo de unidades (archer,catapult,combat_mage,crossbow,dark_knight,heraldic_knight,paladin_healer,soldier,spearman,worker)
+PASS [10.14] nenhum BuildingData duplica o codigo crossbow
+PASS [10.15] nenhuma cena de balestra no Build Settings
+PASS [11.1] quatro eras na ordem Ancient, Classical, Medieval, Imperial
+PASS [11.2] Ancient -> Classical: vida 28->35, dano 22->29, alcance 14->15.5, cooldown 3.2->2.9, penetracao 0.15->0.25 (tudo melhora)
+PASS [11.2] Classical -> Medieval: vida 35->43, dano 29->37, alcance 15.5->17, cooldown 2.9->2.6, penetracao 0.25->0.35 (tudo melhora)
+PASS [11.2] Medieval -> Imperial: vida 43->52, dano 37->47, alcance 17->18.5, cooldown 2.6->2.3, penetracao 0.35->0.5 (tudo melhora)
+PASS [11.3] alcance Ancient = 14 m
+PASS [11.4] Ancient: CanFire respeita alcance maximo (14) e cooldown (3.2)
+INFO [11.5] Ancient: dano contra armadura 0 = 22, armadura 10 = 14 (penetracao 0.15)
+PASS [11.4] Classical: CanFire respeita alcance maximo (15.5) e cooldown (2.9)
+INFO [11.5] Classical: dano contra armadura 0 = 29, armadura 10 = 22 (penetracao 0.25)
+PASS [11.4] Medieval: CanFire respeita alcance maximo (17) e cooldown (2.6)
+INFO [11.5] Medieval: dano contra armadura 0 = 37, armadura 10 = 30 (penetracao 0.35)
+PASS [11.4] Imperial: CanFire respeita alcance maximo (18.5) e cooldown (2.3)
+INFO [11.5] Imperial: dano contra armadura 0 = 47, armadura 10 = 42 (penetracao 0.5)
+PASS [11.6] penetracao reduz a armadura efetiva (dano perfurante maior contra armadura 20 do que sem penetracao)
+PASS [11.7] projetil causa dano Piercing
+PASS [14.1] referencias por GUID resolvidas: 58 verificadas em 20 assets, 0 quebradas
+PASS [14.2] todo arquivo da unidade tem .meta (0 sem)
+PASS [14.3] nenhum nome de tipo da unidade duplicado em outro arquivo (4 tipos: CrossbowAudit,CrossbowPlayModeCheck,CrossbowSetup,CrossbowFireEffects)
+PASS [14.4] nomes de arquivo da unidade nao colidem com outros assets
+INFO [14.5] dependencias do wrapper fora da unidade (nao .cs): Assets/Resources/Prefabs/FOV.prefab, Assets/Resources/Materials/FOW_Minimap/FOV.mat, Assets/Resources/Shaders/ProjectorAdditiveTint.shader, Assets/Resources/Materials/SelectionCircle.mat, Assets/Resources/Sounds/SoundEffects.mixer, Assets/Resources/Imports/fov.dae, Assets/Resources/Textures/SelectionCircleAlpha.png, Assets/Resources/Materials/MinimapIcon.mat, Assets/Resources/Prefabs/MinimapIcon.prefab
+PASS [14.5] wrapper nao depende de assets de outras unidades
+PASS [13] render LOD0-front: magenta 0,000% (frente)
+PASS [13] render LOD0-back: magenta 0,000% (costas)
+PASS [13] render LOD0-side: magenta 0,000% (lado)
+PASS [13] render LOD0-iso: magenta 0,000% (3/4)
+PASS [13] render LOD0-top: magenta 0,000% (topo)
+PASS [13] render LOD1-front: magenta 0,000% (frente)
+PASS [13] render LOD1-back: magenta 0,000% (costas)
+PASS [13] render LOD1-side: magenta 0,000% (lado)
+PASS [13] render LOD1-iso: magenta 0,000% (3/4)
+PASS [13] render LOD2-front: magenta 0,000% (frente)
+PASS [13] render LOD2-back: magenta 0,000% (costas)
+PASS [13] render LOD2-side: magenta 0,000% (lado)
+PASS [13] render LOD2-iso: magenta 0,000% (3/4)
+PASS [13] render scale-iso: magenta 0,000% (escala vs humano 1,8 m)
+PASS [13] render pose-Idle-iso: magenta 0,000% (pose)
+PASS [13] render pose-Idle-side: magenta 0,000% (pose)
+PASS [13] render pose-Fire-0.00-iso: magenta 0,000% (pose)
+PASS [13] render pose-Fire-0.00-side: magenta 0,000% (pose)
+PASS [13] render pose-Fire-0.20-iso: magenta 0,000% (pose)
+PASS [13] render pose-Fire-0.20-side: magenta 0,000% (pose)
+PASS [13] render pose-Fire-0.30-iso: magenta 0,000% (pose)
+PASS [13] render pose-Fire-0.30-side: magenta 0,000% (pose)
+PASS [13] render pose-Fire-0.80-iso: magenta 0,000% (pose)
+PASS [13] render pose-Fire-0.80-side: magenta 0,000% (pose)
+PASS [13] render pose-Reload-0.35-iso: magenta 0,000% (pose)
+PASS [13] render pose-Reload-0.35-side: magenta 0,000% (pose)
+PASS [13] render pose-Reload-0.70-iso: magenta 0,000% (pose)
+PASS [13] render pose-Reload-0.70-side: magenta 0,000% (pose)
+PASS [13] render pose-Reload-1.40-iso: magenta 0,000% (pose)
+PASS [13] render pose-Reload-1.40-side: magenta 0,000% (pose)
+PASS [13] render pose-Hit-0.15-iso: magenta 0,000% (pose)
+PASS [13] render pose-Hit-0.15-side: magenta 0,000% (pose)
+PASS [13] render pose-Move-1.0-iso: magenta 0,000% (pose)
+PASS [13] render pose-Move-1.0-side: magenta 0,000% (pose)
+PASS [13] render pose-Destroy-0.50-iso: magenta 0,000% (pose)
+PASS [13] render pose-Destroy-0.50-side: magenta 0,000% (pose)
+PASS [13] render pose-Destroy-1.00-iso: magenta 0,000% (pose)
+PASS [13] render pose-Destroy-1.00-side: magenta 0,000% (pose)
+PASS [13] render pose-Destroy-1.50-iso: magenta 0,000% (pose)
+PASS [13] render pose-Destroy-1.50-side: magenta 0,000% (pose)
+PASS [13] render pose-Destroy-2.00-iso: magenta 0,000% (pose)
+PASS [13] render pose-Destroy-2.00-side: magenta 0,000% (pose)
+PASS [13] render bolt-close: magenta 0,000% (virote)
+PASS [13] render bolt-side: magenta 0,000% (virote lado)
+render: pior fracao magenta = 0,0000%
+RESUMO EDIT: 269 PASS, 4 FAIL

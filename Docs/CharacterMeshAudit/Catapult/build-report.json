@@ -1,0 +1,324 @@
+{
+  "unit": "catapult",
+  "lods": [
+    {
+      "triangles": 4976,
+      "vertices": 4500,
+      "uv_finite": true,
+      "uv_range": [
+        0.0022,
+        0.9997,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "triangles": 1036,
+      "vertices": 1142,
+      "uv_finite": true,
+      "uv_range": [
+        0.0017,
+        0.9997,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "triangles": 408,
+      "vertices": 438,
+      "uv_finite": true,
+      "uv_range": [
+        0.0017,
+        0.9997,
+        0.0,
+        1.0
+      ]
+    }
+  ],
+  "parts": {
+    "LOD0": [
+      {
+        "name": "Chassis",
+        "bone": "Root",
+        "triangles": 660
+      },
+      {
+        "name": "Frame",
+        "bone": "Root",
+        "triangles": 336
+      },
+      {
+        "name": "StopPad",
+        "bone": "Root",
+        "triangles": 108
+      },
+      {
+        "name": "Skein",
+        "bone": "Root",
+        "triangles": 264
+      },
+      {
+        "name": "Ratchets",
+        "bone": "Root",
+        "triangles": 488
+      },
+      {
+        "name": "Arm",
+        "bone": "Arm",
+        "triangles": 516
+      },
+      {
+        "name": "LoadedStone",
+        "bone": "Ammo",
+        "triangles": 80
+      },
+      {
+        "name": "Winch",
+        "bone": "Winch",
+        "triangles": 396
+      },
+      {
+        "name": "WinchPosts",
+        "bone": "Root",
+        "triangles": 60
+      },
+      {
+        "name": "WinchRope",
+        "bone": "Rope",
+        "triangles": 20
+      },
+      {
+        "name": "Wheel_FL",
+        "bone": "Wheel_FL",
+        "triangles": 512
+      },
+      {
+        "name": "Wheel_FR",
+        "bone": "Wheel_FR",
+        "triangles": 512
+      },
+      {
+        "name": "Wheel_BL",
+        "bone": "Wheel_BL",
+        "triangles": 512
+      },
+      {
+        "name": "Wheel_BR",
+        "bone": "Wheel_BR",
+        "triangles": 512
+      }
+    ],
+    "LOD1": [
+      {
+        "name": "Chassis",
+        "bone": "Root",
+        "triangles": 136
+      },
+      {
+        "name": "Frame",
+        "bone": "Root",
+        "triangles": 96
+      },
+      {
+        "name": "StopPad",
+        "bone": "Root",
+        "triangles": 20
+      },
+      {
+        "name": "Skein",
+        "bone": "Root",
+        "triangles": 28
+      },
+      {
+        "name": "Ratchets",
+        "bone": "Root",
+        "triangles": 72
+      },
+      {
+        "name": "Arm",
+        "bone": "Arm",
+        "triangles": 60
+      },
+      {
+        "name": "LoadedStone",
+        "bone": "Ammo",
+        "triangles": 20
+      },
+      {
+        "name": "Winch",
+        "bone": "Winch",
+        "triangles": 88
+      },
+      {
+        "name": "WinchPosts",
+        "bone": "Root",
+        "triangles": 24
+      },
+      {
+        "name": "WinchRope",
+        "bone": "Rope",
+        "triangles": 12
+      },
+      {
+        "name": "Wheel_FL",
+        "bone": "Wheel_FL",
+        "triangles": 120
+      },
+      {
+        "name": "Wheel_FR",
+        "bone": "Wheel_FR",
+        "triangles": 120
+      },
+      {
+        "name": "Wheel_BL",
+        "bone": "Wheel_BL",
+        "triangles": 120
+      },
+      {
+        "name": "Wheel_BR",
+        "bone": "Wheel_BR",
+        "triangles": 120
+      }
+    ],
+    "LOD2": [
+      {
+        "name": "Chassis",
+        "bone": "Root",
+        "triangles": 60
+      },
+      {
+        "name": "Frame",
+        "bone": "Root",
+        "triangles": 96
+      },
+      {
+        "name": "StopPad",
+        "bone": "Root",
+        "triangles": 20
+      },
+      {
+        "name": "Skein",
+        "bone": "Root",
+        "triangles": 20
+      },
+      {
+        "name": "Ratchets",
+        "bone": "Root",
+        "triangles": 0
+      },
+      {
+        "name": "Arm",
+        "bone": "Arm",
+        "triangles": 60
+      },
+      {
+        "name": "LoadedStone",
+        "bone": "Ammo",
+        "triangles": 20
+      },
+      {
+        "name": "Winch",
+        "bone": "Winch",
+        "triangles": 20
+      },
+      {
+        "name": "WinchPosts",
+        "bone": "Root",
+        "triangles": 0
+      },
+      {
+        "name": "Wheel_FL",
+        "bone": "Wheel_FL",
+        "triangles": 28
+      },
+      {
+        "name": "Wheel_FR",
+        "bone": "Wheel_FR",
+        "triangles": 28
+      },
+      {
+        "name": "Wheel_BL",
+        "bone": "Wheel_BL",
+        "triangles": 28
+      },
+      {
+        "name": "Wheel_BR",
+        "bone": "Wheel_BR",
+        "triangles": 28
+      }
+    ]
+  },
+  "clips": {
+    "Idle": {
+      "frames": 91,
+      "seconds": 3.0,
+      "loop": true
+    },
+    "Move": {
+      "frames": 35,
+      "seconds": 1.1333333333333333,
+      "loop": true
+    },
+    "Reload": {
+      "frames": 78,
+      "seconds": 2.566666666666667,
+      "loop": false
+    },
+    "Fire": {
+      "frames": 34,
+      "seconds": 1.1,
+      "loop": false
+    },
+    "Hit": {
+      "frames": 15,
+      "seconds": 0.4666666666666667,
+      "loop": false
+    },
+    "Destroy": {
+      "frames": 72,
+      "seconds": 2.3666666666666667,
+      "loop": false
+    }
+  },
+  "bones": [
+    "Root",
+    "Arm",
+    "Ammo",
+    "Winch",
+    "Rope",
+    "Wheel_FL",
+    "Wheel_FR",
+    "Wheel_BL",
+    "Wheel_BR"
+  ],
+  "bounds_rest": {
+    "min": [
+      -1.13,
+      -1.613,
+      -0.0
+    ],
+    "max": [
+      1.17,
+      1.613,
+      2.05
+    ],
+    "size": [
+      2.3,
+      3.225,
+      2.05
+    ]
+  },
+  "release_frame": 12,
+  "release_seconds": 0.4,
+  "projectile_spawn_blender": [
+    0.0,
+    1.3451,
+    1.1689
+  ],
+  "pivot_blender": [
+    0.0,
+    -0.1,
+    1.2
+  ],
+  "wheel_circumference": 2.8903
+}

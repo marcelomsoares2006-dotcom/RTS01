@@ -26,48 +26,68 @@ MonoBehaviour:
     prefab:
       role: prefab
       expectedAssetPath: Assets/Resources/Prefabs/Units/Characters/PaladinHealer.prefab
-      asset: {fileID: 0}
+      asset: {fileID: 4184688603527601570, guid: fb6e1cf5f3de30541aa52d9177790a2e, type: 3}
       required: 1
     meshes:
     - role: malha-fonte do corpo
-      expectedAssetPath: Assets/CharacterRigging/PaladinHealer/PaladinHealer.fbx
-      asset: {fileID: 0}
+      expectedAssetPath: Assets/CharacterRigging/PaladinHealer/Models/PaladinHealer.fbx
+      asset: {fileID: 919132149155446097, guid: 62a60efecb3fcbc40bc70725b69cf83b, type: 3}
+      required: 1
+    - role: espada
+      expectedAssetPath: Assets/CharacterRigging/PaladinHealer/Accessories/PaladinHealer_Sword.fbx
+      asset: {fileID: 919132149155446097, guid: b5ceac9cccf1dcc43880f330d3a410ad, type: 3}
+      required: 1
+    - role: escudo
+      expectedAssetPath: Assets/CharacterRigging/PaladinHealer/Accessories/PaladinHealer_Shield.fbx
+      asset: {fileID: 919132149155446097, guid: 5e0976e37a3397c4bb7bf13cc9124805, type: 3}
       required: 1
     effects:
     - role: efeito de aura de cura
       expectedAssetPath: Assets/Resources/Prefabs/Effects/PaladinHealAura.prefab
-      asset: {fileID: 0}
+      asset: {fileID: 4130632949935343882, guid: 90266a8f4807cd749b09b498b5d2fa1d, type: 3}
+      required: 1
+    - role: prefab de morte
+      expectedAssetPath: Assets/CharacterRigging/PaladinHealer/Prefabs/PaladinHealerDeath.prefab
+      asset: {fileID: 1594261017129952316, guid: 1705c1bec457d1246b80a85f68a46626, type: 3}
       required: 1
     sockets:
     - socketName: WeaponMount
-      expectedTransformPath: Sockets/WeaponMount
+      expectedTransformPath: Mesh/PaladinHealerVisual/PaladinHealer_Armature/Hips/Spine02/Spine01/Spine/RightShoulder/RightArm/RightForeArm/RightHand/WeaponMount
       required: 1
     - socketName: ShieldMount
-      expectedTransformPath: Sockets/ShieldMount
+      expectedTransformPath: Mesh/PaladinHealerVisual/PaladinHealer_Armature/Hips/Spine02/Spine01/Spine/LeftShoulder/LeftArm/LeftForeArm/ShieldMount
       required: 1
     - socketName: HealAuraCenter
-      expectedTransformPath: Sockets/HealAuraCenter
+      expectedTransformPath: Mesh/PaladinHealerVisual/HealAuraCenter
       required: 1
     animations:
     - state: Idle
-      animatorParameter: Running
-      clip: {fileID: 0}
+      animatorParameter: Speed
+      clip: {fileID: -623603649343465320, guid: 606f1b32483cc2641a595461cd01adbc, type: 3}
+      required: 1
+    - state: Walk
+      animatorParameter: Speed
+      clip: {fileID: -623603649343465320, guid: 4704020db58f5594d8931e0cdb7a240f, type: 3}
       required: 1
     - state: Run
-      animatorParameter: Running
-      clip: {fileID: 0}
+      animatorParameter: Speed
+      clip: {fileID: -623603649343465320, guid: d1e41b0d41d4d84408aff772f9d01ef8, type: 3}
       required: 1
     - state: Attack
-      animatorParameter: Attacking
-      clip: {fileID: 0}
-      required: 1
-    - state: Hit
       animatorParameter: Hit
-      clip: {fileID: 0}
+      clip: {fileID: -623603649343465320, guid: cca56b1240b1ba943a950b2a05127ef5, type: 3}
       required: 1
     - state: Heal
-      animatorParameter: Healing
-      clip: {fileID: 0}
+      animatorParameter: Heal
+      clip: {fileID: -623603649343465320, guid: 56ac345e59966904eac441c36545c06b, type: 3}
+      required: 1
+    - state: Hit
+      animatorParameter: Damaged
+      clip: {fileID: -623603649343465320, guid: a2c182017394ee1499ee04e4bbc88d74, type: 3}
+      required: 1
+    - state: Death
+      animatorParameter: AdvancedUnitDeathEffect
+      clip: {fileID: -623603649343465320, guid: 6a23b8a1ec0de6a43a22ef3424cf671c, type: 3}
       required: 1
   buildSettingsApproved: 0
   tiers:

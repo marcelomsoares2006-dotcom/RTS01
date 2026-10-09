@@ -14,6 +14,9 @@ using UnityEngine;
 /// </summary>
 public static class AdvancedUnitDataBridge
 {
+    /// <summary>Periodo (s) com que o behavior tree tenta atacar; o cooldown real vem do contrato/era.</summary>
+    public const float AttackPollSeconds = 0.25f;
+
     /// <summary>Informa se o contrato pode ser ligado a um UnitData agora, e por que não.</summary>
     public static bool CanBind(AdvancedUnitContract contract, out string reason)
     {
@@ -57,6 +60,9 @@ public static class AdvancedUnitDataBridge
             throw new InvalidOperationException($"'{contract.code}' é Building, mas o destino não é BuildingData.");
 
         ApplyStats(target, contract.BuildUnitDataFields(era));
+        // O behavior tree le attackRate uma unica vez (periodo do Timer) e nao acompanha a era. As unidades avancadas
+        // impoem o cooldown real da era em seus controladores (IAttackHandler); o BT so "sonda" com frequencia.
+        target.attackRate = AttackPollSeconds;
         target.prefab = contract.visual.prefab.asset as GameObject;
     }
 

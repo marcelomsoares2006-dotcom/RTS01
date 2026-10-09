@@ -113,14 +113,33 @@ namespace EraImperial.AdvancedUnits.Tests
         }
 
         [Test]
-        public void NoAdvancedUnitIsRegisteredInTheGameCatalog()
+        public void CatalogContainsAnAdvancedUnitIfAndOnlyIfItsContractIsValidAndVisuallyReal()
         {
             string[] codes = AdvancedUnitCodes.All.ToArray();
+            System.Collections.Generic.Dictionary<string, string> registered = new System.Collections.Generic.Dictionary<string, string>();
             foreach (string guid in AssetDatabase.FindAssets("t:UnitData"))
             {
-                UnityEngine.Object asset = AssetDatabase.LoadMainAssetAtPath(AssetDatabase.GUIDToAssetPath(guid));
+                string path = AssetDatabase.GUIDToAssetPath(guid);
+                UnityEngine.Object asset = AssetDatabase.LoadMainAssetAtPath(path);
                 string code = new SerializedObject(asset).FindProperty("code").stringValue;
-                Assert.That(codes, Does.Not.Contain(code), $"{AssetDatabase.GUIDToAssetPath(guid)} registrou '{code}' no catálogo sem visual validado");
+                if (codes.Contains(code))
+                {
+                    Assert.That(registered.ContainsKey(code), Is.False, "codigo duplicado no catalogo: " + code);
+                    registered[code] = path;
+                }
+            }
+
+            foreach (string guid in AssetDatabase.FindAssets("t:AdvancedUnitContract", new[] { AdvancedUnitAssetGenerator.RootFolder }))
+            {
+                AdvancedUnitContract contract = AssetDatabase.LoadAssetAtPath<AdvancedUnitContract>(AssetDatabase.GUIDToAssetPath(guid));
+                bool ready = contract.IsGameplayValid && contract.IsVisualReady;
+                Assert.That(registered.ContainsKey(contract.code), Is.EqualTo(ready),
+                    $"{contract.code}: registrado={registered.ContainsKey(contract.code)} pronto={ready} ({contract.EvaluateVisuals()})");
+                if (ready)
+                {
+                    SerializedObject data = new SerializedObject(AssetDatabase.LoadMainAssetAtPath(registered[contract.code]));
+                    Assert.That(data.FindProperty("prefab").objectReferenceValue, Is.SameAs(contract.visual.prefab.asset), contract.code);
+                }
             }
             Assert.That(AssetDatabase.FindAssets("t:AdvancedUnitContract", new[] { "Assets/Resources" }), Is.Empty, "contratos ficam fora de Resources");
         }

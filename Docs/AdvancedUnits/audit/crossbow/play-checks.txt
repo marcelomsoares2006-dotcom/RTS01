@@ -1,0 +1,290 @@
+Unity 6000.6.3f1 - 2026-10-06 21:45:27
+CONSOLE Warning: Unity is not designed to run with Administrator privileges.  With elevated access, scripts in your project can modify system files, registry settings, or protec
+PASS [Map1.0] metadados do mapa Map1
+INFO [Map1] nova partida iniciada
+CONSOLE Warning: The tree Tree Type7 01 must use the Nature/Soft Occlusion shader. Otherwise billboarding/lighting will not work correctly.
+CONSOLE Warning: File "C:\Users\User\Downloads\Era Imperial\EraImperial-UnityRTS-Base\RTS01-Corrigido\TestResults\CBIndepData-20261007-004527\00_Global Parameters.data" not foun
+CONSOLE Warning: File "C:\Users\User\Downloads\Era Imperial\EraImperial-UnityRTS-Base\RTS01-Corrigido\TestResults\CBIndepData-20261007-004527\02_Sound Parameters.data" not found
+CONSOLE Warning: File "C:\Users\User\Downloads\Era Imperial\EraImperial-UnityRTS-Base\RTS01-Corrigido\TestResults\CBIndepData-20261007-004527\03_Keyboard Mapping.data" not found
+PASS [Map1.1] Globals.CHARACTER_DATA contem 'crossbow' em Map1
+PASS [Map1.2] ponto inicial andavel
+PASS [Map1.A1] instancia pelo catalogo com CharacterManager, NavMeshAgent, BT, Binding, AnimatorDriver, controlador de ataque e efeito de morte
+PASS [Map1.A2] sem scripts ausentes na instancia em jogo
+PASS [Map1.A3] UnitManager.animator = Animator do visual (o BT escreve Running/Attacking/Hit nele) e esta inicializado
+PASS [Map1.A4] era Ancient aplicada: PV 28/28, dano 22, alcance 14
+PASS [Map1.A5] visual com LODGroup e renderers ativos
+PASS [Map1.A6] agente no NavMesh
+PASS [Map1.B1] ordem de movimento aceita
+PASS [Map1.B2] moveu 8 m pelo NavMesh
+PASS [Map1.B3] Animator: Speed max 3.5, estado Move visto=True
+PASS [Map1.B4] rodas giram em movimento (178.769 graus)
+PASS [Map1.B5] parada: estado Idle, Speed 0
+PASS [Map1.C.Ancient] Ancient: PV max 28/28, dano 22/22, alcance 14/14
+PASS [Map1.C.Classical] Classical: PV max 35/35, dano 29/29, alcance 15.5/15.5
+PASS [Map1.C.Medieval] Medieval: PV max 43/43, dano 37/37, alcance 17/17
+PASS [Map1.C.Imperial] Imperial: PV max 52/52, dano 47/47, alcance 18.5/18.5
+PASS [Map1.C5] volta a Ancient: PV max 28
+CONSOLE Warning: Failed to create agent because it is not close enough to the NavMesh
+INFO [Map1.E] alvo inimigo a 18.5 m (efetivo 17.793; alcance 14; FOV 20; tamanho do alvo 0.707)
+PASS [Map1.E1] alvo comeca fora do alcance de tiro (efetivo > 14,5)
+INFO [Map1.E] BT: comecou a andar em 0.563 s; 4 disparos; inicios de tiro em t = [1.965, 5.262, 8.533, 11.788] s; distancia efetiva no inicio de cada tiro = [13.95, 13.95, 13.95, 13.95] m; angulo ate o alvo = [0, 0, 0, 0] graus; HP 1000->912
+PASS [Map1.E2] o BT aproximou-se do alvo (FOV 20 > alcance 14) e disparou 4 vezes sozinho
+PASS [Map1.E3] nenhum disparo iniciado alem do alcance maximo de 14 m (maior efetivo 13.95)
+PASS [Map1.E4] cada virote causa 22 de dano (perfurante, armadura 0): 4 disparos -> 88 de dano
+PASS [Map1.E5] intervalo minimo entre disparos pelo BT = 3.255 s (cooldown 3,2 s)
+PASS [Map1.E6] a balestra esta virada para o alvo ao iniciar o disparo (angulos 0, 0, 0, 0)
+PASS [Map1.E7] nenhum virote preso em voo (0)
+INFO [Map1.F] alvo a 30 m (fora do FOV 20)
+PASS [Map1.F1] fora do FOV e sem ordem: a unidade fica parada e nao atira
+PASS [Map1.F2] ordem de ataque: andou ate o alcance e disparou (efetivo no disparo 13.936 m)
+PASS [Map1.F3] dano aplicado ao alvo (HP 1000 -> 978, 1 disparos)
+PASS [Map1.N0] apos mudar para Imperial: alcance 18,5, dano 47
+INFO [Map1.N] (a) unidade nascida em Ancient, era virou Imperial; alvo a efetivo 16.293 m (alcance Imperial 18,5; BT leu 14 ao nascer)
+INFO [Map1.N] (a) apos 11 s: disparos 5, HP 1000->765, distancia efetiva atual 16.293 m
+PASS [Map1.N1] (a) unidade criada em Ancient com a era mudada depois: ainda engaja e dispara (comportamento do BT com alcance antigo)
+PASS [Map1.N2] (b) unidade nascida em Imperial: alcance 18,5
+INFO [Map1.N] (b) alvo a efetivo 16.793 m
+INFO [Map1.N] (b) Imperial via BT: tiros em t=[0.292, 2.775, 5.227, 7.684] s, efetivo no inicio [16.793, 16.793, 16.793, 16.793] m, intervalo minimo 2.452 s (contrato Imperial: cooldown 2,3 s; BT usa CharacterData.attackRate = 3,2)
+PASS [Map1.N3] (b) unidade Imperial dispara pelo BT
+PASS [Map1.N4] (b) Imperial atira alem do alcance Ancient (maior efetivo 16.793 m, limite 18,5)
+PASS [Map1.N5] (b) cadencia real via BT = 2.452 s; o contrato da era Imperial promete 2,3 s (CharacterData.attackRate = 3,2 alimenta o Timer do BT)
+PASS [Map1.G.Ancient.1] alcance maximo 14: alvo a efetivo 14.6 m -> nenhum disparo, nenhum virote, nenhum dano, sem animacao Fire
+PASS [Map1.G.Ancient.2] alvo a efetivo 13.5 m (<= 14): disparo aceito
+PASS [Map1.G.Ancient.3] dano nao e instantaneo: virote sai 0.189 s apos o comando (releaseDelay 0.2 s)
+PASS [Map1.G.Ancient.4] dano perfurante da era = 22 (armadura 0): HP 1000 -> 978
+PASS [Map1.G.Ancient.5] virote observado em voo (27 amostras) e impacto ocorreu
+INFO [Map1.G.Ancient] voo: origem (47.422, 31.127, 43.004) (BoltSpawn na soltura (47.425, 31.128, 43.004), distancia 0.003 m), desvio maximo da reta 0 m, velocidade 29.993 m/s, alinhamento do virote com a trajetoria (min cos) 1, centro da malha em relacao ao pivo ao longo do voo -0.303 m
+PASS [Map1.G.Ancient.6] voo reto: desvio maximo da reta 0 m
+PASS [Map1.G.Ancient.7] virote nasce perto do BoltSpawn (primeira amostra a 0.003 m; 1 frame de voo = 0.5 m)
+PASS [Map1.G.Ancient.8] velocidade ~29.993 m/s (contrato 30)
+PASS [Map1.G.Ancient.9] virote alinhado com a direcao do voo (cos min 1)
+PASS [Map1.G.Ancient.9b] ponta do virote a frente (corpo da malha atras do pivo: -0.303 m)
+PASS [Map1.G.Ancient.10] efeito de disparo (fumaca/poeira) acionado pelo evento de animacao
+INFO [Map1.G.Ancient] sequencia de animacao: Idle > Fire > Reload > Idle
+PASS [Map1.G.Ancient.11] Animator Fire > Reload (sequencia Idle>Fire>Reload>Idle)
+PASS [Map1.G.Ancient.12] cooldown 3.2 s: tentativa a 3.135 s recusada
+PASS [Map1.G.Ancient.13] cooldown cumprido (3.235 s >= 3.2 s): novo disparo aceito
+PASS [Map1.G.Ancient.14] segundo disparo da era: dano 22 (HP 978 -> 956)
+PASS [Map1.G.Ancient.15] aliado na linha de tiro (HP 400/400) e aliado atras do alvo (HP 400/400) nao sofrem dano; inimigo sofre 22
+PASS [Map1.G.Ancient.16] disparo dirigido a um aliado: nenhum dano (HP 400/400; disparos 1)
+PASS [Map1.G.Ancient.17] alvo morre durante o preparo do disparo: sem erro de console e sem virote preso
+PASS [Map1.G.Classical.1] alcance maximo 15.5: alvo a efetivo 16.1 m -> nenhum disparo, nenhum virote, nenhum dano, sem animacao Fire
+PASS [Map1.G.Classical.2] alvo a efetivo 15 m (<= 15.5): disparo aceito
+PASS [Map1.G.Classical.3] dano nao e instantaneo: virote sai 0.206 s apos o comando (releaseDelay 0.2 s)
+PASS [Map1.G.Classical.4] dano perfurante da era = 29 (armadura 0): HP 1000 -> 971
+PASS [Map1.G.Classical.5] virote observado em voo (33 amostras) e impacto ocorreu
+INFO [Map1.G.Classical] voo: origem (48.9, 31.127, 42.731) (BoltSpawn na soltura (48.912, 31.134, 42.729), distancia 0.014 m), desvio maximo da reta 0 m, velocidade 29.994 m/s, alinhamento do virote com a trajetoria (min cos) 1, centro da malha em relacao ao pivo ao longo do voo -0.303 m
+PASS [Map1.G.Classical.6] voo reto: desvio maximo da reta 0 m
+PASS [Map1.G.Classical.7] virote nasce perto do BoltSpawn (primeira amostra a 0.014 m; 1 frame de voo = 0.5 m)
+PASS [Map1.G.Classical.8] velocidade ~29.994 m/s (contrato 30)
+PASS [Map1.G.Classical.9] virote alinhado com a direcao do voo (cos min 1)
+PASS [Map1.G.Classical.9b] ponta do virote a frente (corpo da malha atras do pivo: -0.303 m)
+PASS [Map1.G.Classical.10] efeito de disparo (fumaca/poeira) acionado pelo evento de animacao
+INFO [Map1.G.Classical] sequencia de animacao: Idle > Fire > Reload > Idle
+PASS [Map1.G.Classical.12] cooldown 2.9 s: tentativa a 3.052 s recusada
+PASS [Map1.G.Classical.13] cooldown cumprido (3.052 s >= 2.9 s): novo disparo aceito
+PASS [Map1.G.Classical.14] segundo disparo da era: dano 29 (HP 971 -> 942)
+PASS [Map1.G.Medieval.1] alcance maximo 17: alvo a efetivo 17.6 m -> nenhum disparo, nenhum virote, nenhum dano, sem animacao Fire
+PASS [Map1.G.Medieval.2] alvo a efetivo 16.5 m (<= 17): disparo aceito
+PASS [Map1.G.Medieval.3] dano nao e instantaneo: virote sai 0.197 s apos o comando (releaseDelay 0.2 s)
+PASS [Map1.G.Medieval.4] dano perfurante da era = 37 (armadura 0): HP 942 -> 905
+PASS [Map1.G.Medieval.5] virote observado em voo (31 amostras) e impacto ocorreu
+INFO [Map1.G.Medieval] voo: origem (50.372, 31.068, 42.458) (BoltSpawn na soltura (50.377, 31.071, 42.458), distancia 0.006 m), desvio maximo da reta 0 m, velocidade 29.994 m/s, alinhamento do virote com a trajetoria (min cos) 1, centro da malha em relacao ao pivo ao longo do voo -0.303 m
+PASS [Map1.G.Medieval.6] voo reto: desvio maximo da reta 0 m
+PASS [Map1.G.Medieval.7] virote nasce perto do BoltSpawn (primeira amostra a 0.006 m; 1 frame de voo = 0.5 m)
+PASS [Map1.G.Medieval.8] velocidade ~29.994 m/s (contrato 30)
+PASS [Map1.G.Medieval.9] virote alinhado com a direcao do voo (cos min 1)
+PASS [Map1.G.Medieval.9b] ponta do virote a frente (corpo da malha atras do pivo: -0.303 m)
+PASS [Map1.G.Medieval.10] efeito de disparo (fumaca/poeira) acionado pelo evento de animacao
+INFO [Map1.G.Medieval] sequencia de animacao: Idle > Fire > Reload > Idle
+PASS [Map1.G.Medieval.12] cooldown 2.6 s: tentativa a 2.765 s recusada
+PASS [Map1.G.Medieval.13] cooldown cumprido (2.765 s >= 2.6 s): novo disparo aceito
+PASS [Map1.G.Medieval.14] segundo disparo da era: dano 37 (HP 905 -> 868)
+PASS [Map1.G.Imperial.1] alcance maximo 18.5: alvo a efetivo 19.1 m -> nenhum disparo, nenhum virote, nenhum dano, sem animacao Fire
+PASS [Map1.G.Imperial.2] alvo a efetivo 18 m (<= 18.5): disparo aceito
+PASS [Map1.G.Imperial.3] dano nao e instantaneo: virote sai 0.199 s apos o comando (releaseDelay 0.2 s)
+PASS [Map1.G.Imperial.4] dano perfurante da era = 47 (armadura 0): HP 868 -> 821
+PASS [Map1.G.Imperial.5] virote observado em voo (36 amostras) e impacto ocorreu
+INFO [Map1.G.Imperial] voo: origem (51.847, 31.011, 42.185) (BoltSpawn na soltura (51.854, 31.015, 42.184), distancia 0.009 m), desvio maximo da reta 0 m, velocidade 29.995 m/s, alinhamento do virote com a trajetoria (min cos) 1, centro da malha em relacao ao pivo ao longo do voo -0.303 m
+PASS [Map1.G.Imperial.6] voo reto: desvio maximo da reta 0 m
+PASS [Map1.G.Imperial.7] virote nasce perto do BoltSpawn (primeira amostra a 0.009 m; 1 frame de voo = 0.5 m)
+PASS [Map1.G.Imperial.8] velocidade ~29.995 m/s (contrato 30)
+PASS [Map1.G.Imperial.9] virote alinhado com a direcao do voo (cos min 1)
+PASS [Map1.G.Imperial.9b] ponta do virote a frente (corpo da malha atras do pivo: -0.303 m)
+PASS [Map1.G.Imperial.10] efeito de disparo (fumaca/poeira) acionado pelo evento de animacao
+INFO [Map1.G.Imperial] sequencia de animacao: Idle > Fire > Reload
+PASS [Map1.G.Imperial.12] cooldown 2.3 s: tentativa a 2.465 s recusada
+PASS [Map1.G.Imperial.13] cooldown cumprido (2.465 s >= 2.3 s): novo disparo aceito
+PASS [Map1.G.Imperial.14] segundo disparo da era: dano 47 (HP 821 -> 774)
+PASS [Map1.H1] edificio inimigo (house, tamanho 2.274) a efetivo 12 m: dano 22 (HP 200 -> 178)
+PASS [render.Map1.front] play-Map1-front.png: pixels magenta 0,000%
+PASS [render.Map1.back] play-Map1-back.png: pixels magenta 0,000%
+PASS [render.Map1.side] play-Map1-side.png: pixels magenta 0,000%
+PASS [render.Map1.iso] play-Map1-iso.png: pixels magenta 0,000%
+INFO [Map1.K] camera do jogo: rotacao (30, 0, 0), ortografica=True, tamanho 18
+PASS [render.Map1.gamescale6] play-Map1-gamescale-6.png: pixels magenta 0,000%
+PASS [render.Map1.gamescale10] play-Map1-gamescale-10.png: pixels magenta 0,000%
+PASS [render.Map1.gamescale16] play-Map1-gamescale-16.png: pixels magenta 0,000%
+INFO [Map1.L] zoom ortografico 8: pixels LOD0/1/2 = 519/0/0 -> LOD0
+INFO [Map1.L] zoom ortografico 18: pixels LOD0/1/2 = 0/89/0 -> LOD1
+INFO [Map1.L] zoom ortografico 26: pixels LOD0/1/2 = 0/0/29 -> LOD2
+PASS [Map1.L1] LOD pelo zoom do jogo: 8 -> LOD0, 18 -> LOD1, 26 -> LOD2
+PASS [render.Map1.fire] play-Map1-fire-release.png: pixels magenta 0,000%
+PASS [render.Map1.flight] play-Map1-fire-flight.png: pixels magenta 0,000%
+PASS [Map1.K5] capturas do disparo e do impacto feitas (alvo sofreu dano)
+PASS [Map1.K6] dano na balestra: HP 28->26, Damaged acionou a camada Hit (True), reacoes 1
+PASS [Map1.K7] camada Hit volta ao vazio e o trigger Fire nao fica preso
+PASS [Map1.K8] AdvancedUnitDeathEffect instanciou o prefab de destruicao
+PASS [Map1.K9] CrossbowDeath(Clone) na posicao e orientacao da unidade
+PASS [Map1.K10] a unidade original foi destruida (HP 0)
+PASS [Map1.K11] prefab de destruicao toca o estado Destroy
+PASS [render.Map1.destroy0.37] play-Map1-destroy-036.png: pixels magenta 0,000%
+PASS [render.Map1.destroy0.75] play-Map1-destroy-074.png: pixels magenta 0,000%
+PASS [render.Map1.destroy1.18] play-Map1-destroy-117.png: pixels magenta 0,000%
+PASS [Map1.K12] animacao Destroy avanca (0.209 -> 1.18)
+PASS [Map1.K13] poeira da queda ou animacao concluida
+PASS [Map1.K14] morte durante o preparo do disparo: sem erro de console e sem virote preso (o Invoke morre com o objeto)
+PASS [Map1.K15] prefab de destruicao e removido apos o lifetime (8 s)
+INFO [Map1] cenario concluido
+PASS [Map2.0] metadados do mapa Map2
+INFO [Map2] nova partida iniciada
+PASS [Map2.1] Globals.CHARACTER_DATA contem 'crossbow' em Map2
+PASS [Map2.2] ponto inicial andavel
+PASS [Map2.A1] instancia pelo catalogo com CharacterManager, NavMeshAgent, BT, Binding, AnimatorDriver, controlador de ataque e efeito de morte
+PASS [Map2.A2] sem scripts ausentes na instancia em jogo
+PASS [Map2.A3] UnitManager.animator = Animator do visual (o BT escreve Running/Attacking/Hit nele) e esta inicializado
+PASS [Map2.A4] era Ancient aplicada: PV 28/28, dano 22, alcance 14
+PASS [Map2.A5] visual com LODGroup e renderers ativos
+PASS [Map2.A6] agente no NavMesh
+PASS [Map2.B1] ordem de movimento aceita
+PASS [Map2.B2] moveu 8 m pelo NavMesh
+PASS [Map2.B3] Animator: Speed max 3.5, estado Move visto=True
+PASS [Map2.B4] rodas giram em movimento (175.177 graus)
+PASS [Map2.B5] parada: estado Idle, Speed 0
+PASS [Map2.C.Ancient] Ancient: PV max 28/28, dano 22/22, alcance 14/14
+PASS [Map2.C.Classical] Classical: PV max 35/35, dano 29/29, alcance 15.5/15.5
+PASS [Map2.C.Medieval] Medieval: PV max 43/43, dano 37/37, alcance 17/17
+PASS [Map2.C.Imperial] Imperial: PV max 52/52, dano 47/47, alcance 18.5/18.5
+PASS [Map2.C5] volta a Ancient: PV max 28
+INFO [Map2.E] alvo inimigo a 18.5 m (efetivo 17.793; alcance 14; FOV 20; tamanho do alvo 0.707)
+PASS [Map2.E1] alvo comeca fora do alcance de tiro (efetivo > 14,5)
+INFO [Map2.E] BT: comecou a andar em 0.651 s; 4 disparos; inicios de tiro em t = [1.998, 5.484, 8.969, 12.424] s; distancia efetiva no inicio de cada tiro = [13.941, 13.941, 13.941, 13.941] m; angulo ate o alvo = [0, 0, 0, 0] graus; HP 1000->912
+PASS [Map2.E2] o BT aproximou-se do alvo (FOV 20 > alcance 14) e disparou 4 vezes sozinho
+PASS [Map2.E3] nenhum disparo iniciado alem do alcance maximo de 14 m (maior efetivo 13.941)
+PASS [Map2.E4] cada virote causa 22 de dano (perfurante, armadura 0): 4 disparos -> 88 de dano
+PASS [Map2.E5] intervalo minimo entre disparos pelo BT = 3.455 s (cooldown 3,2 s)
+PASS [Map2.E6] a balestra esta virada para o alvo ao iniciar o disparo (angulos 0, 0, 0, 0)
+PASS [Map2.E7] nenhum virote preso em voo (0)
+INFO [Map2.F] alvo a 30 m (fora do FOV 20)
+PASS [Map2.F1] fora do FOV e sem ordem: a unidade fica parada e nao atira
+PASS [Map2.F2] ordem de ataque: andou ate o alcance e disparou (efetivo no disparo 13.948 m)
+PASS [Map2.F3] dano aplicado ao alvo (HP 1000 -> 978, 1 disparos)
+PASS [Map2.N0] apos mudar para Imperial: alcance 18,5, dano 47
+INFO [Map2.N] (a) unidade nascida em Ancient, era virou Imperial; alvo a efetivo 16.293 m (alcance Imperial 18,5; BT leu 14 ao nascer)
+INFO [Map2.N] (a) apos 11 s: disparos 5, HP 1000->812, distancia efetiva atual 16.293 m
+PASS [Map2.N1] (a) unidade criada em Ancient com a era mudada depois: ainda engaja e dispara (comportamento do BT com alcance antigo)
+PASS [Map2.N2] (b) unidade nascida em Imperial: alcance 18,5
+INFO [Map2.N] (b) alvo a efetivo 16.793 m
+INFO [Map2.N] (b) Imperial via BT: tiros em t=[0.36, 2.86, 5.402, 7.972] s, efetivo no inicio [16.793, 16.793, 16.793, 16.793] m, intervalo minimo 2.5 s (contrato Imperial: cooldown 2,3 s; BT usa CharacterData.attackRate = 3,2)
+PASS [Map2.N3] (b) unidade Imperial dispara pelo BT
+PASS [Map2.N4] (b) Imperial atira alem do alcance Ancient (maior efetivo 16.793 m, limite 18,5)
+PASS [Map2.N5] (b) cadencia real via BT = 2.5 s; o contrato da era Imperial promete 2,3 s (CharacterData.attackRate = 3,2 alimenta o Timer do BT)
+PASS [Map2.G.Ancient.1] alcance maximo 14: alvo a efetivo 14.6 m -> nenhum disparo, nenhum virote, nenhum dano, sem animacao Fire
+PASS [Map2.G.Ancient.2] alvo a efetivo 13.5 m (<= 14): disparo aceito
+PASS [Map2.G.Ancient.3] dano nao e instantaneo: virote sai 0.233 s apos o comando (releaseDelay 0.2 s)
+PASS [Map2.G.Ancient.4] dano perfurante da era = 22 (armadura 0): HP 1000 -> 978
+PASS [Map2.G.Ancient.5] virote observado em voo (9 amostras) e impacto ocorreu
+INFO [Map2.G.Ancient] voo: origem (50, 31.106, 125.713) (BoltSpawn na soltura (50, 31.127, 124.331), distancia 1.382 m), desvio maximo da reta 0 m, velocidade 29.992 m/s, alinhamento do virote com a trajetoria (min cos) 1, centro da malha em relacao ao pivo ao longo do voo -0.303 m
+PASS [Map2.G.Ancient.6] voo reto: desvio maximo da reta 0 m
+FAIL [Map2.G.Ancient.7] virote nasce perto do BoltSpawn (primeira amostra a 1.382 m; 1 frame de voo = 0.5 m)
+PASS [Map2.G.Ancient.8] velocidade ~29.992 m/s (contrato 30)
+PASS [Map2.G.Ancient.9] virote alinhado com a direcao do voo (cos min 1)
+PASS [Map2.G.Ancient.9b] ponta do virote a frente (corpo da malha atras do pivo: -0.303 m)
+PASS [Map2.G.Ancient.10] efeito de disparo (fumaca/poeira) acionado pelo evento de animacao
+INFO [Map2.G.Ancient] sequencia de animacao: Idle > Fire > Reload > Idle
+PASS [Map2.G.Ancient.11] Animator Fire > Reload (sequencia Idle>Fire>Reload>Idle)
+PASS [Map2.G.Ancient.12] cooldown 3.2 s: tentativa a 3.143 s recusada
+PASS [Map2.G.Ancient.13] cooldown cumprido (3.248 s >= 3.2 s): novo disparo aceito
+PASS [Map2.G.Ancient.14] segundo disparo da era: dano 22 (HP 978 -> 956)
+PASS [Map2.G.Ancient.15] aliado na linha de tiro (HP 400/400) e aliado atras do alvo (HP 400/400) nao sofrem dano; inimigo sofre 22
+PASS [Map2.G.Ancient.16] disparo dirigido a um aliado: nenhum dano (HP 400/400; disparos 1)
+PASS [Map2.G.Ancient.17] alvo morre durante o preparo do disparo: sem erro de console e sem virote preso
+PASS [Map2.G.Classical.1] alcance maximo 15.5: alvo a efetivo 16.1 m -> nenhum disparo, nenhum virote, nenhum dano, sem animacao Fire
+PASS [Map2.G.Classical.2] alvo a efetivo 15 m (<= 15.5): disparo aceito
+PASS [Map2.G.Classical.3] dano nao e instantaneo: virote sai 0.238 s apos o comando (releaseDelay 0.2 s)
+PASS [Map2.G.Classical.4] dano perfurante da era = 29 (armadura 0): HP 1000 -> 971
+PASS [Map2.G.Classical.5] virote observado em voo (10 amostras) e impacto ocorreu
+INFO [Map2.G.Classical] voo: origem (50, 31.119, 124.284) (BoltSpawn na soltura (50, 31.144, 122.827), distancia 1.457 m), desvio maximo da reta 0 m, velocidade 29.993 m/s, alinhamento do virote com a trajetoria (min cos) 1, centro da malha em relacao ao pivo ao longo do voo -0.303 m
+PASS [Map2.G.Classical.6] voo reto: desvio maximo da reta 0 m
+FAIL [Map2.G.Classical.7] virote nasce perto do BoltSpawn (primeira amostra a 1.457 m; 1 frame de voo = 0.5 m)
+PASS [Map2.G.Classical.8] velocidade ~29.993 m/s (contrato 30)
+PASS [Map2.G.Classical.9] virote alinhado com a direcao do voo (cos min 1)
+PASS [Map2.G.Classical.9b] ponta do virote a frente (corpo da malha atras do pivo: -0.303 m)
+PASS [Map2.G.Classical.10] efeito de disparo (fumaca/poeira) acionado pelo evento de animacao
+INFO [Map2.G.Classical] sequencia de animacao: Idle > Fire > Reload > Idle
+FAIL [Map2.G.Classical.12] cooldown 2.9 s: tentativa a 0.201 s recusada
+PASS [Map2.G.Classical.13] cooldown cumprido (2.973 s >= 2.9 s): novo disparo aceito
+PASS [Map2.G.Classical.14] segundo disparo da era: dano 29 (HP 942 -> 913)
+PASS [Map2.G.Medieval.1] alcance maximo 17: alvo a efetivo 17.6 m -> nenhum disparo, nenhum virote, nenhum dano, sem animacao Fire
+PASS [Map2.G.Medieval.2] alvo a efetivo 16.5 m (<= 17): disparo aceito
+PASS [Map2.G.Medieval.3] dano nao e instantaneo: virote sai 0.244 s apos o comando (releaseDelay 0.2 s)
+PASS [Map2.G.Medieval.4] dano perfurante da era = 37 (armadura 0): HP 913 -> 876
+PASS [Map2.G.Medieval.5] virote observado em voo (10 amostras) e impacto ocorreu
+INFO [Map2.G.Medieval] voo: origem (50, 31.129, 122.799) (BoltSpawn na soltura (50, 31.156, 121.321), distancia 1.478 m), desvio maximo da reta 0 m, velocidade 29.994 m/s, alinhamento do virote com a trajetoria (min cos) 1, centro da malha em relacao ao pivo ao longo do voo -0.303 m
+PASS [Map2.G.Medieval.6] voo reto: desvio maximo da reta 0 m
+FAIL [Map2.G.Medieval.7] virote nasce perto do BoltSpawn (primeira amostra a 1.478 m; 1 frame de voo = 0.5 m)
+PASS [Map2.G.Medieval.8] velocidade ~29.994 m/s (contrato 30)
+PASS [Map2.G.Medieval.9] virote alinhado com a direcao do voo (cos min 1)
+PASS [Map2.G.Medieval.9b] ponta do virote a frente (corpo da malha atras do pivo: -0.303 m)
+PASS [Map2.G.Medieval.10] efeito de disparo (fumaca/poeira) acionado pelo evento de animacao
+INFO [Map2.G.Medieval] sequencia de animacao: Idle > Fire > Reload
+PASS [Map2.G.Medieval.12] cooldown 2.6 s: tentativa a 2.792 s recusada
+PASS [Map2.G.Medieval.13] cooldown cumprido (2.792 s >= 2.6 s): novo disparo aceito
+PASS [Map2.G.Medieval.14] segundo disparo da era: dano 37 (HP 876 -> 839)
+PASS [Map2.G.Imperial.1] alcance maximo 18.5: alvo a efetivo 19.1 m -> nenhum disparo, nenhum virote, nenhum dano, sem animacao Fire
+PASS [Map2.G.Imperial.2] alvo a efetivo 18 m (<= 18.5): disparo aceito
+PASS [Map2.G.Imperial.3] dano nao e instantaneo: virote sai 0.195 s apos o comando (releaseDelay 0.2 s)
+PASS [Map2.G.Imperial.4] dano perfurante da era = 47 (armadura 0): HP 839 -> 792
+PASS [Map2.G.Imperial.5] virote observado em voo (13 amostras) e impacto ocorreu
+INFO [Map2.G.Imperial] voo: origem (50, 31.146, 119.843) (BoltSpawn na soltura (50, 31.145, 119.844), distancia 0.001 m), desvio maximo da reta 0 m, velocidade 29.995 m/s, alinhamento do virote com a trajetoria (min cos) 1, centro da malha em relacao ao pivo ao longo do voo -0.303 m
+PASS [Map2.G.Imperial.6] voo reto: desvio maximo da reta 0 m
+PASS [Map2.G.Imperial.7] virote nasce perto do BoltSpawn (primeira amostra a 0.001 m; 1 frame de voo = 0.5 m)
+PASS [Map2.G.Imperial.8] velocidade ~29.995 m/s (contrato 30)
+PASS [Map2.G.Imperial.9] virote alinhado com a direcao do voo (cos min 1)
+PASS [Map2.G.Imperial.9b] ponta do virote a frente (corpo da malha atras do pivo: -0.303 m)
+PASS [Map2.G.Imperial.10] efeito de disparo (fumaca/poeira) acionado pelo evento de animacao
+INFO [Map2.G.Imperial] sequencia de animacao: Idle > Fire > Reload
+FAIL [Map2.G.Imperial.12] cooldown 2.3 s: tentativa a 0.189 s recusada
+PASS [Map2.G.Imperial.13] cooldown cumprido (2.353 s >= 2.3 s): novo disparo aceito
+PASS [Map2.G.Imperial.14] segundo disparo da era: dano 47 (HP 745 -> 698)
+PASS [Map2.H1] edificio inimigo (house, tamanho 2.274) a efetivo 12 m: dano 22 (HP 200 -> 178)
+PASS [render.Map2.front] play-Map2-front.png: pixels magenta 0,000%
+PASS [render.Map2.back] play-Map2-back.png: pixels magenta 0,000%
+PASS [render.Map2.side] play-Map2-side.png: pixels magenta 0,000%
+PASS [render.Map2.iso] play-Map2-iso.png: pixels magenta 0,000%
+INFO [Map2.K] camera do jogo: rotacao (30, 0, 0), ortografica=True, tamanho 18
+PASS [render.Map2.gamescale6] play-Map2-gamescale-6.png: pixels magenta 0,000%
+PASS [render.Map2.gamescale10] play-Map2-gamescale-10.png: pixels magenta 0,000%
+PASS [render.Map2.gamescale16] play-Map2-gamescale-16.png: pixels magenta 0,000%
+INFO [Map2.L] zoom ortografico 8: pixels LOD0/1/2 = 519/0/0 -> LOD0
+INFO [Map2.L] zoom ortografico 18: pixels LOD0/1/2 = 0/89/0 -> LOD1
+INFO [Map2.L] zoom ortografico 26: pixels LOD0/1/2 = 0/0/29 -> LOD2
+PASS [Map2.L1] LOD pelo zoom do jogo: 8 -> LOD0, 18 -> LOD1, 26 -> LOD2
+PASS [render.Map2.fire] play-Map2-fire-release.png: pixels magenta 0,000%
+PASS [render.Map2.flight] play-Map2-fire-flight.png: pixels magenta 0,000%
+PASS [Map2.K5] capturas do disparo e do impacto feitas (alvo sofreu dano)
+PASS [Map2.K6] dano na balestra: HP 28->26, Damaged acionou a camada Hit (True), reacoes 1
+PASS [Map2.K7] camada Hit volta ao vazio e o trigger Fire nao fica preso
+PASS [Map2.K8] AdvancedUnitDeathEffect instanciou o prefab de destruicao
+PASS [Map2.K9] CrossbowDeath(Clone) na posicao e orientacao da unidade
+PASS [Map2.K10] a unidade original foi destruida (HP 0)
+PASS [Map2.K11] prefab de destruicao toca o estado Destroy
+PASS [render.Map2.destroy0.383] play-Map2-destroy-038.png: pixels magenta 0,000%
+PASS [render.Map2.destroy0.768] play-Map2-destroy-076.png: pixels magenta 0,000%
+PASS [render.Map2.destroy1.2] play-Map2-destroy-119.png: pixels magenta 0,000%
+PASS [Map2.K12] animacao Destroy avanca (0.225 -> 1.2)
+PASS [Map2.K13] poeira da queda ou animacao concluida
+PASS [Map2.K14] morte durante o preparo do disparo: sem erro de console e sem virote preso (o Invoke morre com o objeto)
+PASS [Map2.K15] prefab de destruicao e removido apos o lifetime (8 s)
+INFO [Map2] cenario concluido
+RESUMO PLAY: 235 PASS, 5 FAIL, 0 erros de console

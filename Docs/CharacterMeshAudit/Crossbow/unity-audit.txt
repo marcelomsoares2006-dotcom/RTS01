@@ -1,0 +1,339 @@
+PASS Fonte do modelo procedural: Tools/CharacterRigging/BuildCrossbow.py
+PASS LICENSE.md registra origem procedural (obra do projeto, sem terceiros)
+PASS Nenhum modelo de terceiros declarado
+PASS Avatar Generic valido (Crossbow.fbx)
+PASS CrossbowVisual.prefab existe
+PASS Animator com avatar, controller e root motion desligado
+PASS CrossbowFireEffects com efeito de disparo
+PASS Osso Root
+PASS Osso Wheel_L
+PASS Osso Wheel_R
+PASS Osso LimbL
+PASS Osso LimbL_Tip
+PASS Osso LimbR
+PASS Osso LimbR_Tip
+PASS Osso String
+PASS Osso Bolt
+PASS Osso Winch
+PASS Osso Trigger
+PASS LODGroup com 3 niveis
+INFO Triangulos LOD0/1/2: 3650 / 2329 / 882
+PASS Orcamento de triangulos (<= 8000 / 3000 / 1000)
+PASS Triangulos estritamente decrescentes por LOD
+PASS Peca separada e nomeada Body_LOD0
+PASS Peca separada e nomeada WheelL_LOD0
+PASS Peca separada e nomeada WheelR_LOD0
+PASS Peca separada e nomeada LimbL_LOD0
+PASS Peca separada e nomeada LimbR_LOD0
+PASS Peca separada e nomeada String_LOD0
+PASS Peca separada e nomeada Bolt_LOD0
+PASS Peca separada e nomeada Winch_LOD0
+PASS Peca separada e nomeada Trigger_LOD0
+PASS LOD1 e LOD2 em malha unica
+PASS LODs com limiares decrescentes (0,210, 0,120, 0,000)
+PASS Body_LOD0: 11 ossos, rootBone ok, 1437 vertices, sem peso fora de normalizado (0)
+PASS Body_LOD0: UVs validos (finitas, 0,0% de triangulos degenerados em UV)
+PASS Bolt_LOD0: 11 ossos, rootBone ok, 89 vertices, sem peso fora de normalizado (0)
+PASS Bolt_LOD0: UVs validos (finitas, 0,0% de triangulos degenerados em UV)
+PASS Crossbow_LOD1: 11 ossos, rootBone ok, 3651 vertices, sem peso fora de normalizado (0)
+PASS Crossbow_LOD1: UVs validos (finitas, 0,0% de triangulos degenerados em UV)
+PASS Crossbow_LOD2: 11 ossos, rootBone ok, 1485 vertices, sem peso fora de normalizado (0)
+PASS Crossbow_LOD2: UVs validos (finitas, 0,0% de triangulos degenerados em UV)
+PASS LimbL_LOD0: 11 ossos, rootBone ok, 279 vertices, sem peso fora de normalizado (0)
+PASS LimbL_LOD0: UVs validos (finitas, 0,0% de triangulos degenerados em UV)
+PASS LimbR_LOD0: 11 ossos, rootBone ok, 279 vertices, sem peso fora de normalizado (0)
+PASS LimbR_LOD0: UVs validos (finitas, 0,0% de triangulos degenerados em UV)
+PASS String_LOD0: 11 ossos, rootBone ok, 252 vertices, sem peso fora de normalizado (0)
+PASS String_LOD0: UVs validos (finitas, 0,0% de triangulos degenerados em UV)
+PASS Trigger_LOD0: 11 ossos, rootBone ok, 48 vertices, sem peso fora de normalizado (0)
+PASS Trigger_LOD0: UVs validos (finitas, 0,0% de triangulos degenerados em UV)
+PASS WheelL_LOD0: 11 ossos, rootBone ok, 1278 vertices, sem peso fora de normalizado (0)
+PASS WheelL_LOD0: UVs validos (finitas, 0,0% de triangulos degenerados em UV)
+PASS WheelR_LOD0: 11 ossos, rootBone ok, 1278 vertices, sem peso fora de normalizado (0)
+PASS WheelR_LOD0: UVs validos (finitas, 0,0% de triangulos degenerados em UV)
+PASS Winch_LOD0: 11 ossos, rootBone ok, 412 vertices, sem peso fora de normalizado (0)
+PASS Winch_LOD0: UVs validos (finitas, 0,0% de triangulos degenerados em UV)
+INFO Dimensoes LOD0 (m): largura 1,83 x altura 1,47 x comprimento 2,45; min y 0,000
+PASS Dimensoes ~2,4 x 1,8 x 1,5 m
+PASS Origem no chao (min y 0,000)
+PASS Raiz do visual sem rotacao de importacao
+PASS Frente = +Z (arco z=0,93, cabrestante z=-0,58)
+PASS Lado L = esquerda da unidade (-X no Unity)
+PASS Material valido: CrossbowVisual/Body_LOD0 -> Crossbow_Iron (Standard)
+PASS Material valido: CrossbowVisual/Body_LOD0 -> Crossbow_DarkWood (Standard)
+PASS Material valido: CrossbowVisual/Body_LOD0 -> Crossbow_Wood (Standard)
+PASS Material valido: CrossbowVisual/Body_LOD0 -> Crossbow_Feather (Standard)
+PASS Material valido: CrossbowVisual/Bolt_LOD0 -> Crossbow_Wood (Standard)
+PASS Material valido: CrossbowVisual/Bolt_LOD0 -> Crossbow_Iron (Standard)
+PASS Material valido: CrossbowVisual/Bolt_LOD0 -> Crossbow_Feather (Standard)
+PASS Material valido: CrossbowVisual/Crossbow_LOD1 -> Crossbow_Iron (Standard)
+PASS Material valido: CrossbowVisual/Crossbow_LOD1 -> Crossbow_DarkWood (Standard)
+PASS Material valido: CrossbowVisual/Crossbow_LOD1 -> Crossbow_Wood (Standard)
+PASS Material valido: CrossbowVisual/Crossbow_LOD1 -> Crossbow_Feather (Standard)
+PASS Material valido: CrossbowVisual/Crossbow_LOD1 -> Crossbow_Rope (Standard)
+PASS Material valido: CrossbowVisual/Crossbow_LOD2 -> Crossbow_Iron (Standard)
+PASS Material valido: CrossbowVisual/Crossbow_LOD2 -> Crossbow_DarkWood (Standard)
+PASS Material valido: CrossbowVisual/Crossbow_LOD2 -> Crossbow_Wood (Standard)
+PASS Material valido: CrossbowVisual/Crossbow_LOD2 -> Crossbow_Rope (Standard)
+PASS Material valido: CrossbowVisual/Puff -> Crossbow_SmokeFx (Legacy Shaders/Particles/Alpha Blended)
+PASS Material valido: CrossbowVisual/Dust -> Crossbow_SmokeFx (Legacy Shaders/Particles/Alpha Blended)
+PASS Material valido: CrossbowVisual/LimbL_LOD0 -> Crossbow_Wood (Standard)
+PASS Material valido: CrossbowVisual/LimbL_LOD0 -> Crossbow_Iron (Standard)
+PASS Material valido: CrossbowVisual/LimbR_LOD0 -> Crossbow_Wood (Standard)
+PASS Material valido: CrossbowVisual/LimbR_LOD0 -> Crossbow_Iron (Standard)
+PASS Material valido: CrossbowVisual/String_LOD0 -> Crossbow_Rope (Standard)
+PASS Material valido: CrossbowVisual/String_LOD0 -> Crossbow_Iron (Standard)
+PASS Material valido: CrossbowVisual/Trigger_LOD0 -> Crossbow_Iron (Standard)
+PASS Material valido: CrossbowVisual/WheelL_LOD0 -> Crossbow_Wood (Standard)
+PASS Material valido: CrossbowVisual/WheelL_LOD0 -> Crossbow_Iron (Standard)
+PASS Material valido: CrossbowVisual/WheelL_LOD0 -> Crossbow_DarkWood (Standard)
+PASS Material valido: CrossbowVisual/WheelR_LOD0 -> Crossbow_Wood (Standard)
+PASS Material valido: CrossbowVisual/WheelR_LOD0 -> Crossbow_Iron (Standard)
+PASS Material valido: CrossbowVisual/WheelR_LOD0 -> Crossbow_DarkWood (Standard)
+PASS Material valido: CrossbowVisual/Winch_LOD0 -> Crossbow_DarkWood (Standard)
+PASS Material valido: CrossbowVisual/Winch_LOD0 -> Crossbow_Iron (Standard)
+PASS Material valido: CrossbowVisual/Winch_LOD0 -> Crossbow_Wood (Standard)
+PASS CrossbowVisual: tem renderers
+PASS Material valido: CrossbowBolt/Bolt -> Crossbow_Wood (Standard)
+PASS Material valido: CrossbowBolt/Bolt -> Crossbow_Iron (Standard)
+PASS Material valido: CrossbowBolt/Bolt -> Crossbow_Feather (Standard)
+PASS CrossbowBolt: tem renderers
+PASS Material valido: Crossbow/MinimapIcon -> MinimapIcon (Unlit/Color)
+PASS Material valido: Crossbow/Body_LOD0 -> Crossbow_Iron (Standard)
+PASS Material valido: Crossbow/Body_LOD0 -> Crossbow_DarkWood (Standard)
+PASS Material valido: Crossbow/Body_LOD0 -> Crossbow_Wood (Standard)
+PASS Material valido: Crossbow/Body_LOD0 -> Crossbow_Feather (Standard)
+PASS Material valido: Crossbow/Bolt_LOD0 -> Crossbow_Wood (Standard)
+PASS Material valido: Crossbow/Bolt_LOD0 -> Crossbow_Iron (Standard)
+PASS Material valido: Crossbow/Bolt_LOD0 -> Crossbow_Feather (Standard)
+PASS Material valido: Crossbow/Crossbow_LOD1 -> Crossbow_Iron (Standard)
+PASS Material valido: Crossbow/Crossbow_LOD1 -> Crossbow_DarkWood (Standard)
+PASS Material valido: Crossbow/Crossbow_LOD1 -> Crossbow_Wood (Standard)
+PASS Material valido: Crossbow/Crossbow_LOD1 -> Crossbow_Feather (Standard)
+PASS Material valido: Crossbow/Crossbow_LOD1 -> Crossbow_Rope (Standard)
+PASS Material valido: Crossbow/Crossbow_LOD2 -> Crossbow_Iron (Standard)
+PASS Material valido: Crossbow/Crossbow_LOD2 -> Crossbow_DarkWood (Standard)
+PASS Material valido: Crossbow/Crossbow_LOD2 -> Crossbow_Wood (Standard)
+PASS Material valido: Crossbow/Crossbow_LOD2 -> Crossbow_Rope (Standard)
+PASS Material valido: Crossbow/Puff -> Crossbow_SmokeFx (Legacy Shaders/Particles/Alpha Blended)
+PASS Material valido: Crossbow/Dust -> Crossbow_SmokeFx (Legacy Shaders/Particles/Alpha Blended)
+PASS Material valido: Crossbow/LimbL_LOD0 -> Crossbow_Wood (Standard)
+PASS Material valido: Crossbow/LimbL_LOD0 -> Crossbow_Iron (Standard)
+PASS Material valido: Crossbow/LimbR_LOD0 -> Crossbow_Wood (Standard)
+PASS Material valido: Crossbow/LimbR_LOD0 -> Crossbow_Iron (Standard)
+PASS Material valido: Crossbow/String_LOD0 -> Crossbow_Rope (Standard)
+PASS Material valido: Crossbow/String_LOD0 -> Crossbow_Iron (Standard)
+PASS Material valido: Crossbow/Trigger_LOD0 -> Crossbow_Iron (Standard)
+PASS Material valido: Crossbow/WheelL_LOD0 -> Crossbow_Wood (Standard)
+PASS Material valido: Crossbow/WheelL_LOD0 -> Crossbow_Iron (Standard)
+PASS Material valido: Crossbow/WheelL_LOD0 -> Crossbow_DarkWood (Standard)
+PASS Material valido: Crossbow/WheelR_LOD0 -> Crossbow_Wood (Standard)
+PASS Material valido: Crossbow/WheelR_LOD0 -> Crossbow_Iron (Standard)
+PASS Material valido: Crossbow/WheelR_LOD0 -> Crossbow_DarkWood (Standard)
+PASS Material valido: Crossbow/Winch_LOD0 -> Crossbow_DarkWood (Standard)
+PASS Material valido: Crossbow/Winch_LOD0 -> Crossbow_Iron (Standard)
+PASS Material valido: Crossbow/Winch_LOD0 -> Crossbow_Wood (Standard)
+PASS Material valido: Crossbow/TeamRing -> AdvancedTeamRing (Unlit/Color)
+PASS Material valido: Crossbow/FOV -> FOV (Standard)
+PASS Crossbow: tem renderers
+PASS Material valido: CrossbowDeath/Body_LOD0 -> Crossbow_Iron (Standard)
+PASS Material valido: CrossbowDeath/Body_LOD0 -> Crossbow_DarkWood (Standard)
+PASS Material valido: CrossbowDeath/Body_LOD0 -> Crossbow_Wood (Standard)
+PASS Material valido: CrossbowDeath/Body_LOD0 -> Crossbow_Feather (Standard)
+PASS Material valido: CrossbowDeath/Bolt_LOD0 -> Crossbow_Wood (Standard)
+PASS Material valido: CrossbowDeath/Bolt_LOD0 -> Crossbow_Iron (Standard)
+PASS Material valido: CrossbowDeath/Bolt_LOD0 -> Crossbow_Feather (Standard)
+PASS Material valido: CrossbowDeath/Crossbow_LOD1 -> Crossbow_Iron (Standard)
+PASS Material valido: CrossbowDeath/Crossbow_LOD1 -> Crossbow_DarkWood (Standard)
+PASS Material valido: CrossbowDeath/Crossbow_LOD1 -> Crossbow_Wood (Standard)
+PASS Material valido: CrossbowDeath/Crossbow_LOD1 -> Crossbow_Feather (Standard)
+PASS Material valido: CrossbowDeath/Crossbow_LOD1 -> Crossbow_Rope (Standard)
+PASS Material valido: CrossbowDeath/Crossbow_LOD2 -> Crossbow_Iron (Standard)
+PASS Material valido: CrossbowDeath/Crossbow_LOD2 -> Crossbow_DarkWood (Standard)
+PASS Material valido: CrossbowDeath/Crossbow_LOD2 -> Crossbow_Wood (Standard)
+PASS Material valido: CrossbowDeath/Crossbow_LOD2 -> Crossbow_Rope (Standard)
+PASS Material valido: CrossbowDeath/LimbL_LOD0 -> Crossbow_Wood (Standard)
+PASS Material valido: CrossbowDeath/LimbL_LOD0 -> Crossbow_Iron (Standard)
+PASS Material valido: CrossbowDeath/LimbR_LOD0 -> Crossbow_Wood (Standard)
+PASS Material valido: CrossbowDeath/LimbR_LOD0 -> Crossbow_Iron (Standard)
+PASS Material valido: CrossbowDeath/String_LOD0 -> Crossbow_Rope (Standard)
+PASS Material valido: CrossbowDeath/String_LOD0 -> Crossbow_Iron (Standard)
+PASS Material valido: CrossbowDeath/Trigger_LOD0 -> Crossbow_Iron (Standard)
+PASS Material valido: CrossbowDeath/WheelL_LOD0 -> Crossbow_Wood (Standard)
+PASS Material valido: CrossbowDeath/WheelL_LOD0 -> Crossbow_Iron (Standard)
+PASS Material valido: CrossbowDeath/WheelL_LOD0 -> Crossbow_DarkWood (Standard)
+PASS Material valido: CrossbowDeath/WheelR_LOD0 -> Crossbow_Wood (Standard)
+PASS Material valido: CrossbowDeath/WheelR_LOD0 -> Crossbow_Iron (Standard)
+PASS Material valido: CrossbowDeath/WheelR_LOD0 -> Crossbow_DarkWood (Standard)
+PASS Material valido: CrossbowDeath/Winch_LOD0 -> Crossbow_DarkWood (Standard)
+PASS Material valido: CrossbowDeath/Winch_LOD0 -> Crossbow_Iron (Standard)
+PASS Material valido: CrossbowDeath/Winch_LOD0 -> Crossbow_Wood (Standard)
+PASS Material valido: CrossbowDeath/CollapseDust -> Crossbow_SmokeFx (Legacy Shaders/Particles/Alpha Blended)
+PASS Material valido: CrossbowDeath/ImpactDust -> Crossbow_SmokeFx (Legacy Shaders/Particles/Alpha Blended)
+PASS CrossbowDeath: tem renderers
+PASS Material valido: CrossbowImpact/Sparks -> Crossbow_SparkFx (Legacy Shaders/Particles/Additive)
+PASS Material valido: CrossbowImpact/Dust -> Crossbow_SmokeFx (Legacy Shaders/Particles/Alpha Blended)
+PASS CrossbowImpact: tem renderers
+PASS Material valido: CrossbowMuzzle/Puff -> Crossbow_SmokeFx (Legacy Shaders/Particles/Alpha Blended)
+PASS Material valido: CrossbowMuzzle/Dust -> Crossbow_SmokeFx (Legacy Shaders/Particles/Alpha Blended)
+PASS CrossbowMuzzle: tem renderers
+PASS Crossbow_Wood: Standard com textura procedural
+PASS Crossbow_DarkWood: Standard com textura procedural
+PASS Crossbow_Iron: Standard com textura procedural
+PASS Crossbow_Rope: Standard com textura procedural
+PASS Crossbow_Feather: Standard
+PASS Textura Crossbow_Wood.png leve (368 KB)
+PASS Textura Crossbow_Iron.png leve (84 KB)
+PASS Textura Crossbow_Rope.png leve (30 KB)
+PASS Textura Crossbow_Smoke.png leve (10 KB)
+PASS Textura Crossbow_Spark.png leve (2 KB)
+PASS Sockets BoltSpawn e WeaponMount no visual
+PASS Sockets sao filhos do osso Root
+INFO BoltSpawn (0.000, 1.058, 1.050), WeaponMount (0.000, 1.100, 0.930)
+PASS BoltSpawn na ponta do trilho (z ~ 1,05, y ~ 1,06)
+PASS WeaponMount no centro do cabecote
+PASS BoltSpawn aponta para +Z
+PASS AnimatorController da Balestra
+PASS Parametro Running
+PASS Parametro Attacking
+PASS Parametro Hit
+PASS Parametro Speed
+PASS Parametro Fire
+PASS Parametro Damaged
+PASS Tipos: Fire/Damaged trigger, Speed float
+PASS Estados da camada base: Idle, Move, Fire, Reload
+PASS Fire -> estado Fire
+PASS Fire -> Reload
+PASS Reload -> Idle
+PASS Speed -> Move
+PASS Move com velocidade de clipe dirigida por Speed
+PASS Camada Hit com mascara
+PASS Damaged -> Hit
+PASS Todos os estados tem clipe
+PASS Clip Idle: Generic copiando o avatar da Balestra
+PASS Clip Idle: 2,00s dentro de [1,5, 3]
+PASS Clip Idle: loop=True
+PASS Clip Idle: deformacao finita, altura 0,00..1,47 m, extensao max 2,45 m
+PASS Clip Move: Generic copiando o avatar da Balestra
+PASS Clip Move: 4,00s dentro de [3,5, 4,5]
+PASS Clip Move: loop=True
+PASS Clip Move: deformacao finita, altura 0,00..1,47 m, extensao max 2,45 m
+PASS Clip Reload: Generic copiando o avatar da Balestra
+PASS Clip Reload: 1,40s dentro de [1, 1,8]
+PASS Clip Reload: loop=False
+PASS Clip Reload: deformacao finita, altura 0,00..1,47 m, extensao max 2,45 m
+PASS Clip Fire: Generic copiando o avatar da Balestra
+PASS Clip Fire: 0,80s dentro de [0,5, 1]
+PASS Clip Fire: loop=False
+PASS Clip Fire: deformacao finita, altura -0,02..1,48 m, extensao max 2,45 m
+PASS Clip Hit: Generic copiando o avatar da Balestra
+PASS Clip Hit: 0,60s dentro de [0,3, 0,9]
+PASS Clip Hit: loop=False
+PASS Clip Hit: deformacao finita, altura -0,01..1,48 m, extensao max 2,46 m
+PASS Clip Destroy: Generic copiando o avatar da Balestra
+PASS Clip Destroy: 2,00s dentro de [1,2, 3]
+PASS Clip Destroy: loop=False
+PASS Clip Destroy: deformacao finita, altura -0,03..1,47 m, extensao max 2,62 m
+PASS Fim de Reload = pose de Idle (diferenca max 0,0003 m)
+PASS Inicio de Fire = pose de Idle (diferenca max 0,0001 m)
+PASS Fim de Fire = inicio de Reload (diferenca max 0,0002 m)
+PASS Idle: virote carregado visivel (0,61 m)
+PASS Fire: virote presente antes da soltura e sumido depois
+PASS Reload: virote volta ao trilho
+PASS Fire: a corda se move (centro da corda muda de posicao)
+PASS Move: as rodas giram
+PASS Move: loop fecha em uma volta de roda
+PASS CrossbowBolt.prefab com malha propria (projetil separado)
+PASS Virote do projetil nao e parte da malha da unidade
+INFO Virote: tamanho (0.062, 0.062, 0.606), bounds z -0,606..0,000
+PASS Virote com ~0,6 m de comprimento
+PASS Pivo do virote na ponta (+Z = direcao do voo)
+PASS ProjectileContract: crossbow_bolt, Piercing, voo reto
+PASS Contrato do projetil aponta para o prefab e o efeito de impacto reais
+PASS CrossbowImpact.prefab: 2 sistemas de particulas com material
+PASS CrossbowMuzzle.prefab: 2 sistemas de particulas com material
+PASS CrossbowDeath.prefab toca o clipe Destroy no estado inicial
+PASS CrossbowDeath.prefab com poeira da queda
+PASS LOD0 front: renderiza (primeiro plano 20987px, magenta 0px)
+PASS LOD0 back: renderiza (primeiro plano 22503px, magenta 0px)
+PASS LOD0 side: renderiza (primeiro plano 31710px, magenta 0px)
+PASS LOD0 iso: renderiza (primeiro plano 33347px, magenta 0px)
+PASS LOD1 front: renderiza (primeiro plano 20874px, magenta 0px)
+PASS LOD1 back: renderiza (primeiro plano 22330px, magenta 0px)
+PASS LOD1 side: renderiza (primeiro plano 31328px, magenta 0px)
+PASS LOD1 iso: renderiza (primeiro plano 32702px, magenta 0px)
+PASS LOD2 front: renderiza (primeiro plano 19188px, magenta 0px)
+PASS LOD2 back: renderiza (primeiro plano 20205px, magenta 0px)
+PASS LOD2 side: renderiza (primeiro plano 28804px, magenta 0px)
+PASS LOD2 iso: renderiza (primeiro plano 30698px, magenta 0px)
+PASS Pose Idle iso: renderiza (fg 33347px, magenta 0px)
+PASS Pose Idle top: renderiza (fg 32059px, magenta 0px)
+PASS Pose Fire-release iso: renderiza (fg 33050px, magenta 0px)
+PASS Pose Fire-release top: renderiza (fg 31884px, magenta 0px)
+PASS Pose Fire-recoil iso: renderiza (fg 33195px, magenta 0px)
+PASS Pose Fire-recoil top: renderiza (fg 32003px, magenta 0px)
+PASS Pose Fire-relaxed iso: renderiza (fg 33344px, magenta 0px)
+PASS Pose Fire-relaxed top: renderiza (fg 32043px, magenta 0px)
+PASS Pose Reload-draw iso: renderiza (fg 33347px, magenta 0px)
+PASS Pose Reload-draw top: renderiza (fg 32059px, magenta 0px)
+PASS Pose Reload-bolt iso: renderiza (fg 33345px, magenta 0px)
+PASS Pose Reload-bolt top: renderiza (fg 32043px, magenta 0px)
+PASS Pose Move iso: renderiza (fg 33317px, magenta 0px)
+PASS Pose Move top: renderiza (fg 31900px, magenta 0px)
+PASS Pose Hit iso: renderiza (fg 33287px, magenta 0px)
+PASS Pose Hit top: renderiza (fg 32004px, magenta 0px)
+PASS Pose Destroy-mid iso: renderiza (fg 33204px, magenta 0px)
+PASS Pose Destroy-mid top: renderiza (fg 32234px, magenta 0px)
+PASS Pose Destroy-end iso: renderiza (fg 33236px, magenta 0px)
+PASS Pose Destroy-end top: renderiza (fg 34854px, magenta 0px)
+PASS Crossbow.prefab (wrapper da unidade) existe
+PASS Wrapper com tag Unit e layer 12
+PASS Wrapper tem CharacterManager
+PASS Wrapper tem CharacterBT
+PASS Wrapper tem FogRendererToggler
+PASS Wrapper tem AdvancedUnitEraBinding
+PASS Wrapper tem AdvancedUnitAnimatorDriver
+PASS Wrapper tem ProjectileAttackController
+PASS Wrapper tem AdvancedUnitDeathEffect
+PASS NavMeshAgent com velocidade 3,5
+PASS BoxCollider com a pegada da carreta (1,8 x 2,45)
+PASS Wrapper tem AudioSource
+PASS Caminho Mesh/MinimapIcon (exigido por Unit) existe
+PASS Anel de time ~ pegada (diametro 2,20 m)
+PASS CharacterManager.meshRenderer atribuido (anel do time)
+PASS CharacterManager.animator atribuido
+PASS selectionCircle, fov e contextualSource atribuidos
+PASS AdvancedUnitEraBinding.contract = Crossbow.asset
+PASS ProjectileAttackController: contrato, animator, BoltSpawn e releaseDelay 0,20
+PASS AdvancedUnitDeathEffect usa CrossbowDeath.prefab
+PASS AdvancedUnitAnimatorDriver ligado ao mesmo Animator
+PASS LODGroup preservado no wrapper
+PASS Contrato Crossbow.asset
+PASS Codigo crossbow, dataKind Character
+PASS Contrato valido (dados de jogo): OK
+PASS Contrato com visual pronto: pronto
+PASS visual.prefab = wrapper Crossbow.prefab
+PASS Animacoes do contrato: Idle, Move, Reload, Fire, Hit, Destroy
+PASS Contrato: clipe Idle = Crossbow@Idle.fbx
+PASS Contrato: clipe Move = Crossbow@Move.fbx
+PASS Contrato: clipe Reload = Crossbow@Reload.fbx
+PASS Contrato: clipe Fire = Crossbow@Fire.fbx
+PASS Contrato: clipe Hit = Crossbow@Hit.fbx
+PASS Contrato: clipe Destroy = Crossbow@Destroy.fbx
+PASS Socket BoltSpawn resolve em Mesh/CrossbowVisual/CrossbowRig/Root/Sockets/BoltSpawn
+PASS Socket WeaponMount resolve em Mesh/CrossbowVisual/CrossbowRig/Root/Sockets/WeaponMount
+PASS Efeitos do contrato apontam para assets reais
+PASS Malhas do contrato apontam para assets reais
+PASS buildSettingsApproved permanece falso (decisao do coordenador)
+PASS Quatro eras em ordem
+PASS Progressao: vida e dano crescentes, alcance nao decrescente, cooldown nao crescente, penetracao crescente
+PASS Era Ancient: UnitDataFields 28 PV / 22 dano / alcance 14
+PASS Era Classical: UnitDataFields 35 PV / 29 dano / alcance 15,5
+PASS Era Medieval: UnitDataFields 43 PV / 37 dano / alcance 17
+PASS Era Imperial: UnitDataFields 52 PV / 47 dano / alcance 18,5
+PASS CharacterData 'crossbow' referencia o wrapper
+PASS CharacterData com valores da era Ancient (alcance 14)
+PASS Catalogo Resources carrega 'crossbow' (10 personagens)
+PASS Codigos de personagem unicos: archer, catapult, combat_mage, crossbow, dark_knight, heraldic_knight, paladin_healer, soldier, spearman, worker
+PASS AdvancedUnitDataBridge.CanBind: ok
+CROSSBOW_AUDIT_PASSED

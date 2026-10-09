@@ -1,0 +1,28 @@
+{
+  "objects": [
+    {
+      "name": "CombatMage_Staff",
+      "triangles": 1556,
+      "materials": [
+        "CombatMage_StaffWood",
+        "CombatMage_StaffLeather",
+        "CombatMage_StaffBronze"
+      ]
+    },
+    {
+      "name": "Orb",
+      "triangles": 520,
+      "materials": [
+        "CombatMage_Orb"
+      ]
+    }
+  ],
+  "staffDimensionsM": [
+    0.168,
+    0.168,
+    2.0
+  ],
+  "gripToFootM": 0.82,
+  "orbCenterAboveGripM": 1.07,
+  "orbRadiusM": 0.075
+}

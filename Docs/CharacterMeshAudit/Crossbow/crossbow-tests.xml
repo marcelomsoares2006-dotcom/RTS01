@@ -1,0 +1,672 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="102" result="Passed" total="102" passed="102" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0,5413548">
+  <test-suite type="TestSuite" id="1000" name="RTSTutorial" fullname="RTSTutorial" runstate="Runnable" testcasecount="108" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.541355" total="102" passed="102" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1113" name="EraImperial.AdvancedUnits.Tests.dll" fullname="C:/Users/User/Downloads/Era Imperial/EraImperial-UnityRTS-Base/RTS01-Corrigido/Library/ScriptAssemblies/EraImperial.AdvancedUnits.Tests.dll" runstate="Runnable" testcasecount="102" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.533497" total="102" passed="102" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="13232" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1114" name="EraImperial" fullname="EraImperial" runstate="Runnable" testcasecount="102" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.532265" total="102" passed="102" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1115" name="AdvancedUnits" fullname="EraImperial.AdvancedUnits" runstate="Runnable" testcasecount="102" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.524017" total="102" passed="102" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1116" name="Tests" fullname="EraImperial.AdvancedUnits.Tests" runstate="Runnable" testcasecount="102" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.522900" total="102" passed="102" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1001" name="BridgeAndCatalogTests" fullname="EraImperial.AdvancedUnits.Tests.BridgeAndCatalogTests" classname="EraImperial.AdvancedUnits.Tests.BridgeAndCatalogTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.254017" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1003" name="Bridge_CopiesEraStatsIntoCharacterData_AndMapsCostToResourceValues" fullname="EraImperial.AdvancedUnits.Tests.BridgeAndCatalogTests.Bridge_CopiesEraStatsIntoCharacterData_AndMapsCostToResourceValues" methodname="Bridge_CopiesEraStatsIntoCharacterData_AndMapsCostToResourceValues" classname="EraImperial.AdvancedUnits.Tests.BridgeAndCatalogTests" runstate="Runnable" seed="1881108428" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.030660" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1005" name="Bridge_RefusesInvalidGameplayDataBeforeLookingAtVisuals" fullname="EraImperial.AdvancedUnits.Tests.BridgeAndCatalogTests.Bridge_RefusesInvalidGameplayDataBeforeLookingAtVisuals" methodname="Bridge_RefusesInvalidGameplayDataBeforeLookingAtVisuals" classname="EraImperial.AdvancedUnits.Tests.BridgeAndCatalogTests" runstate="Runnable" seed="607064752" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.005367" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1004" name="Bridge_RefusesToBindContractsWhoseVisualsAreNotReal" fullname="EraImperial.AdvancedUnits.Tests.BridgeAndCatalogTests.Bridge_RefusesToBindContractsWhoseVisualsAreNotReal" methodname="Bridge_RefusesToBindContractsWhoseVisualsAreNotReal" classname="EraImperial.AdvancedUnits.Tests.BridgeAndCatalogTests" runstate="Runnable" seed="791528764" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.007427" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1007" name="BuildSettings_DoNotReachAnyAdvancedUnitAsset" fullname="EraImperial.AdvancedUnits.Tests.BridgeAndCatalogTests.BuildSettings_DoNotReachAnyAdvancedUnitAsset" methodname="BuildSettings_DoNotReachAnyAdvancedUnitAsset" classname="EraImperial.AdvancedUnits.Tests.BridgeAndCatalogTests" runstate="Runnable" seed="781411471" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.055346" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1006" name="CatalogContainsAnAdvancedUnitIfAndOnlyIfItsContractIsValidAndVisuallyReal" fullname="EraImperial.AdvancedUnits.Tests.BridgeAndCatalogTests.CatalogContainsAnAdvancedUnitIfAndOnlyIfItsContractIsValidAndVisuallyReal" methodname="CatalogContainsAnAdvancedUnitIfAndOnlyIfItsContractIsValidAndVisuallyReal" classname="EraImperial.AdvancedUnits.Tests.BridgeAndCatalogTests" runstate="Runnable" seed="1021089364" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.131814" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1002" name="UnitDataAndBuildingData_ExposeEveryFieldTheContractsMapTo" fullname="EraImperial.AdvancedUnits.Tests.BridgeAndCatalogTests.UnitDataAndBuildingData_ExposeEveryFieldTheContractsMapTo" methodname="UnitDataAndBuildingData_ExposeEveryFieldTheContractsMapTo" classname="EraImperial.AdvancedUnits.Tests.BridgeAndCatalogTests" runstate="Runnable" seed="1092662464" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.000757" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1055" name="CatapultVisualTests" fullname="EraImperial.AdvancedUnits.Tests.CatapultVisualTests" classname="EraImperial.AdvancedUnits.Tests.CatapultVisualTests" runstate="Runnable" testcasecount="10" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.058069" total="10" passed="10" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1058" name="Animator_HasStandardParameters_AndTheRequestedFlow" fullname="EraImperial.AdvancedUnits.Tests.CatapultVisualTests.Animator_HasStandardParameters_AndTheRequestedFlow" methodname="Animator_HasStandardParameters_AndTheRequestedFlow" classname="EraImperial.AdvancedUnits.Tests.CatapultVisualTests" runstate="Runnable" seed="382158074" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.012313" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1064" name="CharacterData_IsRegistered_WithAncientStats_AndProgressionHoldsAcrossFourEras" fullname="EraImperial.AdvancedUnits.Tests.CatapultVisualTests.CharacterData_IsRegistered_WithAncientStats_AndProgressionHoldsAcrossFourEras" methodname="CharacterData_IsRegistered_WithAncientStats_AndProgressionHoldsAcrossFourEras" classname="EraImperial.AdvancedUnits.Tests.CatapultVisualTests" runstate="Runnable" seed="822086170" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.003603" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1059" name="Clips_AreImported_WithFireReleaseEvent" fullname="EraImperial.AdvancedUnits.Tests.CatapultVisualTests.Clips_AreImported_WithFireReleaseEvent" methodname="Clips_AreImported_WithFireReleaseEvent" classname="EraImperial.AdvancedUnits.Tests.CatapultVisualTests" runstate="Runnable" seed="611795992" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.002087" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1062" name="Contract_IsVisualReady_AndBoundToRealAssets" fullname="EraImperial.AdvancedUnits.Tests.CatapultVisualTests.Contract_IsVisualReady_AndBoundToRealAssets" methodname="Contract_IsVisualReady_AndBoundToRealAssets" classname="EraImperial.AdvancedUnits.Tests.CatapultVisualTests" runstate="Runnable" seed="190191050" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.001956" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1060" name="Lods_AreStrictlyDecreasing_AndWithinBudget" fullname="EraImperial.AdvancedUnits.Tests.CatapultVisualTests.Lods_AreStrictlyDecreasing_AndWithinBudget" methodname="Lods_AreStrictlyDecreasing_AndWithinBudget" classname="EraImperial.AdvancedUnits.Tests.CatapultVisualTests" runstate="Runnable" seed="59143939" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.007049" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1061" name="Materials_AreStandardOrParticleShaders_WithoutErrors" fullname="EraImperial.AdvancedUnits.Tests.CatapultVisualTests.Materials_AreStandardOrParticleShaders_WithoutErrors" methodname="Materials_AreStandardOrParticleShaders_WithoutErrors" classname="EraImperial.AdvancedUnits.Tests.CatapultVisualTests" runstate="Runnable" seed="1150460614" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.017247" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1065" name="Model_IsProceduralAndLicenceIsDocumented" fullname="EraImperial.AdvancedUnits.Tests.CatapultVisualTests.Model_IsProceduralAndLicenceIsDocumented" methodname="Model_IsProceduralAndLicenceIsDocumented" classname="EraImperial.AdvancedUnits.Tests.CatapultVisualTests" runstate="Runnable" seed="1409573836" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.000641" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1063" name="Projectile_IsSeparate_Ballistic_AndHasNoRequiredScripts" fullname="EraImperial.AdvancedUnits.Tests.CatapultVisualTests.Projectile_IsSeparate_Ballistic_AndHasNoRequiredScripts" methodname="Projectile_IsSeparate_Ballistic_AndHasNoRequiredScripts" classname="EraImperial.AdvancedUnits.Tests.CatapultVisualTests" runstate="Runnable" seed="2108009930" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.001885" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1057" name="Rig_HasTheGenericSkeleton_AndTheRealSockets" fullname="EraImperial.AdvancedUnits.Tests.CatapultVisualTests.Rig_HasTheGenericSkeleton_AndTheRealSockets" methodname="Rig_HasTheGenericSkeleton_AndTheRealSockets" classname="EraImperial.AdvancedUnits.Tests.CatapultVisualTests" runstate="Runnable" seed="1667101405" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.001891" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1056" name="Wrapper_HasEveryRequiredComponent_WithRealReferences" fullname="EraImperial.AdvancedUnits.Tests.CatapultVisualTests.Wrapper_HasEveryRequiredComponent_WithRealReferences" methodname="Wrapper_HasEveryRequiredComponent_WithRealReferences" classname="EraImperial.AdvancedUnits.Tests.CatapultVisualTests" runstate="Runnable" seed="1122516984" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.002024" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1066" name="CrossbowVisualTests" fullname="EraImperial.AdvancedUnits.Tests.CrossbowVisualTests" classname="EraImperial.AdvancedUnits.Tests.CrossbowVisualTests" runstate="Runnable" testcasecount="10" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.034038" total="10" passed="10" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1069" name="Animator_DeclaresStandardParameters_AndRequiredTransitions" fullname="EraImperial.AdvancedUnits.Tests.CrossbowVisualTests.Animator_DeclaresStandardParameters_AndRequiredTransitions" methodname="Animator_DeclaresStandardParameters_AndRequiredTransitions" classname="EraImperial.AdvancedUnits.Tests.CrossbowVisualTests" runstate="Runnable" seed="1825309218" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.003713" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1076" name="CharacterData_IsRegisteredOnlyWithTheRealWrapper" fullname="EraImperial.AdvancedUnits.Tests.CrossbowVisualTests.CharacterData_IsRegisteredOnlyWithTheRealWrapper" methodname="CharacterData_IsRegisteredOnlyWithTheRealWrapper" classname="EraImperial.AdvancedUnits.Tests.CrossbowVisualTests" runstate="Runnable" seed="260892042" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.000724" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1070" name="Clips_ExistAndFireHasReleaseEvent" fullname="EraImperial.AdvancedUnits.Tests.CrossbowVisualTests.Clips_ExistAndFireHasReleaseEvent" methodname="Clips_ExistAndFireHasReleaseEvent" classname="EraImperial.AdvancedUnits.Tests.CrossbowVisualTests" runstate="Runnable" seed="1151511709" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.006517" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1073" name="Contract_IsVisuallyReady_AndPointsToRealAssets" fullname="EraImperial.AdvancedUnits.Tests.CrossbowVisualTests.Contract_IsVisuallyReady_AndPointsToRealAssets" methodname="Contract_IsVisuallyReady_AndPointsToRealAssets" classname="EraImperial.AdvancedUnits.Tests.CrossbowVisualTests" runstate="Runnable" seed="45350701" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.002032" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1075" name="ContractTiers_ProgressAcrossFourEras" fullname="EraImperial.AdvancedUnits.Tests.CrossbowVisualTests.ContractTiers_ProgressAcrossFourEras" methodname="ContractTiers_ProgressAcrossFourEras" classname="EraImperial.AdvancedUnits.Tests.CrossbowVisualTests" runstate="Runnable" seed="774899140" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.001269" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1072" name="Lods_AreThreeStrictlyDecreasingWithinBudget" fullname="EraImperial.AdvancedUnits.Tests.CrossbowVisualTests.Lods_AreThreeStrictlyDecreasingWithinBudget" methodname="Lods_AreThreeStrictlyDecreasingWithinBudget" classname="EraImperial.AdvancedUnits.Tests.CrossbowVisualTests" runstate="Runnable" seed="552535909" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.004062" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1071" name="Materials_AreValid_NoMagentaShaders" fullname="EraImperial.AdvancedUnits.Tests.CrossbowVisualTests.Materials_AreValid_NoMagentaShaders" methodname="Materials_AreValid_NoMagentaShaders" classname="EraImperial.AdvancedUnits.Tests.CrossbowVisualTests" runstate="Runnable" seed="1891884329" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.010904" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1074" name="Projectile_IsSeparate_PiercingAndBoundToRealPrefabs" fullname="EraImperial.AdvancedUnits.Tests.CrossbowVisualTests.Projectile_IsSeparate_PiercingAndBoundToRealPrefabs" methodname="Projectile_IsSeparate_PiercingAndBoundToRealPrefabs" classname="EraImperial.AdvancedUnits.Tests.CrossbowVisualTests" runstate="Runnable" seed="679670715" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.000925" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1068" name="WrapperComponents_ReferenceContractAnimatorSocketAndDeathPrefab" fullname="EraImperial.AdvancedUnits.Tests.CrossbowVisualTests.WrapperComponents_ReferenceContractAnimatorSocketAndDeathPrefab" methodname="WrapperComponents_ReferenceContractAnimatorSocketAndDeathPrefab" classname="EraImperial.AdvancedUnits.Tests.CrossbowVisualTests" runstate="Runnable" seed="1381898398" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.001048" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1067" name="WrapperPrefab_HasGameplayComponents_AndFootprint" fullname="EraImperial.AdvancedUnits.Tests.CrossbowVisualTests.WrapperPrefab_HasGameplayComponents_AndFootprint" methodname="WrapperPrefab_HasGameplayComponents_AndFootprint" classname="EraImperial.AdvancedUnits.Tests.CrossbowVisualTests" runstate="Runnable" seed="1293992208" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.000490" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1008" name="GeneratedContractAssetsTests" fullname="EraImperial.AdvancedUnits.Tests.GeneratedContractAssetsTests" classname="EraImperial.AdvancedUnits.Tests.GeneratedContractAssetsTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.009354" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1010" name="ContractAssets_AreValid_ProgressiveAndHaveSeparateProjectileAssets" fullname="EraImperial.AdvancedUnits.Tests.GeneratedContractAssetsTests.ContractAssets_AreValid_ProgressiveAndHaveSeparateProjectileAssets" methodname="ContractAssets_AreValid_ProgressiveAndHaveSeparateProjectileAssets" classname="EraImperial.AdvancedUnits.Tests.GeneratedContractAssetsTests" runstate="Runnable" seed="926507332" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.003718" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1011" name="ContractAssets_VisualReadinessIsRealOrExplicitlyPending" fullname="EraImperial.AdvancedUnits.Tests.GeneratedContractAssetsTests.ContractAssets_VisualReadinessIsRealOrExplicitlyPending" methodname="ContractAssets_VisualReadinessIsRealOrExplicitlyPending" classname="EraImperial.AdvancedUnits.Tests.GeneratedContractAssetsTests" runstate="Runnable" seed="1428729307" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.002397" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1009" name="FourContractAssetsExist_WithTheRequiredUniqueCodes" fullname="EraImperial.AdvancedUnits.Tests.GeneratedContractAssetsTests.FourContractAssetsExist_WithTheRequiredUniqueCodes" methodname="FourContractAssetsExist_WithTheRequiredUniqueCodes" classname="EraImperial.AdvancedUnits.Tests.GeneratedContractAssetsTests" runstate="Runnable" seed="301776528" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.002360" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1012" name="PaladinHealingTests" fullname="EraImperial.AdvancedUnits.Tests.PaladinHealingTests" classname="EraImperial.AdvancedUnits.Tests.PaladinHealingTests" runstate="Runnable" testcasecount="10" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.011520" total="10" passed="10" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1018" name="HealCooldown_BlocksEarlyPulsesAndDoesNotRestartWhenBlocked" fullname="EraImperial.AdvancedUnits.Tests.PaladinHealingTests.HealCooldown_BlocksEarlyPulsesAndDoesNotRestartWhenBlocked" methodname="HealCooldown_BlocksEarlyPulsesAndDoesNotRestartWhenBlocked" classname="EraImperial.AdvancedUnits.Tests.PaladinHealingTests" runstate="Runnable" seed="557434876" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.003092" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1017" name="HealNeverExceedsMissingHealth" fullname="EraImperial.AdvancedUnits.Tests.PaladinHealingTests.HealNeverExceedsMissingHealth" methodname="HealNeverExceedsMissingHealth" classname="EraImperial.AdvancedUnits.Tests.PaladinHealingTests" runstate="Runnable" seed="920873410" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.000727" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1013" name="HealsAlliesInsideRadius_AndOnlyThem" fullname="EraImperial.AdvancedUnits.Tests.PaladinHealingTests.HealsAlliesInsideRadius_AndOnlyThem" methodname="HealsAlliesInsideRadius_AndOnlyThem" classname="EraImperial.AdvancedUnits.Tests.PaladinHealingTests" runstate="Runnable" seed="10106215" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.001831" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1021" name="LaterEras_HealMoreAndReachFarther" fullname="EraImperial.AdvancedUnits.Tests.PaladinHealingTests.LaterEras_HealMoreAndReachFarther" methodname="LaterEras_HealMoreAndReachFarther" classname="EraImperial.AdvancedUnits.Tests.PaladinHealingTests" runstate="Runnable" seed="426556690" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.000856" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1014" name="NeverHealsEnemies_EvenAdjacentAndWounded" fullname="EraImperial.AdvancedUnits.Tests.PaladinHealingTests.NeverHealsEnemies_EvenAdjacentAndWounded" methodname="NeverHealsEnemies_EvenAdjacentAndWounded" classname="EraImperial.AdvancedUnits.Tests.PaladinHealingTests" runstate="Runnable" seed="173989659" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.000475" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1022" name="PaladinFightsMelee_WithMeleeRangeInEveryEra" fullname="EraImperial.AdvancedUnits.Tests.PaladinHealingTests.PaladinFightsMelee_WithMeleeRangeInEveryEra" methodname="PaladinFightsMelee_WithMeleeRangeInEveryEra" classname="EraImperial.AdvancedUnits.Tests.PaladinHealingTests" runstate="Runnable" seed="1748160744" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.000431" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1020" name="PerTargetCap_IsIndependentBetweenTargets" fullname="EraImperial.AdvancedUnits.Tests.PaladinHealingTests.PerTargetCap_IsIndependentBetweenTargets" methodname="PerTargetCap_IsIndependentBetweenTargets" classname="EraImperial.AdvancedUnits.Tests.PaladinHealingTests" runstate="Runnable" seed="1965198416" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.000571" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1019" name="PerTargetCap_StopsHealingUntilTheWindowExpires" fullname="EraImperial.AdvancedUnits.Tests.PaladinHealingTests.PerTargetCap_StopsHealingUntilTheWindowExpires" methodname="PerTargetCap_StopsHealingUntilTheWindowExpires" classname="EraImperial.AdvancedUnits.Tests.PaladinHealingTests" runstate="Runnable" seed="1310678950" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.000741" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1015" name="RadiusBoundaryIsInclusive_AndHeightIsIgnored" fullname="EraImperial.AdvancedUnits.Tests.PaladinHealingTests.RadiusBoundaryIsInclusive_AndHeightIsIgnored" methodname="RadiusBoundaryIsInclusive_AndHeightIsIgnored" classname="EraImperial.AdvancedUnits.Tests.PaladinHealingTests" runstate="Runnable" seed="1322876267" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.000413" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1016" name="SkipsDeadFullHealthAndSelf_UnlessSelfHealingIsEnabled" fullname="EraImperial.AdvancedUnits.Tests.PaladinHealingTests.SkipsDeadFullHealthAndSelf_UnlessSelfHealingIsEnabled" methodname="SkipsDeadFullHealthAndSelf_UnlessSelfHealingIsEnabled" classname="EraImperial.AdvancedUnits.Tests.PaladinHealingTests" runstate="Runnable" seed="1565675592" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.000515" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1023" name="RangedAndSiegeCombatTests" fullname="EraImperial.AdvancedUnits.Tests.RangedAndSiegeCombatTests" classname="EraImperial.AdvancedUnits.Tests.RangedAndSiegeCombatTests" runstate="Runnable" testcasecount="17" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.012726" total="17" passed="17" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1024" name="Catapult_FiresOnlyBetweenMinimumAndMaximumRange_BoundariesIncluded" fullname="EraImperial.AdvancedUnits.Tests.RangedAndSiegeCombatTests.Catapult_FiresOnlyBetweenMinimumAndMaximumRange_BoundariesIncluded" methodname="Catapult_FiresOnlyBetweenMinimumAndMaximumRange_BoundariesIncluded" classname="EraImperial.AdvancedUnits.Tests.RangedAndSiegeCombatTests" runstate="Runnable" seed="1488943631" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.000704" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1026" name="Catapult_HasLongerReachAndStrongerHitsThanEveryOtherAdvancedUnit" fullname="EraImperial.AdvancedUnits.Tests.RangedAndSiegeCombatTests.Catapult_HasLongerReachAndStrongerHitsThanEveryOtherAdvancedUnit" methodname="Catapult_HasLongerReachAndStrongerHitsThanEveryOtherAdvancedUnit" classname="EraImperial.AdvancedUnits.Tests.RangedAndSiegeCombatTests" runstate="Runnable" seed="319972087" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.000374" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1027" name="Catapult_ImpactHitsTheDirectTargetAndRadialFallsOffLinearly" fullname="EraImperial.AdvancedUnits.Tests.RangedAndSiegeCombatTests.Catapult_ImpactHitsTheDirectTargetAndRadialFallsOffLinearly" methodname="Catapult_ImpactHitsTheDirectTargetAndRadialFallsOffLinearly" classname="EraImperial.AdvancedUnits.Tests.RangedAndSiegeCombatTests" runstate="Runnable" seed="1194800460" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.002562" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1028" name="Catapult_ImpactSparesAlliesAndTheDeadUnlessFriendlyFireIsOn" fullname="EraImperial.AdvancedUnits.Tests.RangedAndSiegeCombatTests.Catapult_ImpactSparesAlliesAndTheDeadUnlessFriendlyFireIsOn" methodname="Catapult_ImpactSparesAlliesAndTheDeadUnlessFriendlyFireIsOn" classname="EraImperial.AdvancedUnits.Tests.RangedAndSiegeCombatTests" runstate="Runnable" seed="287460400" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.001116" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1030" name="Catapult_InvalidSiegeDataIsRejected" fullname="EraImperial.AdvancedUnits.Tests.RangedAndSiegeCombatTests.Catapult_InvalidSiegeDataIsRejected" methodname="Catapult_InvalidSiegeDataIsRejected" classname="EraImperial.AdvancedUnits.Tests.RangedAndSiegeCombatTests" runstate="Runnable" seed="393764617" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.000383" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1029" name="Catapult_LaterErasHitHarderWiderAndFartherAndReloadFaster" fullname="EraImperial.AdvancedUnits.Tests.RangedAndSiegeCombatTests.Catapult_LaterErasHitHarderWiderAndFartherAndReloadFaster" methodname="Catapult_LaterErasHitHarderWiderAndFartherAndReloadFaster" classname="EraImperial.AdvancedUnits.Tests.RangedAndSiegeCombatTests" runstate="Runnable" seed="2014885519" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.000658" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1031" name="Catapult_ProjectileIsSeparate_Ballistic_AndSiegeDamage" fullname="EraImperial.AdvancedUnits.Tests.RangedAndSiegeCombatTests.Catapult_ProjectileIsSeparate_Ballistic_AndSiegeDamage" methodname="Catapult_ProjectileIsSeparate_Ballistic_AndSiegeDamage" classname="EraImperial.AdvancedUnits.Tests.RangedAndSiegeCombatTests" runstate="Runnable" seed="1845503499" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.000398" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1025" name="Catapult_ReloadTimeGatesEveryShot" fullname="EraImperial.AdvancedUnits.Tests.RangedAndSiegeCombatTests.Catapult_ReloadTimeGatesEveryShot" methodname="Catapult_ReloadTimeGatesEveryShot" classname="EraImperial.AdvancedUnits.Tests.RangedAndSiegeCombatTests" runstate="Runnable" seed="702560725" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.000320" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1032" name="Crossbow_HasLongRange_AndFiresOnlyInsideItWithCooldownReady" fullname="EraImperial.AdvancedUnits.Tests.RangedAndSiegeCombatTests.Crossbow_HasLongRange_AndFiresOnlyInsideItWithCooldownReady" methodname="Crossbow_HasLongRange_AndFiresOnlyInsideItWithCooldownReady" classname="EraImperial.AdvancedUnits.Tests.RangedAndSiegeCombatTests" runstate="Runnable" seed="2123003208" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.000576" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1033" name="Crossbow_OutrangesMage_AndRangeIsNotMeleeLike" fullname="EraImperial.AdvancedUnits.Tests.RangedAndSiegeCombatTests.Crossbow_OutrangesMage_AndRangeIsNotMeleeLike" methodname="Crossbow_OutrangesMage_AndRangeIsNotMeleeLike" classname="EraImperial.AdvancedUnits.Tests.RangedAndSiegeCombatTests" runstate="Runnable" seed="1335014640" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.000301" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1034" name="Crossbow_PiercingDamageIgnoresPartOfTheArmorAndGrowsByEra" fullname="EraImperial.AdvancedUnits.Tests.RangedAndSiegeCombatTests.Crossbow_PiercingDamageIgnoresPartOfTheArmorAndGrowsByEra" methodname="Crossbow_PiercingDamageIgnoresPartOfTheArmorAndGrowsByEra" classname="EraImperial.AdvancedUnits.Tests.RangedAndSiegeCombatTests" runstate="Runnable" seed="2003734208" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.000541" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1035" name="Crossbow_ProjectileIsSeparateAndPiercing" fullname="EraImperial.AdvancedUnits.Tests.RangedAndSiegeCombatTests.Crossbow_ProjectileIsSeparateAndPiercing" methodname="Crossbow_ProjectileIsSeparateAndPiercing" classname="EraImperial.AdvancedUnits.Tests.RangedAndSiegeCombatTests" runstate="Runnable" seed="567509345" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.000348" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1036" name="Crossbow_ShortRangeIsRejected" fullname="EraImperial.AdvancedUnits.Tests.RangedAndSiegeCombatTests.Crossbow_ShortRangeIsRejected" methodname="Crossbow_ShortRangeIsRejected" classname="EraImperial.AdvancedUnits.Tests.RangedAndSiegeCombatTests" runstate="Runnable" seed="1469999102" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.000276" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1038" name="Mage_CastRespectsRangeAndCooldown" fullname="EraImperial.AdvancedUnits.Tests.RangedAndSiegeCombatTests.Mage_CastRespectsRangeAndCooldown" methodname="Mage_CastRespectsRangeAndCooldown" classname="EraImperial.AdvancedUnits.Tests.RangedAndSiegeCombatTests" runstate="Runnable" seed="776285845" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.000389" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1039" name="Mage_MagicDamageIsConfigurableAndReducedByResistance" fullname="EraImperial.AdvancedUnits.Tests.RangedAndSiegeCombatTests.Mage_MagicDamageIsConfigurableAndReducedByResistance" methodname="Mage_MagicDamageIsConfigurableAndReducedByResistance" classname="EraImperial.AdvancedUnits.Tests.RangedAndSiegeCombatTests" runstate="Runnable" seed="2094998218" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.000455" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1037" name="Mage_OutrangesEveryMeleeUnit_AndUsesMagicDamage" fullname="EraImperial.AdvancedUnits.Tests.RangedAndSiegeCombatTests.Mage_OutrangesEveryMeleeUnit_AndUsesMagicDamage" methodname="Mage_OutrangesEveryMeleeUnit_AndUsesMagicDamage" classname="EraImperial.AdvancedUnits.Tests.RangedAndSiegeCombatTests" runstate="Runnable" seed="1002021484" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.000442" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1040" name="Projectile_FlightTimeFollowsSpeed" fullname="EraImperial.AdvancedUnits.Tests.RangedAndSiegeCombatTests.Projectile_FlightTimeFollowsSpeed" methodname="Projectile_FlightTimeFollowsSpeed" classname="EraImperial.AdvancedUnits.Tests.RangedAndSiegeCombatTests" runstate="Runnable" seed="1289493808" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.000383" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1041" name="UnitCodesAndProgressionTests" fullname="EraImperial.AdvancedUnits.Tests.UnitCodesAndProgressionTests" classname="EraImperial.AdvancedUnits.Tests.UnitCodesAndProgressionTests" runstate="Runnable" testcasecount="13" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.009995" total="13" passed="13" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1053" name="BuildUnitDataFields_UsesTheRequestedEra" fullname="EraImperial.AdvancedUnits.Tests.UnitCodesAndProgressionTests.BuildUnitDataFields_UsesTheRequestedEra" methodname="BuildUnitDataFields_UsesTheRequestedEra" classname="EraImperial.AdvancedUnits.Tests.UnitCodesAndProgressionTests" runstate="Runnable" seed="1959347304" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.001735" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1050" name="Catapult_RadialDamageAndBlastGrowByEra" fullname="EraImperial.AdvancedUnits.Tests.UnitCodesAndProgressionTests.Catapult_RadialDamageAndBlastGrowByEra" methodname="Catapult_RadialDamageAndBlastGrowByEra" classname="EraImperial.AdvancedUnits.Tests.UnitCodesAndProgressionTests" runstate="Runnable" seed="271403864" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.000328" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1043" name="Contracts_CarryTheirExpectedCodes_AllDistinct" fullname="EraImperial.AdvancedUnits.Tests.UnitCodesAndProgressionTests.Contracts_CarryTheirExpectedCodes_AllDistinct" methodname="Contracts_CarryTheirExpectedCodes_AllDistinct" classname="EraImperial.AdvancedUnits.Tests.UnitCodesAndProgressionTests" runstate="Runnable" seed="340282510" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.000608" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1045" name="ContractWithWrongCode_IsRejected" fullname="EraImperial.AdvancedUnits.Tests.UnitCodesAndProgressionTests.ContractWithWrongCode_IsRejected" methodname="ContractWithWrongCode_IsRejected" classname="EraImperial.AdvancedUnits.Tests.UnitCodesAndProgressionTests" runstate="Runnable" seed="1924062759" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.000347" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1054" name="Cost_RejectsUnknownResourceAndNonPositiveAmounts" fullname="EraImperial.AdvancedUnits.Tests.UnitCodesAndProgressionTests.Cost_RejectsUnknownResourceAndNonPositiveAmounts" methodname="Cost_RejectsUnknownResourceAndNonPositiveAmounts" classname="EraImperial.AdvancedUnits.Tests.UnitCodesAndProgressionTests" runstate="Runnable" seed="191271522" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.000404" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1051" name="Crossbow_ArmorPenetrationGrowsByEra" fullname="EraImperial.AdvancedUnits.Tests.UnitCodesAndProgressionTests.Crossbow_ArmorPenetrationGrowsByEra" methodname="Crossbow_ArmorPenetrationGrowsByEra" classname="EraImperial.AdvancedUnits.Tests.UnitCodesAndProgressionTests" runstate="Runnable" seed="1057881364" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.000290" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1046" name="DefaultContracts_PassGameplayValidation" fullname="EraImperial.AdvancedUnits.Tests.UnitCodesAndProgressionTests.DefaultContracts_PassGameplayValidation" methodname="DefaultContracts_PassGameplayValidation" classname="EraImperial.AdvancedUnits.Tests.UnitCodesAndProgressionTests" runstate="Runnable" seed="607043405" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.000369" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1047" name="EveryUnit_HasExplicitProgression_AncientClassicalMedievalImperial" fullname="EraImperial.AdvancedUnits.Tests.UnitCodesAndProgressionTests.EveryUnit_HasExplicitProgression_AncientClassicalMedievalImperial" methodname="EveryUnit_HasExplicitProgression_AncientClassicalMedievalImperial" classname="EraImperial.AdvancedUnits.Tests.UnitCodesAndProgressionTests" runstate="Runnable" seed="385163079" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.000633" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1048" name="EveryUnit_HealthAndDamageGrowStrictlyByEra_RangeNeverShrinks_CooldownNeverGrows" fullname="EraImperial.AdvancedUnits.Tests.UnitCodesAndProgressionTests.EveryUnit_HealthAndDamageGrowStrictlyByEra_RangeNeverShrinks_CooldownNeverGrows" methodname="EveryUnit_HealthAndDamageGrowStrictlyByEra_RangeNeverShrinks_CooldownNeverGrows" classname="EraImperial.AdvancedUnits.Tests.UnitCodesAndProgressionTests" runstate="Runnable" seed="1790086682" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.000614" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1049" name="Paladin_HealAndRadiusGrowStrictlyByEra" fullname="EraImperial.AdvancedUnits.Tests.UnitCodesAndProgressionTests.Paladin_HealAndRadiusGrowStrictlyByEra" methodname="Paladin_HealAndRadiusGrowStrictlyByEra" classname="EraImperial.AdvancedUnits.Tests.UnitCodesAndProgressionTests" runstate="Runnable" seed="765889285" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.000391" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1052" name="ProgressionRules_RejectRegressionMissingEraAndDuplicateEra" fullname="EraImperial.AdvancedUnits.Tests.UnitCodesAndProgressionTests.ProgressionRules_RejectRegressionMissingEraAndDuplicateEra" methodname="ProgressionRules_RejectRegressionMissingEraAndDuplicateEra" classname="EraImperial.AdvancedUnits.Tests.UnitCodesAndProgressionTests" runstate="Runnable" seed="992574065" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.001368" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1044" name="Projectiles_HaveDistinctCodes_AndAreSeparateFromUnits" fullname="EraImperial.AdvancedUnits.Tests.UnitCodesAndProgressionTests.Projectiles_HaveDistinctCodes_AndAreSeparateFromUnits" methodname="Projectiles_HaveDistinctCodes_AndAreSeparateFromUnits" classname="EraImperial.AdvancedUnits.Tests.UnitCodesAndProgressionTests" runstate="Runnable" seed="1420986103" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.000511" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1042" name="UnitCodes_AreTheFourRequiredValuesAndUnique" fullname="EraImperial.AdvancedUnits.Tests.UnitCodesAndProgressionTests.UnitCodes_AreTheFourRequiredValuesAndUnique" methodname="UnitCodes_AreTheFourRequiredValuesAndUnique" classname="EraImperial.AdvancedUnits.Tests.UnitCodesAndProgressionTests" runstate="Runnable" seed="668722654" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.000296" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestSuite" id="1117" name="Visual" fullname="EraImperial.AdvancedUnits.Tests.Visual" runstate="Runnable" testcasecount="24" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.121666" total="24" passed="24" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1087" name="CombatMageVisualTests" fullname="EraImperial.AdvancedUnits.Tests.Visual.CombatMageVisualTests" classname="EraImperial.AdvancedUnits.Tests.Visual.CombatMageVisualTests" runstate="Runnable" testcasecount="11" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.060302" total="11" passed="11" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1094" name="AllRenderers_UseSupportedShaders_AndTexturesAreImported" fullname="EraImperial.AdvancedUnits.Tests.Visual.CombatMageVisualTests.AllRenderers_UseSupportedShaders_AndTexturesAreImported" methodname="AllRenderers_UseSupportedShaders_AndTexturesAreImported" classname="EraImperial.AdvancedUnits.Tests.Visual.CombatMageVisualTests" runstate="Runnable" seed="1505164339" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.027393" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1092" name="Animator_HasStandardParametersAndTransitions" fullname="EraImperial.AdvancedUnits.Tests.Visual.CombatMageVisualTests.Animator_HasStandardParametersAndTransitions" methodname="Animator_HasStandardParametersAndTransitions" classname="EraImperial.AdvancedUnits.Tests.Visual.CombatMageVisualTests" runstate="Runnable" seed="583439819" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.003918" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1091" name="Avatar_IsValidHumanoid_AndClipsShareIt" fullname="EraImperial.AdvancedUnits.Tests.Visual.CombatMageVisualTests.Avatar_IsValidHumanoid_AndClipsShareIt" methodname="Avatar_IsValidHumanoid_AndClipsShareIt" classname="EraImperial.AdvancedUnits.Tests.Visual.CombatMageVisualTests" runstate="Runnable" seed="1438489195" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.011174" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1098" name="CharacterData_IsRegisteredWithAncientStats_AndNotInBuildSettings" fullname="EraImperial.AdvancedUnits.Tests.Visual.CombatMageVisualTests.CharacterData_IsRegisteredWithAncientStats_AndNotInBuildSettings" methodname="CharacterData_IsRegisteredWithAncientStats_AndNotInBuildSettings" classname="EraImperial.AdvancedUnits.Tests.Visual.CombatMageVisualTests" runstate="Runnable" seed="160790393" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.001143" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1096" name="Contract_IsValidAndVisuallyReady_PointingToTheRealAssets" fullname="EraImperial.AdvancedUnits.Tests.Visual.CombatMageVisualTests.Contract_IsValidAndVisuallyReady_PointingToTheRealAssets" methodname="Contract_IsValidAndVisuallyReady_PointingToTheRealAssets" classname="EraImperial.AdvancedUnits.Tests.Visual.CombatMageVisualTests" runstate="Runnable" seed="851453101" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.001242" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1093" name="DeathPrefab_PlaysTheDeathClipByItself" fullname="EraImperial.AdvancedUnits.Tests.Visual.CombatMageVisualTests.DeathPrefab_PlaysTheDeathClipByItself" methodname="DeathPrefab_PlaysTheDeathClipByItself" classname="EraImperial.AdvancedUnits.Tests.Visual.CombatMageVisualTests" runstate="Runnable" seed="560720155" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.000560" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1095" name="Lods_AreSkinnedToTheSameRig_WithStrictlyDecreasingTriangles" fullname="EraImperial.AdvancedUnits.Tests.Visual.CombatMageVisualTests.Lods_AreSkinnedToTheSameRig_WithStrictlyDecreasingTriangles" methodname="Lods_AreSkinnedToTheSameRig_WithStrictlyDecreasingTriangles" classname="EraImperial.AdvancedUnits.Tests.Visual.CombatMageVisualTests" runstate="Runnable" seed="895854057" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.003941" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1097" name="Projectile_IsSeparateAndLinkedToRealPrefabs" fullname="EraImperial.AdvancedUnits.Tests.Visual.CombatMageVisualTests.Projectile_IsSeparateAndLinkedToRealPrefabs" methodname="Projectile_IsSeparateAndLinkedToRealPrefabs" classname="EraImperial.AdvancedUnits.Tests.Visual.CombatMageVisualTests" runstate="Runnable" seed="358591414" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.000788" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1090" name="Staff_IsSeparateAndAttachedToTheRightHand" fullname="EraImperial.AdvancedUnits.Tests.Visual.CombatMageVisualTests.Staff_IsSeparateAndAttachedToTheRightHand" methodname="Staff_IsSeparateAndAttachedToTheRightHand" classname="EraImperial.AdvancedUnits.Tests.Visual.CombatMageVisualTests" runstate="Runnable" seed="335679451" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.005632" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1089" name="Wrapper_ComponentReferencesPointToRealObjects" fullname="EraImperial.AdvancedUnits.Tests.Visual.CombatMageVisualTests.Wrapper_ComponentReferencesPointToRealObjects" methodname="Wrapper_ComponentReferencesPointToRealObjects" classname="EraImperial.AdvancedUnits.Tests.Visual.CombatMageVisualTests" runstate="Runnable" seed="580289777" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.001185" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1088" name="Wrapper_HasGameComponentsAndAdvancedComponents" fullname="EraImperial.AdvancedUnits.Tests.Visual.CombatMageVisualTests.Wrapper_HasGameComponentsAndAdvancedComponents" methodname="Wrapper_HasGameComponentsAndAdvancedComponents" classname="EraImperial.AdvancedUnits.Tests.Visual.CombatMageVisualTests" runstate="Runnable" seed="1185114882" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.000680" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+              <test-suite type="TestFixture" id="1099" name="PaladinHealerVisualTests" fullname="EraImperial.AdvancedUnits.Tests.Visual.PaladinHealerVisualTests" classname="EraImperial.AdvancedUnits.Tests.Visual.PaladinHealerVisualTests" runstate="Runnable" testcasecount="13" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.060615" total="13" passed="13" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1110" name="CharacterData_IsRegisteredWithTheAncientTierAndReferencesTheWrapper" fullname="EraImperial.AdvancedUnits.Tests.Visual.PaladinHealerVisualTests.CharacterData_IsRegisteredWithTheAncientTierAndReferencesTheWrapper" methodname="CharacterData_IsRegisteredWithTheAncientTierAndReferencesTheWrapper" classname="EraImperial.AdvancedUnits.Tests.Visual.PaladinHealerVisualTests" runstate="Runnable" seed="651665770" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.000968" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1103" name="Clips_AllSevenAreImportedAsHumanoidMotion" fullname="EraImperial.AdvancedUnits.Tests.Visual.PaladinHealerVisualTests.Clips_AllSevenAreImportedAsHumanoidMotion" methodname="Clips_AllSevenAreImportedAsHumanoidMotion" classname="EraImperial.AdvancedUnits.Tests.Visual.PaladinHealerVisualTests" runstate="Runnable" seed="1858068373" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.011262" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1109" name="Contract_MatchesTheRealAssets" fullname="EraImperial.AdvancedUnits.Tests.Visual.PaladinHealerVisualTests.Contract_MatchesTheRealAssets" methodname="Contract_MatchesTheRealAssets" classname="EraImperial.AdvancedUnits.Tests.Visual.PaladinHealerVisualTests" runstate="Runnable" seed="1015587921" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.002856" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1108" name="DeathPrefab_PlaysTheDeathClipOnItsOwn" fullname="EraImperial.AdvancedUnits.Tests.Visual.PaladinHealerVisualTests.DeathPrefab_PlaysTheDeathClipOnItsOwn" methodname="DeathPrefab_PlaysTheDeathClipOnItsOwn" classname="EraImperial.AdvancedUnits.Tests.Visual.PaladinHealerVisualTests" runstate="Runnable" seed="94594668" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.000799" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1107" name="HealEffectPrefab_IsOneUnitWideInXZ_WithParticlesAndTextures" fullname="EraImperial.AdvancedUnits.Tests.Visual.PaladinHealerVisualTests.HealEffectPrefab_IsOneUnitWideInXZ_WithParticlesAndTextures" methodname="HealEffectPrefab_IsOneUnitWideInXZ_WithParticlesAndTextures" classname="EraImperial.AdvancedUnits.Tests.Visual.PaladinHealerVisualTests" runstate="Runnable" seed="1692907617" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.005432" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1112" name="LicenseFile_DocumentsEveryThirdPartyOrigin" fullname="EraImperial.AdvancedUnits.Tests.Visual.PaladinHealerVisualTests.LicenseFile_DocumentsEveryThirdPartyOrigin" methodname="LicenseFile_DocumentsEveryThirdPartyOrigin" classname="EraImperial.AdvancedUnits.Tests.Visual.PaladinHealerVisualTests" runstate="Runnable" seed="1282936496" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.000969" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1105" name="Lods_AreStrictlyDecreasing_WithNormalizedWeights" fullname="EraImperial.AdvancedUnits.Tests.Visual.PaladinHealerVisualTests.Lods_AreStrictlyDecreasing_WithNormalizedWeights" methodname="Lods_AreStrictlyDecreasing_WithNormalizedWeights" classname="EraImperial.AdvancedUnits.Tests.Visual.PaladinHealerVisualTests" runstate="Runnable" seed="1506922006" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.004471" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1104" name="Materials_AreValidShaders_NoErrorShader" fullname="EraImperial.AdvancedUnits.Tests.Visual.PaladinHealerVisualTests.Materials_AreValidShaders_NoErrorShader" methodname="Materials_AreValidShaders_NoErrorShader" classname="EraImperial.AdvancedUnits.Tests.Visual.PaladinHealerVisualTests" runstate="Runnable" seed="1811950590" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.022193" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1111" name="Progression_GrowsAcrossTheFourEras" fullname="EraImperial.AdvancedUnits.Tests.Visual.PaladinHealerVisualTests.Progression_GrowsAcrossTheFourEras" methodname="Progression_GrowsAcrossTheFourEras" classname="EraImperial.AdvancedUnits.Tests.Visual.PaladinHealerVisualTests" runstate="Runnable" seed="1820810314" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.001687" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1106" name="SwordAndShield_AreSeparateObjectsOnTheSockets" fullname="EraImperial.AdvancedUnits.Tests.Visual.PaladinHealerVisualTests.SwordAndShield_AreSeparateObjectsOnTheSockets" methodname="SwordAndShield_AreSeparateObjectsOnTheSockets" classname="EraImperial.AdvancedUnits.Tests.Visual.PaladinHealerVisualTests" runstate="Runnable" seed="654781757" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.002082" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1102" name="VisualPrefab_HasValidHumanoidAvatarAndAnimatorController" fullname="EraImperial.AdvancedUnits.Tests.Visual.PaladinHealerVisualTests.VisualPrefab_HasValidHumanoidAvatarAndAnimatorController" methodname="VisualPrefab_HasValidHumanoidAvatarAndAnimatorController" classname="EraImperial.AdvancedUnits.Tests.Visual.PaladinHealerVisualTests" runstate="Runnable" seed="364037565" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.002158" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1100" name="WrapperPrefab_HasGameComponentsAndColliderAndAgent" fullname="EraImperial.AdvancedUnits.Tests.Visual.PaladinHealerVisualTests.WrapperPrefab_HasGameComponentsAndColliderAndAgent" methodname="WrapperPrefab_HasGameComponentsAndColliderAndAgent" classname="EraImperial.AdvancedUnits.Tests.Visual.PaladinHealerVisualTests" runstate="Runnable" seed="536780880" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.000675" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1101" name="WrapperPrefab_ReferencesAreAssigned_AndMeleeUsesTheBehaviourTree" fullname="EraImperial.AdvancedUnits.Tests.Visual.PaladinHealerVisualTests.WrapperPrefab_ReferencesAreAssigned_AndMeleeUsesTheBehaviourTree" methodname="WrapperPrefab_ReferencesAreAssigned_AndMeleeUsesTheBehaviourTree" classname="EraImperial.AdvancedUnits.Tests.Visual.PaladinHealerVisualTests" runstate="Runnable" seed="1089075064" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.001461" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestFixture" id="1077" name="VisualReadinessTests" fullname="EraImperial.AdvancedUnits.Tests.VisualReadinessTests" classname="EraImperial.AdvancedUnits.Tests.VisualReadinessTests" runstate="Runnable" testcasecount="9" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.008553" total="9" passed="9" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1081" name="ApprovalFlagAloneNeverMakesAnUnitBuildReady" fullname="EraImperial.AdvancedUnits.Tests.VisualReadinessTests.ApprovalFlagAloneNeverMakesAnUnitBuildReady" methodname="ApprovalFlagAloneNeverMakesAnUnitBuildReady" classname="EraImperial.AdvancedUnits.Tests.VisualReadinessTests" runstate="Runnable" seed="1389848709" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.000892" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1085" name="ContractWithoutPrefab_IsNeverReadyEvenWithAClipAndOptionalEverything" fullname="EraImperial.AdvancedUnits.Tests.VisualReadinessTests.ContractWithoutPrefab_IsNeverReadyEvenWithAClipAndOptionalEverything" methodname="ContractWithoutPrefab_IsNeverReadyEvenWithAClipAndOptionalEverything" classname="EraImperial.AdvancedUnits.Tests.VisualReadinessTests" runstate="Runnable" seed="1220999192" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.000533" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1079" name="Defaults_DeclareExpectedPaths_AndExistingShippedAssetsAreIntegrated" fullname="EraImperial.AdvancedUnits.Tests.VisualReadinessTests.Defaults_DeclareExpectedPaths_AndExistingShippedAssetsAreIntegrated" methodname="Defaults_DeclareExpectedPaths_AndExistingShippedAssetsAreIntegrated" classname="EraImperial.AdvancedUnits.Tests.VisualReadinessTests" runstate="Runnable" seed="1354005234" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.001736" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1082" name="NullAssignedPathStringOrDestroyedObject_IsNotAResolvedReference" fullname="EraImperial.AdvancedUnits.Tests.VisualReadinessTests.NullAssignedPathStringOrDestroyedObject_IsNotAResolvedReference" methodname="NullAssignedPathStringOrDestroyedObject_IsNotAResolvedReference" classname="EraImperial.AdvancedUnits.Tests.VisualReadinessTests" runstate="Runnable" seed="915323502" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.000804" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1083" name="PrefabSlotRejectsNonGameObjectAssets" fullname="EraImperial.AdvancedUnits.Tests.VisualReadinessTests.PrefabSlotRejectsNonGameObjectAssets" methodname="PrefabSlotRejectsNonGameObjectAssets" classname="EraImperial.AdvancedUnits.Tests.VisualReadinessTests" runstate="Runnable" seed="1520914792" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.000341" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1080" name="ProjectileVisuals_AreReportedPendingSeparatelyFromTheUnit" fullname="EraImperial.AdvancedUnits.Tests.VisualReadinessTests.ProjectileVisuals_AreReportedPendingSeparatelyFromTheUnit" methodname="ProjectileVisuals_AreReportedPendingSeparatelyFromTheUnit" classname="EraImperial.AdvancedUnits.Tests.VisualReadinessTests" runstate="Runnable" seed="1299164893" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.000410" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1086" name="ReferencesAreNotSharedBetweenUnits" fullname="EraImperial.AdvancedUnits.Tests.VisualReadinessTests.ReferencesAreNotSharedBetweenUnits" methodname="ReferencesAreNotSharedBetweenUnits" classname="EraImperial.AdvancedUnits.Tests.VisualReadinessTests" runstate="Runnable" seed="2035874999" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.000523" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1078" name="ShippedDefaults_ReferenceNoRealAsset_SoNoUnitIsVisuallyReady" fullname="EraImperial.AdvancedUnits.Tests.VisualReadinessTests.ShippedDefaults_ReferenceNoRealAsset_SoNoUnitIsVisuallyReady" methodname="ShippedDefaults_ReferenceNoRealAsset_SoNoUnitIsVisuallyReady" classname="EraImperial.AdvancedUnits.Tests.VisualReadinessTests" runstate="Runnable" seed="2065176310" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.000549" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1084" name="SocketsAreOnlyReadyWhenTheRealPrefabContainsThem_AndAnimationsNeedClips" fullname="EraImperial.AdvancedUnits.Tests.VisualReadinessTests.SocketsAreOnlyReadyWhenTheRealPrefabContainsThem_AndAnimationsNeedClips" methodname="SocketsAreOnlyReadyWhenTheRealPrefabContainsThem_AndAnimationsNeedClips" classname="EraImperial.AdvancedUnits.Tests.VisualReadinessTests" runstate="Runnable" seed="119080920" result="Passed" start-time="2026-10-06 13:48:14Z" end-time="2026-10-06 13:48:14Z" duration="0.000921" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[Saving results to: C:/Users/User/AppData/LocalLow/minapecheux/RTSTutorial\TestResults.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

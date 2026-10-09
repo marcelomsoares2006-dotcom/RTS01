@@ -1,41 +1,66 @@
+using System;
+using System.Reflection;
 using NUnit.Framework;
 using UnityEngine;
 
+// Este assembly de testes (EraImperial.EditorTests) nao enxerga o Assembly-CSharp, entao os tipos do
+// Archer sao acessados por nome (ScriptableObject.CreateInstance(string)) e reflexao.
 public class ArcherInfrastructureTests
 {
+    private static object Get(object target, string member)
+    {
+        Type type = target.GetType();
+        PropertyInfo property = type.GetProperty(member, BindingFlags.Public | BindingFlags.Instance);
+        if (property != null) return property.GetValue(target);
+        FieldInfo field = type.GetField(member, BindingFlags.Public | BindingFlags.Instance);
+        Assert.That(field, Is.Not.Null, $"Membro ausente: {type.Name}.{member}");
+        return field.GetValue(target);
+    }
+
+    private static void Set(object target, string field, object value)
+    {
+        FieldInfo info = target.GetType().GetField(field, BindingFlags.Public | BindingFlags.Instance);
+        Assert.That(info, Is.Not.Null, $"Campo ausente: {target.GetType().Name}.{field}");
+        info.SetValue(target, value);
+    }
+
     [Test]
     public void NewArcherContract_IsBlockedUntilSourceMeshAndLicenseExist()
     {
-        ArcherUnitContract contract = ScriptableObject.CreateInstance<ArcherUnitContract>();
+        ScriptableObject contract = ScriptableObject.CreateInstance("ArcherUnitContract");
         try
         {
-            Assert.That(contract.CharacterCode, Is.EqualTo("archer"));
-            Assert.That(contract.HasSourceMesh, Is.False);
-            Assert.That(contract.IsReadyForVisualIntegration, Is.False);
+            Assert.That(contract, Is.Not.Null, "ArcherUnitContract nao encontrado");
+            Assert.That(Get(contract, "CharacterCode"), Is.EqualTo("archer"));
+            Assert.That(Get(contract, "HasSourceMesh"), Is.False);
+            Assert.That(Get(contract, "IsReadyForVisualIntegration"), Is.False);
         }
         finally
         {
-            Object.DestroyImmediate(contract);
+            UnityEngine.Object.DestroyImmediate(contract);
         }
     }
 
     [Test]
     public void RangedAttackProfile_UsesRangeAndCooldownGates()
     {
-        RangedAttackProfile profile = ScriptableObject.CreateInstance<RangedAttackProfile>();
+        ScriptableObject profile = ScriptableObject.CreateInstance("RangedAttackProfile");
         try
         {
-            profile.maximumRange = 10f;
-            profile.attackCooldown = 2f;
+            Assert.That(profile, Is.Not.Null, "RangedAttackProfile nao encontrado");
+            Set(profile, "maximumRange", 10f);
+            Set(profile, "attackCooldown", 2f);
+            MethodInfo canAttack = profile.GetType().GetMethod("CanAttack");
+            Assert.That(canAttack, Is.Not.Null);
 
-            Assert.That(profile.CanAttack(10f, 2f), Is.True);
-            Assert.That(profile.CanAttack(10.01f, 2f), Is.False);
-            Assert.That(profile.CanAttack(5f, 1.99f), Is.False);
-            Assert.That(profile.CanAttack(-1f, 2f), Is.False);
+            Assert.That(canAttack.Invoke(profile, new object[] { 10f, 2f }), Is.EqualTo(true));
+            Assert.That(canAttack.Invoke(profile, new object[] { 10.01f, 2f }), Is.EqualTo(false));
+            Assert.That(canAttack.Invoke(profile, new object[] { 5f, 1.99f }), Is.EqualTo(false));
+            Assert.That(canAttack.Invoke(profile, new object[] { -1f, 2f }), Is.EqualTo(false));
         }
         finally
         {
-            Object.DestroyImmediate(profile);
+            UnityEngine.Object.DestroyImmediate(profile);
         }
     }
 }

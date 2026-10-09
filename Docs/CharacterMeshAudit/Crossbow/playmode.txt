@@ -1,0 +1,71 @@
+Unity 6000.6.3f1
+PASS Menu principal carregado
+PASS Map1 encontrado
+Partida nova em Map1 iniciada
+PASS Globals.CHARACTER_DATA contem 'crossbow'
+PASS Ponto inicial no NavMesh
+PASS Balestra instanciada com CharacterManager e ProjectileAttackController
+PASS Balestra posicionada no NavMesh
+PASS Visual da Balestra presente sob Mesh
+PASS Estatisticas da era Ancient aplicadas (PV 28, dano 22)
+PASS CrossbowFireEffects com efeito de disparo
+PASS Comando de movimento aceito
+PASS Balestra andou 10,0 m pelo NavMesh
+PASS Speed do Animator = 3,50 e estado Move ativo
+PASS Rodas giram durante o movimento (179 graus)
+Captura move: 0 pixels magenta
+PASS Parada: estado Idle (corda armada, virote carregado)
+PASS soldier posicionado no NavMesh
+Captura front: 0 pixels magenta
+Captura back: 0 pixels magenta
+Captura side: 0 pixels magenta
+Captura iso: 0 pixels magenta
+PASS Soldado de referencia de escala visivel nos renders
+PASS Tier Ancient do contrato
+PASS Posicao alvo alem do alcance (17,5 m) disponivel no NavMesh
+PASS worker posicionado no NavMesh
+PASS Alvo a 17,5 m (efetivo 16,8) acima do alcance maximo 14,0
+PASS Alem do alcance maximo: nenhum disparo, nenhum virote, nenhum dano, sem animacao Fire
+PASS Posicao dentro do alcance disponivel
+PASS worker posicionado no NavMesh
+PASS Em alcance e recarregada: o disparo foi iniciado
+Captura fire: 0 pixels magenta
+PASS Efeito de impacto apareceu com particulas vivas
+Captura impact: 0 pixels magenta
+PASS Sem dano antes da soltura da corda (dano nao e instantaneo)
+PASS Exatamente um disparo no ciclo (1)
+PASS Virote sai apos o releaseDelay (0,20 s)
+PASS Evento de animacao CrossbowRelease coincide com a saida do virote (+0,03 s)
+PASS Efeito de disparo (fumaca/poeira) visivel apos a soltura
+PASS Virote observado em voo (14 amostras)
+PASS Virote voa em linha reta (desvio maximo 0,000 m)
+PASS Virote nasce na ponta do trilho (BoltSpawn a 0,00 m)
+PASS Virote voa em direcao ao alvo
+PASS Velocidade do virote ~30 m/s (contrato 30)
+PASS Dano perfurante esperado (armadura 0): 22; HP 1000 -> 978
+PASS Aliado na linha de tiro nao sofreu dano (HP 400)
+PASS Impacto do virote ocorreu
+Sequencia de animacao: Idle > Fire > Reload > Idle
+PASS Animator: Fire > Reload > Idle
+Segundos desde o disparo: 2,70; cooldown 3,2
+PASS Em recarga (cooldown): tentativa de disparo recusada
+PASS Ainda em cooldown 0,3 s antes do fim: recusado
+PASS Cooldown cumprido (3,27 s >= 3,2 s): novo disparo aceito
+PASS Segundo virote: dano acumulado 44 (HP 956)
+PASS Virote contra aliado: nenhum dano (HP 400/400)
+PASS Dano na balestra aciona Damaged e a camada Hit (tremida)
+PASS LODGroup presente na unidade em jogo
+PASS Renderers por LOD: 9/1/1
+LOD em jogo, zoom ortografico 8: pixels LOD0/1/2 = 481/0/0 -> LOD0
+LOD em jogo, zoom ortografico 18: pixels LOD0/1/2 = 0/82/0 -> LOD1
+LOD em jogo, zoom ortografico 26: pixels LOD0/1/2 = 0/0/35 -> LOD2
+PASS Troca de LOD pelo zoom da camera do jogo: 8 > LOD0, 18 > LOD1, 26 > LOD2
+PASS AdvancedUnitDeathEffect instanciou o prefab de morte
+PASS CrossbowDeath(Clone) na posicao da unidade
+PASS Prefab de morte toca o estado Destroy
+PASS Animacao Destroy avanca (0,20 -> 0,46)
+PASS Poeira da queda tocando
+Captura destroy: 0 pixels magenta
+PASS 0 erros de runtime no Console
+PASS Pixels magenta em todas as capturas = 0
+CROSSBOW_PLAYMODE_PASSED

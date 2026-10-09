@@ -1,0 +1,218 @@
+PASS LICENSE.md documenta origem/licenca (Meshy, Mixamo, pecas procedurais)
+PASS LICENSE.md sem chave de API
+PASS Avatar humanoide valido (PaladinHealer.fbx)
+PASS Clip Idle: Humanoid copiando o avatar do PaladinHealer
+PASS Clip Idle: importado, humanoide, 2,53s
+PASS Clip Walk: Humanoid copiando o avatar do PaladinHealer
+PASS Clip Walk: importado, humanoide, 1,04s
+PASS Clip Run: Humanoid copiando o avatar do PaladinHealer
+PASS Clip Run: importado, humanoide, 0,63s
+PASS Clip Attack: Humanoid copiando o avatar do PaladinHealer
+PASS Clip Attack: importado, humanoide, 1,50s
+PASS Clip Heal: Humanoid copiando o avatar do PaladinHealer
+PASS Clip Heal: importado, humanoide, 1,23s
+PASS Clip Hit: Humanoid copiando o avatar do PaladinHealer
+PASS Clip Hit: importado, humanoide, 1,03s
+PASS Clip Death: Humanoid copiando o avatar do PaladinHealer
+PASS Clip Death: importado, humanoide, 5,77s
+PASS Idle/Walk/Run em loop
+PASS Heal dura 1,23s (1,0-1,5 s)
+PASS PaladinHealerVisual.prefab existe
+PASS Animator com avatar, controller e root motion desligado
+PASS LODGroup com 3 niveis
+PASS 3 SkinnedMeshRenderer (LOD0/1/2): PaladinHealer_LOD0, PaladinHealer_LOD1, PaladinHealer_LOD2
+INFO Triangulos LOD0/1/2: 31000 / 9300 / 3100
+PASS Triangulos estritamente decrescentes por LOD, LOD0 <= 31 k
+PASS PaladinHealer_LOD0: 24 ossos, rootBone ok, pesos normalizados (vertices fora = 0), <= 4 influencias (4)
+PASS PaladinHealer_LOD0: material PaladinHealer_Mat
+PASS PaladinHealer_LOD0: UV presentes
+PASS PaladinHealer_LOD1: 24 ossos, rootBone ok, pesos normalizados (vertices fora = 0), <= 4 influencias (4)
+PASS PaladinHealer_LOD1: material PaladinHealer_Mat
+PASS PaladinHealer_LOD1: UV presentes
+PASS PaladinHealer_LOD2: 24 ossos, rootBone ok, pesos normalizados (vertices fora = 0), <= 4 influencias (4)
+PASS PaladinHealer_LOD2: material PaladinHealer_Mat
+PASS PaladinHealer_LOD2: UV presentes
+PASS PaladinHealer_Mat com base color, normal map e mapa metalico/suavidade
+PASS Prefab existe: PaladinHealerVisual
+PASS Material valido: PaladinHealerVisual/Shield -> PaladinHealer_Steel (Standard)
+PASS Material valido: PaladinHealerVisual/Shield -> PaladinHealer_Linen (Standard)
+PASS Material valido: PaladinHealerVisual/Shield -> PaladinHealer_Wood (Standard)
+PASS Material valido: PaladinHealerVisual/Shield -> PaladinHealer_Gold (Standard)
+PASS Material valido: PaladinHealerVisual/Shield -> PaladinHealer_Leather (Standard)
+PASS Material valido: PaladinHealerVisual/Sword -> PaladinHealer_Steel (Standard)
+PASS Material valido: PaladinHealerVisual/Sword -> PaladinHealer_Gold (Standard)
+PASS Material valido: PaladinHealerVisual/Sword -> PaladinHealer_Leather (Standard)
+PASS Material valido: PaladinHealerVisual/PaladinHealer_LOD0 -> PaladinHealer_Mat (Standard)
+PASS Material valido: PaladinHealerVisual/PaladinHealer_LOD1 -> PaladinHealer_Mat (Standard)
+PASS Material valido: PaladinHealerVisual/PaladinHealer_LOD2 -> PaladinHealer_Mat (Standard)
+PASS Prefab existe: PaladinHealerDeath
+PASS Material valido: PaladinHealerDeath/Shield -> PaladinHealer_Steel (Standard)
+PASS Material valido: PaladinHealerDeath/Shield -> PaladinHealer_Linen (Standard)
+PASS Material valido: PaladinHealerDeath/Shield -> PaladinHealer_Wood (Standard)
+PASS Material valido: PaladinHealerDeath/Shield -> PaladinHealer_Gold (Standard)
+PASS Material valido: PaladinHealerDeath/Shield -> PaladinHealer_Leather (Standard)
+PASS Material valido: PaladinHealerDeath/Sword -> PaladinHealer_Steel (Standard)
+PASS Material valido: PaladinHealerDeath/Sword -> PaladinHealer_Gold (Standard)
+PASS Material valido: PaladinHealerDeath/Sword -> PaladinHealer_Leather (Standard)
+PASS Material valido: PaladinHealerDeath/PaladinHealer_LOD0 -> PaladinHealer_Mat (Standard)
+PASS Material valido: PaladinHealerDeath/PaladinHealer_LOD1 -> PaladinHealer_Mat (Standard)
+PASS Material valido: PaladinHealerDeath/PaladinHealer_LOD2 -> PaladinHealer_Mat (Standard)
+PASS Prefab existe: PaladinHealAura
+PASS Material valido: PaladinHealAura/Disc -> PaladinHealAura_Disc (Legacy Shaders/Particles/Additive)
+PASS Material valido: PaladinHealAura/RingTrail -> PaladinHealAura_RingTrail (Legacy Shaders/Particles/Additive)
+PASS Material valido: PaladinHealAura/Ring -> PaladinHealAura_Ring (Legacy Shaders/Particles/Additive)
+PASS Material valido: PaladinHealAura/Motes -> PaladinHealAura_Mote (Legacy Shaders/Particles/Additive)
+PASS Prefab existe: PaladinHealer
+PASS Material valido: PaladinHealer/MinimapIcon -> MinimapIcon (Unlit/Color)
+PASS Material valido: PaladinHealer/Shield -> PaladinHealer_Steel (Standard)
+PASS Material valido: PaladinHealer/Shield -> PaladinHealer_Linen (Standard)
+PASS Material valido: PaladinHealer/Shield -> PaladinHealer_Wood (Standard)
+PASS Material valido: PaladinHealer/Shield -> PaladinHealer_Gold (Standard)
+PASS Material valido: PaladinHealer/Shield -> PaladinHealer_Leather (Standard)
+PASS Material valido: PaladinHealer/Sword -> PaladinHealer_Steel (Standard)
+PASS Material valido: PaladinHealer/Sword -> PaladinHealer_Gold (Standard)
+PASS Material valido: PaladinHealer/Sword -> PaladinHealer_Leather (Standard)
+PASS Material valido: PaladinHealer/PaladinHealer_LOD0 -> PaladinHealer_Mat (Standard)
+PASS Material valido: PaladinHealer/PaladinHealer_LOD1 -> PaladinHealer_Mat (Standard)
+PASS Material valido: PaladinHealer/PaladinHealer_LOD2 -> PaladinHealer_Mat (Standard)
+PASS Material valido: PaladinHealer/TeamRing -> AdvancedTeamRing (Unlit/Color)
+PASS Material valido: PaladinHealer/FOV -> FOV (Standard)
+PASS Espada: objeto separado, filho de WeaponMount (mao direita)
+PASS Escudo: objeto separado, filho de ShieldMount (antebraco esquerdo)
+PASS HealAuraCenter na altura do peito (y = 1,20)
+PASS Pecas nao fazem parte da malha do corpo
+PASS Espada: materiais aco, ouro e couro (PaladinHealer_Steel, PaladinHealer_Gold, PaladinHealer_Leather)
+PASS Escudo: materiais aco, ouro, couro, madeira e linho (PaladinHealer_Steel, PaladinHealer_Linen, PaladinHealer_Wood, PaladinHealer_Gold, PaladinHealer_Leather)
+INFO Triangulos espada/escudo: 610 / 1716
+PASS Pecas dentro do orcamento (espada <= 3 k, escudo <= 8 k)
+PASS Espada com tamanho plausivel (diagonal 1,20 m)
+PASS Escudo com tamanho plausivel (altura 0,63 m)
+PASS Estados da camada base: Locomotion, Attack, HitReact
+PASS Camada 'Heal' com mascara (tronco, bracos, cabeca)
+PASS Mascara: tronco/bracos ativos, pernas desligadas
+PASS Parametros padrao do Animator (Running, Attacking, Hit, Speed, Fire, Damaged, Heal)
+PASS Hit=trigger, Running/Attacking=bool (como o behavior tree escreve)
+PASS Hit (BT) dispara o estado Attack
+PASS Damaged dispara HitReact
+INFO Controle: bake em bind vs sharedMesh, diferenca max 0,0000 m
+INFO Arestas medidas: 46147
+PASS Deformacao Idle: arestas p1%=0,63 p99%=1,72 p99.9%=2,92 max=10,05 (>x3: 0,084%), deslocamento max 1,01 m, altura 1,71 m, finito=True
+PASS Deformacao Walk: arestas p1%=0,66 p99%=1,44 p99.9%=2,12 max=8,54 (>x3: 0,013%), deslocamento max 0,75 m, altura 1,86 m, finito=True
+PASS Deformacao Run: arestas p1%=0,50 p99%=1,75 p99.9%=2,78 max=10,97 (>x3: 0,065%), deslocamento max 1,22 m, altura 1,82 m, finito=True
+PASS Deformacao Attack: arestas p1%=0,56 p99%=1,99 p99.9%=3,51 max=13,37 (>x3: 0,202%), deslocamento max 1,41 m, altura 1,82 m, finito=True
+PASS Deformacao Heal: arestas p1%=0,50 p99%=1,93 p99.9%=3,34 max=10,05 (>x3: 0,177%), deslocamento max 1,12 m, altura 1,99 m, finito=True
+PASS Deformacao Hit: arestas p1%=0,59 p99%=1,74 p99.9%=2,83 max=8,68 (>x3: 0,077%), deslocamento max 1,09 m, altura 1,68 m, finito=True
+PASS Deformacao Death: arestas p1%=0,56 p99%=1,67 p99.9%=2,74 max=11,30 (>x3: 0,066%), deslocamento max 2,97 m, altura 2,01 m, finito=True
+PASS Pecas em Idle@0,0s: empunhadura-mao 0,08 m, escudo-antebraco 0,14 m
+PASS Pecas em Idle@1,3s: empunhadura-mao 0,08 m, escudo-antebraco 0,14 m
+PASS Pecas em Attack@0,4s: empunhadura-mao 0,08 m, escudo-antebraco 0,14 m
+PASS Pecas em Attack@0,8s: empunhadura-mao 0,08 m, escudo-antebraco 0,14 m
+PASS Pecas em Attack@1,2s: empunhadura-mao 0,08 m, escudo-antebraco 0,14 m
+PASS Pecas em Heal@0,6s: empunhadura-mao 0,08 m, escudo-antebraco 0,14 m
+PASS Pecas em Hit@0,4s: empunhadura-mao 0,08 m, escudo-antebraco 0,14 m
+PASS Pecas em Run@0,3s: empunhadura-mao 0,08 m, escudo-antebraco 0,14 m
+PASS Escudo em Idle voltado para a frente do personagem
+PASS Escudo em Idle perto da mao esquerda
+INFO LOD screen heights: 0,170, 0,100, 0,000
+PASS LODs com limiares decrescentes
+PASS LOD0 front: renderiza (primeiro plano 36747px, magenta 0px)
+PASS LOD0 back: renderiza (primeiro plano 37470px, magenta 0px)
+PASS LOD0 side: renderiza (primeiro plano 45643px, magenta 0px)
+PASS LOD1 front: renderiza (primeiro plano 36150px, magenta 0px)
+PASS LOD1 back: renderiza (primeiro plano 36775px, magenta 0px)
+PASS LOD1 side: renderiza (primeiro plano 45055px, magenta 0px)
+PASS LOD2 front: renderiza (primeiro plano 33596px, magenta 0px)
+PASS LOD2 back: renderiza (primeiro plano 33481px, magenta 0px)
+PASS LOD2 side: renderiza (primeiro plano 41758px, magenta 0px)
+PASS Pose Idle@0,30s front: renderiza (fg 34208px, magenta 0px)
+PASS Pose Idle@0,30s side: renderiza (fg 42323px, magenta 0px)
+PASS Pose Walk@0,30s front: renderiza (fg 45429px, magenta 0px)
+PASS Pose Walk@0,30s side: renderiza (fg 39580px, magenta 0px)
+PASS Pose Run@0,20s front: renderiza (fg 42031px, magenta 0px)
+PASS Pose Run@0,20s side: renderiza (fg 34217px, magenta 0px)
+PASS Pose Attack@0,35s front: renderiza (fg 37343px, magenta 0px)
+PASS Pose Attack@0,35s side: renderiza (fg 42708px, magenta 0px)
+PASS Pose Attack@0,70s front: renderiza (fg 51588px, magenta 0px)
+PASS Pose Attack@0,70s side: renderiza (fg 38487px, magenta 0px)
+PASS Pose Attack@1,00s front: renderiza (fg 47531px, magenta 0px)
+PASS Pose Attack@1,00s side: renderiza (fg 38789px, magenta 0px)
+PASS Pose Heal@0,15s front: renderiza (fg 34344px, magenta 0px)
+PASS Pose Heal@0,15s side: renderiza (fg 43347px, magenta 0px)
+PASS Pose Heal@0,60s front: renderiza (fg 34968px, magenta 0px)
+PASS Pose Heal@0,60s side: renderiza (fg 45281px, magenta 0px)
+PASS Pose Heal@1,10s front: renderiza (fg 34478px, magenta 0px)
+PASS Pose Heal@1,10s side: renderiza (fg 42443px, magenta 0px)
+PASS Pose Hit@0,30s front: renderiza (fg 37962px, magenta 0px)
+PASS Pose Hit@0,30s side: renderiza (fg 38822px, magenta 0px)
+PASS Pose Death@1,00s front: renderiza (fg 52437px, magenta 0px)
+PASS Pose Death@1,00s side: renderiza (fg 35629px, magenta 0px)
+PASS Pose Death@5,70s front: renderiza (fg 27460px, magenta 0px)
+PASS Pose Death@5,70s side: renderiza (fg 9381px, magenta 0px)
+PASS Close-up Idle: renderiza (fg 128436px, magenta 0px)
+PASS Efeito de cura @0,12s: renderiza (fg 306206px, magenta 0px)
+PASS Efeito de cura @0,35s: renderiza (fg 306206px, magenta 0px)
+PASS Efeito de cura @0,70s: renderiza (fg 306208px, magenta 0px)
+PASS Efeito de cura @1,05s: renderiza (fg 306206px, magenta 0px)
+PASS Prefab de morte com Animator do controller PaladinHealerDeath
+PASS Controller de morte: unico estado Death (padrao) tocando o clipe Death sozinho
+PASS Death nao repete (fica no ultimo quadro)
+PASS Prefab de morte inclui espada e escudo
+PASS PaladinHealer.prefab (wrapper da unidade) existe
+PASS Wrapper com tag Unit e layer 12
+PASS Wrapper tem CharacterManager
+PASS Wrapper tem CharacterBT
+PASS Wrapper tem FogRendererToggler
+PASS Wrapper tem AdvancedUnitEraBinding
+PASS Wrapper tem AdvancedUnitAnimatorDriver
+PASS Wrapper tem PaladinHealBehaviour
+PASS Wrapper tem AdvancedUnitDeathEffect
+PASS Wrapper tem NavMeshAgent, BoxCollider e AudioSource
+PASS NavMeshAgent ajustado (velocidade 4, raio 0,5, altura 2)
+PASS BoxCollider ajustado (tamanho (0.90, 2.00, 0.90), centro (0.00, 1.00, 0.00))
+PASS Caminho Mesh/MinimapIcon (exigido por Unit) existe
+PASS Anel de time (TeamRing) presente
+PASS Anel de time visivel de cima (todas as faces com normal para cima, raio externo 0,55)
+PASS CharacterManager.meshRenderer = anel do time
+PASS CharacterManager.animator = Animator do visual
+PASS selectionCircle, fov e contextualSource atribuidos
+PASS FogRendererToggler.mesh atribuido
+PASS AdvancedUnitEraBinding.contract = PaladinHealer.asset
+PASS AdvancedUnitAnimatorDriver.animator = Animator do visual
+PASS PaladinHealBehaviour: contrato, animator, HealAuraCenter e prefab do efeito
+PASS AdvancedUnitDeathEffect.deathPrefab = PaladinHealerDeath
+PASS Ataque corpo a corpo segue o behavior tree padrao (sem IAttackHandler)
+PASS Efeito de cura autorado com 1 unidade de diametro em XZ (tamanho 1,000 x 1,000)
+PASS Efeito: raiz em escala 1, ParticleSystem de particulas ascendentes e PaladinHealAuraEffect (aneis expandindo)
+PASS Particulas: sobem e a escala do efeito so alarga a area de emissao
+PASS Textura procedural PaladinHealAura_Ring.png
+PASS Textura procedural PaladinHealAura_Disc.png
+PASS Textura procedural PaladinHealAura_Mote.png
+PASS Contrato valido: OK
+PASS Contrato com visual pronto: pronto
+PASS contract.visual.prefab = wrapper jogavel
+PASS Socket WeaponMount -> Mesh/PaladinHealerVisual/PaladinHealer_Armature/Hips/Spine02/Spine01/Spine/RightShoulder/RightArm/RightForeArm/RightHand/WeaponMount
+PASS Socket ShieldMount -> Mesh/PaladinHealerVisual/PaladinHealer_Armature/Hips/Spine02/Spine01/Spine/LeftShoulder/LeftArm/LeftForeArm/ShieldMount
+PASS Socket HealAuraCenter -> Mesh/PaladinHealerVisual/HealAuraCenter
+PASS visual.animations: Idle, Walk, Run, Attack, Heal, Hit, Death
+PASS Animacao Idle -> clipe real do PaladinHealer (Speed)
+PASS Animacao Walk -> clipe real do PaladinHealer (Speed)
+PASS Animacao Run -> clipe real do PaladinHealer (Speed)
+PASS Animacao Attack -> clipe real do PaladinHealer (Hit)
+PASS Animacao Heal -> clipe real do PaladinHealer (Heal)
+PASS Animacao Hit -> clipe real do PaladinHealer (Damaged)
+PASS Animacao Death -> clipe real do PaladinHealer (AdvancedUnitDeathEffect)
+PASS Efeitos do contrato apontam para assets reais
+PASS Malhas do contrato (corpo, espada, escudo) apontam para assets reais
+PASS Build Settings: contrato nao aprovado (nada foi adicionado ao Build Settings)
+PASS Nenhuma cena do PaladinHealer no Build Settings
+PASS Quatro eras em ordem
+PASS Vida cresce: 70 < 90 < 115 < 145
+PASS Dano cresce: 16 < 20 < 25 < 31
+PASS Cura cresce: 6 < 9 < 13 < 18
+PASS Raio de cura cresce: 4 < 4,5 < 5 < 6
+PASS Ataque corpo a corpo em todas as eras
+PASS CharacterData 'paladin_healer' referencia o wrapper
+PASS CharacterData com os valores da era Ancient do contrato
+PASS Catalogo Resources carrega 'paladin_healer' (10 personagens)
+PASS Codigos de personagem unicos: archer, catapult, combat_mage, crossbow, dark_knight, heraldic_knight, paladin_healer, soldier, spearman, worker
+PALADINHEALER_AUDIT_PASSED
