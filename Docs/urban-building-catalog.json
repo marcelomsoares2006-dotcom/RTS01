@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "runtimeLoaded": false,
+  "runtimeFolder": "Assets/Resources/ScriptableObjects/Units/Buildings",
+  "contract": "BuildingData + UnitData (sem alterações)",
+  "protectedFiles": [
+    "Assets/Scripts/ScriptableObjects/Units/BuildingData.cs",
+    "Assets/Scripts/Units/Buildings/BuildingEraDecoration.cs"
+  ],
+  "buildings": [
+    {
+      "code": "market",
+      "role": "civil_economy",
+      "production": [],
+      "attack": { "range": 0, "damage": 0, "rate": 0 },
+      "requiredReferences": ["prefab", "sprite", "cost", "constructionMeshes"]
+    },
+    {
+      "code": "warehouse",
+      "role": "civil_storage",
+      "production": [],
+      "attack": { "range": 0, "damage": 0, "rate": 0 },
+      "requiredReferences": ["prefab", "sprite", "cost", "constructionMeshes"]
+    },
+    {
+      "code": "barracks",
+      "role": "military_production",
+      "production": ["soldier"],
+      "attack": { "range": 0, "damage": 0, "rate": 0 },
+      "requiredReferences": ["prefab", "sprite", "cost", "skills", "constructionMeshes"]
+    },
+    {
+      "code": "blacksmith",
+      "role": "technology",
+      "production": [],
+      "attack": { "range": 0, "damage": 0, "rate": 0 },
+      "requiredReferences": ["prefab", "sprite", "cost", "skills", "constructionMeshes"]
+    },
+    {
+      "code": "mill",
+      "role": "civil_agriculture",
+      "production": [],
+      "attack": { "range": 0, "damage": 0, "rate": 0 },
+      "requiredReferences": ["prefab", "sprite", "cost", "constructionMeshes"]
+    }
+  ]
+}
