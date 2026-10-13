@@ -17,6 +17,19 @@ public static class CityArchitectureShowcaseBuilder
         light.intensity = 1.15f;
         light.transform.rotation = Quaternion.Euler(45f, -35f, 0f);
 
+        var ground = GameObject.CreatePrimitive(PrimitiveType.Plane);
+        ground.name = "Showcase Ground";
+        ground.transform.position = new Vector3(6f, -0.02f, 6f);
+        ground.transform.localScale = new Vector3(4.5f, 1f, 4.5f);
+        Object.DestroyImmediate(ground.GetComponent<Collider>());
+
+        var cameraGo = new GameObject("Showcase Camera");
+        var camera = cameraGo.AddComponent<Camera>();
+        camera.transform.position = new Vector3(18f, 18f, -22f);
+        camera.transform.LookAt(new Vector3(6f, 2f, 6f));
+        camera.fieldOfView = 42f;
+        camera.farClipPlane = 100f;
+
         string[] pieces = { "WallStraight", "WallCorner", "Gatehouse", "WallTowerConnector" };
         for (int i = 0; i < pieces.Length; i++)
         {
