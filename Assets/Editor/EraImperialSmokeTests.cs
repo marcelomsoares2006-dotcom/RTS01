@@ -116,6 +116,7 @@ public static class EraImperialSmokeTests
                     Require(terrain.terrainData.treePrototypes.All(tree => tree != null && tree.prefab != null),
                         "Terrain still has missing tree prefabs.");
                 }
+                if (cycle < 2) CheckTreeVisibility(cycle);
                 Require(UnityEngine.Object.FindObjectsByType<MinimapManager>().Any(minimap => minimap.enabled),
                     "Minimap has been disabled.");
                 var spawnpoints = GameObject.Find("Spawnpoints").transform;
@@ -224,6 +225,82 @@ public static class EraImperialSmokeTests
         {
             camera.targetTexture = previousTarget;
             camera.rect = previousRect;
+            RenderTexture.active = previousActive;
+            target.Release();
+            UnityEngine.Object.DestroyImmediate(target);
+            UnityEngine.Object.DestroyImmediate(texture);
+        }
+    }
+
+    private static void CheckTreeVisibility(int cycle)
+    {
+        Terrain terrain = Terrain.activeTerrains.FirstOrDefault(item => item.terrainData != null && item.terrainData.treeInstanceCount > 0);
+        Require(terrain != null, "Map has no terrain trees to inspect.");
+        TreeInstance instance = terrain.terrainData.treeInstances
+            .Where(item => item.prototypeIndex == 0 && item.position.x > 0.2f && item.position.x < 0.8f &&
+                           item.position.z > 0.2f && item.position.z < 0.8f)
+            .OrderBy(item => Math.Abs(item.position.x - 0.5f) + Math.Abs(item.position.z - 0.5f))
+            .First();
+        Vector3 center = terrain.transform.position + Vector3.Scale(instance.position, terrain.terrainData.size);
+        center.y = terrain.SampleHeight(center) + terrain.transform.position.y;
+        var cameraObject = new GameObject("Tree visibility audit camera");
+        var camera = cameraObject.AddComponent<Camera>();
+        camera.enabled = false;
+        camera.orthographic = true;
+        camera.orthographicSize = 12f;
+        camera.clearFlags = CameraClearFlags.SolidColor;
+        camera.backgroundColor = new Color(0.72f, 0.79f, 0.84f);
+        camera.farClipPlane = 500f;
+        bool previousDraw = terrain.drawTreesAndFoliage;
+        try
+        {
+            foreach (int distance in new[] { 18, 70 })
+            {
+                Vector3 cameraPosition = center + new Vector3(0f, distance == 18 ? 24f : 90f, -distance);
+                cameraPosition.y = Mathf.Max(cameraPosition.y, terrain.SampleHeight(cameraPosition) + terrain.transform.position.y + 20f);
+                camera.transform.position = cameraPosition;
+                camera.transform.LookAt(center + Vector3.up * 2f);
+                Record($"Map{cycle + 1} tree audit target={center}, camera={cameraPosition}.");
+                terrain.drawTreesAndFoliage = false;
+                Color32[] withoutTrees = CaptureTreeImage(camera, $"TestResults/map{cycle + 1}-trees-{distance}-off.png");
+                terrain.drawTreesAndFoliage = true;
+                Color32[] withTrees = CaptureTreeImage(camera, $"TestResults/map{cycle + 1}-trees-{distance}-on.png");
+                int changed = 0;
+                for (int i = 0; i < withTrees.Length; i++)
+                {
+                    if (Math.Abs(withTrees[i].r - withoutTrees[i].r) +
+                        Math.Abs(withTrees[i].g - withoutTrees[i].g) +
+                        Math.Abs(withTrees[i].b - withoutTrees[i].b) > 45) changed++;
+                }
+                Record($"Map{cycle + 1}: trees at {distance}m changed {changed} pixels with foliage enabled; billboardDistance={terrain.treeBillboardDistance}, treeDistance={terrain.treeDistance}.");
+            }
+        }
+        finally
+        {
+            terrain.drawTreesAndFoliage = previousDraw;
+            UnityEngine.Object.DestroyImmediate(cameraObject);
+        }
+    }
+
+    private static Color32[] CaptureTreeImage(Camera camera, string path)
+    {
+        var target = new RenderTexture(768, 768, 24);
+        var texture = new Texture2D(768, 768, TextureFormat.RGB24, false);
+        RenderTexture previousTarget = camera.targetTexture;
+        RenderTexture previousActive = RenderTexture.active;
+        try
+        {
+            camera.targetTexture = target;
+            camera.Render();
+            RenderTexture.active = target;
+            texture.ReadPixels(new Rect(0, 0, 768, 768), 0, 0);
+            texture.Apply();
+            File.WriteAllBytes(path, texture.EncodeToPNG());
+            return texture.GetPixels32();
+        }
+        finally
+        {
+            camera.targetTexture = previousTarget;
             RenderTexture.active = previousActive;
             target.Release();
             UnityEngine.Object.DestroyImmediate(target);

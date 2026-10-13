@@ -3,8 +3,8 @@ using EraImperial.Units.Advanced;
 using UnityEngine;
 
 /// <summary>
-/// Era atual da partida para as unidades avancadas. O jogo ainda nao tem uma "era" propria (a arvore tecnologica
-/// so trata attack_booster e cost_reducer_buy); este estado e o ponto unico a ser ligado a ela. Padrao: Ancient.
+/// Era atual da partida para unidades avancadas e visuais de ambiente/construcoes. A arvore tecnologica
+/// ainda nao tem progressao de era propria; este estado e o ponto unico a ser ligado a ela. Padrao: Ancient.
 /// Teste em Play Mode: comando do console de debug "set_advanced_era <0..3>".
 /// </summary>
 public static class AdvancedEraState
@@ -23,7 +23,7 @@ public static class AdvancedEraState
 
     public static void Reset()
     {
-        _current = ImperialEra.Ancient;
+        Set(ImperialEra.Ancient);
     }
 
     // evita vazar o estado de uma partida/execucao para a seguinte (Enter Play Mode sem recarregar dominio)

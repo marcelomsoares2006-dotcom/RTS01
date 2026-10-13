@@ -8,6 +8,9 @@ public class DataHandler : MonoBehaviour
 {
     public void Start()
     {
+        // A era ainda nao e persistida no save; cada entrada no mapa comeca em Ancient.
+        // Reset emite Changed para manter materiais e decoracoes sincronizados.
+        AdvancedEraState.Reset();
         DeserializeGameData();
     }
 

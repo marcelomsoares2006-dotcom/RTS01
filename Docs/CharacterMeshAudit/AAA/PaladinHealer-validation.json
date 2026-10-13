@@ -1,0 +1,45 @@
+{
+  "asset": "Tools\\CharacterRigging\\AAA\\PaladinHealer\\PaladinHealer_AAA.blend",
+  "passed": true,
+  "meshes": [
+    {
+      "name": "PaladinHealer_LOD0",
+      "triangles": 31000,
+      "vertices": 35268,
+      "uv_layers": 1,
+      "materials": [
+        "PaladinHealer_Mat"
+      ],
+      "skinned": true
+    },
+    {
+      "name": "PaladinHealer_LOD1",
+      "triangles": 9300,
+      "vertices": 17353,
+      "uv_layers": 1,
+      "materials": [
+        "PaladinHealer_Mat"
+      ],
+      "skinned": true
+    },
+    {
+      "name": "PaladinHealer_LOD2",
+      "triangles": 3100,
+      "vertices": 11515,
+      "uv_layers": 1,
+      "materials": [
+        "PaladinHealer_Mat"
+      ],
+      "skinned": true
+    }
+  ],
+  "armatures": [
+    "PaladinHealer_Armature"
+  ],
+  "errors": [],
+  "warnings": [
+    "PaladinHealer_LOD0: 31748 open boundary edges",
+    "PaladinHealer_LOD1: 13502 open boundary edges",
+    "PaladinHealer_LOD2: 5212 open boundary edges"
+  ]
+}

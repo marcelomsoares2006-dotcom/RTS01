@@ -1,0 +1,81 @@
+﻿{
+    "tool":  "AuditMountedReadOnly",
+    "generatedUtc":  "2026-10-12T20:46:45.3604975Z",
+    "readOnly":  true,
+    "files":  [
+                  {
+                      "path":  "Assets\\CharacterRigging\\Stage3\\Horse\\Models\\Horse.fbx",
+                      "exists":  true,
+                      "bytes":  1767980,
+                      "sha256":  "4BD727367C093288EC0799F2C9064B115C239F99C581B81FCE6E37DCEED3B58C"
+                  },
+                  {
+                      "path":  "Assets\\CharacterRigging\\Prototypes\\Horse_SkinnedPrototype.fbx",
+                      "exists":  true,
+                      "bytes":  390860,
+                      "sha256":  "CEC7EE7085BDA6F3B2416CD112646E44B727A9ED18EFBECEA5A8A176F6E5F321"
+                  },
+                  {
+                      "path":  "Assets\\CharacterRigging\\Stage5\\MountedFitPrototype.prefab",
+                      "exists":  true,
+                      "bytes":  63641,
+                      "sha256":  "FE057F16F9EF986409C30256B6DB2894FDC786A2624B133C410857C065DD7B31"
+                  },
+                  {
+                      "path":  "Assets\\CharacterRigging\\Stage5\\MountedReview.unity",
+                      "exists":  true,
+                      "bytes":  14772,
+                      "sha256":  "0E2C6711A2C16F5223856C4C6B45A7089DCFDA7F58B8D05D2F4CFEAAAFD45F2F"
+                  },
+                  {
+                      "path":  "Assets\\CharacterRigging\\Stage5\\MountedFitPrototypeNavMesh.unity",
+                      "exists":  true,
+                      "bytes":  39696,
+                      "sha256":  "2C7CC6CA52489907655392D1C95424F652DAFE2CBC639A4143CEC00245C0ECC3"
+                  },
+                  {
+                      "path":  "Assets\\CharacterRigging\\Stage5\\Mounted\\ArmoredKnight_MountedIdle.fbx",
+                      "exists":  true,
+                      "bytes":  1307804,
+                      "sha256":  "DF331B6CD2202DC071C8E44FDB321C94096000D22D32002F84E4202AA302E2B4"
+                  },
+                  {
+                      "path":  "Assets\\CharacterRigging\\Stage5\\Mounted\\MountedIdle.controller",
+                      "exists":  true,
+                      "bytes":  2073,
+                      "sha256":  "077D7EFB4FA957E8E58E01734BB55988220F80253C278B894B6E2FA15C2AC386"
+                  },
+                  {
+                      "path":  "Assets\\Scripts\\Units\\Mounted\\MountedSockets.cs",
+                      "exists":  true,
+                      "bytes":  398,
+                      "sha256":  "64BA5985314003EE56D92ECBF44CEA7B6088F137485FCD12AAA7BD992BA6F270"
+                  },
+                  {
+                      "path":  "Assets\\Scripts\\Units\\Mounted\\MountedIKController.cs",
+                      "exists":  true,
+                      "bytes":  1076,
+                      "sha256":  "8F1BFFC9BB156C78F97DF968CB60256A77D09EC2F97772E2B2E4898C26BC4248"
+                  },
+                  {
+                      "path":  "Assets\\Scripts\\Units\\Mounted\\MountedMovementDriver.cs",
+                      "exists":  true,
+                      "bytes":  1095,
+                      "sha256":  "C6E23A7252B590545BEDBAC9D940A024BAEA79D085571E49ED7214616373BA10"
+                  },
+                  {
+                      "path":  "Assets\\Scripts\\Units\\Mounted\\MountedAnimatorSync.cs",
+                      "exists":  true,
+                      "bytes":  1389,
+                      "sha256":  "200B876B29D4D2FE0FF275B335E9F5B7A03C4A07BDC2C13CCD4BD873E7CBA349"
+                  }
+              ],
+    "signals":  {
+                    "socketsComponent":  true,
+                    "ikComponent":  true,
+                    "movementComponent":  true,
+                    "movementDisabledInPrototype":  true,
+                    "animatorIkPass":  true,
+                    "navMeshDataMissingInReview":  true
+                }
+}

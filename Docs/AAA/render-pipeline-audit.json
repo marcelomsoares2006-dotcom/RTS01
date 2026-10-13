@@ -1,0 +1,13 @@
+﻿{
+    "timestamp":  "2026-10-12T19:08:24.6533398-03:00",
+    "project":  "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido",
+    "pipeline":  "Built-in RP",
+    "postProcessingPackage":  true,
+    "hdrCameras":  3,
+    "msaaCameraFlags":  3,
+    "ultraMsaa":  "2",
+    "ultraShadowDistance":  "150",
+    "ultraLodBias":  "2",
+    "globalSettingsChanged":  false,
+    "status":  "AAA_RENDER_AUDIT_PASSED"
+}

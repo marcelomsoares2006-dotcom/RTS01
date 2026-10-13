@@ -1,0 +1,151 @@
+﻿{
+    "generatedAt":  "2026-10-12T19:09:22",
+    "project":  "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido",
+    "renderPipeline":  "Built-in RP (observed from project context; confirm in Unity)",
+    "maps":  [
+                 {
+                     "map":  "Map1",
+                     "sceneExists":  true,
+                     "sceneBytes":  18067,
+                     "terrainExists":  true,
+                     "terrainBytes":  2172032,
+                     "terrainComponents":  2,
+                     "lights":  0,
+                     "reflectionProbes":  0,
+                     "reflectionBounces":  1,
+                     "bakedLightmapBlocks":  1,
+                     "navMeshAsset":  true,
+                     "pinkKeywords":  0
+                 },
+                 {
+                     "map":  "Map2",
+                     "sceneExists":  true,
+                     "sceneBytes":  21542,
+                     "terrainExists":  true,
+                     "terrainBytes":  2644136,
+                     "terrainComponents":  2,
+                     "lights":  0,
+                     "reflectionProbes":  0,
+                     "reflectionBounces":  1,
+                     "bakedLightmapBlocks":  1,
+                     "navMeshAsset":  true,
+                     "pinkKeywords":  0
+                 }
+             ],
+    "materials":  [
+                      {
+                          "material":  "Assets\\Resources\\Materials\\Black.mat",
+                          "shader":  "m_Shader: {fileID: 10755, guid: 0000000000000000f000000000000000, type: 0}",
+                          "pinkKeyword":  false
+                      },
+                      {
+                          "material":  "Assets\\Resources\\Materials\\Healthbar.mat",
+                          "shader":  "m_Shader: {fileID: 4800000, guid: 6676579793caf45c0a72dfbbd3c6cf93, type: 3}",
+                          "pinkKeyword":  false
+                      },
+                      {
+                          "material":  "Assets\\Resources\\Materials\\Invalid.mat",
+                          "shader":  "m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}",
+                          "pinkKeyword":  false
+                      },
+                      {
+                          "material":  "Assets\\Resources\\Materials\\MinimapIcon.mat",
+                          "shader":  "m_Shader: {fileID: 10755, guid: 0000000000000000f000000000000000, type: 0}",
+                          "pinkKeyword":  false
+                      },
+                      {
+                          "material":  "Assets\\Resources\\Materials\\MinimapIconSprite.mat",
+                          "shader":  "m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}",
+                          "pinkKeyword":  false
+                      },
+                      {
+                          "material":  "Assets\\Resources\\Materials\\PlayerColor.mat",
+                          "shader":  "m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}",
+                          "pinkKeyword":  false
+                      },
+                      {
+                          "material":  "Assets\\Resources\\Materials\\SelectionCircle.mat",
+                          "shader":  "m_Shader: {fileID: 4800000, guid: e44456835efa84cd79d16b5d44a92a08, type: 3}",
+                          "pinkKeyword":  false
+                      },
+                      {
+                          "material":  "Assets\\Resources\\Materials\\UnitLevelUp.mat",
+                          "shader":  "m_Shader: {fileID: 4800000, guid: bd5af6afd9b484127b719c581f89c608, type: 3}",
+                          "pinkKeyword":  false
+                      },
+                      {
+                          "material":  "Assets\\Resources\\Materials\\Valid.mat",
+                          "shader":  "m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}",
+                          "pinkKeyword":  false
+                      },
+                      {
+                          "material":  "Assets\\Resources\\Materials\\Water.mat",
+                          "shader":  "m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}",
+                          "pinkKeyword":  false
+                      },
+                      {
+                          "material":  "Assets\\Resources\\Materials\\WhiteDiffuse.mat",
+                          "shader":  "m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}",
+                          "pinkKeyword":  false
+                      },
+                      {
+                          "material":  "Assets\\Resources\\Materials\\Building\\Metal.mat",
+                          "shader":  "m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}",
+                          "pinkKeyword":  false
+                      },
+                      {
+                          "material":  "Assets\\Resources\\Materials\\Building\\Stone.mat",
+                          "shader":  "m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}",
+                          "pinkKeyword":  false
+                      },
+                      {
+                          "material":  "Assets\\Resources\\Materials\\Building\\Wood Light.mat",
+                          "shader":  "m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}",
+                          "pinkKeyword":  false
+                      },
+                      {
+                          "material":  "Assets\\Resources\\Materials\\Building\\Wood Log.mat",
+                          "shader":  "m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}",
+                          "pinkKeyword":  false
+                      },
+                      {
+                          "material":  "Assets\\Resources\\Materials\\Building\\Wood.mat",
+                          "shader":  "m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}",
+                          "pinkKeyword":  false
+                      },
+                      {
+                          "material":  "Assets\\Resources\\Materials\\FOW_Minimap\\CameraFOV.mat",
+                          "shader":  "m_Shader: {fileID: 10755, guid: 0000000000000000f000000000000000, type: 0}",
+                          "pinkKeyword":  false
+                      },
+                      {
+                          "material":  "Assets\\Resources\\Materials\\FOW_Minimap\\FogOfWar.mat",
+                          "shader":  "m_Shader: {fileID: 4800000, guid: c9872562eb258413595fa91a564fb641, type: 3}",
+                          "pinkKeyword":  false
+                      },
+                      {
+                          "material":  "Assets\\Resources\\Materials\\FOW_Minimap\\FOV.mat",
+                          "shader":  "m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}",
+                          "pinkKeyword":  false
+                      },
+                      {
+                          "material":  "Assets\\Resources\\Materials\\Nature\\Green.mat",
+                          "shader":  "m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}",
+                          "pinkKeyword":  false
+                      },
+                      {
+                          "material":  "Assets\\Resources\\Materials\\Nature\\TrunkLight.mat",
+                          "shader":  "m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}",
+                          "pinkKeyword":  false
+                      }
+                  ],
+    "checklist":  {
+                      "scale":  "PENDING_EDITOR: verify TerrainData size and scene units against character height.",
+                      "uv":  "PENDING_EDITOR: inspect terrain layers and mesh UV channels.",
+                      "normals":  "PENDING_EDITOR: inspect imported mesh normals/tangents and terrain normal maps.",
+                      "lod":  "PENDING_EDITOR: quantify terrain/detail LOD by camera distance.",
+                      "magenta":  true,
+                      "lighting":  "WARNING: scene text has no configured m_Sun reference; validate lighting in Editor.",
+                      "shaders":  "WARNING: materials reference built-in shader IDs; confirm compatibility after Unity import."
+                  }
+}

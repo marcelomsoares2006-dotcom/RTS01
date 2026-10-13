@@ -21,6 +21,7 @@ public class Building : Unit
     private List<CharacterManager> _constructors;
     private List<Transform> _smokeVfx;
     private BuildingBT _bt;
+    private BuildingEraDecoration _eraDecoration;
 
     private AudioClip _ambientSound;
 
@@ -47,6 +48,11 @@ public class Building : Unit
 
         _rendererMesh = _buildingManager.meshRenderer.GetComponent<MeshFilter>();
         _constructionMeshes = data.constructionMeshes;
+        _eraDecoration = _transform.gameObject.AddComponent<BuildingEraDecoration>();
+        Mesh completedMesh = _constructionMeshes != null && _constructionMeshes.Length > 0
+            ? _constructionMeshes[_constructionMeshes.Length - 1]
+            : _rendererMesh.sharedMesh;
+        _eraDecoration.Initialize(data.code, _buildingManager.meshRenderer.transform, completedMesh);
 
         if (_buildingManager.ambientSource != null)
         {
@@ -119,6 +125,8 @@ public class Building : Unit
                 Mathf.Max(0, (int)(_constructionMeshes.Length * constructionRatio) - 1));
             _rendererMesh.sharedMesh = _constructionMeshes[meshIndex];
         }
+
+        _eraDecoration.SetFinished(constructionRatio >= 1f);
 
         if (constructionRatio >= 1)
             _SetAlive(fromSavedData);
