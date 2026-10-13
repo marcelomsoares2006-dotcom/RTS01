@@ -60,23 +60,36 @@ public sealed class BuildingEraDecoration : MonoBehaviour
         float bottom = b.min.y + b.size.y * 0.1f;
         float eave = b.min.y + b.size.y * 0.74f;
         float width = Mathf.Max(0.045f, b.size.x * 0.025f);
+        // A casa ganha uma silhueta de leitura rápida: fundação, beirais, porta e janelas.
+        AddBeam(parent, "Foundation", new Vector3(0, bottom, b.center.z),
+            new Vector3(b.size.x * 0.92f, width * 1.4f, b.size.z * 0.92f), era >= ImperialEra.Classical ? "Stone" : "Wood Log");
+        AddBeam(parent, "FrontDoor", new Vector3(0, bottom + b.size.y * 0.28f, front - width * 0.3f),
+            new Vector3(width * 2.8f, b.size.y * 0.35f, width * 0.35f), era == ImperialEra.Imperial ? "Metal" : "Wood");
+        AddBeam(parent, "WindowL", new Vector3(-b.size.x * 0.28f, bottom + b.size.y * 0.44f, front - width * 0.25f),
+            new Vector3(width * 1.7f, width * 1.7f, width * 0.3f), era >= ImperialEra.Classical ? "Metal" : "Wood Light");
+        AddBeam(parent, "WindowR", new Vector3(b.size.x * 0.28f, bottom + b.size.y * 0.44f, front - width * 0.25f),
+            new Vector3(width * 1.7f, width * 1.7f, width * 0.3f), era >= ImperialEra.Classical ? "Metal" : "Wood Light");
         switch (era)
         {
             case ImperialEra.Ancient:
                 AddBeam(parent, "TimberPostL", new Vector3(-x, bottom + b.size.y * 0.27f, front), new Vector3(width * 1.8f, b.size.y * 0.54f, width), "Wood Log");
                 AddBeam(parent, "TimberPostR", new Vector3(x, bottom + b.size.y * 0.27f, front), new Vector3(width * 1.8f, b.size.y * 0.54f, width), "Wood Log");
+                AddBeam(parent, "ThatchedEave", new Vector3(0, b.max.y + width * 0.1f, b.center.z), new Vector3(b.size.x * 1.1f, width * 1.2f, b.size.z * 0.92f), "Wood Light");
                 break;
             case ImperialEra.Classical:
                 AddBeam(parent, "StoneLintel", new Vector3(0, eave, front), new Vector3(b.size.x * 0.84f, width * 2f, width * 1.5f), "Stone");
                 AddBeam(parent, "StonePlinth", new Vector3(0, bottom, front), new Vector3(b.size.x * 0.9f, width * 1.8f, width * 2f), "Stone");
+                AddBeam(parent, "ClassicalEave", new Vector3(0, b.max.y + width * 0.1f, b.center.z), new Vector3(b.size.x * 1.08f, width * 1.1f, b.size.z * 0.9f), "Stone");
                 break;
             case ImperialEra.Medieval:
                 AddBeam(parent, "TimberLintel", new Vector3(0, eave, front), new Vector3(b.size.x * 0.9f, width * 1.7f, width), "Wood Light");
                 AddBeam(parent, "TimberSill", new Vector3(0, bottom + b.size.y * 0.14f, front), new Vector3(b.size.x * 0.9f, width, width), "Wood Light");
+                AddBeam(parent, "MedievalRoofBand", new Vector3(0, b.max.y + width * 0.15f, b.center.z), new Vector3(b.size.x * 1.12f, width * 1.5f, b.size.z * 0.94f), "Wood Log");
                 break;
             case ImperialEra.Imperial:
                 AddBeam(parent, "MetalEave", new Vector3(0, eave, front), new Vector3(b.size.x * 0.92f, width, width), "Metal");
                 AddBeam(parent, "MetalCrest", new Vector3(0, b.max.y + width, b.center.z), new Vector3(width, width * 2f, b.size.z * 0.3f), "Metal");
+                AddBeam(parent, "ImperialRoofBand", new Vector3(0, b.max.y + width * 0.15f, b.center.z), new Vector3(b.size.x * 1.15f, width * 1.3f, b.size.z), "Metal");
                 break;
         }
     }
