@@ -86,23 +86,62 @@ public sealed class BuildingEraDecoration : MonoBehaviour
         float width = Mathf.Max(0.04f, Mathf.Min(b.size.x, b.size.z) * 0.08f);
         float y = b.min.y + b.size.y * 0.73f;
         float front = b.min.z - width * 0.25f;
+
+        // Kit defensivo comum: contrafortes e um anel baixo de muralha visual.
+        // Tudo fica sem collider para não alterar placement/navmesh da estrutura.
+        AddBeam(parent, "ButtressL", new Vector3(-b.extents.x * 0.78f, b.min.y + b.size.y * 0.28f, front),
+            new Vector3(width * 1.8f, b.size.y * 0.56f, width * 1.8f), era >= ImperialEra.Medieval ? "Stone" : "Wood Log");
+        AddBeam(parent, "ButtressR", new Vector3(b.extents.x * 0.78f, b.min.y + b.size.y * 0.28f, front),
+            new Vector3(width * 1.8f, b.size.y * 0.56f, width * 1.8f), era >= ImperialEra.Medieval ? "Stone" : "Wood Log");
+        AddBeam(parent, "WallFront", new Vector3(0, b.min.y + width * 1.35f, b.min.z - b.extents.z * 0.72f),
+            new Vector3(b.size.x * 0.92f, width * 2.7f, width * 0.8f), era == ImperialEra.Ancient ? "Wood Log" : "Stone");
+        AddBeam(parent, "WallBack", new Vector3(0, b.min.y + width * 1.35f, b.max.z + b.extents.z * 0.72f),
+            new Vector3(b.size.x * 0.92f, width * 2.7f, width * 0.8f), era == ImperialEra.Ancient ? "Wood Log" : "Stone");
+
         switch (era)
         {
             case ImperialEra.Ancient:
                 AddBeam(parent, "TimberBand", new Vector3(0, y, front), new Vector3(b.size.x * 1.08f, width, width), "Wood Log");
+                AddCrenelations(parent, b, width, "Wood Log", 4);
                 break;
             case ImperialEra.Classical:
                 AddBeam(parent, "StoneCornice", new Vector3(0, b.max.y - width, front), new Vector3(b.size.x * 1.16f, width * 1.5f, width * 1.5f), "Stone");
+                AddCrenelations(parent, b, width, "Stone", 4);
                 break;
             case ImperialEra.Medieval:
                 AddBeam(parent, "ParapetL", new Vector3(-b.extents.x * 0.67f, b.max.y + width * 0.25f, front), new Vector3(width * 1.5f, width * 2f, width * 1.5f), "Stone");
                 AddBeam(parent, "ParapetR", new Vector3(b.extents.x * 0.67f, b.max.y + width * 0.25f, front), new Vector3(width * 1.5f, width * 2f, width * 1.5f), "Stone");
+                AddCrenelations(parent, b, width, "Stone", 6);
+                AddArrowSlits(parent, b, width, "Metal");
                 break;
             case ImperialEra.Imperial:
                 AddBeam(parent, "MetalBand", new Vector3(0, b.max.y - width, front), new Vector3(b.size.x * 1.15f, width, width * 1.5f), "Metal");
                 AddBeam(parent, "Finial", new Vector3(0, b.max.y + width, b.center.z), new Vector3(width, width * 3f, width), "Metal");
+                AddCrenelations(parent, b, width, "Metal", 8);
+                AddArrowSlits(parent, b, width, "Metal");
                 break;
         }
+    }
+
+    private static void AddCrenelations(Transform parent, Bounds b, float width, string material, int count)
+    {
+        float top = b.max.y + width * 0.25f;
+        float span = b.size.x * 0.76f;
+        for (int i = 0; i < count; i++)
+        {
+            float t = count == 1 ? 0.5f : i / (float)(count - 1);
+            AddBeam(parent, "Crenel_" + i, new Vector3(Mathf.Lerp(-span * 0.5f, span * 0.5f, t), top, b.min.z - width * 0.3f),
+                new Vector3(width * 1.25f, width * 1.6f, width * 1.1f), material);
+        }
+    }
+
+    private static void AddArrowSlits(Transform parent, Bounds b, float width, string material)
+    {
+        float y = b.min.y + b.size.y * 0.57f;
+        AddBeam(parent, "ArrowSlitL", new Vector3(-b.size.x * 0.3f, y, b.min.z - width * 0.55f),
+            new Vector3(width * 0.35f, width * 2.2f, width * 0.22f), material);
+        AddBeam(parent, "ArrowSlitR", new Vector3(b.size.x * 0.3f, y, b.min.z - width * 0.55f),
+            new Vector3(width * 0.35f, width * 2.2f, width * 0.22f), material);
     }
 
     private static void AddBeam(Transform parent, string name, Vector3 position, Vector3 scale, string materialName)

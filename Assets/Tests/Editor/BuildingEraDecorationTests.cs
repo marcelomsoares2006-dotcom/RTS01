@@ -48,6 +48,12 @@ public class BuildingEraDecorationTests
                 Assert.That(ActiveGroups(visual.transform), Is.EqualTo(1));
                 Assert.That(visual.transform.GetChild(era).gameObject.activeSelf, Is.True);
                 Assert.That(visual.transform.childCount, Is.EqualTo(4));
+                if (name == "Tower")
+                {
+                    Assert.That(visual.transform.GetChild(era).Find("WallFront"), Is.Not.Null);
+                    Assert.That(visual.transform.GetChild(era).Find("ButtressL"), Is.Not.Null);
+                    Assert.That(visual.transform.GetChild(era).Find("Crenel_0"), Is.Not.Null);
+                }
             }
             finish.Invoke(decoration, new object[] { false });
             Assert.That(ActiveGroups(visual.transform), Is.Zero);
