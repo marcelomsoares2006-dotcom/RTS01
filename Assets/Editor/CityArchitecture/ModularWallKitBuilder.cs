@@ -119,7 +119,7 @@ public static class ModularWallKitBuilder
             Cube(eraRoot, "LeftTower", new Vector3(-2.3f, height * .5f, 0), new Vector3(1.5f, height, 2.2f), mats[era]);
             Cube(eraRoot, "RightTower", new Vector3(2.3f, height * .5f, 0), new Vector3(1.5f, height, 2.2f), mats[era]);
             Cube(eraRoot, "GateBeam", new Vector3(0, height - .65f, 0), new Vector3(3.2f, 1.3f, 2.2f), mats[era]);
-            Cube(eraRoot, "GateOpening", new Vector3(0, 1.15f, -.02f), new Vector3(1.8f, 2.3f, 2.3f), mats[era]);
+            Cube(eraRoot, "GateThreshold", new Vector3(0, .12f, -.02f), new Vector3(1.8f, .24f, 2.3f), mats[era]);
             AddMerlons(eraRoot, height, 5.2f, 2.2f, mats[era]);
         }
     }

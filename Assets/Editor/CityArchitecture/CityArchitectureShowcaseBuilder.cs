@@ -2,6 +2,7 @@ using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.IO;
 
 public static class CityArchitectureShowcaseBuilder
 {
@@ -22,6 +23,9 @@ public static class CityArchitectureShowcaseBuilder
         ground.transform.position = new Vector3(6f, -0.02f, 6f);
         ground.transform.localScale = new Vector3(4.5f, 1f, 4.5f);
         Object.DestroyImmediate(ground.GetComponent<Collider>());
+        var groundMaterial = new Material(Shader.Find("Standard"));
+        groundMaterial.color = new Color(.12f, .14f, .12f);
+        ground.GetComponent<Renderer>().sharedMaterial = groundMaterial;
 
         var cameraGo = new GameObject("Showcase Camera");
         var camera = cameraGo.AddComponent<Camera>();
@@ -46,6 +50,29 @@ public static class CityArchitectureShowcaseBuilder
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
         Debug.Log("Cena de showcase criada em " + ScenePath);
+    }
+
+    public static void Capture()
+    {
+        if (!File.Exists(ScenePath)) Build();
+        Scene scene = EditorSceneManager.OpenScene(ScenePath, OpenSceneMode.Single);
+        Camera camera = Object.FindFirstObjectByType<Camera>();
+        if (camera == null) throw new System.InvalidOperationException("Câmera showcase ausente.");
+        string output = Path.GetFullPath("TestResults/CityArchitectureShowcase.png");
+        Directory.CreateDirectory(Path.GetDirectoryName(output));
+        var texture = new RenderTexture(1920, 1080, 24, RenderTextureFormat.ARGB32);
+        camera.targetTexture = texture;
+        camera.Render();
+        RenderTexture.active = texture;
+        var image = new Texture2D(1920, 1080, TextureFormat.RGB24, false);
+        image.ReadPixels(new Rect(0, 0, 1920, 1080), 0, 0);
+        image.Apply();
+        File.WriteAllBytes(output, image.EncodeToPNG());
+        camera.targetTexture = null;
+        RenderTexture.active = null;
+        Object.DestroyImmediate(image);
+        Object.DestroyImmediate(texture);
+        Debug.Log("Showcase capturado em " + output);
     }
 
     private static void SelectEra(Transform root, int era)
