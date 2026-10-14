@@ -55,3 +55,13 @@ prefab and runtime behavior:
 The gate does not create placeholders or infer missing components from names.
 Missing authored assets remain an explicit blocker until Blender/Unity content
 is available and passes both repository and Unity validation.
+
+## Procedural graybox handoff
+
+The repository may contain `TownCenter_graybox.obj` and
+`ResourceDropoff_graybox.obj` under the documented model folders as temporary
+shape references. They are source geometry only: they have no materials,
+production prefab, `BuildingData`, construction stage meshes, colliders,
+sockets, LODs, or Unity component wiring. The catalog must remain planned while
+these files are present. An artist may replace them with authored FBX/GLB
+content, then follow the repository and Unity acceptance gates above.
