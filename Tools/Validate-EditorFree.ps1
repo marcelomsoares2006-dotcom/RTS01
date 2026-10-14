@@ -72,7 +72,8 @@ function Test-ConstructionContracts {
         @{ Path = 'Assets/Scripts/ScriptableObjects/Units/BuildingContentCatalog.cs'; Pattern = 'class\s+BuildingContentCatalog\s*:\s*ScriptableObject'; Name = 'building content catalog' },
         @{ Path = 'Assets/Scripts/ScriptableObjects/Units/BuildingConstructionGate.cs'; Pattern = 'class\s+BuildingConstructionGate\b'; Name = 'construction gate' },
         @{ Path = 'Assets/Scripts/Units/Buildings/BuildingProductionQueue.cs'; Pattern = 'class\s+BuildingProductionQueue\b'; Name = 'production queue' },
-        @{ Path = 'Assets/Scripts/Units/Buildings/BuildingFeedback.cs'; Pattern = 'class\s+BuildingFeedbackEmitter\b'; Name = 'construction feedback' }
+        @{ Path = 'Assets/Scripts/Units/Buildings/BuildingFeedback.cs'; Pattern = 'class\s+BuildingFeedbackEmitter\b'; Name = 'construction feedback' },
+        @{ Path = 'Assets/Scripts/Units/Buildings/BuildingMaintenanceRuntimeBinding.cs'; Pattern = 'class\s+BuildingMaintenanceRuntimeBinding\b'; Name = 'maintenance runtime binding' }
     )
     foreach ($item in $required) { Require-Text $item.Path $item.Pattern $item.Name | Out-Null }
     $requiredTests = @(
@@ -80,7 +81,8 @@ function Test-ConstructionContracts {
         'Assets/Tests/Editor/BuildingConstructionRulesTests.cs',
         'Assets/Tests/Editor/BuildingContentCatalogTests.cs',
         'Assets/Tests/Editor/BuildingProductionQueueTests.cs',
-        'Assets/Tests/Editor/BuildingFeedbackRulesTests.cs'
+        'Assets/Tests/Editor/BuildingFeedbackRulesTests.cs',
+        'Assets/Tests/Editor/BuildingMaintenanceRuntimeBindingTests.cs'
     )
     foreach ($test in $requiredTests) { Require-File $test | Out-Null }
     $editorTestsAsmdef = Join-Path $projectRoot 'Assets/Tests/Editor/EraImperial.EditorTests.asmdef'
