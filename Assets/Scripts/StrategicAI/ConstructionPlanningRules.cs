@@ -8,6 +8,36 @@ using System.Collections.Generic;
 /// </summary>
 public static class ConstructionPlanningRules
 {
+    /// <summary>
+    /// Selects the first Barracks military order after the construction and
+    /// production gates agree. The replay command remains the authoritative
+    /// simulation handoff, while this intent lets AI/UI expose the same choice.
+    /// </summary>
+    public static bool TryCreateInitialBarracksIntent(
+        BuildingContentCatalog catalog, StrategicPlanningState state,
+        out StrategicActionIntent intent, out BarracksContractResult result)
+    {
+        intent = null;
+        result = BarracksMilitaryContract.Evaluate(catalog, state);
+        if (result != BarracksContractResult.Accepted) return false;
+        BuildingContentProduction production;
+        if (!BarracksMilitaryContract.TryResolveInitialProduction(catalog, out production))
+        {
+            result = BarracksContractResult.MissingProduction;
+            return false;
+        }
+        intent = new StrategicActionIntent
+        {
+            action = StrategicActionKind.ProduceUnit,
+            priority = StrategicPriority.High,
+            goalId = "auto-produce-barracks-" + production.productCode.Trim().ToLowerInvariant(),
+            targetCode = production.productCode.Trim(),
+            targetEntityId = "barracks",
+            quantity = 1
+        };
+        return true;
+    }
+
     /// <summary>Reserves a candidate through the shared concurrent ledger.</summary>
     public static ConstructionReservationResult TryReserveCandidate(
         ConstructionReservationLedger reservations,
