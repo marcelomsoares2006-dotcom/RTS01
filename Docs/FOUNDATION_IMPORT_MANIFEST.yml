@@ -71,3 +71,17 @@ entries:
     requiredComponents: BuildingManager,BuildingBT,MeshFilter,MeshRenderer,Collider
     approvalChecks: import-model,create-prefab,link-building-data,placement-review,construction-playmode
     promotionCriteria: authored-model,unity-prefab,building-data,placement-playmode
+
+  - code: barracks
+    intermediateSource: Assets/Resources/Imports/Units/Buildings/barracks/Barracks_graybox.obj
+    authoredSource: Assets/Resources/Imports/Units/Buildings/barracks/Barracks_authoring.obj
+    scaleMeters: 1
+    footprintMeters: 6.4x6.2
+    footprintToleranceMeters: 0.6
+    maxHeightMeters: 5.2
+    expectedPrefab: Assets/Resources/Prefabs/Units/Buildings/Barracks.prefab
+    expectedBuildingData: Assets/Resources/ScriptableObjects/Units/Buildings/Barracks.asset
+    minimumEra: Dark
+    requiredComponents: BuildingManager,BuildingBT,MeshFilter,MeshRenderer,Collider
+    approvalChecks: import-model,create-prefab,link-building-data,placement-review,construction-playmode
+    promotionCriteria: authored-model,unity-prefab,building-data,placement-playmode

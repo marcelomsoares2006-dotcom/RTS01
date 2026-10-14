@@ -173,6 +173,29 @@ function buildMill() {
   return p;
 }
 
+function buildBarracks() {
+  const p = [];
+  // A fortified infantry hall: the broad training yard, gate, weapon racks
+  // and banner communicate military production at gameplay distance while
+  // preserving separately named parts for later sockets and VFX.
+  p.push(box('Foundation', 0, 0.25, 0, 6.4, 0.5, 5.2, 0));
+  p.push(box('BarracksWalls', 0, 1.65, 0.15, 5.75, 2.8, 4.35, 1));
+  for (const [x, z] of [[-2.55, -1.75], [2.55, -1.75], [-2.55, 2.05], [2.55, 2.05]])
+    p.push(box('TimberPost', x, 1.7, z, 0.28, 3.0, 0.28, 2));
+  p.push(box('TimberBeam', 0, 2.9, -2.04, 5.45, 0.3, 0.3, 2));
+  p.push(pyramid('Roof', 0, 3.05, 0.15, 6.15, 4.8, 1.95, 3));
+  p.push(box('EntranceFrame', 0, 1.55, -2.22, 2.35, 2.45, 0.35, 2));
+  p.push(box('Gate', 0, 1.18, -2.42, 1.45, 1.75, 0.12, 4));
+  p.push(box('GateLintel', 0, 2.76, -2.42, 2.55, 0.35, 0.35, 2));
+  p.push(box('WeaponRackLeft', -2.45, 1.05, 0.1, 0.22, 1.5, 1.35, 2));
+  p.push(box('WeaponRackRight', 2.45, 1.05, 0.1, 0.22, 1.5, 1.35, 2));
+  p.push(box('BannerPole', 0.65, 4.0, -2.55, 0.08, 2.0, 0.08, 2));
+  p.push(box('Banner', 0.98, 4.35, -2.55, 0.62, 0.9, 0.05, 4));
+  p.push(box('TrainingYard', 0, 0.58, 3.0, 3.7, 0.18, 1.1, 2));
+  p.push(box('TrainingPost', 0, 1.35, 3.0, 0.24, 1.4, 0.24, 2));
+  return p;
+}
+
 function makeBinaryGLB(parts, assetName) {
   const positions = [], normals = [], indices = [], primitiveInfo = [];
   for (const item of parts) {
@@ -354,6 +377,7 @@ const resourceDropoffParts = buildResourceDropoff();
 const lumberCampParts = buildLumberCamp();
 const miningCampParts = buildMiningCamp();
 const millParts = buildMill();
+const barracksParts = buildBarracks();
 const report = {
   generator: 'Tools/GenerateFoundationAssets.mjs',
   coordinateSystem: 'Y-up, right-handed, metres',
@@ -368,6 +392,8 @@ const report = {
     writeObj('MiningCamp_authoring', miningCampParts, 'mining-camp'),
     writeAsset('Mill_authoring', millParts, 'mill'),
     writeObj('Mill_authoring', millParts, 'mill'),
+    writeAsset('Barracks_authoring', barracksParts, 'barracks'),
+    writeObj('Barracks_authoring', barracksParts, 'barracks'),
   ],
 };
 const reportPath = path.join(outputRoot, 'foundation-asset-metrics.json');

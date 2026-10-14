@@ -201,6 +201,46 @@
       "path": "Assets/Resources/Imports/Units/Buildings/mill/Mill_authoring.obj",
       "materialPath": "Assets/Resources/Imports/Units/Buildings/mill/Mill_authoring.mtl",
       "bytes": 15009
+    },
+    {
+      "assetName": "Barracks_authoring",
+      "parts": 17,
+      "vertices": 400,
+      "triangles": 198,
+      "materials": 6,
+      "boundsMin": [
+        -3.2,
+        0,
+        -2.6
+      ],
+      "boundsMax": [
+        3.2,
+        5,
+        3.55
+      ],
+      "bytes": 23040,
+      "path": "Assets/Resources/Imports/Units/Buildings/barracks/Barracks_authoring.glb"
+    },
+    {
+      "assetName": "Barracks_authoring",
+      "format": "obj",
+      "parts": 17,
+      "vertices": 133,
+      "triangles": 198,
+      "materials": 6,
+      "boundsMin": [
+        -3.2,
+        0,
+        -2.6
+      ],
+      "boundsMax": [
+        3.2,
+        5,
+        3.55
+      ],
+      "path": "Assets/Resources/Imports/Units/Buildings/barracks/Barracks_authoring.obj",
+      "materialPath": "Assets/Resources/Imports/Units/Buildings/barracks/Barracks_authoring.mtl",
+      "bytes": 10726
     }
   ]
 }
