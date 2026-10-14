@@ -1,0 +1,129 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f0e3a4dc6f4475f8f73f27a4f2eb1b9, type: 3}
+  m_Name: Building Content Catalog
+  m_EditorClassIdentifier: 
+  entries:
+  - code: town_center
+    displayName: Town Center
+    role: 0
+    status: 0
+    minimumEra: 1
+    buildingData: {fileID: 0}
+    prefabPath: Assets/Resources/Prefabs/Units/Buildings/TownCenter.prefab
+    modelPath: Assets/Resources/Imports/Units/Buildings/town-center/
+    requiredSkillCodes: []
+    populationCapacity: 10
+    supportsDropoff: 1
+    supportsProduction: 1
+    supportsGarrison: 1
+    acceptanceCriteria: >-
+      Central base: acts as worker production and resource dropoff, anchors the
+      starting economy, supports garrison and must be the first functional base.
+  - code: house
+    displayName: House
+    role: 1
+    status: 2
+    minimumEra: 1
+    buildingData: {fileID: 11400000, guid: 5c2ccb27116004dc1acffa053dc93179, type: 2}
+    prefabPath: Assets/Resources/Prefabs/Units/Buildings/House.prefab
+    modelPath: Assets/Resources/Imports/Units/Buildings/house.fbx
+    requiredSkillCodes:
+    - build_house
+    populationCapacity: 5
+    supportsDropoff: 0
+    supportsProduction: 0
+    supportsGarrison: 0
+    acceptanceCriteria: >-
+      Provides population room and completes placement, construction and
+      destruction flows with the existing House prefab.
+  - code: resource_dropoff
+    displayName: Resource Dropoff
+    role: 2
+    status: 0
+    minimumEra: 1
+    buildingData: {fileID: 0}
+    prefabPath: Assets/Resources/Prefabs/Units/Buildings/ResourceDropoff.prefab
+    modelPath: Assets/Resources/Imports/Units/Buildings/resource-dropoff/
+    requiredSkillCodes: []
+    populationCapacity: 0
+    supportsDropoff: 1
+    supportsProduction: 0
+    supportsGarrison: 0
+    acceptanceCriteria: >-
+      Dedicated wood, food, stone and gold dropoff variants with valid worker
+      routing and resource access rules. Requires a real prefab and model set.
+  - code: barracks
+    displayName: Barracks
+    role: 3
+    status: 0
+    minimumEra: 1
+    buildingData: {fileID: 0}
+    prefabPath: Assets/Resources/Prefabs/Units/Buildings/Barracks.prefab
+    modelPath: Assets/Resources/Imports/Units/Buildings/barracks/
+    requiredSkillCodes:
+    - produce_soldier
+    populationCapacity: 0
+    supportsDropoff: 0
+    supportsProduction: 1
+    supportsGarrison: 0
+    acceptanceCriteria: >-
+      Trains the first infantry roster with a real queue, production time,
+      placement footprint and age/technology requirements.
+  - code: stable
+    displayName: Stable
+    role: 3
+    status: 0
+    minimumEra: 2
+    buildingData: {fileID: 0}
+    prefabPath: Assets/Resources/Prefabs/Units/Buildings/Stable.prefab
+    modelPath: Assets/Resources/Imports/Units/Buildings/stable/
+    requiredSkillCodes: []
+    populationCapacity: 0
+    supportsDropoff: 0
+    supportsProduction: 1
+    supportsGarrison: 0
+    acceptanceCriteria: >-
+      Trains mounted units after the first age transition and shares the same
+      production contract as Barracks.
+  - code: archery_range
+    displayName: Archery Range
+    role: 3
+    status: 0
+    minimumEra: 2
+    buildingData: {fileID: 0}
+    prefabPath: Assets/Resources/Prefabs/Units/Buildings/ArcheryRange.prefab
+    modelPath: Assets/Resources/Imports/Units/Buildings/archery-range/
+    requiredSkillCodes: []
+    populationCapacity: 0
+    supportsDropoff: 0
+    supportsProduction: 1
+    supportsGarrison: 0
+    acceptanceCriteria: >-
+      Trains ranged units after the first age transition and exposes a clear
+      production queue and counter unit path.
+  - code: tower
+    displayName: Tower
+    role: 4
+    status: 1
+    minimumEra: 1
+    buildingData: {fileID: 11400000, guid: 639a0392acefa480c9c2cfc57940efec, type: 2}
+    prefabPath: Assets/Resources/Prefabs/Units/Buildings/Tower.prefab
+    modelPath: Assets/Resources/Imports/Units/Buildings/tower.fbx
+    requiredSkillCodes: []
+    populationCapacity: 0
+    supportsDropoff: 0
+    supportsProduction: 0
+    supportsGarrison: 0
+    acceptanceCriteria: >-
+      Existing defensive prototype. Needs full attack, garrison and upgrade
+      validation before it can be marked Playable.
