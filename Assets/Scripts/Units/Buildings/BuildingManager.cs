@@ -86,7 +86,8 @@ public class BuildingManager : UnitManager
                 transform.TransformPoint(corner),
                 Vector3.up * -1f,
                 data != null ? data.terrainProbeDistance : 2f,
-                Globals.TERRAIN_LAYER_MASK
+                Globals.TERRAIN_LAYER_MASK,
+                out terrainHit
             ) || !BuildingConstructionRules.IsTerrainSlopeAllowed(
                 terrainHit.normal,
                 maximumSlope
