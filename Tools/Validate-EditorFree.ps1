@@ -64,6 +64,7 @@ function Test-BuildScenes([hashtable]$GuidIndex) {
 }
 
 function Test-ConstructionContracts {
+    Require-File 'Tools/Validate-FoundationAssets.ps1' | Out-Null
     $required = @(
         @{ Path = 'Assets/Scripts/Units/Buildings/Building.cs'; Pattern = 'class\s+Building\b'; Name = 'Building runtime' },
         @{ Path = 'Assets/Scripts/Units/Buildings/BuildingManager.cs'; Pattern = 'class\s+BuildingManager\b'; Name = 'Building manager' },
