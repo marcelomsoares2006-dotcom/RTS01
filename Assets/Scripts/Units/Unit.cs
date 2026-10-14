@@ -40,6 +40,7 @@ public class Unit
     protected int _owner;
     protected int _attackDamage;
     protected float _attackRange;
+    protected float _attackRate;
 
     public Unit(UnitData data, int owner) : this(data, owner, new List<ResourceValue>() { }) { }
     public Unit(UnitData data, int owner, List<ResourceValue> production)
@@ -52,10 +53,22 @@ public class Unit
         _production = production.ToDictionary(rv => rv.code, rv => rv.amount);
         _fieldOfView = data.fieldOfView;
         _owner = owner;
+        float baseAttackRange;
+        int baseAttackDamage;
+        float baseAttackRate;
+        CombatAttackProfile.Resolve(
+            data.code,
+            data.attackRange,
+            data.attackDamage,
+            data.attackRate,
+            out baseAttackRange,
+            out baseAttackDamage,
+            out baseAttackRate);
         _attackDamage = (int) (
-            data.attackDamage *
+            baseAttackDamage *
             TechnologyNodeActioners.GetMultiplier("attack_booster"));
-        _attackRange = data.attackRange;
+        _attackRange = baseAttackRange;
+        _attackRate = baseAttackRate;
 
         GameObject g = GameObject.Instantiate(data.prefab) as GameObject;
         _transform = g.transform;
@@ -268,6 +281,7 @@ public class Unit
     public int Owner { get => _owner; }
     public int AttackDamage { get => _attackDamage; set { _attackDamage = value; } }
     public float AttackRange { get => _attackRange; set { _attackRange = value; } }
+    public float AttackRate { get => _attackRate; set { _attackRate = value; } }
 
     public virtual bool IsAlive { get => true; }
 }

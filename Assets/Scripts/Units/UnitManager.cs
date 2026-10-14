@@ -85,13 +85,16 @@ public class UnitManager : MonoBehaviour
 
     public void Attack(Transform target)
     {
+        if (target == null || Unit == null || !Unit.IsAlive) return;
         UnitManager um = target.GetComponent<UnitManager>();
-        if (um == null) return;
+        if (um == null || um.Unit == null || !um.Unit.IsAlive || um.Unit.Owner == Unit.Owner)
+            return;
         um.TakeHit(Unit.AttackDamage);
     }
 
     public void TakeHit(int attackPoints)
     {
+        if (Unit == null || !Unit.IsAlive || attackPoints <= 0) return;
         Unit.HP -= attackPoints;
         UpdateHealthbar();
         if (Unit.HP <= 0) _Die();

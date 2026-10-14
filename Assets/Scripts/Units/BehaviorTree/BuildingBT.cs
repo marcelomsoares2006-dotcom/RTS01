@@ -18,12 +18,12 @@ public class BuildingBT : RuntimeBehaviorTree
 
         _root = new Parallel();
 
-        if (manager.Unit.Data.attackDamage > 0)
+        if (manager.Unit.AttackDamage > 0 && manager.Unit.AttackRange > 0f)
         {
             Sequence attackSequence = new Sequence(new List<Node> {
                 new CheckUnitInRange(manager, true),
                 new Timer(
-                    manager.Unit.Data.attackRate,
+                    manager.Unit.AttackRate > 0f ? manager.Unit.AttackRate : 0.1f,
                     new List<Node>()
                     {
                         new TaskAttack(manager),
