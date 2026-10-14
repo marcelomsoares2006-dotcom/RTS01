@@ -9,7 +9,11 @@ const units = [
 ];
 const animationBindingGuid = 'c2e5f9a0b7d14c638e91f4a6b8d20357';
 const fail = message => { throw new Error(message); };
-const read = relative => fs.readFileSync(path.join(root, relative), 'utf8');
+// Unity/YAML assets may be checked out with CRLF or LF depending on the
+// authoring tool and Git settings.  The validator must inspect serialized
+// fields, not the platform-specific line ending, otherwise a valid prefab
+// such as Archer can be reported as "root name missing".
+const read = relative => fs.readFileSync(path.join(root, relative), 'utf8').replace(/\r/g, '');
 
 for (const [name, code] of units) {
   const prefabPath = `Assets/Resources/Prefabs/Units/Characters/${name}.prefab`;
