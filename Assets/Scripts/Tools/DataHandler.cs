@@ -112,6 +112,7 @@ public class DataHandler : MonoBehaviour
         }
 
         TechnologyNodeData.SetUnlockedNodes(data.unlockedTechnologyNodeCodes);
+        ConstructionReplayRuntime.Restore(data.constructionReplayCommands, data.constructionReplayState);
 
         GamePlayersParameters playerParameters = GameManager.instance.gamePlayersParameters;
         Dictionary<string, CharacterManager> restoredCharacters =
@@ -337,6 +338,8 @@ public class DataHandler : MonoBehaviour
         data.players = players.ToArray();
         data.camPosition = Camera.main.transform.position;
         data.unlockedTechnologyNodeCodes = TechnologyNodeData.GetUnlockedNodeCodes();
+        data.constructionReplayCommands = ConstructionReplayRuntime.ExportCommands();
+        data.constructionReplayState = ConstructionReplayRuntime.State;
         return data;
     }
 

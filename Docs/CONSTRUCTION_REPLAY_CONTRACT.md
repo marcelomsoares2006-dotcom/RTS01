@@ -13,3 +13,9 @@ targets or quantities are rejected before they can alter the stream.
 The contract is editor-free and does not execute Unity objects. Runtime adapters
 apply the accepted commands to construction, production, reservation and era
 systems while retaining this log as the deterministic audit trail.
+
+`ConstructionReplayExecutor` is the detached reference executor. It produces a
+serializable snapshot of active buildings, produced units, reservations and
+era, then fingerprints that state. Replaying the same log twice yields equal
+snapshots; a supplied snapshot with a different fingerprint returns
+`DivergentReplay`. Age-up commands must advance exactly one era at a time.
