@@ -13,6 +13,8 @@ public class BuildingPlacer : MonoBehaviour
     private Vector3 _lastPlacementPosition;
 
     private UnitManager _builderManager;
+    private readonly BuildingCatalogResolver _catalogResolver =
+        BuildingCatalogResolver.LoadFromResources();
 
     private void Start()
     {
@@ -56,7 +58,11 @@ public class BuildingPlacer : MonoBehaviour
                 Globals.TERRAIN_LAYER_MASK
             ))
             {
-                _placedBuilding.SetPosition(_raycastHit.point);
+                BuildingData placementData = _placedBuilding.Data as BuildingData;
+                float gridSize = placementData != null ? placementData.placementGridSize : 0f;
+                _placedBuilding.SetPosition(BuildingConstructionRules.SnapPosition(
+                    _raycastHit.point,
+                    gridSize));
                 if (_lastPlacementPosition != _raycastHit.point)
                 {
                     _placedBuilding.CheckValidPlacement();
@@ -76,11 +82,16 @@ public class BuildingPlacer : MonoBehaviour
             }
 
             if (Input.mouseScrollDelta.y != 0f)
-                _placedBuilding.Transform.Rotate(
-                    Vector3.up,
-                    Mathf.Sign(Input.mouseScrollDelta.y) * 15f,
-                    Space.World
-                );
+            {
+                BuildingData placementData = _placedBuilding.Data as BuildingData;
+                float step = placementData != null ? placementData.rotationStepDegrees : 15f;
+                float nextY = _placedBuilding.Transform.eulerAngles.y
+                    + Mathf.Sign(Input.mouseScrollDelta.y) * step;
+                _placedBuilding.Transform.rotation = Quaternion.Euler(
+                    0f,
+                    BuildingConstructionRules.SnapRotation(nextY, step),
+                    0f);
+            }
         }
     }
 
@@ -124,6 +135,35 @@ public class BuildingPlacer : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Catalog-aware entry point for construction commands. The legacy input
+    /// path remains compatible until the match state exposes era and population
+    /// directly to the UI and AI.
+    /// </summary>
+    public BuildingAvailabilityResult TrySelectPlacedBuilding(
+        string buildingCode,
+        BuildingEra currentEra,
+        int population,
+        IEnumerable<string> unlockedTechnologyCodes = null,
+        IEnumerable<string> ownedBuildingCodes = null)
+    {
+        BuildingAvailabilityResult availability = _catalogResolver.Validate(
+            buildingCode,
+            currentEra,
+            population,
+            unlockedTechnologyCodes,
+            ownedBuildingCodes);
+        if (availability != BuildingAvailabilityResult.Available)
+            return availability;
+
+        BuildingData buildingData;
+        if (!_catalogResolver.TryGetBuildingData(buildingCode, out buildingData))
+            return BuildingAvailabilityResult.NotFound;
+
+        SelectPlacedBuilding(buildingData);
+        return BuildingAvailabilityResult.Available;
+    }
+
     public void SpawnBuilding(BuildingData data, int owner, Vector3 position)
     {
         SpawnBuilding(data, owner, position, new List<ResourceValue>() { });
@@ -153,7 +193,7 @@ public class BuildingPlacer : MonoBehaviour
         // destroy the previous "phantom" if there is one
         if (_placedBuilding != null && !_placedBuilding.IsFixed)
         {
-            Destroy(_placedBuilding.Transform.gameObject);
+            _DestroyPreviewBuilding(_placedBuilding);
         }
         Building building = new Building(
             buildingData,
@@ -166,14 +206,54 @@ public class BuildingPlacer : MonoBehaviour
 
     void _CancelPlacedBuilding()
     {
+        if (_placedBuilding == null)
+            return;
+
         // destroy the "phantom" building
-        Destroy(_placedBuilding.Transform.gameObject);
+        _DestroyPreviewBuilding(_placedBuilding);
         _placedBuilding = null;
         EventManager.TriggerEvent("PlaceBuildingOff");
     }
 
+    private void _DestroyPreviewBuilding(Building building)
+    {
+        if (building == null)
+            return;
+
+        // Unit registers itself during construction, before Place() is called.
+        // Remove cancelled previews from that registry so they cannot remain
+        // selectable or be serialized as real buildings after their GameObject
+        // is destroyed.
+        if (Unit.UNITS_BY_OWNER != null &&
+            Unit.UNITS_BY_OWNER.TryGetValue(building.Owner, out List<Unit> units))
+        {
+            units.Remove(building);
+            if (units.Count == 0)
+                Unit.UNITS_BY_OWNER.Remove(building.Owner);
+        }
+
+        if (building.Transform != null)
+            Destroy(building.Transform.gameObject);
+    }
+
     void _PlaceBuilding(bool canChain = true)
     {
+        // Validate the final placement and stockpile before any worker is
+        // assigned and before Building.Place consumes the construction cost.
+        if (_placedBuilding == null)
+            return;
+        BuildingData placedData = _placedBuilding.Data as BuildingData;
+        BuildingConstructionGateResult gate = BuildingConstructionGate.EvaluateLegacy(
+            placedData, _placedBuilding.Owner, _placedBuilding.HasValidPlacement);
+        if (gate != BuildingConstructionGateResult.Allowed)
+        {
+            EventManager.TriggerEvent("PlaceBuildingOff");
+            _DestroyPreviewBuilding(_placedBuilding);
+            _placedBuilding = null;
+            _builderManager = null;
+            return;
+        }
+
         // if there is a worker assigned to this construction,
         // warn its behaviour tree and deselect the building
         if (_builderManager != null)

@@ -1,0 +1,32 @@
+fileFormatVersion: 2
+guid: 68a3fa9f052b45a8867e2574664ca852
+ModelImporter:
+  serializedVersion: 21300
+  externalObjects: {}
+  materials:
+    materialImportMode: 0
+  meshes:
+    lODScreenPercentages: []
+  isReadable: 0
+  importVisibility: 0
+  importCameras: 0
+  importLights: 0
+  generateSecondaryUV: 0
+  useFileUnits: 1
+  optimizeMeshPolygons: 0
+  optimizeMeshVertices: 0
+  secondaryUVAngleDistortion: 8
+  secondaryUVAreaDistortion: 15.000001
+  secondaryUVPackMargin: 4
+  useSRGBMaterial: 1
+  meshOptimizationFlags: -1
+  indexFormat: 0
+  importBlendShapes: 1
+  swapUVChannels: 0
+  generateAnimations: 0
+  bakeIK: 1
+  resampleCurves: 1
+  animationType: 0
+  humanoidOversampling: 1
+  avatarSetup: 0
+  userData: graybox-intermediate

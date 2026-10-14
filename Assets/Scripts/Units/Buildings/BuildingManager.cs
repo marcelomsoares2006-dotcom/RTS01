@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 
+using System.Collections.Generic;
+
 public class BuildingManager : UnitManager
 {
     public AudioSource ambientSource;
@@ -10,7 +12,11 @@ public class BuildingManager : UnitManager
         get { return _building; }
         set { _building = value is Building ? (Building)value : null; }
     }
-    private int _nCollisions = 0;
+    // Trigger callbacks are not guaranteed to arrive in a strict pair when
+    // objects are disabled or destroyed. Tracking colliders avoids a stale
+    // counter making every later placement invalid.
+    private readonly System.Collections.Generic.HashSet<Collider> _blockingColliders =
+        new System.Collections.Generic.HashSet<Collider>();
 
     private void OnTriggerEnter(Collider other)
     {
@@ -19,7 +25,7 @@ public class BuildingManager : UnitManager
             other.gameObject.layer == Globals.FOV_LAYER
         )
             return;
-        _nCollisions++;
+        _blockingColliders.Add(other);
         CheckPlacement();
     }
 
@@ -30,8 +36,13 @@ public class BuildingManager : UnitManager
             other.gameObject.layer == Globals.FOV_LAYER
         )
             return;
-        _nCollisions = Mathf.Max(0, _nCollisions - 1);
+        _blockingColliders.Remove(other);
         CheckPlacement();
+    }
+
+    private void OnDisable()
+    {
+        _blockingColliders.Clear();
     }
 
     public bool CheckPlacement()
@@ -48,12 +59,34 @@ public class BuildingManager : UnitManager
 
     public bool HasValidPlacement()
     {
-        if (_nCollisions > 0) return false;
+        if (_blockingColliders.Count > 0) return false;
+
+        BuildingData data = _building.Data as BuildingData;
+        if (data != null && data.minimumDistanceFromBuildings > 0f)
+        {
+            Collider[] nearby = Physics.OverlapSphere(
+                transform.position,
+                data.minimumDistanceFromBuildings,
+                Globals.UNIT_MASK);
+            List<Vector3> existingBuildings = new List<Vector3>();
+            for (int i = 0; i < nearby.Length; i++)
+            {
+                BuildingManager other = nearby[i].GetComponentInParent<BuildingManager>();
+                if (other == null || other == this || other.Unit == null)
+                    continue;
+                existingBuildings.Add(other.transform.position);
+            }
+            if (!BuildingConstructionRules.IsBuildingDistanceAllowed(
+                transform.position,
+                existingBuildings,
+                data.minimumDistanceFromBuildings))
+                return false;
+        }
 
         // get 4 bottom corner positions
         Vector3 c = _collider.center;
         Vector3 e = _collider.size / 2f;
-        float bottomHeight = c.y - e.y + 0.5f;
+        float bottomHeight = c.y - e.y + (data != null ? data.terrainProbeStartOffset : 0.5f);
         Vector3[] bottomCorners = new Vector3[]
         {
         new Vector3(c.x - e.x, bottomHeight, c.z - e.z),
@@ -63,18 +96,31 @@ public class BuildingManager : UnitManager
         };
         // cast a small ray beneath the corner to check for a close ground
         // (if at least two are not valid, then placement is invalid)
-        int invalidCornersCount = 0;
+        int validCornersCount = 0;
+        float maximumSlope = data != null ? data.maximumTerrainSlopeDegrees : 25f;
         foreach (Vector3 corner in bottomCorners)
         {
+            RaycastHit terrainHit;
             if (!Physics.Raycast(
+                // Collider coordinates are local to the building. Transforming
+                // each probe keeps terrain validation correct after rotation
+                // (and also respects the prefab's scale).
                 transform.TransformPoint(corner),
                 Vector3.up * -1f,
-                2f,
-                Globals.TERRAIN_LAYER_MASK
+                data != null ? data.terrainProbeDistance : 2f,
+                Globals.TERRAIN_LAYER_MASK,
+                out terrainHit
+            ) || !BuildingConstructionRules.IsTerrainSlopeAllowed(
+                terrainHit.normal,
+                maximumSlope
             ))
-                invalidCornersCount++;
+                continue;
+            validCornersCount++;
         }
-        if (invalidCornersCount >= 3)
+        int requiredCorners = data != null
+            ? Mathf.Clamp(data.minimumSupportedCorners, 1, bottomCorners.Length)
+            : 2;
+        if (validCornersCount < requiredCorners)
             return false;
 
         // check building is within the current FOV bounds
@@ -89,6 +135,8 @@ public class BuildingManager : UnitManager
 
     public bool Build(int buildPower)
     {
+        if (_building == null || !_building.IsFixed || _building.IsAlive || buildPower <= 0)
+            return _building != null && _building.IsAlive;
         _building.SetConstructionHP(_building.ConstructionHP + buildPower);
         UpdateHealthbar();
         return _building.IsAlive;

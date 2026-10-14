@@ -72,12 +72,19 @@ public class CheckUnitInRange : Node
                     {
                         if (!cm.IsConstructor)
                         {
-                            b.AddConstructor(cm);
-                            cm.SetIsConstructor(true);
-                            cm.SetRendererVisibility(false);
-                            cm.agent.Warp(
-                                target.position +
-                                Quaternion.Euler(0f, Random.Range(0f, 360f), 0f) * Vector3.right * _targetSize * 0.8f);
+                            if (b.AddConstructor(cm))
+                            {
+                                cm.SetIsConstructor(true);
+                                cm.SetRendererVisibility(false);
+                                cm.agent.Warp(
+                                    target.position +
+                                    Quaternion.Euler(0f, Random.Range(0f, 360f), 0f) * Vector3.right * _targetSize * 0.8f);
+                            }
+                            else
+                            {
+                                Parent.ClearData("currentTarget");
+                                Parent.ClearData("currentTargetOffset");
+                            }
                         }
                     }
                 }

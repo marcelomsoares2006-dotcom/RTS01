@@ -1,0 +1,129 @@
+version: 1
+purpose: first-playable-foundation-buildings
+approval: blocked-until-unity-review
+entries:
+  - code: town_center
+    intermediateSource: Assets/Resources/Imports/Units/Buildings/town-center/TownCenter_graybox.obj
+    authoredSource: Assets/Resources/Imports/Units/Buildings/town-center/TownCenter_authoring.obj
+    scaleMeters: 1
+    footprintMeters: 9.2x7.2
+    footprintToleranceMeters: 0.6
+    maxHeightMeters: 8.0
+    expectedPrefab: Assets/Resources/Prefabs/Units/Buildings/TownCenter.prefab
+    expectedBuildingData: Assets/Resources/ScriptableObjects/Units/Buildings/TownCenter.asset
+    minimumEra: Dark
+    requiredComponents: BuildingManager,BuildingBT,MeshFilter,MeshRenderer,Collider
+    approvalChecks: import-model,create-prefab,link-building-data,placement-review,construction-playmode
+    promotionCriteria: authored-model,unity-prefab,building-data,placement-playmode
+
+  - code: resource_dropoff
+    intermediateSource: Assets/Resources/Imports/Units/Buildings/resource-dropoff/ResourceDropoff_graybox.obj
+    authoredSource: Assets/Resources/Imports/Units/Buildings/resource-dropoff/ResourceDropoff_authoring.obj
+    scaleMeters: 1
+    footprintMeters: 4.8x3.8
+    footprintToleranceMeters: 0.6
+    maxHeightMeters: 4.5
+    expectedPrefab: Assets/Resources/Prefabs/Units/Buildings/ResourceDropoff.prefab
+    expectedBuildingData: Assets/Resources/ScriptableObjects/Units/Buildings/ResourceDropoff.asset
+    minimumEra: Dark
+    requiredComponents: BuildingManager,BuildingBT,MeshFilter,MeshRenderer,Collider
+    approvalChecks: import-model,create-prefab,link-building-data,placement-review,construction-playmode
+    promotionCriteria: authored-model,unity-prefab,building-data,placement-playmode
+
+  - code: lumber_camp
+    intermediateSource: Assets/Resources/Imports/Units/Buildings/lumber-camp/LumberCamp_graybox.obj
+    authoredSource: Assets/Resources/Imports/Units/Buildings/lumber-camp/LumberCamp_authoring.obj
+    scaleMeters: 1
+    footprintMeters: 5.4x5.2
+    footprintToleranceMeters: 0.6
+    maxHeightMeters: 4.6
+    expectedPrefab: Assets/Resources/Prefabs/Units/Buildings/LumberCamp.prefab
+    expectedBuildingData: Assets/Resources/ScriptableObjects/Units/Buildings/LumberCamp.asset
+    minimumEra: Dark
+    requiredComponents: BuildingManager,BuildingBT,MeshFilter,MeshRenderer,Collider
+    approvalChecks: import-model,create-prefab,link-building-data,placement-review,construction-playmode
+    promotionCriteria: authored-model,unity-prefab,building-data,placement-playmode
+
+  - code: mining_camp
+    intermediateSource: Assets/Resources/Imports/Units/Buildings/mining-camp/MiningCamp_graybox.obj
+    authoredSource: Assets/Resources/Imports/Units/Buildings/mining-camp/MiningCamp_authoring.obj
+    scaleMeters: 1
+    footprintMeters: 5.0x4.6
+    footprintToleranceMeters: 0.6
+    maxHeightMeters: 4.5
+    expectedPrefab: Assets/Resources/Prefabs/Units/Buildings/MiningCamp.prefab
+    expectedBuildingData: Assets/Resources/ScriptableObjects/Units/Buildings/MiningCamp.asset
+    minimumEra: Dark
+    requiredComponents: BuildingManager,BuildingBT,MeshFilter,MeshRenderer,Collider
+    approvalChecks: import-model,create-prefab,link-building-data,placement-review,construction-playmode
+    promotionCriteria: authored-model,unity-prefab,building-data,placement-playmode
+
+  - code: mill
+    intermediateSource: Assets/Resources/Imports/Units/Buildings/mill/Mill_graybox.obj
+    authoredSource: Assets/Resources/Imports/Units/Buildings/mill/Mill_authoring.obj
+    scaleMeters: 1
+    footprintMeters: 6.2x5.3
+    footprintToleranceMeters: 0.6
+    maxHeightMeters: 4.8
+    expectedPrefab: Assets/Resources/Prefabs/Units/Buildings/Mill.prefab
+    expectedBuildingData: Assets/Resources/ScriptableObjects/Units/Buildings/Mill.asset
+    minimumEra: Dark
+    requiredComponents: BuildingManager,BuildingBT,MeshFilter,MeshRenderer,Collider
+    approvalChecks: import-model,create-prefab,link-building-data,placement-review,construction-playmode
+    promotionCriteria: authored-model,unity-prefab,building-data,placement-playmode
+
+  - code: barracks
+    intermediateSource: Assets/Resources/Imports/Units/Buildings/barracks/Barracks_graybox.obj
+    authoredSource: Assets/Resources/Imports/Units/Buildings/barracks/Barracks_authoring.obj
+    scaleMeters: 1
+    footprintMeters: 6.4x6.2
+    footprintToleranceMeters: 0.6
+    maxHeightMeters: 5.2
+    expectedPrefab: Assets/Resources/Prefabs/Units/Buildings/Barracks.prefab
+    expectedBuildingData: Assets/Resources/ScriptableObjects/Units/Buildings/Barracks.asset
+    minimumEra: Dark
+    requiredComponents: BuildingManager,BuildingBT,MeshFilter,MeshRenderer,Collider
+    approvalChecks: import-model,create-prefab,link-building-data,placement-review,construction-playmode
+    promotionCriteria: authored-model,unity-prefab,building-data,placement-playmode
+
+  - code: archery_range
+    intermediateSource: Assets/Resources/Imports/Units/Buildings/archery-range/ArcheryRange_graybox.obj
+    authoredSource: Assets/Resources/Imports/Units/Buildings/archery-range/ArcheryRange_authoring.obj
+    scaleMeters: 1
+    footprintMeters: 6.6x5.8
+    footprintToleranceMeters: 0.6
+    maxHeightMeters: 5.6
+    expectedPrefab: Assets/Resources/Prefabs/Units/Buildings/ArcheryRange.prefab
+    expectedBuildingData: Assets/Resources/ScriptableObjects/Units/Buildings/ArcheryRange.asset
+    minimumEra: Feudal
+    requiredComponents: BuildingManager,BuildingBT,MeshFilter,MeshRenderer,Collider
+    approvalChecks: import-model,create-prefab,link-building-data,placement-review,construction-playmode
+    promotionCriteria: authored-model,unity-prefab,building-data,placement-playmode
+
+  - code: stable
+    intermediateSource: Assets/Resources/Imports/Units/Buildings/stable/Stable_graybox.obj
+    authoredSource: Assets/Resources/Imports/Units/Buildings/stable/Stable_authoring.obj
+    scaleMeters: 1
+    footprintMeters: 6.8x6.2
+    footprintToleranceMeters: 0.6
+    maxHeightMeters: 5.6
+    expectedPrefab: Assets/Resources/Prefabs/Units/Buildings/Stable.prefab
+    expectedBuildingData: Assets/Resources/ScriptableObjects/Units/Buildings/Stable.asset
+    minimumEra: Feudal
+    requiredComponents: BuildingManager,BuildingBT,MeshFilter,MeshRenderer,Collider
+    approvalChecks: import-model,create-prefab,link-building-data,placement-review,construction-playmode
+    promotionCriteria: authored-model,unity-prefab,building-data,placement-playmode
+
+  - code: siege_workshop
+    intermediateSource: Assets/Resources/Imports/Units/Buildings/siege-workshop/SiegeWorkshop_graybox.obj
+    authoredSource: Assets/Resources/Imports/Units/Buildings/siege-workshop/SiegeWorkshop_authoring.obj
+    scaleMeters: 1
+    footprintMeters: 7.2x6.4
+    footprintToleranceMeters: 0.6
+    maxHeightMeters: 5.6
+    expectedPrefab: Assets/Resources/Prefabs/Units/Buildings/SiegeWorkshop.prefab
+    expectedBuildingData: Assets/Resources/ScriptableObjects/Units/Buildings/SiegeWorkshop.asset
+    minimumEra: Castle
+    requiredComponents: BuildingManager,BuildingBT,MeshFilter,MeshRenderer,Collider
+    approvalChecks: import-model,create-prefab,link-building-data,placement-review,construction-playmode
+    promotionCriteria: authored-model,unity-prefab,building-data,placement-playmode

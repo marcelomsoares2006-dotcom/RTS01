@@ -16,6 +16,8 @@ public class BinarySerializableData
         typeof(PlayerData),
         typeof(GamePlayerUnitData),
         typeof(GamePlayerData),
+        typeof(BuildingProductionQueueSnapshot),
+        typeof(BuildingProductionOrderSnapshot),
     };
 
     public Dictionary<string, object> properties;

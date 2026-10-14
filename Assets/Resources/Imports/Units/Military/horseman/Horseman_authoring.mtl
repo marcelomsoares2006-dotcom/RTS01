@@ -1,0 +1,42 @@
+# Deterministic PBR intent for authored military silhouettes
+newmtl cloth
+Kd 0.16 0.28 0.52
+Ns 180.00000000000006
+metallic 0
+illum 2
+
+newmtl leather
+Kd 0.24 0.1 0.045
+Ns 99.99999999999997
+metallic 0
+illum 2
+
+newmtl wood
+Kd 0.34 0.16 0.055
+Ns 140
+metallic 0
+illum 2
+
+newmtl metal
+Kd 0.34 0.38 0.43
+Ns 580.0000000000001
+metallic 0.75
+illum 2
+
+newmtl skin
+Kd 0.66 0.37 0.22
+Ns 79.99999999999996
+metallic 0
+illum 2
+
+newmtl accent
+Kd 0.76 0.55 0.1
+Ns 420.00000000000006
+metallic 0.15
+illum 2
+
+newmtl wheel
+Kd 0.12 0.055 0.018
+Ns 79.99999999999996
+metallic 0
+illum 2

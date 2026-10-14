@@ -1,0 +1,271 @@
+{
+  "schema": 1,
+  "generatedBy": "Tools/GenerateMilitaryUnitVisualAssets.mjs",
+  "units": [
+    {
+      "name": "Archer",
+      "code": "archer",
+      "authoredSource": "Assets/Resources/Imports/Units/Military/archer/Archer_authoring.obj",
+      "materialSource": "Assets/Resources/Imports/Units/Military/archer/Archer_authoring.mtl",
+      "parts": [
+        {
+          "name": "Boots",
+          "material": "leather",
+          "triangles": 12
+        },
+        {
+          "name": "Boots_R",
+          "material": "leather",
+          "triangles": 12
+        },
+        {
+          "name": "Tunic",
+          "material": "cloth",
+          "triangles": 12
+        },
+        {
+          "name": "Belt",
+          "material": "leather",
+          "triangles": 12
+        },
+        {
+          "name": "Head",
+          "material": "skin",
+          "triangles": 28
+        },
+        {
+          "name": "Hood",
+          "material": "cloth",
+          "triangles": 16
+        },
+        {
+          "name": "Arm_L",
+          "material": "cloth",
+          "triangles": 12
+        },
+        {
+          "name": "Arm_R",
+          "material": "cloth",
+          "triangles": 12
+        },
+        {
+          "name": "Quiver",
+          "material": "leather",
+          "triangles": 12
+        },
+        {
+          "name": "Bow",
+          "material": "wood",
+          "triangles": 12
+        },
+        {
+          "name": "Bowstring",
+          "material": "accent",
+          "triangles": 12
+        }
+      ],
+      "vertexCount": 104,
+      "triangleCount": 152,
+      "materialCount": 5,
+      "bounds": [
+        -0.43303,
+        0,
+        -0.3,
+        0.514501,
+        1.885,
+        0.303589
+      ],
+      "sourceBytes": 5097,
+      "materialBytes": 561,
+      "budget": {
+        "maxTriangles": 180,
+        "maxMaterials": 7
+      }
+    },
+    {
+      "name": "Horseman",
+      "code": "horseman",
+      "authoredSource": "Assets/Resources/Imports/Units/Military/horseman/Horseman_authoring.obj",
+      "materialSource": "Assets/Resources/Imports/Units/Military/horseman/Horseman_authoring.mtl",
+      "parts": [
+        {
+          "name": "HorseBody",
+          "material": "leather",
+          "triangles": 12
+        },
+        {
+          "name": "HorseChest",
+          "material": "leather",
+          "triangles": 12
+        },
+        {
+          "name": "HorseHead",
+          "material": "leather",
+          "triangles": 12
+        },
+        {
+          "name": "HorseMane",
+          "material": "accent",
+          "triangles": 12
+        },
+        {
+          "name": "HorseLeg_-0.42_-0.2",
+          "material": "leather",
+          "triangles": 20
+        },
+        {
+          "name": "HorseHoof_-0.42_-0.2",
+          "material": "wheel",
+          "triangles": 12
+        },
+        {
+          "name": "HorseLeg_0.42_-0.2",
+          "material": "leather",
+          "triangles": 20
+        },
+        {
+          "name": "HorseHoof_0.42_-0.2",
+          "material": "wheel",
+          "triangles": 12
+        },
+        {
+          "name": "HorseLeg_-0.42_0.22",
+          "material": "leather",
+          "triangles": 20
+        },
+        {
+          "name": "HorseHoof_-0.42_0.22",
+          "material": "wheel",
+          "triangles": 12
+        },
+        {
+          "name": "HorseLeg_0.42_0.22",
+          "material": "leather",
+          "triangles": 20
+        },
+        {
+          "name": "HorseHoof_0.42_0.22",
+          "material": "wheel",
+          "triangles": 12
+        },
+        {
+          "name": "Saddle",
+          "material": "accent",
+          "triangles": 12
+        },
+        {
+          "name": "RiderTorso",
+          "material": "cloth",
+          "triangles": 12
+        },
+        {
+          "name": "RiderHead",
+          "material": "skin",
+          "triangles": 28
+        },
+        {
+          "name": "RiderHelm",
+          "material": "metal",
+          "triangles": 16
+        },
+        {
+          "name": "Lance",
+          "material": "wood",
+          "triangles": 12
+        },
+        {
+          "name": "Shield",
+          "material": "metal",
+          "triangles": 12
+        }
+      ],
+      "vertexCount": 176,
+      "triangleCount": 268,
+      "materialCount": 7,
+      "bounds": [
+        -0.614478,
+        -0.03,
+        -0.34,
+        0.614478,
+        2.88,
+        1.054092
+      ],
+      "sourceBytes": 9178,
+      "materialBytes": 561,
+      "budget": {
+        "maxTriangles": 300,
+        "maxMaterials": 7
+      }
+    },
+    {
+      "name": "BatteringRam",
+      "code": "battering_ram",
+      "authoredSource": "Assets/Resources/Imports/Units/Military/battering_ram/BatteringRam_authoring.obj",
+      "materialSource": "Assets/Resources/Imports/Units/Military/battering_ram/BatteringRam_authoring.mtl",
+      "parts": [
+        {
+          "name": "Frame",
+          "material": "wood",
+          "triangles": 12
+        },
+        {
+          "name": "Roof",
+          "material": "cloth",
+          "triangles": 12
+        },
+        {
+          "name": "RamBeam",
+          "material": "wood",
+          "triangles": 12
+        },
+        {
+          "name": "RamHead",
+          "material": "metal",
+          "triangles": 16
+        },
+        {
+          "name": "Wheel_L",
+          "material": "wheel",
+          "triangles": 36
+        },
+        {
+          "name": "Wheel_R",
+          "material": "wheel",
+          "triangles": 36
+        },
+        {
+          "name": "WheelAxle",
+          "material": "metal",
+          "triangles": 12
+        },
+        {
+          "name": "Banner",
+          "material": "accent",
+          "triangles": 12
+        },
+        {
+          "name": "BannerCloth",
+          "material": "cloth",
+          "triangles": 12
+        }
+      ],
+      "vertexCount": 104,
+      "triangleCount": 160,
+      "materialCount": 5,
+      "bounds": [
+        -0.96,
+        0,
+        -0.51,
+        0.96,
+        2.34,
+        1.85
+      ],
+      "sourceBytes": 5168,
+      "materialBytes": 561,
+      "budget": {
+        "maxTriangles": 220,
+        "maxMaterials": 7
+      }
+    }
+  ]
+}

@@ -72,12 +72,19 @@ public class TaskFollow : Node
                         buildPower > 0
                     )
                     {
-                        b.AddConstructor(_manager);
-                        _manager.SetIsConstructor(true);
-                        _manager.SetRendererVisibility(false);
-                        _manager.agent.Warp(
-                            target.position +
-                            Quaternion.Euler(0f, Random.Range(0f, 360f), 0f) * Vector3.right * _targetSize * 0.8f);
+                        if (b.AddConstructor(_manager))
+                        {
+                            _manager.SetIsConstructor(true);
+                            _manager.SetRendererVisibility(false);
+                            _manager.agent.Warp(
+                                target.position +
+                                Quaternion.Euler(0f, Random.Range(0f, 360f), 0f) * Vector3.right * _targetSize * 0.8f);
+                        }
+                        else
+                        {
+                            ClearData("currentTarget");
+                            ClearData("currentTargetOffset");
+                        }
                     }
                 }
             }

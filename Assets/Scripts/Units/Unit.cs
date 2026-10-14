@@ -40,8 +40,7 @@ public class Unit
     protected int _owner;
     protected int _attackDamage;
     protected float _attackRange;
-    // maximo de vida definido pela era (unidades avancadas); 0 = usa UnitData.healthpoints
-    protected int _maxHealthOverride;
+    protected float _attackRate;
 
     public Unit(UnitData data, int owner) : this(data, owner, new List<ResourceValue>() { }) { }
     public Unit(UnitData data, int owner, List<ResourceValue> production)
@@ -54,10 +53,22 @@ public class Unit
         _production = production.ToDictionary(rv => rv.code, rv => rv.amount);
         _fieldOfView = data.fieldOfView;
         _owner = owner;
+        float baseAttackRange;
+        int baseAttackDamage;
+        float baseAttackRate;
+        CombatAttackProfile.Resolve(
+            data.code,
+            data.attackRange,
+            data.attackDamage,
+            data.attackRate,
+            out baseAttackRange,
+            out baseAttackDamage,
+            out baseAttackRate);
         _attackDamage = (int) (
-            data.attackDamage *
+            baseAttackDamage *
             TechnologyNodeActioners.GetMultiplier("attack_booster"));
-        _attackRange = data.attackRange;
+        _attackRange = baseAttackRange;
+        _attackRate = baseAttackRate;
 
         GameObject g = GameObject.Instantiate(data.prefab) as GameObject;
         _transform = g.transform;
@@ -94,20 +105,6 @@ public class Unit
     public void SetPosition(Vector3 position)
     {
         _transform.position = position;
-    }
-
-    /// <summary>
-    /// Aplica as estatisticas da era atual (unidades avancadas). Mantem a proporcao de vida atual e respeita
-    /// o multiplicador de tecnologia de ataque, como o construtor.
-    /// </summary>
-    public void SetEraStats(int maxHealth, int attackDamage, float attackRange)
-    {
-        float healthRatio = MaxHP > 0 ? _currentHealth / (float) MaxHP : 1f;
-        _maxHealthOverride = Mathf.Max(1, maxHealth);
-        _currentHealth = Mathf.Max(1, Mathf.RoundToInt(healthRatio * _maxHealthOverride));
-        _attackDamage = (int) (attackDamage * TechnologyNodeActioners.GetMultiplier("attack_booster"));
-        _attackRange = attackRange;
-        _levelUpData = _GetLevelUpData();
     }
 
     public void SetAttackDamage(int dmg)
@@ -275,7 +272,7 @@ public class Unit
     public string Code { get => _data.code; }
     public Transform Transform { get => _transform; }
     public int HP { get => _currentHealth; set => _currentHealth = value; }
-    public int MaxHP { get => _maxHealthOverride > 0 ? _maxHealthOverride : _data.healthpoints; }
+    public int MaxHP { get => _data.healthpoints; }
     public int Level { get => _level; set { _level = value; } }
     public bool LevelMaxedOut { get => _levelMaxedOut; }
     public UnitLevelUpData LevelUpData { get => _levelUpData; }
@@ -283,7 +280,11 @@ public class Unit
     public List<SkillManager> SkillManagers { get => _skillManagers; }
     public int Owner { get => _owner; }
     public int AttackDamage { get => _attackDamage; set { _attackDamage = value; } }
+    /// <summary>Combat damage after building-specific defensive modifiers.</summary>
+    public virtual int CombatAttackDamage { get => _attackDamage; }
     public float AttackRange { get => _attackRange; set { _attackRange = value; } }
+    public float AttackRate { get => _attackRate; set { _attackRate = value; } }
+    public int Armor => Mathf.Max(0, _data.armor);
 
     public virtual bool IsAlive { get => true; }
 }

@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 8b5e2f6a1c7d4e90a3f6b8c2d5e7a901
+ModelImporter:
+  serializedVersion: 21300
+  externalObjects: {}
+  materials:
+    materialImportMode: 0
+  meshes:
+    lODScreenPercentages: []
+  isReadable: 0
+  importVisibility: 0
+  importCameras: 0
+  importLights: 0
+  useFileUnits: 1
+  optimizeMeshPolygons: 0
+  optimizeMeshVertices: 0
+  generateSecondaryUV: 0
+  userData: graybox-intermediate

@@ -11,24 +11,25 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d3d7baebcf3947ce9b0366a4348bef9, type: 3}
   m_Name: Archer
-  m_EditorClassIdentifier: Assembly-CSharp::CharacterData
+  m_EditorClassIdentifier: 
   code: archer
   unitName: Archer
-  description: 'Arqueiro medieval: ataca a distancia com arco longo.'
-  healthpoints: 40
-  prefab: {fileID: 3448640530860390152, guid: aa547f27e035f444ca5e48ad7614fcde, type: 3}
+  description: Arqueiro de apoio a distância.
+  healthpoints: 70
+  prefab: {fileID: 100100000, guid: a2f3e5d1b7c44e30a9f86d12c5b7e401, type: 3}
   sprite: {fileID: 0}
   cost:
   - code: 0
-    amount: 60
-  - code: 1
     amount: 30
+  - code: 1
+    amount: 50
   canProduce: 
   skills: []
-  fieldOfView: 18
-  attackRange: 12
-  attackDamage: 14
-  attackRate: 3
+  fieldOfView: 20
+  attackRange: 7
+  attackDamage: 12
+  attackRate: 1.5
+  armor: 0
   onSelectSound: {fileID: 0}
   onMoveValidSound: {fileID: 0}
   onMoveInvalidSound: {fileID: 0}

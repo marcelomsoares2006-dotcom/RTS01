@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
 public class BinarySerializableScriptableObject : ScriptableObject
@@ -44,22 +43,15 @@ public class BinarySerializableScriptableObject : ScriptableObject
         if (!Directory.Exists(fullDirPath))
             Directory.CreateDirectory(fullDirPath);
 
-        BinaryFormatter formatter = new BinaryFormatter();
-        FileStream stream = new FileStream(filePath, FileMode.Create);
-
         BinarySerializableData data = new BinarySerializableData(
             this, _fieldsToSerialize, serializeAll);
         try
         {
-            formatter.Serialize(stream, data.properties);
+            SaveFileStore.Save(filePath, data.properties);
         }
-        catch (SerializationException e)
+        catch (Exception e)
         {
             Debug.LogError($"Failed to serialize '{name}'. Reason: " + e.Message);
-        }
-        finally
-        {
-            stream.Close();
         }
     }
 
@@ -71,27 +63,20 @@ public class BinarySerializableScriptableObject : ScriptableObject
             $"{(fileName == null ? name : fileName)}.data"
         );
 
-        if (!File.Exists(filePath))
+        if (!File.Exists(filePath) && !File.Exists(filePath + ".bak"))
         {
             Debug.LogWarning($"File \"{filePath}\" not found! Getting default values.", this);
             return;
         }
 
-        BinaryFormatter formatter = new BinaryFormatter();
-        FileStream stream = new FileStream(filePath, FileMode.Open);
-
         Dictionary<string, object> properties = null;
         try
         {
-            properties = formatter.Deserialize(stream) as Dictionary<string, object>;
+            properties = SaveFileStore.Load<Dictionary<string, object>>(filePath);
         }
-        catch (SerializationException e)
+        catch (Exception e)
         {
             Debug.LogWarning($"Failed to deserialize '{name}' - getting default values. Reason: " + e.Message);
-        }
-        finally
-        {
-            stream.Close();
         }
 
         if (properties == null)

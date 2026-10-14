@@ -1,0 +1,366 @@
+{
+  "generator": "Tools/GenerateFoundationAssets.mjs",
+  "coordinateSystem": "Y-up, right-handed, metres",
+  "assets": [
+    {
+      "assetName": "TownCenter_authoring",
+      "parts": 17,
+      "vertices": 464,
+      "triangles": 238,
+      "materials": 6,
+      "boundsMin": [
+        -4.8227922061357855,
+        0,
+        -3.8227922061357855
+      ],
+      "boundsMax": [
+        4.8227922061357855,
+        7.7,
+        3.8227922061357855
+      ],
+      "bytes": 25012,
+      "path": "Assets/Resources/Imports/Units/Buildings/town-center/TownCenter_authoring.glb"
+    },
+    {
+      "assetName": "TownCenter_authoring",
+      "format": "obj",
+      "parts": 17,
+      "vertices": 153,
+      "triangles": 238,
+      "materials": 6,
+      "boundsMin": [
+        -4.8227922061357855,
+        0,
+        -3.8227922061357855
+      ],
+      "boundsMax": [
+        4.8227922061357855,
+        7.7,
+        3.8227922061357855
+      ],
+      "path": "Assets/Resources/Imports/Units/Buildings/town-center/TownCenter_authoring.obj",
+      "materialPath": "Assets/Resources/Imports/Units/Buildings/town-center/TownCenter_authoring.mtl",
+      "bytes": 13983
+    },
+    {
+      "assetName": "ResourceDropoff_authoring",
+      "parts": 11,
+      "vertices": 248,
+      "triangles": 120,
+      "materials": 6,
+      "boundsMin": [
+        -2.4,
+        0,
+        -2.45
+      ],
+      "boundsMax": [
+        2.4,
+        3.8800000000000003,
+        1.9
+      ],
+      "bytes": 14764,
+      "path": "Assets/Resources/Imports/Units/Buildings/resource-dropoff/ResourceDropoff_authoring.glb"
+    },
+    {
+      "assetName": "ResourceDropoff_authoring",
+      "format": "obj",
+      "parts": 11,
+      "vertices": 82,
+      "triangles": 120,
+      "materials": 6,
+      "boundsMin": [
+        -2.4,
+        0,
+        -2.45
+      ],
+      "boundsMax": [
+        2.4,
+        3.8800000000000003,
+        1.9
+      ],
+      "path": "Assets/Resources/Imports/Units/Buildings/resource-dropoff/ResourceDropoff_authoring.obj",
+      "materialPath": "Assets/Resources/Imports/Units/Buildings/resource-dropoff/ResourceDropoff_authoring.mtl",
+      "bytes": 5947
+    },
+    {
+      "assetName": "LumberCamp_authoring",
+      "parts": 15,
+      "vertices": 352,
+      "triangles": 174,
+      "materials": 6,
+      "boundsMin": [
+        -2.7,
+        0,
+        -2.7
+      ],
+      "boundsMax": [
+        2.7,
+        4.1,
+        2.379136440227948
+      ],
+      "bytes": 20360,
+      "path": "Assets/Resources/Imports/Units/Buildings/lumber-camp/LumberCamp_authoring.glb"
+    },
+    {
+      "assetName": "LumberCamp_authoring",
+      "format": "obj",
+      "parts": 15,
+      "vertices": 117,
+      "triangles": 174,
+      "materials": 6,
+      "boundsMin": [
+        -2.7,
+        0,
+        -2.7
+      ],
+      "boundsMax": [
+        2.7,
+        4.1,
+        2.379136440227948
+      ],
+      "path": "Assets/Resources/Imports/Units/Buildings/lumber-camp/LumberCamp_authoring.obj",
+      "materialPath": "Assets/Resources/Imports/Units/Buildings/lumber-camp/LumberCamp_authoring.mtl",
+      "bytes": 9418
+    },
+    {
+      "assetName": "MiningCamp_authoring",
+      "parts": 17,
+      "vertices": 508,
+      "triangles": 270,
+      "materials": 6,
+      "boundsMin": [
+        -2.5,
+        0,
+        -2.3
+      ],
+      "boundsMax": [
+        2.5,
+        3.9,
+        2.5685912105075914
+      ],
+      "bytes": 26488,
+      "path": "Assets/Resources/Imports/Units/Buildings/mining-camp/MiningCamp_authoring.glb"
+    },
+    {
+      "assetName": "MiningCamp_authoring",
+      "format": "obj",
+      "parts": 17,
+      "vertices": 169,
+      "triangles": 270,
+      "materials": 6,
+      "boundsMin": [
+        -2.5,
+        0,
+        -2.3
+      ],
+      "boundsMax": [
+        2.5,
+        3.9,
+        2.5685912105075914
+      ],
+      "path": "Assets/Resources/Imports/Units/Buildings/mining-camp/MiningCamp_authoring.obj",
+      "materialPath": "Assets/Resources/Imports/Units/Buildings/mining-camp/MiningCamp_authoring.mtl",
+      "bytes": 15705
+    },
+    {
+      "assetName": "Mill_authoring",
+      "parts": 17,
+      "vertices": 496,
+      "triangles": 262,
+      "materials": 6,
+      "boundsMin": [
+        -2.7,
+        0,
+        -2.755
+      ],
+      "boundsMax": [
+        3.4699999999999998,
+        4.25,
+        2.4628443421428154
+      ],
+      "bytes": 26076,
+      "path": "Assets/Resources/Imports/Units/Buildings/mill/Mill_authoring.glb"
+    },
+    {
+      "assetName": "Mill_authoring",
+      "format": "obj",
+      "parts": 17,
+      "vertices": 165,
+      "triangles": 262,
+      "materials": 6,
+      "boundsMin": [
+        -2.7,
+        0,
+        -2.755
+      ],
+      "boundsMax": [
+        3.4699999999999998,
+        4.25,
+        2.4628443421428154
+      ],
+      "path": "Assets/Resources/Imports/Units/Buildings/mill/Mill_authoring.obj",
+      "materialPath": "Assets/Resources/Imports/Units/Buildings/mill/Mill_authoring.mtl",
+      "bytes": 15009
+    },
+    {
+      "assetName": "Barracks_authoring",
+      "parts": 17,
+      "vertices": 400,
+      "triangles": 198,
+      "materials": 6,
+      "boundsMin": [
+        -3.2,
+        0,
+        -2.6
+      ],
+      "boundsMax": [
+        3.2,
+        5,
+        3.55
+      ],
+      "bytes": 23040,
+      "path": "Assets/Resources/Imports/Units/Buildings/barracks/Barracks_authoring.glb"
+    },
+    {
+      "assetName": "Barracks_authoring",
+      "format": "obj",
+      "parts": 17,
+      "vertices": 133,
+      "triangles": 198,
+      "materials": 6,
+      "boundsMin": [
+        -3.2,
+        0,
+        -2.6
+      ],
+      "boundsMax": [
+        3.2,
+        5,
+        3.55
+      ],
+      "path": "Assets/Resources/Imports/Units/Buildings/barracks/Barracks_authoring.obj",
+      "materialPath": "Assets/Resources/Imports/Units/Buildings/barracks/Barracks_authoring.mtl",
+      "bytes": 10726
+    },
+    {
+      "assetName": "ArcheryRange_authoring",
+      "parts": 20,
+      "vertices": 712,
+      "triangles": 394,
+      "materials": 6,
+      "boundsMin": [
+        -3.3,
+        0,
+        -2.94
+      ],
+      "boundsMax": [
+        3.3,
+        5.1,
+        3.0700000000000003
+      ],
+      "bytes": 34492,
+      "path": "Assets/Resources/Imports/Units/Buildings/archery-range/ArcheryRange_authoring.glb"
+    },
+    {
+      "assetName": "ArcheryRange_authoring",
+      "format": "obj",
+      "parts": 20,
+      "vertices": 237,
+      "triangles": 394,
+      "materials": 6,
+      "boundsMin": [
+        -3.3,
+        0,
+        -2.94
+      ],
+      "boundsMax": [
+        3.3,
+        5.1,
+        3.0700000000000003
+      ],
+      "path": "Assets/Resources/Imports/Units/Buildings/archery-range/ArcheryRange_authoring.obj",
+      "materialPath": "Assets/Resources/Imports/Units/Buildings/archery-range/ArcheryRange_authoring.mtl",
+      "bytes": 22128
+    },
+    {
+      "assetName": "Stable_authoring",
+      "parts": 21,
+      "vertices": 496,
+      "triangles": 246,
+      "materials": 6,
+      "boundsMin": [
+        -3.4,
+        0,
+        -3.1
+      ],
+      "boundsMax": [
+        3.4,
+        5,
+        3.1
+      ],
+      "bytes": 28184,
+      "path": "Assets/Resources/Imports/Units/Buildings/stable/Stable_authoring.glb"
+    },
+    {
+      "assetName": "Stable_authoring",
+      "format": "obj",
+      "parts": 21,
+      "vertices": 165,
+      "triangles": 246,
+      "materials": 6,
+      "boundsMin": [
+        -3.4,
+        0,
+        -3.1
+      ],
+      "boundsMax": [
+        3.4,
+        5,
+        3.1
+      ],
+      "path": "Assets/Resources/Imports/Units/Buildings/stable/Stable_authoring.obj",
+      "materialPath": "Assets/Resources/Imports/Units/Buildings/stable/Stable_authoring.mtl",
+      "bytes": 13467
+    },
+    {
+      "assetName": "SiegeWorkshop_authoring",
+      "parts": 22,
+      "vertices": 560,
+      "triangles": 284,
+      "materials": 6,
+      "boundsMin": [
+        -3.6,
+        0,
+        -3.2
+      ],
+      "boundsMax": [
+        3.6,
+        5.3,
+        3.2
+      ],
+      "bytes": 30720,
+      "path": "Assets/Resources/Imports/Units/Buildings/siege-workshop/SiegeWorkshop_authoring.glb"
+    },
+    {
+      "assetName": "SiegeWorkshop_authoring",
+      "format": "obj",
+      "parts": 22,
+      "vertices": 186,
+      "triangles": 284,
+      "materials": 6,
+      "boundsMin": [
+        -3.6,
+        0,
+        -3.2
+      ],
+      "boundsMax": [
+        3.6,
+        5.3,
+        3.2
+      ],
+      "path": "Assets/Resources/Imports/Units/Buildings/siege-workshop/SiegeWorkshop_authoring.obj",
+      "materialPath": "Assets/Resources/Imports/Units/Buildings/siege-workshop/SiegeWorkshop_authoring.mtl",
+      "bytes": 15583
+    }
+  ]
+}

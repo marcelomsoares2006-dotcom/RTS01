@@ -21,6 +21,10 @@ public class UnitData : ScriptableObject
     public int attackDamage;
     public float attackRate;
 
+    [Header("Defense")]
+    [Min(0)]
+    public int armor;
+
     [Header("General Sounds")]
     public AudioClip onSelectSound;
 

@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 4b9c2e7f6a1d4c3e8f0b2a5d7e9c1f04
+ModelImporter:
+  serializedVersion: 21300
+  externalObjects: {}
+  materials:
+    materialImportMode: 0
+  meshes:
+    lODScreenPercentages: []
+  isReadable: 0
+  importVisibility: 0
+  importCameras: 0
+  importLights: 0
+  generateSecondaryUV: 0
+  useFileUnits: 1
+  optimizeMeshPolygons: 0
+  optimizeMeshVertices: 0
+  userData: authored-barracks-obj

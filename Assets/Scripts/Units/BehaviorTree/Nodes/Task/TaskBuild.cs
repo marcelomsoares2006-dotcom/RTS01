@@ -16,7 +16,19 @@ public class TaskBuild: Node
     public override NodeState Evaluate()
     {
         object currentTarget = GetData("currentTarget");
-        BuildingManager bm = ((Transform)currentTarget).GetComponent<BuildingManager>();
+        Transform target = currentTarget as Transform;
+        if (target == null)
+        {
+            _state = NodeState.FAILURE;
+            return _state;
+        }
+        BuildingManager bm = target.GetComponent<BuildingManager>();
+        if (bm == null || bm.Unit == null)
+        {
+            ClearData("currentTarget");
+            _state = NodeState.FAILURE;
+            return _state;
+        }
         bool finishedBuilding = bm.Build(_buildPower);
         if (finishedBuilding)
         {
