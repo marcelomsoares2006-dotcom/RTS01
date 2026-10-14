@@ -111,5 +111,5 @@ component wiring. The catalog must remain planned until the authored assets are
 imported and reviewed in Unity.
 
 For a host without Unity, `Tools/FoundationPreviewServer.mjs` serves a local
-Three.js preview of all eight foundation GLBs. This preview is an art sanity check only; it
+Three.js preview of all nine foundation GLBs. This preview is an art sanity check only; it
 does not replace Unity import, prefab serialization or PlayMode acceptance.

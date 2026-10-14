@@ -21,7 +21,7 @@ Cada marco deve entregar uma unidade funcional pequena e verificável:
 - **Economia:** Food, coleta, população e ligação gradual aos trabalhadores existentes.
 - **Combate:** defesa de torres, perfis de dano/armadura e projéteis compatíveis.
 - **IA estratégica:** snapshots, gateway de intenções e conectores de execução.
-- **Release/fiscalização:** preflight editor-free e validação licenciada Unity 6.0.6.3f1.
+- **Release/fiscalização:** preflight editor-free e validação licenciada Unity 6000.6.3f1.
 
 ## Sequência macro
 
