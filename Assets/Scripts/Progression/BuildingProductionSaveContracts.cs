@@ -12,7 +12,8 @@ public enum BuildingProductionSnapshotResult
     UnsupportedEconomyResource,
     InvalidSnapshot,
     QueueLimitExceeded,
-    QueueNotEmpty
+    QueueNotEmpty,
+    StateMismatch
 }
 
 [Serializable]
@@ -32,6 +33,7 @@ public sealed class BuildingProductionQueueSnapshot
     public int ownerId;
     public BuildingEra era;
     public BuildingContentAssetStage assetOrigin;
+    public List<string> unlockedTechnologyCodes = new List<string>();
     public List<BuildingProductionOrderSnapshot> orders = new List<BuildingProductionOrderSnapshot>();
 }
 
@@ -61,7 +63,8 @@ public static class BuildingProductionSaveRules
         BuildingProductionQueueSnapshot candidate = new BuildingProductionQueueSnapshot
         {
             buildingCode = entry.code.Trim(), ownerId = state.ownerId,
-            era = state.era, assetOrigin = entry.AssetStage
+            era = state.era, assetOrigin = entry.AssetStage,
+            unlockedTechnologyCodes = CopyTechnologyCodes(state.unlockedTechnologyCodes)
         };
         if (queue.orders != null)
             for (int i = 0; i < queue.orders.Count; i++)
@@ -100,6 +103,9 @@ public static class BuildingProductionSaveRules
         if (snapshot.ownerId != state.ownerId) return BuildingProductionSnapshotResult.InvalidSnapshot;
         BuildingContentSpec entry = catalog.Find(snapshot.buildingCode);
         if (entry == null) return BuildingProductionSnapshotResult.MissingCatalog;
+        if (snapshot.era != state.era || snapshot.assetOrigin != entry.AssetStage
+            || !TechnologyCodesMatch(snapshot.unlockedTechnologyCodes, state.unlockedTechnologyCodes))
+            return BuildingProductionSnapshotResult.StateMismatch;
         if (BuildingContentProgressionRules.Validate(catalog, entry.code, state)
             != BuildingAvailabilityResult.Available)
             return BuildingProductionSnapshotResult.ContentUnavailable;
@@ -220,5 +226,25 @@ public static class BuildingProductionSaveRules
         for (int i = 0; i < source.Count; i++)
             if (source[i] != null) copy.Add(new ResourceValue(source[i].code, source[i].amount));
         return copy;
+    }
+
+    private static List<string> CopyTechnologyCodes(List<string> source)
+    {
+        List<string> copy = new List<string>();
+        if (source == null) return copy;
+        for (int i = 0; i < source.Count; i++)
+            if (!string.IsNullOrWhiteSpace(source[i])) copy.Add(source[i].Trim());
+        copy.Sort(StringComparer.OrdinalIgnoreCase);
+        return copy;
+    }
+
+    private static bool TechnologyCodesMatch(List<string> saved, List<string> current)
+    {
+        List<string> left = CopyTechnologyCodes(saved);
+        List<string> right = CopyTechnologyCodes(current);
+        if (left.Count != right.Count) return false;
+        for (int i = 0; i < left.Count; i++)
+            if (!string.Equals(left[i], right[i], StringComparison.OrdinalIgnoreCase)) return false;
+        return true;
     }
 }

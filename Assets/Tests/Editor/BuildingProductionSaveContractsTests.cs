@@ -89,6 +89,24 @@ public sealed class BuildingProductionSaveContractsTests
         Assert.That(queue.Peek.productCode, Is.EqualTo("spearman"));
     }
 
+    [Test]
+    public void RestoreRejectsEraOrTechnologyDriftBeforeReplacingQueue()
+    {
+        BuildingContentCatalog catalog = Catalog();
+        catalog.entries.Add(ReadyBarracks());
+        StrategicPlanningState state = State();
+        BuildingProductionQueue source = new BuildingProductionQueue(5);
+        BuildingProductionQueueSnapshot snapshot;
+        Assert.That(BuildingProductionSaveRules.Capture(catalog, state, source, "barracks", out snapshot),
+            Is.EqualTo(BuildingProductionSnapshotResult.Captured));
+
+        state.unlockedTechnologyCodes = new List<string> { "fletching" };
+        BuildingProductionQueue destination = new BuildingProductionQueue(5);
+        Assert.That(BuildingProductionSaveRules.Restore(catalog, state, destination, snapshot),
+            Is.EqualTo(BuildingProductionSnapshotResult.StateMismatch));
+        Assert.That(destination.Count, Is.EqualTo(0));
+    }
+
     private BuildingContentCatalog Catalog()
     {
         BuildingContentCatalog catalog = ScriptableObject.CreateInstance<BuildingContentCatalog>();
