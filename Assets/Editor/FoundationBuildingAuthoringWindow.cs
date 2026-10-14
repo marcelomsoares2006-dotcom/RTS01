@@ -110,6 +110,12 @@ public sealed class FoundationBuildingAuthoringWindow : EditorWindow
             }
         }
 
+        using (new EditorGUI.DisabledScope(!CanPromoteReviewedDrafts()))
+        {
+            if (GUILayout.Button("Promote reviewed drafts to playable assets", GUILayout.Height(26f)))
+                PromoteReviewedDrafts();
+        }
+
         if (GUILayout.Button("Open Unity acceptance documentation"))
             EditorUtility.DisplayDialog(
                 "Foundation acceptance",
@@ -254,6 +260,142 @@ public sealed class FoundationBuildingAuthoringWindow : EditorWindow
         AssetDatabase.Refresh();
         _messages.Add("Draft assets created. Catalog status and BuildingData references remain unchanged.");
         Repaint();
+    }
+
+    private bool CanPromoteReviewedDrafts()
+    {
+        foreach (FoundationSpec spec in FoundationSpecs())
+        {
+            string draftPrefab = PrefabFolder + "/" + ToFileName(spec.DisplayName) + "_DRAFT.prefab";
+            string draftData = DataFolder + "/" + ToFileName(spec.DisplayName) + "_DRAFT.asset";
+            if (AssetDatabase.LoadAssetAtPath<GameObject>(draftPrefab) == null
+                || AssetDatabase.LoadAssetAtPath<BuildingData>(draftData) == null)
+                return false;
+            if (!IsPromotableDraft(spec.Code, draftPrefab, draftData)) return false;
+        }
+        return true;
+    }
+
+    private void PromoteReviewedDrafts()
+    {
+        if (!CanPromoteReviewedDrafts())
+        {
+            _messages.Add("ERROR: every draft must pass the serialized component review before promotion.");
+            Repaint();
+            return;
+        }
+
+        if (!EditorUtility.DisplayDialog(
+                "Promote foundation assets",
+                "This moves all nine reviewed drafts to their final paths, links BuildingData in the catalog and marks them Playable. Confirm that placement and construction PlayMode review has already passed.",
+                "Promote reviewed assets", "Cancel"))
+            return;
+
+        _messages.Clear();
+        foreach (FoundationSpec spec in FoundationSpecs())
+        {
+            string draftPrefab = PrefabFolder + "/" + ToFileName(spec.DisplayName) + "_DRAFT.prefab";
+            string draftData = DataFolder + "/" + ToFileName(spec.DisplayName) + "_DRAFT.asset";
+            string finalPrefab = PrefabFolder + "/" + ToFileName(spec.DisplayName) + ".prefab";
+            string finalData = DataFolder + "/" + ToFileName(spec.DisplayName) + ".asset";
+            string prefabError = AssetDatabase.MoveAsset(draftPrefab, finalPrefab);
+            string dataError = AssetDatabase.MoveAsset(draftData, finalData);
+            if (!string.IsNullOrEmpty(prefabError) || !string.IsNullOrEmpty(dataError))
+            {
+                _messages.Add("ERROR: could not promote " + spec.Code + ": "
+                    + (string.IsNullOrEmpty(prefabError) ? dataError : prefabError));
+                continue;
+            }
+
+            BuildingData data = AssetDatabase.LoadAssetAtPath<BuildingData>(finalData);
+            if (data != null)
+            {
+                data.name = ToFileName(spec.DisplayName);
+                data.description = GetDescription(spec.Code).Replace("Unity authoring draft", "Playable foundation");
+                EditorUtility.SetDirty(data);
+            }
+            _messages.Add("Promoted " + spec.Code + " to final prefab and BuildingData.");
+        }
+
+        AssetDatabase.SaveAssets();
+        AssetDatabase.Refresh();
+        LinkCatalogReferencesAndPromoteStatus();
+        AssetDatabase.SaveAssets();
+        AssetDatabase.Refresh();
+        _messages.Add("Catalog references linked and foundation entries marked Playable. Run Validate-FoundationAssets.ps1 after Unity finishes importing.");
+        Repaint();
+    }
+
+    private static bool IsPromotableDraft(string code, string prefabPath, string dataPath)
+    {
+        GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(prefabPath);
+        BuildingData data = AssetDatabase.LoadAssetAtPath<BuildingData>(dataPath);
+        if (prefab == null || data == null || data.prefab == null || data.constructionMeshes == null || data.constructionMeshes.Length == 0)
+            return false;
+        if (prefab.layer != 12 || !string.Equals(prefab.tag, "Unit", StringComparison.Ordinal)) return false;
+        if (prefab.GetComponent<BuildingManager>() == null || prefab.GetComponent<BuildingBT>() == null)
+            return false;
+        if (prefab.GetComponent<Collider>() == null || prefab.GetComponent<Rigidbody>() == null
+            || prefab.GetComponent<NavMeshObstacle>() == null)
+            return false;
+        MeshFilter filter = prefab.GetComponentsInChildren<MeshFilter>(true)
+            .FirstOrDefault(candidate => candidate != null && candidate.sharedMesh != null);
+        MeshRenderer renderer = prefab.GetComponentsInChildren<MeshRenderer>(true)
+            .FirstOrDefault(candidate => candidate != null && candidate.sharedMaterials.Length > 0);
+        return filter != null && renderer != null && string.Equals(data.code, code, StringComparison.Ordinal);
+    }
+
+    private static void LinkCatalogReferencesAndPromoteStatus()
+    {
+        const string catalogPath = "Assets/Resources/ScriptableObjects/Units/Building Content Catalog.asset";
+        UnityEngine.Object catalog = AssetDatabase.LoadAssetAtPath<UnityEngine.Object>(catalogPath);
+        if (catalog == null) throw new InvalidOperationException("Foundation authoring: catalog asset is missing: " + catalogPath);
+
+        SerializedObject serializedCatalog = new SerializedObject(catalog);
+        SerializedProperty entries = serializedCatalog.FindProperty("entries");
+        if (entries == null || !entries.isArray) throw new InvalidOperationException("Foundation authoring: catalog entries array is missing.");
+        foreach (FoundationSpec spec in FoundationSpecs())
+        {
+            string dataPath = DataFolder + "/" + ToFileName(spec.DisplayName) + ".asset";
+            BuildingData data = AssetDatabase.LoadAssetAtPath<BuildingData>(dataPath);
+            bool found = false;
+            for (int i = 0; i < entries.arraySize; i++)
+            {
+                SerializedProperty entry = entries.GetArrayElementAtIndex(i);
+                SerializedProperty code = entry.FindPropertyRelative("code");
+                if (code == null || !string.Equals(code.stringValue, spec.Code, StringComparison.OrdinalIgnoreCase)) continue;
+                SerializedProperty status = entry.FindPropertyRelative("status");
+                SerializedProperty buildingData = entry.FindPropertyRelative("buildingData");
+                if (status == null || buildingData == null) throw new InvalidOperationException("Foundation authoring: catalog schema changed for " + spec.Code + ".");
+                status.enumValueIndex = (int)BuildingContentStatus.Playable;
+                buildingData.objectReferenceValue = data;
+                found = true;
+                break;
+            }
+            if (!found) throw new InvalidOperationException("Foundation authoring: catalog entry is missing: " + spec.Code);
+        }
+        serializedCatalog.ApplyModifiedPropertiesWithoutUndo();
+        EditorUtility.SetDirty(catalog);
+    }
+
+    private sealed class FoundationSpec
+    {
+        public readonly string Code;
+        public readonly string DisplayName;
+        public FoundationSpec(string code, string displayName) { Code = code; DisplayName = displayName; }
+    }
+
+    private static IEnumerable<FoundationSpec> FoundationSpecs()
+    {
+        yield return new FoundationSpec(TownCenterCode, "Town Center");
+        yield return new FoundationSpec(ResourceDropoffCode, "Resource Dropoff");
+        yield return new FoundationSpec(LumberCampCode, "Lumber Camp");
+        yield return new FoundationSpec(MiningCampCode, "Mining Camp");
+        yield return new FoundationSpec(MillCode, "Mill");
+        yield return new FoundationSpec(BarracksCode, "Barracks");
+        yield return new FoundationSpec(ArcheryRangeCode, "Archery Range");
+        yield return new FoundationSpec(StableCode, "Stable");
+        yield return new FoundationSpec(WorkshopCode, "SiegeWorkshop");
     }
 
     private void CreateDraft(string code, string displayName, string modelPath)
@@ -461,7 +603,7 @@ public sealed class FoundationBuildingAuthoringWindow : EditorWindow
         data.prefab = prefab;
         data.cost = new List<ResourceValue>
         {
-            new ResourceValue(InGameResource.Wood, code == TownCenterCode ? 400 : code == BarracksCode ? 150 : 50)
+            new ResourceValue(InGameResource.Wood, GetConstructionCost(code))
         };
         data.maxConstructors = 3;
         data.minimumSupportedCorners = 2;
@@ -509,9 +651,21 @@ public sealed class FoundationBuildingAuthoringWindow : EditorWindow
                 return "Unity authoring draft for the ranged Archery Range. Requires foundation acceptance review.";
             case StableCode:
                 return "Unity authoring draft for the cavalry Stable. Requires foundation acceptance review.";
+            case WorkshopCode:
+                return "Unity authoring draft for the Castle Age Siege Workshop. Requires foundation acceptance review.";
             default:
                 return "Unity authoring draft. Requires foundation acceptance review.";
         }
+    }
+
+    private static int GetConstructionCost(string code)
+    {
+        if (string.Equals(code, TownCenterCode, StringComparison.Ordinal)) return 400;
+        if (string.Equals(code, BarracksCode, StringComparison.Ordinal)
+            || string.Equals(code, ArcheryRangeCode, StringComparison.Ordinal)
+            || string.Equals(code, StableCode, StringComparison.Ordinal)) return 150;
+        if (string.Equals(code, WorkshopCode, StringComparison.Ordinal)) return 300;
+        return 50;
     }
 
     private static string ToFileName(string value)
