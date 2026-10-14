@@ -163,8 +163,7 @@ public sealed class BuildingContentCatalog : ScriptableObject
             BuildingContentSpec entry = entries[i];
             if (entry == null) continue;
 
-            bool requiresConstructionCost = entry.role == BuildingContentRole.TownCenter
-                || entry.role == BuildingContentRole.ResourceDropoff;
+            bool requiresConstructionCost = entry.role != BuildingContentRole.Wonder;
             if (requiresConstructionCost && (entry.constructionCost == null || entry.constructionCost.Count == 0))
                 yield return entry.code + " needs a construction cost contract.";
             else if (entry.constructionCost != null)
@@ -179,12 +178,15 @@ public sealed class BuildingContentCatalog : ScriptableObject
 
             if (entry.production != null)
             {
+                HashSet<string> productionCodes = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
                 for (int j = 0; j < entry.production.Count; j++)
                 {
                     BuildingContentProduction production = entry.production[j];
                     if (production == null || string.IsNullOrWhiteSpace(production.productCode)
                         || production.productionTime <= 0f || production.queueLimit <= 0)
                         yield return entry.code + " has an invalid production contract.";
+                    else if (!productionCodes.Add(production.productCode.Trim()))
+                        yield return entry.code + " repeats a production product code.";
                     if (production != null && production.cost != null)
                     {
                         for (int k = 0; k < production.cost.Count; k++)
@@ -195,6 +197,21 @@ public sealed class BuildingContentCatalog : ScriptableObject
                         }
                     }
                 }
+            }
+
+            if (entry.supportsProduction && (entry.production == null || entry.production.Count == 0))
+                yield return entry.code + " enables production but has no production entries.";
+            if (!entry.supportsProduction && entry.production != null && entry.production.Count > 0)
+                yield return entry.code + " has production entries without enabling production.";
+
+            if (entry.supportsDropoff && (entry.dropoffResources == null || entry.dropoffResources.Count == 0))
+                yield return entry.code + " enables dropoff but accepts no resources.";
+            if (entry.dropoffResources != null)
+            {
+                HashSet<EconomyResourceType> dropoffResources = new HashSet<EconomyResourceType>();
+                for (int j = 0; j < entry.dropoffResources.Count; j++)
+                    if (!dropoffResources.Add(entry.dropoffResources[j]))
+                        yield return entry.code + " repeats an accepted dropoff resource.";
             }
 
             if (entry.requirements != null)

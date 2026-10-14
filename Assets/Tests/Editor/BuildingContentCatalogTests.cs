@@ -91,7 +91,10 @@ public sealed class BuildingContentCatalogTests
         Assert.That(townCenter.production.Any(
             production => production != null && production.productCode == "villager"
                 && production.productionTime > 0f
-                && production.queueLimit > 0), Is.True);
+                && production.queueLimit > 0
+                && production.populationCost == 1
+                && production.cost.Any(cost => cost != null
+                    && cost.resource == EconomyResourceType.Food && cost.amount == 50)), Is.True);
         Assert.That(townCenter.garrisonCapacity, Is.GreaterThan(0));
         Assert.That(townCenter.populationCapacity, Is.GreaterThan(0));
 
@@ -105,6 +108,7 @@ public sealed class BuildingContentCatalogTests
         Assert.That(dropoff.dropoffResources, Does.Contain(EconomyResourceType.Wood));
         Assert.That(dropoff.dropoffResources, Does.Contain(EconomyResourceType.Gold));
         Assert.That(dropoff.dropoffResources, Does.Contain(EconomyResourceType.Stone));
+        Assert.That(dropoff.dropoffResources.Distinct().Count(), Is.EqualTo(4));
     }
 
     [Test]
