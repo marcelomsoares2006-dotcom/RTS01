@@ -37,6 +37,7 @@ public class UnitManager : MonoBehaviour
     private GameObject _levelUpVFX;
     private Material _levelUpVFXMaterial;
     private Coroutine _levelUpVFXCoroutine = null;
+    private readonly CombatCooldownState _combatCooldown = new CombatCooldownState();
 
     private Vector3 _meshSize;
     public Vector3 MeshSize => _meshSize;
@@ -89,7 +90,22 @@ public class UnitManager : MonoBehaviour
         UnitManager um = target.GetComponent<UnitManager>();
         if (um == null || um.Unit == null || !um.Unit.IsAlive || um.Unit.Owner == Unit.Owner)
             return;
-        um.TakeHit(Unit.AttackDamage);
+
+        if (!CombatAttackResolver.TryCreateProjectile(
+            transform.position,
+            target.position,
+            Unit.AttackRange,
+            Unit.AttackDamage,
+            Unit.AttackRate,
+            Time.time,
+            _combatCooldown,
+            out CombatProjectilePayload projectile))
+            return;
+
+        // The current runtime applies the impact immediately. A future
+        // projectile renderer can consume the payload and call ApplyImpact
+        // on arrival without changing attack validation or cooldown logic.
+        um.ApplyImpact(CombatImpact.FromProjectile(projectile));
     }
 
     public void TakeHit(int attackPoints)
@@ -98,6 +114,11 @@ public class UnitManager : MonoBehaviour
         Unit.HP -= CombatDamageProfile.ResolveDamage(attackPoints, Unit.Armor);
         UpdateHealthbar();
         if (Unit.HP <= 0) _Die();
+    }
+
+    public void ApplyImpact(CombatImpact impact)
+    {
+        TakeHit(impact.RawDamage);
     }
 
     protected virtual bool IsActive()
