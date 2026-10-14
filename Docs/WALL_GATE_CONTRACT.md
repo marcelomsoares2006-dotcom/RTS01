@@ -6,6 +6,11 @@
 2. **Conexão**: mesma família, papéis compatíveis, endpoints livres e distância dentro do raio de encaixe.
 3. **Abertura**: portão real, dono válido, estado diferente do solicitado e área livre para abrir.
 
+O placement também rejeita lifecycle destruído/arruinado, ownership divergente,
+spacing modular abaixo do mínimo e inclinações negativas, NaN ou infinitas. A
+conexão rejeita peças destruídas/arruinadas e famílias com owners diferentes;
+essas decisões permanecem puras e independentes de prefab.
+
 Entradas de projeto devem permanecer com `runtimeEnabled = false` e `assetsReady = false` até que exista o pacote visual completo: prefab, modelo, colliders, estados de construção/dano/ruína, sockets e validação de editor. Assim o catálogo pode registrar a intenção de uma muralha ou portão sem fazer o runtime descobrir referências quebradas.
 
 Este marco não adiciona assets, prefabs, componentes de cena ou integração automática em `BuildingPlacer`. A integração só deve ocorrer quando o primeiro conjunto modular real passar a auditoria de conteúdo. Os adaptadores futuros devem converter física/cena em `WallGatePlacementObservation` e consumir os resultados estáveis dos contratos, mantendo a simulação testável sem Unity.

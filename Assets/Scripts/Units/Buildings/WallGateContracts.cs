@@ -19,6 +19,16 @@ public enum WallGateOpeningState
     Closing
 }
 
+public enum WallGateLifecycleState
+{
+    Blueprint,
+    UnderConstruction,
+    Operational,
+    Damaged,
+    Destroyed,
+    Ruined
+}
+
 /// <summary>Explicit result codes used by placement and connection UI.</summary>
 public enum WallGatePlacementResult
 {
@@ -29,6 +39,9 @@ public enum WallGatePlacementResult
     MissingAsset,
     InvalidFootprint,
     InvalidTerrain,
+    InvalidOwner,
+    InvalidSpacing,
+    InvalidLifecycle,
     Occupied,
     RequiresConnection
 }
@@ -41,7 +54,9 @@ public enum WallGateConnectionResult
     IncompatibleFamily,
     InvalidDistance,
     OccupiedEndpoint,
-    UnsupportedRole
+    UnsupportedRole,
+    InvalidOwner,
+    InvalidLifecycle
 }
 
 public enum WallGateOpeningResult
@@ -51,7 +66,8 @@ public enum WallGateOpeningResult
     NotAGate,
     AlreadyInRequestedState,
     Blocked,
-    InvalidOwner
+    InvalidOwner,
+    InvalidLifecycle
 }
 
 /// <summary>
@@ -88,6 +104,9 @@ public sealed class WallGateContract
 
     [Tooltip("True only after prefab, model, colliders and construction states exist.")]
     public bool assetsReady;
+    public int ownerId = -1;
+    public WallGateLifecycleState lifecycle = WallGateLifecycleState.Operational;
+    [Min(0f)] public float minimumSpacing;
 
     [Tooltip("Expected prefab path for audit/documentation; not loaded by this contract.")]
     public string expectedPrefabPath;
@@ -124,6 +143,9 @@ public struct WallGatePlacementObservation
     public bool requiresConnection;
     public bool occupied;
     public float terrainSlope;
+    public int ownerId = -1;
+    public bool spacingAvailable;
+    public float nearestPieceDistance;
 }
 
 /// <summary>Pure rules for modular defensive construction.</summary>
@@ -139,12 +161,23 @@ public static class WallGateContractRules
             return WallGatePlacementResult.MissingFamily;
         if (!contract.IsRuntimeReady)
             return WallGatePlacementResult.PlannedOnly;
+        if (contract.lifecycle == WallGateLifecycleState.Destroyed
+            || contract.lifecycle == WallGateLifecycleState.Ruined)
+            return WallGatePlacementResult.InvalidLifecycle;
+        if (contract.ownerId >= 0 && observation.ownerId != contract.ownerId)
+            return WallGatePlacementResult.InvalidOwner;
         if (!observation.footprintClear)
             return WallGatePlacementResult.InvalidFootprint;
         if (observation.occupied)
             return WallGatePlacementResult.Occupied;
-        if (!observation.terrainSupported || observation.terrainSlope > contract.maximumTerrainSlope)
+        if (!observation.terrainSupported || float.IsNaN(observation.terrainSlope)
+            || float.IsInfinity(observation.terrainSlope) || observation.terrainSlope < 0f
+            || observation.terrainSlope > contract.maximumTerrainSlope)
             return WallGatePlacementResult.InvalidTerrain;
+        if (observation.spacingAvailable && (float.IsNaN(observation.nearestPieceDistance)
+            || float.IsInfinity(observation.nearestPieceDistance)
+            || observation.nearestPieceDistance < contract.minimumSpacing))
+            return WallGatePlacementResult.InvalidSpacing;
         if (observation.requiresConnection && !observation.endpointAvailable)
             return WallGatePlacementResult.RequiresConnection;
         return WallGatePlacementResult.Allowed;
@@ -162,6 +195,13 @@ public static class WallGateContractRules
             return WallGateConnectionResult.MissingCode;
         if (!first.IsRuntimeReady || !second.IsRuntimeReady)
             return WallGateConnectionResult.PlannedOnly;
+        if (first.lifecycle == WallGateLifecycleState.Destroyed
+            || first.lifecycle == WallGateLifecycleState.Ruined
+            || second.lifecycle == WallGateLifecycleState.Destroyed
+            || second.lifecycle == WallGateLifecycleState.Ruined)
+            return WallGateConnectionResult.InvalidLifecycle;
+        if (first.ownerId >= 0 && second.ownerId >= 0 && first.ownerId != second.ownerId)
+            return WallGateConnectionResult.InvalidOwner;
         if (!first.CanConnectTo(second))
             return string.Equals(first.familyCode, second.familyCode, StringComparison.Ordinal)
                 ? WallGateConnectionResult.UnsupportedRole
@@ -185,6 +225,9 @@ public static class WallGateContractRules
             return WallGateOpeningResult.NotAGate;
         if (!contract.IsRuntimeReady)
             return WallGateOpeningResult.PlannedOnly;
+        if (contract.lifecycle == WallGateLifecycleState.Destroyed
+            || contract.lifecycle == WallGateLifecycleState.Ruined)
+            return WallGateOpeningResult.InvalidLifecycle;
         if (!sameOwner)
             return WallGateOpeningResult.InvalidOwner;
         if (currentState == requestedState)

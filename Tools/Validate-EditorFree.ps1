@@ -73,13 +73,15 @@ function Test-ConstructionContracts {
         @{ Path = 'Assets/Scripts/ScriptableObjects/Units/BuildingData.cs'; Pattern = 'class\s+BuildingData\s*:\s*UnitData'; Name = 'BuildingData asset' },
         @{ Path = 'Assets/Scripts/ScriptableObjects/Units/BuildingContentCatalog.cs'; Pattern = 'class\s+BuildingContentCatalog\s*:\s*ScriptableObject'; Name = 'building content catalog' },
         @{ Path = 'Assets/Scripts/Progression/BuildingContentProgressionRules.cs'; Pattern = 'class\s+BuildingContentProgressionRules\b'; Name = 'building progression bridge' },
+        @{ Path = 'Assets/Scripts/Progression/BuildingProductionCatalogRules.cs'; Pattern = 'class\s+BuildingProductionCatalogRules\b'; Name = 'building production catalog rules' },
         @{ Path = 'Assets/Scripts/Economy/BuildingEconomyRules.cs'; Pattern = 'class\s+BuildingEconomyRules\b'; Name = 'building economy rules' },
         @{ Path = 'Assets/Scripts/StrategicAI/ConstructionPlanningRules.cs'; Pattern = 'class\s+ConstructionPlanningRules\b'; Name = 'construction planning rules' },
         @{ Path = 'Assets/Scripts/StrategicAI/FoundationPlacementRules.cs'; Pattern = 'class\s+FoundationPlacementRules\b'; Name = 'foundation placement rules' },
         @{ Path = 'Assets/Scripts/ScriptableObjects/Units/BuildingConstructionGate.cs'; Pattern = 'class\s+BuildingConstructionGate\b'; Name = 'construction gate' },
         @{ Path = 'Assets/Scripts/Units/Buildings/BuildingProductionQueue.cs'; Pattern = 'class\s+BuildingProductionQueue\b'; Name = 'production queue' },
         @{ Path = 'Assets/Scripts/Units/Buildings/BuildingFeedback.cs'; Pattern = 'class\s+BuildingFeedbackEmitter\b'; Name = 'construction feedback' },
-        @{ Path = 'Assets/Scripts/Units/Buildings/BuildingMaintenanceRuntimeBinding.cs'; Pattern = 'class\s+BuildingMaintenanceRuntimeBinding\b'; Name = 'maintenance runtime binding' }
+        @{ Path = 'Assets/Scripts/Units/Buildings/BuildingMaintenanceRuntimeBinding.cs'; Pattern = 'class\s+BuildingMaintenanceRuntimeBinding\b'; Name = 'maintenance runtime binding' },
+        @{ Path = 'Assets/Scripts/Units/Buildings/WallGateContracts.cs'; Pattern = 'class\s+WallGateContractRules\b'; Name = 'wall and gate contracts' }
     )
     foreach ($item in $required) { Require-Text $item.Path $item.Pattern $item.Name | Out-Null }
     $requiredTests = @(
@@ -90,9 +92,11 @@ function Test-ConstructionContracts {
         'Assets/Tests/Editor/BuildingFeedbackRulesTests.cs',
         'Assets/Tests/Editor/BuildingMaintenanceRuntimeBindingTests.cs',
         'Assets/Tests/Editor/BuildingContentProgressionRulesTests.cs',
+        'Assets/Tests/Editor/BuildingProductionCatalogRulesTests.cs',
         'Assets/Tests/Editor/ConstructionPlanningRulesTests.cs',
         'Assets/Tests/Editor/FoundationPlacementRulesTests.cs',
-        'Assets/Tests/Editor/BuildingEconomyRulesTests.cs'
+        'Assets/Tests/Editor/BuildingEconomyRulesTests.cs',
+        'Assets/Tests/Editor/WallGateContractTests.cs'
     )
     foreach ($test in $requiredTests) { Require-File $test | Out-Null }
     Require-Text 'Assets/Scripts/Progression/BuildingContentProgressionRules.cs' 'ValidateEraContracts' 'building era progression contract' | Out-Null

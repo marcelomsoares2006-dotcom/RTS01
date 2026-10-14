@@ -52,6 +52,13 @@ public sealed class WallGateContractTests
             terrainSupported = true,
             terrainSlope = 20f
         }), Is.EqualTo(WallGatePlacementResult.InvalidTerrain));
+
+        Assert.That(WallGateContractRules.EvaluatePlacement(wall, new WallGatePlacementObservation
+        {
+            footprintClear = true,
+            terrainSupported = true,
+            terrainSlope = -1f
+        }), Is.EqualTo(WallGatePlacementResult.InvalidTerrain));
     }
 
     [Test]
@@ -79,5 +86,39 @@ public sealed class WallGateContractTests
             WallGateOpeningState.Open, true, false), Is.EqualTo(WallGateOpeningResult.Blocked));
         Assert.That(WallGateContractRules.EvaluateOpening(gate, WallGateOpeningState.Closed,
             WallGateOpeningState.Open, true, true), Is.EqualTo(WallGateOpeningResult.Allowed));
+    }
+
+    [Test]
+    public void PlacementAndConnectionRequireMatchingOwnershipAndSpacing()
+    {
+        WallGateContract first = Ready(WallGatePieceKind.Segment, "wall_a", "stone");
+        WallGateContract second = Ready(WallGatePieceKind.Segment, "wall_b", "stone");
+        first.ownerId = 3;
+        first.minimumSpacing = 2f;
+        Assert.That(WallGateContractRules.EvaluatePlacement(first, new WallGatePlacementObservation
+        {
+            footprintClear = true, terrainSupported = true, ownerId = 4
+        }), Is.EqualTo(WallGatePlacementResult.InvalidOwner));
+        Assert.That(WallGateContractRules.EvaluatePlacement(first, new WallGatePlacementObservation
+        {
+            footprintClear = true, terrainSupported = true, ownerId = 3,
+            spacingAvailable = true, nearestPieceDistance = 1f
+        }), Is.EqualTo(WallGatePlacementResult.InvalidSpacing));
+
+        second.ownerId = 4;
+        Assert.That(WallGateContractRules.EvaluateConnection(first, second, 0.1f, true, true),
+            Is.EqualTo(WallGateConnectionResult.InvalidOwner));
+    }
+
+    [Test]
+    public void DestroyedPiecesCannotConnectOrOpen()
+    {
+        WallGateContract gate = Ready(WallGatePieceKind.Gate, "gate", "stone");
+        gate.lifecycle = WallGateLifecycleState.Destroyed;
+        Assert.That(WallGateContractRules.EvaluateOpening(gate, WallGateOpeningState.Closed,
+            WallGateOpeningState.Open, true, true), Is.EqualTo(WallGateOpeningResult.InvalidLifecycle));
+        Assert.That(WallGateContractRules.EvaluateConnection(gate,
+            Ready(WallGatePieceKind.Segment, "wall", "stone"), 0.1f, true, true),
+            Is.EqualTo(WallGateConnectionResult.InvalidLifecycle));
     }
 }
