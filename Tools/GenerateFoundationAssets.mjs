@@ -222,6 +222,35 @@ function buildArcheryRange() {
   return p;
 }
 
+function buildStable() {
+  const p = [];
+  // A Feudal cavalry hall: open stalls, a covered loading apron, hitch posts,
+  // trough and hay bales keep the production role readable at gameplay
+  // distance while preserving named parts for later mount sockets and VFX.
+  p.push(box('Foundation', 0, 0.25, 0, 6.8, 0.5, 6.2, 0));
+  p.push(box('StableWalls', 0, 1.55, 0.15, 6.05, 2.55, 4.8, 1));
+  for (const [x, z] of [[-2.75, -1.95], [2.75, -1.95], [-2.75, 2.05], [2.75, 2.05]])
+    p.push(box('TimberPost', x, 1.7, z, 0.28, 3.0, 0.28, 2));
+  p.push(box('TimberBeam', 0, 2.85, -2.25, 5.8, 0.3, 0.3, 2));
+  p.push(pyramid('Roof', 0, 2.95, 0.15, 6.45, 5.2, 2.0, 3));
+  p.push(box('EntranceFrame', 0, 1.5, -2.46, 2.35, 2.4, 0.35, 2));
+  p.push(box('Gate', 0, 1.15, -2.66, 1.45, 1.7, 0.12, 4));
+  p.push(box('GateLintel', 0, 2.72, -2.66, 2.55, 0.34, 0.34, 2));
+  // Stall partitions are separate parts so mount spawn and grooming VFX can
+  // use stable sockets without changing the authored building mesh.
+  for (const x of [-1.55, 1.55]) {
+    p.push(box('StallPartition', x, 1.25, 0.55, 0.18, 1.95, 2.65, 2));
+    p.push(box('HitchPost', x, 0.95, -1.45, 0.2, 1.45, 0.2, 2));
+  }
+  p.push(box('WaterTrough', 0, 0.68, 1.95, 2.2, 0.42, 0.8, 4));
+  p.push(box('HayBaleLeft', -2.1, 0.72, 1.75, 1.05, 0.75, 0.82, 5, -0.08));
+  p.push(box('HayBaleRight', 2.1, 0.72, 1.75, 1.05, 0.75, 0.82, 5, 0.08));
+  p.push(box('SaddleRack', 2.65, 1.35, -0.4, 0.18, 1.55, 1.1, 2));
+  p.push(box('BannerPole', 0.75, 4.0, -2.85, 0.08, 2.0, 0.08, 2));
+  p.push(box('Banner', 1.08, 4.35, -2.85, 0.62, 0.9, 0.05, 4));
+  return p;
+}
+
 function makeBinaryGLB(parts, assetName) {
   const positions = [], normals = [], indices = [], primitiveInfo = [];
   for (const item of parts) {
@@ -405,6 +434,7 @@ const miningCampParts = buildMiningCamp();
 const millParts = buildMill();
 const barracksParts = buildBarracks();
 const archeryRangeParts = buildArcheryRange();
+const stableParts = buildStable();
 const report = {
   generator: 'Tools/GenerateFoundationAssets.mjs',
   coordinateSystem: 'Y-up, right-handed, metres',
@@ -423,6 +453,8 @@ const report = {
     writeObj('Barracks_authoring', barracksParts, 'barracks'),
     writeAsset('ArcheryRange_authoring', archeryRangeParts, 'archery-range'),
     writeObj('ArcheryRange_authoring', archeryRangeParts, 'archery-range'),
+    writeAsset('Stable_authoring', stableParts, 'stable'),
+    writeObj('Stable_authoring', stableParts, 'stable'),
   ],
 };
 const reportPath = path.join(outputRoot, 'foundation-asset-metrics.json');

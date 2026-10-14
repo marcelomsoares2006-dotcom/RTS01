@@ -25,6 +25,7 @@ public sealed class FoundationBuildingAuthoringWindow : EditorWindow
     private const string MillCode = "mill";
     private const string BarracksCode = "barracks";
     private const string ArcheryRangeCode = "archery_range";
+    private const string StableCode = "stable";
     private const string TownCenterUnityModel =
         "Assets/Resources/Imports/Units/Buildings/town-center/TownCenter_authoring.obj";
     private const string TownCenterGlbModel =
@@ -53,6 +54,10 @@ public sealed class FoundationBuildingAuthoringWindow : EditorWindow
         "Assets/Resources/Imports/Units/Buildings/archery-range/ArcheryRange_authoring.obj";
     private const string ArcheryRangeGlbModel =
         "Assets/Resources/Imports/Units/Buildings/archery-range/ArcheryRange_authoring.glb";
+    private const string StableUnityModel =
+        "Assets/Resources/Imports/Units/Buildings/stable/Stable_authoring.obj";
+    private const string StableGlbModel =
+        "Assets/Resources/Imports/Units/Buildings/stable/Stable_authoring.glb";
     private const string PrefabFolder = "Assets/Resources/Prefabs/Units/Buildings";
     private const string DataFolder = "Assets/Resources/ScriptableObjects/Units/Buildings";
     private const string HousePrefab = "Assets/Resources/Prefabs/Units/Buildings/House.prefab";
@@ -84,6 +89,7 @@ public sealed class FoundationBuildingAuthoringWindow : EditorWindow
         DrawAssetRow(MillCode, MillUnityModel, MillGlbModel);
         DrawAssetRow(BarracksCode, BarracksUnityModel, BarracksGlbModel);
         DrawAssetRow(ArcheryRangeCode, ArcheryRangeUnityModel, ArcheryRangeGlbModel);
+        DrawAssetRow(StableCode, StableUnityModel, StableGlbModel);
 
         EditorGUILayout.Space(8f);
         using (new EditorGUILayout.HorizontalScope())
@@ -136,7 +142,8 @@ public sealed class FoundationBuildingAuthoringWindow : EditorWindow
             && AuditResolvedModel(MiningCampCode, MiningCampUnityModel, MiningCampGlbModel, false)
             && AuditResolvedModel(MillCode, MillUnityModel, MillGlbModel, false)
             && AuditResolvedModel(BarracksCode, BarracksUnityModel, BarracksGlbModel, false)
-            && AuditResolvedModel(ArcheryRangeCode, ArcheryRangeUnityModel, ArcheryRangeGlbModel, false);
+            && AuditResolvedModel(ArcheryRangeCode, ArcheryRangeUnityModel, ArcheryRangeGlbModel, false)
+            && AuditResolvedModel(StableCode, StableUnityModel, StableGlbModel, false);
     }
 
     private void AuditModels()
@@ -149,7 +156,8 @@ public sealed class FoundationBuildingAuthoringWindow : EditorWindow
         bool mill = AuditResolvedModel(MillCode, MillUnityModel, MillGlbModel, true);
         bool barracks = AuditResolvedModel(BarracksCode, BarracksUnityModel, BarracksGlbModel, true);
         bool archeryRange = AuditResolvedModel(ArcheryRangeCode, ArcheryRangeUnityModel, ArcheryRangeGlbModel, true);
-        _messages.Add(townCenter && dropoff && lumberCamp && miningCamp && mill && barracks && archeryRange
+        bool stable = AuditResolvedModel(StableCode, StableUnityModel, StableGlbModel, true);
+        _messages.Add(townCenter && dropoff && lumberCamp && miningCamp && mill && barracks && archeryRange && stable
             ? "Authored model sources pass the audit. Draft creation is available."
             : "Source audit failed. No draft asset was created.");
         Repaint();
@@ -205,14 +213,16 @@ public sealed class FoundationBuildingAuthoringWindow : EditorWindow
         string millSource = ResolveModelPath(MillUnityModel, MillGlbModel);
         string barracksSource = ResolveModelPath(BarracksUnityModel, BarracksGlbModel);
         string archeryRangeSource = ResolveModelPath(ArcheryRangeUnityModel, ArcheryRangeGlbModel);
-        if (townCenterSource == null || dropoffSource == null || lumberCampSource == null || miningCampSource == null || millSource == null || barracksSource == null || archeryRangeSource == null
+        string stableSource = ResolveModelPath(StableUnityModel, StableGlbModel);
+        if (townCenterSource == null || dropoffSource == null || lumberCampSource == null || miningCampSource == null || millSource == null || barracksSource == null || archeryRangeSource == null || stableSource == null
             || !AuditModel(TownCenterCode, townCenterSource, true)
             || !AuditModel(ResourceDropoffCode, dropoffSource, true)
             || !AuditModel(LumberCampCode, lumberCampSource, true)
             || !AuditModel(MiningCampCode, miningCampSource, true)
             || !AuditModel(MillCode, millSource, true)
             || !AuditModel(BarracksCode, barracksSource, true)
-            || !AuditModel(ArcheryRangeCode, archeryRangeSource, true))
+            || !AuditModel(ArcheryRangeCode, archeryRangeSource, true)
+            || !AuditModel(StableCode, stableSource, true))
         {
             _messages.Add("ERROR: source audit failed; no draft assets were created.");
             Repaint();
@@ -228,6 +238,7 @@ public sealed class FoundationBuildingAuthoringWindow : EditorWindow
         CreateDraft(MillCode, "Mill", millSource);
         CreateDraft(BarracksCode, "Barracks", barracksSource);
         CreateDraft(ArcheryRangeCode, "Archery Range", archeryRangeSource);
+        CreateDraft(StableCode, "Stable", stableSource);
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
         _messages.Add("Draft assets created. Catalog status and BuildingData references remain unchanged.");
@@ -483,6 +494,10 @@ public sealed class FoundationBuildingAuthoringWindow : EditorWindow
                 return "Unity authoring draft for the Food-only Mill dropoff. Requires foundation acceptance review.";
             case BarracksCode:
                 return "Unity authoring draft for the infantry Barracks. Requires foundation acceptance review.";
+            case ArcheryRangeCode:
+                return "Unity authoring draft for the ranged Archery Range. Requires foundation acceptance review.";
+            case StableCode:
+                return "Unity authoring draft for the cavalry Stable. Requires foundation acceptance review.";
             default:
                 return "Unity authoring draft. Requires foundation acceptance review.";
         }

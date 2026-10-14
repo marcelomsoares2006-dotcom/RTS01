@@ -99,3 +99,17 @@ entries:
     requiredComponents: BuildingManager,BuildingBT,MeshFilter,MeshRenderer,Collider
     approvalChecks: import-model,create-prefab,link-building-data,placement-review,construction-playmode
     promotionCriteria: authored-model,unity-prefab,building-data,placement-playmode
+
+  - code: stable
+    intermediateSource: Assets/Resources/Imports/Units/Buildings/stable/Stable_graybox.obj
+    authoredSource: Assets/Resources/Imports/Units/Buildings/stable/Stable_authoring.obj
+    scaleMeters: 1
+    footprintMeters: 6.8x6.2
+    footprintToleranceMeters: 0.6
+    maxHeightMeters: 5.6
+    expectedPrefab: Assets/Resources/Prefabs/Units/Buildings/Stable.prefab
+    expectedBuildingData: Assets/Resources/ScriptableObjects/Units/Buildings/Stable.asset
+    minimumEra: Feudal
+    requiredComponents: BuildingManager,BuildingBT,MeshFilter,MeshRenderer,Collider
+    approvalChecks: import-model,create-prefab,link-building-data,placement-review,construction-playmode
+    promotionCriteria: authored-model,unity-prefab,building-data,placement-playmode

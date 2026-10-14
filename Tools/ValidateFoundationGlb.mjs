@@ -13,6 +13,7 @@ const files = [
   'Assets/Resources/Imports/Units/Buildings/mill/Mill_authoring.glb',
   'Assets/Resources/Imports/Units/Buildings/barracks/Barracks_authoring.glb',
   'Assets/Resources/Imports/Units/Buildings/archery-range/ArcheryRange_authoring.glb',
+  'Assets/Resources/Imports/Units/Buildings/stable/Stable_authoring.glb',
 ];
 const failures = [];
 for (const relative of files) {

@@ -12,6 +12,8 @@ is included as the first military production foundation. All use the same Unity
 authoring and placement review contract.
 Archery Range (`archery_range`) is included as the second military foundation;
 its Feudal ranged-production contract is already present in the content catalog.
+Stable (`stable`) is included as the third military foundation; its Feudal
+cavalry-production contract is already present in the content catalog.
 
 Run the editor-free gate from the project root:
 
@@ -72,6 +74,7 @@ prefab and runtime behavior:
 - Mill accepts Food, costs 50 Wood and requires an operational Town Center;
 - Barracks trains the initial infantry roster, costs 150 Wood and requires an operational Town Center;
 - Archery Range trains the initial ranged roster after Feudal `fletching`, costs 150 Wood and requires an operational Town Center;
+- Stable trains the initial cavalry roster after Feudal `riding`, costs 150 Wood and requires an operational Town Center;
 - placement succeeds on valid terrain, rejects steep/blocked/overlapping
   terrain, consumes the declared cost once, and enters construction with a
   visible feedback state;
@@ -108,5 +111,5 @@ component wiring. The catalog must remain planned until the authored assets are
 imported and reviewed in Unity.
 
 For a host without Unity, `Tools/FoundationPreviewServer.mjs` serves a local
-Three.js preview of all seven foundation GLBs. This preview is an art sanity check only; it
+Three.js preview of all eight foundation GLBs. This preview is an art sanity check only; it
 does not replace Unity import, prefab serialization or PlayMode acceptance.

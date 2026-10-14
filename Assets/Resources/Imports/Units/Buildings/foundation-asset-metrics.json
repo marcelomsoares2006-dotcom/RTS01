@@ -281,6 +281,46 @@
       "path": "Assets/Resources/Imports/Units/Buildings/archery-range/ArcheryRange_authoring.obj",
       "materialPath": "Assets/Resources/Imports/Units/Buildings/archery-range/ArcheryRange_authoring.mtl",
       "bytes": 22128
+    },
+    {
+      "assetName": "Stable_authoring",
+      "parts": 21,
+      "vertices": 496,
+      "triangles": 246,
+      "materials": 6,
+      "boundsMin": [
+        -3.4,
+        0,
+        -3.1
+      ],
+      "boundsMax": [
+        3.4,
+        5,
+        3.1
+      ],
+      "bytes": 28184,
+      "path": "Assets/Resources/Imports/Units/Buildings/stable/Stable_authoring.glb"
+    },
+    {
+      "assetName": "Stable_authoring",
+      "format": "obj",
+      "parts": 21,
+      "vertices": 165,
+      "triangles": 246,
+      "materials": 6,
+      "boundsMin": [
+        -3.4,
+        0,
+        -3.1
+      ],
+      "boundsMax": [
+        3.4,
+        5,
+        3.1
+      ],
+      "path": "Assets/Resources/Imports/Units/Buildings/stable/Stable_authoring.obj",
+      "materialPath": "Assets/Resources/Imports/Units/Buildings/stable/Stable_authoring.mtl",
+      "bytes": 13467
     }
   ]
 }

@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: c5e2a9d7f1044b6388f1c2e6a7d9b503
+ModelImporter:
+  serializedVersion: 21300
+  externalObjects: {}
+  materials:
+    materialImportMode: 0
+  meshes:
+    lODScreenPercentages: []
+  isReadable: 0
+  importVisibility: 0
+  importCameras: 0
+  importLights: 0
+  generateSecondaryUV: 0
+  useFileUnits: 1
+  optimizeMeshPolygons: 0
+  optimizeMeshVertices: 0
+  userData: authored-archery-range-glb
