@@ -5,17 +5,27 @@ entries:
   - code: town_center
     intermediateSource: Assets/Resources/Imports/Units/Buildings/town-center/TownCenter_graybox.obj
     authoredSource: Assets/Resources/Imports/Units/Buildings/town-center/TownCenter_authoring.glb
+    scaleMeters: 1
+    footprintMeters: 9.2x7.2
+    footprintToleranceMeters: 0.6
+    maxHeightMeters: 8.0
     expectedPrefab: Assets/Resources/Prefabs/Units/Buildings/TownCenter.prefab
     expectedBuildingData: Assets/Resources/ScriptableObjects/Units/Buildings/TownCenter.asset
     minimumEra: Dark
     requiredComponents: BuildingManager,BuildingBT,MeshFilter,MeshRenderer,Collider
     approvalChecks: import-model,create-prefab,link-building-data,placement-review,construction-playmode
+    promotionCriteria: authored-model,unity-prefab,building-data,placement-playmode
 
   - code: resource_dropoff
     intermediateSource: Assets/Resources/Imports/Units/Buildings/resource-dropoff/ResourceDropoff_graybox.obj
     authoredSource: Assets/Resources/Imports/Units/Buildings/resource-dropoff/ResourceDropoff_authoring.glb
+    scaleMeters: 1
+    footprintMeters: 4.8x3.8
+    footprintToleranceMeters: 0.6
+    maxHeightMeters: 4.5
     expectedPrefab: Assets/Resources/Prefabs/Units/Buildings/ResourceDropoff.prefab
     expectedBuildingData: Assets/Resources/ScriptableObjects/Units/Buildings/ResourceDropoff.asset
     minimumEra: Dark
     requiredComponents: BuildingManager,BuildingBT,MeshFilter,MeshRenderer,Collider
     approvalChecks: import-model,create-prefab,link-building-data,placement-review,construction-playmode
+    promotionCriteria: authored-model,unity-prefab,building-data,placement-playmode

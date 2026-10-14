@@ -98,6 +98,7 @@ function Test-ConstructionContracts {
         @{ Path = 'Assets/Scripts/ScriptableObjects/Units/BuildingConstructionGate.cs'; Pattern = 'class\s+BuildingConstructionGate\b'; Name = 'construction gate' },
         @{ Path = 'Assets/Scripts/Units/Buildings/BuildingProductionQueue.cs'; Pattern = 'class\s+BuildingProductionQueue\b'; Name = 'production queue' },
         @{ Path = 'Assets/Scripts/Units/Buildings/BuildingFeedback.cs'; Pattern = 'class\s+BuildingFeedbackEmitter\b'; Name = 'construction feedback' },
+        @{ Path = 'Assets/Editor/FoundationBuildingAuthoringWindow.cs'; Pattern = 'class\s+FoundationBuildingAuthoringWindow\b'; Name = 'foundation Unity authoring tool' },
         @{ Path = 'Assets/Scripts/Units/Buildings/BuildingMaintenanceRuntimeBinding.cs'; Pattern = 'class\s+BuildingMaintenanceRuntimeBinding\b'; Name = 'maintenance runtime binding' },
         @{ Path = 'Assets/Scripts/Units/Buildings/BuildingMaintenanceRuntimeDriver.cs'; Pattern = 'class\s+BuildingMaintenanceRuntimeDriver\b'; Name = 'maintenance runtime driver' },
         @{ Path = 'Assets/Scripts/Units/Buildings/WallGateContracts.cs'; Pattern = 'class\s+WallGateContractRules\b'; Name = 'wall and gate contracts' }

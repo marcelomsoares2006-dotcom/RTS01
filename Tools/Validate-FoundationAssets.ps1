@@ -23,8 +23,23 @@ function Add-Issue([System.Collections.Generic.List[string]]$Issues, [string]$Co
     $Issues.Add("$Code :: $Requirement")
 }
 
+function Get-ManifestDouble([string]$Body, [string]$Field, [string]$Code, [System.Collections.Generic.List[string]]$Issues) {
+    $match = [regex]::Match($Body, "(?m)^\s+${Field}:\s*([^\r\n]+)")
+    $value = 0.0
+    if (!$match.Success -or ![double]::TryParse(
+            $match.Groups[1].Value.Trim(),
+            [System.Globalization.NumberStyles]::Float,
+            [System.Globalization.CultureInfo]::InvariantCulture,
+            [ref]$value) -or $value -le 0.0) {
+        Add-Issue $Issues $Code "$Field must be a positive invariant-culture number."
+        return $null
+    }
+    return $value
+}
+
 $issues = New-Object 'System.Collections.Generic.List[string]'
 $manifestPath = Join-Path $projectRoot 'Docs/FOUNDATION_IMPORT_MANIFEST.yml'
+$metricsPath = Join-Path $projectRoot 'Assets/Resources/Imports/Units/Buildings/foundation-asset-metrics.json'
 if (!(Test-Path -LiteralPath $manifestPath -PathType Leaf)) {
     Add-Issue $issues '<manifest>' 'FOUNDATION_IMPORT_MANIFEST.yml is missing.'
 }
@@ -42,7 +57,7 @@ foreach ($manifestCode in @('town_center', 'resource_dropoff')) {
         continue
     }
     $manifestBody = $manifestByCode[$manifestCode]
-    foreach ($manifestField in @('intermediateSource', 'authoredSource', 'expectedPrefab', 'expectedBuildingData', 'minimumEra', 'requiredComponents', 'approvalChecks')) {
+    foreach ($manifestField in @('intermediateSource', 'authoredSource', 'scaleMeters', 'footprintMeters', 'footprintToleranceMeters', 'maxHeightMeters', 'expectedPrefab', 'expectedBuildingData', 'minimumEra', 'requiredComponents', 'approvalChecks', 'promotionCriteria')) {
         if ($manifestBody -notmatch "(?m)^\s+${manifestField}:\s*[^\r\n]+")
             { Add-Issue $issues $manifestCode "Import manifest field is missing: $manifestField" }
     }
@@ -62,6 +77,13 @@ foreach ($manifestCode in @('town_center', 'resource_dropoff')) {
 }
 if ($manifestText -notmatch '(?m)^approval:\s*blocked-until-unity-review\s*$')
     { Add-Issue $issues '<manifest>' 'Import manifest must remain blocked until Unity review.' }
+$metrics = $null
+if (Test-Path -LiteralPath $metricsPath -PathType Leaf) {
+    try { $metrics = Get-Content -Raw -LiteralPath $metricsPath | ConvertFrom-Json }
+    catch { Add-Issue $issues '<metrics>' "Foundation metrics JSON is invalid: $($_.Exception.Message)" }
+} else {
+    Add-Issue $issues '<metrics>' 'foundation-asset-metrics.json is missing.'
+}
 $catalogPath = Join-Path $projectRoot 'Assets/Resources/ScriptableObjects/Units/Building Content Catalog.asset'
 if (!(Test-Path -LiteralPath $catalogPath -PathType Leaf)) {
     Add-Issue $issues '<catalog>' 'Building Content Catalog.asset is missing.'
@@ -202,8 +224,38 @@ foreach ($code in @('town_center', 'resource_dropoff')) {
                 } else {
                     $modelStates[$code] = 'model-authored'
                     $authoredManifest = [regex]::Match($manifestByCode[$code], '(?m)^\s+authoredSource:\s*([^\r\n]+)')
-                    if ($authoredManifest.Success -and !(Test-Path -LiteralPath (Join-Path $projectRoot $authoredManifest.Groups[1].Value.Trim()) -PathType Leaf))
-                        { Add-Issue $issues $code "Manifest authored source is missing: $($authoredManifest.Groups[1].Value.Trim())" }
+                    if ($authoredManifest.Success) {
+                        $authoredRelative = $authoredManifest.Groups[1].Value.Trim().Replace('\\', '/')
+                        $authoredFullPath = Join-Path $projectRoot $authoredRelative
+                        if (!(Test-Path -LiteralPath $authoredFullPath -PathType Leaf)) {
+                            Add-Issue $issues $code "Manifest authored source is missing: $authoredRelative"
+                        } elseif (!$authoredRelative.StartsWith($modelPath + '/', [System.StringComparison]::OrdinalIgnoreCase)) {
+                            Add-Issue $issues $code 'Manifest authoredSource must be inside the catalog modelPath.'
+                        } elseif ($metrics -ne $null) {
+                            $metric = @($metrics.assets | Where-Object { $_.path -eq $authoredRelative }) | Select-Object -First 1
+                            if ($metric -eq $null) {
+                                Add-Issue $issues $code "Metrics do not describe authoredSource: $authoredRelative"
+                            } else {
+                                $scale = Get-ManifestDouble $manifestByCode[$code] 'scaleMeters' $code $issues
+                                $tolerance = Get-ManifestDouble $manifestByCode[$code] 'footprintToleranceMeters' $code $issues
+                                $maxHeight = Get-ManifestDouble $manifestByCode[$code] 'maxHeightMeters' $code $issues
+                                $footprint = [regex]::Match($manifestByCode[$code], '(?m)^\s+footprintMeters:\s*([0-9]+(?:\.[0-9]+)?)x([0-9]+(?:\.[0-9]+)?)\s*$')
+                                if (!$footprint.Success) {
+                                    Add-Issue $issues $code 'footprintMeters must use widthxdepth in metres.'
+                                } else {
+                                    $width = [double]$metric.boundsMax[0] - [double]$metric.boundsMin[0]
+                                    $depth = [double]$metric.boundsMax[2] - [double]$metric.boundsMin[2]
+                                    $height = [double]$metric.boundsMax[1] - [double]$metric.boundsMin[1]
+                                    if ($scale -ne $null -and [math]::Abs($scale - 1.0) -gt 0.0001)
+                                        { Add-Issue $issues $code 'Authored model scale must be 1 metre per Unity unit.' }
+                                    if ($tolerance -ne $null -and ($width -gt ([double]$footprint.Groups[1].Value + $tolerance) -or $depth -gt ([double]$footprint.Groups[2].Value + $tolerance)))
+                                        { Add-Issue $issues $code ("Authored bounds exceed footprint envelope: {0:F2}x{1:F2}m" -f $width, $depth) }
+                                    if ($maxHeight -ne $null -and $height -gt $maxHeight)
+                                        { Add-Issue $issues $code ("Authored height {0:F2}m exceeds maxHeightMeters {1:F2}m" -f $height, $maxHeight) }
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
