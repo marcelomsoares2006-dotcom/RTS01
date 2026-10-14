@@ -26,7 +26,7 @@ public sealed class BuildingContentCatalogTests
         foreach (string code in new[]
         {
             "town_center", "house", "resource_dropoff", "barracks", "archery_range",
-            "stable", "mining_camp", "lumber_camp", "mill"
+            "stable", "siege_workshop", "mining_camp", "lumber_camp", "mill"
         })
             Assert.That(catalog.Find(code), Is.Not.Null, "Missing foundation content contract: " + code);
     }
@@ -128,6 +128,7 @@ public sealed class BuildingContentCatalogTests
 
         Assert.That(catalog.Find("archery_range").minimumEra, Is.EqualTo(BuildingEra.Feudal));
         Assert.That(catalog.Find("stable").minimumEra, Is.EqualTo(BuildingEra.Feudal));
+        Assert.That(catalog.Find("siege_workshop").minimumEra, Is.EqualTo(BuildingEra.Castle));
         Assert.That(catalog.Find("barracks").minimumEra, Is.EqualTo(BuildingEra.Dark));
     }
 
@@ -158,17 +159,19 @@ public sealed class BuildingContentCatalogTests
         AssertConstruction(catalog.Find("barracks"), BuildingEra.Dark, EconomyResourceType.Wood, 150);
         AssertConstruction(catalog.Find("archery_range"), BuildingEra.Feudal, EconomyResourceType.Wood, 150);
         AssertConstruction(catalog.Find("stable"), BuildingEra.Feudal, EconomyResourceType.Wood, 150);
+        AssertConstruction(catalog.Find("siege_workshop"), BuildingEra.Castle, EconomyResourceType.Wood, 300);
         AssertConstruction(catalog.Find("tower"), BuildingEra.Dark, EconomyResourceType.Wood, 80);
 
         AssertProduction(catalog.Find("town_center"), "villager");
         AssertProduction(catalog.Find("barracks"), "spearman");
         AssertProduction(catalog.Find("archery_range"), "archer");
         AssertProduction(catalog.Find("stable"), "horseman");
+        AssertProduction(catalog.Find("siege_workshop"), "battering_ram");
 
         foreach (string code in new[]
         {
             "resource_dropoff", "mining_camp", "lumber_camp", "mill", "barracks",
-            "archery_range", "stable"
+            "archery_range", "stable", "siege_workshop"
         })
         {
             BuildingContentSpec entry = catalog.Find(code);

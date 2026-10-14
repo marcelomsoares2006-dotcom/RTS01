@@ -90,6 +90,32 @@ public static class ConstructionPlanningRules
         return true;
     }
 
+    /// <summary>Projects the first valid siege order after workshop gates pass.</summary>
+    public static bool TryCreateInitialSiegeWorkshopIntent(
+        BuildingContentCatalog catalog, StrategicPlanningState state,
+        out StrategicActionIntent intent, out SiegeWorkshopContractResult result)
+    {
+        intent = null;
+        result = SiegeWorkshopMilitaryContract.Evaluate(catalog, state);
+        if (result != SiegeWorkshopContractResult.Accepted) return false;
+        BuildingContentProduction production;
+        if (!SiegeWorkshopMilitaryContract.TryResolveInitialProduction(catalog, out production))
+        {
+            result = SiegeWorkshopContractResult.MissingProduction;
+            return false;
+        }
+        intent = new StrategicActionIntent
+        {
+            action = StrategicActionKind.ProduceUnit,
+            priority = StrategicPriority.High,
+            goalId = "auto-produce-siege-workshop-" + production.productCode.Trim().ToLowerInvariant(),
+            targetCode = production.productCode.Trim(),
+            targetEntityId = "siege_workshop",
+            quantity = 1
+        };
+        return true;
+    }
+
     /// <summary>Reserves a candidate through the shared concurrent ledger.</summary>
     public static ConstructionReservationResult TryReserveCandidate(
         ConstructionReservationLedger reservations,

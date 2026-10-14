@@ -216,6 +216,41 @@ MonoBehaviour:
     acceptanceCriteria: >-
       Trains ranged units after the first age transition and exposes a clear
       production queue and counter unit path.
+  - code: siege_workshop
+    displayName: Siege Workshop
+    role: 3
+    status: 0
+    minimumEra: 3
+    buildingData: {fileID: 0}
+    prefabPath: Assets/Resources/Prefabs/Units/Buildings/SiegeWorkshop.prefab
+    modelPath: Assets/Resources/Imports/Units/Buildings/workshop/
+    requiredSkillCodes: []
+    constructionCost:
+    - resource: 1
+      amount: 300
+    requirements:
+    - technologyCode: ''
+      buildingCode: town_center
+      minimumPopulation: 0
+    production:
+    - productCode: battering_ram
+      cost:
+      - resource: 1
+        amount: 160
+      - resource: 2
+        amount: 40
+      productionTime: 35
+      queueLimit: 3
+      populationCost: 3
+    dropoffResources: []
+    garrisonCapacity: 0
+    populationCapacity: 0
+    supportsDropoff: 0
+    supportsProduction: 1
+    supportsGarrison: 0
+    acceptanceCriteria: >-
+      Castle siege production requires an operational Town Center and emits
+      the first valid siege order through the deterministic replay queue.
   - code: mining_camp
     displayName: Mining Camp
     role: 2

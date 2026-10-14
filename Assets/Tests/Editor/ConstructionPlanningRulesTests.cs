@@ -71,6 +71,27 @@ public sealed class ConstructionPlanningRulesTests
     }
 
     [Test]
+    public void SiegeWorkshopIntentUsesCatalogProductionAndCastleState()
+    {
+        BuildingContentSpec workshop = Spec("siege_workshop", BuildingContentRole.Production, BuildingEra.Castle, 300);
+        workshop.supportsProduction = true;
+        workshop.requirements.Add(new BuildingRequirement { buildingCode = "town_center" });
+        workshop.production.Add(new BuildingContentProduction { productCode = "battering_ram", productionTime = 35f, queueLimit = 3,
+            cost = new List<BuildingContentCost> { new BuildingContentCost { resource = EconomyResourceType.Wood, amount = 160 } } });
+        BuildingContentCatalog catalog = Catalog(workshop);
+        StrategicPlanningState state = State(BuildingEra.Castle, 0, 0);
+        state.buildings.Add(new StrategicBuildingObservation { ownerId = 0, code = "town_center", lifecycle = BuildingLifecycleState.Operational });
+        state.buildings.Add(new StrategicBuildingObservation { ownerId = 0, code = "siege_workshop", lifecycle = BuildingLifecycleState.Operational });
+
+        StrategicActionIntent intent;
+        SiegeWorkshopContractResult result;
+        Assert.IsTrue(ConstructionPlanningRules.TryCreateInitialSiegeWorkshopIntent(catalog, state, out intent, out result));
+        Assert.AreEqual(SiegeWorkshopContractResult.Accepted, result);
+        Assert.AreEqual("battering_ram", intent.targetCode);
+        Assert.AreEqual("siege_workshop", intent.targetEntityId);
+    }
+
+    [Test]
     public void BasicPlannerAddsAutomaticConstructionWithoutMutatingGoals()
     {
         BuildingContentCatalog catalog = Catalog(Spec("town_center", BuildingContentRole.TownCenter, BuildingEra.Dark, 400));
