@@ -229,6 +229,22 @@ public class BuildingPlacer : MonoBehaviour
 
     void _PlaceBuilding(bool canChain = true)
     {
+        // Validate the final placement and stockpile before any worker is
+        // assigned and before Building.Place consumes the construction cost.
+        if (_placedBuilding == null)
+            return;
+        BuildingData placedData = _placedBuilding.Data as BuildingData;
+        BuildingConstructionGateResult gate = BuildingConstructionGate.EvaluateLegacy(
+            placedData, _placedBuilding.Owner, _placedBuilding.HasValidPlacement);
+        if (gate != BuildingConstructionGateResult.Allowed)
+        {
+            EventManager.TriggerEvent("PlaceBuildingOff");
+            _DestroyPreviewBuilding(_placedBuilding);
+            _placedBuilding = null;
+            _builderManager = null;
+            return;
+        }
+
         // if there is a worker assigned to this construction,
         // warn its behaviour tree and deselect the building
         if (_builderManager != null)

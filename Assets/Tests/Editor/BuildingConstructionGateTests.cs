@@ -1,0 +1,62 @@
+using System.Collections.Generic;
+using NUnit.Framework;
+
+public sealed class BuildingConstructionGateTests
+{
+    [Test]
+    public void GateRejectsEraBeforeCheckingPlacementOrCost()
+    {
+        BuildingData data = CreateBuilding("keep", new ResourceValue(InGameResource.Stone, 100));
+        BuildingCatalogData catalog = CreateCatalog(data, BuildingEra.Imperial);
+        BuildingConstructionGateResult result = BuildingConstructionGate.Evaluate(
+            new BuildingCatalogResolver(new[] { catalog }, new[] { data }),
+            "keep", BuildingEra.Castle, 0, true,
+            new Dictionary<InGameResource, int> { { InGameResource.Stone, 100 } });
+        Assert.That(result, Is.EqualTo(BuildingConstructionGateResult.EraLocked));
+    }
+
+    [Test]
+    public void GateRequiresPlacementAndAllCostsBeforeAllowingConstruction()
+    {
+        BuildingData data = CreateBuilding("house", new ResourceValue(InGameResource.Wood, 50));
+        BuildingCatalogData catalog = CreateCatalog(data, BuildingEra.Dark);
+        BuildingCatalogResolver resolver = new BuildingCatalogResolver(new[] { catalog }, new[] { data });
+        Dictionary<InGameResource, int> stockpile = new Dictionary<InGameResource, int>
+        { { InGameResource.Wood, 50 } };
+        Assert.That(BuildingConstructionGate.Evaluate(resolver, "house", BuildingEra.Dark, 0, false, stockpile),
+            Is.EqualTo(BuildingConstructionGateResult.InvalidPlacement));
+        Assert.That(BuildingConstructionGate.Evaluate(resolver, "house", BuildingEra.Dark, 0, true,
+            new Dictionary<InGameResource, int> { { InGameResource.Wood, 49 } }),
+            Is.EqualTo(BuildingConstructionGateResult.InsufficientResources));
+        Assert.That(BuildingConstructionGate.Evaluate(resolver, "house", BuildingEra.Dark, 0, true, stockpile),
+            Is.EqualTo(BuildingConstructionGateResult.Allowed));
+    }
+
+    [Test]
+    public void LedgerConsumptionIsAtomicWhenCostCannotBePaid()
+    {
+        EconomyLedger ledger = new EconomyLedger();
+        ledger.Set(EconomyResourceType.Wood, 10);
+        List<ResourceValue> cost = new List<ResourceValue>
+        { new ResourceValue(InGameResource.Wood, 8), new ResourceValue(InGameResource.Stone, 1) };
+        Assert.IsFalse(BuildingConstructionGate.TryConsume(ledger, cost));
+        Assert.AreEqual(10, ledger.Get(EconomyResourceType.Wood));
+        Assert.AreEqual(0, ledger.Get(EconomyResourceType.Stone));
+    }
+
+    private static BuildingData CreateBuilding(string code, params ResourceValue[] cost)
+    {
+        BuildingData data = UnityEngine.ScriptableObject.CreateInstance<BuildingData>();
+        data.code = code;
+        data.cost = new List<ResourceValue>(cost);
+        return data;
+    }
+
+    private static BuildingCatalogData CreateCatalog(BuildingData data, BuildingEra era)
+    {
+        BuildingCatalogData catalog = UnityEngine.ScriptableObject.CreateInstance<BuildingCatalogData>();
+        catalog.buildingData = data;
+        catalog.minimumEra = era;
+        return catalog;
+    }
+}
