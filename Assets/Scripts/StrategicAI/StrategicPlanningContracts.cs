@@ -46,6 +46,9 @@ public sealed class StrategicBuildingObservation
     public int ownerId;
     /// <summary>Radius in world units in which this operational building contributes influence.</summary>
     [Min(0f)] public float influenceRadius;
+    /// <summary>Content gate copied from the catalog projection.</summary>
+    public BuildingContentAssetStage assetOrigin = BuildingContentAssetStage.RuntimeReady;
+    public bool contentRuntimeReady = true;
 }
 
 [Serializable]

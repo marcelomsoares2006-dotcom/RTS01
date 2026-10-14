@@ -1,7 +1,30 @@
 using NUnit.Framework;
+using UnityEngine;
 
 public sealed class VictoryObjectiveContractsTests
 {
+    private Object _catalogAsset;
+
+    [TearDown]
+    public void TearDown()
+    {
+        if (_catalogAsset != null) Object.DestroyImmediate(_catalogAsset);
+    }
+
+    [Test]
+    public void PlannedRequiredBuildingCannotGrantVictoryThroughCatalogAwareEvaluation()
+    {
+        BuildingContentCatalog catalog = ScriptableObject.CreateInstance<BuildingContentCatalog>();
+        _catalogAsset = catalog;
+        catalog.entries.Add(new BuildingContentSpec { code = "wonder", status = BuildingContentStatus.Planned });
+        StrategicPlanningState state = State(BuildingEra.Imperial, 50);
+        state.buildings.Add(Building("wonder", BuildingLifecycleState.Operational));
+        VictoryObjectiveDefinition definition = Definition("wonder", VictoryObjectiveKind.Wonder, BuildingEra.Imperial, "wonder", 0f);
+        VictoryObjectiveProgress progress = new VictoryObjectiveProgress("wonder", 1);
+
+        Assert.That(VictoryObjectiveRules.Evaluate(catalog, state, definition, progress),
+            Is.EqualTo(VictoryObjectiveResult.MissingBuilding));
+    }
     [Test]
     public void LandmarkRequiresOperationalBuildingAndCompletesImmediatelyWhenNoHold()
     {

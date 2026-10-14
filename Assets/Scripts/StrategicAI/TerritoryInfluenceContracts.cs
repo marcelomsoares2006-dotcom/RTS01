@@ -49,6 +49,40 @@ public static class StrategicTerritoryInfluenceResolver
     public const float DisputeEpsilon = 0.0001f;
     private const float ScorePrecision = 1000f;
 
+    /// <summary>
+    /// Resolves territory using only runtime-ready catalog entries. Planned or
+    /// intermediate content may be shown to strategy tools, but cannot grant
+    /// map control before a real BuildingData asset exists.
+    /// </summary>
+    public static StrategicTerritoryInfluence EvaluateAt(
+        BuildingContentCatalog catalog,
+        StrategicPlanningState state,
+        Vector3 position)
+    {
+        if (catalog == null) throw new ArgumentNullException(nameof(catalog));
+        if (state == null) throw new ArgumentNullException(nameof(state));
+
+        StrategicPlanningState filtered = new StrategicPlanningState
+        {
+            ownerId = state.ownerId,
+            era = state.era,
+            population = state.population,
+            unlockedTechnologyCodes = state.unlockedTechnologyCodes,
+            buildings = new List<StrategicBuildingObservation>()
+        };
+        if (state.buildings != null)
+        {
+            for (int i = 0; i < state.buildings.Count; i++)
+            {
+                StrategicBuildingObservation building = state.buildings[i];
+                BuildingContentSpec entry = building == null ? null : catalog.Find(building.code);
+                if (entry != null && entry.IsRuntimeReady)
+                    filtered.buildings.Add(building);
+            }
+        }
+        return EvaluateAt(filtered, position);
+    }
+
     public static StrategicTerritoryInfluence EvaluateAt(StrategicPlanningState state, Vector3 position)
     {
         if (state == null) throw new ArgumentNullException(nameof(state));
@@ -152,9 +186,7 @@ public static class StrategicTerritoryInfluenceResolver
 
     private static bool Contributes(StrategicBuildingObservation building)
     {
-        return building != null
-            && building.ownerId >= 0
-            && building.lifecycle == BuildingLifecycleState.Operational
+        return StrategicBuildingEligibilityRules.CanContributeToTerritory(building)
             && building.influenceRadius > DisputeEpsilon;
     }
 }

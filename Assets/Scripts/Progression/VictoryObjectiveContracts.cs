@@ -77,6 +77,40 @@ public sealed class VictoryObjectiveObservation
 /// <summary>Pure objective rules shared by scenario, AI, save and UI adapters.</summary>
 public static class VictoryObjectiveRules
 {
+    /// <summary>
+    /// Catalog-aware objective evaluation. Required buildings must be backed
+    /// by runtime-ready content before they can satisfy victory conditions.
+    /// </summary>
+    public static VictoryObjectiveResult Evaluate(
+        BuildingContentCatalog catalog,
+        StrategicPlanningState state,
+        VictoryObjectiveDefinition definition,
+        VictoryObjectiveProgress progress,
+        VictoryObjectiveObservation observation = null)
+    {
+        if (catalog == null) return VictoryObjectiveResult.MissingBuilding;
+        if (state == null || definition == null) return Evaluate(state, definition, progress, observation);
+
+        if (!string.IsNullOrWhiteSpace(definition.requiredBuildingCode))
+        {
+            BuildingContentSpec required = catalog.Find(definition.requiredBuildingCode.Trim());
+            if (required == null || !required.IsRuntimeReady)
+                return VictoryObjectiveResult.MissingBuilding;
+        }
+        if (definition.requiredBuildingCodes != null)
+        {
+            for (int i = 0; i < definition.requiredBuildingCodes.Count; i++)
+            {
+                string code = definition.requiredBuildingCodes[i];
+                if (string.IsNullOrWhiteSpace(code)) continue;
+                BuildingContentSpec required = catalog.Find(code.Trim());
+                if (required == null || !required.IsRuntimeReady)
+                    return VictoryObjectiveResult.MissingBuilding;
+            }
+        }
+        return Evaluate(state, definition, progress, observation);
+    }
+
     public static VictoryObjectiveResult Evaluate(
         StrategicPlanningState state,
         VictoryObjectiveDefinition definition,
@@ -145,8 +179,8 @@ public static class VictoryObjectiveRules
         for (int i = 0; i < state.buildings.Count; i++)
         {
             StrategicBuildingObservation building = state.buildings[i];
-            if (building != null && building.ownerId == state.ownerId
-                && building.lifecycle == BuildingLifecycleState.Operational
+            if (StrategicBuildingEligibilityRules.IsOperationalRuntimeReady(building)
+                && building.ownerId == state.ownerId
                 && string.Equals(building.code, normalized, StringComparison.OrdinalIgnoreCase))
                 return true;
         }

@@ -4,6 +4,26 @@ using UnityEngine;
 
 public class StrategicTerritoryInfluenceTests
 {
+    [Test]
+    public void CatalogAwareResolutionIgnoresPlannedBuildingsThatHaveNoRuntimeAsset()
+    {
+        BuildingContentCatalog catalog = ScriptableObject.CreateInstance<BuildingContentCatalog>();
+        try
+        {
+            catalog.entries.Add(new BuildingContentSpec { code = "InfluenceBuilding", status = BuildingContentStatus.Planned });
+            StrategicPlanningState state = new StrategicPlanningState();
+            state.buildings.Add(Building(1, Vector3.zero, 5f));
+
+            StrategicTerritoryInfluence result = StrategicTerritoryInfluenceResolver.EvaluateAt(catalog, state, Vector3.zero);
+            Assert.AreEqual(StrategicTerritoryControl.Neutral, result.control);
+            Assert.AreEqual(0, result.contributingBuildings);
+        }
+        finally
+        {
+            Object.DestroyImmediate(catalog);
+        }
+    }
+
     private static StrategicBuildingObservation Building(int owner, Vector3 position, float radius, BuildingLifecycleState lifecycle = BuildingLifecycleState.Operational)
     {
         return new StrategicBuildingObservation
