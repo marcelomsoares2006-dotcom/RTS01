@@ -50,3 +50,17 @@ carried amount, preserving fractional carry, and rejected Wood deliveries do
 not mutate the ledger. `BuildingEconomyRules` validates both accepted resource
 types, while `ConstructionPlanningRules` exposes the camp to AI only after the
 Town Center is operational and the 50 Wood cost is affordable.
+
+## Mill milestone
+
+`MillEconomyContract` specializes the same boundary for Food. Its catalog
+contract is exact: `mill` is a Dark Age building costing 50 Wood, accepts Food
+only, and requires an owned operational `town_center` before the route can be
+created. The Mill itself must be operational and runtime-ready.
+
+Food is deposited directly into `EconomyLedger` as `EconomyResourceType.Food`.
+The contract deliberately never maps Food to `InGameResource`; the legacy
+three-resource adapter continues to reject Food explicitly. AI construction
+planning uses the same Dark Age, Town Center and 50 Wood prerequisites, while
+save capture/restoration preserves the Food ledger and collector resource enum
+through the existing `EconomyPlayerSaveData` boundary.
