@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 /// <summary>Deterministic, UI-independent resource stockpile.</summary>
 [Serializable]
-public sealed class EconomyLedger
+public sealed class EconomyLedger : ISerializationCallbackReceiver
 {
     [Serializable]
     public sealed class Entry
@@ -15,7 +16,7 @@ public sealed class EconomyLedger
     }
 
     public List<Entry> entries = new List<Entry>();
-    private readonly Dictionary<EconomyResourceType, Entry> _lookup = new Dictionary<EconomyResourceType, Entry>();
+    [NonSerialized] private Dictionary<EconomyResourceType, Entry> _lookup = new Dictionary<EconomyResourceType, Entry>();
 
     public EconomyLedger() { RebuildLookup(); }
     public int Get(EconomyResourceType resource) { return FindOrCreate(resource).amount; }
@@ -46,8 +47,11 @@ public sealed class EconomyLedger
             else _lookup.Add(entry.resource, entry);
         }
     }
+    public void OnBeforeSerialize() { }
+    public void OnAfterDeserialize() { RebuildLookup(); }
     private Entry FindOrCreate(EconomyResourceType resource)
     {
+        if (_lookup == null) RebuildLookup();
         Entry entry;
         if (_lookup.TryGetValue(resource, out entry)) return entry;
         entry = new Entry(resource, 0);
