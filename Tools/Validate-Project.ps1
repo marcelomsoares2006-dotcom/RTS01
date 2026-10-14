@@ -32,8 +32,13 @@ if ($Migrate) {
 $reviewResults = Join-Path $reviewProject 'TestResults\unit-tests.xml'
 Invoke-ReviewUnity 'unit-tests' ('-runTests -testPlatform EditMode -assemblyNames EraImperial.EditorTests -testResults "' + $reviewResults + '"')
 [xml]$reviewXml = Get-Content -LiteralPath $reviewResults
-if ($reviewXml.'test-run'.result -ne 'Passed' -or [int]$reviewXml.'test-run'.passed -ne 3) {
-    throw 'Expected all three unit tests to pass; inspect unit-tests.xml.'
+$reviewRun = $reviewXml.'test-run'
+$passed = [int]$reviewRun.passed
+$failed = [int]$reviewRun.failed
+$skipped = [int]$reviewRun.skipped
+$inconclusive = [int]$reviewRun.inconclusive
+if ($reviewRun.result -ne 'Passed' -or $passed -le 0 -or $failed -ne 0 -or $skipped -ne 0 -or $inconclusive -ne 0) {
+    throw "EditMode tests did not pass cleanly: result=$($reviewRun.result), passed=$passed, failed=$failed, skipped=$skipped, inconclusive=$inconclusive. Inspect unit-tests.xml."
 }
 Invoke-ReviewUnity 'playmode' '-executeMethod EraImperialSmokeTests.Run'
 if ($Build) {

@@ -97,7 +97,7 @@ public class BuildingManager : UnitManager
 
         // check building is within the current FOV bounds
         if (!Physics.Raycast(
-            p + Vector3.up * 100,
+            transform.position + Vector3.up * 100,
             -Vector3.up, 1000,
             Globals.FOV_LAYER_MASK))
             return false;
