@@ -178,6 +178,8 @@ public static class WallGateContractRules
             || float.IsInfinity(observation.nearestPieceDistance)
             || observation.nearestPieceDistance < contract.minimumSpacing))
             return WallGatePlacementResult.InvalidSpacing;
+        if (contract.minimumSpacing > 0f && !observation.spacingAvailable)
+            return WallGatePlacementResult.InvalidSpacing;
         if (observation.requiresConnection && !observation.endpointAvailable)
             return WallGatePlacementResult.RequiresConnection;
         return WallGatePlacementResult.Allowed;
@@ -209,7 +211,8 @@ public static class WallGateContractRules
         if (!firstEndpointAvailable || !secondEndpointAvailable)
             return WallGateConnectionResult.OccupiedEndpoint;
         float allowedDistance = Mathf.Min(first.connectionRadius, second.connectionRadius);
-        if (endpointDistance < 0f || endpointDistance > allowedDistance)
+        if (float.IsNaN(endpointDistance) || float.IsInfinity(endpointDistance)
+            || endpointDistance < 0f || endpointDistance > allowedDistance)
             return WallGateConnectionResult.InvalidDistance;
         return WallGateConnectionResult.Connected;
     }

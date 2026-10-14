@@ -75,8 +75,10 @@ function Test-ConstructionContracts {
         @{ Path = 'Assets/Scripts/Progression/BuildingContentProgressionRules.cs'; Pattern = 'class\s+BuildingContentProgressionRules\b'; Name = 'building progression bridge' },
         @{ Path = 'Assets/Scripts/Progression/BuildingProductionCatalogRules.cs'; Pattern = 'class\s+BuildingProductionCatalogRules\b'; Name = 'building production catalog rules' },
         @{ Path = 'Assets/Scripts/Economy/BuildingEconomyRules.cs'; Pattern = 'class\s+BuildingEconomyRules\b'; Name = 'building economy rules' },
+        @{ Path = 'Assets/Scripts/UI/BuildingConstructionUiRules.cs'; Pattern = 'class\s+BuildingConstructionUiRules\b'; Name = 'building construction UI rules' },
         @{ Path = 'Assets/Scripts/StrategicAI/ConstructionPlanningRules.cs'; Pattern = 'class\s+ConstructionPlanningRules\b'; Name = 'construction planning rules' },
         @{ Path = 'Assets/Scripts/StrategicAI/FoundationPlacementRules.cs'; Pattern = 'class\s+FoundationPlacementRules\b'; Name = 'foundation placement rules' },
+        @{ Path = 'Assets/Scripts/StrategicAI/BuildingPlacementPreviewRules.cs'; Pattern = 'class\s+BuildingPlacementPreviewRules\b'; Name = 'placement preview rules' },
         @{ Path = 'Assets/Scripts/ScriptableObjects/Units/BuildingConstructionGate.cs'; Pattern = 'class\s+BuildingConstructionGate\b'; Name = 'construction gate' },
         @{ Path = 'Assets/Scripts/Units/Buildings/BuildingProductionQueue.cs'; Pattern = 'class\s+BuildingProductionQueue\b'; Name = 'production queue' },
         @{ Path = 'Assets/Scripts/Units/Buildings/BuildingFeedback.cs'; Pattern = 'class\s+BuildingFeedbackEmitter\b'; Name = 'construction feedback' },
@@ -93,9 +95,11 @@ function Test-ConstructionContracts {
         'Assets/Tests/Editor/BuildingMaintenanceRuntimeBindingTests.cs',
         'Assets/Tests/Editor/BuildingContentProgressionRulesTests.cs',
         'Assets/Tests/Editor/BuildingProductionCatalogRulesTests.cs',
+        'Assets/Tests/Editor/BuildingConstructionUiRulesTests.cs',
         'Assets/Tests/Editor/ConstructionPlanningRulesTests.cs',
         'Assets/Tests/Editor/FoundationPlacementRulesTests.cs',
         'Assets/Tests/Editor/BuildingEconomyRulesTests.cs',
+        'Assets/Tests/Editor/BuildingPlacementPreviewRulesTests.cs',
         'Assets/Tests/Editor/WallGateContractTests.cs'
     )
     foreach ($test in $requiredTests) { Require-File $test | Out-Null }

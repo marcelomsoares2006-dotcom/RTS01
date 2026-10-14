@@ -104,10 +104,25 @@ public sealed class WallGateContractTests
             footprintClear = true, terrainSupported = true, ownerId = 3,
             spacingAvailable = true, nearestPieceDistance = 1f
         }), Is.EqualTo(WallGatePlacementResult.InvalidSpacing));
+        Assert.That(WallGateContractRules.EvaluatePlacement(first, new WallGatePlacementObservation
+        {
+            footprintClear = true, terrainSupported = true, ownerId = 3
+        }), Is.EqualTo(WallGatePlacementResult.InvalidSpacing));
 
         second.ownerId = 4;
         Assert.That(WallGateContractRules.EvaluateConnection(first, second, 0.1f, true, true),
             Is.EqualTo(WallGateConnectionResult.InvalidOwner));
+    }
+
+    [Test]
+    public void ConnectionRejectsNonFiniteEndpointDistance()
+    {
+        WallGateContract first = Ready(WallGatePieceKind.Segment, "wall_a", "stone");
+        WallGateContract second = Ready(WallGatePieceKind.Segment, "wall_b", "stone");
+        Assert.That(WallGateContractRules.EvaluateConnection(first, second, float.NaN, true, true),
+            Is.EqualTo(WallGateConnectionResult.InvalidDistance));
+        Assert.That(WallGateContractRules.EvaluateConnection(first, second, float.PositiveInfinity, true, true),
+            Is.EqualTo(WallGateConnectionResult.InvalidDistance));
     }
 
     [Test]
