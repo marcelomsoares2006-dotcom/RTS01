@@ -2,7 +2,7 @@
     Editor-free acceptance gate for the first playable construction slice.
 
     This gate intentionally fails while Town Center, Resource Dropoff, Lumber Camp,
-    Mining Camp, Mill, Barracks, Archery Range or Stable are only design contracts. It does not create placeholder assets. Use
+    Mining Camp, Mill, Barracks, Archery Range, Stable or Siege Workshop are only design contracts. It does not create placeholder assets. Use
     -ReportOnly to print the complete checklist while artists are working.
     Unity is still required to verify serialized component types and runtime
     placement; this script validates the repository-facing part of the gate.
@@ -51,7 +51,7 @@ $manifestByCode = @{}
 foreach ($manifestBlock in $manifestBlocks) {
     $manifestByCode[$manifestBlock.Groups[1].Value.ToLowerInvariant()] = $manifestBlock.Groups[0].Value
 }
-foreach ($manifestCode in @('town_center', 'resource_dropoff', 'lumber_camp', 'mining_camp', 'mill', 'barracks', 'archery_range', 'stable')) {
+foreach ($manifestCode in @('town_center', 'resource_dropoff', 'lumber_camp', 'mining_camp', 'mill', 'barracks', 'archery_range', 'stable', 'siege_workshop')) {
     if (!$manifestByCode.ContainsKey($manifestCode)) {
         Add-Issue $issues $manifestCode 'Import manifest entry is missing.'
         continue
@@ -107,7 +107,7 @@ $byCode = @{}
 foreach ($block in $blocks) {
     $byCode[$block.Groups[1].Value.ToLowerInvariant()] = $block.Groups[0].Value
 }
-foreach ($manifestCode in @('town_center', 'resource_dropoff', 'lumber_camp', 'mining_camp', 'mill', 'barracks', 'archery_range', 'stable')) {
+foreach ($manifestCode in @('town_center', 'resource_dropoff', 'lumber_camp', 'mining_camp', 'mill', 'barracks', 'archery_range', 'stable', 'siege_workshop')) {
     if ($manifestByCode.ContainsKey($manifestCode) -and $byCode.ContainsKey($manifestCode)) {
         $manifestBody = $manifestByCode[$manifestCode]
         $catalogBody = $byCode[$manifestCode]
@@ -193,10 +193,19 @@ $requirements = @{
         'Prefab is reviewed in Unity with BuildingManager, BuildingBT, MeshFilter and collider',
         'Prefab root uses Unit layer (12), Unit tag and valid terrain placement footprint'
     )
+    'siege_workshop' = @(
+        'Playable status (status >= 2)',
+        'BuildingData GUID resolves to an asset',
+        'Prefab path and .meta exist',
+        'Model path exists and contains the authored model set',
+        'BuildingData links a prefab and constructionMeshes',
+        'Prefab is reviewed in Unity with BuildingManager, BuildingBT, MeshFilter and collider',
+        'Prefab root uses Unit layer (12), Unit tag and valid terrain placement footprint'
+    )
 }
 $modelStates = @{}
 
-foreach ($code in @('town_center', 'resource_dropoff', 'lumber_camp', 'mining_camp', 'mill', 'barracks', 'archery_range', 'stable')) {
+foreach ($code in @('town_center', 'resource_dropoff', 'lumber_camp', 'mining_camp', 'mill', 'barracks', 'archery_range', 'stable', 'siege_workshop')) {
     $modelStates[$code] = 'missing'
     if (!$byCode.ContainsKey($code)) {
         Add-Issue $issues $code 'Catalog entry is missing.'
@@ -316,7 +325,7 @@ foreach ($code in @('town_center', 'resource_dropoff', 'lumber_camp', 'mining_ca
     }
 }
 
-$stateSummary = @('town_center', 'resource_dropoff', 'lumber_camp', 'mining_camp', 'mill', 'barracks', 'archery_range', 'stable') | ForEach-Object {
+$stateSummary = @('town_center', 'resource_dropoff', 'lumber_camp', 'mining_camp', 'mill', 'barracks', 'archery_range', 'stable', 'siege_workshop') | ForEach-Object {
     "$_=$($modelStates[$_])"
 }
 Write-Host ('Foundation model states: ' + ($stateSummary -join ', '))
@@ -324,7 +333,7 @@ Write-Host ('Foundation model states: ' + ($stateSummary -join ', '))
 if ($issues.Count -gt 0) {
     $message = "Foundation asset gate failed with $($issues.Count) issue(s):`n - " + ($issues -join "`n - ")
     Write-Host 'Unity import checklist still required for each foundation:'
-    foreach ($code in @('town_center', 'resource_dropoff', 'lumber_camp', 'mining_camp', 'mill', 'barracks', 'archery_range', 'stable')) {
+    foreach ($code in @('town_center', 'resource_dropoff', 'lumber_camp', 'mining_camp', 'mill', 'barracks', 'archery_range', 'stable', 'siege_workshop')) {
         foreach ($requirement in $requirements[$code]) { Write-Host " - $code :: $requirement" }
     }
     if ($ReportOnly) {
@@ -334,4 +343,4 @@ if ($issues.Count -gt 0) {
     throw $message
 }
 
-Write-Host 'Foundation asset gate passed: Town Center, Resource Dropoff, Lumber Camp, Mining Camp, Mill, Barracks, Archery Range and Stable are repository-ready for Unity review.'
+Write-Host 'Foundation asset gate passed: Town Center, Resource Dropoff, Lumber Camp, Mining Camp, Mill, Barracks, Archery Range, Stable and Siege Workshop are repository-ready for Unity review.'

@@ -13,6 +13,7 @@ const assets = {
   '/barracks.glb': 'Assets/Resources/Imports/Units/Buildings/barracks/Barracks_authoring.glb',
   '/archery-range.glb': 'Assets/Resources/Imports/Units/Buildings/archery-range/ArcheryRange_authoring.glb',
   '/stable.glb': 'Assets/Resources/Imports/Units/Buildings/stable/Stable_authoring.glb',
+  '/siege-workshop.glb': 'Assets/Resources/Imports/Units/Buildings/siege-workshop/SiegeWorkshop_authoring.glb',
 };
 const html = `<!doctype html><meta charset="utf-8"><title>RTS01 Foundation Preview</title>
 <style>html,body{margin:0;height:100%;background:#10151a;color:#e8edf2;font:14px sans-serif}#bar{position:fixed;z-index:2;padding:10px;background:#10151acc}canvas{display:block}</style>
@@ -29,7 +30,7 @@ const controls=new OrbitControls(camera,renderer.domElement); controls.target.se
 scene.add(new THREE.HemisphereLight(0xcfe5ff,0x332516,2.2)); const key=new THREE.DirectionalLight(0xffe4bd,3); key.position.set(7,14,10); scene.add(key);
 const ground=new THREE.Mesh(new THREE.PlaneGeometry(40,40),new THREE.MeshStandardMaterial({color:0x26352a,roughness:1})); ground.rotation.x=-Math.PI/2; ground.position.y=-0.05; scene.add(ground);
 const loader=new GLTFLoader(); const group=new THREE.Group(); scene.add(group); let loaded=0;
-for(const [url,x] of [['/town.glb',-18],['/dropoff.glb',-13],['/lumber.glb',-8],['/mining.glb',-3],['/mill.glb',2],['/barracks.glb',7],['/archery-range.glb',12],['/stable.glb',17]]) loader.load(url,g=>{g.scene.position.x=x; group.add(g.scene); loaded++;},undefined,e=>console.error(e));
+for(const [url,x] of [['/town.glb',-22],['/dropoff.glb',-16],['/lumber.glb',-10],['/mining.glb',-4],['/mill.glb',2],['/barracks.glb',8],['/archery-range.glb',14],['/stable.glb',20],['/siege-workshop.glb',26]]) loader.load(url,g=>{g.scene.position.x=x; group.add(g.scene); loaded++;},undefined,e=>console.error(e));
 function animate(){requestAnimationFrame(animate); renderer.render(scene,camera)} animate(); addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight)});
 </script>`;
 const server = http.createServer((req,res)=>{

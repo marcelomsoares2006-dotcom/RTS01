@@ -26,6 +26,7 @@ public sealed class FoundationBuildingAuthoringWindow : EditorWindow
     private const string BarracksCode = "barracks";
     private const string ArcheryRangeCode = "archery_range";
     private const string StableCode = "stable";
+    private const string WorkshopCode = "siege_workshop";
     private const string TownCenterUnityModel =
         "Assets/Resources/Imports/Units/Buildings/town-center/TownCenter_authoring.obj";
     private const string TownCenterGlbModel =
@@ -58,6 +59,10 @@ public sealed class FoundationBuildingAuthoringWindow : EditorWindow
         "Assets/Resources/Imports/Units/Buildings/stable/Stable_authoring.obj";
     private const string StableGlbModel =
         "Assets/Resources/Imports/Units/Buildings/stable/Stable_authoring.glb";
+    private const string WorkshopUnityModel =
+        "Assets/Resources/Imports/Units/Buildings/siege-workshop/SiegeWorkshop_authoring.obj";
+    private const string WorkshopGlbModel =
+        "Assets/Resources/Imports/Units/Buildings/siege-workshop/SiegeWorkshop_authoring.glb";
     private const string PrefabFolder = "Assets/Resources/Prefabs/Units/Buildings";
     private const string DataFolder = "Assets/Resources/ScriptableObjects/Units/Buildings";
     private const string HousePrefab = "Assets/Resources/Prefabs/Units/Buildings/House.prefab";
@@ -90,6 +95,7 @@ public sealed class FoundationBuildingAuthoringWindow : EditorWindow
         DrawAssetRow(BarracksCode, BarracksUnityModel, BarracksGlbModel);
         DrawAssetRow(ArcheryRangeCode, ArcheryRangeUnityModel, ArcheryRangeGlbModel);
         DrawAssetRow(StableCode, StableUnityModel, StableGlbModel);
+        DrawAssetRow(WorkshopCode, WorkshopUnityModel, WorkshopGlbModel);
 
         EditorGUILayout.Space(8f);
         using (new EditorGUILayout.HorizontalScope())
@@ -143,7 +149,8 @@ public sealed class FoundationBuildingAuthoringWindow : EditorWindow
             && AuditResolvedModel(MillCode, MillUnityModel, MillGlbModel, false)
             && AuditResolvedModel(BarracksCode, BarracksUnityModel, BarracksGlbModel, false)
             && AuditResolvedModel(ArcheryRangeCode, ArcheryRangeUnityModel, ArcheryRangeGlbModel, false)
-            && AuditResolvedModel(StableCode, StableUnityModel, StableGlbModel, false);
+            && AuditResolvedModel(StableCode, StableUnityModel, StableGlbModel, false)
+            && AuditResolvedModel(WorkshopCode, WorkshopUnityModel, WorkshopGlbModel, false);
     }
 
     private void AuditModels()
@@ -157,7 +164,8 @@ public sealed class FoundationBuildingAuthoringWindow : EditorWindow
         bool barracks = AuditResolvedModel(BarracksCode, BarracksUnityModel, BarracksGlbModel, true);
         bool archeryRange = AuditResolvedModel(ArcheryRangeCode, ArcheryRangeUnityModel, ArcheryRangeGlbModel, true);
         bool stable = AuditResolvedModel(StableCode, StableUnityModel, StableGlbModel, true);
-        _messages.Add(townCenter && dropoff && lumberCamp && miningCamp && mill && barracks && archeryRange && stable
+        bool workshop = AuditResolvedModel(WorkshopCode, WorkshopUnityModel, WorkshopGlbModel, true);
+        _messages.Add(townCenter && dropoff && lumberCamp && miningCamp && mill && barracks && archeryRange && stable && workshop
             ? "Authored model sources pass the audit. Draft creation is available."
             : "Source audit failed. No draft asset was created.");
         Repaint();
@@ -214,7 +222,8 @@ public sealed class FoundationBuildingAuthoringWindow : EditorWindow
         string barracksSource = ResolveModelPath(BarracksUnityModel, BarracksGlbModel);
         string archeryRangeSource = ResolveModelPath(ArcheryRangeUnityModel, ArcheryRangeGlbModel);
         string stableSource = ResolveModelPath(StableUnityModel, StableGlbModel);
-        if (townCenterSource == null || dropoffSource == null || lumberCampSource == null || miningCampSource == null || millSource == null || barracksSource == null || archeryRangeSource == null || stableSource == null
+        string workshopSource = ResolveModelPath(WorkshopUnityModel, WorkshopGlbModel);
+        if (townCenterSource == null || dropoffSource == null || lumberCampSource == null || miningCampSource == null || millSource == null || barracksSource == null || archeryRangeSource == null || stableSource == null || workshopSource == null
             || !AuditModel(TownCenterCode, townCenterSource, true)
             || !AuditModel(ResourceDropoffCode, dropoffSource, true)
             || !AuditModel(LumberCampCode, lumberCampSource, true)
@@ -222,7 +231,8 @@ public sealed class FoundationBuildingAuthoringWindow : EditorWindow
             || !AuditModel(MillCode, millSource, true)
             || !AuditModel(BarracksCode, barracksSource, true)
             || !AuditModel(ArcheryRangeCode, archeryRangeSource, true)
-            || !AuditModel(StableCode, stableSource, true))
+            || !AuditModel(StableCode, stableSource, true)
+            || !AuditModel(WorkshopCode, workshopSource, true))
         {
             _messages.Add("ERROR: source audit failed; no draft assets were created.");
             Repaint();
@@ -239,6 +249,7 @@ public sealed class FoundationBuildingAuthoringWindow : EditorWindow
         CreateDraft(BarracksCode, "Barracks", barracksSource);
         CreateDraft(ArcheryRangeCode, "Archery Range", archeryRangeSource);
         CreateDraft(StableCode, "Stable", stableSource);
+        CreateDraft(WorkshopCode, "SiegeWorkshop", workshopSource);
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
         _messages.Add("Draft assets created. Catalog status and BuildingData references remain unchanged.");

@@ -113,3 +113,17 @@ entries:
     requiredComponents: BuildingManager,BuildingBT,MeshFilter,MeshRenderer,Collider
     approvalChecks: import-model,create-prefab,link-building-data,placement-review,construction-playmode
     promotionCriteria: authored-model,unity-prefab,building-data,placement-playmode
+
+  - code: siege_workshop
+    intermediateSource: Assets/Resources/Imports/Units/Buildings/siege-workshop/SiegeWorkshop_graybox.obj
+    authoredSource: Assets/Resources/Imports/Units/Buildings/siege-workshop/SiegeWorkshop_authoring.obj
+    scaleMeters: 1
+    footprintMeters: 7.2x6.4
+    footprintToleranceMeters: 0.6
+    maxHeightMeters: 5.6
+    expectedPrefab: Assets/Resources/Prefabs/Units/Buildings/SiegeWorkshop.prefab
+    expectedBuildingData: Assets/Resources/ScriptableObjects/Units/Buildings/SiegeWorkshop.asset
+    minimumEra: Castle
+    requiredComponents: BuildingManager,BuildingBT,MeshFilter,MeshRenderer,Collider
+    approvalChecks: import-model,create-prefab,link-building-data,placement-review,construction-playmode
+    promotionCriteria: authored-model,unity-prefab,building-data,placement-playmode

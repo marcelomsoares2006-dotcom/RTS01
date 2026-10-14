@@ -14,6 +14,7 @@ const assets = [
   'Assets/Resources/Imports/Units/Buildings/barracks/Barracks_authoring.obj',
   'Assets/Resources/Imports/Units/Buildings/archery-range/ArcheryRange_authoring.obj',
   'Assets/Resources/Imports/Units/Buildings/stable/Stable_authoring.obj',
+  'Assets/Resources/Imports/Units/Buildings/siege-workshop/SiegeWorkshop_authoring.obj',
 ];
 
 function fail(message) {

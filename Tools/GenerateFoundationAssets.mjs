@@ -251,6 +251,36 @@ function buildStable() {
   return p;
 }
 
+function buildWorkshop() {
+  const p = [];
+  // A siege and engineering workshop: broad assembly hall, crane, forge and
+  // timber racks make the production role readable at gameplay distance while
+  // preserving named parts for later siege sockets and crafting VFX.
+  p.push(box('Foundation', 0, 0.25, 0, 7.2, 0.5, 6.4, 0));
+  p.push(box('WorkshopWalls', 0, 1.7, 0.15, 6.35, 2.9, 4.95, 1));
+  for (const [x, z] of [[-2.9, -2.05], [2.9, -2.05], [-2.9, 2.2], [2.9, 2.2]])
+    p.push(box('TimberPost', x, 1.8, z, 0.3, 3.15, 0.3, 2));
+  p.push(box('TimberBeam', 0, 3.0, -2.3, 6.05, 0.3, 0.3, 2));
+  p.push(pyramid('Roof', 0, 3.15, 0.15, 6.85, 5.45, 2.15, 3));
+  p.push(box('EntranceFrame', 0, 1.55, -2.55, 2.6, 2.45, 0.38, 2));
+  p.push(box('Gate', 0, 1.18, -2.78, 1.7, 1.75, 0.14, 4));
+  p.push(box('GateLintel', 0, 2.78, -2.78, 2.8, 0.36, 0.38, 2));
+  // Crane parts remain separate so a later siege assembly animation can move
+  // the hook without replacing the authored building mesh.
+  p.push(box('CranePost', 2.35, 2.2, 0.75, 0.28, 3.8, 0.28, 2));
+  p.push(box('CraneArm', 1.1, 3.95, 0.75, 3.0, 0.24, 0.24, 2));
+  p.push(cylinder('CraneWheel', 0.45, 3.15, 0.75, 0.52, 0.18, 12, 4, Math.PI / 2));
+  p.push(box('CraneHook', -0.2, 2.2, 0.75, 0.16, 1.55, 0.16, 4));
+  p.push(box('Forge', -2.15, 0.8, 1.65, 1.55, 0.85, 1.25, 0));
+  p.push(pyramid('ForgeChimney', -2.15, 1.65, 1.65, 0.85, 0.85, 1.25, 0));
+  p.push(box('AssemblyTable', 0, 0.85, 1.9, 2.65, 0.45, 1.15, 2));
+  p.push(box('GearRack', -2.45, 1.45, -0.35, 0.22, 1.85, 1.35, 2));
+  p.push(box('TimberRack', 2.35, 1.05, -1.1, 0.3, 1.35, 1.75, 2));
+  p.push(box('BannerPole', 0.8, 4.25, -3.05, 0.08, 2.0, 0.08, 2));
+  p.push(box('Banner', 1.12, 4.6, -3.05, 0.65, 0.92, 0.05, 4));
+  return p;
+}
+
 function makeBinaryGLB(parts, assetName) {
   const positions = [], normals = [], indices = [], primitiveInfo = [];
   for (const item of parts) {
@@ -435,6 +465,7 @@ const millParts = buildMill();
 const barracksParts = buildBarracks();
 const archeryRangeParts = buildArcheryRange();
 const stableParts = buildStable();
+const workshopParts = buildWorkshop();
 const report = {
   generator: 'Tools/GenerateFoundationAssets.mjs',
   coordinateSystem: 'Y-up, right-handed, metres',
@@ -455,6 +486,8 @@ const report = {
     writeObj('ArcheryRange_authoring', archeryRangeParts, 'archery-range'),
     writeAsset('Stable_authoring', stableParts, 'stable'),
     writeObj('Stable_authoring', stableParts, 'stable'),
+    writeAsset('SiegeWorkshop_authoring', workshopParts, 'siege-workshop'),
+    writeObj('SiegeWorkshop_authoring', workshopParts, 'siege-workshop'),
   ],
 };
 const reportPath = path.join(outputRoot, 'foundation-asset-metrics.json');

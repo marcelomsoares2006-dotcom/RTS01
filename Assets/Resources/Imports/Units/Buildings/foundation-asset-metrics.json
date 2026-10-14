@@ -321,6 +321,46 @@
       "path": "Assets/Resources/Imports/Units/Buildings/stable/Stable_authoring.obj",
       "materialPath": "Assets/Resources/Imports/Units/Buildings/stable/Stable_authoring.mtl",
       "bytes": 13467
+    },
+    {
+      "assetName": "SiegeWorkshop_authoring",
+      "parts": 22,
+      "vertices": 560,
+      "triangles": 284,
+      "materials": 6,
+      "boundsMin": [
+        -3.6,
+        0,
+        -3.2
+      ],
+      "boundsMax": [
+        3.6,
+        5.3,
+        3.2
+      ],
+      "bytes": 30720,
+      "path": "Assets/Resources/Imports/Units/Buildings/siege-workshop/SiegeWorkshop_authoring.glb"
+    },
+    {
+      "assetName": "SiegeWorkshop_authoring",
+      "format": "obj",
+      "parts": 22,
+      "vertices": 186,
+      "triangles": 284,
+      "materials": 6,
+      "boundsMin": [
+        -3.6,
+        0,
+        -3.2
+      ],
+      "boundsMax": [
+        3.6,
+        5.3,
+        3.2
+      ],
+      "path": "Assets/Resources/Imports/Units/Buildings/siege-workshop/SiegeWorkshop_authoring.obj",
+      "materialPath": "Assets/Resources/Imports/Units/Buildings/siege-workshop/SiegeWorkshop_authoring.mtl",
+      "bytes": 15583
     }
   ]
 }

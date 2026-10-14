@@ -223,7 +223,7 @@ MonoBehaviour:
     minimumEra: 3
     buildingData: {fileID: 0}
     prefabPath: Assets/Resources/Prefabs/Units/Buildings/SiegeWorkshop.prefab
-    modelPath: Assets/Resources/Imports/Units/Buildings/workshop/
+    modelPath: Assets/Resources/Imports/Units/Buildings/siege-workshop/
     requiredSkillCodes: []
     constructionCost:
     - resource: 1
