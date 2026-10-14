@@ -109,6 +109,28 @@ public static class BuildingPlacementPreviewRules
         }
     }
 
+    public static BuildingPlacementPreviewFeedback FromNavigationResult(
+        PlacementNavigationResult result, string code)
+    {
+        switch (result)
+        {
+            case PlacementNavigationResult.Allowed:
+                return Success(code, "allowed", "placement.allowed", "Placement is valid.", "placement/allowed");
+            case PlacementNavigationResult.ContentNotRuntimeReady:
+                return Notice(code, "content-not-runtime-ready", "placement.content_not_ready", "Content is not runtime-ready.", "placement/content-not-ready");
+            case PlacementNavigationResult.InvalidFootprint:
+                return Error(code, "invalid-footprint", "placement.invalid_footprint", "The building footprint is invalid.", "placement/footprint");
+            case PlacementNavigationResult.NavMeshUnavailable:
+                return Error(code, "navmesh-unavailable", "placement.navmesh_unavailable", "Navigation data is not ready.", "placement/navigation");
+            case PlacementNavigationResult.ObstacleNotReady:
+                return Error(code, "obstacle-not-ready", "placement.obstacle_not_ready", "Collision data is not ready.", "placement/navigation");
+            case PlacementNavigationResult.BlockedCorridor:
+                return Error(code, "blocked-corridor", "placement.blocked_corridor", "Units cannot pass through this corridor.", "placement/corridor");
+            default:
+                return Error(code, "insufficient-clearance", "placement.insufficient_clearance", "There is not enough clearance for units.", "placement/corridor");
+        }
+    }
+
     private static BuildingPlacementPreviewFeedback Success(string code, string resultKey,
         string messageKey, string message, string iconKey)
     {

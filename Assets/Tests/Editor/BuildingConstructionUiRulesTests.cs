@@ -68,6 +68,39 @@ public sealed class BuildingConstructionUiRulesTests
         Assert.That(result.availability, Is.EqualTo(BuildingAvailabilityResult.BuildingRequirement));
     }
 
+    [Test]
+    public void AccessibilityProjectionHasStableTextShortcutIconAndDisabledContrastForPlannedEntry()
+    {
+        BuildingContentCatalog catalog = CreateCatalog();
+        AddEntry(catalog, "barracks", BuildingEra.Feudal, BuildingContentStatus.Planned, 0);
+        List<BuildingConstructionUiEntryState> entries = BuildingConstructionUiRules.BuildEntries(
+            catalog, State(BuildingEra.Feudal, 0), true);
+
+        Assert.That(entries[0].statusText, Is.EqualTo("Conteúdo planejado"));
+        Assert.That(entries[0].accessibilityLabel, Does.Contain("Conteúdo planejado"));
+        Assert.That(entries[0].shortcut, Is.EqualTo("B1"));
+        Assert.That(entries[0].iconKey, Is.EqualTo("building/barracks"));
+        Assert.That(entries[0].contrastClass, Is.EqualTo(BuildingUiContrastClass.Disabled));
+    }
+
+    [Test]
+    public void AccessibilityStatusTracksTechnologyAndAvailableContrast()
+    {
+        BuildingContentCatalog catalog = CreateCatalog();
+        BuildingContentSpec university = AddEntry(catalog, "university", BuildingEra.Feudal,
+            BuildingContentStatus.Playable, 0);
+        university.requirements.Add(new BuildingRequirement { technologyCode = "writing" });
+        StrategicPlanningState state = State(BuildingEra.Feudal, 0);
+        BuildingConstructionUiEntryState entry = BuildingConstructionUiRules.BuildEntries(catalog, state, false)[0];
+
+        Assert.That(entry.statusText, Is.EqualTo("Tecnologia necessária"));
+        Assert.That(entry.contrastClass, Is.EqualTo(BuildingUiContrastClass.Disabled));
+        state.unlockedTechnologyCodes.Add("writing");
+        entry = BuildingConstructionUiRules.BuildEntries(catalog, state, false)[0];
+        Assert.That(entry.statusText, Is.EqualTo("Disponível"));
+        Assert.That(entry.contrastClass, Is.EqualTo(BuildingUiContrastClass.Normal));
+    }
+
     private BuildingContentCatalog CreateCatalog()
     {
         BuildingContentCatalog catalog = ScriptableObject.CreateInstance<BuildingContentCatalog>();
