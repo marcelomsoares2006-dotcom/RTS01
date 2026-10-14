@@ -39,6 +39,69 @@ public sealed class StrategicRuntimeAdapterTests
     }
 
     [Test]
+    public void GatewayAllowsOwnTargetByStableEntityId()
+    {
+        SnapshotSource source = new SnapshotSource { state = new StrategicPlanningState() };
+        source.state.units.Add(new StrategicUnitObservation { entityId = "unit-ally-7", code = "Archer", ownerId = 0 });
+        Executor executor = new Executor { shouldAccept = true };
+
+        StrategicIntentResult result = new StrategicIntentGateway(source, executor)
+            .TryExecute(0, new StrategicActionIntent
+            {
+                action = StrategicActionKind.DefendArea,
+                targetCode = "Archer",
+                targetEntityId = "unit-ally-7",
+                quantity = 1
+            });
+
+        Assert.IsTrue(result.accepted);
+        Assert.IsTrue(executor.called);
+    }
+
+    [Test]
+    public void GatewayRejectsDuplicateCodeWithoutDisambiguator()
+    {
+        SnapshotSource source = new SnapshotSource { state = new StrategicPlanningState() };
+        source.state.units.Add(new StrategicUnitObservation { entityId = "unit-1", code = "Archer", ownerId = 0 });
+        source.state.units.Add(new StrategicUnitObservation { entityId = "unit-2", code = "Archer", ownerId = 1 });
+        Executor executor = new Executor { shouldAccept = true };
+
+        StrategicIntentResult result = new StrategicIntentGateway(source, executor)
+            .TryExecute(0, new StrategicActionIntent
+            {
+                action = StrategicActionKind.DefendArea,
+                targetCode = "Archer",
+                quantity = 1
+            });
+
+        Assert.IsFalse(result.accepted);
+        Assert.AreEqual(StrategicIntentRejectionReason.AmbiguousTarget, result.rejectionReason);
+        Assert.IsFalse(executor.called);
+    }
+
+    [Test]
+    public void GatewayResolvesDuplicateCodeByOwnerAndPosition()
+    {
+        SnapshotSource source = new SnapshotSource { state = new StrategicPlanningState() };
+        source.state.units.Add(new StrategicUnitObservation { entityId = "unit-1", code = "Archer", ownerId = 0, position = new Vector3(2f, 0f, 2f) });
+        source.state.units.Add(new StrategicUnitObservation { entityId = "unit-2", code = "Archer", ownerId = 1, position = new Vector3(20f, 0f, 20f) });
+        Executor executor = new Executor { shouldAccept = true };
+
+        StrategicIntentResult result = new StrategicIntentGateway(source, executor)
+            .TryExecute(0, new StrategicActionIntent
+            {
+                action = StrategicActionKind.DefendArea,
+                targetCode = "Archer",
+                targetPosition = new Vector3(2.2f, 0f, 2.1f),
+                hasTargetPosition = true,
+                quantity = 1
+            });
+
+        Assert.IsTrue(result.accepted);
+        Assert.IsTrue(executor.called);
+    }
+
+    [Test]
     public void GatewayReturnsExplicitExecutorRejection()
     {
         SnapshotSource source = new SnapshotSource { state = new StrategicPlanningState() };

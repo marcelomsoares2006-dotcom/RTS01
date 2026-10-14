@@ -49,6 +49,7 @@ public sealed class StrategicRuntimeSnapshotAdapter : IStrategicRuntimeSnapshotS
                 {
                     state.buildings.Add(new StrategicBuildingObservation
                     {
+                        entityId = unit.Uid,
                         code = unit.Code ?? string.Empty,
                         ownerId = unit.Owner,
                         position = position,
@@ -59,6 +60,7 @@ public sealed class StrategicRuntimeSnapshotAdapter : IStrategicRuntimeSnapshotS
                 {
                     state.units.Add(new StrategicUnitObservation
                     {
+                        entityId = unit.Uid,
                         code = unit.Code ?? string.Empty,
                         ownerId = unit.Owner,
                         position = position,

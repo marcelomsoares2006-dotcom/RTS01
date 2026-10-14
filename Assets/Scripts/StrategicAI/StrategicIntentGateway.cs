@@ -8,6 +8,7 @@ public enum StrategicIntentRejectionReason
     MissingIntent,
     InvalidQuantity,
     TargetOwnedByAnotherPlayer,
+    AmbiguousTarget,
     ExecutorRejected,
     NoExecutor
 }
@@ -63,16 +64,21 @@ public sealed class StrategicIntentGateway
         if (snapshot == null)
             return StrategicIntentResult.Rejected(StrategicIntentRejectionReason.ExecutorRejected, "Runtime snapshot was unavailable.");
 
-        string targetCode = intent.targetCode == null ? string.Empty : intent.targetCode.Trim();
         // Most targetCode values are definitions (a building to construct, a
         // unit to produce, a resource, or a technology). DefendArea is the
-        // current contract action whose code identifies a live world entity.
-        if (intent.action == StrategicActionKind.DefendArea
-            && targetCode.Length > 0
-            && HasForeignTarget(snapshot, targetCode, ownerId))
-            return StrategicIntentResult.Rejected(
-                StrategicIntentRejectionReason.TargetOwnedByAnotherPlayer,
-                "The requested target belongs to another player.");
+        // action whose selector must resolve to one live world entity.
+        if (intent.action == StrategicActionKind.DefendArea)
+        {
+            StrategicTargetResolution target = ResolveTarget(snapshot, intent);
+            if (target.ambiguous)
+                return StrategicIntentResult.Rejected(
+                    StrategicIntentRejectionReason.AmbiguousTarget,
+                    "The requested target is ambiguous; use targetEntityId or owner+position.");
+            if (target.found && target.ownerId != ownerId)
+                return StrategicIntentResult.Rejected(
+                    StrategicIntentRejectionReason.TargetOwnedByAnotherPlayer,
+                    "The requested target belongs to another player.");
+        }
 
         if (_executor == null)
             return StrategicIntentResult.Rejected(StrategicIntentRejectionReason.NoExecutor, "No gameplay executor is registered for this intent.");
@@ -86,20 +92,54 @@ public sealed class StrategicIntentGateway
         return StrategicIntentResult.Accepted();
     }
 
-    private static bool HasForeignTarget(StrategicPlanningState snapshot, string targetCode, int ownerId)
+    private struct StrategicTargetResolution
     {
+        public bool found;
+        public bool ambiguous;
+        public int ownerId;
+    }
+
+    private static StrategicTargetResolution ResolveTarget(StrategicPlanningState snapshot, StrategicActionIntent intent)
+    {
+        string entityId = Normalize(intent.targetEntityId);
+        string targetCode = Normalize(intent.targetCode);
+        bool hasPosition = intent.hasTargetPosition || intent.targetPosition != Vector3.zero;
+        int count = 0;
+        int owner = 0;
+
         if (snapshot.units != null)
-            foreach (StrategicUnitObservation unit in snapshot.units)
-                if (unit != null && string.Equals(unit.code, targetCode, StringComparison.OrdinalIgnoreCase))
-                {
-                    if (unit.ownerId != ownerId) return true;
-                }
+            for (int i = 0; i < snapshot.units.Count; i++)
+            {
+                StrategicUnitObservation unit = snapshot.units[i];
+                if (unit == null || !Matches(unit.entityId, unit.code, unit.position, entityId, targetCode, intent.targetPosition, hasPosition)) continue;
+                count++; owner = unit.ownerId;
+            }
         if (snapshot.buildings != null)
-            foreach (StrategicBuildingObservation building in snapshot.buildings)
-                if (building != null && string.Equals(building.code, targetCode, StringComparison.OrdinalIgnoreCase))
-                {
-                    if (building.ownerId != ownerId) return true;
-                }
-        return false;
+            for (int i = 0; i < snapshot.buildings.Count; i++)
+            {
+                StrategicBuildingObservation building = snapshot.buildings[i];
+                if (building == null || !Matches(building.entityId, building.code, building.position, entityId, targetCode, intent.targetPosition, hasPosition)) continue;
+                count++; owner = building.ownerId;
+            }
+
+        // An unknown selector remains valid for old abstract intents. Once a
+        // live code resolves to more than one entity, accepting it would make
+        // the command nondeterministic, so require a stable id or position.
+        return new StrategicTargetResolution { found = count == 1, ambiguous = count > 1, ownerId = owner };
+    }
+
+    private static bool Matches(string entityId, string code, Vector3 position, string requestedEntityId,
+        string requestedCode, Vector3 requestedPosition, bool hasPosition)
+    {
+        if (requestedEntityId.Length > 0)
+            return string.Equals(entityId, requestedEntityId, StringComparison.OrdinalIgnoreCase);
+        if (requestedCode.Length == 0 || !string.Equals(code, requestedCode, StringComparison.OrdinalIgnoreCase))
+            return false;
+        return !hasPosition || (position - requestedPosition).sqrMagnitude <= 0.25f;
+    }
+
+    private static string Normalize(string value)
+    {
+        return value == null ? string.Empty : value.Trim();
     }
 }

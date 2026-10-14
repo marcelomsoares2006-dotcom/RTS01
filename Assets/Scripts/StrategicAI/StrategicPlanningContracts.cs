@@ -23,7 +23,9 @@ public sealed class StrategicGoal
     public StrategicActionKind action;
     public StrategicPriority priority = StrategicPriority.Normal;
     public string targetCode;
+    public string targetEntityId;
     public Vector3 targetPosition;
+    public bool hasTargetPosition;
     public int desiredCount = 1;
     public bool enabled = true;
     public StrategicGoal() { }
@@ -35,9 +37,25 @@ public sealed class StrategicGoal
 }
 
 [Serializable]
-public sealed class StrategicBuildingObservation { public string code; public BuildingLifecycleState lifecycle = BuildingLifecycleState.Operational; public Vector3 position; public int ownerId; }
+public sealed class StrategicBuildingObservation
+{
+    public string entityId;
+    public string code;
+    public BuildingLifecycleState lifecycle = BuildingLifecycleState.Operational;
+    public Vector3 position;
+    public int ownerId;
+}
+
 [Serializable]
-public sealed class StrategicUnitObservation { public string code; public Vector3 position; public bool alive = true; public bool idle; public int ownerId; }
+public sealed class StrategicUnitObservation
+{
+    public string entityId;
+    public string code;
+    public Vector3 position;
+    public bool alive = true;
+    public bool idle;
+    public int ownerId;
+}
 
 [Serializable]
 public sealed class StrategicPlanningState
@@ -82,13 +100,17 @@ public sealed class StrategicActionIntent
     public StrategicPriority priority;
     public string goalId;
     public string targetCode;
+    public string targetEntityId;
     public Vector3 targetPosition;
+    public bool hasTargetPosition;
     public int quantity = 1;
     public StrategicActionIntent() { }
     public StrategicActionIntent(StrategicGoal goal)
     {
         if (goal == null) throw new ArgumentNullException(nameof(goal));
-        action = goal.action; priority = goal.priority; goalId = goal.id; targetCode = goal.targetCode; targetPosition = goal.targetPosition; quantity = Mathf.Max(1, goal.desiredCount);
+        action = goal.action; priority = goal.priority; goalId = goal.id; targetCode = goal.targetCode;
+        targetEntityId = goal.targetEntityId; targetPosition = goal.targetPosition;
+        hasTargetPosition = goal.hasTargetPosition; quantity = Mathf.Max(1, goal.desiredCount);
     }
 }
 
