@@ -30,6 +30,10 @@ public sealed class FoundationBuildingAuthoringWindow : EditorWindow
         "Assets/Resources/Imports/Units/Buildings/resource-dropoff/ResourceDropoff_authoring.glb";
     private const string PrefabFolder = "Assets/Resources/Prefabs/Units/Buildings";
     private const string DataFolder = "Assets/Resources/ScriptableObjects/Units/Buildings";
+    private const string HousePrefab = "Assets/Resources/Prefabs/Units/Buildings/House.prefab";
+    private const string MinimapIconPrefab = "Assets/Resources/Prefabs/MinimapIcon.prefab";
+    private const string FovPrefab = "Assets/Resources/Prefabs/FOV.prefab";
+    private const string HealthbarPrefab = "Assets/Resources/Prefabs/Units/Healthbar.prefab";
 
     private readonly List<string> _messages = new List<string>();
     private Vector2 _scroll;
@@ -219,19 +223,53 @@ public sealed class FoundationBuildingAuthoringWindow : EditorWindow
         root.tag = "Unit";
         root.layer = 12;
 
+        // Keep the hierarchy compatible with Unit's runtime lookup contract:
+        // Mesh/MinimapIcon is resolved by Unit after the prefab is instantiated.
+        // Authored model parts are grouped under Mesh without changing their
+        // local transforms, so the imported geometry remains reviewable.
+        Transform meshRoot = root.transform.Find("Mesh");
+        if (meshRoot == null)
+        {
+            meshRoot = new GameObject("Mesh").transform;
+            meshRoot.SetParent(root.transform, false);
+        }
+
+        Transform[] existingChildren = root.transform
+            .Cast<Transform>()
+            .Where(child => child != meshRoot && child.name != "__PlacementCollision")
+            .ToArray();
+        foreach (Transform child in existingChildren)
+            child.SetParent(meshRoot, true);
+
+        GameObject minimapIcon = InstantiateSupportPrefab(MinimapIconPrefab, meshRoot, "MinimapIcon");
+        GameObject selectionCircle = InstantiateSelectionCircle(meshRoot.parent);
+        GameObject fov = InstantiateSupportPrefab(FovPrefab, root.transform, "FOV");
+        GameObject healthbar = InstantiateSupportPrefab(HealthbarPrefab, root.transform, "Healthbar");
+        if (selectionCircle != null) selectionCircle.SetActive(false);
+        if (fov != null) fov.SetActive(false);
+        if (healthbar != null) healthbar.SetActive(false);
+
         Renderer renderer = root.GetComponentsInChildren<Renderer>(true)
             .OfType<MeshRenderer>()
-            .FirstOrDefault(candidate => candidate != null && candidate.sharedMaterials.Length > 0);
+            .FirstOrDefault(candidate => IsAuthoringGeometry(candidate)
+                && candidate.sharedMaterials.Length > 0);
         MeshFilter meshFilter = root.GetComponentsInChildren<MeshFilter>(true)
-            .FirstOrDefault(candidate => candidate != null && candidate.sharedMesh != null);
+            .FirstOrDefault(candidate => IsAuthoringGeometry(candidate)
+                && candidate.sharedMesh != null);
         if (renderer == null || meshFilter == null)
             throw new InvalidOperationException("Authored model has no usable renderer/mesh: " + code);
 
         BuildingManager manager = root.GetComponent<BuildingManager>()
             ?? root.AddComponent<BuildingManager>();
         manager.meshRenderer = renderer;
-        manager.ambientSource = root.GetComponent<AudioSource>()
+        AudioSource audio = root.GetComponent<AudioSource>()
             ?? root.AddComponent<AudioSource>();
+        audio.playOnAwake = false;
+        manager.ambientSource = audio;
+        manager.contextualSource = audio;
+        manager.selectionCircle = selectionCircle;
+        manager.fov = fov;
+        manager.healthbar = healthbar;
         if (root.GetComponent<BuildingBT>() == null)
             root.AddComponent<BuildingBT>();
 
@@ -267,14 +305,54 @@ public sealed class FoundationBuildingAuthoringWindow : EditorWindow
         obstacle.carving = true;
     }
 
+    private static GameObject InstantiateSupportPrefab(string assetPath, Transform parent, string objectName)
+    {
+        GameObject source = AssetDatabase.LoadAssetAtPath<GameObject>(assetPath);
+        if (source == null)
+            throw new InvalidOperationException("Foundation authoring: required runtime support prefab is missing: " + assetPath);
+
+        GameObject instance = UnityEngine.Object.Instantiate(source, parent);
+        instance.name = objectName;
+        instance.transform.localPosition = source.transform.localPosition;
+        instance.transform.localRotation = source.transform.localRotation;
+        instance.transform.localScale = source.transform.localScale;
+        return instance;
+    }
+
+    private static GameObject InstantiateSelectionCircle(Transform parent)
+    {
+        GameObject source = AssetDatabase.LoadAssetAtPath<GameObject>(HousePrefab);
+        if (source == null)
+            throw new InvalidOperationException("Foundation authoring: House prefab is missing; selection circle cannot be authored.");
+
+        Transform selection = source.transform.Find("SelectionCircle");
+        if (selection == null)
+            throw new InvalidOperationException("Foundation authoring: House prefab has no SelectionCircle child.");
+
+        GameObject instance = UnityEngine.Object.Instantiate(selection.gameObject, parent);
+        instance.name = "SelectionCircle";
+        instance.transform.localPosition = selection.localPosition;
+        instance.transform.localRotation = selection.localRotation;
+        instance.transform.localScale = selection.localScale;
+        return instance;
+    }
+
     private static Bounds CalculateBounds(GameObject root, Renderer fallback)
     {
         Renderer[] renderers = root.GetComponentsInChildren<Renderer>(true);
         Bounds bounds = fallback.bounds;
         for (int i = 0; i < renderers.Length; i++)
-            if (renderers[i] != null && renderers[i] != fallback)
+            if (IsAuthoringGeometry(renderers[i]) && renderers[i] != fallback)
                 bounds.Encapsulate(renderers[i].bounds);
         return bounds;
+    }
+
+    private static bool IsAuthoringGeometry(Renderer renderer)
+    {
+        if (renderer == null) return false;
+        Transform meshRoot = renderer.transform.root.Find("Mesh");
+        if (meshRoot == null || !renderer.transform.IsChildOf(meshRoot)) return false;
+        return !string.Equals(renderer.gameObject.name, "MinimapIcon", StringComparison.Ordinal);
     }
 
     private static Vector3 ToLocalSize(Transform root, Vector3 worldSize)
@@ -312,6 +390,7 @@ public sealed class FoundationBuildingAuthoringWindow : EditorWindow
         data.minimumSupportedCorners = 2;
         data.terrainProbeDistance = 3f;
         data.terrainProbeStartOffset = 0.5f;
+        data.fieldOfView = 35f;
         data.placementGridSize = 1f;
         data.rotationStepDegrees = 15f;
         data.maximumTerrainSlopeDegrees = 20f;
@@ -321,7 +400,8 @@ public sealed class FoundationBuildingAuthoringWindow : EditorWindow
             : new InGameResource[0];
 
         List<Mesh> meshes = prefab.GetComponentsInChildren<MeshFilter>(true)
-            .Where(filter => filter != null && filter.sharedMesh != null)
+            .Where(filter => filter != null && filter.sharedMesh != null
+                && IsAuthoringGeometry(filter.GetComponent<Renderer>()))
             .Select(filter => filter.sharedMesh)
             .Distinct()
             .ToList();
