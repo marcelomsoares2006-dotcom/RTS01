@@ -4,7 +4,7 @@ approval: blocked-until-unity-review
 entries:
   - code: town_center
     intermediateSource: Assets/Resources/Imports/Units/Buildings/town-center/TownCenter_graybox.obj
-    authoredSource: Assets/Resources/Imports/Units/Buildings/town-center/TownCenter.fbx
+    authoredSource: Assets/Resources/Imports/Units/Buildings/town-center/TownCenter_authoring.glb
     expectedPrefab: Assets/Resources/Prefabs/Units/Buildings/TownCenter.prefab
     expectedBuildingData: Assets/Resources/ScriptableObjects/Units/Buildings/TownCenter.asset
     minimumEra: Dark
@@ -13,7 +13,7 @@ entries:
 
   - code: resource_dropoff
     intermediateSource: Assets/Resources/Imports/Units/Buildings/resource-dropoff/ResourceDropoff_graybox.obj
-    authoredSource: Assets/Resources/Imports/Units/Buildings/resource-dropoff/ResourceDropoff.fbx
+    authoredSource: Assets/Resources/Imports/Units/Buildings/resource-dropoff/ResourceDropoff_authoring.glb
     expectedPrefab: Assets/Resources/Prefabs/Units/Buildings/ResourceDropoff.prefab
     expectedBuildingData: Assets/Resources/ScriptableObjects/Units/Buildings/ResourceDropoff.asset
     minimumEra: Dark

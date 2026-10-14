@@ -24,8 +24,9 @@ powershell -NoProfile -ExecutionPolicy Bypass -File Tools/Validate-FoundationAss
 
 The gate reports `model-intermediate` when a foundation folder contains only
 the repository's graybox OBJ sources. That state is useful for art handoff but
-still fails the gate; the next required step is an authored FBX/GLB import and
-Unity prefab assembly.
+still fails the gate. An authored FBX/GLB may coexist with the graybox for
+traceability; it must be listed in the import manifest and still requires Unity
+prefab assembly and review.
 
 ## Repository acceptance
 
@@ -81,8 +82,9 @@ returns `ContentNotRuntimeReady` until the dropoff has a runtime-ready asset.
 
 The repository may contain `TownCenter_graybox.obj` and
 `ResourceDropoff_graybox.obj` under the documented model folders as temporary
-shape references. They are source geometry only: they have no materials,
-production prefab, `BuildingData`, construction stage meshes, colliders,
-sockets, LODs, or Unity component wiring. The catalog must remain planned while
-these files are present. An artist may replace them with authored FBX/GLB
-content, then follow the repository and Unity acceptance gates above.
+shape references. Authored GLB sources are now generated reproducibly by
+`Tools/GenerateFoundationAssets.mjs`; they provide named parts, normals and
+PBR materials for Unity import, but do not create a production prefab,
+`BuildingData`, construction stage meshes, colliders, sockets, LODs, or Unity
+component wiring. The catalog must remain planned until the authored assets are
+imported and reviewed in Unity.

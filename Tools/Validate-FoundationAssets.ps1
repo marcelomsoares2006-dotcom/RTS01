@@ -49,6 +49,9 @@ foreach ($manifestCode in @('town_center', 'resource_dropoff')) {
     $intermediate = [regex]::Match($manifestBody, '(?m)^\s+intermediateSource:\s*([^\r\n]+)')
     if ($intermediate.Success -and !(Test-Path -LiteralPath (Join-Path $projectRoot $intermediate.Groups[1].Value.Trim()) -PathType Leaf))
         { Add-Issue $issues $manifestCode "Manifest intermediate source is missing: $($intermediate.Groups[1].Value.Trim())" }
+    $authored = [regex]::Match($manifestBody, '(?m)^\s+authoredSource:\s*([^\r\n]+)')
+    if ($authored.Success -and !(Test-Path -LiteralPath (Join-Path $projectRoot $authored.Groups[1].Value.Trim()) -PathType Leaf))
+        { Add-Issue $issues $manifestCode "Manifest authored source is missing: $($authored.Groups[1].Value.Trim())" }
     $components = [regex]::Match($manifestBody, '(?m)^\s+requiredComponents:\s*([^\r\n]+)')
     if ($components.Success) {
         foreach ($component in @('BuildingManager', 'BuildingBT', 'MeshFilter', 'MeshRenderer', 'Collider')) {
@@ -185,7 +188,8 @@ foreach ($code in @('town_center', 'resource_dropoff')) {
                 Add-Issue $issues $code "Model path contains no authored model file: $modelPath"
             } else {
                 $grayboxFiles = @($modelFiles | Where-Object { $_.Extension -ieq '.obj' -and $_.Name -match '(?i)graybox' })
-                if ($grayboxFiles.Count -gt 0) {
+                $authoredFiles = @($modelFiles | Where-Object { $_.Extension -in @('.fbx', '.glb', '.gltf') -and $_.Name -notmatch '(?i)graybox' })
+                if ($authoredFiles.Count -eq 0) {
                     $modelStates[$code] = 'model-intermediate'
                     Add-Issue $issues $code 'Model source is model-intermediate graybox; replace with authored FBX/GLB and import it in Unity.'
                     foreach ($graybox in $grayboxFiles) {
@@ -197,6 +201,9 @@ foreach ($code in @('town_center', 'resource_dropoff')) {
                     }
                 } else {
                     $modelStates[$code] = 'model-authored'
+                    $authoredManifest = [regex]::Match($manifestByCode[$code], '(?m)^\s+authoredSource:\s*([^\r\n]+)')
+                    if ($authoredManifest.Success -and !(Test-Path -LiteralPath (Join-Path $projectRoot $authoredManifest.Groups[1].Value.Trim()) -PathType Leaf))
+                        { Add-Issue $issues $code "Manifest authored source is missing: $($authoredManifest.Groups[1].Value.Trim())" }
                 }
             }
         }
