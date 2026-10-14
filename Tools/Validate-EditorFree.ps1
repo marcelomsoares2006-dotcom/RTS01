@@ -89,6 +89,7 @@ function Test-ConstructionContracts {
         'Assets/Tests/Editor/ConstructionPlanningRulesTests.cs'
     )
     foreach ($test in $requiredTests) { Require-File $test | Out-Null }
+    Require-Text 'Assets/Scripts/Progression/BuildingContentProgressionRules.cs' 'ValidateEraContracts' 'building era progression contract' | Out-Null
     $editorTestsAsmdef = Join-Path $projectRoot 'Assets/Tests/Editor/EraImperial.EditorTests.asmdef'
     if (Test-Path $editorTestsAsmdef) {
         throw 'Editor tests must remain in Unity''s predefined Assembly-CSharp-Editor assembly so they can access runtime types.'

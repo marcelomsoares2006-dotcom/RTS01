@@ -116,6 +116,18 @@ public sealed class BuildingContentCatalogTests
     }
 
     [Test]
+    public void EraProgressionContractsKeepEconomyAndMilitaryAnchoredToTownCenter()
+    {
+        BuildingContentCatalog catalog = AssetDatabase.LoadAssetAtPath<BuildingContentCatalog>(CatalogPath);
+        string[] errors = BuildingContentProgressionRules.ValidateEraContracts(catalog).ToArray();
+        Assert.That(errors, Is.Empty, string.Join("; ", errors));
+
+        Assert.That(catalog.Find("archery_range").minimumEra, Is.EqualTo(BuildingEra.Feudal));
+        Assert.That(catalog.Find("stable").minimumEra, Is.EqualTo(BuildingEra.Feudal));
+        Assert.That(catalog.Find("barracks").minimumEra, Is.EqualTo(BuildingEra.Dark));
+    }
+
+    [Test]
     public void EssentialRosterDefinesEraCostProductionAndPrerequisiteContracts()
     {
         BuildingContentCatalog catalog = AssetDatabase.LoadAssetAtPath<BuildingContentCatalog>(CatalogPath);
