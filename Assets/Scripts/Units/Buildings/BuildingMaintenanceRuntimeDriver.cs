@@ -22,6 +22,15 @@ public sealed class BuildingMaintenanceRuntimeDriver : MonoBehaviour
         return _binding == null ? BuildingMaintenanceResult.InvalidState : _binding.Restore(state);
     }
 
+    public BuildingMaintenanceResult RestoreSnapshot(
+        int currentHealth, BuildingLifecycleState lifecycle,
+        BuildingMaintenanceOperationState state)
+    {
+        return _binding == null
+            ? BuildingMaintenanceResult.InvalidState
+            : _binding.RestoreSnapshot(currentHealth, lifecycle, state);
+    }
+
     public BuildingMaintenanceRuntimeSnapshot Capture()
     {
         return _binding == null ? null : _binding.State;

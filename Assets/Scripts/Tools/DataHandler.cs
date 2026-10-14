@@ -170,8 +170,6 @@ public class DataHandler : MonoBehaviour
                             if (driver == null) driver = restoredBuilding.Transform.gameObject
                                 .AddComponent<BuildingMaintenanceRuntimeDriver>();
                             driver.Bind(restoredBuilding, economyState.stockpile, new BuildingMaintenanceSpec());
-                            if (unit.maintenance != null)
-                                driver.Restore(unit.maintenance.operationState);
                         }
                     }
                     int constructionHealth = unit.construction != null
@@ -216,6 +214,16 @@ public class DataHandler : MonoBehaviour
                 u.LevelUp(true);
                 u.AttackDamage = unit.attackDamage;
                 u.AttackRange = unit.attackRange;
+                if (type == "building" && unit.maintenance != null)
+                {
+                    BuildingMaintenanceRuntimeDriver driver = u.Transform.gameObject
+                        .GetComponent<BuildingMaintenanceRuntimeDriver>();
+                    if (driver != null)
+                        driver.RestoreSnapshot(
+                            unit.maintenance.currentHealth,
+                            unit.maintenance.lifecycle,
+                            unit.maintenance.operationState);
+                }
                 RestoreRegisteredProductionQueue(unit, p);
             }
         }

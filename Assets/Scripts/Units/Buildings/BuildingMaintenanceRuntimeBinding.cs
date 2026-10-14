@@ -89,6 +89,17 @@ public sealed class BuildingMaintenanceRuntimeBinding
         return BuildingMaintenanceResult.Accepted;
     }
 
+    public BuildingMaintenanceResult RestoreSnapshot(
+        int currentHealth, BuildingLifecycleState lifecycle,
+        BuildingMaintenanceOperationState saved)
+    {
+        if (!_service.RestoreSnapshot(currentHealth, lifecycle, saved))
+            return BuildingMaintenanceResult.InvalidState;
+        SyncBuildingHealth();
+        NotifyChanged();
+        return BuildingMaintenanceResult.Accepted;
+    }
+
     public void Tick(float deltaTime)
     {
         if (!_service.IsBusy) return;

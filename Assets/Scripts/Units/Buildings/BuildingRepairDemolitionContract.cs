@@ -114,6 +114,16 @@ public sealed class BuildingRepairDemolitionService
         return true;
     }
 
+    /// <summary>Restores the live state first, then reattaches its reservation.</summary>
+    public bool RestoreSnapshot(int currentHealth, BuildingLifecycleState lifecycle,
+        BuildingMaintenanceOperationState saved)
+    {
+        if (currentHealth < 0 || currentHealth > _maxHealth) return false;
+        CurrentHealth = currentHealth;
+        Lifecycle = lifecycle;
+        return RestoreOperation(saved);
+    }
+
     public BuildingRepairDemolitionService(
         string buildingId,
         int ownerId,
