@@ -37,4 +37,11 @@ house(-14,0); barracks(14,0); temple(-14,18); market(14,18)
 bpy.ops.object.select_all(action='DESELECT'); root.select_set(True); bpy.context.view_layer.objects.active=root
 bpy.ops.wm.save_as_mainfile(filepath=OUT.replace('.fbx','.blend'))
 bpy.ops.export_scene.fbx(filepath=OUT,use_selection=True,apply_scale_options='FBX_SCALE_ALL',axis_forward='-Z',axis_up='Y')
+# Export each building separately so Unity receives a stable prefab root per asset.
+individual=os.path.join(os.path.dirname(OUT),'Buildings'); os.makedirs(individual,exist_ok=True)
+for child in list(root.children):
+    bpy.ops.object.select_all(action='DESELECT'); child.select_set(True)
+    for descendant in child.children_recursive: descendant.select_set(True)
+    bpy.context.view_layer.objects.active=child
+    bpy.ops.export_scene.fbx(filepath=os.path.join(individual,child.name+'.fbx'),use_selection=True,apply_scale_options='FBX_SCALE_ALL',axis_forward='-Z',axis_up='Y')
 print('ERA_BUILDING_KIT_EXPORTED',OUT)
