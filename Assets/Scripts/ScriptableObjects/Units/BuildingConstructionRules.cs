@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -33,6 +34,19 @@ public static class BuildingConstructionRules
         if (maximumSlopeDegrees < 0f || normal.sqrMagnitude <= Mathf.Epsilon) return false;
         float slope = Vector3.Angle(normal.normalized, Vector3.up);
         return slope <= maximumSlopeDegrees + 0.001f;
+    }
+
+    public static bool IsBuildingDistanceAllowed(
+        Vector3 candidate,
+        IEnumerable<Vector3> existingBuildings,
+        float minimumDistance)
+    {
+        if (minimumDistance <= 0f || existingBuildings == null) return true;
+        float minimumSquared = minimumDistance * minimumDistance;
+        foreach (Vector3 existing in existingBuildings)
+            if ((existing - candidate).sqrMagnitude < minimumSquared)
+                return false;
+        return true;
     }
 
     public static BuildingLifecycleState GetLifecycleState(

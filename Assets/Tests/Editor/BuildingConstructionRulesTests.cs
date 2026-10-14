@@ -63,4 +63,17 @@ public sealed class BuildingConstructionRulesTests
         Assert.That(BuildingConstructionRules.IsTerrainSlopeAllowed(steep, 30f), Is.False);
         Assert.That(BuildingConstructionRules.IsTerrainSlopeAllowed(steep, 60f), Is.True);
     }
+
+    [Test]
+    public void PlacementRejectsBuildingsInsideConfiguredDistance()
+    {
+        List<UnityEngine.Vector3> existing = new List<UnityEngine.Vector3>
+        { UnityEngine.Vector3.zero };
+        Assert.That(BuildingConstructionRules.IsBuildingDistanceAllowed(
+            new UnityEngine.Vector3(1f, 0f, 0f), existing, 2f), Is.False);
+        Assert.That(BuildingConstructionRules.IsBuildingDistanceAllowed(
+            new UnityEngine.Vector3(3f, 0f, 0f), existing, 2f), Is.True);
+        Assert.That(BuildingConstructionRules.IsBuildingDistanceAllowed(
+            UnityEngine.Vector3.one, existing, 0f), Is.True);
+    }
 }

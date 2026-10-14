@@ -25,5 +25,7 @@ public class BuildingData : UnitData
     [Range(1f, 360f)] public float rotationStepDegrees = 15f;
     [Tooltip("Maximum allowed terrain slope in degrees at the supported probe corners.")]
     [Range(0f, 90f)] public float maximumTerrainSlopeDegrees = 25f;
+    [Tooltip("Minimum distance from another building. Zero disables the rule.")]
+    [Min(0f)] public float minimumDistanceFromBuildings = 0f;
 
 }

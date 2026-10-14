@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 
+using System.Collections.Generic;
+
 public class BuildingManager : UnitManager
 {
     public AudioSource ambientSource;
@@ -60,6 +62,26 @@ public class BuildingManager : UnitManager
         if (_blockingColliders.Count > 0) return false;
 
         BuildingData data = _building.Data as BuildingData;
+        if (data != null && data.minimumDistanceFromBuildings > 0f)
+        {
+            Collider[] nearby = Physics.OverlapSphere(
+                transform.position,
+                data.minimumDistanceFromBuildings,
+                Globals.UNIT_MASK);
+            List<Vector3> existingBuildings = new List<Vector3>();
+            for (int i = 0; i < nearby.Length; i++)
+            {
+                BuildingManager other = nearby[i].GetComponentInParent<BuildingManager>();
+                if (other == null || other == this || other.Unit == null)
+                    continue;
+                existingBuildings.Add(other.transform.position);
+            }
+            if (!BuildingConstructionRules.IsBuildingDistanceAllowed(
+                transform.position,
+                existingBuildings,
+                data.minimumDistanceFromBuildings))
+                return false;
+        }
 
         // get 4 bottom corner positions
         Vector3 c = _collider.center;

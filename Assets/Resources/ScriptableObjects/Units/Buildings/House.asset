@@ -37,3 +37,11 @@ MonoBehaviour:
   - {fileID: -4252228335409972894, guid: 668c78909037a4025b3debb3acdb213e, type: 3}
   - {fileID: -7756893256904936357, guid: 63fd3fecfe08747c7a08d9c990b44b0f, type: 3}
   - {fileID: 4887216478360415443, guid: 0149cd5d3524943f0b8cebb3e623c673, type: 3}
+  maxConstructors: 3
+  minimumSupportedCorners: 2
+  terrainProbeDistance: 2
+  terrainProbeStartOffset: 0.5
+  placementGridSize: 1
+  rotationStepDegrees: 15
+  maximumTerrainSlopeDegrees: 25
+  minimumDistanceFromBuildings: 1.5
