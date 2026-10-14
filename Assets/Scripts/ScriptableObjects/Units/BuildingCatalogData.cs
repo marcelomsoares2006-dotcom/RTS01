@@ -74,11 +74,18 @@ public class BuildingProductionEntry
     [Tooltip("Unit or building code produced by this building.")]
     public string productCode;
 
+    [Tooltip("Resources paid when this item enters the production queue.")]
+    public List<ResourceValue> cost = new List<ResourceValue>();
+
     [Min(0f)]
     public float productionTime = 1f;
 
     [Min(1)]
     public int queueLimit = 5;
+
+    [Tooltip("Population reserved while this item is queued and after it completes.")]
+    [Min(0)]
+    public int populationCost;
 
     [Tooltip("Optional skill used by the legacy production system.")]
     public SkillData productionSkill;
