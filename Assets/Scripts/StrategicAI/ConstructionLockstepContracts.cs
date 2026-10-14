@@ -73,6 +73,8 @@ public sealed class ConstructionLockstepCoordinator
             fingerprint = Fingerprint
         };
         if (command == null) return ConstructionLockstepResult.InvalidCommand;
+        if (_expectedOwnerId >= 0 && expectedOwnerId != _expectedOwnerId)
+            return ConstructionLockstepResult.InvalidOwner;
         if (command.ownerId < 0 || (expectedOwnerId >= 0 && command.ownerId != expectedOwnerId)) return ConstructionLockstepResult.InvalidOwner;
         if (string.IsNullOrWhiteSpace(command.commandId)) return ConstructionLockstepResult.MissingCommandId;
         if (!_commandIds.Contains(command.commandId.Trim()) && command.simulationTick < _lastTick)

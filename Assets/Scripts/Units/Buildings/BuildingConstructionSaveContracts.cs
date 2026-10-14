@@ -59,6 +59,8 @@ public static class BuildingConstructionSaveRules
             return BuildingConstructionSnapshotResult.InvalidSnapshot;
         if (constructionHP < 0 || constructionHP > maxHP)
             return BuildingConstructionSnapshotResult.InvalidSnapshot;
+        if (!IsFinite(position) || !Enum.IsDefined(typeof(BuildingLifecycleState), lifecycle))
+            return BuildingConstructionSnapshotResult.InvalidSnapshot;
 
         List<BuildingMaintenanceCost> costs;
         if (!TryNormalizeCosts(reservedCosts, out costs))
@@ -88,7 +90,8 @@ public static class BuildingConstructionSaveRules
         if (snapshot == null || string.IsNullOrWhiteSpace(snapshot.buildingCode)
             || snapshot.ownerId < 0 || snapshot.ownerId != expectedOwnerId
             || snapshot.maxHP <= 0 || snapshot.constructionHP < 0
-            || snapshot.constructionHP > snapshot.maxHP)
+            || snapshot.constructionHP > snapshot.maxHP || !IsFinite(snapshot.position)
+            || !Enum.IsDefined(typeof(BuildingLifecycleState), snapshot.lifecycle))
             return snapshot != null && snapshot.ownerId != expectedOwnerId
                 ? BuildingConstructionSnapshotResult.InvalidOwner
                 : BuildingConstructionSnapshotResult.InvalidSnapshot;
@@ -117,6 +120,13 @@ public static class BuildingConstructionSaveRules
             if (!result.Contains(id)) result.Add(id);
         }
         return result.ToArray();
+    }
+
+    private static bool IsFinite(Vector3 value)
+    {
+        return !float.IsNaN(value.x) && !float.IsInfinity(value.x)
+            && !float.IsNaN(value.y) && !float.IsInfinity(value.y)
+            && !float.IsNaN(value.z) && !float.IsInfinity(value.z);
     }
 
     private static bool TryNormalizeCosts(

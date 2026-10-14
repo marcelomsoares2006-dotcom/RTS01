@@ -54,6 +54,17 @@ public sealed class ConstructionLockstepContractsTests
         Assert.AreEqual(1, coordinator.LastAcceptedTick);
     }
 
+    [Test]
+    public void SessionOwnerCannotBeOverriddenBySubmitOverload()
+    {
+        ConstructionLockstepCoordinator coordinator = new ConstructionLockstepCoordinator(7);
+        ConstructionLockstepConfirmation confirmation;
+        Assert.That(coordinator.Submit(8, Command("bypass", 1, "house"), coordinator.Fingerprint, out confirmation),
+            Is.EqualTo(ConstructionLockstepResult.InvalidOwner));
+        Assert.AreEqual(-1, coordinator.LastAcceptedTick);
+        Assert.IsEmpty(coordinator.Commands);
+    }
+
     private static ConstructionReplayCommand Command(string id, long tick, string code)
     {
         return new ConstructionReplayCommand {

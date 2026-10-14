@@ -53,6 +53,23 @@ public sealed class BuildingProgressionSyncRulesTests
     }
 
     [Test]
+    public void PlannedSnapshotCannotSynchronizeEvenWhenBothStagesMatch()
+    {
+        BuildingContentCatalog catalog = ScriptableObject.CreateInstance<BuildingContentCatalog>();
+        _created.Add(catalog);
+        catalog.entries.Add(new BuildingContentSpec { code = "barracks", status = BuildingContentStatus.Planned });
+        StrategicPlanningState state = new StrategicPlanningState { ownerId = 0, era = BuildingEra.Dark };
+        BuildingProductionQueueSnapshot snapshot = new BuildingProductionQueueSnapshot
+        {
+            buildingCode = "barracks", ownerId = 0, era = BuildingEra.Dark,
+            assetOrigin = BuildingContentAssetStage.Planned
+        };
+
+        Assert.That(BuildingProgressionSyncRules.Validate(catalog, state, snapshot),
+            Is.EqualTo(BuildingProgressionSyncResult.StateMismatch));
+    }
+
+    [Test]
     public void RestoreStateMismatchLeavesQueueAndPlanningResourcesUntouched()
     {
         BuildingContentCatalog catalog = ScriptableObject.CreateInstance<BuildingContentCatalog>();

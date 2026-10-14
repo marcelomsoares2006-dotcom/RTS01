@@ -65,4 +65,31 @@ public sealed class BuildingConstructionSaveContractsTests
         Assert.That(BuildingConstructionSaveRules.Validate(snapshot, 1, true),
             Is.EqualTo(BuildingConstructionSnapshotResult.InvalidOwner));
     }
+
+    [Test]
+    public void NonFinitePositionAndUnknownLifecycleAreRejected()
+    {
+        BuildingConstructionSaveSnapshot snapshot;
+        Assert.That(BuildingConstructionSaveRules.Capture(
+            "house", 0, new Vector3(float.NaN, 0f, 1f), 1, 10,
+            BuildingLifecycleState.Blueprint, null, null,
+            BuildingContentAssetStage.RuntimeReady, true, out snapshot),
+            Is.EqualTo(BuildingConstructionSnapshotResult.InvalidSnapshot));
+
+        Assert.That(BuildingConstructionSaveRules.Capture(
+            "house", 0, Vector3.zero, 1, 10, (BuildingLifecycleState)999,
+            null, null, BuildingContentAssetStage.RuntimeReady, true, out snapshot),
+            Is.EqualTo(BuildingConstructionSnapshotResult.InvalidSnapshot));
+
+        snapshot = new BuildingConstructionSaveSnapshot {
+            buildingCode = "house",
+            ownerId = 0,
+            position = new Vector3(0f, float.PositiveInfinity, 0f),
+            constructionHP = 1,
+            maxHP = 10,
+            lifecycle = BuildingLifecycleState.Blueprint
+        };
+        Assert.That(BuildingConstructionSaveRules.Validate(snapshot, 0, false),
+            Is.EqualTo(BuildingConstructionSnapshotResult.InvalidSnapshot));
+    }
 }

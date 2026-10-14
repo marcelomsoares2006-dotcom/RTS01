@@ -23,7 +23,8 @@ public static class BuildingProgressionSyncRules
         if (snapshot.ownerId != state.ownerId) return BuildingProgressionSyncResult.StateMismatch;
         BuildingContentSpec entry = catalog.Find(snapshot.buildingCode);
         if (entry == null) return BuildingProgressionSyncResult.InvalidSnapshot;
-        if (snapshot.era != state.era || snapshot.assetOrigin != entry.AssetStage
+        if (!entry.IsRuntimeReady || snapshot.assetOrigin != BuildingContentAssetStage.RuntimeReady
+            || snapshot.era != state.era || snapshot.assetOrigin != entry.AssetStage
             || !TechnologyCodesMatch(snapshot.unlockedTechnologyCodes, state.unlockedTechnologyCodes))
             return BuildingProgressionSyncResult.StateMismatch;
         return BuildingProgressionSyncResult.Synchronized;
