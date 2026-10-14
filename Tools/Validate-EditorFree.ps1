@@ -151,6 +151,7 @@ function Test-ConstructionContracts {
         'Assets/Tests/Editor/WallGateContractTests.cs'
     )
     foreach ($test in $requiredTests) { Require-File $test | Out-Null }
+    Require-File 'Tools/ValidateMilitaryUnitAssets.mjs' | Out-Null
     Require-Text 'Assets/Scripts/Progression/BuildingContentProgressionRules.cs' 'ValidateEraContracts' 'building era progression contract' | Out-Null
     Require-Text 'Assets/Scripts/Progression/BuildingContentProgressionRules.cs' 'TryProjectEconomy' 'building economy projection' | Out-Null
     $editorTestsAsmdef = Join-Path $projectRoot 'Assets/Tests/Editor/EraImperial.EditorTests.asmdef'
@@ -209,6 +210,12 @@ function Test-CatalogContracts([hashtable]$GuidIndex) {
     return [pscustomobject]@{ Entries = $blocks.Count; Playable = $playable }
 }
 
+function Test-MilitaryUnitBindings {
+    $validator = Require-File 'Tools/ValidateMilitaryUnitAssets.mjs'
+    & node $validator
+    if ($LASTEXITCODE -ne 0) { throw "ValidateMilitaryUnitAssets.mjs failed with exit code $LASTEXITCODE." }
+}
+
 if (!$SkipReleasePreflight) {
     & powershell.exe -NoProfile -ExecutionPolicy Bypass -File (Join-Path $projectRoot 'Tools/Validate-Release.ps1')
     if ($LASTEXITCODE -ne 0) { throw "Validate-Release.ps1 failed with exit code $LASTEXITCODE." }
@@ -219,6 +226,7 @@ if ($version -notmatch 'm_EditorVersion:\s*6000\.6\.3f1\b') { throw 'Unsupported
 $guidIndex = Get-GuidIndex
 $sceneCount = Test-BuildScenes $guidIndex
 $contractCount = Test-ConstructionContracts
+$null = Test-MilitaryUnitBindings
 $catalog = Test-CatalogContracts $guidIndex
 Write-Host ("Editor-free smoke passed: Unity 6000.6.3f1; {0} build scenes; {1} construction contracts; {2} catalog entries ({3} playable); {4} assets indexed." -f $sceneCount, $contractCount, $catalog.Entries, $catalog.Playable, $guidIndex.Count)
 Write-Host 'Unity-dependent evidence still required: C# compilation, EditMode/PlayMode Test Runner, scene deserialization/runtime smoke, and player build.'
