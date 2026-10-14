@@ -11,6 +11,7 @@ public sealed class BuildingMaintenanceRuntimeSnapshot
     public BuildingMaintenanceOperation operation;
     public float progress;
     public bool busy;
+    public BuildingMaintenanceOperationState operationState;
 
     public BuildingMaintenanceRuntimeSnapshot(Building building, BuildingRepairDemolitionService service)
     {
@@ -25,6 +26,17 @@ public sealed class BuildingMaintenanceRuntimeSnapshot
         float duration = service == null || service.Operation == null ? 0f : service.Operation.duration;
         float elapsed = service == null || service.Operation == null ? 0f : service.Operation.elapsed;
         progress = duration <= 0f ? 0f : Clamp01(elapsed / duration);
+        if (service != null && service.Operation != null)
+        {
+            operationState = new BuildingMaintenanceOperationState {
+                operation = service.Operation.operation,
+                elapsed = service.Operation.elapsed,
+                duration = service.Operation.duration,
+                initialHealth = service.Operation.initialHealth,
+                initialLifecycle = service.Operation.initialLifecycle,
+                reservedCost = CopyCosts(service.Operation.reservedCost)
+            };
+        }
     }
 
     private static float Clamp01(float value)
@@ -32,6 +44,17 @@ public sealed class BuildingMaintenanceRuntimeSnapshot
         if (value <= 0f) return 0f;
         if (value >= 1f) return 1f;
         return value;
+    }
+
+    private static System.Collections.Generic.List<BuildingMaintenanceCost> CopyCosts(
+        System.Collections.Generic.List<BuildingMaintenanceCost> source)
+    {
+        var result = new System.Collections.Generic.List<BuildingMaintenanceCost>();
+        if (source == null) return result;
+        for (int i = 0; i < source.Count; i++)
+            if (source[i] != null)
+                result.Add(new BuildingMaintenanceCost(source[i].resource, source[i].amount));
+        return result;
     }
 }
 
@@ -58,6 +81,20 @@ public sealed class BuildingMaintenanceRuntimeBinding
 
     public event Action<BuildingMaintenanceOperation> OperationCompleted;
     public event Action<BuildingMaintenanceRuntimeSnapshot> StateChanged;
+
+    public BuildingMaintenanceResult Restore(BuildingMaintenanceOperationState saved)
+    {
+        if (!_service.RestoreOperation(saved)) return BuildingMaintenanceResult.InvalidState;
+        NotifyChanged();
+        return BuildingMaintenanceResult.Accepted;
+    }
+
+    public void Tick(float deltaTime)
+    {
+        if (!_service.IsBusy) return;
+        bool completed;
+        Advance(_building.Owner, deltaTime, out completed);
+    }
 
     public static bool TryCreate(Building building, EconomyLedger economy, BuildingMaintenanceSpec spec,
         out BuildingMaintenanceRuntimeBinding binding, out string reason)

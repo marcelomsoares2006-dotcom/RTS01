@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum StrategicActionKind { GatherResource, ConstructBuilding, ProduceUnit, ScoutArea, ResearchTechnology, DefendArea, PursueObjective }
+public enum StrategicActionKind { GatherResource, ConstructBuilding, ProduceUnit, ScoutArea, ResearchTechnology, AdvanceEra, DefendArea, PursueObjective }
 public enum StrategicPriority { Low = 1, Normal = 2, High = 3, Critical = 4 }
 
 [Serializable]

@@ -22,6 +22,28 @@ public sealed class BuildingMaintenanceRuntimeBindingTests
         Assert.AreEqual(0f, snapshot.progress);
     }
 
+    [Test]
+    public void RestoreOperationPreservesReservedCostWithoutSpendingTwice()
+    {
+        EconomyLedger ledger = new EconomyLedger();
+        ledger.Set(EconomyResourceType.Wood, 40);
+        BuildingRepairDemolitionService service = new BuildingRepairDemolitionService(
+            "building-1", 0, 50, 100, BuildingLifecycleState.Damaged, ledger,
+            new BuildingMaintenanceSpec { repairDuration = 4f });
+        BuildingMaintenanceOperationState saved = new BuildingMaintenanceOperationState {
+            operation = BuildingMaintenanceOperation.Repair,
+            elapsed = 1f, duration = 4f, initialHealth = 50,
+            initialLifecycle = BuildingLifecycleState.Damaged,
+            reservedCost = new System.Collections.Generic.List<BuildingMaintenanceCost> {
+                new BuildingMaintenanceCost(EconomyResourceType.Wood, 12)
+            }
+        };
+        Assert.IsTrue(service.RestoreOperation(saved));
+        Assert.AreEqual(40, ledger.Get(EconomyResourceType.Wood));
+        Assert.IsTrue(service.IsBusy);
+        Assert.AreEqual(12, service.Operation.reservedCost[0].amount);
+    }
+
     private sealed class BuildingMaintenanceServiceTestHelper
     {
         public BuildingMaintenanceRuntimeSnapshot Snapshot { get; private set; }

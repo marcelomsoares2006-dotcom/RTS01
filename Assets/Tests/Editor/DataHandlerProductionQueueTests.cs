@@ -1,9 +1,11 @@
 using System.Collections.Generic;
+using System.IO;
 using NUnit.Framework;
 using UnityEngine;
 
 public sealed class DataHandlerProductionQueueTests
 {
+    private string _path;
     private readonly List<Object> _created = new List<Object>();
 
     [TearDown]
@@ -12,6 +14,9 @@ public sealed class DataHandlerProductionQueueTests
         foreach (Object asset in _created)
             if (asset != null) Object.DestroyImmediate(asset);
         _created.Clear();
+        if (!string.IsNullOrEmpty(_path) && File.Exists(_path)) File.Delete(_path);
+        if (!string.IsNullOrEmpty(_path) && File.Exists(_path + ".bak")) File.Delete(_path + ".bak");
+        if (!string.IsNullOrEmpty(_path) && File.Exists(_path + ".tmp")) File.Delete(_path + ".tmp");
     }
 
     [Test]
@@ -121,5 +126,48 @@ public sealed class DataHandlerProductionQueueTests
         Assert.That(DataHandler.RestoreProductionQueue(save, catalog, state, restored),
             Is.EqualTo(BuildingProductionSnapshotResult.InvalidSnapshot));
         Assert.That(restored.Count, Is.EqualTo(0));
+    }
+
+    [Test]
+    public void GameDataBinaryRoundTripCarriesProductionQueueSnapshot()
+    {
+        _path = Path.Combine(Application.persistentDataPath, "Data_Dev", "Tests", "production-queue-game.data");
+        GameData source = new GameData
+        {
+            players = new[]
+            {
+                new GamePlayerData
+                {
+                    units = new[]
+                    {
+                        new GamePlayerUnitData
+                        {
+                            code = "barracks",
+                            productionQueue = new BuildingProductionQueueSnapshot
+                            {
+                                buildingCode = "barracks", ownerId = 0, era = BuildingEra.Dark,
+                                orders = new List<BuildingProductionOrderSnapshot>
+                                {
+                                    new BuildingProductionOrderSnapshot
+                                    {
+                                        productCode = "spearman", duration = 15f,
+                                        elapsed = 3f, populationCost = 1,
+                                        cost = new List<ResourceValue>
+                                        {
+                                            new ResourceValue(InGameResource.Wood, 30)
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        };
+        BinarySerializable.Save(_path, source);
+        GameData restored = (GameData)BinarySerializable.Load(_path);
+        Assert.That(restored.players[0].units[0].productionQueue, Is.Not.Null);
+        Assert.That(restored.players[0].units[0].productionQueue.orders[0].productCode, Is.EqualTo("spearman"));
+        Assert.That(restored.players[0].units[0].productionQueue.orders[0].cost[0].amount, Is.EqualTo(30));
     }
 }

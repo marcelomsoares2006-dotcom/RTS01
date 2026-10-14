@@ -7,6 +7,9 @@ using UnityEngine.AI;
 public class DataHandler : MonoBehaviour
 {
     public static LegacyEconomyRuntimeAdapter EconomyRuntime { get; set; }
+    public static BuildingContentCatalog ProductionContentCatalog { get; set; }
+    public static System.Func<int, StrategicPlanningState> ProductionPlanningStateProvider { get; set; }
+    public static System.Func<string, BuildingProductionQueue> ProductionQueueProvider { get; set; }
 
     /// <summary>
     /// Captures a live production queue into the unit save record. The caller
@@ -157,6 +160,20 @@ public class DataHandler : MonoBehaviour
                     Building restoredBuilding = (Building)u;
                     if (unit.construction != null)
                         restoredBuilding.SetReservedConstructionCosts(unit.construction.reservedCosts);
+                    if (EconomyRuntime != null)
+                    {
+                        EconomyPlayerState economyState;
+                        if (EconomyRuntime.TryGetPlayer(p, out economyState))
+                        {
+                            BuildingMaintenanceRuntimeDriver driver = restoredBuilding.Transform.gameObject
+                                .GetComponent<BuildingMaintenanceRuntimeDriver>();
+                            if (driver == null) driver = restoredBuilding.Transform.gameObject
+                                .AddComponent<BuildingMaintenanceRuntimeDriver>();
+                            driver.Bind(restoredBuilding, economyState.stockpile, new BuildingMaintenanceSpec());
+                            if (unit.maintenance != null)
+                                driver.Restore(unit.maintenance.operationState);
+                        }
+                    }
                     int constructionHealth = unit.construction != null
                         ? unit.construction.constructionHP
                         : unit.constructionHP;
@@ -199,6 +216,7 @@ public class DataHandler : MonoBehaviour
                 u.LevelUp(true);
                 u.AttackDamage = unit.attackDamage;
                 u.AttackRange = unit.attackRange;
+                RestoreRegisteredProductionQueue(unit, p);
             }
         }
 
@@ -294,6 +312,11 @@ public class DataHandler : MonoBehaviour
                         BuildingContentAssetStage.RuntimeReady,
                         true,
                         out u.construction);
+                    CaptureRegisteredProductionQueue(u, p);
+                    BuildingMaintenanceRuntimeDriver driver = building.Transform.gameObject
+                        .GetComponent<BuildingMaintenanceRuntimeDriver>();
+                    if (driver != null)
+                        u.maintenance = driver.Capture();
                 }
                 units.Add(u);
             }
@@ -307,6 +330,32 @@ public class DataHandler : MonoBehaviour
         data.camPosition = Camera.main.transform.position;
         data.unlockedTechnologyNodeCodes = TechnologyNodeData.GetUnlockedNodeCodes();
         return data;
+    }
+
+    private static void CaptureRegisteredProductionQueue(GamePlayerUnitData unit, int ownerId)
+    {
+        if (ProductionContentCatalog == null || ProductionPlanningStateProvider == null
+            || ProductionQueueProvider == null || unit == null) return;
+        StrategicPlanningState state = ProductionPlanningStateProvider(ownerId);
+        BuildingProductionQueue queue = ProductionQueueProvider(unit.uid);
+        if (state == null || queue == null) return;
+        BuildingProductionSnapshotResult result = CaptureProductionQueue(
+            unit, ProductionContentCatalog, state, queue);
+        if (result != BuildingProductionSnapshotResult.Captured)
+            Debug.LogWarning("Production queue was not captured for " + unit.code + ": " + result);
+    }
+
+    private static void RestoreRegisteredProductionQueue(GamePlayerUnitData unit, int ownerId)
+    {
+        if (ProductionContentCatalog == null || ProductionPlanningStateProvider == null
+            || ProductionQueueProvider == null || unit == null || unit.productionQueue == null) return;
+        StrategicPlanningState state = ProductionPlanningStateProvider(ownerId);
+        BuildingProductionQueue queue = ProductionQueueProvider(unit.uid);
+        if (state == null || queue == null) return;
+        BuildingProductionSnapshotResult result = RestoreProductionQueue(
+            unit, ProductionContentCatalog, state, queue);
+        if (result != BuildingProductionSnapshotResult.Restored)
+            Debug.LogWarning("Production queue was not restored for " + unit.code + ": " + result);
     }
 
     public static List<(string, System.DateTime)> GetGamesList()

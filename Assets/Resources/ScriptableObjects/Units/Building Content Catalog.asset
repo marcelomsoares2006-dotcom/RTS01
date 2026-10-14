@@ -84,6 +84,9 @@ MonoBehaviour:
     - resource: 1
       amount: 50
     requirements:
+    - technologyCode: fletching
+      buildingCode: ''
+      minimumPopulation: 0
     - technologyCode: ''
       buildingCode: town_center
       minimumPopulation: 0
@@ -150,6 +153,9 @@ MonoBehaviour:
     - resource: 1
       amount: 150
     requirements:
+    - technologyCode: riding
+      buildingCode: ''
+      minimumPopulation: 0
     - technologyCode: ''
       buildingCode: town_center
       minimumPopulation: 0
@@ -185,6 +191,9 @@ MonoBehaviour:
     - resource: 1
       amount: 150
     requirements:
+    - technologyCode: fletching
+      buildingCode: ''
+      minimumPopulation: 0
     - technologyCode: ''
       buildingCode: town_center
       minimumPopulation: 0

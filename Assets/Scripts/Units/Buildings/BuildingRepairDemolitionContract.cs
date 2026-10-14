@@ -90,6 +90,30 @@ public sealed class BuildingRepairDemolitionService
     public BuildingMaintenanceOperationState Operation { get { return _operation; } }
     public bool IsBusy { get { return _operation != null; } }
 
+    /// <summary>Restores a previously reserved operation without spending twice.</summary>
+    public bool RestoreOperation(BuildingMaintenanceOperationState saved)
+    {
+        if (saved == null || saved.operation == BuildingMaintenanceOperation.None)
+        {
+            _operation = null;
+            return true;
+        }
+        if (_operation != null || saved.duration <= 0f || saved.elapsed < 0f
+            || saved.elapsed > saved.duration || saved.initialHealth < 0
+            || saved.initialHealth > _maxHealth
+            || (saved.operation != BuildingMaintenanceOperation.Repair
+                && saved.operation != BuildingMaintenanceOperation.Demolition))
+            return false;
+        List<BuildingMaintenanceCost> normalized = NormalizeCost(saved.reservedCost);
+        if (normalized == null) return false;
+        _operation = new BuildingMaintenanceOperationState {
+            operation = saved.operation, elapsed = saved.elapsed,
+            duration = saved.duration, initialHealth = saved.initialHealth,
+            initialLifecycle = saved.initialLifecycle, reservedCost = normalized
+        };
+        return true;
+    }
+
     public BuildingRepairDemolitionService(
         string buildingId,
         int ownerId,
