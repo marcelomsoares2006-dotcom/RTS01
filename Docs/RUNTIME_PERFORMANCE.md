@@ -20,7 +20,7 @@ Nearest selection is a single linear scan, replacing the LINQ `Where`,
 ## Measurement protocol
 
 Use the Unity Profiler in a representative battle scene and compare the
-`CheckEnemyInFOVRange.Evaluate` marker over at least 10 seconds with the same
+`RTS01.CheckEnemyInFOVRange.Evaluate` marker over at least 10 seconds with the same
 unit count, tick interval, and camera state. Record:
 
 - GC Alloc per frame;

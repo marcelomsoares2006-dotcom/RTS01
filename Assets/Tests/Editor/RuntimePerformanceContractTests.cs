@@ -14,6 +14,7 @@ public sealed class RuntimePerformanceContractTests
         Assert.That(source, Is.Not.Null, "The FOV check source file is missing.");
         Assert.That(source.text, Does.Contain("OverlapSphereNonAlloc"));
         Assert.That(source.text, Does.Contain("_overlapBuffer"));
+        Assert.That(source.text, Does.Contain("RTS01.CheckEnemyInFOVRange.Evaluate"));
         Assert.That(source.text, Does.Not.Contain("using System.Linq;"));
         Assert.That(source.text, Does.Not.Contain("OrderBy("));
     }

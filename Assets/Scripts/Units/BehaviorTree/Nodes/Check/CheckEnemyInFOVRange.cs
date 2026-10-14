@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Unity.Profiling;
 
 using BehaviorTree;
 
@@ -16,6 +17,8 @@ public class CheckEnemyInFOVRange : Node
     private Collider[] _overlapBuffer = new Collider[32];
 
     private const int MaxOverlapBufferSize = 4096;
+    private static readonly ProfilerMarker EvaluationMarker =
+        new ProfilerMarker("RTS01.CheckEnemyInFOVRange.Evaluate");
 
     public CheckEnemyInFOVRange(UnitManager manager) : base()
     {
@@ -26,18 +29,21 @@ public class CheckEnemyInFOVRange : Node
 
     public override NodeState Evaluate()
     {
-        _pos = _manager.transform.position;
-        Transform nearestEnemy = FindNearestEnemy();
-        if (nearestEnemy != null)
+        using (EvaluationMarker.Auto())
         {
-            Parent.SetData("currentTarget", nearestEnemy);
-            Parent.SetData("currentTargetOffset", Vector2.zero);
-            _state = NodeState.SUCCESS;
+            _pos = _manager.transform.position;
+            Transform nearestEnemy = FindNearestEnemy();
+            if (nearestEnemy != null)
+            {
+                Parent.SetData("currentTarget", nearestEnemy);
+                Parent.SetData("currentTargetOffset", Vector2.zero);
+                _state = NodeState.SUCCESS;
+                return _state;
+            }
+
+            _state = NodeState.FAILURE;
             return _state;
         }
-
-        _state = NodeState.FAILURE;
-        return _state;
     }
 
     private Transform FindNearestEnemy()
