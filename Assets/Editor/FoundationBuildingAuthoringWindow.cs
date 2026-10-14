@@ -473,7 +473,7 @@ public sealed class FoundationBuildingAuthoringWindow : EditorWindow
             .FirstOrDefault(candidate => IsAuthoringGeometry(candidate)
                 && candidate.sharedMaterials.Length > 0);
         MeshFilter meshFilter = root.GetComponentsInChildren<MeshFilter>(true)
-            .FirstOrDefault(candidate => IsAuthoringGeometry(candidate)
+            .FirstOrDefault(candidate => IsAuthoringGeometry(candidate.GetComponent<Renderer>())
                 && candidate.sharedMesh != null);
         if (renderer == null || meshFilter == null)
             throw new InvalidOperationException("Authored model has no usable renderer/mesh: " + code);

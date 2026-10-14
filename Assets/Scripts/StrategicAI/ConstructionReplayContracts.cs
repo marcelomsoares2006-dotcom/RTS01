@@ -89,7 +89,7 @@ public sealed class ConstructionReplayLog
         return ConstructionReplayResult.Accepted;
     }
 
-    public static string ComputeFingerprint(IList<ConstructionReplayCommand> commands)
+    public static string ComputeFingerprint(IReadOnlyList<ConstructionReplayCommand> commands)
     {
         StringBuilder canonical = new StringBuilder();
         if (commands != null)
@@ -403,7 +403,7 @@ public static class ConstructionReplayRuntime
         return result;
     }
 
-    public static ConstructionReplayResult Restore(IList<ConstructionReplayCommand> commands, ConstructionReplaySnapshot expected)
+    public static ConstructionReplayResult Restore(IReadOnlyList<ConstructionReplayCommand> commands, ConstructionReplaySnapshot expected)
     {
         _log = new ConstructionReplayLog();
         if (commands != null)

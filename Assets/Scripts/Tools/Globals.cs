@@ -7,7 +7,11 @@ public enum InGameResource
 {
     Gold,
     Wood,
-    Stone
+    Stone,
+    // Compatibility value for production data. Food belongs to the new
+    // EconomyResourceType ledger and is intentionally not added to the
+    // legacy GAME_RESOURCE_KEYS dictionary.
+    Food
 }
 
 public enum UnitFormationType
