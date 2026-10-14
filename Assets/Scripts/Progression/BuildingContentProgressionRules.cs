@@ -25,6 +25,9 @@ public sealed class BuildingEconomyContentProjection
     public string displayName;
     public BuildingContentRole role;
     public BuildingEra minimumEra;
+    /// <summary>Origin/readiness state consumed by UI and strategic AI.</summary>
+    public BuildingContentAssetStage assetOrigin;
+    [Obsolete("Use assetOrigin; retained as a compatibility alias for older UI adapters.")]
     public BuildingContentAssetStage assetStage;
     public bool runtimeReady;
     public BuildingAvailabilityResult availability;
@@ -65,6 +68,7 @@ public static class BuildingContentProgressionRules
             displayName = entry.displayName,
             role = entry.role,
             minimumEra = entry.minimumEra,
+            assetOrigin = entry.AssetStage,
             assetStage = entry.AssetStage,
             runtimeReady = entry.IsRuntimeReady,
             availability = state == null

@@ -24,6 +24,41 @@ function Add-Issue([System.Collections.Generic.List[string]]$Issues, [string]$Co
 }
 
 $issues = New-Object 'System.Collections.Generic.List[string]'
+$manifestPath = Join-Path $projectRoot 'Docs/FOUNDATION_IMPORT_MANIFEST.yml'
+if (!(Test-Path -LiteralPath $manifestPath -PathType Leaf)) {
+    Add-Issue $issues '<manifest>' 'FOUNDATION_IMPORT_MANIFEST.yml is missing.'
+}
+$manifestText = if (Test-Path -LiteralPath $manifestPath -PathType Leaf) {
+    Get-Content -Raw -LiteralPath $manifestPath
+} else { '' }
+$manifestBlocks = [regex]::Matches($manifestText, '(?ms)^\s+- code:\s*(\S+)(.*?)(?=^\s+- code:|\z)')
+$manifestByCode = @{}
+foreach ($manifestBlock in $manifestBlocks) {
+    $manifestByCode[$manifestBlock.Groups[1].Value.ToLowerInvariant()] = $manifestBlock.Groups[0].Value
+}
+foreach ($manifestCode in @('town_center', 'resource_dropoff')) {
+    if (!$manifestByCode.ContainsKey($manifestCode)) {
+        Add-Issue $issues $manifestCode 'Import manifest entry is missing.'
+        continue
+    }
+    $manifestBody = $manifestByCode[$manifestCode]
+    foreach ($manifestField in @('intermediateSource', 'authoredSource', 'expectedPrefab', 'expectedBuildingData', 'minimumEra', 'requiredComponents', 'approvalChecks')) {
+        if ($manifestBody -notmatch "(?m)^\s+${manifestField}:\s*[^\r\n]+")
+            { Add-Issue $issues $manifestCode "Import manifest field is missing: $manifestField" }
+    }
+    $intermediate = [regex]::Match($manifestBody, '(?m)^\s+intermediateSource:\s*([^\r\n]+)')
+    if ($intermediate.Success -and !(Test-Path -LiteralPath (Join-Path $projectRoot $intermediate.Groups[1].Value.Trim()) -PathType Leaf))
+        { Add-Issue $issues $manifestCode "Manifest intermediate source is missing: $($intermediate.Groups[1].Value.Trim())" }
+    $components = [regex]::Match($manifestBody, '(?m)^\s+requiredComponents:\s*([^\r\n]+)')
+    if ($components.Success) {
+        foreach ($component in @('BuildingManager', 'BuildingBT', 'MeshFilter', 'MeshRenderer', 'Collider')) {
+            if ($components.Groups[1].Value -notmatch "(^|,)$component(,|$)")
+                { Add-Issue $issues $manifestCode "Manifest component checklist is incomplete: $component" }
+        }
+    }
+}
+if ($manifestText -notmatch '(?m)^approval:\s*blocked-until-unity-review\s*$')
+    { Add-Issue $issues '<manifest>' 'Import manifest must remain blocked until Unity review.' }
 $catalogPath = Join-Path $projectRoot 'Assets/Resources/ScriptableObjects/Units/Building Content Catalog.asset'
 if (!(Test-Path -LiteralPath $catalogPath -PathType Leaf)) {
     Add-Issue $issues '<catalog>' 'Building Content Catalog.asset is missing.'
@@ -46,6 +81,18 @@ $blocks = [regex]::Matches($catalogText, '(?ms)^\s*- code:\s*(\S+)(.*?)(?=^\s*- 
 $byCode = @{}
 foreach ($block in $blocks) {
     $byCode[$block.Groups[1].Value.ToLowerInvariant()] = $block.Groups[0].Value
+}
+foreach ($manifestCode in @('town_center', 'resource_dropoff')) {
+    if ($manifestByCode.ContainsKey($manifestCode) -and $byCode.ContainsKey($manifestCode)) {
+        $manifestBody = $manifestByCode[$manifestCode]
+        $catalogBody = $byCode[$manifestCode]
+        $manifestPrefab = [regex]::Match($manifestBody, '(?m)^\s+expectedPrefab:\s*([^\r\n]+)')
+        $catalogPrefab = [regex]::Match($catalogBody, '(?m)^\s*prefabPath:\s*([^\r\n]+)')
+        $pathsMatch = $manifestPrefab.Success -and $catalogPrefab.Success -and
+            ($manifestPrefab.Groups[1].Value.Trim() -eq $catalogPrefab.Groups[1].Value.Trim())
+        if ($manifestPrefab.Success -and $catalogPrefab.Success -and !$pathsMatch)
+            { Add-Issue $issues $manifestCode 'Manifest expectedPrefab does not match catalog prefabPath.' }
+    }
 }
 
 $requirements = @{

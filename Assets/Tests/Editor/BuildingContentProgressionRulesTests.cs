@@ -176,7 +176,8 @@ public sealed class BuildingContentProgressionRulesTests
         BuildingEconomyContentProjection projection;
         Assert.That(BuildingContentProgressionRules.TryProjectEconomy(
             catalog, "town_center", State(BuildingEra.Dark), out projection), Is.True);
-        Assert.That(projection.assetStage, Is.EqualTo(BuildingContentAssetStage.AssetIntermediate));
+        Assert.That(projection.assetOrigin, Is.EqualTo(BuildingContentAssetStage.ModelIntermediate));
+        Assert.That(projection.assetStage, Is.EqualTo(BuildingContentAssetStage.ModelIntermediate));
         Assert.That(projection.runtimeReady, Is.False);
         Assert.That(projection.availability, Is.EqualTo(BuildingAvailabilityResult.ContentUnavailable));
         Assert.That(projection.constructionCost[0].amount, Is.EqualTo(400));

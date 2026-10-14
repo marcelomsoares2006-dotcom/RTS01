@@ -132,6 +132,20 @@ public sealed class BuildingContentCatalogTests
     }
 
     [Test]
+    public void AssetOriginSeparatesIntermediateTownCenterFromRuntimeBuildings()
+    {
+        BuildingContentCatalog catalog = AssetDatabase.LoadAssetAtPath<BuildingContentCatalog>(CatalogPath);
+        Assert.That(catalog.Find("town_center").AssetStage,
+            Is.EqualTo(BuildingContentAssetStage.ModelIntermediate));
+        Assert.That(catalog.Find("resource_dropoff").AssetStage,
+            Is.EqualTo(BuildingContentAssetStage.ModelIntermediate));
+        Assert.That(catalog.Find("house").AssetStage,
+            Is.EqualTo(BuildingContentAssetStage.RuntimeReady));
+        Assert.That(catalog.Find("tower").AssetStage,
+            Is.EqualTo(BuildingContentAssetStage.RuntimeReady));
+    }
+
+    [Test]
     public void EssentialRosterDefinesEraCostProductionAndPrerequisiteContracts()
     {
         BuildingContentCatalog catalog = AssetDatabase.LoadAssetAtPath<BuildingContentCatalog>(CatalogPath);

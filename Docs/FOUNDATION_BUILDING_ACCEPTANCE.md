@@ -13,6 +13,9 @@ powershell -NoProfile -ExecutionPolicy Bypass -File Tools/Validate-FoundationAss
 ```
 
 The command must fail while either entry is planned or an asset is missing.
+The machine-readable import plan is [`FOUNDATION_IMPORT_MANIFEST.yml`](FOUNDATION_IMPORT_MANIFEST.yml);
+the gate checks that it exists, points to the intermediate sources and retains
+the required Unity component and approval fields.
 Use `-ReportOnly` to print every outstanding issue while preparing the assets:
 
 ```powershell
