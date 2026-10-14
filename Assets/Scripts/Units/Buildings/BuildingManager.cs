@@ -107,6 +107,8 @@ public class BuildingManager : UnitManager
 
     public bool Build(int buildPower)
     {
+        if (_building == null || !_building.IsFixed || _building.IsAlive || buildPower <= 0)
+            return _building != null && _building.IsAlive;
         _building.SetConstructionHP(_building.ConstructionHP + buildPower);
         UpdateHealthbar();
         return _building.IsAlive;

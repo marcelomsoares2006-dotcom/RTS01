@@ -48,6 +48,8 @@ public class CharacterBT : RuntimeBehaviorTree
     {
         manager.SetRendererVisibility(true);
         manager.SetIsConstructor(false);
+        if (_trySetDestinationOrTargetNode == null)
+            return;
         _trySetDestinationOrTargetNode.ClearData("currentTarget");
         _trySetDestinationOrTargetNode.ClearData("currentTargetOffset");
     }

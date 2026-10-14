@@ -144,10 +144,15 @@ public class Building : Unit
             : BuildingPlacement.INVALID;
     }
 
-    public void AddConstructor(CharacterManager m)
+    public bool AddConstructor(CharacterManager m)
     {
-        if (m == null || _isAlive || _constructors.Contains(m))
-            return;
+        if (m == null || _isAlive || m.IsConstructor || _constructors.Contains(m))
+            return false;
+
+        PruneInvalidConstructors();
+        if (!IsFixed || HasConstructorsFull)
+            return false;
+
         _constructors.Add(m);
         EventManager.TriggerEvent("UpdatedConstructors", this);
 
@@ -161,9 +166,11 @@ public class Building : Unit
                     VfxType.Smoke,
                     Transform.position + new Vector3(offset.x, 0, offset.y)));
 
-            _buildingManager.ambientSource.Play();
+            if (_buildingManager.ambientSource != null)
+                _buildingManager.ambientSource.Play();
         }
         PublishFeedback();
+        return true;
     }
 
     public void RemoveConstructor(int index)
@@ -190,9 +197,51 @@ public class Building : Unit
                 VFXManager.instance.Unspawn(VfxType.Smoke, vfx);
             _smokeVfx.Clear();
             // - stop construction sound
-            _buildingManager.ambientSource.Pause();
+            if (_buildingManager.ambientSource != null)
+                _buildingManager.ambientSource.Pause();
         }
         PublishFeedback();
+    }
+
+    /// <summary>
+    /// Releases every worker still attached to this building. This is used
+    /// when construction completes and by cancellation/destruction flows so
+    /// no worker remains hidden or locked in constructor mode.
+    /// </summary>
+    public void ReleaseConstructors()
+    {
+        if (_constructors == null || _constructors.Count == 0)
+            return;
+
+        List<CharacterManager> constructors = new List<CharacterManager>(_constructors);
+        _constructors.Clear();
+        foreach (CharacterManager constructor in constructors)
+        {
+            if (constructor == null)
+                continue;
+            CharacterBT bt = constructor.GetComponent<CharacterBT>();
+            if (bt != null)
+                bt.StopBuildingConstruction();
+            else
+            {
+                constructor.SetIsConstructor(false);
+                constructor.SetRendererVisibility(true);
+            }
+        }
+        EventManager.TriggerEvent("UpdatedConstructors", this);
+        if (_buildingManager.ambientSource != null)
+            _buildingManager.ambientSource.Pause();
+        PublishFeedback();
+    }
+
+    private void PruneInvalidConstructors()
+    {
+        for (int i = _constructors.Count - 1; i >= 0; i--)
+        {
+            if (_constructors[i] != null)
+                continue;
+            _constructors.RemoveAt(i);
+        }
     }
 
     private void _SetAlive(bool fromSavedData = false)
@@ -201,6 +250,11 @@ public class Building : Unit
         _bt.enabled = true;
         ComputeProduction();
         Globals.UpdateNavMeshSurface();
+
+        // A building can finish from one worker's tick while other workers
+        // are still attached. Release all of them atomically before the
+        // completion feedback is emitted.
+        ReleaseConstructors();
 
         // when finishing construction, remove smoke VFX
         foreach (Transform vfx in _smokeVfx)
@@ -218,7 +272,8 @@ public class Building : Unit
             }
             else
             {
-                _buildingManager.ambientSource.Stop();
+                if (_buildingManager.ambientSource != null)
+                    _buildingManager.ambientSource.Stop();
             }
         }
         PublishFeedback(!fromSavedData);
@@ -253,6 +308,7 @@ public class Building : Unit
     {
         get
         {
+            PruneInvalidConstructors();
             BuildingData data = _data as BuildingData;
             int limit = data != null ? Mathf.Max(1, data.maxConstructors) : 3;
             return _constructors.Count >= limit;

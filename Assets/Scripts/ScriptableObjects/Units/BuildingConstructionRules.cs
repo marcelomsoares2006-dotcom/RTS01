@@ -32,4 +32,26 @@ public static class BuildingConstructionRules
             && placementValid
             && canBuy;
     }
+
+    public static bool CanAssignConstructor(
+        bool isFixed,
+        bool isOperational,
+        int currentConstructors,
+        int maxConstructors)
+    {
+        return isFixed
+            && !isOperational
+            && currentConstructors >= 0
+            && maxConstructors > 0
+            && currentConstructors < maxConstructors;
+    }
+
+    public static bool ShouldReleaseConstructors(
+        BuildingLifecycleState previous,
+        BuildingLifecycleState current)
+    {
+        return current == BuildingLifecycleState.Operational
+            || current == BuildingLifecycleState.Destroyed
+            || current == BuildingLifecycleState.Ruined;
+    }
 }
