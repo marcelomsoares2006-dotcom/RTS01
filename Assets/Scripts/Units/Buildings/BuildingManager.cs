@@ -10,7 +10,11 @@ public class BuildingManager : UnitManager
         get { return _building; }
         set { _building = value is Building ? (Building)value : null; }
     }
-    private int _nCollisions = 0;
+    // Trigger callbacks are not guaranteed to arrive in a strict pair when
+    // objects are disabled or destroyed. Tracking colliders avoids a stale
+    // counter making every later placement invalid.
+    private readonly System.Collections.Generic.HashSet<Collider> _blockingColliders =
+        new System.Collections.Generic.HashSet<Collider>();
 
     private void OnTriggerEnter(Collider other)
     {
@@ -19,7 +23,7 @@ public class BuildingManager : UnitManager
             other.gameObject.layer == Globals.FOV_LAYER
         )
             return;
-        _nCollisions++;
+        _blockingColliders.Add(other);
         CheckPlacement();
     }
 
@@ -30,8 +34,13 @@ public class BuildingManager : UnitManager
             other.gameObject.layer == Globals.FOV_LAYER
         )
             return;
-        _nCollisions--;
+        _blockingColliders.Remove(other);
         CheckPlacement();
+    }
+
+    private void OnDisable()
+    {
+        _blockingColliders.Clear();
     }
 
     public bool CheckPlacement()
@@ -48,13 +57,14 @@ public class BuildingManager : UnitManager
 
     public bool HasValidPlacement()
     {
-        if (_nCollisions > 0) return false;
+        if (_blockingColliders.Count > 0) return false;
+
+        BuildingData data = _building.Data as BuildingData;
 
         // get 4 bottom corner positions
-        Vector3 p = transform.position;
         Vector3 c = _collider.center;
         Vector3 e = _collider.size / 2f;
-        float bottomHeight = c.y - e.y + 0.5f;
+        float bottomHeight = c.y - e.y + (data != null ? data.terrainProbeStartOffset : 0.5f);
         Vector3[] bottomCorners = new Vector3[]
         {
         new Vector3(c.x - e.x, bottomHeight, c.z - e.z),
@@ -64,18 +74,25 @@ public class BuildingManager : UnitManager
         };
         // cast a small ray beneath the corner to check for a close ground
         // (if at least two are not valid, then placement is invalid)
-        int invalidCornersCount = 0;
+        int validCornersCount = 0;
         foreach (Vector3 corner in bottomCorners)
         {
             if (!Physics.Raycast(
-                p + corner,
+                // Collider coordinates are local to the building. Transforming
+                // each probe keeps terrain validation correct after rotation
+                // (and also respects the prefab's scale).
+                transform.TransformPoint(corner),
                 Vector3.up * -1f,
-                2f,
+                data != null ? data.terrainProbeDistance : 2f,
                 Globals.TERRAIN_LAYER_MASK
             ))
-                invalidCornersCount++;
+                continue;
+            validCornersCount++;
         }
-        if (invalidCornersCount >= 3)
+        int requiredCorners = data != null
+            ? Mathf.Clamp(data.minimumSupportedCorners, 1, bottomCorners.Length)
+            : 2;
+        if (validCornersCount < requiredCorners)
             return false;
 
         // check building is within the current FOV bounds

@@ -153,7 +153,7 @@ public class BuildingPlacer : MonoBehaviour
         // destroy the previous "phantom" if there is one
         if (_placedBuilding != null && !_placedBuilding.IsFixed)
         {
-            Destroy(_placedBuilding.Transform.gameObject);
+            _DestroyPreviewBuilding(_placedBuilding);
         }
         Building building = new Building(
             buildingData,
@@ -166,10 +166,34 @@ public class BuildingPlacer : MonoBehaviour
 
     void _CancelPlacedBuilding()
     {
+        if (_placedBuilding == null)
+            return;
+
         // destroy the "phantom" building
-        Destroy(_placedBuilding.Transform.gameObject);
+        _DestroyPreviewBuilding(_placedBuilding);
         _placedBuilding = null;
         EventManager.TriggerEvent("PlaceBuildingOff");
+    }
+
+    private void _DestroyPreviewBuilding(Building building)
+    {
+        if (building == null)
+            return;
+
+        // Unit registers itself during construction, before Place() is called.
+        // Remove cancelled previews from that registry so they cannot remain
+        // selectable or be serialized as real buildings after their GameObject
+        // is destroyed.
+        if (Unit.UNITS_BY_OWNER != null &&
+            Unit.UNITS_BY_OWNER.TryGetValue(building.Owner, out List<Unit> units))
+        {
+            units.Remove(building);
+            if (units.Count == 0)
+                Unit.UNITS_BY_OWNER.Remove(building.Owner);
+        }
+
+        if (building.Transform != null)
+            Destroy(building.Transform.gameObject);
     }
 
     void _PlaceBuilding(bool canChain = true)

@@ -105,16 +105,22 @@ public class Building : Unit
     {
         if (_isAlive) return;
 
-        _constructionHP = constructionHP;
-        float constructionRatio = _constructionHP / (float) MaxHP;
+        // Clamp values restored from save data and supplied by debug tooling.
+        _constructionHP = Mathf.Clamp(constructionHP, 0, MaxHP);
+        float constructionRatio = MaxHP > 0
+            ? _constructionHP / (float) MaxHP
+            : 1f;
 
-        int meshIndex = Mathf.Max(
-            0,
-            (int)(_constructionMeshes.Length * constructionRatio) - 1);
-        Mesh m = _constructionMeshes[meshIndex];
-        _rendererMesh.sharedMesh = m;
+        if (_constructionMeshes != null && _constructionMeshes.Length > 0)
+        {
+            int meshIndex = Mathf.Clamp(
+                (int)(_constructionMeshes.Length * constructionRatio) - 1,
+                0,
+                _constructionMeshes.Length - 1);
+            _rendererMesh.sharedMesh = _constructionMeshes[meshIndex];
+        }
 
-        if (constructionRatio >= 1)
+        if (MaxHP > 0 && constructionRatio >= 1)
             _SetAlive(fromSavedData);
     }
 
@@ -128,6 +134,8 @@ public class Building : Unit
 
     public void AddConstructor(CharacterManager m)
     {
+        if (m == null || _isAlive || _constructors.Contains(m))
+            return;
         _constructors.Add(m);
         EventManager.TriggerEvent("UpdatedConstructors", this);
 
@@ -147,8 +155,17 @@ public class Building : Unit
 
     public void RemoveConstructor(int index)
     {
-        CharacterBT bt = _constructors[index].GetComponent<CharacterBT>();
-        bt.StopBuildingConstruction();
+        // UI callbacks can outlive a constructor list refresh. Treat stale
+        // indices as a no-op instead of throwing and aborting the whole click.
+        if (index < 0 || index >= _constructors.Count)
+            return;
+
+        CharacterManager constructor = _constructors[index];
+        CharacterBT bt = constructor != null
+            ? constructor.GetComponent<CharacterBT>()
+            : null;
+        if (bt != null)
+            bt.StopBuildingConstruction();
         _constructors.RemoveAt(index);
         EventManager.TriggerEvent("UpdatedConstructors", this);
 
@@ -194,7 +211,15 @@ public class Building : Unit
 
     public int ConstructionHP { get => _constructionHP; }
     public List<CharacterManager> Constructors { get => _constructors; }
-    public bool HasConstructorsFull { get => _constructors.Count == 3; }
+    public bool HasConstructorsFull
+    {
+        get
+        {
+            BuildingData data = _data as BuildingData;
+            int limit = data != null ? Mathf.Max(1, data.maxConstructors) : 3;
+            return _constructors.Count >= limit;
+        }
+    }
     public bool HasValidPlacement { get => _placement == BuildingPlacement.VALID; }
     public bool IsFixed { get => _placement == BuildingPlacement.FIXED; }
     public override bool IsAlive { get => _isAlive; }
