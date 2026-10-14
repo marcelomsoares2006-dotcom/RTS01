@@ -20,9 +20,13 @@ public sealed class FoundationBuildingAuthoringWindow : EditorWindow
 {
     private const string TownCenterCode = "town_center";
     private const string ResourceDropoffCode = "resource_dropoff";
-    private const string TownCenterModel =
+    private const string TownCenterUnityModel =
+        "Assets/Resources/Imports/Units/Buildings/town-center/TownCenter_authoring.obj";
+    private const string TownCenterGlbModel =
         "Assets/Resources/Imports/Units/Buildings/town-center/TownCenter_authoring.glb";
-    private const string ResourceDropoffModel =
+    private const string ResourceDropoffUnityModel =
+        "Assets/Resources/Imports/Units/Buildings/resource-dropoff/ResourceDropoff_authoring.obj";
+    private const string ResourceDropoffGlbModel =
         "Assets/Resources/Imports/Units/Buildings/resource-dropoff/ResourceDropoff_authoring.glb";
     private const string PrefabFolder = "Assets/Resources/Prefabs/Units/Buildings";
     private const string DataFolder = "Assets/Resources/ScriptableObjects/Units/Buildings";
@@ -40,17 +44,17 @@ public sealed class FoundationBuildingAuthoringWindow : EditorWindow
     {
         EditorGUILayout.LabelField("Foundation building authoring", EditorStyles.boldLabel);
         EditorGUILayout.HelpBox(
-            "Creates draft prefabs and BuildingData from the authored GLBs. " +
+            "Creates draft prefabs and BuildingData from Unity-imported authored models. " +
             "It does not promote the catalog or mark either entry playable.",
             MessageType.Info);
 
-        DrawAssetRow(TownCenterCode, TownCenterModel);
-        DrawAssetRow(ResourceDropoffCode, ResourceDropoffModel);
+        DrawAssetRow(TownCenterCode, TownCenterUnityModel, TownCenterGlbModel);
+        DrawAssetRow(ResourceDropoffCode, ResourceDropoffUnityModel, ResourceDropoffGlbModel);
 
         EditorGUILayout.Space(8f);
         using (new EditorGUILayout.HorizontalScope())
         {
-            if (GUILayout.Button("Audit authored GLBs", GUILayout.Height(26f)))
+            if (GUILayout.Button("Audit authored models", GUILayout.Height(26f)))
                 AuditModels();
 
             using (new EditorGUI.DisabledScope(!CanAuthorBoth()))
@@ -77,28 +81,32 @@ public sealed class FoundationBuildingAuthoringWindow : EditorWindow
         EditorGUILayout.EndScrollView();
     }
 
-    private static void DrawAssetRow(string code, string modelPath)
+    private static void DrawAssetRow(string code, string unityModelPath, string glbPath)
     {
-        GameObject model = AssetDatabase.LoadAssetAtPath<GameObject>(modelPath);
+        string resolvedPath = ResolveModelPath(unityModelPath, glbPath);
         EditorGUILayout.BeginHorizontal("box");
         EditorGUILayout.LabelField(code, GUILayout.Width(150f));
-        EditorGUILayout.LabelField(model == null ? "authored GLB missing" : "authored GLB ready");
+        EditorGUILayout.LabelField(resolvedPath == null
+            ? "Unity-native OBJ/FBX missing (GLB fallback unavailable)"
+            : resolvedPath.EndsWith(".obj", StringComparison.OrdinalIgnoreCase)
+                ? "authored OBJ ready (Unity-native)"
+                : "GLB imported by an optional importer");
         EditorGUILayout.EndHorizontal();
     }
 
     private bool CanAuthorBoth()
     {
-        return AuditModel(TownCenterCode, TownCenterModel, false)
-            && AuditModel(ResourceDropoffCode, ResourceDropoffModel, false);
+        return AuditResolvedModel(TownCenterCode, TownCenterUnityModel, TownCenterGlbModel, false)
+            && AuditResolvedModel(ResourceDropoffCode, ResourceDropoffUnityModel, ResourceDropoffGlbModel, false);
     }
 
     private void AuditModels()
     {
         _messages.Clear();
-        bool townCenter = AuditModel(TownCenterCode, TownCenterModel, true);
-        bool dropoff = AuditModel(ResourceDropoffCode, ResourceDropoffModel, true);
+        bool townCenter = AuditResolvedModel(TownCenterCode, TownCenterUnityModel, TownCenterGlbModel, true);
+        bool dropoff = AuditResolvedModel(ResourceDropoffCode, ResourceDropoffUnityModel, ResourceDropoffGlbModel, true);
         _messages.Add(townCenter && dropoff
-            ? "Authored GLBs pass the source audit. Draft creation is available."
+            ? "Authored model sources pass the audit. Draft creation is available."
             : "Source audit failed. No draft asset was created.");
         Repaint();
     }
@@ -121,11 +129,36 @@ public sealed class FoundationBuildingAuthoringWindow : EditorWindow
         return valid;
     }
 
+    private static bool AuditResolvedModel(string code, string unityModelPath, string glbPath, bool log)
+    {
+        string resolvedPath = ResolveModelPath(unityModelPath, glbPath);
+        if (resolvedPath == null)
+        {
+            if (log)
+                Debug.LogError("Foundation authoring: no Unity-imported source for " + code
+                    + ". Generate the authored OBJ or install an approved GLB importer.");
+            return false;
+        }
+        return AuditModel(code, resolvedPath, log);
+    }
+
+    private static string ResolveModelPath(string unityModelPath, string glbPath)
+    {
+        if (AssetDatabase.LoadAssetAtPath<GameObject>(unityModelPath) != null)
+            return unityModelPath;
+        if (AssetDatabase.LoadAssetAtPath<GameObject>(glbPath) != null)
+            return glbPath;
+        return null;
+    }
+
     private void CreateDraftAssets()
     {
         _messages.Clear();
-        if (!AuditModel(TownCenterCode, TownCenterModel, true)
-            || !AuditModel(ResourceDropoffCode, ResourceDropoffModel, true))
+        string townCenterSource = ResolveModelPath(TownCenterUnityModel, TownCenterGlbModel);
+        string dropoffSource = ResolveModelPath(ResourceDropoffUnityModel, ResourceDropoffGlbModel);
+        if (townCenterSource == null || dropoffSource == null
+            || !AuditModel(TownCenterCode, townCenterSource, true)
+            || !AuditModel(ResourceDropoffCode, dropoffSource, true))
         {
             _messages.Add("ERROR: source audit failed; no draft assets were created.");
             Repaint();
@@ -134,8 +167,8 @@ public sealed class FoundationBuildingAuthoringWindow : EditorWindow
 
         EnsureFolder(PrefabFolder);
         EnsureFolder(DataFolder);
-        CreateDraft(TownCenterCode, "Town Center", TownCenterModel);
-        CreateDraft(ResourceDropoffCode, "Resource Dropoff", ResourceDropoffModel);
+        CreateDraft(TownCenterCode, "Town Center", townCenterSource);
+        CreateDraft(ResourceDropoffCode, "Resource Dropoff", dropoffSource);
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
         _messages.Add("Draft assets created. Catalog status and BuildingData references remain unchanged.");

@@ -210,10 +210,10 @@ foreach ($code in @('town_center', 'resource_dropoff')) {
                 Add-Issue $issues $code "Model path contains no authored model file: $modelPath"
             } else {
                 $grayboxFiles = @($modelFiles | Where-Object { $_.Extension -ieq '.obj' -and $_.Name -match '(?i)graybox' })
-                $authoredFiles = @($modelFiles | Where-Object { $_.Extension -in @('.fbx', '.glb', '.gltf') -and $_.Name -notmatch '(?i)graybox' })
+                $authoredFiles = @($modelFiles | Where-Object { $_.Extension -in @('.obj', '.fbx', '.glb', '.gltf') -and $_.Name -notmatch '(?i)graybox' })
                 if ($authoredFiles.Count -eq 0) {
                     $modelStates[$code] = 'model-intermediate'
-                    Add-Issue $issues $code 'Model source is model-intermediate graybox; replace with authored FBX/GLB and import it in Unity.'
+                    Add-Issue $issues $code 'Model source is model-intermediate graybox; replace with authored OBJ/FBX/GLB and import it in Unity.'
                     foreach ($graybox in $grayboxFiles) {
                         $grayboxText = Get-Content -Raw -LiteralPath $graybox.FullName
                         if ($grayboxText -notmatch '(?m)^\s*v\s+' -or $grayboxText -notmatch '(?m)^\s*f\s+')

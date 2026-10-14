@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: 7f0e2b61f0a945c2a8d413b8c5e9f702
+ModelImporter:
+  serializedVersion: 21300
+  externalObjects: {}
+  materials:
+    materialImportMode: 0
+  meshes:
+    lODScreenPercentages: []
+  isReadable: 0
+  importVisibility: 0
+  importCameras: 0
+  importLights: 0
+  generateSecondaryUV: 0
+  useFileUnits: 1
+  optimizeMeshPolygons: 0
+  optimizeMeshVertices: 0
+  generateAnimations: 0
+  animationType: 0
+  userData: authored-procedural-obj

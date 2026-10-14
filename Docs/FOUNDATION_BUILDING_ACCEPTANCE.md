@@ -24,9 +24,12 @@ powershell -NoProfile -ExecutionPolicy Bypass -File Tools/Validate-FoundationAss
 
 The gate reports `model-intermediate` when a foundation folder contains only
 the repository's graybox OBJ sources. That state is useful for art handoff but
-still fails the gate. An authored FBX/GLB may coexist with the graybox for
-traceability; it must be listed in the import manifest and still requires Unity
-prefab assembly and review.
+still fails the gate. An authored OBJ, FBX or GLB may coexist with the graybox
+for traceability; it must be listed in the import manifest and still requires
+Unity prefab assembly and review. This project currently has no glTFast
+dependency, so the Unity-native OBJ output from
+`Tools/GenerateFoundationAssets.mjs` is the default import route. GLBs remain
+interchange and preview sources.
 
 ## Repository acceptance
 
@@ -82,9 +85,10 @@ returns `ContentNotRuntimeReady` until the dropoff has a runtime-ready asset.
 
 The repository may contain `TownCenter_graybox.obj` and
 `ResourceDropoff_graybox.obj` under the documented model folders as temporary
-shape references. Authored GLB sources are now generated reproducibly by
-`Tools/GenerateFoundationAssets.mjs`; they provide named parts, normals and
-PBR materials for Unity import, but do not create a production prefab,
+shape references. Authored OBJ and GLB sources are generated reproducibly by
+`Tools/GenerateFoundationAssets.mjs`; the OBJ is the Unity-native import
+route, while the GLB provides interchange and preview. Both provide named
+parts, normals and PBR material intent, but neither creates a production prefab,
 `BuildingData`, construction stage meshes, colliders, sockets, LODs, or Unity
 component wiring. The catalog must remain planned until the authored assets are
 imported and reviewed in Unity.

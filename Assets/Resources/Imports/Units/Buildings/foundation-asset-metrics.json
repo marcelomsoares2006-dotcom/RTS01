@@ -22,6 +22,27 @@
       "path": "Assets/Resources/Imports/Units/Buildings/town-center/TownCenter_authoring.glb"
     },
     {
+      "assetName": "TownCenter_authoring",
+      "format": "obj",
+      "parts": 17,
+      "vertices": 153,
+      "triangles": 238,
+      "materials": 6,
+      "boundsMin": [
+        -4.8227922061357855,
+        0,
+        -3.8227922061357855
+      ],
+      "boundsMax": [
+        4.8227922061357855,
+        7.7,
+        3.8227922061357855
+      ],
+      "path": "Assets/Resources/Imports/Units/Buildings/town-center/TownCenter_authoring.obj",
+      "materialPath": "Assets/Resources/Imports/Units/Buildings/town-center/TownCenter_authoring.mtl",
+      "bytes": 13983
+    },
+    {
       "assetName": "ResourceDropoff_authoring",
       "parts": 11,
       "vertices": 248,
@@ -39,6 +60,27 @@
       ],
       "bytes": 14764,
       "path": "Assets/Resources/Imports/Units/Buildings/resource-dropoff/ResourceDropoff_authoring.glb"
+    },
+    {
+      "assetName": "ResourceDropoff_authoring",
+      "format": "obj",
+      "parts": 11,
+      "vertices": 82,
+      "triangles": 120,
+      "materials": 6,
+      "boundsMin": [
+        -2.4,
+        0,
+        -2.45
+      ],
+      "boundsMax": [
+        2.4,
+        3.8800000000000003,
+        1.9
+      ],
+      "path": "Assets/Resources/Imports/Units/Buildings/resource-dropoff/ResourceDropoff_authoring.obj",
+      "materialPath": "Assets/Resources/Imports/Units/Buildings/resource-dropoff/ResourceDropoff_authoring.mtl",
+      "bytes": 5947
     }
   ]
 }
