@@ -7,6 +7,38 @@ using UnityEngine.AI;
 public class DataHandler : MonoBehaviour
 {
     public static LegacyEconomyRuntimeAdapter EconomyRuntime { get; set; }
+
+    /// <summary>
+    /// Captures a live production queue into the unit save record. The caller
+    /// supplies the detached planning state because save code must not infer
+    /// era/ownership from a prefab or scene object.
+    /// </summary>
+    public static BuildingProductionSnapshotResult CaptureProductionQueue(
+        GamePlayerUnitData unitData,
+        BuildingContentCatalog catalog,
+        StrategicPlanningState state,
+        BuildingProductionQueue queue)
+    {
+        if (unitData == null) return BuildingProductionSnapshotResult.InvalidSnapshot;
+        BuildingProductionQueueSnapshot snapshot;
+        BuildingProductionSnapshotResult result = BuildingProductionSaveRules.Capture(
+            catalog, state, queue, unitData.code, out snapshot);
+        if (result == BuildingProductionSnapshotResult.Captured)
+            unitData.productionQueue = snapshot;
+        return result;
+    }
+
+    /// <summary>Restores the queue persisted on a unit save record.</summary>
+    public static BuildingProductionSnapshotResult RestoreProductionQueue(
+        GamePlayerUnitData unitData,
+        BuildingContentCatalog catalog,
+        StrategicPlanningState state,
+        BuildingProductionQueue queue)
+    {
+        if (unitData == null) return BuildingProductionSnapshotResult.InvalidSnapshot;
+        return BuildingProductionSaveRules.Restore(
+            catalog, state, queue, unitData.productionQueue);
+    }
     public void Start()
     {
         DeserializeGameData();
@@ -123,6 +155,8 @@ public class DataHandler : MonoBehaviour
                     u.SetPosition(unit.position);
                     u.Place(true);
                     Building restoredBuilding = (Building)u;
+                    if (unit.construction != null)
+                        restoredBuilding.SetReservedConstructionCosts(unit.construction.reservedCosts);
                     int constructionHealth = unit.construction != null
                         ? unit.construction.constructionHP
                         : unit.constructionHP;
@@ -256,7 +290,7 @@ public class DataHandler : MonoBehaviour
                         building.MaxHP,
                         building.LifecycleState,
                         u.constructorIds,
-                        null,
+                        building.ReservedConstructionCosts,
                         BuildingContentAssetStage.RuntimeReady,
                         true,
                         out u.construction);

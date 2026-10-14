@@ -27,6 +27,9 @@ runtime asset.
   characters have been restored.
 - Reserved costs are normalized by resource and reject negative or overflowing
   entries.
+- The runtime `Building` captures the effective cost after the same buy-cost
+  technology multiplier used by placement, and clears it when construction
+  becomes operational.
 - `RuntimeReady` is required for scene restoration; `Planned` and
   `ModelIntermediate` remain persisted but blocked.
 - Unity/asset validation remains a separate gate. The save contract does not
@@ -37,3 +40,16 @@ runtime asset.
 Run `Tools/Validate-EditorFree.ps1` after changes. Unity play-mode evidence is
 still required to confirm visual reconstruction, worker AI reattachment, and
 reservation refunds against authored assets.
+
+## Cancellation and demolition boundary
+
+`BuildingConstructionCancellationRules.TryCancel` accepts only `Blueprint` and
+`UnderConstruction`. It refunds normalized reserved costs using the supplied
+ratio, clears saved worker IDs, clears the reservation, and emits a detached
+`Ruined` snapshot. `Operational`, `Damaged`, `Destroyed`, and `Ruined` states are
+rejected by this construction cancellation path; they belong to the separate
+repair/demolition contract.
+
+Runtime cancellation requires `RuntimeReady` content. An intermediate snapshot
+can be audited with the explicit `requireRuntimeReady: false` option, while the
+default path returns `ContentUnavailable` and does not mutate the stockpile.

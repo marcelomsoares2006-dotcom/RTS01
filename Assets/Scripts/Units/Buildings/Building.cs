@@ -18,6 +18,10 @@ public class Building : Unit
     private MeshFilter _rendererMesh;
     private Mesh[] _constructionMeshes;
     private int _constructionHP;
+    // Construction cost is spent when placement is confirmed, but remains
+    // attached to an unfinished building so cancellation can refund it and
+    // save/load can preserve the reservation exactly.
+    private List<BuildingMaintenanceCost> _reservedConstructionCosts;
     private List<CharacterManager> _constructors;
     private List<CharacterManager> _garrisonedUnits;
     private int _garrisonAttackDamageBonus;
@@ -39,6 +43,7 @@ public class Building : Unit
         _bt.enabled = false;
 
         _constructionHP = 0;
+        _reservedConstructionCosts = new List<BuildingMaintenanceCost>();
         _constructors = new List<CharacterManager>();
         _garrisonedUnits = new List<CharacterManager>();
         _garrisonAttackDamageBonus = 0;
@@ -106,6 +111,8 @@ public class Building : Unit
     public override void Place(bool fromSavedData = false)
     {
         base.Place(fromSavedData);
+        if (!fromSavedData)
+            _reservedConstructionCosts = CaptureConstructionCost();
         // set placement state
         _placement = BuildingPlacement.FIXED;
         // change building materials
@@ -334,6 +341,7 @@ public class Building : Unit
     private void _SetAlive(bool fromSavedData = false)
     {
         _isAlive = true;
+        _reservedConstructionCosts.Clear();
         _bt.enabled = true;
         ComputeProduction();
         Globals.UpdateNavMeshSurface();
@@ -390,6 +398,51 @@ public class Building : Unit
     }
 
     public int ConstructionHP { get => _constructionHP; }
+    public IReadOnlyList<BuildingMaintenanceCost> ReservedConstructionCosts
+    {
+        get { return _reservedConstructionCosts.AsReadOnly(); }
+    }
+    public void SetReservedConstructionCosts(IEnumerable<BuildingMaintenanceCost> costs)
+    {
+        _reservedConstructionCosts = new List<BuildingMaintenanceCost>();
+        if (costs == null) return;
+        foreach (BuildingMaintenanceCost cost in costs)
+            if (cost != null && cost.amount > 0)
+                _reservedConstructionCosts.Add(new BuildingMaintenanceCost(cost.resource, cost.amount));
+    }
+    private List<BuildingMaintenanceCost> CaptureConstructionCost()
+    {
+        List<BuildingMaintenanceCost> result = new List<BuildingMaintenanceCost>();
+        if (Data == null || Data.cost == null) return result;
+        float costReducerBuy = TechnologyNodeActioners.GetMultiplier("cost_reducer_buy");
+        foreach (ResourceValue value in Data.cost)
+        {
+            if (value == null || value.amount <= 0) continue;
+            EconomyResourceType resource;
+            if (!TryMapResource(value.code, out resource)) continue;
+            int spentAmount = (int)(value.amount * costReducerBuy);
+            if (spentAmount <= 0) continue;
+            BuildingMaintenanceCost existing = result.Find(x => x.resource == resource);
+            if (existing == null) result.Add(new BuildingMaintenanceCost(resource, spentAmount));
+            else
+            {
+                long total = (long)existing.amount + spentAmount;
+                existing.amount = total > int.MaxValue ? int.MaxValue : (int)total;
+            }
+        }
+        return result;
+    }
+    private static bool TryMapResource(InGameResource source, out EconomyResourceType target)
+    {
+        switch (source)
+        {
+            case InGameResource.Food: target = EconomyResourceType.Food; return true;
+            case InGameResource.Wood: target = EconomyResourceType.Wood; return true;
+            case InGameResource.Gold: target = EconomyResourceType.Gold; return true;
+            case InGameResource.Stone: target = EconomyResourceType.Stone; return true;
+            default: target = default(EconomyResourceType); return false;
+        }
+    }
     public List<CharacterManager> Constructors { get => _constructors; }
     public bool HasConstructorsFull
     {

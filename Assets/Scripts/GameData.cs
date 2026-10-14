@@ -21,6 +21,8 @@ public class GamePlayerUnitData : BinarySerializable
     public string[] constructorIds;
     /// <summary>Forward-compatible construction state; null means legacy save.</summary>
     public BuildingConstructionSaveSnapshot construction;
+    /// <summary>Forward-compatible catalog-backed production queue snapshot.</summary>
+    public BuildingProductionQueueSnapshot productionQueue;
 
     public GamePlayerUnitData() { }
 

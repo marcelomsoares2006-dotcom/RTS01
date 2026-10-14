@@ -22,4 +22,8 @@ Para o roster planejado, `BuildingProductionCatalogRules` valida `BuildingConten
 
 `BuildingProductionSaveRules` captura e restaura a fila como snapshot puro vinculado ao código do prédio e à era. Cada ordem preserva produto, tempo, progresso, custos e população reservada; a restauração valida novamente runtime-readiness e o contrato de produção antes de substituir a fila. Conteúdo intermediário não pode criar uma fila restaurada.
 
+`BuildingProductionCommandRules` aplica o mesmo gate a enqueue e cancelamento. Conteúdo planejado ou bloqueado por Era não reserva recursos nem população; cancelamento válido devolve exatamente o custo e a população reservada através da fila determinística.
+
+`GamePlayerUnitData.productionQueue` agora carrega o snapshot da fila, e `DataHandler.CaptureProductionQueue`/`RestoreProductionQueue` conectam o contrato ao caminho de save/load. A restauração valida prédio, proprietário, Era, produto e integridade do snapshot antes de substituir a fila; nenhum prefab é serializado.
+
 O avanço permanece responsabilidade do loop de partida: chame `binding.Advance(ownerId, deltaTime, out completedProducts)` e assine `binding.ProductCompleted` para materializar a unidade ou o efeito correspondente. A ponte não instancia prefabs, não altera cenas e rejeita catálogos ou estados econômicos ausentes antes de criar o adapter.

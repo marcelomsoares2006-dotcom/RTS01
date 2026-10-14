@@ -74,6 +74,8 @@ public static class BuildingProductionSaveRules
                     return BuildingProductionSnapshotResult.UnsupportedEconomyResource;
                 if (productResult != BuildingProductionCatalogResult.Available)
                     return BuildingProductionSnapshotResult.ProductUnavailable;
+                if (!MatchesCatalogOrder(catalog, entry.code, order, state))
+                    return BuildingProductionSnapshotResult.InvalidSnapshot;
                 candidate.orders.Add(Copy(order));
             }
         snapshot = candidate;
@@ -112,6 +114,8 @@ public static class BuildingProductionSaveRules
                 return BuildingProductionSnapshotResult.UnsupportedEconomyResource;
             if (productResult != BuildingProductionCatalogResult.Available)
                 return BuildingProductionSnapshotResult.ProductUnavailable;
+            if (!MatchesCatalogOrder(catalog, entry.code, saved, state))
+                return BuildingProductionSnapshotResult.InvalidSnapshot;
             BuildingProductionOrder order = new BuildingProductionOrder
             {
                 productCode = saved.productCode.Trim(), duration = saved.duration,
@@ -132,6 +136,76 @@ public static class BuildingProductionSaveRules
             elapsed = order.elapsed, populationCost = order.populationCost,
             cost = CopyCost(order.cost)
         };
+    }
+
+    private static bool MatchesCatalogOrder(
+        BuildingContentCatalog catalog,
+        string buildingCode,
+        BuildingProductionOrder order,
+        StrategicPlanningState state)
+    {
+        if (order == null) return false;
+        return MatchesCatalogOrder(catalog, buildingCode, order.productCode,
+            order.duration, order.elapsed, order.populationCost, order.cost, state);
+    }
+
+    private static bool MatchesCatalogOrder(
+        BuildingContentCatalog catalog,
+        string buildingCode,
+        BuildingProductionOrderSnapshot order,
+        StrategicPlanningState state)
+    {
+        if (order == null) return false;
+        return MatchesCatalogOrder(catalog, buildingCode, order.productCode,
+            order.duration, order.elapsed, order.populationCost, order.cost, state);
+    }
+
+    private static bool MatchesCatalogOrder(
+        BuildingContentCatalog catalog,
+        string buildingCode,
+        string productCode,
+        float duration,
+        float elapsed,
+        int populationCost,
+        List<ResourceValue> savedCost,
+        StrategicPlanningState state)
+    {
+        BuildingProductionEntry expected;
+        BuildingProductionCatalogResult result;
+        if (!BuildingProductionCatalogRules.TryCreateLegacyQueueEntry(
+            catalog, buildingCode, productCode, state, out expected, out result))
+            return false;
+        if (Math.Abs(expected.productionTime - duration) > 0.001f
+            || expected.populationCost != populationCost
+            || elapsed < 0f || elapsed > duration)
+            return false;
+        Dictionary<InGameResource, int> expectedCost = ToCostMap(expected.cost);
+        Dictionary<InGameResource, int> actualCost = ToCostMap(savedCost);
+        if (expectedCost.Count != actualCost.Count) return false;
+        foreach (KeyValuePair<InGameResource, int> pair in expectedCost)
+        {
+            int amount;
+            if (!actualCost.TryGetValue(pair.Key, out amount) || amount != pair.Value)
+                return false;
+        }
+        return true;
+    }
+
+    private static Dictionary<InGameResource, int> ToCostMap(List<ResourceValue> values)
+    {
+        Dictionary<InGameResource, int> result = new Dictionary<InGameResource, int>();
+        if (values == null) return result;
+        for (int i = 0; i < values.Count; i++)
+        {
+            ResourceValue value = values[i];
+            if (value == null || value.amount <= 0) return new Dictionary<InGameResource, int>();
+            int current;
+            result.TryGetValue(value.code, out current);
+            long total = (long)current + value.amount;
+            if (total > int.MaxValue) return new Dictionary<InGameResource, int>();
+            result[value.code] = (int)total;
+        }
+        return result;
     }
 
     private static List<ResourceValue> CopyCost(List<ResourceValue> source)
