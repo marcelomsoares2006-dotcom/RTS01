@@ -137,13 +137,26 @@ public sealed class WallGateContract
 /// <summary>Physics-free observation captured by a future placement adapter.</summary>
 public struct WallGatePlacementObservation
 {
+    public WallGatePlacementObservation(int ownerId = -1)
+    {
+        footprintClear = false;
+        terrainSupported = false;
+        endpointAvailable = false;
+        requiresConnection = false;
+        occupied = false;
+        terrainSlope = 0f;
+        this.ownerId = ownerId;
+        spacingAvailable = false;
+        nearestPieceDistance = 0f;
+    }
+
     public bool footprintClear;
     public bool terrainSupported;
     public bool endpointAvailable;
     public bool requiresConnection;
     public bool occupied;
     public float terrainSlope;
-    public int ownerId = -1;
+    public int ownerId;
     public bool spacingAvailable;
     public float nearestPieceDistance;
 }
