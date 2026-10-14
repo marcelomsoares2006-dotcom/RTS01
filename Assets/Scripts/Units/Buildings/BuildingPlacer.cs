@@ -13,6 +13,8 @@ public class BuildingPlacer : MonoBehaviour
     private Vector3 _lastPlacementPosition;
 
     private UnitManager _builderManager;
+    private readonly BuildingCatalogResolver _catalogResolver =
+        BuildingCatalogResolver.LoadFromResources();
 
     private void Start()
     {
@@ -122,6 +124,35 @@ public class BuildingPlacer : MonoBehaviour
                 return;
             }
         }
+    }
+
+    /// <summary>
+    /// Catalog-aware entry point for construction commands. The legacy input
+    /// path remains compatible until the match state exposes era and population
+    /// directly to the UI and AI.
+    /// </summary>
+    public BuildingAvailabilityResult TrySelectPlacedBuilding(
+        string buildingCode,
+        BuildingEra currentEra,
+        int population,
+        IEnumerable<string> unlockedTechnologyCodes = null,
+        IEnumerable<string> ownedBuildingCodes = null)
+    {
+        BuildingAvailabilityResult availability = _catalogResolver.Validate(
+            buildingCode,
+            currentEra,
+            population,
+            unlockedTechnologyCodes,
+            ownedBuildingCodes);
+        if (availability != BuildingAvailabilityResult.Available)
+            return availability;
+
+        BuildingData buildingData;
+        if (!_catalogResolver.TryGetBuildingData(buildingCode, out buildingData))
+            return BuildingAvailabilityResult.NotFound;
+
+        SelectPlacedBuilding(buildingData);
+        return BuildingAvailabilityResult.Available;
     }
 
     public void SpawnBuilding(BuildingData data, int owner, Vector3 position)

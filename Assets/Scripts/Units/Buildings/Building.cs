@@ -223,6 +223,18 @@ public class Building : Unit
     public bool HasValidPlacement { get => _placement == BuildingPlacement.VALID; }
     public bool IsFixed { get => _placement == BuildingPlacement.FIXED; }
     public override bool IsAlive { get => _isAlive; }
+    public BuildingLifecycleState LifecycleState
+    {
+        get
+        {
+            return BuildingConstructionRules.GetLifecycleState(
+                IsFixed,
+                _isAlive,
+                HP,
+                MaxHP,
+                _constructionHP);
+        }
+    }
     public int DataIndex
     {
         get
