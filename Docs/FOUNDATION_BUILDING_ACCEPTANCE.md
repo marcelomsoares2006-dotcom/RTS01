@@ -19,6 +19,11 @@ Use `-ReportOnly` to print every outstanding issue while preparing the assets:
 powershell -NoProfile -ExecutionPolicy Bypass -File Tools/Validate-FoundationAssets.ps1 -ReportOnly
 ```
 
+The gate reports `model-intermediate` when a foundation folder contains only
+the repository's graybox OBJ sources. That state is useful for art handoff but
+still fails the gate; the next required step is an authored FBX/GLB import and
+Unity prefab assembly.
+
 ## Repository acceptance
 
 For each entry, the gate requires:
