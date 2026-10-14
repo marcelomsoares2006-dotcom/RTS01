@@ -68,8 +68,10 @@ $requirements = @{
         'Prefab root uses Unit layer (12), Unit tag and valid terrain placement footprint'
     )
 }
+$modelStates = @{}
 
 foreach ($code in @('town_center', 'resource_dropoff')) {
+    $modelStates[$code] = 'missing'
     if (!$byCode.ContainsKey($code)) {
         Add-Issue $issues $code 'Catalog entry is missing.'
         continue
@@ -134,13 +136,37 @@ foreach ($code in @('town_center', 'resource_dropoff')) {
             $modelFiles = @(Get-ChildItem -LiteralPath $modelFullPath -File)
             if ($modelFiles.Count -eq 0) {
                 Add-Issue $issues $code "Model path contains no authored model file: $modelPath"
+            } else {
+                $grayboxFiles = @($modelFiles | Where-Object { $_.Extension -ieq '.obj' -and $_.Name -match '(?i)graybox' })
+                if ($grayboxFiles.Count -gt 0) {
+                    $modelStates[$code] = 'model-intermediate'
+                    Add-Issue $issues $code 'Model source is model-intermediate graybox; replace with authored FBX/GLB and import it in Unity.'
+                    foreach ($graybox in $grayboxFiles) {
+                        $grayboxText = Get-Content -Raw -LiteralPath $graybox.FullName
+                        if ($grayboxText -notmatch '(?m)^\s*v\s+' -or $grayboxText -notmatch '(?m)^\s*f\s+')
+                            { Add-Issue $issues $code "Graybox OBJ has no usable vertex/face data: $(Relative-Path $graybox.FullName)" }
+                        if (!(Test-Path -LiteralPath ($graybox.FullName + '.meta') -PathType Leaf))
+                            { Add-Issue $issues $code "Graybox OBJ metadata is missing: $(Relative-Path $graybox.FullName).meta" }
+                    }
+                } else {
+                    $modelStates[$code] = 'model-authored'
+                }
             }
         }
     }
 }
 
+$stateSummary = @('town_center', 'resource_dropoff') | ForEach-Object {
+    "$_=$($modelStates[$_])"
+}
+Write-Host ('Foundation model states: ' + ($stateSummary -join ', '))
+
 if ($issues.Count -gt 0) {
     $message = "Foundation asset gate failed with $($issues.Count) issue(s):`n - " + ($issues -join "`n - ")
+    Write-Host 'Unity import checklist still required for each foundation:'
+    foreach ($code in @('town_center', 'resource_dropoff')) {
+        foreach ($requirement in $requirements[$code]) { Write-Host " - $code :: $requirement" }
+    }
     if ($ReportOnly) {
         Write-Warning $message
         exit 0

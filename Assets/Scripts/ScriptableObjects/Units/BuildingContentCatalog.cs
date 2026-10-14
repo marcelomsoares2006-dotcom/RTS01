@@ -14,6 +14,18 @@ public enum BuildingContentStatus
     Validated
 }
 
+/// <summary>
+/// Asset lifecycle exposed to UI and strategic systems. Intermediate content
+/// may have documented paths and complete economy contracts, but is not a
+/// runtime construction candidate until authored references exist.
+/// </summary>
+public enum BuildingContentAssetStage
+{
+    Planned,
+    AssetIntermediate,
+    RuntimeReady
+}
+
 public enum BuildingContentRole
 {
     TownCenter,
@@ -111,6 +123,17 @@ public sealed class BuildingContentSpec
     public bool IsRuntimeReady
     {
         get { return status >= BuildingContentStatus.Playable && buildingData != null; }
+    }
+
+    public BuildingContentAssetStage AssetStage
+    {
+        get
+        {
+            if (IsRuntimeReady) return BuildingContentAssetStage.RuntimeReady;
+            if (!string.IsNullOrWhiteSpace(prefabPath) || !string.IsNullOrWhiteSpace(modelPath))
+                return BuildingContentAssetStage.AssetIntermediate;
+            return BuildingContentAssetStage.Planned;
+        }
     }
 }
 

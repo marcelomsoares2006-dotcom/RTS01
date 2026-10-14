@@ -18,6 +18,22 @@ public sealed class BuildingConstructionContentContract
     public bool supportsProduction;
 }
 
+/// <summary>Prefab-free economic projection for UI and strategic AI.</summary>
+public sealed class BuildingEconomyContentProjection
+{
+    public string code;
+    public string displayName;
+    public BuildingContentRole role;
+    public BuildingEra minimumEra;
+    public BuildingContentAssetStage assetStage;
+    public bool runtimeReady;
+    public BuildingAvailabilityResult availability;
+    public int populationCapacity;
+    public List<BuildingContentCost> constructionCost = new List<BuildingContentCost>();
+    public List<BuildingContentProduction> production = new List<BuildingContentProduction>();
+    public List<EconomyResourceType> dropoffResources = new List<EconomyResourceType>();
+}
+
 /// <summary>
 /// Bridges the authoritative building content roadmap to the shared
 /// era/technology planning state.  This keeps planned entries visible to
@@ -26,6 +42,43 @@ public sealed class BuildingConstructionContentContract
 /// </summary>
 public static class BuildingContentProgressionRules
 {
+    /// <summary>
+    /// Projects the catalog into data that UI/AI can consume even while the
+    /// asset is intermediate. The projection never carries a prefab or
+    /// BuildingData reference, and intermediate content remains unavailable
+    /// to placement through <see cref="availability"/>.
+    /// </summary>
+    public static bool TryProjectEconomy(
+        BuildingContentCatalog catalog,
+        string buildingCode,
+        StrategicPlanningState state,
+        out BuildingEconomyContentProjection projection)
+    {
+        projection = null;
+        if (catalog == null || string.IsNullOrWhiteSpace(buildingCode)) return false;
+        BuildingContentSpec entry = catalog.Find(buildingCode.Trim());
+        if (entry == null) return false;
+
+        projection = new BuildingEconomyContentProjection
+        {
+            code = entry.code.Trim(),
+            displayName = entry.displayName,
+            role = entry.role,
+            minimumEra = entry.minimumEra,
+            assetStage = entry.AssetStage,
+            runtimeReady = entry.IsRuntimeReady,
+            availability = state == null
+                ? BuildingAvailabilityResult.ContentUnavailable
+                : Validate(catalog, entry.code, state),
+            populationCapacity = entry.populationCapacity
+        };
+        CopyCosts(entry.constructionCost, projection.constructionCost);
+        CopyProduction(entry.production, projection.production);
+        if (entry.dropoffResources != null)
+            projection.dropoffResources.AddRange(entry.dropoffResources);
+        return true;
+    }
+
     /// <summary>
     /// Resolves an entry into a detached construction contract after applying
     /// the same era, technology, owner and runtime-readiness gates used by

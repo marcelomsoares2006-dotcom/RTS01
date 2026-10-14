@@ -153,6 +153,36 @@ public sealed class BuildingContentProgressionRulesTests
             "Resolved contracts must not mutate the catalog asset.");
     }
 
+    [Test]
+    public void EconomyProjectionExposesIntermediateTownCenterWithoutPromotingIt()
+    {
+        BuildingContentCatalog catalog = CreateCatalog();
+        catalog.entries.Add(new BuildingContentSpec
+        {
+            code = "town_center",
+            displayName = "Town Center",
+            role = BuildingContentRole.TownCenter,
+            minimumEra = BuildingEra.Dark,
+            prefabPath = "Assets/Resources/Prefabs/Units/Buildings/TownCenter.prefab",
+            modelPath = "Assets/Resources/Imports/Units/Buildings/town-center/",
+            constructionCost = new List<BuildingContentCost>
+            {
+                new BuildingContentCost { resource = EconomyResourceType.Wood, amount = 400 }
+            },
+            supportsDropoff = true,
+            dropoffResources = new List<EconomyResourceType> { EconomyResourceType.Food }
+        });
+
+        BuildingEconomyContentProjection projection;
+        Assert.That(BuildingContentProgressionRules.TryProjectEconomy(
+            catalog, "town_center", State(BuildingEra.Dark), out projection), Is.True);
+        Assert.That(projection.assetStage, Is.EqualTo(BuildingContentAssetStage.AssetIntermediate));
+        Assert.That(projection.runtimeReady, Is.False);
+        Assert.That(projection.availability, Is.EqualTo(BuildingAvailabilityResult.ContentUnavailable));
+        Assert.That(projection.constructionCost[0].amount, Is.EqualTo(400));
+        Assert.That(projection.dropoffResources, Does.Contain(EconomyResourceType.Food));
+    }
+
     private BuildingContentCatalog CreateCatalog()
     {
         BuildingContentCatalog catalog = ScriptableObject.CreateInstance<BuildingContentCatalog>();
