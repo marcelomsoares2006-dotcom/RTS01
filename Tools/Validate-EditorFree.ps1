@@ -86,6 +86,7 @@ function Test-ConstructionContracts {
         @{ Path = 'Assets/Scripts/Units/Buildings/BuildingConstructionCancellationRules.cs'; Pattern = 'class\s+BuildingConstructionCancellationRules\b'; Name = 'construction cancellation rules' },
         @{ Path = 'Assets/Scripts/Economy/BuildingEconomyRules.cs'; Pattern = 'class\s+BuildingEconomyRules\b'; Name = 'building economy rules' },
         @{ Path = 'Assets/Scripts/Economy/LumberCampEconomyContract.cs'; Pattern = 'class\s+LumberCampEconomyContract\b'; Name = 'lumber camp economy contract' },
+        @{ Path = 'Assets/Scripts/Economy/MiningCampEconomyContract.cs'; Pattern = 'class\s+MiningCampEconomyContract\b'; Name = 'mining camp economy contract' },
         @{ Path = 'Assets/Scripts/Economy/ConstructionReservationRules.cs'; Pattern = 'class\s+ConstructionReservationLedger\b'; Name = 'construction reservation rules' },
         @{ Path = 'Assets/Scripts/UI/BuildingConstructionUiRules.cs'; Pattern = 'class\s+BuildingConstructionUiRules\b'; Name = 'building construction UI rules' },
         @{ Path = 'Assets/Scripts/StrategicAI/ConstructionPlanningRules.cs'; Pattern = 'class\s+ConstructionPlanningRules\b'; Name = 'construction planning rules' },
@@ -135,6 +136,7 @@ function Test-ConstructionContracts {
         'Assets/Tests/Editor/FoundationPlacementRulesTests.cs',
         'Assets/Tests/Editor/BuildingEconomyRulesTests.cs',
         'Assets/Tests/Editor/LumberCampEconomyContractTests.cs',
+        'Assets/Tests/Editor/MiningCampEconomyContractTests.cs',
         'Assets/Tests/Editor/BuildingPlacementPreviewRulesTests.cs',
         'Assets/Tests/Editor/WallGateContractTests.cs'
     )

@@ -35,3 +35,18 @@ rejecting a collector assigned to another resource without mutating the ledger.
 The construction planner uses the same operational prerequisite rule, so AI
 intent cannot enqueue a dependent dropoff while the Town Center is still under
 construction.
+
+## Mining Camp milestone
+
+`MiningCampEconomyContract` specializes this boundary for the Gold and Stone
+route. Its catalog contract is exact: `mining_camp` is a Dark Age building
+costing 50 Wood, accepts Gold and Stone only, and requires an owned operational
+`town_center` before the route can be created. The camp itself must also be
+operational and runtime-ready.
+
+Gold and Stone deliveries use the same `ResourceDropoffContract` path as the
+simulation and save/replay adapters. The collector deposits only its integer
+carried amount, preserving fractional carry, and rejected Wood deliveries do
+not mutate the ledger. `BuildingEconomyRules` validates both accepted resource
+types, while `ConstructionPlanningRules` exposes the camp to AI only after the
+Town Center is operational and the 50 Wood cost is affordable.

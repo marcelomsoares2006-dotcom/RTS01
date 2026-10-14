@@ -42,6 +42,15 @@ collector delivery and AI construction gate are covered by
 `Planned` until its authored `BuildingData` and prefab are promoted through the
 Unity asset gate.
 
+The Mining Camp adapter follows the same boundary for the mineral economy: it
+requires the Dark Age 50 Wood contract, an operational Town Center and camp,
+and routes Gold and Stone exclusively through `ResourceDropoffContract`.
+Collector fractional carry, AI affordability/prerequisite gating and the
+shared `BuildingEconomyRules` checks are covered by
+`MiningCampEconomyContract` editor tests. The catalog entry remains `Planned`
+until its authored `BuildingData` and prefab are promoted through the Unity
+asset gate.
+
 Town Center acceptance requires worker production, population support, resource dropoff, garrison, starting-base placement and save/load identity. Resource dropoff acceptance requires resource-type routing and worker access rules. Barracks acceptance requires a production queue, production time, unit output and age/technology requirements. These are contracts for later integration; this change does not alter economy runtime.
 
 ## Validation
