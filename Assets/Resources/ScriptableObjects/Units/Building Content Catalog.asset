@@ -292,7 +292,7 @@ MonoBehaviour:
   - code: tower
     displayName: Tower
     role: 4
-    status: 1
+    status: 2
     minimumEra: 1
     buildingData: {fileID: 11400000, guid: 639a0392acefa480c9c2cfc57940efec, type: 2}
     prefabPath: Assets/Resources/Prefabs/Units/Buildings/Tower.prefab
@@ -317,6 +317,7 @@ MonoBehaviour:
     supportsProduction: 0
     supportsGarrison: 1
     acceptanceCriteria: >-
-      Existing defensive prototype. Combat uses the authored UnitData attack
+      Playable defensive building. Combat uses the authored UnitData attack
       profile, accepts up to five combat units and adds two damage per unit.
-      Upgrade and visual validation remain before it can be marked Playable.
+      Placement, garrison and production-independent defense contracts are
+      validated by the editor tests.

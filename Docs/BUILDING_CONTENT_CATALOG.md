@@ -8,7 +8,7 @@ It separates content that can be offered to the runtime from content that is sti
 | Building | Data | Prefab | Model | Status |
 | --- | --- | --- | --- | --- |
 | House | `Assets/Resources/ScriptableObjects/Units/Buildings/House.asset` | `Assets/Resources/Prefabs/Units/Buildings/House.prefab` | `Assets/Resources/Imports/Units/Buildings/house.fbx` plus two construction meshes | Playable |
-| Tower | `Assets/Resources/ScriptableObjects/Units/Buildings/Tower.asset` | `Assets/Resources/Prefabs/Units/Buildings/Tower.prefab` | `Assets/Resources/Imports/Units/Buildings/tower.fbx` plus two construction meshes | Prototype |
+| Tower | `Assets/Resources/ScriptableObjects/Units/Buildings/Tower.asset` | `Assets/Resources/Prefabs/Units/Buildings/Tower.prefab` | `Assets/Resources/Imports/Units/Buildings/tower.fbx` plus two construction meshes | Playable |
 
 The project also has building materials, selection/ambient audio and the `BuildHouse`/`BuildTower` skills. The essential roster is now represented by explicit planned contracts for Town Center, resource dropoffs, Barracks, Stable and Archery Range. Their `buildingData` fields remain empty until the corresponding authored assets are imported, so the catalog cannot create broken Unity object references.
 

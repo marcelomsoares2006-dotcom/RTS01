@@ -70,8 +70,8 @@ public sealed class BuildingContentCatalogTests
     {
         BuildingContentCatalog catalog = AssetDatabase.LoadAssetAtPath<BuildingContentCatalog>(CatalogPath);
         List<string> runtimeCodes = catalog.RuntimeReadyEntries().Select(entry => entry.code).ToList();
-        CollectionAssert.AreEquivalent(new[] { "house" }, runtimeCodes,
-            "The catalog must not expose planned buildings to runtime construction.");
+        CollectionAssert.AreEquivalent(new[] { "house", "tower" }, runtimeCodes,
+            "The catalog must expose only authored playable buildings to runtime construction.");
     }
 
     [Test]
