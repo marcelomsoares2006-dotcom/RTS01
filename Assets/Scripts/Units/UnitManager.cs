@@ -95,7 +95,7 @@ public class UnitManager : MonoBehaviour
     public void TakeHit(int attackPoints)
     {
         if (Unit == null || !Unit.IsAlive || attackPoints <= 0) return;
-        Unit.HP -= attackPoints;
+        Unit.HP -= CombatDamageProfile.ResolveDamage(attackPoints, Unit.Armor);
         UpdateHealthbar();
         if (Unit.HP <= 0) _Die();
     }

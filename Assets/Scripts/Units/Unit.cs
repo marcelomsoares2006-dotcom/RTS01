@@ -282,6 +282,7 @@ public class Unit
     public int AttackDamage { get => _attackDamage; set { _attackDamage = value; } }
     public float AttackRange { get => _attackRange; set { _attackRange = value; } }
     public float AttackRate { get => _attackRate; set { _attackRate = value; } }
+    public int Armor => Mathf.Max(0, _data.armor);
 
     public virtual bool IsAlive { get => true; }
 }
