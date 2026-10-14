@@ -94,8 +94,15 @@ public static class CombatAttackResolver
             || !IsFinite(now) || !IsFinite(origin) || !IsFinite(destination))
             return false;
 
-        float rangeSquared = range * range;
-        if ((destination - origin).sqrMagnitude > rangeSquared)
+        // Compare in double precision so a very large, but finite, authored
+        // range cannot overflow float and accidentally turn into an
+        // unlimited attack radius.
+        double dx = (double)destination.x - origin.x;
+        double dy = (double)destination.y - origin.y;
+        double dz = (double)destination.z - origin.z;
+        double distanceSquared = dx * dx + dy * dy + dz * dz;
+        double rangeSquared = (double)range * range;
+        if (distanceSquared > rangeSquared)
             return false;
 
         if (!cooldown.TryReserve(now, attackRate))

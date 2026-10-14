@@ -75,4 +75,16 @@ public class CombatAttackRuntimeTests
         Assert.That(cooldown.TryReserve(0f, -1f), Is.False);
         Assert.That(cooldown.HasAttacked, Is.False);
     }
+
+    [Test]
+    public void HugeFiniteRangeDoesNotOverflowDistanceValidation()
+    {
+        var cooldown = new CombatCooldownState();
+        CombatProjectilePayload projectile;
+
+        Assert.That(CombatAttackResolver.TryCreateProjectile(
+            Vector3.zero, new Vector3(1000000000f, 0f, 0f),
+            100000000f, 12, 1f, 0f, cooldown, out projectile), Is.False);
+        Assert.That(cooldown.HasAttacked, Is.False);
+    }
 }

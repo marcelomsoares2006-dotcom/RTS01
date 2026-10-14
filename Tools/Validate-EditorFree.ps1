@@ -94,6 +94,7 @@ function Test-ConstructionContracts {
         @{ Path = 'Assets/Scripts/Economy/MillEconomyContract.cs'; Pattern = 'class\s+MillEconomyContract\b'; Name = 'mill economy contract' },
         @{ Path = 'Assets/Scripts/Economy/ConstructionReservationRules.cs'; Pattern = 'class\s+ConstructionReservationLedger\b'; Name = 'construction reservation rules' },
         @{ Path = 'Assets/Scripts/UI/BuildingConstructionUiRules.cs'; Pattern = 'class\s+BuildingConstructionUiRules\b'; Name = 'building construction UI rules' },
+        @{ Path = 'Assets/Scripts/UI/UiAccessibilityRules.cs'; Pattern = 'class\s+UiAccessibilityRules\b'; Name = 'UI accessibility projection' },
         @{ Path = 'Assets/Scripts/StrategicAI/ConstructionPlanningRules.cs'; Pattern = 'class\s+ConstructionPlanningRules\b'; Name = 'construction planning rules' },
         @{ Path = 'Assets/Scripts/StrategicAI/AgeUpTechnologyPlanningRules.cs'; Pattern = 'class\s+AgeUpTechnologyPlanningRules\b'; Name = 'age-up technology planning rules' },
         @{ Path = 'Assets/Scripts/StrategicAI/FoundationPlacementRules.cs'; Pattern = 'class\s+FoundationPlacementRules\b'; Name = 'foundation placement rules' },
@@ -134,6 +135,7 @@ function Test-ConstructionContracts {
         'Assets/Tests/Editor/BuildingConstructionSaveContractsTests.cs',
         'Assets/Tests/Editor/BuildingConstructionCancellationRulesTests.cs',
         'Assets/Tests/Editor/BuildingConstructionUiRulesTests.cs',
+        'Assets/Tests/Editor/UiAccessibilityRulesTests.cs',
         'Assets/Tests/Editor/ConstructionReservationRulesTests.cs',
         'Assets/Tests/Editor/AgeUpTechnologyPlanningRulesTests.cs',
         'Assets/Tests/Editor/StrategicBuildingEligibilityRulesTests.cs',
@@ -151,6 +153,7 @@ function Test-ConstructionContracts {
         'Assets/Tests/Editor/WallGateContractTests.cs'
     )
     foreach ($test in $requiredTests) { Require-File $test | Out-Null }
+    Require-File 'Docs/UI_ACCESSIBILITY_RELEASE_CHECKLIST.md' | Out-Null
     Require-File 'Tools/ValidateMilitaryUnitAssets.mjs' | Out-Null
     Require-Text 'Assets/Scripts/Progression/BuildingContentProgressionRules.cs' 'ValidateEraContracts' 'building era progression contract' | Out-Null
     Require-Text 'Assets/Scripts/Progression/BuildingContentProgressionRules.cs' 'TryProjectEconomy' 'building economy projection' | Out-Null

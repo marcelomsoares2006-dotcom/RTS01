@@ -22,4 +22,20 @@ public sealed class BuildingDefenseContractsTests
         Assert.That(BuildingDefenseRules.CanTarget(1, 2, true,
             Vector3.zero, new Vector3(6f, 0f, 0f), 5f), Is.False);
     }
+
+    [Test]
+    public void TargetingRejectsNonFiniteInputs()
+    {
+        Assert.That(BuildingDefenseRules.CanTarget(1, 2, true,
+            Vector3.zero, new Vector3(float.NaN, 0f, 0f), 5f), Is.False);
+        Assert.That(BuildingDefenseRules.CanTarget(1, 2, true,
+            Vector3.zero, Vector3.right, float.PositiveInfinity), Is.False);
+    }
+
+    [Test]
+    public void GarrisonDamageSaturatesInsteadOfWrappingNegative()
+    {
+        Assert.That(BuildingDefenseRules.ResolveAttackDamage(
+            int.MaxValue, int.MaxValue, int.MaxValue), Is.EqualTo(int.MaxValue));
+    }
 }
