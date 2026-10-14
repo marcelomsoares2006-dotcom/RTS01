@@ -5,6 +5,8 @@ This gate covers the first economy foundation buildings: Town Center
 Wood-only Lumber Camp (`lumber_camp`). The catalog already describes their
 costs, resource coverage and prerequisites, but their visual/runtime assets
 remain planned until authored content is imported.
+Gold/Stone Mining Camp (`mining_camp`) is included in the same authored-model
+gate so both specialized dropoffs can be reviewed together.
 
 Run the editor-free gate from the project root:
 
@@ -12,7 +14,7 @@ Run the editor-free gate from the project root:
 powershell -NoProfile -ExecutionPolicy Bypass -File Tools/Validate-FoundationAssets.ps1
 ```
 
-The command must fail while either entry is planned or an asset is missing.
+The command must fail while any entry is planned or an asset is missing.
 The machine-readable import plan is [`FOUNDATION_IMPORT_MANIFEST.yml`](FOUNDATION_IMPORT_MANIFEST.yml);
 the gate checks that it exists, points to the intermediate sources and retains
 the required Unity component and approval fields.
@@ -60,6 +62,8 @@ prefab and runtime behavior:
   Town Center;
 - Lumber Camp accepts Wood only, costs 50 Wood and requires an operational Town
   Center through `LumberCampEconomyContract`;
+- Mining Camp accepts Gold and Stone, costs 50 Wood and requires an operational
+  Town Center through the existing mining dropoff contract;
 - placement succeeds on valid terrain, rejects steep/blocked/overlapping
   terrain, consumes the declared cost once, and enters construction with a
   visible feedback state;
@@ -85,9 +89,9 @@ returns `ContentNotRuntimeReady` until the dropoff has a runtime-ready asset.
 
 ## Procedural graybox handoff
 
-The repository may contain `TownCenter_graybox.obj` and
-`ResourceDropoff_graybox.obj` under the documented model folders as temporary
-shape references. Authored OBJ and GLB sources are generated reproducibly by
+The repository may contain graybox OBJ sources under the documented model
+folders as temporary shape references. Authored OBJ and GLB sources are
+generated reproducibly by
 `Tools/GenerateFoundationAssets.mjs`; the OBJ is the Unity-native import
 route, while the GLB provides interchange and preview. Both provide named
 parts, normals and PBR material intent, but neither creates a production prefab,
@@ -96,5 +100,5 @@ component wiring. The catalog must remain planned until the authored assets are
 imported and reviewed in Unity.
 
 For a host without Unity, `Tools/FoundationPreviewServer.mjs` serves a local
-Three.js preview of both GLBs. This preview is an art sanity check only; it
+Three.js preview of all four foundation GLBs. This preview is an art sanity check only; it
 does not replace Unity import, prefab serialization or PlayMode acceptance.

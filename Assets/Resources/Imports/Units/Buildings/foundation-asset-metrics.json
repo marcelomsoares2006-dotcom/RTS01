@@ -121,6 +121,46 @@
       "path": "Assets/Resources/Imports/Units/Buildings/lumber-camp/LumberCamp_authoring.obj",
       "materialPath": "Assets/Resources/Imports/Units/Buildings/lumber-camp/LumberCamp_authoring.mtl",
       "bytes": 9418
+    },
+    {
+      "assetName": "MiningCamp_authoring",
+      "parts": 17,
+      "vertices": 508,
+      "triangles": 270,
+      "materials": 6,
+      "boundsMin": [
+        -2.5,
+        0,
+        -2.3
+      ],
+      "boundsMax": [
+        2.5,
+        3.9,
+        2.5685912105075914
+      ],
+      "bytes": 26488,
+      "path": "Assets/Resources/Imports/Units/Buildings/mining-camp/MiningCamp_authoring.glb"
+    },
+    {
+      "assetName": "MiningCamp_authoring",
+      "format": "obj",
+      "parts": 17,
+      "vertices": 169,
+      "triangles": 270,
+      "materials": 6,
+      "boundsMin": [
+        -2.5,
+        0,
+        -2.3
+      ],
+      "boundsMax": [
+        2.5,
+        3.9,
+        2.5685912105075914
+      ],
+      "path": "Assets/Resources/Imports/Units/Buildings/mining-camp/MiningCamp_authoring.obj",
+      "materialPath": "Assets/Resources/Imports/Units/Buildings/mining-camp/MiningCamp_authoring.mtl",
+      "bytes": 15705
     }
   ]
 }

@@ -123,6 +123,31 @@ function buildLumberCamp() {
   return p;
 }
 
+function buildMiningCamp() {
+  const p = [];
+  // A stone-and-timber extraction outpost: the marked shaft, ore bins and
+  // hoist make the gold/stone role readable at gameplay distance.
+  p.push(box('Foundation', 0, 0.2, 0, 5.0, 0.4, 4.6, 0));
+  p.push(box('StorehouseWalls', 0, 1.25, 0.2, 4.25, 1.8, 3.15, 1));
+  for (const [x, z] of [[-1.8,-1.35],[1.8,-1.35],[-1.8,1.7],[1.8,1.7]]) {
+    p.push(box('TimberPost', x, 1.45, z, 0.22, 2.5, 0.22, 2));
+  }
+  p.push(box('TimberBeam', 0, 2.25, -1.52, 4.1, 0.24, 0.24, 2));
+  p.push(pyramid('Roof', 0, 2.25, 0.2, 4.65, 3.6, 1.65, 3));
+  // The shaft rim and shaft are separate so the later Unity prefab can attach
+  // resource VFX and worker interaction sockets without remodelling the mesh.
+  p.push(cylinder('MineShaftRim', 0, 0.45, 1.0, 1.05, 0.3, 10, 1));
+  p.push(cylinder('MineShaft', 0, 0.7, 1.0, 0.78, 0.18, 10, 4));
+  p.push(box('OreBinGold', -1.55, 0.72, 2.05, 1.1, 0.65, 0.9, 4, -0.12));
+  p.push(box('OreBinStone', 1.15, 0.72, 2.05, 1.2, 0.65, 0.9, 1, 0.12));
+  p.push(box('HoistPost', 2.02, 1.2, 0.65, 0.2, 2.25, 0.2, 2));
+  p.push(box('HoistBeam', 1.15, 2.18, 0.65, 1.95, 0.2, 0.2, 2));
+  p.push(cylinder('HoistWheel', 0.78, 1.25, 0.65, 0.38, 0.16, 10, 4, Math.PI / 2));
+  p.push(box('Sign', -1.25, 2.2, -1.72, 1.55, 0.48, 0.08, 4));
+  p.push(box('SignMark', -1.25, 2.2, -1.78, 0.5, 0.08, 0.04, 5));
+  return p;
+}
+
 function makeBinaryGLB(parts, assetName) {
   const positions = [], normals = [], indices = [], primitiveInfo = [];
   for (const item of parts) {
@@ -302,6 +327,7 @@ function writeObj(name, parts, folder) {
 const townCenterParts = buildTownCenter();
 const resourceDropoffParts = buildResourceDropoff();
 const lumberCampParts = buildLumberCamp();
+const miningCampParts = buildMiningCamp();
 const report = {
   generator: 'Tools/GenerateFoundationAssets.mjs',
   coordinateSystem: 'Y-up, right-handed, metres',
@@ -312,6 +338,8 @@ const report = {
     writeObj('ResourceDropoff_authoring', resourceDropoffParts, 'resource-dropoff'),
     writeAsset('LumberCamp_authoring', lumberCampParts, 'lumber-camp'),
     writeObj('LumberCamp_authoring', lumberCampParts, 'lumber-camp'),
+    writeAsset('MiningCamp_authoring', miningCampParts, 'mining-camp'),
+    writeObj('MiningCamp_authoring', miningCampParts, 'mining-camp'),
   ],
 };
 const reportPath = path.join(outputRoot, 'foundation-asset-metrics.json');

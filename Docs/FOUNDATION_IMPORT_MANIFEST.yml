@@ -43,3 +43,17 @@ entries:
     requiredComponents: BuildingManager,BuildingBT,MeshFilter,MeshRenderer,Collider
     approvalChecks: import-model,create-prefab,link-building-data,placement-review,construction-playmode
     promotionCriteria: authored-model,unity-prefab,building-data,placement-playmode
+
+  - code: mining_camp
+    intermediateSource: Assets/Resources/Imports/Units/Buildings/mining-camp/MiningCamp_graybox.obj
+    authoredSource: Assets/Resources/Imports/Units/Buildings/mining-camp/MiningCamp_authoring.obj
+    scaleMeters: 1
+    footprintMeters: 5.0x4.6
+    footprintToleranceMeters: 0.6
+    maxHeightMeters: 4.5
+    expectedPrefab: Assets/Resources/Prefabs/Units/Buildings/MiningCamp.prefab
+    expectedBuildingData: Assets/Resources/ScriptableObjects/Units/Buildings/MiningCamp.asset
+    minimumEra: Dark
+    requiredComponents: BuildingManager,BuildingBT,MeshFilter,MeshRenderer,Collider
+    approvalChecks: import-model,create-prefab,link-building-data,placement-review,construction-playmode
+    promotionCriteria: authored-model,unity-prefab,building-data,placement-playmode
