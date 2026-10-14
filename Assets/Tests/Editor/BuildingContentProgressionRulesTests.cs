@@ -115,6 +115,44 @@ public sealed class BuildingContentProgressionRulesTests
             Is.EqualTo(BuildingConstructionGateResult.Allowed));
     }
 
+    [Test]
+    public void ResolvedContractDetachesTownCenterCostAndDropoffDeclaration()
+    {
+        BuildingContentCatalog catalog = CreateCatalog();
+        BuildingContentSpec townCenter = new BuildingContentSpec
+        {
+            code = "town_center",
+            role = BuildingContentRole.TownCenter,
+            status = BuildingContentStatus.Planned,
+            minimumEra = BuildingEra.Dark,
+            constructionCost = new List<BuildingContentCost>
+            {
+                new BuildingContentCost { resource = EconomyResourceType.Wood, amount = 400 }
+            },
+            supportsDropoff = true,
+            dropoffResources = new List<EconomyResourceType>
+            {
+                EconomyResourceType.Food, EconomyResourceType.Wood,
+                EconomyResourceType.Gold, EconomyResourceType.Stone
+            }
+        };
+        catalog.entries.Add(townCenter);
+        StrategicPlanningState state = State(BuildingEra.Dark);
+        BuildingConstructionContentContract contract;
+        BuildingAvailabilityResult result;
+
+        Assert.That(BuildingContentProgressionRules.TryResolveConstructionContract(
+            catalog, "town_center", state, out contract, out result, false), Is.True);
+        Assert.That(result, Is.EqualTo(BuildingAvailabilityResult.Available));
+        Assert.That(contract.code, Is.EqualTo("town_center"));
+        Assert.That(contract.constructionCost[0].amount, Is.EqualTo(400));
+        CollectionAssert.AreEquivalent(townCenter.dropoffResources, contract.dropoffResources);
+
+        contract.constructionCost[0].amount = 1;
+        Assert.That(townCenter.constructionCost[0].amount, Is.EqualTo(400),
+            "Resolved contracts must not mutate the catalog asset.");
+    }
+
     private BuildingContentCatalog CreateCatalog()
     {
         BuildingContentCatalog catalog = ScriptableObject.CreateInstance<BuildingContentCatalog>();

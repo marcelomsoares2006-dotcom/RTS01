@@ -2,6 +2,23 @@ using System;
 using System.Collections.Generic;
 
 /// <summary>
+/// Immutable-at-use snapshot of a building's declarative construction
+/// contract. It intentionally contains no prefab or scene reference.
+/// </summary>
+public sealed class BuildingConstructionContentContract
+{
+    public string code;
+    public BuildingContentRole role;
+    public BuildingEra minimumEra;
+    public List<BuildingContentCost> constructionCost = new List<BuildingContentCost>();
+    public List<BuildingRequirement> requirements = new List<BuildingRequirement>();
+    public List<BuildingContentProduction> production = new List<BuildingContentProduction>();
+    public List<EconomyResourceType> dropoffResources = new List<EconomyResourceType>();
+    public bool supportsDropoff;
+    public bool supportsProduction;
+}
+
+/// <summary>
 /// Bridges the authoritative building content roadmap to the shared
 /// era/technology planning state.  This keeps planned entries visible to
 /// design tools while preventing them from leaking into runtime construction
@@ -9,6 +26,49 @@ using System.Collections.Generic;
 /// </summary>
 public static class BuildingContentProgressionRules
 {
+    /// <summary>
+    /// Resolves an entry into a detached construction contract after applying
+    /// the same era, technology, owner and runtime-readiness gates used by
+    /// placement. This is the safe handoff for UI and AI commands: assets are
+    /// read as data, while prefab instantiation remains a separate runtime
+    /// concern.
+    /// </summary>
+    public static bool TryResolveConstructionContract(
+        BuildingContentCatalog catalog,
+        string buildingCode,
+        StrategicPlanningState state,
+        out BuildingConstructionContentContract contract,
+        out BuildingAvailabilityResult result,
+        bool requireRuntimeReady = true)
+    {
+        contract = null;
+        result = Validate(catalog, buildingCode, state, requireRuntimeReady);
+        if (result != BuildingAvailabilityResult.Available)
+            return false;
+
+        BuildingContentSpec entry = catalog.Find(buildingCode.Trim());
+        if (entry == null)
+        {
+            result = BuildingAvailabilityResult.NotFound;
+            return false;
+        }
+
+        contract = new BuildingConstructionContentContract
+        {
+            code = entry.code.Trim(),
+            role = entry.role,
+            minimumEra = entry.minimumEra,
+            supportsDropoff = entry.supportsDropoff,
+            supportsProduction = entry.supportsProduction
+        };
+        CopyCosts(entry.constructionCost, contract.constructionCost);
+        CopyRequirements(entry.requirements, contract.requirements);
+        CopyProduction(entry.production, contract.production);
+        if (entry.dropoffResources != null)
+            contract.dropoffResources.AddRange(entry.dropoffResources);
+        return true;
+    }
+
     /// <summary>
     /// Audits the roster's age graph without loading scenes or prefabs. A
     /// dropoff or production building must be anchored to an operational Town
@@ -129,6 +189,43 @@ public static class BuildingContentProgressionRules
                 return true;
         }
         return false;
+    }
+
+    private static void CopyCosts(IEnumerable<BuildingContentCost> source, List<BuildingContentCost> target)
+    {
+        if (source == null) return;
+        foreach (BuildingContentCost value in source)
+            if (value != null) target.Add(new BuildingContentCost { resource = value.resource, amount = value.amount });
+    }
+
+    private static void CopyRequirements(IEnumerable<BuildingRequirement> source, List<BuildingRequirement> target)
+    {
+        if (source == null) return;
+        foreach (BuildingRequirement value in source)
+            if (value != null) target.Add(new BuildingRequirement
+            {
+                technologyCode = value.technologyCode,
+                buildingCode = value.buildingCode,
+                minimumPopulation = value.minimumPopulation
+            });
+    }
+
+    private static void CopyProduction(IEnumerable<BuildingContentProduction> source, List<BuildingContentProduction> target)
+    {
+        if (source == null) return;
+        foreach (BuildingContentProduction value in source)
+        {
+            if (value == null) continue;
+            BuildingContentProduction copy = new BuildingContentProduction
+            {
+                productCode = value.productCode,
+                productionTime = value.productionTime,
+                queueLimit = value.queueLimit,
+                populationCost = value.populationCost
+            };
+            CopyCosts(value.cost, copy.cost);
+            target.Add(copy);
+        }
     }
 
     private static HashSet<string> OperationalOwnedBuildingCodes(StrategicPlanningState state)
