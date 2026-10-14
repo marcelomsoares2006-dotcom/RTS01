@@ -241,6 +241,46 @@
       "path": "Assets/Resources/Imports/Units/Buildings/barracks/Barracks_authoring.obj",
       "materialPath": "Assets/Resources/Imports/Units/Buildings/barracks/Barracks_authoring.mtl",
       "bytes": 10726
+    },
+    {
+      "assetName": "ArcheryRange_authoring",
+      "parts": 20,
+      "vertices": 712,
+      "triangles": 394,
+      "materials": 6,
+      "boundsMin": [
+        -3.3,
+        0,
+        -2.94
+      ],
+      "boundsMax": [
+        3.3,
+        5.1,
+        3.0700000000000003
+      ],
+      "bytes": 34492,
+      "path": "Assets/Resources/Imports/Units/Buildings/archery-range/ArcheryRange_authoring.glb"
+    },
+    {
+      "assetName": "ArcheryRange_authoring",
+      "format": "obj",
+      "parts": 20,
+      "vertices": 237,
+      "triangles": 394,
+      "materials": 6,
+      "boundsMin": [
+        -3.3,
+        0,
+        -2.94
+      ],
+      "boundsMax": [
+        3.3,
+        5.1,
+        3.0700000000000003
+      ],
+      "path": "Assets/Resources/Imports/Units/Buildings/archery-range/ArcheryRange_authoring.obj",
+      "materialPath": "Assets/Resources/Imports/Units/Buildings/archery-range/ArcheryRange_authoring.mtl",
+      "bytes": 22128
     }
   ]
 }

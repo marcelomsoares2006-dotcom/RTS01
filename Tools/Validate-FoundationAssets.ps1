@@ -51,7 +51,7 @@ $manifestByCode = @{}
 foreach ($manifestBlock in $manifestBlocks) {
     $manifestByCode[$manifestBlock.Groups[1].Value.ToLowerInvariant()] = $manifestBlock.Groups[0].Value
 }
-foreach ($manifestCode in @('town_center', 'resource_dropoff', 'lumber_camp', 'mining_camp', 'mill', 'barracks')) {
+foreach ($manifestCode in @('town_center', 'resource_dropoff', 'lumber_camp', 'mining_camp', 'mill', 'barracks', 'archery_range')) {
     if (!$manifestByCode.ContainsKey($manifestCode)) {
         Add-Issue $issues $manifestCode 'Import manifest entry is missing.'
         continue
@@ -107,7 +107,7 @@ $byCode = @{}
 foreach ($block in $blocks) {
     $byCode[$block.Groups[1].Value.ToLowerInvariant()] = $block.Groups[0].Value
 }
-foreach ($manifestCode in @('town_center', 'resource_dropoff', 'lumber_camp', 'mining_camp', 'mill', 'barracks')) {
+foreach ($manifestCode in @('town_center', 'resource_dropoff', 'lumber_camp', 'mining_camp', 'mill', 'barracks', 'archery_range')) {
     if ($manifestByCode.ContainsKey($manifestCode) -and $byCode.ContainsKey($manifestCode)) {
         $manifestBody = $manifestByCode[$manifestCode]
         $catalogBody = $byCode[$manifestCode]
@@ -175,10 +175,19 @@ $requirements = @{
         'Prefab is reviewed in Unity with BuildingManager, BuildingBT, MeshFilter and collider',
         'Prefab root uses Unit layer (12), Unit tag and valid terrain placement footprint'
     )
+    'archery_range' = @(
+        'Playable status (status >= 2)',
+        'BuildingData GUID resolves to an asset',
+        'Prefab path and .meta exist',
+        'Model path exists and contains the authored model set',
+        'BuildingData links a prefab and constructionMeshes',
+        'Prefab is reviewed in Unity with BuildingManager, BuildingBT, MeshFilter and collider',
+        'Prefab root uses Unit layer (12), Unit tag and valid terrain placement footprint'
+    )
 }
 $modelStates = @{}
 
-foreach ($code in @('town_center', 'resource_dropoff', 'lumber_camp', 'mining_camp', 'mill', 'barracks')) {
+foreach ($code in @('town_center', 'resource_dropoff', 'lumber_camp', 'mining_camp', 'mill', 'barracks', 'archery_range')) {
     $modelStates[$code] = 'missing'
     if (!$byCode.ContainsKey($code)) {
         Add-Issue $issues $code 'Catalog entry is missing.'
@@ -298,7 +307,7 @@ foreach ($code in @('town_center', 'resource_dropoff', 'lumber_camp', 'mining_ca
     }
 }
 
-$stateSummary = @('town_center', 'resource_dropoff', 'lumber_camp', 'mining_camp', 'mill', 'barracks') | ForEach-Object {
+$stateSummary = @('town_center', 'resource_dropoff', 'lumber_camp', 'mining_camp', 'mill', 'barracks', 'archery_range') | ForEach-Object {
     "$_=$($modelStates[$_])"
 }
 Write-Host ('Foundation model states: ' + ($stateSummary -join ', '))
@@ -306,7 +315,7 @@ Write-Host ('Foundation model states: ' + ($stateSummary -join ', '))
 if ($issues.Count -gt 0) {
     $message = "Foundation asset gate failed with $($issues.Count) issue(s):`n - " + ($issues -join "`n - ")
     Write-Host 'Unity import checklist still required for each foundation:'
-    foreach ($code in @('town_center', 'resource_dropoff', 'lumber_camp', 'mining_camp', 'mill', 'barracks')) {
+    foreach ($code in @('town_center', 'resource_dropoff', 'lumber_camp', 'mining_camp', 'mill', 'barracks', 'archery_range')) {
         foreach ($requirement in $requirements[$code]) { Write-Host " - $code :: $requirement" }
     }
     if ($ReportOnly) {
@@ -316,4 +325,4 @@ if ($issues.Count -gt 0) {
     throw $message
 }
 
-Write-Host 'Foundation asset gate passed: Town Center, Resource Dropoff, Lumber Camp, Mining Camp, Mill and Barracks are repository-ready for Unity review.'
+Write-Host 'Foundation asset gate passed: Town Center, Resource Dropoff, Lumber Camp, Mining Camp, Mill, Barracks and Archery Range are repository-ready for Unity review.'

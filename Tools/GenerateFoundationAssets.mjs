@@ -196,6 +196,32 @@ function buildBarracks() {
   return p;
 }
 
+function buildArcheryRange() {
+  const p = [];
+  // A ranged training hall: open target lane, target boards, arrow rack and
+  // elevated banner keep the production role legible at gameplay distance.
+  p.push(box('Foundation', 0, 0.25, 0, 6.6, 0.5, 5.8, 0));
+  p.push(box('RangeWalls', 0, 1.65, -0.15, 5.9, 2.8, 4.7, 1));
+  for (const [x, z] of [[-2.65, -1.9], [2.65, -1.9], [-2.65, 1.8], [2.65, 1.8]])
+    p.push(box('TimberPost', x, 1.72, z, 0.26, 3.0, 0.26, 2));
+  p.push(box('TimberBeam', 0, 2.92, -2.22, 5.55, 0.28, 0.28, 2));
+  p.push(pyramid('Roof', 0, 3.05, -0.15, 6.3, 5.15, 2.05, 3));
+  p.push(box('EntranceFrame', 0, 1.55, -2.42, 2.3, 2.45, 0.34, 2));
+  p.push(box('Gate', 0, 1.18, -2.61, 1.4, 1.75, 0.12, 4));
+  p.push(box('GateLintel', 0, 2.76, -2.61, 2.5, 0.34, 0.34, 2));
+  // Two independent target boards and posts leave sockets for hit VFX and
+  // later range animation without baking gameplay helpers into the mesh.
+  for (const x of [-1.35, 1.35]) {
+    p.push(cylinder('TargetPost', x, 0.6, 2.35, 0.13, 1.8, 8, 2));
+    p.push(cylinder('TargetBoard', x, 1.62, 2.35, 0.72, 0.16, 12, 5, Math.PI / 2));
+    p.push(cylinder('TargetMark', x, 1.62, 2.45, 0.24, 0.18, 12, 4, Math.PI / 2));
+  }
+  p.push(box('ArrowRack', 2.42, 1.0, -0.1, 0.24, 1.5, 1.25, 2));
+  p.push(box('BannerPole', 0.72, 4.0, -2.9, 0.08, 2.0, 0.08, 2));
+  p.push(box('Banner', 1.05, 4.35, -2.9, 0.62, 0.9, 0.05, 4));
+  return p;
+}
+
 function makeBinaryGLB(parts, assetName) {
   const positions = [], normals = [], indices = [], primitiveInfo = [];
   for (const item of parts) {
@@ -378,6 +404,7 @@ const lumberCampParts = buildLumberCamp();
 const miningCampParts = buildMiningCamp();
 const millParts = buildMill();
 const barracksParts = buildBarracks();
+const archeryRangeParts = buildArcheryRange();
 const report = {
   generator: 'Tools/GenerateFoundationAssets.mjs',
   coordinateSystem: 'Y-up, right-handed, metres',
@@ -394,6 +421,8 @@ const report = {
     writeObj('Mill_authoring', millParts, 'mill'),
     writeAsset('Barracks_authoring', barracksParts, 'barracks'),
     writeObj('Barracks_authoring', barracksParts, 'barracks'),
+    writeAsset('ArcheryRange_authoring', archeryRangeParts, 'archery-range'),
+    writeObj('ArcheryRange_authoring', archeryRangeParts, 'archery-range'),
   ],
 };
 const reportPath = path.join(outputRoot, 'foundation-asset-metrics.json');

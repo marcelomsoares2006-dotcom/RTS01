@@ -85,3 +85,17 @@ entries:
     requiredComponents: BuildingManager,BuildingBT,MeshFilter,MeshRenderer,Collider
     approvalChecks: import-model,create-prefab,link-building-data,placement-review,construction-playmode
     promotionCriteria: authored-model,unity-prefab,building-data,placement-playmode
+
+  - code: archery_range
+    intermediateSource: Assets/Resources/Imports/Units/Buildings/archery-range/ArcheryRange_graybox.obj
+    authoredSource: Assets/Resources/Imports/Units/Buildings/archery-range/ArcheryRange_authoring.obj
+    scaleMeters: 1
+    footprintMeters: 6.6x5.8
+    footprintToleranceMeters: 0.6
+    maxHeightMeters: 5.6
+    expectedPrefab: Assets/Resources/Prefabs/Units/Buildings/ArcheryRange.prefab
+    expectedBuildingData: Assets/Resources/ScriptableObjects/Units/Buildings/ArcheryRange.asset
+    minimumEra: Feudal
+    requiredComponents: BuildingManager,BuildingBT,MeshFilter,MeshRenderer,Collider
+    approvalChecks: import-model,create-prefab,link-building-data,placement-review,construction-playmode
+    promotionCriteria: authored-model,unity-prefab,building-data,placement-playmode

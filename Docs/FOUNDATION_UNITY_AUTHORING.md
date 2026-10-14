@@ -1,7 +1,7 @@
 # Unity foundation authoring
 
 `FoundationBuildingAuthoringWindow` is an editor-only draft authoring aid for
-Town Center, Resource Dropoff, Lumber Camp, Mining Camp, Mill and Barracks. Open it from `Tools > Era
+Town Center, Resource Dropoff, Lumber Camp, Mining Camp, Mill, Barracks and Archery Range. Open it from `Tools > Era
 Imperial > Buildings > Foundation Authoring` after Unity imports the authored
 OBJ files.
 
@@ -18,7 +18,7 @@ can create `_DRAFT` prefabs and `_DRAFT` `BuildingData` assets. It configures
 the Unit layer/tag, `BuildingManager`, `BuildingBT`, trigger footprint,
 non-trigger placement collider, kinematic rigidbody and NavMesh obstacle. The
 draft `BuildingData` uses catalog-aligned construction costs (Town Center:
-400 Wood; Resource Dropoff, Lumber Camp, Mining Camp and Mill: 50 Wood; Barracks: 150 Wood).
+400 Wood; Resource Dropoff, Lumber Camp, Mining Camp and Mill: 50 Wood; Barracks and Archery Range: 150 Wood).
 Resource routing remains
 owned by the existing catalog/economy contracts, while the draft assets carry
 the runtime prefab, construction mesh and placement references. Draft assets
