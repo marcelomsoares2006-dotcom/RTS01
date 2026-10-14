@@ -79,6 +79,10 @@ public class DataHandler : MonoBehaviour
         TechnologyNodeData.SetUnlockedNodes(data.unlockedTechnologyNodeCodes);
 
         GamePlayersParameters playerParameters = GameManager.instance.gamePlayersParameters;
+        Dictionary<string, CharacterManager> restoredCharacters =
+            new Dictionary<string, CharacterManager>();
+        List<Building> buildingsWithSavedConstructors = new List<Building>();
+        List<string[]> savedConstructorIds = new List<string[]>();
         for (int p = 0; p < playerParameters.players.Length; p++)
         {
             GamePlayerData d = data.players[p];
@@ -112,12 +116,29 @@ public class DataHandler : MonoBehaviour
                     u = new Building(bd, p, production);
                     u.SetPosition(unit.position);
                     u.Place(true);
-                    ((Building)u).SetConstructionHP(unit.constructionHP, true);
+                    Building restoredBuilding = (Building)u;
+                    int constructionHealth = unit.constructionHP;
+                    // Legacy saves used zero for a completed building before
+                    // lifecycle tracking existed. Keep those buildings live.
+                    if (constructionHealth <= 0
+                        && unit.currentHealth >= bd.healthpoints
+                        && unit.buildingLifecycle == (int)BuildingLifecycleState.Blueprint)
+                        constructionHealth = bd.healthpoints;
+                    restoredBuilding.SetConstructionHP(constructionHealth, true);
+                    if (unit.constructorIds != null && unit.constructorIds.Length > 0)
+                    {
+                        buildingsWithSavedConstructors.Add(restoredBuilding);
+                        savedConstructorIds.Add(unit.constructorIds);
+                    }
                 }
                 else
                 {
                     CharacterData cd = Globals.CHARACTER_DATA[unit.code];
                     u = new Character(cd, p);
+                    CharacterManager restoredCharacter =
+                        u.Transform.GetComponent<CharacterManager>();
+                    if (restoredCharacter != null && !string.IsNullOrEmpty(unit.uid))
+                        restoredCharacters[unit.uid] = restoredCharacter;
                     u.ComputeProduction();
                     if (!Globals.TryWarpToNavMesh(
                         u.Transform.GetComponent<NavMeshAgent>(),
@@ -133,6 +154,22 @@ public class DataHandler : MonoBehaviour
                 u.LevelUp(true);
                 u.AttackDamage = unit.attackDamage;
                 u.AttackRange = unit.attackRange;
+            }
+        }
+
+        for (int i = 0; i < buildingsWithSavedConstructors.Count; i++)
+        {
+            Building building = buildingsWithSavedConstructors[i];
+            if (building == null || building.IsAlive)
+                continue;
+            string[] constructorIds = savedConstructorIds[i];
+            for (int j = 0; j < constructorIds.Length; j++)
+            {
+                CharacterManager constructor;
+                if (constructorIds[j] == null
+                    || !restoredCharacters.TryGetValue(constructorIds[j], out constructor))
+                    continue;
+                building.RestoreConstructor(constructor);
             }
         }
 

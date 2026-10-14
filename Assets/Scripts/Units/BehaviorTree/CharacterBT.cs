@@ -7,6 +7,7 @@ public class CharacterBT : RuntimeBehaviorTree
 {
     CharacterManager manager;
     private TaskTrySetDestinationOrTarget _trySetDestinationOrTargetNode;
+    private UnityEngine.Transform _pendingConstructionTarget;
 
     private void Awake()
     {
@@ -39,6 +40,11 @@ public class CharacterBT : RuntimeBehaviorTree
 
     public void StartBuildingConstruction(UnityEngine.Transform buildingTransform)
     {
+        if (_trySetDestinationOrTargetNode == null)
+        {
+            _pendingConstructionTarget = buildingTransform;
+            return;
+        }
         _trySetDestinationOrTargetNode.SetFormationTargetOffset(new List<UnityEngine.Vector2>() {
             UnityEngine.Vector2.zero
         }, buildingTransform);
@@ -60,6 +66,13 @@ public class CharacterBT : RuntimeBehaviorTree
 
         // prepare our subtrees...
         _trySetDestinationOrTargetNode = new TaskTrySetDestinationOrTarget(manager);
+        if (_pendingConstructionTarget != null)
+        {
+            _trySetDestinationOrTargetNode.SetFormationTargetOffset(
+                new List<UnityEngine.Vector2>() { UnityEngine.Vector2.zero },
+                _pendingConstructionTarget);
+            _pendingConstructionTarget = null;
+        }
         Sequence trySetDestinationOrTargetSequence = new Sequence(new List<Node> {
             new CheckUnitIsMine(manager),
             _trySetDestinationOrTargetNode,

@@ -45,8 +45,20 @@ public sealed class BuildingDataAssetTests
             Assert.That(data.prefab, Is.Not.Null, $"{path} is missing its prefab.");
             Assert.That(data.prefab.GetComponent<BuildingManager>(), Is.Not.Null,
                 $"{path} prefab must contain BuildingManager.");
+            BuildingManager manager = data.prefab.GetComponent<BuildingManager>();
+            Assert.That(data.prefab.GetComponent<BuildingBT>(), Is.Not.Null,
+                $"{path} prefab must contain BuildingBT because Building initializes it before construction.");
+            Assert.That(manager.meshRenderer, Is.Not.Null,
+                $"{path} BuildingManager must reference its mesh renderer.");
+            Assert.That(manager.meshRenderer.GetComponent<MeshFilter>(), Is.Not.Null,
+                $"{path} mesh renderer must share a MeshFilter for construction-stage meshes.");
             Assert.That(data.prefab.GetComponent<BoxCollider>(), Is.Not.Null,
                 $"{path} prefab must contain a BoxCollider for placement.");
+            Transform minimapIcon = data.prefab.transform.Find("Mesh/MinimapIcon");
+            Assert.That(minimapIcon, Is.Not.Null,
+                $"{path} prefab must contain Mesh/MinimapIcon because Unit initialization colors it.");
+            Assert.That(minimapIcon.GetComponent<Renderer>(), Is.Not.Null,
+                $"{path} Mesh/MinimapIcon must have a Renderer for owner-color initialization.");
             Assert.That(data.constructionMeshes, Is.Not.Null.And.Not.Empty,
                 $"{path} must provide at least one construction mesh.");
             Assert.That(data.constructionMeshes.All(mesh => mesh != null), Is.True,

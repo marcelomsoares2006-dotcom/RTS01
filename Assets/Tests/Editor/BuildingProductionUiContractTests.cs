@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using NUnit.Framework;
+using UnityEngine;
 
 public sealed class BuildingProductionUiContractTests
 {
@@ -88,6 +89,33 @@ public sealed class BuildingProductionUiContractTests
         Assert.AreEqual(1, notifications);
         ui.Refresh();
         Assert.AreEqual(2, notifications);
+    }
+
+    [Test]
+    public void CatalogBindingResolvesProductsWithoutSceneOrPrefabState()
+    {
+        BuildingCatalogData catalog = ScriptableObject.CreateInstance<BuildingCatalogData>();
+        catalog.name = "Barracks Catalog";
+        BuildingProductionEntry entry = Entry("Spearman", 3f, 20);
+        catalog.production.Add(entry);
+
+        Assert.AreSame(entry,
+            BuildingProductionRuntimeBinding.FindProduct(catalog, " spearman "));
+        Assert.IsNull(BuildingProductionRuntimeBinding.FindProduct(catalog, "archer"));
+
+        Object.DestroyImmediate(catalog);
+    }
+
+    [Test]
+    public void BindingRejectsMissingRuntimeDependenciesBeforeCreatingAdapter()
+    {
+        BuildingProductionRuntimeBinding binding;
+        string reason;
+
+        Assert.IsFalse(BuildingProductionRuntimeBinding.TryCreate(
+            null, null, null, out binding, out reason));
+        Assert.IsNull(binding);
+        Assert.IsNotEmpty(reason);
     }
 
     private static BuildingProductionRuntimeAdapter NewRuntime(EconomyLedger stockpile)

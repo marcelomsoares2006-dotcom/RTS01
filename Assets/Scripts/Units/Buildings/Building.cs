@@ -177,6 +177,19 @@ public class Building : Unit
         return true;
     }
 
+    /// <summary>Reconnects a worker saved while this building was incomplete.</summary>
+    public bool RestoreConstructor(CharacterManager constructor)
+    {
+        if (!AddConstructor(constructor))
+            return false;
+        constructor.SetIsConstructor(true);
+        constructor.SetRendererVisibility(false);
+        CharacterBT bt = constructor.GetComponent<CharacterBT>();
+        if (bt != null)
+            bt.StartBuildingConstruction(Transform);
+        return true;
+    }
+
     public void RemoveConstructor(int index)
     {
         // UI callbacks can outlive a constructor list refresh. Treat stale
