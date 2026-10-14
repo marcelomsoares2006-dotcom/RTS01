@@ -3,7 +3,7 @@
 `GamePlayerUnitData.construction` is the forward-compatible save boundary for
 one building. It stores the stable building code and owner, transform position,
 construction progress, maximum HP, lifecycle, constructor IDs, reserved costs,
-and the content origin/readiness flag.
+reservation ID/population, and the content origin/readiness flag.
 
 The snapshot is detached from Unity objects. It never serializes a prefab,
 `BuildingData`, mesh, or scene reference. Legacy saves continue to use the
