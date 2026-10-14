@@ -80,6 +80,23 @@ public sealed class BuildingProductionRuntimeAdapterTests
         Assert.AreEqual(0, adapter.Queue.Count);
     }
 
+    [Test]
+    public void NegativePopulationReservationIsRejectedAsInvalidCost()
+    {
+        EconomyLedger stockpile = new EconomyLedger();
+        stockpile.Set(EconomyResourceType.Wood, 50);
+        PopulationLedger population = new PopulationLedger(3, 0);
+        BuildingProductionRuntimeAdapter adapter = NewAdapter(stockpile, population);
+        BuildingProductionQueueResult queueResult;
+
+        Assert.AreEqual(BuildingProductionRuntimeResult.QueueRejected,
+            adapter.TryEnqueue(3, Entry("spearman", 1f, -1, 10), out queueResult));
+        Assert.AreEqual(BuildingProductionQueueResult.InvalidCost, queueResult);
+        Assert.AreEqual(50, stockpile.Get(EconomyResourceType.Wood));
+        Assert.AreEqual(0, population.current);
+        Assert.AreEqual(0, adapter.Queue.Count);
+    }
+
     private static BuildingProductionRuntimeAdapter NewAdapter(
         EconomyLedger stockpile, PopulationLedger population)
     {

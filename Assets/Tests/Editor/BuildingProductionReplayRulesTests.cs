@@ -68,4 +68,34 @@ public sealed class BuildingProductionReplayRulesTests
             CultureInfo.CurrentCulture = new CultureInfo(string.IsNullOrEmpty(originalCulture) ? "en-US" : originalCulture);
         }
     }
+
+    [Test]
+    public void FingerprintIncludesCanonicalProductionReservationCost()
+    {
+        BuildingContentCatalog catalog = ScriptableObject.CreateInstance<BuildingContentCatalog>();
+        _created.Add(catalog);
+        catalog.entries.Add(new BuildingContentSpec { code = "barracks", status = BuildingContentStatus.Planned });
+        BuildingProductionQueue first = new BuildingProductionQueue();
+        BuildingProductionQueue second = new BuildingProductionQueue();
+        first.orders.Add(new BuildingProductionOrder {
+            productCode = "spearman", duration = 15f, elapsed = 2f, populationCost = 1,
+            cost = new List<ResourceValue> {
+                new ResourceValue(InGameResource.Wood, 30),
+                new ResourceValue(InGameResource.Food, 80)
+            }
+        });
+        second.orders.Add(new BuildingProductionOrder {
+            productCode = "spearman", duration = 15f, elapsed = 2f, populationCost = 1,
+            cost = new List<ResourceValue> {
+                new ResourceValue(InGameResource.Food, 80),
+                new ResourceValue(InGameResource.Wood, 31)
+            }
+        });
+        StrategicPlanningState state = new StrategicPlanningState { ownerId = 0, era = BuildingEra.Dark };
+        string firstFingerprint = BuildingProductionReplayRules.ComputeFingerprint(
+            catalog, state, first, new EconomyLedger(), new PopulationLedger(), "barracks");
+        string secondFingerprint = BuildingProductionReplayRules.ComputeFingerprint(
+            catalog, state, second, new EconomyLedger(), new PopulationLedger(), "barracks");
+        Assert.That(secondFingerprint, Is.Not.EqualTo(firstFingerprint));
+    }
 }

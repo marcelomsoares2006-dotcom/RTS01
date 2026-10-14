@@ -84,7 +84,7 @@ public class CharacterBT : RuntimeBehaviorTree
         });
 
         Selector attackOrBuildSelector = new Selector();
-        if (manager.Unit.Data.attackDamage > 0)
+        if (manager.Unit.CombatAttackDamage > 0)
         {
             Sequence attackSequence = new Sequence(new List<Node> {
                 new Inverter(new List<Node>
@@ -93,7 +93,7 @@ public class CharacterBT : RuntimeBehaviorTree
                 }),
                 new CheckUnitInRange(manager, true),
                 new Timer(
-                    manager.Unit.Data.attackRate,
+                    manager.Unit.AttackRate,
                     new List<Node>()
                     {
                         new TaskAttack(manager)

@@ -88,6 +88,8 @@ public sealed class BuildingProductionQueue
         if (float.IsNaN(entry.productionTime) || float.IsInfinity(entry.productionTime)
             || entry.productionTime <= 0f)
             return BuildingProductionQueueResult.InvalidDuration;
+        if (entry.populationCost < 0)
+            return BuildingProductionQueueResult.InvalidCost;
         if (stockpile == null) return BuildingProductionQueueResult.MissingStockpile;
         if (population == null) return BuildingProductionQueueResult.MissingPopulationLedger;
         if (orders == null) orders = new List<BuildingProductionOrder>();

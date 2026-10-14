@@ -39,7 +39,9 @@ public static class BuildingProductionReplayRules
                 value.Append(order.productCode).Append(':')
                     .Append(order.duration.ToString("R", CultureInfo.InvariantCulture)).Append(':')
                     .Append(order.elapsed.ToString("R", CultureInfo.InvariantCulture)).Append(':')
-                    .Append(order.populationCost).Append(';');
+                    .Append(order.populationCost).Append(':');
+                AppendCanonicalCosts(value, order.cost);
+                value.Append(';');
             }
         return Hash(value.ToString());
     }
@@ -52,5 +54,22 @@ public static class BuildingProductionReplayRules
             for (int i = 0; i < value.Length; i++) { hash ^= value[i]; hash *= 1099511628211UL; }
             return hash.ToString("X16");
         }
+    }
+
+    private static void AppendCanonicalCosts(StringBuilder value, List<ResourceValue> costs)
+    {
+        if (costs == null) return;
+        List<ResourceValue> ordered = new List<ResourceValue>();
+        for (int i = 0; i < costs.Count; i++)
+        {
+            ResourceValue cost = costs[i];
+            if (cost != null) ordered.Add(new ResourceValue(cost.code, cost.amount));
+        }
+        ordered.Sort((left, right) => {
+            int resource = ((int)left.code).CompareTo((int)right.code);
+            return resource != 0 ? resource : left.amount.CompareTo(right.amount);
+        });
+        for (int i = 0; i < ordered.Count; i++)
+            value.Append((int)ordered[i].code).Append('=').Append(ordered[i].amount).Append(',');
     }
 }

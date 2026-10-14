@@ -137,6 +137,29 @@ public sealed class ConstructionReplayContractsTests
         Assert.IsNull(snapshot);
     }
 
+    [Test]
+    public void ReplayFingerprintCanonicalizesProductionCostOrder()
+    {
+        ConstructionReplayCommand first = Command("produce-a", 1, 1, 1,
+            ConstructionReplayCommandKind.ProduceUnit, "spearman", "");
+        first.costs.Add(new BuildingMaintenanceCost(EconomyResourceType.Wood, 30));
+        first.costs.Add(new BuildingMaintenanceCost(EconomyResourceType.Food, 80));
+        ConstructionReplayCommand second = Command("produce-b", 1, 1, 1,
+            ConstructionReplayCommandKind.ProduceUnit, "spearman", "");
+        second.costs.Add(new BuildingMaintenanceCost(EconomyResourceType.Food, 80));
+        second.costs.Add(new BuildingMaintenanceCost(EconomyResourceType.Wood, 30));
+
+        ConstructionReplayLog firstLog = new ConstructionReplayLog();
+        ConstructionReplayLog secondLog = new ConstructionReplayLog();
+        Assert.That(firstLog.TryAppend(first), Is.EqualTo(ConstructionReplayResult.Accepted));
+        Assert.That(secondLog.TryAppend(second), Is.EqualTo(ConstructionReplayResult.Accepted));
+        // IDs are intentionally different, so compare equivalent command
+        // payloads after normalizing the identity field.
+        second.commandId = first.commandId;
+        Assert.That(ConstructionReplayLog.ComputeFingerprint(firstLog.Commands),
+            Is.EqualTo(ConstructionReplayLog.ComputeFingerprint(new[] { second })));
+    }
+
     private static ConstructionReplayCommand Command(string id, long tick, long time, int priority,
         ConstructionReplayCommandKind kind, string target, string reservation)
     {

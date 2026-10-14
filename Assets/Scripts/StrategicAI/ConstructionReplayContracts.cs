@@ -106,9 +106,18 @@ public sealed class ConstructionReplayLog
                     .Append(c.reservationId == null ? string.Empty : c.reservationId.Trim()).Append('|')
                     .Append(c.quantity).Append('|').Append(c.populationCost).Append('|');
                 if (c.costs != null)
+                {
+                    List<BuildingMaintenanceCost> costs = new List<BuildingMaintenanceCost>();
                     for (int j = 0; j < c.costs.Count; j++)
                         if (c.costs[j] != null)
-                            canonical.Append((int)c.costs[j].resource).Append('=').Append(c.costs[j].amount).Append(',');
+                            costs.Add(new BuildingMaintenanceCost(c.costs[j].resource, c.costs[j].amount));
+                    costs.Sort((left, right) => {
+                        int resource = left.resource.CompareTo(right.resource);
+                        return resource != 0 ? resource : left.amount.CompareTo(right.amount);
+                    });
+                    for (int j = 0; j < costs.Count; j++)
+                        canonical.Append((int)costs[j].resource).Append('=').Append(costs[j].amount).Append(',');
+                }
                 canonical.Append(';');
             }
         }

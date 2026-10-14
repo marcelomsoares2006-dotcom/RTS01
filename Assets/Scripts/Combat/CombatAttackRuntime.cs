@@ -12,7 +12,18 @@ public sealed class CombatCooldownState
 
     public bool TryReserve(float now, float attackRate)
     {
-        float interval = Mathf.Max(0f, attackRate);
+        // Time values enter this state from Unity's clock today, but replay
+        // and network callers can supply arbitrary floats.  NaN would bypass
+        // the cooldown comparison forever and infinity would poison the next
+        // ready timestamp, so reject non-finite inputs at the boundary.
+        if (float.IsNaN(now) || float.IsInfinity(now)
+            || float.IsNaN(attackRate) || float.IsInfinity(attackRate)
+            || attackRate < 0f)
+            return false;
+
+        float interval = attackRate;
+        if (now > float.MaxValue - interval)
+            return false;
         if (_hasAttacked && now < _nextReadyAt)
             return false;
 
@@ -79,7 +90,8 @@ public static class CombatAttackResolver
         out CombatProjectilePayload projectile)
     {
         projectile = default(CombatProjectilePayload);
-        if (cooldown == null || range <= 0f || rawDamage <= 0)
+        if (cooldown == null || !IsFinite(range) || range <= 0f || rawDamage <= 0
+            || !IsFinite(now) || !IsFinite(origin) || !IsFinite(destination))
             return false;
 
         float rangeSquared = range * range;
@@ -91,5 +103,15 @@ public static class CombatAttackResolver
 
         projectile = new CombatProjectilePayload(origin, destination, rawDamage, now);
         return true;
+    }
+
+    private static bool IsFinite(float value)
+    {
+        return !float.IsNaN(value) && !float.IsInfinity(value);
+    }
+
+    private static bool IsFinite(Vector3 value)
+    {
+        return IsFinite(value.x) && IsFinite(value.y) && IsFinite(value.z);
     }
 }
