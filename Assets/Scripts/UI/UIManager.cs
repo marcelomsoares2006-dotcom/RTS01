@@ -24,7 +24,17 @@ public class UIManager : MonoBehaviour
 
     [Header("Construction Menu")]
     public GameObject constructionMenu;
-    private Button[] _constructionSlotButtons;
+    [Tooltip("Optional label populated from BuildingCatalogData when a details panel is present.")]
+    public Text constructionCategoryText;
+    [Tooltip("Optional container for the selected building's resource costs.")]
+    public Transform constructionCostParent;
+    [Tooltip("Optional label populated with era and building requirements.")]
+    public Text constructionRequirementsText;
+    private Transform _constructionSlotsParent;
+    private GameObject _constructionSlotTemplate;
+    private readonly List<Button> _constructionSlotButtons = new List<Button>();
+    private readonly Dictionary<string, BuildingCatalogData> _buildingCatalogByCode =
+        new Dictionary<string, BuildingCatalogData>();
 
     [Header("Units Selection")]
     public GameObject selectedUnitMenu;
@@ -89,10 +99,23 @@ public class UIManager : MonoBehaviour
         _infoPanelDescriptionText = infoPanelTransform.Find("Content/Description").GetComponent<Text>();
         _infoPanelResourcesCostParent = infoPanelTransform.Find("Content/ResourcesCost");
 
-        _constructionSlotButtons = new Button[3];
-        Transform constructionSlots = constructionMenu.transform.Find("BuildSlots");
-        for (int i = 0; i < 3; i++)
-            _constructionSlotButtons[i] = constructionSlots.GetChild(i).Find("Button").GetComponent<Button>();
+        _constructionSlotsParent = constructionMenu.transform.Find("BuildSlots");
+        if (_constructionSlotsParent != null)
+        {
+            // Keep the authored layout as the template. Additional constructors
+            // clone this slot at runtime, so the UI is no longer capped at three.
+            if (_constructionSlotsParent.childCount > 0)
+                _constructionSlotTemplate = _constructionSlotsParent.GetChild(0).gameObject;
+
+            int authoredSlotCount = _constructionSlotsParent.childCount;
+            for (int i = 0; i < authoredSlotCount; i++)
+            {
+                Button button = _FindConstructionSlotButton(_constructionSlotsParent.GetChild(i));
+                if (button != null)
+                    _constructionSlotButtons.Add(button);
+            }
+        }
+        _LoadBuildingCatalog();
         constructionMenu.SetActive(false);
 
         Transform selectedUnitMenuTransform = selectedUnitMenu.transform;
@@ -587,11 +610,110 @@ public class UIManager : MonoBehaviour
     private void _SetConstructionMenu(Building building)
     {
         int nConstructors = building.Constructors.Count;
-        for (int i = 0; i < 3; i++)
+        _EnsureConstructionSlotCount(nConstructors);
+        for (int i = 0; i < _constructionSlotButtons.Count; i++)
         {
             _constructionSlotButtons[i].gameObject.SetActive(i < nConstructors);
-            _SetConstructionMenuSlotListener(
-                _constructionSlotButtons[i], building, i);
+            if (i < nConstructors)
+                _SetConstructionMenuSlotListener(_constructionSlotButtons[i], building, i);
+        }
+        _SetConstructionDetails(building);
+    }
+
+    private Button _FindConstructionSlotButton(Transform slot)
+    {
+        if (slot == null) return null;
+        Transform buttonTransform = slot.Find("Button");
+        if (buttonTransform != null)
+            return buttonTransform.GetComponent<Button>();
+        return slot.GetComponentInChildren<Button>(true);
+    }
+
+    private void _EnsureConstructionSlotCount(int requiredCount)
+    {
+        if (_constructionSlotsParent == null || _constructionSlotTemplate == null)
+            return;
+
+        while (_constructionSlotButtons.Count < requiredCount)
+        {
+            GameObject slot = Instantiate(_constructionSlotTemplate, _constructionSlotsParent);
+            slot.name = $"ConstructorSlot_{_constructionSlotButtons.Count + 1}";
+            Button button = _FindConstructionSlotButton(slot.transform);
+            if (button == null)
+            {
+                Destroy(slot);
+                break;
+            }
+            _constructionSlotButtons.Add(button);
+        }
+    }
+
+    private void _LoadBuildingCatalog()
+    {
+        _buildingCatalogByCode.Clear();
+        BuildingCatalogData[] catalog = Resources.LoadAll<BuildingCatalogData>("ScriptableObjects/Units/Buildings");
+        for (int i = 0; i < catalog.Length; i++)
+        {
+            BuildingCatalogData entry = catalog[i];
+            if (entry != null && !string.IsNullOrEmpty(entry.Code))
+                _buildingCatalogByCode[entry.Code] = entry;
+        }
+    }
+
+    private void _SetConstructionDetails(Building building)
+    {
+        BuildingData data = building.Data as BuildingData;
+        if (data == null) return;
+
+        BuildingCatalogData catalog = null;
+        _buildingCatalogByCode.TryGetValue(data.code, out catalog);
+        if (constructionCategoryText != null)
+            constructionCategoryText.text = catalog != null
+                ? catalog.category.ToString()
+                : "Infrastructure";
+
+        if (constructionRequirementsText != null)
+        {
+            List<string> requirements = new List<string>();
+            if (catalog != null)
+            {
+                requirements.Add($"Era: {catalog.minimumEra}");
+                if (catalog.requirements != null)
+                {
+                    for (int i = 0; i < catalog.requirements.Count; i++)
+                    {
+                        BuildingRequirement requirement = catalog.requirements[i];
+                        if (requirement == null || requirement.IsEmpty) continue;
+                        if (!string.IsNullOrEmpty(requirement.technologyCode))
+                            requirements.Add($"Tech: {requirement.technologyCode}");
+                        if (!string.IsNullOrEmpty(requirement.buildingCode))
+                            requirements.Add($"Requires: {requirement.buildingCode}");
+                        if (requirement.minimumPopulation > 0)
+                            requirements.Add($"Population: {requirement.minimumPopulation}");
+                    }
+                }
+            }
+            constructionRequirementsText.text = requirements.Count > 0
+                ? string.Join("\n", requirements.ToArray())
+                : string.Empty;
+        }
+
+        if (constructionCostParent == null) return;
+        foreach (Transform child in constructionCostParent)
+            Destroy(child.gameObject);
+        if (data.cost == null) return;
+        for (int i = 0; i < data.cost.Count; i++)
+        {
+            ResourceValue resource = data.cost[i];
+            GameObject costDisplay = Instantiate(gameResourceCostPrefab, constructionCostParent);
+            Transform displayTransform = costDisplay.transform;
+            displayTransform.Find("Text").GetComponent<Text>().text = resource.amount.ToString();
+            displayTransform.Find("Icon").GetComponent<Image>().sprite =
+                Resources.Load<Sprite>($"Textures/GameResources/{resource.code}");
+            if (Globals.GAME_RESOURCES.ContainsKey(_myPlayerId)
+                && Globals.GAME_RESOURCES[_myPlayerId].ContainsKey(resource.code)
+                && Globals.GAME_RESOURCES[_myPlayerId][resource.code].Amount < resource.amount)
+                displayTransform.Find("Text").GetComponent<Text>().color = invalidTextColor;
         }
     }
 
