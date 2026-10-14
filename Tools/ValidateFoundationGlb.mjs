@@ -8,6 +8,7 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const files = [
   'Assets/Resources/Imports/Units/Buildings/town-center/TownCenter_authoring.glb',
   'Assets/Resources/Imports/Units/Buildings/resource-dropoff/ResourceDropoff_authoring.glb',
+  'Assets/Resources/Imports/Units/Buildings/lumber-camp/LumberCamp_authoring.glb',
 ];
 const failures = [];
 for (const relative of files) {

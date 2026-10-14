@@ -29,3 +29,17 @@ entries:
     requiredComponents: BuildingManager,BuildingBT,MeshFilter,MeshRenderer,Collider
     approvalChecks: import-model,create-prefab,link-building-data,placement-review,construction-playmode
     promotionCriteria: authored-model,unity-prefab,building-data,placement-playmode
+
+  - code: lumber_camp
+    intermediateSource: Assets/Resources/Imports/Units/Buildings/lumber-camp/LumberCamp_graybox.obj
+    authoredSource: Assets/Resources/Imports/Units/Buildings/lumber-camp/LumberCamp_authoring.obj
+    scaleMeters: 1
+    footprintMeters: 5.4x5.2
+    footprintToleranceMeters: 0.6
+    maxHeightMeters: 4.6
+    expectedPrefab: Assets/Resources/Prefabs/Units/Buildings/LumberCamp.prefab
+    expectedBuildingData: Assets/Resources/ScriptableObjects/Units/Buildings/LumberCamp.asset
+    minimumEra: Dark
+    requiredComponents: BuildingManager,BuildingBT,MeshFilter,MeshRenderer,Collider
+    approvalChecks: import-model,create-prefab,link-building-data,placement-review,construction-playmode
+    promotionCriteria: authored-model,unity-prefab,building-data,placement-playmode

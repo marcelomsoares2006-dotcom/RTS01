@@ -100,6 +100,29 @@ function buildResourceDropoff() {
   return p;
 }
 
+function buildLumberCamp() {
+  const p = [];
+  // A compact forest outpost: the open loading face and stacked timber make
+  // the wood role legible at gameplay distance while keeping the footprint
+  // inside the existing dropoff placement family.
+  p.push(box('Foundation', 0, 0.2, 0, 5.4, 0.4, 4.2, 0));
+  p.push(box('StorehouseWalls', 0, 1.35, 0.1, 4.7, 2.2, 3.35, 1));
+  for (const [x, z] of [[-2.0,-1.45],[2.0,-1.45],[-2.0,1.45],[2.0,1.45]]) {
+    p.push(box('TimberPost', x, 1.45, z, 0.24, 2.5, 0.24, 2));
+  }
+  p.push(box('TimberBeam', 0, 2.35, -1.63, 4.5, 0.24, 0.24, 2));
+  p.push(pyramid('Roof', 0, 2.55, 0.1, 5.25, 3.95, 1.55, 3));
+  p.push(box('LoadingPlatform', 0, 0.58, -2.2, 2.8, 0.18, 1.0, 2));
+  // Three separate logs preserve readable named parts for later harvesting VFX.
+  p.push(box('LogPileLower', -1.15, 0.82, 2.05, 2.25, 0.42, 0.48, 2, -0.08));
+  p.push(box('LogPileUpper', -1.0, 1.25, 2.03, 1.9, 0.38, 0.44, 2, 0.08));
+  p.push(box('LogPileBrace', 0.35, 0.92, 2.04, 0.22, 0.9, 0.22, 2));
+  p.push(box('Sign', 1.35, 2.25, -1.82, 1.45, 0.48, 0.08, 4));
+  p.push(box('SignMark', 1.35, 2.25, -1.88, 0.48, 0.08, 0.04, 5));
+  p.push(box('AxeRack', 2.05, 1.0, -0.55, 0.16, 1.35, 0.3, 2));
+  return p;
+}
+
 function makeBinaryGLB(parts, assetName) {
   const positions = [], normals = [], indices = [], primitiveInfo = [];
   for (const item of parts) {
@@ -278,6 +301,7 @@ function writeObj(name, parts, folder) {
 
 const townCenterParts = buildTownCenter();
 const resourceDropoffParts = buildResourceDropoff();
+const lumberCampParts = buildLumberCamp();
 const report = {
   generator: 'Tools/GenerateFoundationAssets.mjs',
   coordinateSystem: 'Y-up, right-handed, metres',
@@ -286,6 +310,8 @@ const report = {
     writeObj('TownCenter_authoring', townCenterParts, 'town-center'),
     writeAsset('ResourceDropoff_authoring', resourceDropoffParts, 'resource-dropoff'),
     writeObj('ResourceDropoff_authoring', resourceDropoffParts, 'resource-dropoff'),
+    writeAsset('LumberCamp_authoring', lumberCampParts, 'lumber-camp'),
+    writeObj('LumberCamp_authoring', lumberCampParts, 'lumber-camp'),
   ],
 };
 const reportPath = path.join(outputRoot, 'foundation-asset-metrics.json');

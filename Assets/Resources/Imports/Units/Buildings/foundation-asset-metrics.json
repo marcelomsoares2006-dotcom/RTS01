@@ -81,6 +81,46 @@
       "path": "Assets/Resources/Imports/Units/Buildings/resource-dropoff/ResourceDropoff_authoring.obj",
       "materialPath": "Assets/Resources/Imports/Units/Buildings/resource-dropoff/ResourceDropoff_authoring.mtl",
       "bytes": 5947
+    },
+    {
+      "assetName": "LumberCamp_authoring",
+      "parts": 15,
+      "vertices": 352,
+      "triangles": 174,
+      "materials": 6,
+      "boundsMin": [
+        -2.7,
+        0,
+        -2.7
+      ],
+      "boundsMax": [
+        2.7,
+        4.1,
+        2.379136440227948
+      ],
+      "bytes": 20360,
+      "path": "Assets/Resources/Imports/Units/Buildings/lumber-camp/LumberCamp_authoring.glb"
+    },
+    {
+      "assetName": "LumberCamp_authoring",
+      "format": "obj",
+      "parts": 15,
+      "vertices": 117,
+      "triangles": 174,
+      "materials": 6,
+      "boundsMin": [
+        -2.7,
+        0,
+        -2.7
+      ],
+      "boundsMax": [
+        2.7,
+        4.1,
+        2.379136440227948
+      ],
+      "path": "Assets/Resources/Imports/Units/Buildings/lumber-camp/LumberCamp_authoring.obj",
+      "materialPath": "Assets/Resources/Imports/Units/Buildings/lumber-camp/LumberCamp_authoring.mtl",
+      "bytes": 9418
     }
   ]
 }

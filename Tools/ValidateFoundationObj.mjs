@@ -8,6 +8,7 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const assets = [
   'Assets/Resources/Imports/Units/Buildings/town-center/TownCenter_authoring.obj',
   'Assets/Resources/Imports/Units/Buildings/resource-dropoff/ResourceDropoff_authoring.obj',
+  'Assets/Resources/Imports/Units/Buildings/lumber-camp/LumberCamp_authoring.obj',
 ];
 
 function fail(message) {
