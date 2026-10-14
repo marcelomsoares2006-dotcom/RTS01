@@ -148,6 +148,7 @@ GameObject:
   - component: {fileID: 2810587783769693676}
   - component: {fileID: 769025343390144085}
   - component: {fileID: 7928814290623769016}
+  - component: {fileID: 880000002}
   m_Layer: 12
   m_Name: Horseman
   m_TagString: Unit
@@ -528,3 +529,21 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 393622013571732678}
   m_PrefabAsset: {fileID: 0}
+
+--- !u!114 &880000002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4893885829384556338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b47c2d1e9f6a4830a5d8c7e2f1049638, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  modelResourcePath: Imports/Units/Military/horseman/Horseman_authoring
+  authoredVisualName: Horseman_AuthoredVisual
+  hideProxyWhenLoaded: 1
+  authoredLocalPosition: {x: 0, y: 0, z: 0}
+  authoredLocalScale: {x: 1, y: 1, z: 1}

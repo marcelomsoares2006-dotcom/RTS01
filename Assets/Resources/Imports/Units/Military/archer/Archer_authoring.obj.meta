@@ -1,0 +1,26 @@
+fileFormatVersion: 2
+guid: 8c51a2ef9d3b4a76b0c8e1f2d5a90413
+ModelImporter:
+  serializedVersion: 21300
+  externalObjects: {}
+  materials:
+    materialImportMode: 0
+  meshes:
+    lODScreenPercentages: []
+  isReadable: 0
+  importVisibility: 0
+  importCameras: 0
+  importLights: 0
+  generateSecondaryUV: 0
+  useFileUnits: 1
+  optimizeMeshPolygons: 0
+  optimizeMeshVertices: 0
+  userData: authored-archer-obj
+*** Add File: D:/RTS01/Assets/Resources/Imports/Units/Military/archer/Archer_authoring.mtl.meta
+fileFormatVersion: 2
+guid: 8c51a2ef9d3b4a76b0c8e1f2d5a90414
+DefaultImporter:
+  externalObjects: {}
+  userData: authored-archer-mtl
+  assetBundleName: 
+  assetBundleVariant: 
