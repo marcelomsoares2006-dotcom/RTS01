@@ -20,6 +20,7 @@ public class Building : Unit
     private int _constructionHP;
     private List<CharacterManager> _constructors;
     private List<CharacterManager> _garrisonedUnits;
+    private int _garrisonAttackDamageBonus;
     private List<Transform> _smokeVfx;
     private BuildingBT _bt;
 
@@ -40,6 +41,7 @@ public class Building : Unit
         _constructionHP = 0;
         _constructors = new List<CharacterManager>();
         _garrisonedUnits = new List<CharacterManager>();
+        _garrisonAttackDamageBonus = 0;
         _smokeVfx = new List<Transform>();
         _isAlive = false;
 
@@ -260,6 +262,9 @@ public class Building : Unit
             return result;
 
         _garrisonedUnits.Add(unit);
+        _garrisonAttackDamageBonus = Mathf.Max(
+            _garrisonAttackDamageBonus,
+            spec.garrisonAttackDamageBonus);
         return BuildingGarrisonResult.Accepted;
     }
 
@@ -406,6 +411,18 @@ public class Building : Unit
                 if (Globals.BUILDING_DATA[i].code == _data.code)
                     return i;
             return -1;
+        }
+    }
+
+    public override int CombatAttackDamage
+    {
+        get
+        {
+            PruneInvalidGarrisonedUnits();
+            return BuildingDefenseRules.ResolveAttackDamage(
+                AttackDamage,
+                _garrisonedUnits == null ? 0 : _garrisonedUnits.Count,
+                _garrisonAttackDamageBonus);
         }
     }
 }

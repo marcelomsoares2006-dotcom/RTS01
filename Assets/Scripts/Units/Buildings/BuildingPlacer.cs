@@ -58,7 +58,11 @@ public class BuildingPlacer : MonoBehaviour
                 Globals.TERRAIN_LAYER_MASK
             ))
             {
-                _placedBuilding.SetPosition(_raycastHit.point);
+                BuildingData placementData = _placedBuilding.Data as BuildingData;
+                float gridSize = placementData != null ? placementData.placementGridSize : 0f;
+                _placedBuilding.SetPosition(BuildingConstructionRules.SnapPosition(
+                    _raycastHit.point,
+                    gridSize));
                 if (_lastPlacementPosition != _raycastHit.point)
                 {
                     _placedBuilding.CheckValidPlacement();
@@ -78,11 +82,16 @@ public class BuildingPlacer : MonoBehaviour
             }
 
             if (Input.mouseScrollDelta.y != 0f)
-                _placedBuilding.Transform.Rotate(
-                    Vector3.up,
-                    Mathf.Sign(Input.mouseScrollDelta.y) * 15f,
-                    Space.World
-                );
+            {
+                BuildingData placementData = _placedBuilding.Data as BuildingData;
+                float step = placementData != null ? placementData.rotationStepDegrees : 15f;
+                float nextY = _placedBuilding.Transform.eulerAngles.y
+                    + Mathf.Sign(Input.mouseScrollDelta.y) * step;
+                _placedBuilding.Transform.rotation = Quaternion.Euler(
+                    0f,
+                    BuildingConstructionRules.SnapRotation(nextY, step),
+                    0f);
+            }
         }
     }
 

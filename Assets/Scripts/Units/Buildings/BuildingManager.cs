@@ -75,8 +75,10 @@ public class BuildingManager : UnitManager
         // cast a small ray beneath the corner to check for a close ground
         // (if at least two are not valid, then placement is invalid)
         int validCornersCount = 0;
+        float maximumSlope = data != null ? data.maximumTerrainSlopeDegrees : 25f;
         foreach (Vector3 corner in bottomCorners)
         {
+            RaycastHit terrainHit;
             if (!Physics.Raycast(
                 // Collider coordinates are local to the building. Transforming
                 // each probe keeps terrain validation correct after rotation
@@ -85,6 +87,9 @@ public class BuildingManager : UnitManager
                 Vector3.up * -1f,
                 data != null ? data.terrainProbeDistance : 2f,
                 Globals.TERRAIN_LAYER_MASK
+            ) || !BuildingConstructionRules.IsTerrainSlopeAllowed(
+                terrainHit.normal,
+                maximumSlope
             ))
                 continue;
             validCornersCount++;

@@ -96,12 +96,14 @@ function Test-CatalogContracts([hashtable]$GuidIndex) {
     $blocks = [regex]::Matches($catalog, '(?ms)^\s*- code:\s*(\S+)(.*?)(?=^\s*- code:|\z)')
     if ($blocks.Count -lt 2) { throw 'Building catalog must contain at least Town Center and House entries.' }
     $codes = @{}
+    $bodies = @{}
     $playable = 0
     foreach ($block in $blocks) {
         $code = $block.Groups[1].Value
         $body = $block.Groups[2].Value
         if ($codes.ContainsKey($code.ToLowerInvariant())) { throw "Duplicate building code: $code" }
         $codes[$code.ToLowerInvariant()] = $true
+        $bodies[$code.ToLowerInvariant()] = $body
         foreach ($field in @('displayName', 'prefabPath', 'modelPath', 'populationCapacity', 'acceptanceCriteria')) {
             if ($body -notmatch "(?m)^\s*${field}:\s*[^\r\n]+") { throw "Catalog entry '$code' has no $field." }
         }
@@ -119,7 +121,20 @@ function Test-CatalogContracts([hashtable]$GuidIndex) {
             if (!$data.Success -or !$GuidIndex.ContainsKey($data.Groups[1].Value)) { throw "Playable entry '$code' has no resolvable BuildingData GUID." }
         }
     }
-    if (!$codes.ContainsKey('town_center') -or !$codes.ContainsKey('house') -or !$codes.ContainsKey('tower')) { throw 'Catalog must include town_center, house and tower contracts.' }
+    $requiredCodes = @('town_center', 'house', 'resource_dropoff', 'barracks', 'archery_range', 'stable', 'mining_camp', 'lumber_camp', 'mill', 'tower')
+    foreach ($requiredCode in $requiredCodes) {
+        if (!$codes.ContainsKey($requiredCode)) { throw "Catalog is missing required building contract: $requiredCode" }
+    }
+    foreach ($productionCode in @('town_center', 'barracks', 'archery_range', 'stable')) {
+        if ($bodies[$productionCode] -notmatch '(?ms)^\s*production:\s*\r?\n\s*- productCode:\s*\S+') {
+            throw "Catalog entry '$productionCode' has no production contract."
+        }
+    }
+    foreach ($dropoffCode in @('town_center', 'resource_dropoff', 'mining_camp', 'lumber_camp', 'mill')) {
+        if ($bodies[$dropoffCode] -notmatch '(?ms)^\s*constructionCost:\s*\r?\n\s*- resource:\s*\d+\s*\r?\n\s*amount:\s*[1-9]\d*') {
+            throw "Catalog entry '$dropoffCode' has no positive construction cost."
+        }
+    }
     if ($playable -lt 1) { throw 'Building catalog has no playable entries.' }
     return [pscustomobject]@{ Entries = $blocks.Count; Playable = $playable }
 }

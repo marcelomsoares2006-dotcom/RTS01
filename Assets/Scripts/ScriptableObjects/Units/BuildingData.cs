@@ -18,4 +18,12 @@ public class BuildingData : UnitData
     [Min(0.1f)] public float terrainProbeDistance = 2f;
     [Min(0f)] public float terrainProbeStartOffset = 0.5f;
 
+    [Header("Placement")]
+    [Tooltip("Optional world-space grid size. Zero keeps free placement.")]
+    [Min(0f)] public float placementGridSize = 0f;
+    [Tooltip("Rotation increment used by the placement preview.")]
+    [Range(1f, 360f)] public float rotationStepDegrees = 15f;
+    [Tooltip("Maximum allowed terrain slope in degrees at the supported probe corners.")]
+    [Range(0f, 90f)] public float maximumTerrainSlopeDegrees = 25f;
+
 }

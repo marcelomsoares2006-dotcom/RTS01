@@ -91,6 +91,10 @@ public sealed class BuildingContentSpec
     [Min(0)]
     public int garrisonCapacity;
 
+    [Tooltip("Additional attack damage contributed by each garrisoned unit in a defensive building.")]
+    [Min(0)]
+    public int garrisonAttackDamageBonus;
+
     [Tooltip("Stable unit codes allowed to enter this building. Empty means any unit code.")]
     public List<string> allowedUnitCodes = new List<string>();
 
@@ -181,6 +185,25 @@ public sealed class BuildingContentCatalog : ScriptableObject
                     if (production == null || string.IsNullOrWhiteSpace(production.productCode)
                         || production.productionTime <= 0f || production.queueLimit <= 0)
                         yield return entry.code + " has an invalid production contract.";
+                    if (production != null && production.cost != null)
+                    {
+                        for (int k = 0; k < production.cost.Count; k++)
+                        {
+                            BuildingContentCost cost = production.cost[k];
+                            if (cost == null || cost.amount <= 0)
+                                yield return entry.code + " has an invalid production cost.";
+                        }
+                    }
+                }
+            }
+
+            if (entry.requirements != null)
+            {
+                for (int j = 0; j < entry.requirements.Count; j++)
+                {
+                    BuildingRequirement requirement = entry.requirements[j];
+                    if (requirement == null || requirement.IsEmpty)
+                        yield return entry.code + " has an empty building requirement.";
                 }
             }
 

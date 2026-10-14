@@ -7,6 +7,34 @@ using UnityEngine;
 /// </summary>
 public static class BuildingConstructionRules
 {
+    public static float SnapCoordinate(float value, float gridSize)
+    {
+        if (gridSize <= 0f) return value;
+        return Mathf.Round(value / gridSize) * gridSize;
+    }
+
+    public static Vector3 SnapPosition(Vector3 position, float gridSize)
+    {
+        if (gridSize <= 0f) return position;
+        return new Vector3(
+            SnapCoordinate(position.x, gridSize),
+            position.y,
+            SnapCoordinate(position.z, gridSize));
+    }
+
+    public static float SnapRotation(float degrees, float stepDegrees)
+    {
+        if (stepDegrees <= 1f) return degrees;
+        return Mathf.Round(degrees / stepDegrees) * stepDegrees;
+    }
+
+    public static bool IsTerrainSlopeAllowed(Vector3 normal, float maximumSlopeDegrees)
+    {
+        if (maximumSlopeDegrees < 0f || normal.sqrMagnitude <= Mathf.Epsilon) return false;
+        float slope = Vector3.Angle(normal.normalized, Vector3.up);
+        return slope <= maximumSlopeDegrees + 0.001f;
+    }
+
     public static BuildingLifecycleState GetLifecycleState(
         bool isFixed,
         bool isOperational,

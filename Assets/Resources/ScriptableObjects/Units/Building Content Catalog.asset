@@ -57,7 +57,9 @@ MonoBehaviour:
     modelPath: Assets/Resources/Imports/Units/Buildings/house.fbx
     requiredSkillCodes:
     - build_house
-    constructionCost: []
+    constructionCost:
+    - resource: 1
+      amount: 50
     requirements: []
     production: []
     dropoffResources: []
@@ -109,9 +111,23 @@ MonoBehaviour:
     modelPath: Assets/Resources/Imports/Units/Buildings/barracks/
     requiredSkillCodes:
     - produce_soldier
-    constructionCost: []
-    requirements: []
-    production: []
+    constructionCost:
+    - resource: 1
+      amount: 150
+    requirements:
+    - technologyCode: ''
+      buildingCode: town_center
+      minimumPopulation: 0
+    production:
+    - productCode: spearman
+      cost:
+      - resource: 0
+        amount: 80
+      - resource: 1
+        amount: 30
+      productionTime: 15
+      queueLimit: 5
+      populationCost: 1
     dropoffResources: []
     garrisonCapacity: 0
     populationCapacity: 0
@@ -130,9 +146,23 @@ MonoBehaviour:
     prefabPath: Assets/Resources/Prefabs/Units/Buildings/Stable.prefab
     modelPath: Assets/Resources/Imports/Units/Buildings/stable/
     requiredSkillCodes: []
-    constructionCost: []
-    requirements: []
-    production: []
+    constructionCost:
+    - resource: 1
+      amount: 150
+    requirements:
+    - technologyCode: ''
+      buildingCode: town_center
+      minimumPopulation: 0
+    production:
+    - productCode: horseman
+      cost:
+      - resource: 0
+        amount: 100
+      - resource: 1
+        amount: 20
+      productionTime: 23
+      queueLimit: 5
+      populationCost: 1
     dropoffResources: []
     garrisonCapacity: 0
     populationCapacity: 0
@@ -151,9 +181,23 @@ MonoBehaviour:
     prefabPath: Assets/Resources/Prefabs/Units/Buildings/ArcheryRange.prefab
     modelPath: Assets/Resources/Imports/Units/Buildings/archery-range/
     requiredSkillCodes: []
-    constructionCost: []
-    requirements: []
-    production: []
+    constructionCost:
+    - resource: 1
+      amount: 150
+    requirements:
+    - technologyCode: ''
+      buildingCode: town_center
+      minimumPopulation: 0
+    production:
+    - productCode: archer
+      cost:
+      - resource: 0
+        amount: 30
+      - resource: 1
+        amount: 50
+      productionTime: 15
+      queueLimit: 5
+      populationCost: 1
     dropoffResources: []
     garrisonCapacity: 0
     populationCapacity: 0
@@ -163,6 +207,88 @@ MonoBehaviour:
     acceptanceCriteria: >-
       Trains ranged units after the first age transition and exposes a clear
       production queue and counter unit path.
+  - code: mining_camp
+    displayName: Mining Camp
+    role: 2
+    status: 0
+    minimumEra: 1
+    buildingData: {fileID: 0}
+    prefabPath: Assets/Resources/Prefabs/Units/Buildings/MiningCamp.prefab
+    modelPath: Assets/Resources/Imports/Units/Buildings/mining-camp/
+    requiredSkillCodes: []
+    constructionCost:
+    - resource: 1
+      amount: 50
+    requirements:
+    - technologyCode: ''
+      buildingCode: town_center
+      minimumPopulation: 0
+    production: []
+    dropoffResources:
+    - 2
+    - 3
+    garrisonCapacity: 0
+    populationCapacity: 0
+    supportsDropoff: 1
+    supportsProduction: 0
+    supportsGarrison: 0
+    acceptanceCriteria: >-
+      Dark Age resource dropoff for gold and stone. Workers can route both
+      resources through this camp after placement near a deposit.
+  - code: lumber_camp
+    displayName: Lumber Camp
+    role: 2
+    status: 0
+    minimumEra: 1
+    buildingData: {fileID: 0}
+    prefabPath: Assets/Resources/Prefabs/Units/Buildings/LumberCamp.prefab
+    modelPath: Assets/Resources/Imports/Units/Buildings/lumber-camp/
+    requiredSkillCodes: []
+    constructionCost:
+    - resource: 1
+      amount: 50
+    requirements:
+    - technologyCode: ''
+      buildingCode: town_center
+      minimumPopulation: 0
+    production: []
+    dropoffResources:
+    - 1
+    garrisonCapacity: 0
+    populationCapacity: 0
+    supportsDropoff: 1
+    supportsProduction: 0
+    supportsGarrison: 0
+    acceptanceCriteria: >-
+      Dark Age wood dropoff. Workers can deliver wood here and unlock the
+      nearby forest economy without requiring a missing prefab reference.
+  - code: mill
+    displayName: Mill
+    role: 2
+    status: 0
+    minimumEra: 1
+    buildingData: {fileID: 0}
+    prefabPath: Assets/Resources/Prefabs/Units/Buildings/Mill.prefab
+    modelPath: Assets/Resources/Imports/Units/Buildings/mill/
+    requiredSkillCodes: []
+    constructionCost:
+    - resource: 1
+      amount: 50
+    requirements:
+    - technologyCode: ''
+      buildingCode: town_center
+      minimumPopulation: 0
+    production: []
+    dropoffResources:
+    - 0
+    garrisonCapacity: 0
+    populationCapacity: 0
+    supportsDropoff: 1
+    supportsProduction: 0
+    supportsGarrison: 0
+    acceptanceCriteria: >-
+      Dark Age food dropoff for farms and hunted resources, with a future
+      technology path for agricultural upgrades.
   - code: tower
     displayName: Tower
     role: 4
@@ -172,15 +298,25 @@ MonoBehaviour:
     prefabPath: Assets/Resources/Prefabs/Units/Buildings/Tower.prefab
     modelPath: Assets/Resources/Imports/Units/Buildings/tower.fbx
     requiredSkillCodes: []
-    constructionCost: []
+    constructionCost:
+    - resource: 1
+      amount: 80
+    - resource: 3
+      amount: 100
     requirements: []
     production: []
     dropoffResources: []
-    garrisonCapacity: 0
+    garrisonCapacity: 5
+    garrisonAttackDamageBonus: 2
+    allowedUnitCodes:
+    - spearman
+    - soldier
+    - heraldic_knight
     populationCapacity: 0
     supportsDropoff: 0
     supportsProduction: 0
-    supportsGarrison: 0
+    supportsGarrison: 1
     acceptanceCriteria: >-
-      Existing defensive prototype. Needs full attack, garrison and upgrade
-      validation before it can be marked Playable.
+      Existing defensive prototype. Combat uses the authored UnitData attack
+      profile, accepts up to five combat units and adds two damage per unit.
+      Upgrade and visual validation remain before it can be marked Playable.

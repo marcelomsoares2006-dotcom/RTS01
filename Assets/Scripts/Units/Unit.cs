@@ -280,6 +280,8 @@ public class Unit
     public List<SkillManager> SkillManagers { get => _skillManagers; }
     public int Owner { get => _owner; }
     public int AttackDamage { get => _attackDamage; set { _attackDamage = value; } }
+    /// <summary>Combat damage after building-specific defensive modifiers.</summary>
+    public virtual int CombatAttackDamage { get => _attackDamage; }
     public float AttackRange { get => _attackRange; set { _attackRange = value; } }
     public float AttackRate { get => _attackRate; set { _attackRate = value; } }
     public int Armor => Mathf.Max(0, _data.armor);

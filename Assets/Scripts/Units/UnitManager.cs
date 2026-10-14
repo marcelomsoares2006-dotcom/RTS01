@@ -95,7 +95,7 @@ public class UnitManager : MonoBehaviour
             transform.position,
             target.position,
             Unit.AttackRange,
-            Unit.AttackDamage,
+            Unit.CombatAttackDamage,
             Unit.AttackRate,
             Time.time,
             _combatCooldown,

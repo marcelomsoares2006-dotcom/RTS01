@@ -23,7 +23,11 @@ public sealed class BuildingContentCatalogTests
             .Where(group => group.Count() > 1).Select(group => group.Key).ToArray();
         Assert.That(duplicates, Is.Empty, "Content codes must be unique: " + string.Join(", ", duplicates));
 
-        foreach (string code in new[] { "town_center", "house", "resource_dropoff", "barracks" })
+        foreach (string code in new[]
+        {
+            "town_center", "house", "resource_dropoff", "barracks", "archery_range",
+            "stable", "mining_camp", "lumber_camp", "mill"
+        })
             Assert.That(catalog.Find(code), Is.Not.Null, "Missing foundation content contract: " + code);
     }
 
@@ -109,5 +113,59 @@ public sealed class BuildingContentCatalogTests
         BuildingContentCatalog catalog = AssetDatabase.LoadAssetAtPath<BuildingContentCatalog>(CatalogPath);
         string[] errors = catalog.ValidateGameplayContracts().ToArray();
         Assert.That(errors, Is.Empty, string.Join("; ", errors));
+    }
+
+    [Test]
+    public void EssentialRosterDefinesEraCostProductionAndPrerequisiteContracts()
+    {
+        BuildingContentCatalog catalog = AssetDatabase.LoadAssetAtPath<BuildingContentCatalog>(CatalogPath);
+
+        AssertConstruction(catalog.Find("town_center"), BuildingEra.Dark, EconomyResourceType.Wood, 400);
+        AssertConstruction(catalog.Find("resource_dropoff"), BuildingEra.Dark, EconomyResourceType.Wood, 50);
+        AssertConstruction(catalog.Find("mining_camp"), BuildingEra.Dark, EconomyResourceType.Wood, 50);
+        AssertConstruction(catalog.Find("lumber_camp"), BuildingEra.Dark, EconomyResourceType.Wood, 50);
+        AssertConstruction(catalog.Find("mill"), BuildingEra.Dark, EconomyResourceType.Wood, 50);
+        AssertConstruction(catalog.Find("barracks"), BuildingEra.Dark, EconomyResourceType.Wood, 150);
+        AssertConstruction(catalog.Find("archery_range"), BuildingEra.Feudal, EconomyResourceType.Wood, 150);
+        AssertConstruction(catalog.Find("stable"), BuildingEra.Feudal, EconomyResourceType.Wood, 150);
+        AssertConstruction(catalog.Find("tower"), BuildingEra.Dark, EconomyResourceType.Wood, 80);
+
+        AssertProduction(catalog.Find("town_center"), "villager");
+        AssertProduction(catalog.Find("barracks"), "spearman");
+        AssertProduction(catalog.Find("archery_range"), "archer");
+        AssertProduction(catalog.Find("stable"), "horseman");
+
+        foreach (string code in new[]
+        {
+            "resource_dropoff", "mining_camp", "lumber_camp", "mill", "barracks",
+            "archery_range", "stable"
+        })
+        {
+            BuildingContentSpec entry = catalog.Find(code);
+            Assert.That(entry.requirements.Any(requirement => requirement != null
+                && requirement.buildingCode == "town_center"), Is.True,
+                code + " must require a Town Center.");
+        }
+    }
+
+    private static void AssertConstruction(
+        BuildingContentSpec entry, BuildingEra era, EconomyResourceType resource, int amount)
+    {
+        Assert.That(entry, Is.Not.Null);
+        Assert.That(entry.minimumEra, Is.EqualTo(era), entry.code + " has the wrong minimum era.");
+        Assert.That(entry.constructionCost.Any(cost => cost != null
+            && cost.resource == resource && cost.amount == amount), Is.True,
+            entry.code + " has the wrong construction cost.");
+    }
+
+    private static void AssertProduction(BuildingContentSpec entry, string productCode)
+    {
+        BuildingContentProduction production = entry.production
+            .FirstOrDefault(item => item != null && item.productCode == productCode);
+        Assert.That(production, Is.Not.Null, entry.code + " must produce " + productCode + ".");
+        Assert.That(production.productionTime, Is.GreaterThan(0f));
+        Assert.That(production.queueLimit, Is.GreaterThan(0));
+        Assert.That(production.cost, Is.Not.Null.And.Not.Empty);
+        Assert.That(production.cost.All(cost => cost != null && cost.amount > 0), Is.True);
     }
 }
