@@ -7,8 +7,27 @@ param(
 $ErrorActionPreference = 'Stop'
 $reviewProject = Split-Path $PSScriptRoot -Parent
 if (!(Test-Path -LiteralPath $UnityPath)) { throw "Unity executable not found: $UnityPath" }
-$reviewOpen = Get-CimInstance Win32_Process -Filter "Name = 'Unity.exe'" |
-    Where-Object { $_.CommandLine -like "*$reviewProject*" }
+$reviewOpen = @()
+try {
+    # Reading CommandLine through Win32_Process can be denied for a standard
+    # user. Keep the precise project check when available.
+    $reviewOpen = @(Get-CimInstance Win32_Process -Filter "Name = 'Unity.exe'" -ErrorAction Stop |
+        Where-Object { $_.CommandLine -like "*$reviewProject*" })
+}
+catch {
+    # Do not silently continue: without the command line we cannot prove that
+    # the project is closed. A conservative process-level fallback is safer
+    # than running batch Unity against an open project.
+    try {
+        $unityProcesses = @(Get-Process -Name Unity -ErrorAction Stop)
+    }
+    catch {
+        throw "Unable to inspect Unity processes safely: $($_.Exception.Message)"
+    }
+    if ($unityProcesses.Count -gt 0) {
+        throw 'Unity.exe is running, but its project path cannot be inspected without elevation. Close all Unity editors or run this validator elevated.'
+    }
+}
 if ($reviewOpen) { throw 'Close this project in Unity before running batch validation. No process was terminated.' }
 New-Item -ItemType Directory -Force -Path (Join-Path $reviewProject 'TestResults') | Out-Null
 
