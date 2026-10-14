@@ -25,6 +25,8 @@ The project also has building materials, selection/ambient audio and the `BuildH
 | Lumber Camp | Dark | 50 Wood | Wood dropoff | Planned |
 | Mill | Dark | 50 Wood | Food dropoff | Planned |
 
+The planned economy roster is now covered by explicit acceptance tests: Mining Camp routes Gold and Stone, Lumber Camp routes Wood, and Mill routes Food. Barracks is a Dark Age production contract requiring Town Center, costing 150 Wood and producing Spearman. These contracts remain design/runtime-intermediate data until each authored `BuildingData`, prefab and model set is available.
+
 ## First content gate
 
 The first playable building slice is Town Center, House, one generic resource dropoff family, and one production building. A planned entry becomes `Playable` only after it has a `BuildingData`, prefab, model set, construction stages, placement footprint and editor validation. The catalog does not add planned entries to construction runtime automatically.

@@ -178,6 +178,28 @@ public sealed class BuildingContentCatalogTests
         }
     }
 
+    [Test]
+    public void PlannedEconomyAndBarracksContractsRemainExplicitWithoutRuntimePromotion()
+    {
+        BuildingContentCatalog catalog = AssetDatabase.LoadAssetAtPath<BuildingContentCatalog>(CatalogPath);
+
+        AssertDropoff(catalog.Find("mining_camp"), EconomyResourceType.Gold, EconomyResourceType.Stone);
+        AssertDropoff(catalog.Find("lumber_camp"), EconomyResourceType.Wood);
+        AssertDropoff(catalog.Find("mill"), EconomyResourceType.Food);
+
+        BuildingContentSpec barracks = catalog.Find("barracks");
+        Assert.That(barracks.role, Is.EqualTo(BuildingContentRole.Production));
+        Assert.That(barracks.minimumEra, Is.EqualTo(BuildingEra.Dark));
+        Assert.That(barracks.supportsProduction, Is.True);
+        Assert.That(barracks.IsRuntimeReady, Is.False,
+            "Barracks must remain a planned contract until authored assets exist.");
+        Assert.That(barracks.requirements.Any(requirement => requirement != null
+            && requirement.buildingCode == "town_center"), Is.True);
+        Assert.That(barracks.constructionCost.Any(cost => cost != null
+            && cost.resource == EconomyResourceType.Wood && cost.amount == 150), Is.True);
+        AssertProduction(barracks, "spearman");
+    }
+
     private static void AssertConstruction(
         BuildingContentSpec entry, BuildingEra era, EconomyResourceType resource, int amount)
     {
@@ -197,5 +219,19 @@ public sealed class BuildingContentCatalogTests
         Assert.That(production.queueLimit, Is.GreaterThan(0));
         Assert.That(production.cost, Is.Not.Null.And.Not.Empty);
         Assert.That(production.cost.All(cost => cost != null && cost.amount > 0), Is.True);
+    }
+
+    private static void AssertDropoff(BuildingContentSpec entry, params EconomyResourceType[] resources)
+    {
+        Assert.That(entry, Is.Not.Null);
+        Assert.That(entry.role, Is.EqualTo(BuildingContentRole.ResourceDropoff));
+        Assert.That(entry.minimumEra, Is.EqualTo(BuildingEra.Dark));
+        Assert.That(entry.supportsDropoff, Is.True);
+        Assert.That(entry.IsRuntimeReady, Is.False,
+            entry.code + " must remain planned until its authored asset exists.");
+        Assert.That(entry.requirements.Any(requirement => requirement != null
+            && requirement.buildingCode == "town_center"), Is.True,
+            entry.code + " must require Town Center.");
+        CollectionAssert.AreEquivalent(resources, entry.dropoffResources, entry.code + " has the wrong accepted resources.");
     }
 }
