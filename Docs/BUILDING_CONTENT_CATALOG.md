@@ -25,7 +25,7 @@ The project also has building materials, selection/ambient audio and the `BuildH
 | Lumber Camp | Dark | 50 Wood | Wood dropoff | Planned |
 | Mill | Dark | 50 Wood | Food dropoff | Planned |
 
-The planned economy roster is now covered by explicit acceptance tests: Mining Camp routes Gold and Stone, Lumber Camp routes Wood, and Mill routes Food. Barracks is a Dark Age production contract requiring Town Center, costing 150 Wood and producing Spearman. Archery Range is a Feudal production contract requiring an operational Town Center and `fletching`, costing 150 Wood and producing Archer. These contracts remain design/runtime-intermediate data until each authored `BuildingData`, prefab and model set is available.
+The planned economy roster is now covered by explicit acceptance tests: Mining Camp routes Gold and Stone, Lumber Camp routes Wood, and Mill routes Food. Barracks is a Dark Age production contract requiring Town Center, costing 150 Wood and producing Spearman. Archery Range is a Feudal production contract requiring an operational Town Center and `fletching`, costing 150 Wood and producing Archer. Stable is a Feudal production contract requiring an operational Town Center and `riding`, costing 150 Wood and producing Horseman. These contracts remain design/runtime-intermediate data until each authored `BuildingData`, prefab and model set is available.
 
 `BuildingConstructionUiRules.BuildEntries` projects the same catalog into menu state. It can show intermediate entries for planning while marking them unavailable, filters them out when runtime-only mode is requested, and exposes Era, technology, population and asset-origin blockers without creating UI objects or promoting planned assets.
 
@@ -51,7 +51,7 @@ shared `BuildingEconomyRules` checks are covered by
 until its authored `BuildingData` and prefab are promoted through the Unity
 asset gate.
 
-Town Center acceptance requires worker production, population support, resource dropoff, garrison, starting-base placement and save/load identity. Resource dropoff acceptance requires resource-type routing and worker access rules. Barracks acceptance requires a production queue, production time, unit output and age/technology requirements. Archery Range acceptance applies the same queue/replay/AI boundary after the Feudal transition and `fletching` unlock. These are contracts for later integration; this change does not alter economy runtime.
+Town Center acceptance requires worker production, population support, resource dropoff, garrison, starting-base placement and save/load identity. Resource dropoff acceptance requires resource-type routing and worker access rules. Barracks acceptance requires a production queue, production time, unit output and age/technology requirements. Archery Range acceptance applies the same queue/replay/AI boundary after the Feudal transition and `fletching` unlock. Stable acceptance applies the same queue/replay/AI boundary after the Feudal transition and `riding` unlock. These are contracts for later integration; this change does not alter economy runtime.
 
 ## Validation
 

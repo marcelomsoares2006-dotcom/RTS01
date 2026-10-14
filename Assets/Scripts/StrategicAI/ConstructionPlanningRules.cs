@@ -64,6 +64,32 @@ public static class ConstructionPlanningRules
         return true;
     }
 
+    /// <summary>Projects the first Feudal mounted order after Stable gates pass.</summary>
+    public static bool TryCreateInitialStableIntent(
+        BuildingContentCatalog catalog, StrategicPlanningState state,
+        out StrategicActionIntent intent, out StableContractResult result)
+    {
+        intent = null;
+        result = StableMilitaryContract.Evaluate(catalog, state);
+        if (result != StableContractResult.Accepted) return false;
+        BuildingContentProduction production;
+        if (!StableMilitaryContract.TryResolveInitialProduction(catalog, out production))
+        {
+            result = StableContractResult.MissingProduction;
+            return false;
+        }
+        intent = new StrategicActionIntent
+        {
+            action = StrategicActionKind.ProduceUnit,
+            priority = StrategicPriority.High,
+            goalId = "auto-produce-stable-" + production.productCode.Trim().ToLowerInvariant(),
+            targetCode = production.productCode.Trim(),
+            targetEntityId = "stable",
+            quantity = 1
+        };
+        return true;
+    }
+
     /// <summary>Reserves a candidate through the shared concurrent ledger.</summary>
     public static ConstructionReservationResult TryReserveCandidate(
         ConstructionReservationLedger reservations,
