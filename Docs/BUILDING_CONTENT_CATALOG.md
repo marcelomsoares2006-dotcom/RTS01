@@ -35,6 +35,13 @@ The first playable building slice is Town Center, House, one generic resource dr
 
 Town Center and the essential roster now carry explicit gameplay contracts in the catalog asset. Town Center is specified at 400 Wood, supports Food/Wood/Gold/Stone dropoff, provides 10 population capacity, garrisons 5 units and produces `villager` at 50 Food per 20 seconds with a queue limit of 5. Resource Dropoff is specified at 50 Wood and accepts the same four economy resource types. Barracks, Archery Range and Stable specify 150 Wood construction and Spearman, Archer and Horseman production respectively. Mining Camp, Lumber Camp and Mill specify 50 Wood construction and specialized resource routing. These values are design data for the upcoming runtime adapters; they do not imply that a missing prefab is ready for placement.
 
+The first adapter milestone is now implemented for Lumber Camp: its 50 Wood
+construction contract, operational Town Center prerequisite, Wood-only route,
+collector delivery and AI construction gate are covered by
+`LumberCampEconomyContract` and editor tests. The catalog entry remains
+`Planned` until its authored `BuildingData` and prefab are promoted through the
+Unity asset gate.
+
 Town Center acceptance requires worker production, population support, resource dropoff, garrison, starting-base placement and save/load identity. Resource dropoff acceptance requires resource-type routing and worker access rules. Barracks acceptance requires a production queue, production time, unit output and age/technology requirements. These are contracts for later integration; this change does not alter economy runtime.
 
 ## Validation

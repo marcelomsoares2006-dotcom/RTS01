@@ -18,7 +18,8 @@ public enum BuildingResourceRoutingResult
     MissingState,
     BuildingNotOperational,
     UnsupportedResource,
-    NotADropoff
+    NotADropoff,
+    MissingOperationalRequirement
 }
 
 /// <summary>
@@ -72,9 +73,33 @@ public static class BuildingEconomyRules
             return BuildingResourceRoutingResult.BuildingNotOperational;
         if (!entry.supportsDropoff)
             return BuildingResourceRoutingResult.NotADropoff;
+        if (!HasOperationalRequirements(state, entry))
+            return BuildingResourceRoutingResult.MissingOperationalRequirement;
         if (entry.dropoffResources == null || !entry.dropoffResources.Contains(resource))
             return BuildingResourceRoutingResult.UnsupportedResource;
         return BuildingResourceRoutingResult.Accepted;
+    }
+
+    /// <summary>
+    /// Answers the same ownership/lifecycle question used by resource routes.
+    /// A dependent dropoff cannot become active while its prerequisite is only
+    /// a blueprint or under construction.
+    /// </summary>
+    public static bool HasOperationalOwnedBuilding(StrategicPlanningState state, string code)
+    {
+        return state != null && IsOperationalOwned(state, code);
+    }
+
+    private static bool HasOperationalRequirements(StrategicPlanningState state, BuildingContentSpec entry)
+    {
+        if (entry == null || entry.requirements == null) return true;
+        for (int i = 0; i < entry.requirements.Count; i++)
+        {
+            BuildingRequirement requirement = entry.requirements[i];
+            if (requirement == null || string.IsNullOrWhiteSpace(requirement.buildingCode)) continue;
+            if (!IsOperationalOwned(state, requirement.buildingCode.Trim())) return false;
+        }
+        return true;
     }
 
     private static bool IsOperationalOwned(StrategicPlanningState state, string code)

@@ -177,7 +177,7 @@ public static class ConstructionPlanningRules
             if (requirement == null) continue;
             if (state.population < requirement.minimumPopulation) return false;
             if (!string.IsNullOrWhiteSpace(requirement.buildingCode)
-                && !HasOwnedCode(state, requirement.buildingCode)) return false;
+                && !BuildingEconomyRules.HasOperationalOwnedBuilding(state, requirement.buildingCode)) return false;
             if (!string.IsNullOrWhiteSpace(requirement.technologyCode)
                 && !ContainsCode(state.unlockedTechnologyCodes, requirement.technologyCode)) return false;
         }

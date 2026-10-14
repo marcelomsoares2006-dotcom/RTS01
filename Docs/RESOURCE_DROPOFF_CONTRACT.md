@@ -20,3 +20,18 @@ legacy values are rejected rather than coerced into another resource.
 This contract deliberately does not create prefabs or move workers. Runtime
 controllers, AI and save replay can call the same API after their movement or
 state checks, keeping simulation behavior reproducible.
+
+## Lumber Camp milestone
+
+`LumberCampEconomyContract` specializes this boundary for the first economic
+building milestone. Its catalog contract is exact: `lumber_camp` costs 50 Wood,
+accepts Wood only, and requires an owned operational `town_center` before the
+route can be created. The camp itself must also be operational and runtime-ready.
+
+The contract can consume an `EconomyCollector` after the worker reaches the
+access radius. It deposits the integer carried amount through
+`ResourceDropoffContract`, preserving fractional carry for the next trip and
+rejecting a collector assigned to another resource without mutating the ledger.
+The construction planner uses the same operational prerequisite rule, so AI
+intent cannot enqueue a dependent dropoff while the Town Center is still under
+construction.
