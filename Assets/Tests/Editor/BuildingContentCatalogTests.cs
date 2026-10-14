@@ -171,6 +171,28 @@ public sealed class BuildingContentCatalogTests
         AssertProduction(catalog.Find("stable"), "horseman");
         AssertProduction(catalog.Find("siege_workshop"), "battering_ram");
 
+        AssertProduction(catalog.Find("barracks"), "combat_mage");
+        AssertProduction(catalog.Find("barracks"), "paladin_healer");
+        AssertProduction(catalog.Find("archery_range"), "crossbow");
+        AssertProduction(catalog.Find("siege_workshop"), "catapult");
+
+        string[,] advancedAssets = {
+            { "combat_mage", "CombatMage" },
+            { "paladin_healer", "PaladinHealer" },
+            { "catapult", "Catapult" },
+            { "crossbow", "Crossbow" }
+        };
+        for (int i = 0; i < advancedAssets.GetLength(0); i++)
+        {
+            CharacterData data = Resources.Load<CharacterData>(
+                "ScriptableObjects/Units/Characters/" + advancedAssets[i, 1]);
+            string code = advancedAssets[i, 0];
+            Assert.That(data, Is.Not.Null, code + " must have a runtime CharacterData asset.");
+            Assert.That(data.prefab, Is.Not.Null, code + " CharacterData must reference its playable prefab.");
+            Assert.That(string.Equals(data.code, code, System.StringComparison.OrdinalIgnoreCase), Is.True,
+                code + " CharacterData code must match the production product code.");
+        }
+
         foreach (string code in new[]
         {
             "resource_dropoff", "mining_camp", "lumber_camp", "mill", "barracks",

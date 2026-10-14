@@ -129,7 +129,21 @@ public static class EraImperialSmokeTests
                     path.status == NavMeshPathStatus.PathComplete, "No complete path between player spawnpoints.");
                 if (cycle < 2)
                 {
-                    movingWorker = new Character(Globals.CHARACTER_DATA["worker"], GameManager.instance.gamePlayersParameters.myPlayerId);
+                    CharacterData workerData = Globals.CHARACTER_DATA["worker"];
+                    // Unit's runtime constructor instantiates the prefab at its authored origin.
+                    // In this smoke scene the origin is outside the baked NavMesh, so the
+                    // NavMeshAgent logs an error before the test can call Warp. Temporarily
+                    // seed only the in-memory prefab position; no asset is saved or changed.
+                    Vector3 authoredPosition = workerData.prefab.transform.position;
+                    workerData.prefab.transform.position = start.position;
+                    try
+                    {
+                        movingWorker = new Character(workerData, GameManager.instance.gamePlayersParameters.myPlayerId);
+                    }
+                    finally
+                    {
+                        workerData.prefab.transform.position = authoredPosition;
+                    }
                     var manager = movingWorker.Transform.GetComponent<CharacterManager>();
                     Require(manager.agent.Warp(start.position), "Worker could not be placed on navigation mesh.");
                     workerStart = movingWorker.Transform.position;

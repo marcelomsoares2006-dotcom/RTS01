@@ -15,20 +15,21 @@ Resultado: **REVIEW**
 - Assets/CityArchitecture/Generated/LOD/Market_Classical_LOD1.fbx/MarketPost.002_LOD: UV0 fora de 0-1
 - Assets/CityArchitecture/Generated/LOD/Market_Classical_LOD1.fbx/MarketPost.003_LOD: UV0 fora de 0-1
 - Assets/CityArchitecture/Generated/LOD/Market_Classical_LOD1.fbx/MarketPost_LOD: UV0 fora de 0-1
-- Assets/CharacterRigging/Crossbow/Models/Crossbow.fbx/Crossbow_LOD1: UV0 fora de 0-1
-- Assets/CharacterRigging/Crossbow/Models/Crossbow.fbx/Crossbow_LOD2: UV0 fora de 0-1
-- Assets/CharacterRigging/Crossbow/Models/Crossbow.fbx/WheelL_LOD0: UV0 fora de 0-1
 - Assets/CharacterRigging/Crossbow/Models/Crossbow.fbx/Bolt_LOD0: UV0 fora de 0-1
-- Assets/CharacterRigging/Crossbow/Models/Crossbow.fbx/Body_LOD0: UV0 fora de 0-1
+- Assets/CharacterRigging/Crossbow/Models/Crossbow.fbx/Crossbow_LOD1: UV0 fora de 0-1
 - Assets/CharacterRigging/Crossbow/Models/Crossbow.fbx/LimbL_LOD0: UV0 fora de 0-1
 - Assets/CharacterRigging/Crossbow/Models/Crossbow.fbx/LimbR_LOD0: UV0 fora de 0-1
 - Assets/CharacterRigging/Crossbow/Models/Crossbow.fbx/String_LOD0: UV0 fora de 0-1
-- Assets/CharacterRigging/Crossbow/Models/Crossbow.fbx/Trigger_LOD0: UV0 fora de 0-1
 - Assets/CharacterRigging/Crossbow/Models/Crossbow.fbx/WheelR_LOD0: UV0 fora de 0-1
+- Assets/CharacterRigging/Crossbow/Models/Crossbow.fbx/Body_LOD0: UV0 fora de 0-1
+- Assets/CharacterRigging/Crossbow/Models/Crossbow.fbx/Crossbow_LOD2: UV0 fora de 0-1
+- Assets/CharacterRigging/Crossbow/Models/Crossbow.fbx/Trigger_LOD0: UV0 fora de 0-1
+- Assets/CharacterRigging/Crossbow/Models/Crossbow.fbx/WheelL_LOD0: UV0 fora de 0-1
 - Assets/CharacterRigging/Crossbow/Models/Crossbow.fbx/Winch_LOD0: UV0 fora de 0-1
 - Assets/CharacterRigging/LODs/HeraldicKnight/HeraldicKnight_LOD2.fbx/HeraldicKnight_Body: UV0 fora de 0-1
 
 ## Limites
 
 Escala e pivô são reportados por objeto; a confirmação final do prefab/Unity depende da importação do editor.
-Colisores e enquadramento de câmera são auditados separadamente no Unity.
+Colisores e LODGroup são inventariados nos YAMLs dos prefabs; a ausência não é corrigida nesta frente porque pode alterar placement/NavMesh.
+Detalhes das 20 UVs: `uv-review-2026-10-14.md` e `uv-review-2026-10-14.json`.

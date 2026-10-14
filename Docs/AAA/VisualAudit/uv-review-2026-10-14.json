@@ -1,0 +1,526 @@
+{
+  "status": "REVIEW",
+  "occurrences": [
+    {
+      "path": "Assets/CityArchitecture/Generated/Buildings/Market_Classical.fbx",
+      "mesh": "MarketPost",
+      "outside": 2,
+      "bounds": [
+        -0.0,
+        0.01,
+        1.0,
+        1.0
+      ],
+      "tile_span": [
+        1.0,
+        0.99
+      ],
+      "max_overrun": 7e-08,
+      "classification": "BORDA_DE_PRECISAO",
+      "rationale": "Ultrapassagem mínima/limítrofe e repetida no LOD correspondente; normalizar poderia introduzir costura ou mudar a amostra de textura.",
+      "action": "MANTER; validar no material Unity antes de editar.",
+      "non_manifold_edges": 0,
+      "invalid_normals": 0,
+      "degenerate_faces": 0,
+      "materials": [
+        "Building_Wood"
+      ]
+    },
+    {
+      "path": "Assets/CityArchitecture/Generated/Buildings/Market_Classical.fbx",
+      "mesh": "MarketPost.001",
+      "outside": 2,
+      "bounds": [
+        -0.0,
+        0.01,
+        1.0,
+        1.0
+      ],
+      "tile_span": [
+        1.0,
+        0.99
+      ],
+      "max_overrun": 7e-08,
+      "classification": "BORDA_DE_PRECISAO",
+      "rationale": "Ultrapassagem mínima/limítrofe e repetida no LOD correspondente; normalizar poderia introduzir costura ou mudar a amostra de textura.",
+      "action": "MANTER; validar no material Unity antes de editar.",
+      "non_manifold_edges": 0,
+      "invalid_normals": 0,
+      "degenerate_faces": 0,
+      "materials": [
+        "Building_Wood"
+      ]
+    },
+    {
+      "path": "Assets/CityArchitecture/Generated/Buildings/Market_Classical.fbx",
+      "mesh": "MarketPost.002",
+      "outside": 2,
+      "bounds": [
+        -0.0,
+        0.01,
+        1.0,
+        1.0
+      ],
+      "tile_span": [
+        1.0,
+        0.99
+      ],
+      "max_overrun": 7e-08,
+      "classification": "BORDA_DE_PRECISAO",
+      "rationale": "Ultrapassagem mínima/limítrofe e repetida no LOD correspondente; normalizar poderia introduzir costura ou mudar a amostra de textura.",
+      "action": "MANTER; validar no material Unity antes de editar.",
+      "non_manifold_edges": 0,
+      "invalid_normals": 0,
+      "degenerate_faces": 0,
+      "materials": [
+        "Building_Wood"
+      ]
+    },
+    {
+      "path": "Assets/CityArchitecture/Generated/Buildings/Market_Classical.fbx",
+      "mesh": "MarketPost.003",
+      "outside": 2,
+      "bounds": [
+        -0.0,
+        0.01,
+        1.0,
+        1.0
+      ],
+      "tile_span": [
+        1.0,
+        0.99
+      ],
+      "max_overrun": 7e-08,
+      "classification": "BORDA_DE_PRECISAO",
+      "rationale": "Ultrapassagem mínima/limítrofe e repetida no LOD correspondente; normalizar poderia introduzir costura ou mudar a amostra de textura.",
+      "action": "MANTER; validar no material Unity antes de editar.",
+      "non_manifold_edges": 0,
+      "invalid_normals": 0,
+      "degenerate_faces": 0,
+      "materials": [
+        "Building_Wood"
+      ]
+    },
+    {
+      "path": "Assets/CityArchitecture/Generated/LOD/Market_Classical_LOD1.fbx",
+      "mesh": "MarketPost.001_LOD",
+      "outside": 1,
+      "bounds": [
+        -0.0,
+        0.02809,
+        0.97825,
+        1.0
+      ],
+      "tile_span": [
+        0.97825,
+        0.97191
+      ],
+      "max_overrun": 7e-08,
+      "classification": "BORDA_DE_PRECISAO",
+      "rationale": "Ultrapassagem mínima/limítrofe e repetida no LOD correspondente; normalizar poderia introduzir costura ou mudar a amostra de textura.",
+      "action": "MANTER; validar no material Unity antes de editar.",
+      "non_manifold_edges": 0,
+      "invalid_normals": 0,
+      "degenerate_faces": 0,
+      "materials": [
+        "Building_Wood"
+      ]
+    },
+    {
+      "path": "Assets/CityArchitecture/Generated/LOD/Market_Classical_LOD1.fbx",
+      "mesh": "MarketPost.002_LOD",
+      "outside": 1,
+      "bounds": [
+        -0.0,
+        0.02809,
+        0.97825,
+        1.0
+      ],
+      "tile_span": [
+        0.97825,
+        0.97191
+      ],
+      "max_overrun": 7e-08,
+      "classification": "BORDA_DE_PRECISAO",
+      "rationale": "Ultrapassagem mínima/limítrofe e repetida no LOD correspondente; normalizar poderia introduzir costura ou mudar a amostra de textura.",
+      "action": "MANTER; validar no material Unity antes de editar.",
+      "non_manifold_edges": 0,
+      "invalid_normals": 0,
+      "degenerate_faces": 0,
+      "materials": [
+        "Building_Wood"
+      ]
+    },
+    {
+      "path": "Assets/CityArchitecture/Generated/LOD/Market_Classical_LOD1.fbx",
+      "mesh": "MarketPost.003_LOD",
+      "outside": 1,
+      "bounds": [
+        -0.0,
+        0.02809,
+        0.97825,
+        1.0
+      ],
+      "tile_span": [
+        0.97825,
+        0.97191
+      ],
+      "max_overrun": 7e-08,
+      "classification": "BORDA_DE_PRECISAO",
+      "rationale": "Ultrapassagem mínima/limítrofe e repetida no LOD correspondente; normalizar poderia introduzir costura ou mudar a amostra de textura.",
+      "action": "MANTER; validar no material Unity antes de editar.",
+      "non_manifold_edges": 0,
+      "invalid_normals": 0,
+      "degenerate_faces": 0,
+      "materials": [
+        "Building_Wood"
+      ]
+    },
+    {
+      "path": "Assets/CityArchitecture/Generated/LOD/Market_Classical_LOD1.fbx",
+      "mesh": "MarketPost_LOD",
+      "outside": 1,
+      "bounds": [
+        -0.0,
+        0.02809,
+        0.97825,
+        1.0
+      ],
+      "tile_span": [
+        0.97825,
+        0.97191
+      ],
+      "max_overrun": 7e-08,
+      "classification": "BORDA_DE_PRECISAO",
+      "rationale": "Ultrapassagem mínima/limítrofe e repetida no LOD correspondente; normalizar poderia introduzir costura ou mudar a amostra de textura.",
+      "action": "MANTER; validar no material Unity antes de editar.",
+      "non_manifold_edges": 0,
+      "invalid_normals": 0,
+      "degenerate_faces": 0,
+      "materials": [
+        "Building_Wood"
+      ]
+    },
+    {
+      "path": "Assets/CharacterRigging/Crossbow/Models/Crossbow.fbx",
+      "mesh": "Bolt_LOD0",
+      "outside": 12,
+      "bounds": [
+        0.0,
+        0.0,
+        1.03,
+        1.0
+      ],
+      "tile_span": [
+        1.03,
+        1.0
+      ],
+      "max_overrun": 0.03000009,
+      "classification": "REVISAR",
+      "rationale": "Ocorrência fora do tile sem evidência suficiente para uma correção não destrutiva.",
+      "action": "REVISÃO MANUAL; sem correção automática.",
+      "non_manifold_edges": 34,
+      "invalid_normals": 0,
+      "degenerate_faces": 0,
+      "materials": [
+        "Crossbow_Wood",
+        "Crossbow_Iron",
+        "Crossbow_Feather"
+      ]
+    },
+    {
+      "path": "Assets/CharacterRigging/Crossbow/Models/Crossbow.fbx",
+      "mesh": "Crossbow_LOD1",
+      "outside": 2150,
+      "bounds": [
+        -1.92,
+        -0.26,
+        7.14291,
+        1.0
+      ],
+      "tile_span": [
+        9.06291,
+        1.26
+      ],
+      "max_overrun": 6.14291239,
+      "classification": "REPETICAO_INTENCIONAL_PROVAVEL",
+      "rationale": "Span UV > 1 em peças com materiais de madeira/ferro/corda e LODs; o padrão é compatível com textura repetida/trim.",
+      "action": "MANTER; não empacotar nem reescalar automaticamente.",
+      "non_manifold_edges": 127,
+      "invalid_normals": 0,
+      "degenerate_faces": 0,
+      "materials": [
+        "Crossbow_Wood",
+        "Crossbow_DarkWood",
+        "Crossbow_Iron",
+        "Crossbow_Rope",
+        "Crossbow_Feather"
+      ]
+    },
+    {
+      "path": "Assets/CharacterRigging/Crossbow/Models/Crossbow.fbx",
+      "mesh": "LimbL_LOD0",
+      "outside": 112,
+      "bounds": [
+        0.0,
+        0.0,
+        1.38133,
+        1.0
+      ],
+      "tile_span": [
+        1.38133,
+        1.0
+      ],
+      "max_overrun": 0.38133359,
+      "classification": "REPETICAO_INTENCIONAL_PROVAVEL",
+      "rationale": "Span UV > 1 em peças com materiais de madeira/ferro/corda e LODs; o padrão é compatível com textura repetida/trim.",
+      "action": "MANTER; não empacotar nem reescalar automaticamente.",
+      "non_manifold_edges": 0,
+      "invalid_normals": 0,
+      "degenerate_faces": 0,
+      "materials": [
+        "Crossbow_Wood",
+        "Crossbow_Iron"
+      ]
+    },
+    {
+      "path": "Assets/CharacterRigging/Crossbow/Models/Crossbow.fbx",
+      "mesh": "LimbR_LOD0",
+      "outside": 112,
+      "bounds": [
+        0.0,
+        0.0,
+        1.38133,
+        1.0
+      ],
+      "tile_span": [
+        1.38133,
+        1.0
+      ],
+      "max_overrun": 0.38133359,
+      "classification": "REPETICAO_INTENCIONAL_PROVAVEL",
+      "rationale": "Span UV > 1 em peças com materiais de madeira/ferro/corda e LODs; o padrão é compatível com textura repetida/trim.",
+      "action": "MANTER; não empacotar nem reescalar automaticamente.",
+      "non_manifold_edges": 0,
+      "invalid_normals": 0,
+      "degenerate_faces": 0,
+      "materials": [
+        "Crossbow_Wood",
+        "Crossbow_Iron"
+      ]
+    },
+    {
+      "path": "Assets/CharacterRigging/Crossbow/Models/Crossbow.fbx",
+      "mesh": "String_LOD0",
+      "outside": 342,
+      "bounds": [
+        -0.15,
+        -0.112,
+        7.14291,
+        1.0
+      ],
+      "tile_span": [
+        7.29291,
+        1.112
+      ],
+      "max_overrun": 6.14291239,
+      "classification": "REPETICAO_INTENCIONAL_PROVAVEL",
+      "rationale": "Span UV > 1 em peças com materiais de madeira/ferro/corda e LODs; o padrão é compatível com textura repetida/trim.",
+      "action": "MANTER; não empacotar nem reescalar automaticamente.",
+      "non_manifold_edges": 0,
+      "invalid_normals": 0,
+      "degenerate_faces": 0,
+      "materials": [
+        "Crossbow_Iron",
+        "Crossbow_Rope"
+      ]
+    },
+    {
+      "path": "Assets/CharacterRigging/Crossbow/Models/Crossbow.fbx",
+      "mesh": "WheelR_LOD0",
+      "outside": 872,
+      "bounds": [
+        -0.018,
+        -0.012,
+        6.82982,
+        1.0
+      ],
+      "tile_span": [
+        6.84782,
+        1.012
+      ],
+      "max_overrun": 5.82982254,
+      "classification": "REPETICAO_INTENCIONAL_PROVAVEL",
+      "rationale": "Span UV > 1 em peças com materiais de madeira/ferro/corda e LODs; o padrão é compatível com textura repetida/trim.",
+      "action": "MANTER; não empacotar nem reescalar automaticamente.",
+      "non_manifold_edges": 96,
+      "invalid_normals": 0,
+      "degenerate_faces": 0,
+      "materials": [
+        "Crossbow_Wood",
+        "Crossbow_DarkWood",
+        "Crossbow_Iron"
+      ]
+    },
+    {
+      "path": "Assets/CharacterRigging/Crossbow/Models/Crossbow.fbx",
+      "mesh": "Body_LOD0",
+      "outside": 936,
+      "bounds": [
+        -1.92,
+        -0.26,
+        3.2,
+        1.0
+      ],
+      "tile_span": [
+        5.12,
+        1.26
+      ],
+      "max_overrun": 2.20000005,
+      "classification": "REPETICAO_INTENCIONAL_PROVAVEL",
+      "rationale": "Span UV > 1 em peças com materiais de madeira/ferro/corda e LODs; o padrão é compatível com textura repetida/trim.",
+      "action": "MANTER; não empacotar nem reescalar automaticamente.",
+      "non_manifold_edges": 102,
+      "invalid_normals": 0,
+      "degenerate_faces": 0,
+      "materials": [
+        "Crossbow_Wood",
+        "Crossbow_DarkWood",
+        "Crossbow_Iron",
+        "Crossbow_Feather"
+      ]
+    },
+    {
+      "path": "Assets/CharacterRigging/Crossbow/Models/Crossbow.fbx",
+      "mesh": "Crossbow_LOD2",
+      "outside": 980,
+      "bounds": [
+        -1.92,
+        -0.492,
+        7.14291,
+        1.0
+      ],
+      "tile_span": [
+        9.06291,
+        1.492
+      ],
+      "max_overrun": 6.14291239,
+      "classification": "REPETICAO_INTENCIONAL_PROVAVEL",
+      "rationale": "Span UV > 1 em peças com materiais de madeira/ferro/corda e LODs; o padrão é compatível com textura repetida/trim.",
+      "action": "MANTER; não empacotar nem reescalar automaticamente.",
+      "non_manifold_edges": 20,
+      "invalid_normals": 0,
+      "degenerate_faces": 0,
+      "materials": [
+        "Crossbow_Wood",
+        "Crossbow_DarkWood",
+        "Crossbow_Iron",
+        "Crossbow_Rope"
+      ]
+    },
+    {
+      "path": "Assets/CharacterRigging/Crossbow/Models/Crossbow.fbx",
+      "mesh": "Trigger_LOD0",
+      "outside": 36,
+      "bounds": [
+        -0.16325,
+        -0.04,
+        0.16325,
+        0.04
+      ],
+      "tile_span": [
+        0.3265,
+        0.08
+      ],
+      "max_overrun": 0.16324826,
+      "classification": "REVISAR",
+      "rationale": "Ocorrência fora do tile sem evidência suficiente para uma correção não destrutiva.",
+      "action": "REVISÃO MANUAL; sem correção automática.",
+      "non_manifold_edges": 0,
+      "invalid_normals": 0,
+      "degenerate_faces": 0,
+      "materials": [
+        "Crossbow_Iron"
+      ]
+    },
+    {
+      "path": "Assets/CharacterRigging/Crossbow/Models/Crossbow.fbx",
+      "mesh": "WheelL_LOD0",
+      "outside": 872,
+      "bounds": [
+        -0.018,
+        -0.012,
+        6.82982,
+        1.0
+      ],
+      "tile_span": [
+        6.84782,
+        1.012
+      ],
+      "max_overrun": 5.82982254,
+      "classification": "REPETICAO_INTENCIONAL_PROVAVEL",
+      "rationale": "Span UV > 1 em peças com materiais de madeira/ferro/corda e LODs; o padrão é compatível com textura repetida/trim.",
+      "action": "MANTER; não empacotar nem reescalar automaticamente.",
+      "non_manifold_edges": 96,
+      "invalid_normals": 0,
+      "degenerate_faces": 0,
+      "materials": [
+        "Crossbow_Wood",
+        "Crossbow_DarkWood",
+        "Crossbow_Iron"
+      ]
+    },
+    {
+      "path": "Assets/CharacterRigging/Crossbow/Models/Crossbow.fbx",
+      "mesh": "Winch_LOD0",
+      "outside": 36,
+      "bounds": [
+        -0.2,
+        -0.032,
+        1.0,
+        1.0
+      ],
+      "tile_span": [
+        1.2,
+        1.032
+      ],
+      "max_overrun": 0.19999997,
+      "classification": "REPETICAO_INTENCIONAL_PROVAVEL",
+      "rationale": "Span UV > 1 em peças com materiais de madeira/ferro/corda e LODs; o padrão é compatível com textura repetida/trim.",
+      "action": "MANTER; não empacotar nem reescalar automaticamente.",
+      "non_manifold_edges": 0,
+      "invalid_normals": 0,
+      "degenerate_faces": 0,
+      "materials": [
+        "Crossbow_Wood",
+        "Crossbow_DarkWood",
+        "Crossbow_Iron"
+      ]
+    },
+    {
+      "path": "Assets/CharacterRigging/LODs/HeraldicKnight/HeraldicKnight_LOD2.fbx",
+      "mesh": "HeraldicKnight_Body",
+      "outside": 1,
+      "bounds": [
+        0.0,
+        -0.0,
+        0.99869,
+        0.99984
+      ],
+      "tile_span": [
+        0.99869,
+        0.99984
+      ],
+      "max_overrun": 2.9e-07,
+      "classification": "ILHA_QUASE_LIMITE",
+      "rationale": "Uma coordenada marginal fora do tile em LOD2, sem span repetido; requer inspeção da ilha e do material antes de reexportar.",
+      "action": "REVISÃO MANUAL; sem correção automática.",
+      "non_manifold_edges": 5658,
+      "invalid_normals": 0,
+      "degenerate_faces": 0,
+      "materials": [
+        "HeraldicKnight_Mat"
+      ]
+    }
+  ]
+}

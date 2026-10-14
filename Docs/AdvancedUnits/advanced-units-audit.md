@@ -1,11 +1,37 @@
 # Unidades avançadas por era — auditoria
 
-Data: 05/10/2026. Projeto: `RTS01-Corrigido` (Unity 6000.6.3f1). Etapa: contratos de dados, regras de combate e testes de
-`combat_mage`, `paladin_healer`, `catapult` e `crossbow`.
+Data da auditoria de integração: 14/10/2026. Projeto: `RTS01-Corrigido` (Unity 6000.6.3f1).
 
-**Escopo entregue:** dados, regras e validação. **Não entregue (de propósito):** malhas, prefabs, materiais, clipes,
-integração na árvore de comportamento, entrada no catálogo do jogo e no Build Settings. Nenhum item visual existe ainda e
-nenhum é tratado como pronto.
+Este documento preserva o histórico da etapa de contratos de 05/10/2026, mas o estado atual foi revalidado diretamente no
+projeto. Os quatro ativos avançados possuem agora malha, rig, materiais, animações, prefabs jogáveis, `CharacterData`,
+contrato visual, sockets, projéteis/efeitos quando aplicável e controladores de runtime. A produção foi ligada ao catálogo
+real nesta auditoria: Barracks produz `combat_mage` e `paladin_healer`, Archery Range produz `crossbow` e Siege Workshop
+produz `catapult`. Nenhuma unidade avançada é uma cena separada do Build Settings; elas são carregadas por `Resources` e
+instanciadas pela produção, portanto não devem ser adicionadas como cenas.
+
+## Auditoria de integração atual
+
+| Frente | Estado verificado | Evidência |
+|---|---|---|
+| `combat_mage` | **OK** | `CombatMage.prefab`, `CharacterData`, `CombatMage.asset`, `ProjectileAttackController`, contrato `CombatMageBolt`, socket `ProjectileSpawn`, efeitos e clipes reais. |
+| `paladin_healer` | **OK** | `PaladinHealer.prefab`, `CharacterData`, `PaladinHealer.asset`, `PaladinHealBehaviour`, aura de cura, clipes Heal/Attack e efeito de morte. Não usa projétil. |
+| `catapult` | **OK** | `Catapult.prefab`, `CharacterData`, `Catapult.asset`, `CatapultCombatController`, `ProjectileSpawn` no osso do braço, pedra balística e efeitos de disparo/impacto. |
+| `crossbow` | **OK** | `Crossbow.prefab`, `CharacterData`, `Crossbow.asset`, `ProjectileAttackController`, socket `BoltSpawn`, virote separado e efeitos de disparo/impacto. |
+| Produção | **OK após esta rodada** | Catálogo `Building Content Catalog.asset` e teste `EssentialRosterDefinesEraCostProduction` cobrem os quatro códigos. |
+| Build Settings | **OK por arquitetura** | As cenas válidas permanecem em `ProjectSettings/EditorBuildSettings.asset`; unidades são prefabs/Resources, não cenas. `buildSettingsApproved` dos contratos permanece falso por não haver requisito de cena separada. |
+| Runtime | **OK com ressalvas** | Controladores avançados são componentes dos prefabs e substituem o dano instantâneo padrão; validações de Play Mode existentes comprovam disparo, cura, projétil, LOD e morte. |
+
+**Correção executada nesta rodada:** quatro entradas de produção e uma verificação automatizada que exige `CharacterData`,
+prefab e código coerentes. Não foram alterados arquivos de outras frentes nem foi feito push.
+
+### Testes desta rodada
+
+- Checagem estática do catálogo: **4/4 códigos de produção encontrados** e **4/4 `CharacterData` + prefabs resolvidos**.
+- `Tools/ValidateMilitaryUnitAssets.mjs`: **passou** (arqueiro, cavaleiro e aríete; validador de produção existente).
+- `Tools/ValidateMilitaryUnitVisualAssets.mjs`: **passou** (3/3 ativos militares verificados).
+- `Tools/Validate-FoundationAssets.ps1 -ReportOnly`: **passou**.
+- `Tools/Validate-Release.ps1` e `Tools/Validate-EditorFree.ps1`: **passaram**.
+- `EraImperial.AdvancedUnits.Tests` no Unity: **não reexecutado nesta rodada**, pois a fila detectou o projeto aberto em instâncias do Unity; nenhum processo foi encerrado. As evidências Play Mode específicas já existentes continuam registrando aprovação para as quatro unidades.
 
 ## Decisões de arquitetura
 
@@ -106,26 +132,22 @@ quando prefab, socket e clipe reais existem (duplo de teste em memória, destru�
 | Catálogo do jogo | nenhum `UnitData` com os quatro códigos; contratos não estão em `Resources` |
 | Arquivos grandes | nenhum (maior arquivo novo: XML de evidência, 47 KB); sem necessidade de Git LFS |
 
-## Limitações
+## Pendências reais após a integração
 
-1. **Visual 100 % pendente.** Sem malha-fonte, prefab, sockets, clipes ou efeitos. Os caminhos nos contratos (por exemplo
-   `Assets/Resources/Prefabs/Units/Characters/CombatMage.prefab`) são só destinos esperados e nenhum existe. Os nomes dos
-   sockets e dos parâmetros novos do Animator (`Healing`, `Reloading`) são propostas; o Animator atual usa `Running`,
-   `Attacking` e `Hit`.
-2. **Sem integração em jogo.** `CharacterBT`/`BuildingBT` não conhecem alcance mínimo, projétil, cura em área nem dano radial.
-   `UnitData` não guarda alcance mínimo, raio de explosão nem dados de cura: esses ficam nos contratos. Falta um controlador
-   de runtime que use `PaladinHealController`, `SiegeAttackProfile` e os projéteis.
-3. **O jogo não tem conceito de "era".** `TechnologyNodeData` e `TechnologyNodeActioners` só tratam `attack_booster` e
-   `cost_reducer_buy`. A seleção da era (ligada à árvore tecnológica ou ao estado da partida) ainda precisa ser definida;
-   `AdvancedUnitDataBridge.Apply(target, contract, era)` já recebe a era como parâmetro.
-4. **Ponte só verificada nos caminhos de recusa e em `ApplyStats`.** O caminho feliz de `Apply` (prefab real) não pôde ser
-   exercitado porque não há prefab.
-5. **Balanceamento é inicial**, sem playtest. Não há armadura nem resistência mágica no jogo; os parâmetros existem só nas
-   funções de dano e valem 0 por padrão.
-6. **Balestra como estrutura** (`dataKind = Building`) é suportada pela ponte, mas sem teste com `BuildingData` real e sem
-   meshes de construção (`constructionMeshes`).
-7. **`Tools\Validate-Project.ps1` está desatualizado**: exige exatamente 3 testes aprovados. Sugestão (não aplicada):
-   substituir a igualdade por "falhas = 0 e aprovados ≥ 3".
+1. **Produção física ainda depende do callback do runtime.** O catálogo e a fila agora aceitam os quatro códigos, e os
+   `CharacterData` resolvem os prefabs. A etapa restante é ligar o callback de conclusão da fila ao `Spawn` definitivo de
+   cada `CharacterData` na cena, caso o controlador de produção ainda esteja usando somente a lista legada.
+2. **Era em runtime.** `AdvancedEraState` é o ponto único usado pelos controladores e pelos contratos, mas ainda precisa ser
+   alimentado pela árvore tecnológica/estado de partida quando a progressão de eras for conectada ao jogo final.
+3. **Catapulta e balestra mantêm limitações do BT.** O controlador recusa disparo fora do alcance (e, no caso da catapulta,
+   abaixo do alcance mínimo), porém a árvore pode continuar em estado de ataque até o alvo ficar válido. A apresentação pode
+   ser melhorada com uma regra de aproximação/recuo específica para cerco.
+4. **Balanceamento e desempenho.** Os valores de quatro eras são contratos iniciais. Falta playtest de produção completa,
+   economia, multiplayer/replay e medição de FPS no player standalone.
+5. **Qualidade visual de produção.** As malhas e LODs estão integrados e sem magenta nas evidências existentes, mas a revisão
+   AAA final de UV/texel density e a iluminação em todas as eras continuam sendo uma etapa visual separada.
+6. **Build Settings.** Não há pendência de adicionar as unidades como cenas. A validação correta é a resolução por
+   `Resources`/catálogo durante o build; inserir prefabs individuais em `EditorBuildSettings.asset` seria incorreto.
 
 ## Itens encontrados no repositório (não resolvidos aqui)
 

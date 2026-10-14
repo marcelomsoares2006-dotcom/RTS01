@@ -123,6 +123,24 @@ MonoBehaviour:
       productionTime: 15
       queueLimit: 5
       populationCost: 1
+    - productCode: combat_mage
+      cost:
+      - resource: 0
+        amount: 70
+      - resource: 2
+        amount: 30
+      productionTime: 30
+      queueLimit: 3
+      populationCost: 2
+    - productCode: paladin_healer
+      cost:
+      - resource: 0
+        amount: 80
+      - resource: 1
+        amount: 20
+      productionTime: 35
+      queueLimit: 3
+      populationCost: 2
     dropoffResources: 
     garrisonCapacity: 0
     garrisonAttackDamageBonus: 0
@@ -199,6 +217,15 @@ MonoBehaviour:
       productionTime: 15
       queueLimit: 5
       populationCost: 1
+    - productCode: crossbow
+      cost:
+      - resource: 0
+        amount: 60
+      - resource: 1
+        amount: 40
+      productionTime: 28
+      queueLimit: 4
+      populationCost: 2
     dropoffResources: 
     garrisonCapacity: 0
     garrisonAttackDamageBonus: 0
@@ -232,6 +259,17 @@ MonoBehaviour:
       - resource: 2
         amount: 40
       productionTime: 35
+      queueLimit: 3
+      populationCost: 3
+    - productCode: catapult
+      cost:
+      - resource: 0
+        amount: 120
+      - resource: 1
+        amount: 100
+      - resource: 2
+        amount: 40
+      productionTime: 45
       queueLimit: 3
       populationCost: 3
     dropoffResources: 
