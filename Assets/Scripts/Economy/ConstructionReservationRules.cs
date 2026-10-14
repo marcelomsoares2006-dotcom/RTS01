@@ -117,10 +117,10 @@ public sealed class ConstructionReservationLedger
     {
         List<BuildingMaintenanceCost> costs = Normalize(request.costs);
         if (costs == null) return ConstructionReservationResult.InvalidCost;
+        if (!_population.CanAdd(request.population)) return ConstructionReservationResult.PopulationCap;
         for (int i = 0; i < costs.Count; i++)
             if (!_stockpile.CanSpend(costs[i].resource, costs[i].amount))
                 return ConstructionReservationResult.InsufficientResources;
-        if (!_population.CanAdd(request.population)) return ConstructionReservationResult.PopulationCap;
         for (int i = 0; i < costs.Count; i++) _stockpile.TrySpend(costs[i].resource, costs[i].amount);
         _population.TryAdd(request.population);
         _records.Add(request.reservationId.Trim(), new ConstructionReservationRecord {

@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 400d70422732246869e2f032d9ebfc9f, type: 3}
+  m_Name: Barracks
+  m_EditorClassIdentifier: Assembly-CSharp::BuildingData
+  code: barracks
+  unitName: Barracks
+  description: Unity authoring draft for the infantry Barracks. Requires foundation acceptance review.
+  healthpoints: 1000
+  prefab: {fileID: 5851927101913363020, guid: 5058eb5735b05f843850d28be96be53f, type: 3}
+  sprite: {fileID: 0}
+  cost:
+  - code: 1
+    amount: 150
+  canProduce: 
+  skills: []
+  fieldOfView: 35
+  attackRange: 0
+  attackDamage: 0
+  attackRate: 0
+  armor: 0
+  onSelectSound: {fileID: 0}
+  ambientSound: {fileID: 0}
+  constructionMeshes:
+  - {fileID: -2432090755550338912, guid: 4b9c2e7f6a1d4c3e8f0b2a5d7e9c1f04, type: 3}
+  maxConstructors: 3
+  minimumSupportedCorners: 2
+  terrainProbeDistance: 3
+  terrainProbeStartOffset: 0.5
+  placementGridSize: 1
+  rotationStepDegrees: 15
+  maximumTerrainSlopeDegrees: 20
+  minimumDistanceFromBuildings: 1.5

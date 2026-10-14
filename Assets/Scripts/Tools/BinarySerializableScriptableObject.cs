@@ -31,10 +31,9 @@ public class BinarySerializableScriptableObject : ScriptableObject
 
     public void SaveToFile(string fileName = null, bool serializeAll = false)
     {
-        string dirPath = Path.Combine(
-            Application.persistentDataPath,
-            BinarySerializable.DATA_DIRECTORY
-        );
+        string dirPath = Path.IsPathRooted(BinarySerializable.DATA_DIRECTORY)
+            ? Path.GetFullPath(BinarySerializable.DATA_DIRECTORY)
+            : Path.Combine(Application.persistentDataPath, BinarySerializable.DATA_DIRECTORY);
         string filePath = Path.Combine(
             dirPath,
             $"{(fileName == null ? name : fileName)}.data");
@@ -42,6 +41,7 @@ public class BinarySerializableScriptableObject : ScriptableObject
         string fullDirPath = Path.GetDirectoryName(filePath);
         if (!Directory.Exists(fullDirPath))
             Directory.CreateDirectory(fullDirPath);
+
 
         BinarySerializableData data = new BinarySerializableData(
             this, _fieldsToSerialize, serializeAll);
@@ -57,11 +57,10 @@ public class BinarySerializableScriptableObject : ScriptableObject
 
     public void LoadFromFile(string fileName = null)
     {
-        string filePath = Path.Combine(
-            Application.persistentDataPath,
-            BinarySerializable.DATA_DIRECTORY,
-            $"{(fileName == null ? name : fileName)}.data"
-        );
+        string dirPath = Path.IsPathRooted(BinarySerializable.DATA_DIRECTORY)
+            ? Path.GetFullPath(BinarySerializable.DATA_DIRECTORY)
+            : Path.Combine(Application.persistentDataPath, BinarySerializable.DATA_DIRECTORY);
+        string filePath = Path.Combine(dirPath, $"{(fileName == null ? name : fileName)}.data");
 
         if (!File.Exists(filePath) && !File.Exists(filePath + ".bak"))
         {

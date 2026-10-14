@@ -192,6 +192,8 @@ public static class BuildingContentProgressionRules
 
         if (state.population < 0)
             return BuildingAvailabilityResult.PopulationRequirement;
+        if (entry.populationCapacity > 0 && state.population >= entry.populationCapacity)
+            return BuildingAvailabilityResult.PopulationRequirement;
 
         HashSet<string> technologies = ToCodeSet(state.unlockedTechnologyCodes);
         HashSet<string> buildings = OperationalOwnedBuildingCodes(state);

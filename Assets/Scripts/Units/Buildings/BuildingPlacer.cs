@@ -13,12 +13,15 @@ public class BuildingPlacer : MonoBehaviour
     private Vector3 _lastPlacementPosition;
 
     private UnitManager _builderManager;
-    private readonly BuildingCatalogResolver _catalogResolver =
-        BuildingCatalogResolver.LoadFromResources();
+    private BuildingCatalogResolver _catalogResolver;
 
     private void Start()
     {
         instance = this;
+        // Resources.Load is not legal during a MonoBehaviour constructor or
+        // field initializer. Resolve the catalog after Unity has loaded the
+        // scene so initial buildings can spawn reliably in batch and runtime.
+        _catalogResolver = BuildingCatalogResolver.LoadFromResources();
 
         // if no previous game data, spawn initial buildings
         if (GameData.Instance == null)

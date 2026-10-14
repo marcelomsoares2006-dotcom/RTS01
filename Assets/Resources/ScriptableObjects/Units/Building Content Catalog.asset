@@ -11,14 +11,14 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f0e3a4dc6f4475f8f73f27a4f2eb1b9, type: 3}
   m_Name: Building Content Catalog
-  m_EditorClassIdentifier:
+  m_EditorClassIdentifier: 
   entries:
   - code: town_center
     displayName: Town Center
     role: 0
-    status: 0
+    status: 2
     minimumEra: 1
-    buildingData: {fileID: 0}
+    buildingData: {fileID: 11400000, guid: 1bd3c6916985e8d40a898df3ba7b6afd, type: 2}
     prefabPath: Assets/Resources/Prefabs/Units/Buildings/TownCenter.prefab
     modelPath: Assets/Resources/Imports/Units/Buildings/town-center/
     requiredSkillCodes: []
@@ -34,19 +34,15 @@ MonoBehaviour:
       productionTime: 20
       queueLimit: 5
       populationCost: 1
-    dropoffResources:
-    - 0
-    - 1
-    - 2
-    - 3
+    dropoffResources: 00000000010000000200000003000000i
     garrisonCapacity: 5
+    garrisonAttackDamageBonus: 0
+    allowedUnitCodes: []
     populationCapacity: 10
     supportsDropoff: 1
     supportsProduction: 1
     supportsGarrison: 1
-    acceptanceCriteria: >-
-      Central base: acts as worker production and resource dropoff, anchors the
-      starting economy, supports garrison and must be the first functional base.
+    acceptanceCriteria: '>-'
   - code: house
     displayName: House
     role: 1
@@ -62,21 +58,21 @@ MonoBehaviour:
       amount: 50
     requirements: []
     production: []
-    dropoffResources: []
+    dropoffResources: 
     garrisonCapacity: 0
+    garrisonAttackDamageBonus: 0
+    allowedUnitCodes: []
     populationCapacity: 5
     supportsDropoff: 0
     supportsProduction: 0
     supportsGarrison: 0
-    acceptanceCriteria: >-
-      Provides population room and completes placement, construction and
-      destruction flows with the existing House prefab.
+    acceptanceCriteria: '>- Provides population room and completes placement, construction and destruction flows with the existing House prefab.'
   - code: resource_dropoff
     displayName: Resource Dropoff
     role: 2
-    status: 0
+    status: 2
     minimumEra: 1
-    buildingData: {fileID: 0}
+    buildingData: {fileID: 11400000, guid: 131a0da7dae9376409a5ad0cb5241d7b, type: 2}
     prefabPath: Assets/Resources/Prefabs/Units/Buildings/ResourceDropoff.prefab
     modelPath: Assets/Resources/Imports/Units/Buildings/resource-dropoff/
     requiredSkillCodes: []
@@ -85,31 +81,27 @@ MonoBehaviour:
       amount: 50
     requirements:
     - technologyCode: fletching
-      buildingCode: ''
+      buildingCode: 
       minimumPopulation: 0
-    - technologyCode: ''
+    - technologyCode: 
       buildingCode: town_center
       minimumPopulation: 0
     production: []
-    dropoffResources:
-    - 0
-    - 1
-    - 2
-    - 3
+    dropoffResources: 00000000010000000200000003000000i
     garrisonCapacity: 0
+    garrisonAttackDamageBonus: 0
+    allowedUnitCodes: []
     populationCapacity: 0
     supportsDropoff: 1
     supportsProduction: 0
     supportsGarrison: 0
-    acceptanceCriteria: >-
-      Dedicated wood, food, stone and gold dropoff variants with valid worker
-      routing and resource access rules. Requires a real prefab and model set.
+    acceptanceCriteria: '>- Dedicated wood, food, stone and gold dropoff variants with valid worker routing and resource access rules. Requires a real prefab and model set.'
   - code: barracks
     displayName: Barracks
     role: 3
-    status: 0
+    status: 2
     minimumEra: 1
-    buildingData: {fileID: 0}
+    buildingData: {fileID: 11400000, guid: 5b042730da36e8d4d8b8d03b98f71c0a, type: 2}
     prefabPath: Assets/Resources/Prefabs/Units/Buildings/Barracks.prefab
     modelPath: Assets/Resources/Imports/Units/Buildings/barracks/
     requiredSkillCodes:
@@ -118,7 +110,7 @@ MonoBehaviour:
     - resource: 1
       amount: 150
     requirements:
-    - technologyCode: ''
+    - technologyCode: 
       buildingCode: town_center
       minimumPopulation: 0
     production:
@@ -131,21 +123,21 @@ MonoBehaviour:
       productionTime: 15
       queueLimit: 5
       populationCost: 1
-    dropoffResources: []
+    dropoffResources: 
     garrisonCapacity: 0
+    garrisonAttackDamageBonus: 0
+    allowedUnitCodes: []
     populationCapacity: 0
     supportsDropoff: 0
     supportsProduction: 1
     supportsGarrison: 0
-    acceptanceCriteria: >-
-      Trains the first infantry roster with a real queue, production time,
-      placement footprint and age/technology requirements.
+    acceptanceCriteria: '>- Trains the first infantry roster with a real queue, production time, placement footprint and age/technology requirements.'
   - code: stable
     displayName: Stable
     role: 3
-    status: 0
+    status: 2
     minimumEra: 2
-    buildingData: {fileID: 0}
+    buildingData: {fileID: 11400000, guid: cbda6458f2a263d4285ef856c6dac546, type: 2}
     prefabPath: Assets/Resources/Prefabs/Units/Buildings/Stable.prefab
     modelPath: Assets/Resources/Imports/Units/Buildings/stable/
     requiredSkillCodes: []
@@ -154,9 +146,9 @@ MonoBehaviour:
       amount: 150
     requirements:
     - technologyCode: riding
-      buildingCode: ''
+      buildingCode: 
       minimumPopulation: 0
-    - technologyCode: ''
+    - technologyCode: 
       buildingCode: town_center
       minimumPopulation: 0
     production:
@@ -169,21 +161,21 @@ MonoBehaviour:
       productionTime: 23
       queueLimit: 5
       populationCost: 1
-    dropoffResources: []
+    dropoffResources: 
     garrisonCapacity: 0
+    garrisonAttackDamageBonus: 0
+    allowedUnitCodes: []
     populationCapacity: 0
     supportsDropoff: 0
     supportsProduction: 1
     supportsGarrison: 0
-    acceptanceCriteria: >-
-      Trains mounted units after the first age transition and shares the same
-      production contract as Barracks.
+    acceptanceCriteria: '>- Trains mounted units after the first age transition and shares the same production contract as Barracks.'
   - code: archery_range
     displayName: Archery Range
     role: 3
-    status: 0
+    status: 2
     minimumEra: 2
-    buildingData: {fileID: 0}
+    buildingData: {fileID: 11400000, guid: 29d395f8c11ee5b4cbb0fab7269baf09, type: 2}
     prefabPath: Assets/Resources/Prefabs/Units/Buildings/ArcheryRange.prefab
     modelPath: Assets/Resources/Imports/Units/Buildings/archery-range/
     requiredSkillCodes: []
@@ -192,9 +184,9 @@ MonoBehaviour:
       amount: 150
     requirements:
     - technologyCode: fletching
-      buildingCode: ''
+      buildingCode: 
       minimumPopulation: 0
-    - technologyCode: ''
+    - technologyCode: 
       buildingCode: town_center
       minimumPopulation: 0
     production:
@@ -207,21 +199,21 @@ MonoBehaviour:
       productionTime: 15
       queueLimit: 5
       populationCost: 1
-    dropoffResources: []
+    dropoffResources: 
     garrisonCapacity: 0
+    garrisonAttackDamageBonus: 0
+    allowedUnitCodes: []
     populationCapacity: 0
     supportsDropoff: 0
     supportsProduction: 1
     supportsGarrison: 0
-    acceptanceCriteria: >-
-      Trains ranged units after the first age transition and exposes a clear
-      production queue and counter unit path.
+    acceptanceCriteria: '>- Trains ranged units after the first age transition and exposes a clear production queue and counter unit path.'
   - code: siege_workshop
     displayName: Siege Workshop
     role: 3
-    status: 0
+    status: 2
     minimumEra: 3
-    buildingData: {fileID: 0}
+    buildingData: {fileID: 11400000, guid: 67232458967811746996983daa609c17, type: 2}
     prefabPath: Assets/Resources/Prefabs/Units/Buildings/SiegeWorkshop.prefab
     modelPath: Assets/Resources/Imports/Units/Buildings/siege-workshop/
     requiredSkillCodes: []
@@ -229,7 +221,7 @@ MonoBehaviour:
     - resource: 1
       amount: 300
     requirements:
-    - technologyCode: ''
+    - technologyCode: 
       buildingCode: town_center
       minimumPopulation: 0
     production:
@@ -242,21 +234,21 @@ MonoBehaviour:
       productionTime: 35
       queueLimit: 3
       populationCost: 3
-    dropoffResources: []
+    dropoffResources: 
     garrisonCapacity: 0
+    garrisonAttackDamageBonus: 0
+    allowedUnitCodes: []
     populationCapacity: 0
     supportsDropoff: 0
     supportsProduction: 1
     supportsGarrison: 0
-    acceptanceCriteria: >-
-      Castle siege production requires an operational Town Center and emits
-      the first valid siege order through the deterministic replay queue.
+    acceptanceCriteria: '>- Castle siege production requires an operational Town Center and emits the first valid siege order through the deterministic replay queue.'
   - code: mining_camp
     displayName: Mining Camp
     role: 2
-    status: 0
+    status: 2
     minimumEra: 1
-    buildingData: {fileID: 0}
+    buildingData: {fileID: 11400000, guid: fdfba3734d219334dbf4e35f30d41704, type: 2}
     prefabPath: Assets/Resources/Prefabs/Units/Buildings/MiningCamp.prefab
     modelPath: Assets/Resources/Imports/Units/Buildings/mining-camp/
     requiredSkillCodes: []
@@ -264,27 +256,25 @@ MonoBehaviour:
     - resource: 1
       amount: 50
     requirements:
-    - technologyCode: ''
+    - technologyCode: 
       buildingCode: town_center
       minimumPopulation: 0
     production: []
-    dropoffResources:
-    - 2
-    - 3
+    dropoffResources: 0200000003000000i
     garrisonCapacity: 0
+    garrisonAttackDamageBonus: 0
+    allowedUnitCodes: []
     populationCapacity: 0
     supportsDropoff: 1
     supportsProduction: 0
     supportsGarrison: 0
-    acceptanceCriteria: >-
-      Dark Age resource dropoff for gold and stone. Workers can route both
-      resources through this camp after placement near a deposit.
+    acceptanceCriteria: '>- Dark Age resource dropoff for gold and stone. Workers can route both resources through this camp after placement near a deposit.'
   - code: lumber_camp
     displayName: Lumber Camp
     role: 2
-    status: 0
+    status: 2
     minimumEra: 1
-    buildingData: {fileID: 0}
+    buildingData: {fileID: 11400000, guid: 9c07c11310ff2c54885cd64f69cfbb44, type: 2}
     prefabPath: Assets/Resources/Prefabs/Units/Buildings/LumberCamp.prefab
     modelPath: Assets/Resources/Imports/Units/Buildings/lumber-camp/
     requiredSkillCodes: []
@@ -292,26 +282,25 @@ MonoBehaviour:
     - resource: 1
       amount: 50
     requirements:
-    - technologyCode: ''
+    - technologyCode: 
       buildingCode: town_center
       minimumPopulation: 0
     production: []
-    dropoffResources:
-    - 1
+    dropoffResources: 01000000i
     garrisonCapacity: 0
+    garrisonAttackDamageBonus: 0
+    allowedUnitCodes: []
     populationCapacity: 0
     supportsDropoff: 1
     supportsProduction: 0
     supportsGarrison: 0
-    acceptanceCriteria: >-
-      Dark Age wood dropoff. Workers can deliver wood here and unlock the
-      nearby forest economy without requiring a missing prefab reference.
+    acceptanceCriteria: '>- Dark Age wood dropoff. Workers can deliver wood here and unlock the nearby forest economy without requiring a missing prefab reference.'
   - code: mill
     displayName: Mill
     role: 2
-    status: 0
+    status: 2
     minimumEra: 1
-    buildingData: {fileID: 0}
+    buildingData: {fileID: 11400000, guid: f1e4cb482c403ca468cf4f52f282a9b1, type: 2}
     prefabPath: Assets/Resources/Prefabs/Units/Buildings/Mill.prefab
     modelPath: Assets/Resources/Imports/Units/Buildings/mill/
     requiredSkillCodes: []
@@ -319,20 +308,19 @@ MonoBehaviour:
     - resource: 1
       amount: 50
     requirements:
-    - technologyCode: ''
+    - technologyCode: 
       buildingCode: town_center
       minimumPopulation: 0
     production: []
-    dropoffResources:
-    - 0
+    dropoffResources: 00000000i
     garrisonCapacity: 0
+    garrisonAttackDamageBonus: 0
+    allowedUnitCodes: []
     populationCapacity: 0
     supportsDropoff: 1
     supportsProduction: 0
     supportsGarrison: 0
-    acceptanceCriteria: >-
-      Dark Age food dropoff for farms and hunted resources, with a future
-      technology path for agricultural upgrades.
+    acceptanceCriteria: '>- Dark Age food dropoff for farms and hunted resources, with a future technology path for agricultural upgrades.'
   - code: tower
     displayName: Tower
     role: 4
@@ -349,7 +337,7 @@ MonoBehaviour:
       amount: 100
     requirements: []
     production: []
-    dropoffResources: []
+    dropoffResources: 
     garrisonCapacity: 5
     garrisonAttackDamageBonus: 2
     allowedUnitCodes:
@@ -360,8 +348,4 @@ MonoBehaviour:
     supportsDropoff: 0
     supportsProduction: 0
     supportsGarrison: 1
-    acceptanceCriteria: >-
-      Playable defensive building. Combat uses the authored UnitData attack
-      profile, accepts up to five combat units and adds two damage per unit.
-      Placement, garrison and production-independent defense contracts are
-      validated by the editor tests.
+    acceptanceCriteria: '>- Playable defensive building. Combat uses the authored UnitData attack profile, accepts up to five combat units and adds two damage per unit. Placement, garrison and production-independent defense contracts are validated by the editor tests.'

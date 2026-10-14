@@ -26,6 +26,7 @@ public class BinarySerializable : ISerializable
         foreach (FieldInfo field in T.GetFields())
         {
             if (field.IsStatic) continue;
+            if (!BinarySerializableData.CanSerialize(field)) continue;
 
             Type serializedType = BinarySerializableData.GetSerializedType(field);
             if (serializedType.IsArray)
@@ -66,13 +67,21 @@ public class BinarySerializable : ISerializable
         foreach (FieldInfo field in T.GetFields())
         {
             if (field.IsStatic) continue;
+            if (!BinarySerializableData.CanSerialize(field)) continue;
 
             object value;
             if (BinarySerializableData.Serialize(field, this, out value))
             {
-                if (value.GetType().IsArray)
+                // Arrays are serialized through the indexed/count contract even
+                // when the source value is null. A null array is an empty array
+                // for save/load purposes; writing only the field key makes the
+                // reader fail before the rest of GameData can be restored.
+                Type serializedType = BinarySerializableData.GetSerializedType(field);
+                if (serializedType.IsArray)
                 {
-                    IEnumerator enm = ((IEnumerable)value).GetEnumerator();
+                    IEnumerator enm = value == null
+                        ? Array.Empty<object>().GetEnumerator()
+                        : ((IEnumerable)value).GetEnumerator();
                     // write the items and get the count at the same time
                     // (since SerializationInfo uses key-value pairs)
                     int i = 0;

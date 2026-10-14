@@ -25,7 +25,9 @@ public sealed class PlacementNavigationRulesTests
     {
         PlacementNavigationObservation observation = Ready();
         observation.contentRuntimeReady = runtimeReady;
-        observation.navMeshReady = runtimeReady;
+        // Keep the two hard gates independent: the second case exercises a
+        // runtime-ready entry whose NavMesh is still unavailable.
+        observation.navMeshReady = false;
         Assert.That(PlacementNavigationRules.Evaluate(observation), Is.EqualTo(expected));
     }
 

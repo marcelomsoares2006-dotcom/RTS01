@@ -92,7 +92,9 @@ public sealed class BuildingRepairDemolitionContractTests
         Assert.IsTrue(complete);
         Assert.AreEqual(BuildingLifecycleState.Ruined, service.Lifecycle);
         Assert.AreEqual(10, economy.Get(EconomyResourceType.Wood));
-        Assert.AreEqual(0, economy.Get(EconomyResourceType.Food));
+        // Demolition cost is charged at start and is not refunded on success;
+        // only the configured wood salvage is returned at completion.
+        Assert.AreEqual(3, economy.Get(EconomyResourceType.Food));
     }
 
     [Test]

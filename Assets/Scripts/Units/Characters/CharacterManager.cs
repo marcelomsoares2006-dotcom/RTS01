@@ -7,6 +7,8 @@ public class CharacterManager : UnitManager
 {
     public NavMeshAgent agent;
 
+    public string Uid => Unit == null ? string.Empty : Unit.Uid;
+
     private Character _character;
     public override Unit Unit
     {

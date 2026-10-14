@@ -214,6 +214,10 @@ public sealed class FoundationBuildingAuthoringWindow : EditorWindow
             return unityModelPath;
         if (AssetDatabase.LoadAssetAtPath<GameObject>(glbPath) != null)
             return glbPath;
+        if (AssetDatabase.LoadAllAssetsAtPath(unityModelPath).OfType<Mesh>().Any())
+            return unityModelPath;
+        if (AssetDatabase.LoadAllAssetsAtPath(glbPath).OfType<Mesh>().Any())
+            return glbPath;
         return null;
     }
 
@@ -410,7 +414,12 @@ public sealed class FoundationBuildingAuthoringWindow : EditorWindow
         }
 
         GameObject source = AssetDatabase.LoadAssetAtPath<GameObject>(modelPath);
-        GameObject instance = PrefabUtility.InstantiatePrefab(source) as GameObject;
+        bool sourceHasMesh = source != null
+            && source.transform.Find("Mesh") != null
+            && source.GetComponentsInChildren<MeshFilter>(true).Any(filter => filter.sharedMesh != null);
+        GameObject instance = sourceHasMesh
+            ? PrefabUtility.InstantiatePrefab(source) as GameObject
+            : CreateImportedMeshRoot(modelPath, code);
         if (instance == null)
         {
             _messages.Add("ERROR: Unity could not instantiate authored model for " + code + ".");
@@ -435,6 +444,32 @@ public sealed class FoundationBuildingAuthoringWindow : EditorWindow
         {
             DestroyImmediate(instance);
         }
+    }
+
+    private static GameObject CreateImportedMeshRoot(string modelPath, string code)
+    {
+        Mesh mesh = AssetDatabase.LoadAllAssetsAtPath(modelPath).OfType<Mesh>().FirstOrDefault();
+        if (mesh == null) return null;
+        GameObject root = new GameObject(code + "_ImportedModel");
+        GameObject meshObject = new GameObject("Mesh");
+        meshObject.transform.SetParent(root.transform, false);
+        MeshFilter filter = meshObject.AddComponent<MeshFilter>();
+        filter.sharedMesh = mesh;
+        MeshRenderer renderer = meshObject.AddComponent<MeshRenderer>();
+        Material[] materials = AssetDatabase.LoadAllAssetsAtPath(modelPath)
+            .OfType<Material>().ToArray();
+        if (materials.Length == 0)
+        {
+            GameObject house = AssetDatabase.LoadAssetAtPath<GameObject>(HousePrefab);
+            materials = house == null
+                ? new[] { new Material(Shader.Find("Standard")) }
+                : house.GetComponentsInChildren<Renderer>(true)
+                    .SelectMany(item => item.sharedMaterials)
+                    .Where(item => item != null)
+                    .Take(1).ToArray();
+        }
+        renderer.sharedMaterials = materials;
+        return root;
     }
 
     private static void ConfigureDraftPrefab(GameObject root, string code)
@@ -483,7 +518,7 @@ public sealed class FoundationBuildingAuthoringWindow : EditorWindow
         manager.meshRenderer = renderer;
         AudioSource audio = root.GetComponent<AudioSource>()
             ?? root.AddComponent<AudioSource>();
-        audio.playOnAwake = false;
+        if (audio != null) audio.playOnAwake = false;
         manager.ambientSource = audio;
         manager.contextualSource = audio;
         manager.selectionCircle = selectionCircle;
@@ -500,8 +535,11 @@ public sealed class FoundationBuildingAuthoringWindow : EditorWindow
         footprint.size = ToLocalSize(root.transform, bounds.size);
 
         Rigidbody body = root.GetComponent<Rigidbody>() ?? root.AddComponent<Rigidbody>();
-        body.isKinematic = true;
-        body.useGravity = false;
+        if (body != null)
+        {
+            body.isKinematic = true;
+            body.useGravity = false;
+        }
 
         // The non-trigger collider is intentionally a child so BuildingManager
         // continues to use the root trigger for placement overlap callbacks.
@@ -512,16 +550,22 @@ public sealed class FoundationBuildingAuthoringWindow : EditorWindow
         collisionObject.transform.SetParent(root.transform, false);
         BoxCollider solid = collisionObject.GetComponent<BoxCollider>()
             ?? collisionObject.AddComponent<BoxCollider>();
-        solid.isTrigger = false;
-        solid.center = Vector3.zero;
-        solid.size = footprint.size;
+        if (solid != null)
+        {
+            solid.isTrigger = false;
+            solid.center = Vector3.zero;
+            solid.size = footprint.size;
+        }
 
         NavMeshObstacle obstacle = root.GetComponent<NavMeshObstacle>()
             ?? root.AddComponent<NavMeshObstacle>();
-        obstacle.shape = NavMeshObstacleShape.Box;
-        obstacle.center = footprint.center;
-        obstacle.size = footprint.size;
-        obstacle.carving = true;
+        if (obstacle != null)
+        {
+            obstacle.shape = NavMeshObstacleShape.Box;
+            obstacle.center = footprint.center;
+            obstacle.size = footprint.size;
+            obstacle.carving = true;
+        }
     }
 
     private static GameObject InstantiateSupportPrefab(string assetPath, Transform parent, string objectName)

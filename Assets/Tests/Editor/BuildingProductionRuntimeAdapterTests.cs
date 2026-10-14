@@ -58,8 +58,10 @@ public sealed class BuildingProductionRuntimeAdapterTests
         Assert.AreEqual(BuildingProductionRuntimeResult.Accepted,
             adapter.TryCancel(2, 0, out cancelled));
         Assert.AreEqual("scout", cancelled.productCode);
-        Assert.AreEqual(100, stockpile.Get(EconomyResourceType.Wood));
-        Assert.AreEqual(0, population.current);
+        // The completed villager consumed its reservation; only the cancelled
+        // scout is refunded. Completed production must never be refunded.
+        Assert.AreEqual(80, stockpile.Get(EconomyResourceType.Wood));
+        Assert.AreEqual(1, population.current);
     }
 
     [Test]

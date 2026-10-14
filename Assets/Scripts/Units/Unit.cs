@@ -113,6 +113,16 @@ public class Unit
         _levelUpData = _GetLevelUpData();
     }
 
+    /// <summary>Applies era-derived combat values without replacing the authored UnitData.</summary>
+    public void SetEraStats(int healthPoints, int attackDamage, float attackRange)
+    {
+        if (healthPoints > 0)
+            _currentHealth = Mathf.Min(_currentHealth, healthPoints);
+        _attackDamage = Mathf.Max(0, attackDamage);
+        _attackRange = Mathf.Max(0f, attackRange);
+        _levelUpData = _GetLevelUpData();
+    }
+
     public Dictionary<InGameResource, int> ComputeProduction()
     {
         if (_data.canProduce.Length == 0) return null;

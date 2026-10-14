@@ -103,6 +103,7 @@ public sealed class DataHandlerProductionQueueTests
             productionQueue = new BuildingProductionQueueSnapshot
             {
                 buildingCode = "barracks", ownerId = 0, era = BuildingEra.Dark,
+                assetOrigin = BuildingContentAssetStage.RuntimeReady,
                 orders = new List<BuildingProductionOrderSnapshot>
                 {
                     new BuildingProductionOrderSnapshot

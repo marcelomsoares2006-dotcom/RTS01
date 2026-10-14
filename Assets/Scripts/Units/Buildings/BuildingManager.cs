@@ -107,9 +107,9 @@ public class BuildingManager : UnitManager
                 // (and also respects the prefab's scale).
                 transform.TransformPoint(corner),
                 Vector3.up * -1f,
+                out terrainHit,
                 data != null ? data.terrainProbeDistance : 2f,
-                Globals.TERRAIN_LAYER_MASK,
-                out terrainHit
+                Globals.TERRAIN_LAYER_MASK
             ) || !BuildingConstructionRules.IsTerrainSlopeAllowed(
                 terrainHit.normal,
                 maximumSlope

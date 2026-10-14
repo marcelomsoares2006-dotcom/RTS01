@@ -70,7 +70,10 @@ public sealed class BuildingContentCatalogTests
     {
         BuildingContentCatalog catalog = AssetDatabase.LoadAssetAtPath<BuildingContentCatalog>(CatalogPath);
         List<string> runtimeCodes = catalog.RuntimeReadyEntries().Select(entry => entry.code).ToList();
-        CollectionAssert.AreEquivalent(new[] { "house", "tower" }, runtimeCodes,
+        CollectionAssert.AreEquivalent(new[] {
+            "town_center", "house", "resource_dropoff", "barracks", "archery_range",
+            "stable", "siege_workshop", "mining_camp", "lumber_camp", "mill", "tower"
+        }, runtimeCodes,
             "The catalog must expose only authored playable buildings to runtime construction.");
     }
 
@@ -137,9 +140,9 @@ public sealed class BuildingContentCatalogTests
     {
         BuildingContentCatalog catalog = AssetDatabase.LoadAssetAtPath<BuildingContentCatalog>(CatalogPath);
         Assert.That(catalog.Find("town_center").AssetStage,
-            Is.EqualTo(BuildingContentAssetStage.ModelIntermediate));
+            Is.EqualTo(BuildingContentAssetStage.RuntimeReady));
         Assert.That(catalog.Find("resource_dropoff").AssetStage,
-            Is.EqualTo(BuildingContentAssetStage.ModelIntermediate));
+            Is.EqualTo(BuildingContentAssetStage.RuntimeReady));
         Assert.That(catalog.Find("house").AssetStage,
             Is.EqualTo(BuildingContentAssetStage.RuntimeReady));
         Assert.That(catalog.Find("tower").AssetStage,
@@ -182,7 +185,7 @@ public sealed class BuildingContentCatalogTests
     }
 
     [Test]
-    public void PlannedEconomyAndBarracksContractsRemainExplicitWithoutRuntimePromotion()
+    public void PromotedEconomyAndBarracksContractsRemainExplicit()
     {
         BuildingContentCatalog catalog = AssetDatabase.LoadAssetAtPath<BuildingContentCatalog>(CatalogPath);
 
@@ -194,8 +197,8 @@ public sealed class BuildingContentCatalogTests
         Assert.That(barracks.role, Is.EqualTo(BuildingContentRole.Production));
         Assert.That(barracks.minimumEra, Is.EqualTo(BuildingEra.Dark));
         Assert.That(barracks.supportsProduction, Is.True);
-        Assert.That(barracks.IsRuntimeReady, Is.False,
-            "Barracks must remain a planned contract until authored assets exist.");
+        Assert.That(barracks.IsRuntimeReady, Is.True,
+            "Barracks has an authored prefab and should be runtime-ready.");
         Assert.That(barracks.requirements.Any(requirement => requirement != null
             && requirement.buildingCode == "town_center"), Is.True);
         Assert.That(barracks.constructionCost.Any(cost => cost != null
@@ -230,8 +233,8 @@ public sealed class BuildingContentCatalogTests
         Assert.That(entry.role, Is.EqualTo(BuildingContentRole.ResourceDropoff));
         Assert.That(entry.minimumEra, Is.EqualTo(BuildingEra.Dark));
         Assert.That(entry.supportsDropoff, Is.True);
-        Assert.That(entry.IsRuntimeReady, Is.False,
-            entry.code + " must remain planned until its authored asset exists.");
+        Assert.That(entry.IsRuntimeReady, Is.True,
+            entry.code + " has an authored prefab and should be runtime-ready.");
         Assert.That(entry.requirements.Any(requirement => requirement != null
             && requirement.buildingCode == "town_center"), Is.True,
             entry.code + " must require Town Center.");

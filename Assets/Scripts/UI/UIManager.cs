@@ -710,7 +710,8 @@ public class UIManager : MonoBehaviour
             displayTransform.Find("Text").GetComponent<Text>().text = resource.amount.ToString();
             displayTransform.Find("Icon").GetComponent<Image>().sprite =
                 Resources.Load<Sprite>($"Textures/GameResources/{resource.code}");
-            if (Globals.GAME_RESOURCES.ContainsKey(_myPlayerId)
+            if (Globals.GAME_RESOURCES != null
+                && _myPlayerId >= 0 && _myPlayerId < Globals.GAME_RESOURCES.Length
                 && Globals.GAME_RESOURCES[_myPlayerId].ContainsKey(resource.code)
                 && Globals.GAME_RESOURCES[_myPlayerId][resource.code].Amount < resource.amount)
                 displayTransform.Find("Text").GetComponent<Text>().color = invalidTextColor;

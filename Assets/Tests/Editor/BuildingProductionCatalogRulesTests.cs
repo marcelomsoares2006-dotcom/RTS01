@@ -31,7 +31,7 @@ public sealed class BuildingProductionCatalogRulesTests
     }
 
     [Test]
-    public void MilitaryFoodCostIsReportedInsteadOfCoercedToLegacyResource()
+    public void MilitaryFoodCostIsSupportedWithoutBeingCoercedToWood()
     {
         BuildingContentCatalog catalog = CreateCatalog();
         BuildingContentSpec barracks = Entry("barracks", BuildingEra.Dark, "spearman", EconomyResourceType.Food);
@@ -43,7 +43,7 @@ public sealed class BuildingProductionCatalogRulesTests
 
         BuildingProductionCatalogResult result = BuildingProductionCatalogRules.Evaluate(
             catalog, "barracks", "spearman", State(BuildingEra.Dark), false);
-        Assert.That(result, Is.EqualTo(BuildingProductionCatalogResult.UnsupportedEconomyResource));
+        Assert.That(result, Is.EqualTo(BuildingProductionCatalogResult.Available));
     }
 
     [Test]
@@ -70,7 +70,7 @@ public sealed class BuildingProductionCatalogRulesTests
     }
 
     [Test]
-    public void PlannedMilitaryRosterStaysBlockedAndExposesFoodCompatibilityGap()
+    public void PlannedMilitaryRosterStaysBlockedAndPreservesProgressionGatesWithFood()
     {
         BuildingContentCatalog catalog = AssetDatabase.LoadAssetAtPath<BuildingContentCatalog>(CatalogPath);
         StrategicPlanningState state = State(BuildingEra.Feudal);
@@ -86,13 +86,19 @@ public sealed class BuildingProductionCatalogRulesTests
                 catalog, buildingCode,
                 buildingCode == "barracks" ? "spearman" : buildingCode == "stable" ? "horseman" : "archer",
                 state);
-            Assert.That(blocked, Is.EqualTo(BuildingProductionCatalogResult.ContentUnavailable), buildingCode);
+            BuildingProductionCatalogResult expectedAvailability = buildingCode == "barracks"
+                ? BuildingProductionCatalogResult.Available
+                : BuildingProductionCatalogResult.TechnologyRequirement;
+            Assert.That(blocked, Is.EqualTo(expectedAvailability), buildingCode);
 
             BuildingProductionCatalogResult compatibility = BuildingProductionCatalogRules.Evaluate(
                 catalog, buildingCode,
                 buildingCode == "barracks" ? "spearman" : buildingCode == "stable" ? "horseman" : "archer",
                 state, false);
-            Assert.That(compatibility, Is.EqualTo(BuildingProductionCatalogResult.UnsupportedEconomyResource), buildingCode);
+            BuildingProductionCatalogResult expected = buildingCode == "barracks"
+                ? BuildingProductionCatalogResult.Available
+                : BuildingProductionCatalogResult.TechnologyRequirement;
+            Assert.That(compatibility, Is.EqualTo(expected), buildingCode);
         }
     }
 

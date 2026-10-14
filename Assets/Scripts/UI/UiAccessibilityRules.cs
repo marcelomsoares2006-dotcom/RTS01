@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 
 /// <summary>Semantic state shared by keyboard, screen-reader and visual UI adapters.</summary>
 public enum UiSemanticState
@@ -97,7 +98,7 @@ public static class UiAccessibilityRules
     public static string VolumeText(float value)
     {
         float clamped = ClampVolumeDb(value);
-        return clamped <= -80f ? "Silenciado" : "Volume " + Math.Round(clamped, 1).ToString("0.0") + " dB";
+        return clamped <= -80f ? "Silenciado" : "Volume " + Math.Round(clamped, 1).ToString("0.0", CultureInfo.InvariantCulture) + " dB";
     }
 
     public static float HealthRatio(int currentHealth, int maximumHealth)

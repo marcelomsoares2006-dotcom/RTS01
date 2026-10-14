@@ -48,7 +48,7 @@ public static class BuildingProductionCatalogRules
         {
             BuildingContentCost cost = production.cost[i];
             InGameResource legacy;
-            if (cost != null && cost.resource.TryGetLegacyResource(out legacy))
+            if (TryGetProductionResource(cost, out legacy))
                 entry.cost.Add(new ResourceValue(legacy, cost.amount));
         }
         return true;
@@ -63,6 +63,12 @@ public static class BuildingProductionCatalogRules
     {
         if (catalog == null) return BuildingProductionCatalogResult.MissingCatalog;
         if (state == null) return BuildingProductionCatalogResult.MissingState;
+        BuildingContentSpec preflightBuilding = catalog.Find(buildingCode);
+        BuildingContentProduction preflightProduction = FindProduction(preflightBuilding, productCode);
+        if (!requireRuntimeReady && preflightProduction != null
+            && !HasProductionCompatibleCosts(preflightProduction))
+            return BuildingProductionCatalogResult.UnsupportedEconomyResource;
+
         BuildingAvailabilityResult availability = BuildingContentProgressionRules.Validate(
             catalog, buildingCode, state, requireRuntimeReady);
         switch (availability)
@@ -88,7 +94,7 @@ public static class BuildingProductionCatalogRules
             {
                 BuildingContentCost cost = production.cost[i];
                 InGameResource ignored;
-                if (cost == null || !cost.resource.TryGetLegacyResource(out ignored))
+                if (cost == null || !TryGetProductionResource(cost, out ignored))
                     return BuildingProductionCatalogResult.UnsupportedEconomyResource;
             }
         return BuildingProductionCatalogResult.Available;
@@ -104,5 +110,30 @@ public static class BuildingProductionCatalogRules
                 return production;
         }
         return null;
+    }
+
+    private static bool HasProductionCompatibleCosts(BuildingContentProduction production)
+    {
+        if (production == null || production.cost == null) return true;
+        for (int i = 0; i < production.cost.Count; i++)
+        {
+            InGameResource ignored;
+            if (!TryGetProductionResource(production.cost[i], out ignored)) return false;
+        }
+        return true;
+    }
+
+    private static bool TryGetProductionResource(BuildingContentCost cost, out InGameResource resource)
+    {
+        resource = default(InGameResource);
+        if (cost == null) return false;
+        switch (cost.resource)
+        {
+            case EconomyResourceType.Food: resource = InGameResource.Food; return true;
+            case EconomyResourceType.Wood: resource = InGameResource.Wood; return true;
+            case EconomyResourceType.Gold: resource = InGameResource.Gold; return true;
+            case EconomyResourceType.Stone: resource = InGameResource.Stone; return true;
+            default: return false;
+        }
     }
 }

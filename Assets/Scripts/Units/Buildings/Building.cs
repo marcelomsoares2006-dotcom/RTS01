@@ -436,7 +436,6 @@ public class Building : Unit
     {
         switch (source)
         {
-            case InGameResource.Food: target = EconomyResourceType.Food; return true;
             case InGameResource.Wood: target = EconomyResourceType.Wood; return true;
             case InGameResource.Gold: target = EconomyResourceType.Gold; return true;
             case InGameResource.Stone: target = EconomyResourceType.Stone; return true;

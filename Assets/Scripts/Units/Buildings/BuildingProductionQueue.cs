@@ -235,6 +235,7 @@ public sealed class BuildingProductionQueue
     {
         switch (resource)
         {
+            case InGameResource.Food: mapped = EconomyResourceType.Food; return true;
             case InGameResource.Gold: mapped = EconomyResourceType.Gold; return true;
             case InGameResource.Wood: mapped = EconomyResourceType.Wood; return true;
             case InGameResource.Stone: mapped = EconomyResourceType.Stone; return true;

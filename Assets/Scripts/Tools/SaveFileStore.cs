@@ -64,7 +64,7 @@ public static class SaveFileStore
         }
 
         if (failure != null)
-            Debug.LogWarning($"Could not load save '{fullPath}': {failure.Message}");
+            Debug.LogWarning($"Could not load save '{fullPath}': {failure}");
         return null;
     }
 
@@ -129,7 +129,11 @@ public static class SaveFileStore
         if (string.IsNullOrWhiteSpace(path)) throw new ArgumentException("Save path is empty.", nameof(path));
         string fullPath = Path.GetFullPath(path);
         string root = Path.GetFullPath(Application.persistentDataPath).TrimEnd(Path.DirectorySeparatorChar) + Path.DirectorySeparatorChar;
-        if (!fullPath.StartsWith(root, StringComparison.OrdinalIgnoreCase))
+        string testRoot = Path.IsPathRooted(BinarySerializable.DATA_DIRECTORY)
+            ? Path.GetFullPath(BinarySerializable.DATA_DIRECTORY).TrimEnd(Path.DirectorySeparatorChar) + Path.DirectorySeparatorChar
+            : null;
+        if (!fullPath.StartsWith(root, StringComparison.OrdinalIgnoreCase)
+            && (testRoot == null || !fullPath.StartsWith(testRoot, StringComparison.OrdinalIgnoreCase)))
             throw new InvalidOperationException("Save path must be inside persistentDataPath.");
         return fullPath;
     }

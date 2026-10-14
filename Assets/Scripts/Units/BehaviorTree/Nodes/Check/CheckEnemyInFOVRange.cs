@@ -105,4 +105,9 @@ public class CheckEnemyInFOVRange : Node
 
         return nearest;
     }
+
+    private Transform FindNearestEnemy(Collider[] colliders)
+    {
+        return FindNearestEnemy(colliders, colliders == null ? 0 : colliders.Length);
+    }
 }

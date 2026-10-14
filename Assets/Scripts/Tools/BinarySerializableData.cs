@@ -45,6 +45,15 @@ public class BinarySerializableData
             tested.IsArray && _serializableTypes.Contains(tested.GetElementType());
     }
 
+    public static bool CanSerialize(FieldInfo field)
+    {
+        if (field == null || field.IsStatic) return false;
+        Type tested = field.FieldType;
+        return _IsTypeSerializable(tested)
+            || _IsOfType(tested, typeof(Color))
+            || _IsOfType(tested, typeof(Vector3));
+    }
+
     private static bool _IsOfType(Type tested, Type reference)
     {
         return
