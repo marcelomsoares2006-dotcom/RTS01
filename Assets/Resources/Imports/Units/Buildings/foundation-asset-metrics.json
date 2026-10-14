@@ -15,10 +15,10 @@
       ],
       "boundsMax": [
         4.8227922061357855,
-        9.6,
+        7.7,
         3.8227922061357855
       ],
-      "bytes": 25052,
+      "bytes": 25012,
       "path": "Assets/Resources/Imports/Units/Buildings/town-center/TownCenter_authoring.glb"
     },
     {
@@ -37,7 +37,7 @@
         3.8800000000000003,
         1.9
       ],
-      "bytes": 14788,
+      "bytes": 14764,
       "path": "Assets/Resources/Imports/Units/Buildings/resource-dropoff/ResourceDropoff_authoring.glb"
     }
   ]

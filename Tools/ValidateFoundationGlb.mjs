@@ -26,7 +26,7 @@ for (const relative of files) {
       const pos = gltf.accessors[primitive.attributes?.POSITION];
       const normal = gltf.accessors[primitive.attributes?.NORMAL];
       const index = gltf.accessors[primitive.indices];
-      if (!pos || pos.type !== 'VEC3' || !normal || normal.count !== pos.count || !index || index.type !== 'SCALAR') {
+      if (!pos || pos.type !== 'VEC3' || !normal || normal.count !== pos.count || !index || index.type !== 'SCALAR' || (index.max?.[0] ?? pos.count) >= pos.count) {
         failures.push(`${relative}: mesh ${meshIndex} primitive ${primitiveIndex} has invalid accessors`);
       }
     }

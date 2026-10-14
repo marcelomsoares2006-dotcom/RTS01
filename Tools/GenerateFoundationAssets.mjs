@@ -73,7 +73,8 @@ function buildTownCenter() {
     p.push(pyramid('TowerCap', x, 4.3, z, 1.8, 1.8, 0.95, 3, Math.PI / 4));
   }
   p.push(box('CentralKeep', 0, 4.0, 0, 3.2, 3.8, 3.2, 0));
-  p.push(pyramid('CentralRoof', 0, 7.8, 0, 4.15, 4.15, 1.8, 3, Math.PI / 4));
+  // CentralKeep spans y=2.1..5.9; seat the roof directly on its top face.
+  p.push(pyramid('CentralRoof', 0, 5.9, 0, 4.15, 4.15, 1.8, 3, Math.PI / 4));
   // Entrance surround and gate are intentionally separate parts for later Unity animation.
   p.push(box('EntranceFrame', 0, 1.65, -3.23, 2.2, 2.7, 0.35, 2));
   p.push(box('Gate', 0, 1.25, -3.43, 1.35, 1.9, 0.12, 4));
@@ -108,7 +109,10 @@ function makeBinaryGLB(parts, assetName) {
       const a = item.vertices[face[0]], b = item.vertices[face[1]], c = item.vertices[face[2]];
       const n = norm(cross(sub(b, a), sub(c, a)));
       for (const ix of face) { positions.push(...item.vertices[ix]); normals.push(...n); }
-      const start = (positions.length / 3) - face.length;
+      // Each primitive exposes a local POSITION accessor beginning at `base`.
+      // Keep its indices local too; using the packed global vertex offset makes
+      // the primitive sample another part's vertices in glTF viewers/importers.
+      const start = (positions.length / 3) - base - face.length;
       for (let i = 1; i < face.length - 1; i++) indices.push(start, start + i, start + i + 1);
     }
     const end = positions.length / 3;
