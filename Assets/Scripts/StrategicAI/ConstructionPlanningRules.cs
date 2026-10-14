@@ -8,6 +8,14 @@ using System.Collections.Generic;
 /// </summary>
 public static class ConstructionPlanningRules
 {
+    /// <summary>Reserves a candidate through the shared concurrent ledger.</summary>
+    public static ConstructionReservationResult TryReserveCandidate(
+        ConstructionReservationLedger reservations,
+        ConstructionReservationRequest request)
+    {
+        if (reservations == null) return ConstructionReservationResult.MissingStockpile;
+        return reservations.TryReserve(request);
+    }
     /// <summary>
     /// Selects the next playable, affordable building in the foundation order:
     /// Town Center, a resource dropoff, then the first missing production

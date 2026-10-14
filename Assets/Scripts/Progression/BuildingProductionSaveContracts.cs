@@ -11,7 +11,8 @@ public enum BuildingProductionSnapshotResult
     ProductUnavailable,
     UnsupportedEconomyResource,
     InvalidSnapshot,
-    QueueLimitExceeded
+    QueueLimitExceeded,
+    QueueNotEmpty
 }
 
 [Serializable]
@@ -92,6 +93,10 @@ public static class BuildingProductionSaveRules
         if (state == null) return BuildingProductionSnapshotResult.MissingState;
         if (queue == null || snapshot == null || string.IsNullOrWhiteSpace(snapshot.buildingCode))
             return BuildingProductionSnapshotResult.InvalidSnapshot;
+        // Restore is a replacement operation. Refusing a non-empty queue keeps
+        // its existing resource/population reservations owned by the live
+        // queue instead of silently orphaning them.
+        if (queue.Count > 0) return BuildingProductionSnapshotResult.QueueNotEmpty;
         if (snapshot.ownerId != state.ownerId) return BuildingProductionSnapshotResult.InvalidSnapshot;
         BuildingContentSpec entry = catalog.Find(snapshot.buildingCode);
         if (entry == null) return BuildingProductionSnapshotResult.MissingCatalog;

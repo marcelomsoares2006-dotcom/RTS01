@@ -29,6 +29,8 @@ public sealed class BuildingConstructionSaveSnapshot
     public BuildingLifecycleState lifecycle;
     public string[] constructorIds = new string[0];
     public List<BuildingMaintenanceCost> reservedCosts = new List<BuildingMaintenanceCost>();
+    public string reservationId;
+    public int reservedPopulation;
     public BuildingContentAssetStage assetOrigin;
     public bool contentRuntimeReady;
 }

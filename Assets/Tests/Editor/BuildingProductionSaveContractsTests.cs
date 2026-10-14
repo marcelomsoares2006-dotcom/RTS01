@@ -60,6 +60,35 @@ public sealed class BuildingProductionSaveContractsTests
             Is.EqualTo(BuildingProductionSnapshotResult.ContentUnavailable));
     }
 
+    [Test]
+    public void RestoreRejectsOccupiedQueueWithoutReplacingItsReservationOrders()
+    {
+        BuildingContentCatalog catalog = Catalog();
+        catalog.entries.Add(ReadyBarracks());
+        StrategicPlanningState state = State();
+        BuildingProductionQueue queue = new BuildingProductionQueue(5);
+        BuildingProductionEntry entry = new BuildingProductionEntry
+        {
+            productCode = "spearman", productionTime = 15f, queueLimit = 5,
+            populationCost = 1,
+            cost = new List<ResourceValue> { new ResourceValue(InGameResource.Wood, 30) }
+        };
+        EconomyLedger ledger = new EconomyLedger();
+        ledger.Set(EconomyResourceType.Wood, 100);
+        PopulationLedger population = new PopulationLedger(10, 0);
+        Assert.That(queue.TryEnqueue(entry, ledger, population), Is.EqualTo(BuildingProductionQueueResult.Accepted));
+
+        BuildingProductionQueueSnapshot replacement = new BuildingProductionQueueSnapshot
+        {
+            buildingCode = "barracks", ownerId = state.ownerId, era = state.era,
+            orders = new List<BuildingProductionOrderSnapshot>()
+        };
+        Assert.That(BuildingProductionSaveRules.Restore(catalog, state, queue, replacement),
+            Is.EqualTo(BuildingProductionSnapshotResult.QueueNotEmpty));
+        Assert.That(queue.Count, Is.EqualTo(1));
+        Assert.That(queue.Peek.productCode, Is.EqualTo("spearman"));
+    }
+
     private BuildingContentCatalog Catalog()
     {
         BuildingContentCatalog catalog = ScriptableObject.CreateInstance<BuildingContentCatalog>();
