@@ -19,6 +19,8 @@ public class GamePlayerUnitData : BinarySerializable
     public int constructionHP;
     public int buildingLifecycle;
     public string[] constructorIds;
+    /// <summary>Forward-compatible construction state; null means legacy save.</summary>
+    public BuildingConstructionSaveSnapshot construction;
 
     public GamePlayerUnitData() { }
 

@@ -110,6 +110,12 @@ public class DataHandler : MonoBehaviour
                 }
                 if (type == "building")
                 {
+                    if (unit.construction != null && !BuildingConstructionSaveRules.CanRestoreRuntime(
+                        unit.construction, p))
+                    {
+                        Debug.LogWarning($"Skipping non-runtime building save '{unit.code}'.");
+                        continue;
+                    }
                     BuildingData bd = Globals.BUILDING_DATA
                         .Where((BuildingData x) => x.code == unit.code)
                         .First();
@@ -117,7 +123,9 @@ public class DataHandler : MonoBehaviour
                     u.SetPosition(unit.position);
                     u.Place(true);
                     Building restoredBuilding = (Building)u;
-                    int constructionHealth = unit.constructionHP;
+                    int constructionHealth = unit.construction != null
+                        ? unit.construction.constructionHP
+                        : unit.constructionHP;
                     // Legacy saves used zero for a completed building before
                     // lifecycle tracking existed. Keep those buildings live.
                     if (constructionHealth <= 0
@@ -125,10 +133,13 @@ public class DataHandler : MonoBehaviour
                         && unit.buildingLifecycle == (int)BuildingLifecycleState.Blueprint)
                         constructionHealth = bd.healthpoints;
                     restoredBuilding.SetConstructionHP(constructionHealth, true);
-                    if (unit.constructorIds != null && unit.constructorIds.Length > 0)
+                    string[] constructorIds = unit.construction != null
+                        ? unit.construction.constructorIds
+                        : unit.constructorIds;
+                    if (constructorIds != null && constructorIds.Length > 0)
                     {
                         buildingsWithSavedConstructors.Add(restoredBuilding);
-                        savedConstructorIds.Add(unit.constructorIds);
+                        savedConstructorIds.Add(constructorIds);
                     }
                 }
                 else
@@ -237,6 +248,18 @@ public class DataHandler : MonoBehaviour
                     u.constructorIds = building.Constructors == null ? new string[0] : building.Constructors
                         .FindAll(constructor => constructor != null)
                         .ConvertAll(constructor => constructor.Uid).ToArray();
+                    BuildingConstructionSaveRules.Capture(
+                        building.Code,
+                        building.Owner,
+                        building.Transform.position,
+                        building.ConstructionHP,
+                        building.MaxHP,
+                        building.LifecycleState,
+                        u.constructorIds,
+                        null,
+                        BuildingContentAssetStage.RuntimeReady,
+                        true,
+                        out u.construction);
                 }
                 units.Add(u);
             }

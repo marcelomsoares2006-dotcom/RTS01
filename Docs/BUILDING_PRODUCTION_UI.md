@@ -20,4 +20,6 @@ Validação determinística: `BuildingProductionUiContractTests` cobre progresso
 
 Para o roster planejado, `BuildingProductionCatalogRules` valida `BuildingContentCatalog` antes da fila. Barracks, Archery Range e Stable permanecem bloqueados enquanto `BuildingData`/prefab não existem. A ponte também identifica `UnsupportedEconomyResource` quando a declaração usa Food, pois a fila legada ainda aceita apenas Wood, Gold e Stone; nenhum recurso é convertido silenciosamente.
 
+`BuildingProductionSaveRules` captura e restaura a fila como snapshot puro vinculado ao código do prédio e à era. Cada ordem preserva produto, tempo, progresso, custos e população reservada; a restauração valida novamente runtime-readiness e o contrato de produção antes de substituir a fila. Conteúdo intermediário não pode criar uma fila restaurada.
+
 O avanço permanece responsabilidade do loop de partida: chame `binding.Advance(ownerId, deltaTime, out completedProducts)` e assine `binding.ProductCompleted` para materializar a unidade ou o efeito correspondente. A ponte não instancia prefabs, não altera cenas e rejeita catálogos ou estados econômicos ausentes antes de criar o adapter.
