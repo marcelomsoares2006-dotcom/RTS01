@@ -30,7 +30,7 @@ if ($Migrate) {
     Invoke-ReviewUnity 'migration' '-quit -executeMethod EraImperialValidation.MigrateAndAudit'
 }
 $reviewResults = Join-Path $reviewProject 'TestResults\unit-tests.xml'
-Invoke-ReviewUnity 'unit-tests' ('-runTests -testPlatform EditMode -assemblyNames EraImperial.EditorTests -testResults "' + $reviewResults + '"')
+Invoke-ReviewUnity 'unit-tests' ('-runTests -testPlatform EditMode -testResults "' + $reviewResults + '"')
 [xml]$reviewXml = Get-Content -LiteralPath $reviewResults
 $reviewRun = $reviewXml.'test-run'
 $passed = [int]$reviewRun.passed

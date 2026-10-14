@@ -83,7 +83,10 @@ function Test-ConstructionContracts {
         'Assets/Tests/Editor/BuildingFeedbackRulesTests.cs'
     )
     foreach ($test in $requiredTests) { Require-File $test | Out-Null }
-    Require-Text 'Assets/Tests/Editor/EraImperial.EditorTests.asmdef' 'EraImperial\.Compatibility' 'editor test assembly reference' | Out-Null
+    $editorTestsAsmdef = Join-Path $projectRoot 'Assets/Tests/Editor/EraImperial.EditorTests.asmdef'
+    if (Test-Path $editorTestsAsmdef) {
+        throw 'Editor tests must remain in Unity''s predefined Assembly-CSharp-Editor assembly so they can access runtime types.'
+    }
     return $required.Count
 }
 
