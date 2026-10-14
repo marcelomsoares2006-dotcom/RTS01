@@ -38,6 +38,32 @@ public static class ConstructionPlanningRules
         return true;
     }
 
+    /// <summary>Projects the first Feudal ranged order after the Archery Range gates pass.</summary>
+    public static bool TryCreateInitialArcheryRangeIntent(
+        BuildingContentCatalog catalog, StrategicPlanningState state,
+        out StrategicActionIntent intent, out ArcheryRangeContractResult result)
+    {
+        intent = null;
+        result = ArcheryRangeMilitaryContract.Evaluate(catalog, state);
+        if (result != ArcheryRangeContractResult.Accepted) return false;
+        BuildingContentProduction production;
+        if (!ArcheryRangeMilitaryContract.TryResolveInitialProduction(catalog, out production))
+        {
+            result = ArcheryRangeContractResult.MissingProduction;
+            return false;
+        }
+        intent = new StrategicActionIntent
+        {
+            action = StrategicActionKind.ProduceUnit,
+            priority = StrategicPriority.High,
+            goalId = "auto-produce-archery-range-" + production.productCode.Trim().ToLowerInvariant(),
+            targetCode = production.productCode.Trim(),
+            targetEntityId = "archery_range",
+            quantity = 1
+        };
+        return true;
+    }
+
     /// <summary>Reserves a candidate through the shared concurrent ledger.</summary>
     public static ConstructionReservationResult TryReserveCandidate(
         ConstructionReservationLedger reservations,
