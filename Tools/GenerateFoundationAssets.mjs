@@ -148,6 +148,31 @@ function buildMiningCamp() {
   return p;
 }
 
+function buildMill() {
+  const p = [];
+  // A compact food outpost: the wheel, grain sacks and loading apron keep the
+  // food role readable at gameplay distance while preserving named sockets for
+  // later worker and farm VFX authoring.
+  p.push(box('Foundation', 0, 0.2, 0, 5.4, 0.4, 4.4, 0));
+  p.push(box('MillHouseWalls', 0, 1.35, 0.15, 4.7, 2.3, 3.55, 1));
+  for (const [x, z] of [[-2.0, -1.45], [2.0, -1.45], [-2.0, 1.75], [2.0, 1.75]])
+    p.push(box('TimberPost', x, 1.5, z, 0.24, 2.65, 0.24, 2));
+  p.push(box('TimberBeam', 0, 2.4, -1.62, 4.45, 0.24, 0.24, 2));
+  p.push(pyramid('Roof', 0, 2.6, 0.15, 5.2, 4.05, 1.65, 3));
+  p.push(box('LoadingPlatform', 0, 0.58, -2.28, 2.8, 0.18, 0.95, 2));
+  // The mill wheel is split into hub and spokes so later animation can rotate
+  // only the wheel without replacing the authored building mesh.
+  p.push(cylinder('MillWheel', 2.42, 1.45, 0.25, 1.05, 0.22, 12, 4, Math.PI / 2));
+  p.push(cylinder('MillWheelHub', 2.42, 1.45, 0.25, 0.25, 0.32, 12, 2, Math.PI / 2));
+  p.push(box('MillWheelAxle', 2.18, 1.45, 0.25, 0.7, 0.18, 0.18, 2));
+  p.push(box('GrainSackLeft', -1.35, 0.78, 2.05, 0.9, 0.85, 0.75, 5, -0.08));
+  p.push(box('GrainSackRight', -0.35, 0.72, 2.08, 0.85, 0.72, 0.7, 5, 0.08));
+  p.push(box('Millstone', 0, 0.62, 0.65, 1.2, 0.28, 1.2, 0, 0.785));
+  p.push(box('Sign', 0.8, 2.28, -1.9, 1.35, 0.45, 0.08, 4));
+  p.push(box('SignMark', 0.8, 2.28, -1.96, 0.3, 0.08, 0.04, 5));
+  return p;
+}
+
 function makeBinaryGLB(parts, assetName) {
   const positions = [], normals = [], indices = [], primitiveInfo = [];
   for (const item of parts) {
@@ -328,6 +353,7 @@ const townCenterParts = buildTownCenter();
 const resourceDropoffParts = buildResourceDropoff();
 const lumberCampParts = buildLumberCamp();
 const miningCampParts = buildMiningCamp();
+const millParts = buildMill();
 const report = {
   generator: 'Tools/GenerateFoundationAssets.mjs',
   coordinateSystem: 'Y-up, right-handed, metres',
@@ -340,6 +366,8 @@ const report = {
     writeObj('LumberCamp_authoring', lumberCampParts, 'lumber-camp'),
     writeAsset('MiningCamp_authoring', miningCampParts, 'mining-camp'),
     writeObj('MiningCamp_authoring', miningCampParts, 'mining-camp'),
+    writeAsset('Mill_authoring', millParts, 'mill'),
+    writeObj('Mill_authoring', millParts, 'mill'),
   ],
 };
 const reportPath = path.join(outputRoot, 'foundation-asset-metrics.json');

@@ -161,6 +161,46 @@
       "path": "Assets/Resources/Imports/Units/Buildings/mining-camp/MiningCamp_authoring.obj",
       "materialPath": "Assets/Resources/Imports/Units/Buildings/mining-camp/MiningCamp_authoring.mtl",
       "bytes": 15705
+    },
+    {
+      "assetName": "Mill_authoring",
+      "parts": 17,
+      "vertices": 496,
+      "triangles": 262,
+      "materials": 6,
+      "boundsMin": [
+        -2.7,
+        0,
+        -2.755
+      ],
+      "boundsMax": [
+        3.4699999999999998,
+        4.25,
+        2.4628443421428154
+      ],
+      "bytes": 26076,
+      "path": "Assets/Resources/Imports/Units/Buildings/mill/Mill_authoring.glb"
+    },
+    {
+      "assetName": "Mill_authoring",
+      "format": "obj",
+      "parts": 17,
+      "vertices": 165,
+      "triangles": 262,
+      "materials": 6,
+      "boundsMin": [
+        -2.7,
+        0,
+        -2.755
+      ],
+      "boundsMax": [
+        3.4699999999999998,
+        4.25,
+        2.4628443421428154
+      ],
+      "path": "Assets/Resources/Imports/Units/Buildings/mill/Mill_authoring.obj",
+      "materialPath": "Assets/Resources/Imports/Units/Buildings/mill/Mill_authoring.mtl",
+      "bytes": 15009
     }
   ]
 }

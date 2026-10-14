@@ -57,3 +57,17 @@ entries:
     requiredComponents: BuildingManager,BuildingBT,MeshFilter,MeshRenderer,Collider
     approvalChecks: import-model,create-prefab,link-building-data,placement-review,construction-playmode
     promotionCriteria: authored-model,unity-prefab,building-data,placement-playmode
+
+  - code: mill
+    intermediateSource: Assets/Resources/Imports/Units/Buildings/mill/Mill_graybox.obj
+    authoredSource: Assets/Resources/Imports/Units/Buildings/mill/Mill_authoring.obj
+    scaleMeters: 1
+    footprintMeters: 6.2x5.3
+    footprintToleranceMeters: 0.6
+    maxHeightMeters: 4.8
+    expectedPrefab: Assets/Resources/Prefabs/Units/Buildings/Mill.prefab
+    expectedBuildingData: Assets/Resources/ScriptableObjects/Units/Buildings/Mill.asset
+    minimumEra: Dark
+    requiredComponents: BuildingManager,BuildingBT,MeshFilter,MeshRenderer,Collider
+    approvalChecks: import-model,create-prefab,link-building-data,placement-review,construction-playmode
+    promotionCriteria: authored-model,unity-prefab,building-data,placement-playmode

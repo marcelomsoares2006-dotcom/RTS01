@@ -10,6 +10,7 @@ const assets = [
   'Assets/Resources/Imports/Units/Buildings/resource-dropoff/ResourceDropoff_authoring.obj',
   'Assets/Resources/Imports/Units/Buildings/lumber-camp/LumberCamp_authoring.obj',
   'Assets/Resources/Imports/Units/Buildings/mining-camp/MiningCamp_authoring.obj',
+  'Assets/Resources/Imports/Units/Buildings/mill/Mill_authoring.obj',
 ];
 
 function fail(message) {

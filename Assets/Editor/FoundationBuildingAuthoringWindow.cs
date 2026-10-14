@@ -22,6 +22,7 @@ public sealed class FoundationBuildingAuthoringWindow : EditorWindow
     private const string ResourceDropoffCode = "resource_dropoff";
     private const string LumberCampCode = "lumber_camp";
     private const string MiningCampCode = "mining_camp";
+    private const string MillCode = "mill";
     private const string TownCenterUnityModel =
         "Assets/Resources/Imports/Units/Buildings/town-center/TownCenter_authoring.obj";
     private const string TownCenterGlbModel =
@@ -38,6 +39,10 @@ public sealed class FoundationBuildingAuthoringWindow : EditorWindow
         "Assets/Resources/Imports/Units/Buildings/mining-camp/MiningCamp_authoring.obj";
     private const string MiningCampGlbModel =
         "Assets/Resources/Imports/Units/Buildings/mining-camp/MiningCamp_authoring.glb";
+    private const string MillUnityModel =
+        "Assets/Resources/Imports/Units/Buildings/mill/Mill_authoring.obj";
+    private const string MillGlbModel =
+        "Assets/Resources/Imports/Units/Buildings/mill/Mill_authoring.glb";
     private const string PrefabFolder = "Assets/Resources/Prefabs/Units/Buildings";
     private const string DataFolder = "Assets/Resources/ScriptableObjects/Units/Buildings";
     private const string HousePrefab = "Assets/Resources/Prefabs/Units/Buildings/House.prefab";
@@ -66,6 +71,7 @@ public sealed class FoundationBuildingAuthoringWindow : EditorWindow
         DrawAssetRow(ResourceDropoffCode, ResourceDropoffUnityModel, ResourceDropoffGlbModel);
         DrawAssetRow(LumberCampCode, LumberCampUnityModel, LumberCampGlbModel);
         DrawAssetRow(MiningCampCode, MiningCampUnityModel, MiningCampGlbModel);
+        DrawAssetRow(MillCode, MillUnityModel, MillGlbModel);
 
         EditorGUILayout.Space(8f);
         using (new EditorGUILayout.HorizontalScope())
@@ -115,7 +121,8 @@ public sealed class FoundationBuildingAuthoringWindow : EditorWindow
         return AuditResolvedModel(TownCenterCode, TownCenterUnityModel, TownCenterGlbModel, false)
             && AuditResolvedModel(ResourceDropoffCode, ResourceDropoffUnityModel, ResourceDropoffGlbModel, false)
             && AuditResolvedModel(LumberCampCode, LumberCampUnityModel, LumberCampGlbModel, false)
-            && AuditResolvedModel(MiningCampCode, MiningCampUnityModel, MiningCampGlbModel, false);
+            && AuditResolvedModel(MiningCampCode, MiningCampUnityModel, MiningCampGlbModel, false)
+            && AuditResolvedModel(MillCode, MillUnityModel, MillGlbModel, false);
     }
 
     private void AuditModels()
@@ -125,7 +132,8 @@ public sealed class FoundationBuildingAuthoringWindow : EditorWindow
         bool dropoff = AuditResolvedModel(ResourceDropoffCode, ResourceDropoffUnityModel, ResourceDropoffGlbModel, true);
         bool lumberCamp = AuditResolvedModel(LumberCampCode, LumberCampUnityModel, LumberCampGlbModel, true);
         bool miningCamp = AuditResolvedModel(MiningCampCode, MiningCampUnityModel, MiningCampGlbModel, true);
-        _messages.Add(townCenter && dropoff && lumberCamp && miningCamp
+        bool mill = AuditResolvedModel(MillCode, MillUnityModel, MillGlbModel, true);
+        _messages.Add(townCenter && dropoff && lumberCamp && miningCamp && mill
             ? "Authored model sources pass the audit. Draft creation is available."
             : "Source audit failed. No draft asset was created.");
         Repaint();
@@ -178,11 +186,13 @@ public sealed class FoundationBuildingAuthoringWindow : EditorWindow
         string dropoffSource = ResolveModelPath(ResourceDropoffUnityModel, ResourceDropoffGlbModel);
         string lumberCampSource = ResolveModelPath(LumberCampUnityModel, LumberCampGlbModel);
         string miningCampSource = ResolveModelPath(MiningCampUnityModel, MiningCampGlbModel);
-        if (townCenterSource == null || dropoffSource == null || lumberCampSource == null || miningCampSource == null
+        string millSource = ResolveModelPath(MillUnityModel, MillGlbModel);
+        if (townCenterSource == null || dropoffSource == null || lumberCampSource == null || miningCampSource == null || millSource == null
             || !AuditModel(TownCenterCode, townCenterSource, true)
             || !AuditModel(ResourceDropoffCode, dropoffSource, true)
             || !AuditModel(LumberCampCode, lumberCampSource, true)
-            || !AuditModel(MiningCampCode, miningCampSource, true))
+            || !AuditModel(MiningCampCode, miningCampSource, true)
+            || !AuditModel(MillCode, millSource, true))
         {
             _messages.Add("ERROR: source audit failed; no draft assets were created.");
             Repaint();
@@ -195,6 +205,7 @@ public sealed class FoundationBuildingAuthoringWindow : EditorWindow
         CreateDraft(ResourceDropoffCode, "Resource Dropoff", dropoffSource);
         CreateDraft(LumberCampCode, "Lumber Camp", lumberCampSource);
         CreateDraft(MiningCampCode, "Mining Camp", miningCampSource);
+        CreateDraft(MillCode, "Mill", millSource);
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
         _messages.Add("Draft assets created. Catalog status and BuildingData references remain unchanged.");
@@ -446,6 +457,8 @@ public sealed class FoundationBuildingAuthoringWindow : EditorWindow
                 return "Unity authoring draft for the Wood-only Lumber Camp dropoff. Requires foundation acceptance review.";
             case MiningCampCode:
                 return "Unity authoring draft for the Gold/Stone Mining Camp dropoff. Requires foundation acceptance review.";
+            case MillCode:
+                return "Unity authoring draft for the Food-only Mill dropoff. Requires foundation acceptance review.";
             default:
                 return "Unity authoring draft. Requires foundation acceptance review.";
         }
