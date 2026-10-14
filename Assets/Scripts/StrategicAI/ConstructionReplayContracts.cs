@@ -284,7 +284,37 @@ public static class ConstructionReplayExecutor
         ConstructionReplaySnapshot state, ConstructionReplayCommand command,
         ConstructionReservationLedger reservations)
     {
-        if (command.kind == ConstructionReplayCommandKind.ReserveResources)
+        if (command == null) return ConstructionReplayResult.InvalidCommand;
+        if (command.kind == ConstructionReplayCommandKind.ProduceUnit)
+        {
+            // Military contract commands carry the same cost/population payload
+            // that BuildingProductionQueue reserves at enqueue time.  The
+            // detached economic replay must consume that payload too; otherwise
+            // AI/replay can produce units for free while the live queue rejects
+            // the same order.  Commit the synthetic reservation immediately so
+            // it models a production enqueue without polluting construction
+            // reservation snapshots.
+            if (string.IsNullOrWhiteSpace(command.targetCode))
+                return ConstructionReplayResult.InvalidTarget;
+            List<BuildingMaintenanceCost> scaledCosts;
+            if (!TryScaleCosts(command.costs, command.quantity, out scaledCosts)
+                || command.populationCost < 0
+                || command.populationCost > int.MaxValue / command.quantity)
+                return ConstructionReplayResult.InvalidCommand;
+            string productionReservationId = "production:" + command.commandId.Trim();
+            ConstructionReservationResult productionResult = reservations.TryReserve(
+                new ConstructionReservationRequest {
+                    reservationId = productionReservationId,
+                    priority = command.priority,
+                    population = command.populationCost * command.quantity,
+                    costs = scaledCosts
+                });
+            if (productionResult != ConstructionReservationResult.Accepted)
+                return ConstructionReplayResult.DivergentReplay;
+            if (reservations.Commit(productionReservationId) != ConstructionReservationResult.Accepted)
+                return ConstructionReplayResult.DivergentReplay;
+        }
+        else if (command.kind == ConstructionReplayCommandKind.ReserveResources)
         {
             ConstructionReservationResult result = reservations.TryReserve(new ConstructionReservationRequest {
                 reservationId = command.reservationId,
@@ -302,6 +332,25 @@ public static class ConstructionReplayExecutor
                 return ConstructionReplayResult.DivergentReplay;
         }
         return Apply(state, command);
+    }
+
+    private static bool TryScaleCosts(
+        List<BuildingMaintenanceCost> costs,
+        int quantity,
+        out List<BuildingMaintenanceCost> scaled)
+    {
+        scaled = new List<BuildingMaintenanceCost>();
+        if (quantity <= 0) return false;
+        if (costs == null) return true;
+        for (int i = 0; i < costs.Count; i++)
+        {
+            BuildingMaintenanceCost cost = costs[i];
+            if (cost == null || cost.amount < 0) return false;
+            long amount = (long)cost.amount * quantity;
+            if (amount > int.MaxValue) return false;
+            scaled.Add(new BuildingMaintenanceCost(cost.resource, (int)amount));
+        }
+        return true;
     }
 
     private static ConstructionReplayResult AdvanceEra(ConstructionReplaySnapshot state, string target)

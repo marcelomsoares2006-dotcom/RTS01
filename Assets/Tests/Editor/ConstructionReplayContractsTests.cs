@@ -92,6 +92,51 @@ public sealed class ConstructionReplayContractsTests
         Assert.AreEqual(1, population.current);
     }
 
+    [Test]
+    public void EconomicReplayAppliesProductionCostAndPopulationPayload()
+    {
+        ConstructionReplayCommand produce = Command("produce", 1, 1, 3,
+            ConstructionReplayCommandKind.ProduceUnit, "spearman", "");
+        produce.populationCost = 1;
+        produce.costs.Add(new BuildingMaintenanceCost(EconomyResourceType.Food, 80));
+        produce.costs.Add(new BuildingMaintenanceCost(EconomyResourceType.Wood, 30));
+        ConstructionReplayLog log = new ConstructionReplayLog();
+        Assert.That(log.TryAppend(produce), Is.EqualTo(ConstructionReplayResult.Accepted));
+
+        EconomyLedger economy = new EconomyLedger();
+        economy.Set(EconomyResourceType.Food, 100);
+        economy.Set(EconomyResourceType.Wood, 50);
+        PopulationLedger population = new PopulationLedger(2, 0);
+        ConstructionReplaySnapshot snapshot;
+        Assert.That(ConstructionReplayExecutor.Replay(log, economy, population, null, out snapshot),
+            Is.EqualTo(ConstructionReplayResult.Accepted));
+        Assert.AreEqual(20, economy.Get(EconomyResourceType.Food));
+        Assert.AreEqual(20, economy.Get(EconomyResourceType.Wood));
+        Assert.AreEqual(1, population.current);
+        CollectionAssert.AreEqual(new[] { "spearman" }, snapshot.producedUnits);
+    }
+
+    [Test]
+    public void EconomicReplayRejectsUnaffordableProductionAtomically()
+    {
+        ConstructionReplayCommand produce = Command("produce", 1, 1, 3,
+            ConstructionReplayCommandKind.ProduceUnit, "horseman", "");
+        produce.populationCost = 2;
+        produce.costs.Add(new BuildingMaintenanceCost(EconomyResourceType.Food, 100));
+        ConstructionReplayLog log = new ConstructionReplayLog();
+        log.TryAppend(produce);
+
+        EconomyLedger economy = new EconomyLedger();
+        economy.Set(EconomyResourceType.Food, 99);
+        PopulationLedger population = new PopulationLedger(2, 0);
+        ConstructionReplaySnapshot snapshot;
+        Assert.That(ConstructionReplayExecutor.Replay(log, economy, population, null, out snapshot),
+            Is.EqualTo(ConstructionReplayResult.DivergentReplay));
+        Assert.AreEqual(99, economy.Get(EconomyResourceType.Food));
+        Assert.AreEqual(0, population.current);
+        Assert.IsNull(snapshot);
+    }
+
     private static ConstructionReplayCommand Command(string id, long tick, long time, int priority,
         ConstructionReplayCommandKind kind, string target, string reservation)
     {

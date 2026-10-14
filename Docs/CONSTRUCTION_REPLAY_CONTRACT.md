@@ -19,3 +19,10 @@ serializable snapshot of active buildings, produced units, reservations and
 era, then fingerprints that state. Replaying the same log twice yields equal
 snapshots; a supplied snapshot with a different fingerprint returns
 `DivergentReplay`. Age-up commands must advance exactly one era at a time.
+
+When the economic overload is used, `ProduceUnit` commands consume their
+declared resource and population payload through the same atomic reservation
+ledger used by the live production queue. The temporary production reservation
+is committed immediately, so it does not appear as a construction reservation;
+an unaffordable or over-cap order fails atomically and restores the supplied
+economy snapshot.
