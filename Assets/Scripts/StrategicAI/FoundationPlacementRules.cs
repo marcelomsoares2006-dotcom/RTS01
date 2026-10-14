@@ -5,6 +5,8 @@ using UnityEngine;
 public enum FoundationPlacementResult
 {
     Allowed,
+    AuditOnly,
+    ContentNotRuntimeReady,
     MissingCatalog,
     MissingCode,
     NotFoundationRole,
@@ -38,6 +40,8 @@ public sealed class FoundationPlacementRequest
     public float minimumDistance;
     public IEnumerable<Vector3> existingBuildingPositions;
     public Vector3 position;
+    /// <summary>Runtime authorization stays closed unless explicitly requested.</summary>
+    public bool requireRuntimeReady = true;
 }
 
 public static class FoundationPlacementRules
@@ -56,6 +60,10 @@ public static class FoundationPlacementRules
         if (entry.role != BuildingContentRole.TownCenter
             && entry.role != BuildingContentRole.ResourceDropoff)
             return FoundationPlacementResult.NotFoundationRole;
+
+        bool auditOnly = !entry.IsRuntimeReady;
+        if (auditOnly && request.requireRuntimeReady)
+            return FoundationPlacementResult.ContentNotRuntimeReady;
 
         BuildingAvailabilityResult availability = BuildingContentProgressionRules.Validate(
             catalog, entry.code, request.state, false);
@@ -76,7 +84,10 @@ public static class FoundationPlacementRules
             request.position, request.existingBuildingPositions,
             request.minimumDistance + request.footprintRadius))
             return FoundationPlacementResult.BlockedByBuilding;
-        return EvaluateCost(entry.constructionCost, request.state);
+        FoundationPlacementResult costResult = EvaluateCost(entry.constructionCost, request.state);
+        return costResult == FoundationPlacementResult.Allowed && auditOnly
+            ? FoundationPlacementResult.AuditOnly
+            : costResult;
     }
 
     private static FoundationPlacementResult ValidateFoundationContract(BuildingContentSpec entry)

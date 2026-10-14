@@ -20,8 +20,9 @@ public sealed class FoundationPlacementRulesTests
         BuildingContentCatalog catalog = Catalog(Foundation("town_center", BuildingContentRole.TownCenter, 400, 10));
         StrategicPlanningState state = State(500);
         FoundationPlacementRequest request = Request("town_center", state);
+        request.requireRuntimeReady = false;
 
-        Assert.AreEqual(FoundationPlacementResult.Allowed,
+        Assert.AreEqual(FoundationPlacementResult.AuditOnly,
             FoundationPlacementRules.Evaluate(catalog, request));
     }
 
@@ -31,6 +32,7 @@ public sealed class FoundationPlacementRulesTests
         BuildingContentCatalog catalog = Catalog(Foundation("town_center", BuildingContentRole.TownCenter, 100, 10));
         StrategicPlanningState state = State(100);
         FoundationPlacementRequest request = Request("town_center", state);
+        request.requireRuntimeReady = false;
         request.terrainNormal = Vector3.forward;
         Assert.AreEqual(FoundationPlacementResult.TerrainTooSteep,
             FoundationPlacementRules.Evaluate(catalog, request));
@@ -46,9 +48,11 @@ public sealed class FoundationPlacementRulesTests
     {
         BuildingContentCatalog catalog = Catalog(Foundation("town_center", BuildingContentRole.TownCenter, 100, 10));
         StrategicPlanningState state = State(100);
+        FoundationPlacementRequest request = Request("town_center", state);
+        request.requireRuntimeReady = false;
         state.SetAmount(InGameResource.Wood, 100, 1);
         Assert.AreEqual(FoundationPlacementResult.InsufficientResources,
-            FoundationPlacementRules.Evaluate(catalog, Request("town_center", state)));
+            FoundationPlacementRules.Evaluate(catalog, request));
     }
 
     [Test]
@@ -58,6 +62,7 @@ public sealed class FoundationPlacementRulesTests
         BuildingContentCatalog catalog = Catalog(dropoff);
         StrategicPlanningState state = State(50);
         FoundationPlacementRequest request = Request("resource_dropoff", state);
+        request.requireRuntimeReady = false;
         request.existingBuildingPositions = new[] { Vector3.zero };
         request.position = new Vector3(1f, 0f, 0f);
         request.footprintRadius = 2f;
@@ -77,7 +82,18 @@ public sealed class FoundationPlacementRulesTests
         BuildingContentCatalog catalog = Catalog(Foundation("resource_dropoff", BuildingContentRole.ResourceDropoff, 50, 0));
         StrategicPlanningState state = State(50);
         FoundationPlacementRequest request = Request("resource_dropoff", state);
-        Assert.AreEqual(FoundationPlacementResult.Allowed,
+        request.requireRuntimeReady = false;
+        Assert.AreEqual(FoundationPlacementResult.AuditOnly,
+            FoundationPlacementRules.Evaluate(catalog, request));
+    }
+
+    [Test]
+    public void PlannedFoundationNeverAuthorizesRuntimePlacement()
+    {
+        BuildingContentCatalog catalog = Catalog(Foundation("town_center", BuildingContentRole.TownCenter, 100, 10));
+        StrategicPlanningState state = State(100);
+        FoundationPlacementRequest request = Request("town_center", state);
+        Assert.AreEqual(FoundationPlacementResult.ContentNotRuntimeReady,
             FoundationPlacementRules.Evaluate(catalog, request));
     }
 

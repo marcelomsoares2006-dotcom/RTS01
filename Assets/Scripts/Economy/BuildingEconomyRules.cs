@@ -13,6 +13,7 @@ public enum BuildingPopulationCapacityResult
 public enum BuildingResourceRoutingResult
 {
     Accepted,
+    ContentNotRuntimeReady,
     MissingCatalog,
     MissingState,
     BuildingNotOperational,
@@ -65,6 +66,8 @@ public static class BuildingEconomyRules
         if (state == null) return BuildingResourceRoutingResult.MissingState;
         BuildingContentSpec entry = catalog.Find(buildingCode);
         if (entry == null) return BuildingResourceRoutingResult.MissingCatalog;
+        if (!entry.IsRuntimeReady)
+            return BuildingResourceRoutingResult.ContentNotRuntimeReady;
         if (!IsOperationalOwned(state, entry.code))
             return BuildingResourceRoutingResult.BuildingNotOperational;
         if (!entry.supportsDropoff)

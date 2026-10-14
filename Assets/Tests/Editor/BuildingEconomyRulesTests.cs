@@ -65,15 +65,24 @@ public sealed class BuildingEconomyRulesTests
     {
         BuildingContentCatalog catalog = ScriptableObject.CreateInstance<BuildingContentCatalog>();
         _created.Add(catalog);
-        catalog.entries.Add(new BuildingContentSpec
+        BuildingContentSpec entry = new BuildingContentSpec
         {
             code = "resource_dropoff", supportsDropoff = true,
             dropoffResources = new List<EconomyResourceType>
             {
                 EconomyResourceType.Food, EconomyResourceType.Wood
             }
-        });
+        };
+        catalog.entries.Add(entry);
         StrategicPlanningState state = State();
+        Assert.That(BuildingEconomyRules.EvaluateResourceRouting(
+            catalog, state, "resource_dropoff", EconomyResourceType.Wood),
+            Is.EqualTo(BuildingResourceRoutingResult.ContentNotRuntimeReady));
+        BuildingData data = ScriptableObject.CreateInstance<BuildingData>();
+        data.code = "resource_dropoff";
+        _created.Add(data);
+        entry.buildingData = data;
+        entry.status = BuildingContentStatus.Playable;
         Assert.That(BuildingEconomyRules.EvaluateResourceRouting(
             catalog, state, "resource_dropoff", EconomyResourceType.Wood),
             Is.EqualTo(BuildingResourceRoutingResult.BuildingNotOperational));

@@ -71,6 +71,12 @@ buildings, construction costs after reservations, Town Center capacity and
 dropoff resource coverage. A Unity adapter must supply the terrain and
 positions and still run the prefab-level review described above.
 
+Runtime authorization is closed by default: a planned entry returns
+`ContentNotRuntimeReady`. An explicit design audit with
+`requireRuntimeReady = false` returns `AuditOnly`, which cannot be interpreted
+as permission to place the building. Economy routing follows the same rule and
+returns `ContentNotRuntimeReady` until the dropoff has a runtime-ready asset.
+
 ## Procedural graybox handoff
 
 The repository may contain `TownCenter_graybox.obj` and
