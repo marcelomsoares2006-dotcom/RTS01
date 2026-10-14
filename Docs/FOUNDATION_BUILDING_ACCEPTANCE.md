@@ -1,10 +1,10 @@
 # First playable construction slice
 
-This gate covers the first two buildings that make the economy loop playable:
-Town Center (`town_center`) and the generic Resource Dropoff
-(`resource_dropoff`). The catalog already describes their costs, resource
-coverage and prerequisites, but their visual/runtime assets remain planned
-until authored content is imported.
+This gate covers the first economy foundation buildings: Town Center
+(`town_center`), the generic Resource Dropoff (`resource_dropoff`) and the
+Wood-only Lumber Camp (`lumber_camp`). The catalog already describes their
+costs, resource coverage and prerequisites, but their visual/runtime assets
+remain planned until authored content is imported.
 
 Run the editor-free gate from the project root:
 
@@ -58,6 +58,8 @@ prefab and runtime behavior:
   population capacity and garrison capacity;
 - Resource Dropoff accepts its declared resources and requires an operational
   Town Center;
+- Lumber Camp accepts Wood only, costs 50 Wood and requires an operational Town
+  Center through `LumberCampEconomyContract`;
 - placement succeeds on valid terrain, rejects steep/blocked/overlapping
   terrain, consumes the declared cost once, and enters construction with a
   visible feedback state;

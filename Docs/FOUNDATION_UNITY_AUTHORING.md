@@ -1,8 +1,9 @@
 # Unity foundation authoring
 
 `FoundationBuildingAuthoringWindow` is an editor-only draft authoring aid for
-Town Center and Resource Dropoff. Open it from `Tools > Era Imperial >
-Buildings > Foundation Authoring` after Unity imports the authored OBJ files.
+Town Center, Resource Dropoff and Lumber Camp. Open it from `Tools > Era
+Imperial > Buildings > Foundation Authoring` after Unity imports the authored
+OBJ files.
 
 The repository keeps the authored GLBs for Blender, web preview and future
 pipeline interchange, but the project has no glTFast or other GLB importer in
@@ -15,11 +16,15 @@ GLB when an optional importer has actually made it available through
 The tool audits each imported source for a usable `MeshFilter` and `MeshRenderer`, then
 can create `_DRAFT` prefabs and `_DRAFT` `BuildingData` assets. It configures
 the Unit layer/tag, `BuildingManager`, `BuildingBT`, trigger footprint,
-non-trigger placement collider, kinematic rigidbody and NavMesh obstacle. Draft
-assets are deliberately separate from the catalog: promotion remains a manual
-step after the acceptance checklist and PlayMode placement/construction test.
+non-trigger placement collider, kinematic rigidbody and NavMesh obstacle. The
+draft `BuildingData` uses catalog-aligned construction costs (Town Center:
+400 Wood; Resource Dropoff and Lumber Camp: 50 Wood). Resource routing remains
+owned by the existing catalog/economy contracts, while the draft assets carry
+the runtime prefab, construction mesh and placement references. Draft assets
+are deliberately separate from the catalog: promotion remains a manual step
+after the acceptance checklist and PlayMode placement/construction test.
 
 The tool does not infer a final balance, assign the catalog references or mark
-either building playable. Review materials, scale, construction meshes,
+any building playable. Review materials, scale, construction meshes,
 population/dropoff/production data and runtime behavior in Unity before
 promoting the entries.

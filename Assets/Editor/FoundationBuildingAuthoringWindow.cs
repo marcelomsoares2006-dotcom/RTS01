@@ -20,6 +20,7 @@ public sealed class FoundationBuildingAuthoringWindow : EditorWindow
 {
     private const string TownCenterCode = "town_center";
     private const string ResourceDropoffCode = "resource_dropoff";
+    private const string LumberCampCode = "lumber_camp";
     private const string TownCenterUnityModel =
         "Assets/Resources/Imports/Units/Buildings/town-center/TownCenter_authoring.obj";
     private const string TownCenterGlbModel =
@@ -28,6 +29,10 @@ public sealed class FoundationBuildingAuthoringWindow : EditorWindow
         "Assets/Resources/Imports/Units/Buildings/resource-dropoff/ResourceDropoff_authoring.obj";
     private const string ResourceDropoffGlbModel =
         "Assets/Resources/Imports/Units/Buildings/resource-dropoff/ResourceDropoff_authoring.glb";
+    private const string LumberCampUnityModel =
+        "Assets/Resources/Imports/Units/Buildings/lumber-camp/LumberCamp_authoring.obj";
+    private const string LumberCampGlbModel =
+        "Assets/Resources/Imports/Units/Buildings/lumber-camp/LumberCamp_authoring.glb";
     private const string PrefabFolder = "Assets/Resources/Prefabs/Units/Buildings";
     private const string DataFolder = "Assets/Resources/ScriptableObjects/Units/Buildings";
     private const string HousePrefab = "Assets/Resources/Prefabs/Units/Buildings/House.prefab";
@@ -49,11 +54,12 @@ public sealed class FoundationBuildingAuthoringWindow : EditorWindow
         EditorGUILayout.LabelField("Foundation building authoring", EditorStyles.boldLabel);
         EditorGUILayout.HelpBox(
             "Creates draft prefabs and BuildingData from Unity-imported authored models. " +
-            "It does not promote the catalog or mark either entry playable.",
+            "It does not promote the catalog or mark any entry playable.",
             MessageType.Info);
 
         DrawAssetRow(TownCenterCode, TownCenterUnityModel, TownCenterGlbModel);
         DrawAssetRow(ResourceDropoffCode, ResourceDropoffUnityModel, ResourceDropoffGlbModel);
+        DrawAssetRow(LumberCampCode, LumberCampUnityModel, LumberCampGlbModel);
 
         EditorGUILayout.Space(8f);
         using (new EditorGUILayout.HorizontalScope())
@@ -61,7 +67,7 @@ public sealed class FoundationBuildingAuthoringWindow : EditorWindow
             if (GUILayout.Button("Audit authored models", GUILayout.Height(26f)))
                 AuditModels();
 
-            using (new EditorGUI.DisabledScope(!CanAuthorBoth()))
+            using (new EditorGUI.DisabledScope(!CanAuthorAll()))
             {
                 if (GUILayout.Button("Create draft prefabs + BuildingData", GUILayout.Height(26f)))
                     CreateDraftAssets();
@@ -98,10 +104,11 @@ public sealed class FoundationBuildingAuthoringWindow : EditorWindow
         EditorGUILayout.EndHorizontal();
     }
 
-    private bool CanAuthorBoth()
+    private bool CanAuthorAll()
     {
         return AuditResolvedModel(TownCenterCode, TownCenterUnityModel, TownCenterGlbModel, false)
-            && AuditResolvedModel(ResourceDropoffCode, ResourceDropoffUnityModel, ResourceDropoffGlbModel, false);
+            && AuditResolvedModel(ResourceDropoffCode, ResourceDropoffUnityModel, ResourceDropoffGlbModel, false)
+            && AuditResolvedModel(LumberCampCode, LumberCampUnityModel, LumberCampGlbModel, false);
     }
 
     private void AuditModels()
@@ -109,7 +116,8 @@ public sealed class FoundationBuildingAuthoringWindow : EditorWindow
         _messages.Clear();
         bool townCenter = AuditResolvedModel(TownCenterCode, TownCenterUnityModel, TownCenterGlbModel, true);
         bool dropoff = AuditResolvedModel(ResourceDropoffCode, ResourceDropoffUnityModel, ResourceDropoffGlbModel, true);
-        _messages.Add(townCenter && dropoff
+        bool lumberCamp = AuditResolvedModel(LumberCampCode, LumberCampUnityModel, LumberCampGlbModel, true);
+        _messages.Add(townCenter && dropoff && lumberCamp
             ? "Authored model sources pass the audit. Draft creation is available."
             : "Source audit failed. No draft asset was created.");
         Repaint();
@@ -160,9 +168,11 @@ public sealed class FoundationBuildingAuthoringWindow : EditorWindow
         _messages.Clear();
         string townCenterSource = ResolveModelPath(TownCenterUnityModel, TownCenterGlbModel);
         string dropoffSource = ResolveModelPath(ResourceDropoffUnityModel, ResourceDropoffGlbModel);
-        if (townCenterSource == null || dropoffSource == null
+        string lumberCampSource = ResolveModelPath(LumberCampUnityModel, LumberCampGlbModel);
+        if (townCenterSource == null || dropoffSource == null || lumberCampSource == null
             || !AuditModel(TownCenterCode, townCenterSource, true)
-            || !AuditModel(ResourceDropoffCode, dropoffSource, true))
+            || !AuditModel(ResourceDropoffCode, dropoffSource, true)
+            || !AuditModel(LumberCampCode, lumberCampSource, true))
         {
             _messages.Add("ERROR: source audit failed; no draft assets were created.");
             Repaint();
@@ -173,6 +183,7 @@ public sealed class FoundationBuildingAuthoringWindow : EditorWindow
         EnsureFolder(DataFolder);
         CreateDraft(TownCenterCode, "Town Center", townCenterSource);
         CreateDraft(ResourceDropoffCode, "Resource Dropoff", dropoffSource);
+        CreateDraft(LumberCampCode, "Lumber Camp", lumberCampSource);
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
         _messages.Add("Draft assets created. Catalog status and BuildingData references remain unchanged.");
@@ -379,7 +390,7 @@ public sealed class FoundationBuildingAuthoringWindow : EditorWindow
         data.name = ToFileName(displayName) + "_DRAFT";
         data.code = code;
         data.unitName = displayName;
-        data.description = "Unity authoring draft. Requires foundation acceptance review.";
+        data.description = GetDescription(code);
         data.healthpoints = code == TownCenterCode ? 2400 : 700;
         data.prefab = prefab;
         data.cost = new List<ResourceValue>
@@ -410,6 +421,21 @@ public sealed class FoundationBuildingAuthoringWindow : EditorWindow
         EditorUtility.SetDirty(data);
         Debug.Log("Foundation authoring created BuildingData draft at " + dataPath
             + ". Catalog promotion remains a manual review step.");
+    }
+
+    private static string GetDescription(string code)
+    {
+        switch (code)
+        {
+            case TownCenterCode:
+                return "Unity authoring draft for the starting Town Center. Requires foundation acceptance review.";
+            case ResourceDropoffCode:
+                return "Unity authoring draft for the generic resource dropoff. Requires foundation acceptance review.";
+            case LumberCampCode:
+                return "Unity authoring draft for the Wood-only Lumber Camp dropoff. Requires foundation acceptance review.";
+            default:
+                return "Unity authoring draft. Requires foundation acceptance review.";
+        }
     }
 
     private static string ToFileName(string value)
