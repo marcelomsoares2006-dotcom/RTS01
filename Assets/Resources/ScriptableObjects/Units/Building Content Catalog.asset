@@ -22,6 +22,24 @@ MonoBehaviour:
     prefabPath: Assets/Resources/Prefabs/Units/Buildings/TownCenter.prefab
     modelPath: Assets/Resources/Imports/Units/Buildings/town-center/
     requiredSkillCodes: []
+    constructionCost:
+    - resource: 1
+      amount: 400
+    requirements: []
+    production:
+    - productCode: villager
+      cost:
+      - resource: 0
+        amount: 50
+      productionTime: 20
+      queueLimit: 5
+      populationCost: 1
+    dropoffResources:
+    - 0
+    - 1
+    - 2
+    - 3
+    garrisonCapacity: 5
     populationCapacity: 10
     supportsDropoff: 1
     supportsProduction: 1
@@ -39,6 +57,11 @@ MonoBehaviour:
     modelPath: Assets/Resources/Imports/Units/Buildings/house.fbx
     requiredSkillCodes:
     - build_house
+    constructionCost: []
+    requirements: []
+    production: []
+    dropoffResources: []
+    garrisonCapacity: 0
     populationCapacity: 5
     supportsDropoff: 0
     supportsProduction: 0
@@ -55,6 +78,20 @@ MonoBehaviour:
     prefabPath: Assets/Resources/Prefabs/Units/Buildings/ResourceDropoff.prefab
     modelPath: Assets/Resources/Imports/Units/Buildings/resource-dropoff/
     requiredSkillCodes: []
+    constructionCost:
+    - resource: 1
+      amount: 50
+    requirements:
+    - technologyCode: ''
+      buildingCode: town_center
+      minimumPopulation: 0
+    production: []
+    dropoffResources:
+    - 0
+    - 1
+    - 2
+    - 3
+    garrisonCapacity: 0
     populationCapacity: 0
     supportsDropoff: 1
     supportsProduction: 0
@@ -72,6 +109,11 @@ MonoBehaviour:
     modelPath: Assets/Resources/Imports/Units/Buildings/barracks/
     requiredSkillCodes:
     - produce_soldier
+    constructionCost: []
+    requirements: []
+    production: []
+    dropoffResources: []
+    garrisonCapacity: 0
     populationCapacity: 0
     supportsDropoff: 0
     supportsProduction: 1
@@ -88,6 +130,11 @@ MonoBehaviour:
     prefabPath: Assets/Resources/Prefabs/Units/Buildings/Stable.prefab
     modelPath: Assets/Resources/Imports/Units/Buildings/stable/
     requiredSkillCodes: []
+    constructionCost: []
+    requirements: []
+    production: []
+    dropoffResources: []
+    garrisonCapacity: 0
     populationCapacity: 0
     supportsDropoff: 0
     supportsProduction: 1
@@ -104,6 +151,11 @@ MonoBehaviour:
     prefabPath: Assets/Resources/Prefabs/Units/Buildings/ArcheryRange.prefab
     modelPath: Assets/Resources/Imports/Units/Buildings/archery-range/
     requiredSkillCodes: []
+    constructionCost: []
+    requirements: []
+    production: []
+    dropoffResources: []
+    garrisonCapacity: 0
     populationCapacity: 0
     supportsDropoff: 0
     supportsProduction: 1
@@ -120,6 +172,11 @@ MonoBehaviour:
     prefabPath: Assets/Resources/Prefabs/Units/Buildings/Tower.prefab
     modelPath: Assets/Resources/Imports/Units/Buildings/tower.fbx
     requiredSkillCodes: []
+    constructionCost: []
+    requirements: []
+    production: []
+    dropoffResources: []
+    garrisonCapacity: 0
     populationCapacity: 0
     supportsDropoff: 0
     supportsProduction: 0

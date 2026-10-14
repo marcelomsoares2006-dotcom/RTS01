@@ -26,6 +26,33 @@ public enum BuildingContentRole
 }
 
 [Serializable]
+public sealed class BuildingContentCost
+{
+    public EconomyResourceType resource;
+
+    [Min(0)]
+    public int amount;
+}
+
+[Serializable]
+public sealed class BuildingContentProduction
+{
+    [Tooltip("Stable unit or building code produced by this entry.")]
+    public string productCode;
+
+    public List<BuildingContentCost> cost = new List<BuildingContentCost>();
+
+    [Min(0.1f)]
+    public float productionTime = 1f;
+
+    [Min(1)]
+    public int queueLimit = 5;
+
+    [Min(0)]
+    public int populationCost;
+}
+
+[Serializable]
 public sealed class BuildingContentSpec
 {
     [Tooltip("Stable code used by design, save and validation tooling.")]
@@ -47,6 +74,22 @@ public sealed class BuildingContentSpec
 
     [Tooltip("Existing build or production skills required by the completed entry.")]
     public List<string> requiredSkillCodes = new List<string>();
+
+    [Header("Gameplay contract")]
+    [Tooltip("Economy resources paid when construction starts. This is a design contract until a runtime adapter consumes it.")]
+    public List<BuildingContentCost> constructionCost = new List<BuildingContentCost>();
+
+    [Tooltip("Era, technology, population and building prerequisites for this entry.")]
+    public List<BuildingRequirement> requirements = new List<BuildingRequirement>();
+
+    [Tooltip("Units or buildings produced after the entry is operational.")]
+    public List<BuildingContentProduction> production = new List<BuildingContentProduction>();
+
+    [Tooltip("Resource types accepted by a dropoff building. Empty means this entry is not a dropoff contract.")]
+    public List<EconomyResourceType> dropoffResources = new List<EconomyResourceType>();
+
+    [Min(0)]
+    public int garrisonCapacity;
 
     [Min(0)]
     public int populationCapacity;
@@ -98,5 +141,73 @@ public sealed class BuildingContentCatalog : ScriptableObject
             if (entry != null && entry.IsRuntimeReady)
                 yield return entry;
         }
+    }
+
+    /// <summary>
+    /// Validates the gameplay contracts without requiring a prefab or a scene.
+    /// Planned entries may fail the asset gate while still being required to
+    /// describe their economy and production behavior completely.
+    /// </summary>
+    public IEnumerable<string> ValidateGameplayContracts()
+    {
+        if (entries == null) yield break;
+        for (int i = 0; i < entries.Count; i++)
+        {
+            BuildingContentSpec entry = entries[i];
+            if (entry == null) continue;
+
+            bool requiresConstructionCost = entry.role == BuildingContentRole.TownCenter
+                || entry.role == BuildingContentRole.ResourceDropoff;
+            if (requiresConstructionCost && (entry.constructionCost == null || entry.constructionCost.Count == 0))
+                yield return entry.code + " needs a construction cost contract.";
+            else if (entry.constructionCost != null)
+            {
+                for (int j = 0; j < entry.constructionCost.Count; j++)
+                {
+                    BuildingContentCost cost = entry.constructionCost[j];
+                    if (cost == null || cost.amount <= 0)
+                        yield return entry.code + " has an invalid construction cost.";
+                }
+            }
+
+            if (entry.production != null)
+            {
+                for (int j = 0; j < entry.production.Count; j++)
+                {
+                    BuildingContentProduction production = entry.production[j];
+                    if (production == null || string.IsNullOrWhiteSpace(production.productCode)
+                        || production.productionTime <= 0f || production.queueLimit <= 0)
+                        yield return entry.code + " has an invalid production contract.";
+                }
+            }
+
+            if (entry.role == BuildingContentRole.TownCenter)
+            {
+                if (!entry.supportsDropoff || entry.dropoffResources == null || entry.dropoffResources.Count == 0)
+                    yield return entry.code + " needs resource dropoff coverage.";
+                if (!entry.supportsProduction || !ContainsProduct(entry.production, "villager"))
+                    yield return entry.code + " needs villager production.";
+                if (!entry.supportsGarrison || entry.garrisonCapacity <= 0)
+                    yield return entry.code + " needs garrison capacity.";
+                if (entry.populationCapacity <= 0)
+                    yield return entry.code + " needs population capacity.";
+            }
+
+            if (entry.role == BuildingContentRole.ResourceDropoff
+                && (!entry.supportsDropoff || entry.dropoffResources == null || entry.dropoffResources.Count == 0))
+                yield return entry.code + " needs at least one accepted resource type.";
+        }
+    }
+
+    private static bool ContainsProduct(List<BuildingContentProduction> production, string productCode)
+    {
+        if (production == null) return false;
+        for (int i = 0; i < production.Count; i++)
+        {
+            BuildingContentProduction entry = production[i];
+            if (entry != null && string.Equals(entry.productCode, productCode, StringComparison.OrdinalIgnoreCase))
+                return true;
+        }
+        return false;
     }
 }

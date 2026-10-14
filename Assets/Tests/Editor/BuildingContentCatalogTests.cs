@@ -69,4 +69,45 @@ public sealed class BuildingContentCatalogTests
         CollectionAssert.AreEquivalent(new[] { "house" }, runtimeCodes,
             "The catalog must not expose planned buildings to runtime construction.");
     }
+
+    [Test]
+    public void FoundationContractsDefineTownCenterAndDropoffGameplay()
+    {
+        BuildingContentCatalog catalog = AssetDatabase.LoadAssetAtPath<BuildingContentCatalog>(CatalogPath);
+        BuildingContentSpec townCenter = catalog.Find("town_center");
+        BuildingContentSpec dropoff = catalog.Find("resource_dropoff");
+
+        Assert.That(townCenter, Is.Not.Null);
+        Assert.That(townCenter.constructionCost.Any(
+            cost => cost != null && cost.resource == EconomyResourceType.Wood && cost.amount == 400), Is.True);
+        Assert.That(townCenter.dropoffResources, Does.Contain(EconomyResourceType.Food));
+        Assert.That(townCenter.dropoffResources, Does.Contain(EconomyResourceType.Wood));
+        Assert.That(townCenter.dropoffResources, Does.Contain(EconomyResourceType.Gold));
+        Assert.That(townCenter.dropoffResources, Does.Contain(EconomyResourceType.Stone));
+        Assert.That(townCenter.production.Any(
+            production => production != null && production.productCode == "villager"
+                && production.productionTime > 0f
+                && production.queueLimit > 0), Is.True);
+        Assert.That(townCenter.garrisonCapacity, Is.GreaterThan(0));
+        Assert.That(townCenter.populationCapacity, Is.GreaterThan(0));
+
+        Assert.That(dropoff, Is.Not.Null);
+        Assert.That(dropoff.constructionCost.Any(
+            cost => cost != null && cost.resource == EconomyResourceType.Wood && cost.amount == 50), Is.True);
+        Assert.That(dropoff.supportsDropoff, Is.True);
+        Assert.That(dropoff.requirements.Any(
+            requirement => requirement != null && requirement.buildingCode == "town_center"), Is.True);
+        Assert.That(dropoff.dropoffResources, Does.Contain(EconomyResourceType.Food));
+        Assert.That(dropoff.dropoffResources, Does.Contain(EconomyResourceType.Wood));
+        Assert.That(dropoff.dropoffResources, Does.Contain(EconomyResourceType.Gold));
+        Assert.That(dropoff.dropoffResources, Does.Contain(EconomyResourceType.Stone));
+    }
+
+    [Test]
+    public void FoundationGameplayContractsAreInternallyValid()
+    {
+        BuildingContentCatalog catalog = AssetDatabase.LoadAssetAtPath<BuildingContentCatalog>(CatalogPath);
+        string[] errors = catalog.ValidateGameplayContracts().ToArray();
+        Assert.That(errors, Is.Empty, string.Join("; ", errors));
+    }
 }
