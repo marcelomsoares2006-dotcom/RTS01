@@ -6,6 +6,7 @@ using UnityEngine.AI;
 
 public class DataHandler : MonoBehaviour
 {
+    public static LegacyEconomyRuntimeAdapter EconomyRuntime { get; set; }
     public void Start()
     {
         DeserializeGameData();
@@ -89,6 +90,9 @@ public class DataHandler : MonoBehaviour
                 Globals.GAME_RESOURCES[p][r].Amount = d.resources[i];
             }
 
+            if (EconomyRuntime != null && d.economy != null)
+                EconomyRuntime.RestorePlayer(p, d.economy.Restore());
+
             // restore units
             foreach (GamePlayerUnitData unit in d.units)
             {
@@ -155,6 +159,13 @@ public class DataHandler : MonoBehaviour
             }
             d.resources = resources;
 
+            if (EconomyRuntime != null)
+            {
+                EconomyPlayerState economyState;
+                if (EconomyRuntime.TryGetPlayer(p, out economyState))
+                    d.economy = EconomyPlayerSaveData.Capture(economyState);
+            }
+
             // get units
             List<GamePlayerUnitData> units = new List<GamePlayerUnitData>();
             foreach (Unit unit in Unit.UNITS_BY_OWNER[p])
@@ -182,7 +193,14 @@ public class DataHandler : MonoBehaviour
                     attackRange = unit.AttackRange,
                 };
                 if (u.unitType == "building")
-                    u.constructionHP = ((Building)unit).ConstructionHP;
+                {
+                    Building building = (Building)unit;
+                    u.constructionHP = building.ConstructionHP;
+                    u.buildingLifecycle = (int)building.LifecycleState;
+                    u.constructorIds = building.Constructors == null ? new string[0] : building.Constructors
+                        .FindAll(constructor => constructor != null)
+                        .ConvertAll(constructor => constructor.Uid).ToArray();
+                }
                 units.Add(u);
             }
             d.units = units.ToArray();

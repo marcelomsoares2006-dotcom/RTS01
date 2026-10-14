@@ -25,6 +25,7 @@ public sealed class EconomyCollector
         _carried = next; return gathered;
     }
     public float CarriedAmount { get { return _carried; } }
+    public void SetCarriedAmount(float carried) { _carried = Math.Max(0f, Math.Min(carryCapacity, carried)); }
     public int Deposit(EconomyLedger stockpile)
     {
         if (stockpile == null || _carried <= 0f) return 0;

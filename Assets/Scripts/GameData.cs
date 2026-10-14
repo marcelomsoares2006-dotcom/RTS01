@@ -1,4 +1,5 @@
 using System.Runtime.Serialization;
+using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
@@ -16,6 +17,8 @@ public class GamePlayerUnitData : BinarySerializable
 
     // building-specific
     public int constructionHP;
+    public int buildingLifecycle;
+    public string[] constructorIds;
 
     public GamePlayerUnitData() { }
 
@@ -29,6 +32,67 @@ public class GamePlayerData
 {
     public GamePlayerUnitData[] units;
     public int[] resources; // sorted by GAME_RESOURCES_KEYS
+    public EconomyPlayerSaveData economy;
+}
+
+[System.Serializable]
+public sealed class EconomyPlayerSaveData
+{
+    public EconomyResourceSaveData[] stockpile;
+    public int population;
+    public int populationCapacity;
+    public EconomyCollectorSaveData[] collectors;
+
+    public static EconomyPlayerSaveData Capture(EconomyPlayerState state)
+    {
+        if (state == null) return null;
+        return new EconomyPlayerSaveData
+        {
+            stockpile = state.stockpile != null && state.stockpile.entries != null ? state.stockpile.entries.FindAll(e => e != null)
+                .ConvertAll(e => new EconomyResourceSaveData((int)e.resource, e.amount)).ToArray() : new EconomyResourceSaveData[0],
+            population = state.population != null ? state.population.current : 0,
+            populationCapacity = state.population != null ? state.population.capacity : 0,
+            collectors = state.collectors != null ? state.collectors.FindAll(c => c != null)
+                .ConvertAll(EconomyCollectorSaveData.Capture).ToArray() : new EconomyCollectorSaveData[0]
+        };
+    }
+
+    public EconomyPlayerState Restore()
+    {
+        EconomyPlayerState state = new EconomyPlayerState();
+        state.stockpile.entries = new List<EconomyLedger.Entry>();
+        if (stockpile != null) foreach (EconomyResourceSaveData e in stockpile)
+            if (e != null) state.stockpile.entries.Add(new EconomyLedger.Entry((EconomyResourceType)e.resource, e.amount));
+        state.stockpile.RebuildLookup();
+        state.population = new PopulationLedger(populationCapacity, population);
+        state.collectors = new List<EconomyCollector>();
+        if (collectors != null) foreach (EconomyCollectorSaveData c in collectors)
+            if (c != null) state.collectors.Add(c.Restore());
+        return state;
+    }
+}
+
+[System.Serializable]
+public sealed class EconomyResourceSaveData
+{
+    public int resource;
+    public int amount;
+    public EconomyResourceSaveData() { }
+    public EconomyResourceSaveData(int resource, int amount) { this.resource = resource; this.amount = amount < 0 ? 0 : amount; }
+}
+
+[System.Serializable]
+public sealed class EconomyCollectorSaveData
+{
+    public string collectorId;
+    public int ownerId;
+    public int resource;
+    public float ratePerSecond;
+    public float carryCapacity;
+    public float carried;
+
+    public static EconomyCollectorSaveData Capture(EconomyCollector c) { return new EconomyCollectorSaveData { collectorId = c.collectorId, ownerId = c.ownerId, resource = (int)c.resource, ratePerSecond = c.ratePerSecond, carryCapacity = c.carryCapacity, carried = c.CarriedAmount }; }
+    public EconomyCollector Restore() { EconomyCollector c = new EconomyCollector(collectorId, ownerId, (EconomyResourceType)resource, ratePerSecond, carryCapacity); c.SetCarriedAmount(carried); return c; }
 }
 
 [System.Serializable]

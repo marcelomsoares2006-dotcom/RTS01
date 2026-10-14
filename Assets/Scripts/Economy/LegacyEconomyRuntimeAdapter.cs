@@ -31,6 +31,23 @@ public sealed class LegacyEconomyRuntimeAdapter
         return _players.TryGetValue(ownerId, out state);
     }
 
+    public IEnumerable<KeyValuePair<int, EconomyPlayerState>> GetPlayersSnapshot()
+    {
+        for (int i = 0; i < _ownerOrder.Count; i++)
+        {
+            int ownerId = _ownerOrder[i];
+            yield return new KeyValuePair<int, EconomyPlayerState>(ownerId, _players[ownerId]);
+        }
+    }
+
+    public void RestorePlayer(int ownerId, EconomyPlayerState state)
+    {
+        if (ownerId < 0 || state == null) return;
+        _players[ownerId] = state;
+        if (!_ownerOrder.Contains(ownerId)) _ownerOrder.Add(ownerId);
+        _ownerOrder.Sort();
+    }
+
     /// <summary>Registers one existing worker and reserves its population slot.</summary>
     public bool TryRegisterWorker(string workerId, int ownerId, EconomyResourceType resource,
         float ratePerSecond, float carryCapacity, int populationCost = 1)
