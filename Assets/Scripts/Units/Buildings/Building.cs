@@ -23,6 +23,8 @@ public class Building : Unit
     private BuildingBT _bt;
 
     private AudioClip _ambientSound;
+    private AudioClip _constructionSound;
+    private BuildingFeedbackEmitter _feedbackEmitter;
 
     private bool _isAlive;
 
@@ -52,8 +54,9 @@ public class Building : Unit
         {
             if (_owner == GameManager.instance.gamePlayersParameters.myPlayerId)
             {
-                _buildingManager.ambientSource.clip =
+                _constructionSound =
                     GameManager.instance.gameSoundParameters.constructionSiteSound;
+                _buildingManager.ambientSource.clip = _constructionSound;
                 _ambientSound = data.ambientSound;
             }
             else
@@ -63,6 +66,12 @@ public class Building : Unit
         }
         else
             Debug.LogWarning($"'{data.unitName}' prefab is missing an ambient audio source!");
+
+        _feedbackEmitter = _transform.GetComponent<BuildingFeedbackEmitter>();
+        if (_feedbackEmitter == null)
+            _feedbackEmitter = _transform.gameObject.AddComponent<BuildingFeedbackEmitter>();
+        _feedbackEmitter.Bind(this, _buildingManager, _constructionSound, _ambientSound);
+        PublishFeedback();
     }
 
     public void SetMaterials() { SetMaterials(_placement); }
@@ -99,6 +108,7 @@ public class Building : Unit
         SetMaterials();
         // change building construction ratio
         SetConstructionHP(0);
+        PublishFeedback();
     }
 
     public void SetConstructionHP(int constructionHP, bool fromSavedData = false)
@@ -122,6 +132,8 @@ public class Building : Unit
 
         if (MaxHP > 0 && constructionRatio >= 1)
             _SetAlive(fromSavedData);
+        else
+            PublishFeedback();
     }
 
     public void CheckValidPlacement()
@@ -151,6 +163,7 @@ public class Building : Unit
 
             _buildingManager.ambientSource.Play();
         }
+        PublishFeedback();
     }
 
     public void RemoveConstructor(int index)
@@ -179,6 +192,7 @@ public class Building : Unit
             // - stop construction sound
             _buildingManager.ambientSource.Pause();
         }
+        PublishFeedback();
     }
 
     private void _SetAlive(bool fromSavedData = false)
@@ -207,6 +221,30 @@ public class Building : Unit
                 _buildingManager.ambientSource.Stop();
             }
         }
+        PublishFeedback(!fromSavedData);
+    }
+
+    /// <summary>
+    /// Re-evaluates presentation after combat or save restoration changes HP.
+    /// UnitManager calls this without coupling combat to visual/audio details.
+    /// </summary>
+    public void NotifyHealthChanged()
+    {
+        PublishFeedback();
+    }
+
+    private void PublishFeedback(bool notifyCompletion = false)
+    {
+        if (_feedbackEmitter == null)
+            return;
+        BuildingFeedbackSnapshot snapshot = BuildingFeedbackRules.CreateSnapshot(
+            LifecycleState,
+            _constructionHP,
+            MaxHP,
+            HP);
+        _feedbackEmitter.Publish(snapshot);
+        if (notifyCompletion && snapshot.lifecycle == BuildingLifecycleState.Operational)
+            EventManager.TriggerEvent("BuildingFeedbackOperational", this);
     }
 
     public int ConstructionHP { get => _constructionHP; }

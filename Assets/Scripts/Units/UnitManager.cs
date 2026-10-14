@@ -113,6 +113,9 @@ public class UnitManager : MonoBehaviour
         if (Unit == null || !Unit.IsAlive || attackPoints <= 0) return;
         Unit.HP -= CombatDamageProfile.ResolveDamage(attackPoints, Unit.Armor);
         UpdateHealthbar();
+        Building building = Unit as Building;
+        if (building != null)
+            building.NotifyHealthChanged();
         if (Unit.HP <= 0) _Die();
     }
 
