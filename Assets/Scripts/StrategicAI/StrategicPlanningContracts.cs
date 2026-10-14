@@ -44,6 +44,8 @@ public sealed class StrategicBuildingObservation
     public BuildingLifecycleState lifecycle = BuildingLifecycleState.Operational;
     public Vector3 position;
     public int ownerId;
+    /// <summary>Radius in world units in which this operational building contributes influence.</summary>
+    [Min(0f)] public float influenceRadius;
 }
 
 [Serializable]
