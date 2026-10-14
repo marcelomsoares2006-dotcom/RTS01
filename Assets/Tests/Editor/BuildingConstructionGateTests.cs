@@ -44,6 +44,40 @@ public sealed class BuildingConstructionGateTests
         Assert.AreEqual(0, ledger.Get(EconomyResourceType.Stone));
     }
 
+    [Test]
+    public void ContentCatalogGateBlocksPlannedEntriesAndChecksDeclaredCost()
+    {
+        BuildingContentCatalog catalog = UnityEngine.ScriptableObject.CreateInstance<BuildingContentCatalog>();
+        BuildingData data = UnityEngine.ScriptableObject.CreateInstance<BuildingData>();
+        data.code = "house";
+        BuildingContentSpec entry = new BuildingContentSpec
+        {
+            code = "house",
+            status = BuildingContentStatus.Playable,
+            buildingData = data,
+            constructionCost = new List<BuildingContentCost>
+            {
+                new BuildingContentCost { resource = EconomyResourceType.Wood, amount = 50 }
+            }
+        };
+        catalog.entries.Add(entry);
+        StrategicPlanningState state = new StrategicPlanningState { ownerId = 0, era = BuildingEra.Dark };
+        Dictionary<InGameResource, int> resources = new Dictionary<InGameResource, int>
+        { { InGameResource.Wood, 50 } };
+
+        Assert.That(BuildingConstructionGate.Evaluate(catalog, "house", state, true, resources),
+            Is.EqualTo(BuildingConstructionGateResult.Allowed));
+        resources[InGameResource.Wood] = 49;
+        Assert.That(BuildingConstructionGate.Evaluate(catalog, "house", state, true, resources),
+            Is.EqualTo(BuildingConstructionGateResult.InsufficientResources));
+
+        entry.status = BuildingContentStatus.Planned;
+        Assert.That(BuildingConstructionGate.Evaluate(catalog, "house", state, true, resources),
+            Is.EqualTo(BuildingConstructionGateResult.ContentUnavailable));
+        UnityEngine.Object.DestroyImmediate(data);
+        UnityEngine.Object.DestroyImmediate(catalog);
+    }
+
     private static BuildingData CreateBuilding(string code, params ResourceValue[] cost)
     {
         BuildingData data = UnityEngine.ScriptableObject.CreateInstance<BuildingData>();

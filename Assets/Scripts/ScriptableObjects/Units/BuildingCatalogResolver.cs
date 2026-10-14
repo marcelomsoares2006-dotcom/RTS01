@@ -139,6 +139,11 @@ public sealed class BuildingCatalogResolver
 public enum BuildingAvailabilityResult
 {
     Available,
+    /// <summary>
+    /// The design catalog knows this building, but its authored runtime
+    /// content is not ready to be offered by construction commands.
+    /// </summary>
+    ContentUnavailable,
     MissingCode,
     NotFound,
     EraLocked,

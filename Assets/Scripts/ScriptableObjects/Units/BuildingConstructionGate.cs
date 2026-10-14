@@ -10,6 +10,7 @@ using System.Collections.Generic;
 public enum BuildingConstructionGateResult
 {
     Allowed,
+    ContentUnavailable,
     MissingCode,
     NotFound,
     EraLocked,
@@ -24,6 +25,34 @@ public enum BuildingConstructionGateResult
 
 public static class BuildingConstructionGate
 {
+    /// <summary>
+    /// Construction entry point for the authoritative content roadmap. It
+    /// applies era/technology/ownership gates first, then evaluates the
+    /// declarative content cost without requiring a second BuildingCatalogData
+    /// asset. Planned entries therefore cannot reach placement accidentally.
+    /// </summary>
+    public static BuildingConstructionGateResult Evaluate(
+        BuildingContentCatalog contentCatalog,
+        string buildingCode,
+        StrategicPlanningState state,
+        bool placementValid,
+        IDictionary<InGameResource, int> availableResources,
+        bool requireRuntimeReady = true)
+    {
+        BuildingAvailabilityResult availability = BuildingContentProgressionRules.Validate(
+            contentCatalog, buildingCode, state, requireRuntimeReady);
+        BuildingConstructionGateResult availabilityResult = MapAvailability(availability);
+        if (availabilityResult != BuildingConstructionGateResult.Allowed)
+            return availabilityResult;
+
+        BuildingContentSpec entry = contentCatalog.Find(buildingCode);
+        if (entry == null || entry.buildingData == null)
+            return BuildingConstructionGateResult.ContentUnavailable;
+        if (!placementValid)
+            return BuildingConstructionGateResult.InvalidPlacement;
+        return EvaluateContentCost(entry.constructionCost, availableResources);
+    }
+
     public static BuildingConstructionGateResult Evaluate(
         BuildingCatalogResolver resolver,
         string buildingCode,
@@ -123,11 +152,40 @@ public static class BuildingConstructionGate
         return BuildingConstructionGateResult.Allowed;
     }
 
+    private static BuildingConstructionGateResult EvaluateContentCost(
+        IEnumerable<BuildingContentCost> cost,
+        IDictionary<InGameResource, int> availableResources)
+    {
+        if (cost == null) return BuildingConstructionGateResult.Allowed;
+        if (availableResources == null) return BuildingConstructionGateResult.InsufficientResources;
+        Dictionary<InGameResource, long> required = new Dictionary<InGameResource, long>();
+        foreach (BuildingContentCost value in cost)
+        {
+            if (value == null || value.amount < 0)
+                return BuildingConstructionGateResult.InvalidCost;
+            InGameResource resource;
+            if (!Enum.TryParse(value.resource.ToString(), true, out resource))
+                return BuildingConstructionGateResult.InvalidCost;
+            long total;
+            required.TryGetValue(resource, out total);
+            required[resource] = total + value.amount;
+        }
+        foreach (KeyValuePair<InGameResource, long> requirement in required)
+        {
+            int amount;
+            if (!availableResources.TryGetValue(requirement.Key, out amount)
+                || amount < 0 || requirement.Value > amount)
+                return BuildingConstructionGateResult.InsufficientResources;
+        }
+        return BuildingConstructionGateResult.Allowed;
+    }
+
     private static BuildingConstructionGateResult MapAvailability(BuildingAvailabilityResult result)
     {
         switch (result)
         {
             case BuildingAvailabilityResult.Available: return BuildingConstructionGateResult.Allowed;
+            case BuildingAvailabilityResult.ContentUnavailable: return BuildingConstructionGateResult.ContentUnavailable;
             case BuildingAvailabilityResult.MissingCode: return BuildingConstructionGateResult.MissingCode;
             case BuildingAvailabilityResult.EraLocked: return BuildingConstructionGateResult.EraLocked;
             case BuildingAvailabilityResult.PopulationRequirement: return BuildingConstructionGateResult.PopulationRequirement;
