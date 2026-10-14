@@ -19,3 +19,9 @@ small deterministic checkpoint for replay and save verification.
 Fingerprint serialization uses ordinal technology ordering and invariant round
 trip float formatting, so replay hashes remain identical across machine locale
 settings.
+
+`BuildingProgressionSyncRules.Validate` is the read-only network/replay
+preflight for age-up and production snapshots. It compares owner, era,
+RuntimeReady asset origin, and normalized technology codes. A mismatch returns
+`StateMismatch` before queue restore, so the receiving economy and planning
+state are not mutated.

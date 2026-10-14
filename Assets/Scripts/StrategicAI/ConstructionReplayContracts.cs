@@ -335,6 +335,7 @@ public static class ConstructionReplayRuntime
 {
     private static ConstructionReplayLog _log = new ConstructionReplayLog();
     private static ConstructionReplaySnapshot _state;
+    public static ConstructionReplayResult LastRestoreResult { get; private set; }
     public static ConstructionReplaySnapshot State { get { return _state; } }
 
     public static List<ConstructionReplayCommand> ExportCommands()
@@ -344,13 +345,30 @@ public static class ConstructionReplayRuntime
         return result;
     }
 
-    public static void Restore(IList<ConstructionReplayCommand> commands, ConstructionReplaySnapshot expected)
+    public static ConstructionReplayResult Restore(IList<ConstructionReplayCommand> commands, ConstructionReplaySnapshot expected)
     {
         _log = new ConstructionReplayLog();
         if (commands != null)
-            for (int i = 0; i < commands.Count; i++) _log.TryAppend(commands[i]);
+            for (int i = 0; i < commands.Count; i++)
+            {
+                ConstructionReplayResult append = _log.TryAppend(commands[i]);
+                if (append != ConstructionReplayResult.Accepted)
+                {
+                    LastRestoreResult = append == ConstructionReplayResult.DuplicateCommandId
+                        ? ConstructionReplayResult.DuplicateCommandId
+                        : ConstructionReplayResult.InvalidCommand;
+                    _state = null;
+                    return LastRestoreResult;
+                }
+            }
         ConstructionReplaySnapshot restored = null;
-        ConstructionReplayExecutor.Replay(_log, expected, out restored);
+        LastRestoreResult = ConstructionReplayExecutor.Replay(_log, expected, out restored);
+        if (LastRestoreResult != ConstructionReplayResult.Accepted)
+        {
+            _state = null;
+            return LastRestoreResult;
+        }
         _state = restored;
+        return LastRestoreResult;
     }
 }

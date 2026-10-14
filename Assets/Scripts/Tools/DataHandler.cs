@@ -112,7 +112,10 @@ public class DataHandler : MonoBehaviour
         }
 
         TechnologyNodeData.SetUnlockedNodes(data.unlockedTechnologyNodeCodes);
-        ConstructionReplayRuntime.Restore(data.constructionReplayCommands, data.constructionReplayState);
+        ConstructionReplayResult replayRestore = ConstructionReplayRuntime.Restore(
+            data.constructionReplayCommands, data.constructionReplayState);
+        if (replayRestore != ConstructionReplayResult.Accepted)
+            Debug.LogWarning($"Construction replay restore rejected: {replayRestore}.");
 
         GamePlayersParameters playerParameters = GameManager.instance.gamePlayersParameters;
         Dictionary<string, CharacterManager> restoredCharacters =
