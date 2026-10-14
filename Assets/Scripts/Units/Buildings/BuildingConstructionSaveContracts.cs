@@ -137,7 +137,8 @@ public static class BuildingConstructionSaveRules
         if (source == null) return true;
         foreach (BuildingMaintenanceCost item in source)
         {
-            if (item == null || item.amount < 0) return false;
+            if (item == null || item.amount < 0
+                || !Enum.IsDefined(typeof(EconomyResourceType), item.resource)) return false;
             if (item.amount == 0) continue;
             BuildingMaintenanceCost existing = result.Find(x => x.resource == item.resource);
             if (existing == null) result.Add(new BuildingMaintenanceCost(item.resource, item.amount));

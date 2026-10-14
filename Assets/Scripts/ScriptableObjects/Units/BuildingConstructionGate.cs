@@ -136,10 +136,13 @@ public static class BuildingConstructionGate
         Dictionary<InGameResource, long> required = new Dictionary<InGameResource, long>();
         foreach (ResourceValue value in cost)
         {
-            if (value == null || value.amount < 0)
+            if (value == null || value.amount < 0
+                || !Enum.IsDefined(typeof(InGameResource), value.code))
                 return BuildingConstructionGateResult.InvalidCost;
             long total;
             required.TryGetValue(value.code, out total);
+            if (total > long.MaxValue - value.amount)
+                return BuildingConstructionGateResult.InvalidCost;
             required[value.code] = total + value.amount;
         }
         foreach (KeyValuePair<InGameResource, long> requirement in required)
@@ -161,13 +164,16 @@ public static class BuildingConstructionGate
         Dictionary<InGameResource, long> required = new Dictionary<InGameResource, long>();
         foreach (BuildingContentCost value in cost)
         {
-            if (value == null || value.amount < 0)
+            if (value == null || value.amount < 0
+                || !Enum.IsDefined(typeof(EconomyResourceType), value.resource))
                 return BuildingConstructionGateResult.InvalidCost;
             InGameResource resource;
             if (!Enum.TryParse(value.resource.ToString(), true, out resource))
                 return BuildingConstructionGateResult.InvalidCost;
             long total;
             required.TryGetValue(resource, out total);
+            if (total > long.MaxValue - value.amount)
+                return BuildingConstructionGateResult.InvalidCost;
             required[resource] = total + value.amount;
         }
         foreach (KeyValuePair<InGameResource, long> requirement in required)

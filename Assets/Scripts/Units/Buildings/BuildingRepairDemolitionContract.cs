@@ -287,7 +287,8 @@ public sealed class BuildingRepairDemolitionService
         for (int i = 0; i < requested.Count; i++)
         {
             BuildingMaintenanceCost item = requested[i];
-            if (item == null || item.amount < 0) return null;
+            if (item == null || item.amount < 0
+                || !Enum.IsDefined(typeof(EconomyResourceType), item.resource)) return null;
             if (item.amount == 0) continue;
             BuildingMaintenanceCost existing = null;
             for (int j = 0; j < result.Count; j++)

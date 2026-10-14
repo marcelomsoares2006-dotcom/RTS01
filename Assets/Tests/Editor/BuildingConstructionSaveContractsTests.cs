@@ -92,4 +92,16 @@ public sealed class BuildingConstructionSaveContractsTests
         Assert.That(BuildingConstructionSaveRules.Validate(snapshot, 0, false),
             Is.EqualTo(BuildingConstructionSnapshotResult.InvalidSnapshot));
     }
+
+    [Test]
+    public void UndefinedReservationResourceIsRejectedAtSaveBoundary()
+    {
+        BuildingConstructionSaveSnapshot snapshot;
+        Assert.That(BuildingConstructionSaveRules.Capture(
+            "house", 0, Vector3.zero, 1, 10, BuildingLifecycleState.UnderConstruction,
+            null,
+            new[] { new BuildingMaintenanceCost((EconomyResourceType)999, 1) },
+            BuildingContentAssetStage.RuntimeReady, true, out snapshot),
+            Is.EqualTo(BuildingConstructionSnapshotResult.InvalidCost));
+    }
 }

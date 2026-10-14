@@ -182,7 +182,7 @@ public sealed class BuildingProductionQueue
         for (int i = 0; i < values.Count; i++)
         {
             ResourceValue value = values[i];
-            if (value == null) return false;
+            if (value == null || !Enum.IsDefined(typeof(InGameResource), value.code)) return false;
             if (value.amount < 0) return false;
             if (value.amount == 0) continue;
 

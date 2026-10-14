@@ -80,7 +80,8 @@ public static class BuildingConstructionCancellationRules
         for (int i = 0; i < source.Count; i++)
         {
             BuildingMaintenanceCost item = source[i];
-            if (item == null || item.amount < 0) return null;
+            if (item == null || item.amount < 0
+                || !Enum.IsDefined(typeof(EconomyResourceType), item.resource)) return null;
             if (item.amount == 0) continue;
             BuildingMaintenanceCost existing = result.Find(x => x.resource == item.resource);
             if (existing == null) result.Add(new BuildingMaintenanceCost(item.resource, item.amount));

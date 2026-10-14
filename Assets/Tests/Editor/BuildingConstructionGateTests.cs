@@ -45,6 +45,45 @@ public sealed class BuildingConstructionGateTests
     }
 
     [Test]
+    public void LegacyGateRejectsUndefinedResourceWithoutThrowingOrSpending()
+    {
+        EconomyLedger ledger = new EconomyLedger();
+        ledger.Set(EconomyResourceType.Wood, 100);
+        List<ResourceValue> cost = new List<ResourceValue>
+        { new ResourceValue((InGameResource)999, 1) };
+
+        Assert.IsFalse(BuildingConstructionGate.TryConsume(ledger, cost));
+        Assert.AreEqual(100, ledger.Get(EconomyResourceType.Wood));
+    }
+
+    [Test]
+    public void ContentGateRejectsUndefinedResourceWithoutOverflowingCostTotals()
+    {
+        BuildingContentCatalog catalog = UnityEngine.ScriptableObject.CreateInstance<BuildingContentCatalog>();
+        BuildingData data = UnityEngine.ScriptableObject.CreateInstance<BuildingData>();
+        data.code = "house";
+        catalog.entries.Add(new BuildingContentSpec
+        {
+            code = "house",
+            status = BuildingContentStatus.Playable,
+            buildingData = data,
+            constructionCost = new List<BuildingContentCost>
+            {
+                new BuildingContentCost { resource = (EconomyResourceType)999, amount = 1 }
+            }
+        });
+        StrategicPlanningState state = new StrategicPlanningState { ownerId = 0, era = BuildingEra.Dark };
+
+        Assert.That(BuildingConstructionGate.Evaluate(
+            catalog, "house", state, true,
+            new Dictionary<InGameResource, int> { { InGameResource.Wood, 100 } }),
+            Is.EqualTo(BuildingConstructionGateResult.InvalidCost));
+
+        UnityEngine.Object.DestroyImmediate(data);
+        UnityEngine.Object.DestroyImmediate(catalog);
+    }
+
+    [Test]
     public void ContentCatalogGateBlocksPlannedEntriesAndChecksDeclaredCost()
     {
         BuildingContentCatalog catalog = UnityEngine.ScriptableObject.CreateInstance<BuildingContentCatalog>();
