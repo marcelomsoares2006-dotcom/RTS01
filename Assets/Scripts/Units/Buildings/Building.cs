@@ -19,6 +19,7 @@ public class Building : Unit
     private Mesh[] _constructionMeshes;
     private int _constructionHP;
     private List<CharacterManager> _constructors;
+    private List<CharacterManager> _garrisonedUnits;
     private List<Transform> _smokeVfx;
     private BuildingBT _bt;
 
@@ -38,6 +39,7 @@ public class Building : Unit
 
         _constructionHP = 0;
         _constructors = new List<CharacterManager>();
+        _garrisonedUnits = new List<CharacterManager>();
         _smokeVfx = new List<Transform>();
         _isAlive = false;
 
@@ -232,6 +234,73 @@ public class Building : Unit
         if (_buildingManager.ambientSource != null)
             _buildingManager.ambientSource.Pause();
         PublishFeedback();
+    }
+
+    /// <summary>
+    /// Attempts to register a friendly unit inside this operational building.
+    /// The content contract is required deliberately: an absent contract never
+    /// silently turns every building into a garrison.
+    /// </summary>
+    public BuildingGarrisonResult TryEnterGarrison(CharacterManager unit, BuildingContentSpec spec)
+    {
+        if (unit == null || unit.Unit == null)
+            return BuildingGarrisonResult.InvalidUnit;
+        PruneInvalidGarrisonedUnits();
+        if (_garrisonedUnits.Contains(unit))
+            return BuildingGarrisonResult.AlreadyGarrisoned;
+
+        BuildingGarrisonResult result = BuildingGarrisonRules.ValidateEntry(
+            spec,
+            Owner,
+            IsAlive,
+            unit.Unit.Owner,
+            unit.Unit.Code,
+            _garrisonedUnits.Count);
+        if (result != BuildingGarrisonResult.Accepted)
+            return result;
+
+        _garrisonedUnits.Add(unit);
+        return BuildingGarrisonResult.Accepted;
+    }
+
+    /// <summary>Removes a previously accepted unit without throwing on stale input.</summary>
+    public BuildingGarrisonResult TryExitGarrison(CharacterManager unit, BuildingContentSpec spec)
+    {
+        if (unit == null || unit.Unit == null)
+            return BuildingGarrisonResult.InvalidUnit;
+        PruneInvalidGarrisonedUnits();
+        bool isGarrisoned = _garrisonedUnits.Contains(unit);
+        BuildingGarrisonResult result = BuildingGarrisonRules.ValidateExit(
+            spec,
+            Owner,
+            unit.Unit.Owner,
+            unit.Unit.Code,
+            isGarrisoned);
+        if (result != BuildingGarrisonResult.Accepted)
+            return result;
+
+        _garrisonedUnits.Remove(unit);
+        return BuildingGarrisonResult.Accepted;
+    }
+
+    public IReadOnlyList<CharacterManager> GarrisonedUnits
+    {
+        get
+        {
+            PruneInvalidGarrisonedUnits();
+            return _garrisonedUnits.AsReadOnly();
+        }
+    }
+
+    private void PruneInvalidGarrisonedUnits()
+    {
+        if (_garrisonedUnits == null) _garrisonedUnits = new List<CharacterManager>();
+        for (int i = _garrisonedUnits.Count - 1; i >= 0; i--)
+        {
+            CharacterManager unit = _garrisonedUnits[i];
+            if (unit == null || unit.Unit == null)
+                _garrisonedUnits.RemoveAt(i);
+        }
     }
 
     private void PruneInvalidConstructors()

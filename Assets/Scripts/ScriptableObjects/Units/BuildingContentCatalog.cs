@@ -91,6 +91,9 @@ public sealed class BuildingContentSpec
     [Min(0)]
     public int garrisonCapacity;
 
+    [Tooltip("Stable unit codes allowed to enter this building. Empty means any unit code.")]
+    public List<string> allowedUnitCodes = new List<string>();
+
     [Min(0)]
     public int populationCapacity;
 
@@ -196,6 +199,19 @@ public sealed class BuildingContentCatalog : ScriptableObject
             if (entry.role == BuildingContentRole.ResourceDropoff
                 && (!entry.supportsDropoff || entry.dropoffResources == null || entry.dropoffResources.Count == 0))
                 yield return entry.code + " needs at least one accepted resource type.";
+
+            if (entry.supportsGarrison && entry.garrisonCapacity <= 0)
+                yield return entry.code + " supports garrison but has no capacity.";
+            if (!entry.supportsGarrison && entry.garrisonCapacity > 0)
+                yield return entry.code + " declares garrison capacity without enabling garrison.";
+            if (entry.allowedUnitCodes != null)
+            {
+                for (int j = 0; j < entry.allowedUnitCodes.Count; j++)
+                {
+                    if (string.IsNullOrWhiteSpace(entry.allowedUnitCodes[j]))
+                        yield return entry.code + " has an empty allowed garrison unit code.";
+                }
+            }
         }
     }
 
