@@ -64,6 +64,13 @@ The gate does not create placeholders or infer missing components from names.
 Missing authored assets remain an explicit blocker until Blender/Unity content
 is available and passes both repository and Unity validation.
 
+`FoundationPlacementRules` provides the editor-free geometry/economy contract
+before those assets exist. It validates the foundation role, era and catalog
+requirements, footprint radius, terrain normal/slope, spacing from existing
+buildings, construction costs after reservations, Town Center capacity and
+dropoff resource coverage. A Unity adapter must supply the terrain and
+positions and still run the prefab-level review described above.
+
 ## Procedural graybox handoff
 
 The repository may contain `TownCenter_graybox.obj` and
