@@ -13,7 +13,11 @@ From the project root in PowerShell:
     & .\Tools\Validate-Release.ps1
 
 This validates the Unity version declaration, package manifest/lock agreement,
-required validation files, and build scene paths.
+required validation files, all enabled build scene paths and GUIDs, Unity
+`.meta` coverage for source and shader files, and the building content catalog.
+Catalog validation checks stable entry codes, `BuildingData` GUID references,
+and paths for playable prefabs and models. Planned catalog paths may remain
+absent until their status is promoted to Playable.
 
 ## Licensed Unity validation
 
