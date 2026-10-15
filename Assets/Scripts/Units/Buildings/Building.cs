@@ -31,6 +31,7 @@ public class Building : Unit
     private AudioClip _ambientSound;
     private AudioClip _constructionSound;
     private BuildingFeedbackEmitter _feedbackEmitter;
+    private BuildingEraDecoration _eraDecoration;
 
     private bool _isAlive;
 
@@ -58,6 +59,20 @@ public class Building : Unit
 
         _rendererMesh = _buildingManager.meshRenderer.GetComponent<MeshFilter>();
         _constructionMeshes = data.constructionMeshes;
+
+        // The era detail kit is now part of the live building lifecycle for
+        // the two authored legacy structures it supports. Its generated
+        // pieces are visual-only and have no colliders, so placement and
+        // navigation remain governed by the original footprint.
+        if (data != null && (data.code == "house" || data.code == "tower")
+            && _rendererMesh != null && _rendererMesh.sharedMesh != null)
+        {
+            _eraDecoration = _transform.GetComponent<BuildingEraDecoration>();
+            if (_eraDecoration == null)
+                _eraDecoration = _transform.gameObject.AddComponent<BuildingEraDecoration>();
+            _eraDecoration.Initialize(data.code, _rendererMesh.transform, _rendererMesh.sharedMesh);
+            _eraDecoration.SetFinished(false);
+        }
 
         if (_buildingManager.ambientSource != null)
         {
@@ -345,6 +360,8 @@ public class Building : Unit
         // Invalid material. Once construction reaches full HP the authored
         // materials must be restored before the building enters gameplay.
         SetMaterials(BuildingPlacement.FIXED);
+        if (_eraDecoration != null)
+            _eraDecoration.SetFinished(true);
         _reservedConstructionCosts.Clear();
         _bt.enabled = true;
         ComputeProduction();

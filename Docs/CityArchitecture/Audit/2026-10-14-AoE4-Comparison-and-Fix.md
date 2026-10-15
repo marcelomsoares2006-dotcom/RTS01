@@ -21,12 +21,14 @@ Esta conclusão é deliberadamente conservadora: a referência de AoE IV foi usa
 - `Building._SetAlive()` restaura explicitamente os materiais autorais quando a construção chega ao HP máximo.
 - `BuildingFeedbackEmitter` agora restaura os materiais autorais ao entrar no estado operacional, protegendo contra eventos de spawn/load fora de ordem que deixem o material vermelho de colocação aplicado.
 - `Tools/Validate-Project.ps1` deixou de interpretar a ausência de um processo Unity como falha quando o fallback de inspeção de processos é acionado.
+- O kit de detalhes por era de Casa/Torre deixou de ser apenas uma ferramenta de Editor e passou a ser instanciado no ciclo de vida real do prédio; as peças seguem sem colisores.
 
 ## Evidências e limite atual
 
 - O smoke anterior registrou `magenta pixels=0,000%`, portanto o vermelho observado não é shader magenta; é feedback/material de estado de construção ou colocação.
 - O smoke e o build funcionais permanecem evidências válidas anteriores, mas a nova execução automatizada ficou bloqueada no inicializador de licenciamento do Unity após 300 segundos; é necessário repetir com o Unity Hub/licença estabilizados.
 - O kit detalhado atual continua classificado como protótipo em `Docs/CityArchitecture/Audit/2026-10-13-AoE4-DetailGapAudit.md`; não deve ser anunciado como AAA final.
+- Os gates estáticos de fundações e unidades militares passaram nesta rodada. A integração runtime ainda precisa de PlayMode Unity para confirmação visual.
 
 ## Próximo marco visual
 

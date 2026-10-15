@@ -82,3 +82,4 @@ Os quatro PlayModes específicos agora têm marcadores explícitos de aprovaçã
 - Corrigido o fallback do `Tools/Validate-Project.ps1` para não falhar quando não existe processo Unity.
 - A tentativa de validação desta rodada chegou ao Unity, mas ficou bloqueada por falha intermitente do Unity Licensing Client e excedeu 300 s; os resultados anteriores continuam registrados, porém esta correção precisa de nova execução com o Hub/licença estabilizados.
 - O push GitHub foi realizado anteriormente no branch `codex/integracao-github-20261014`, commit remoto confirmado `67ad842d9153e3033a214e47b9919ece296ffed0`. O backup `.blend1` continua fora do Git.
+- O kit de detalhes por era de Casa/Torre foi integrado ao ciclo de vida runtime dos prédios, mantendo as peças sem colisores; gates estáticos de fundações e unidades militares passaram nesta rodada.
