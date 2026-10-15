@@ -435,6 +435,46 @@ public static class ConstructionReplayRuntime
         return LastRestoreResult;
     }
 
+    /// <summary>
+    /// Applies the live player age-up command through the same deterministic
+    /// replay path used by save/load.  The debug console and future UI/AI
+    /// callers must use this method instead of changing AdvancedEraState
+    /// directly, otherwise the visual era would not be persisted.
+    /// </summary>
+    public static ConstructionReplayResult TryAdvanceEra(
+        int ownerId, BuildingEra targetEra, long simulationTick,
+        long issuedAtMilliseconds, int priority, string commandId)
+    {
+        if (_state == null || ownerId < 0 || string.IsNullOrWhiteSpace(commandId))
+            return ConstructionReplayResult.InvalidCommand;
+        if ((int)targetEra != (int)_state.era + 1)
+            return ConstructionReplayResult.InvalidCommand;
+
+        List<ConstructionReplayCommand> previous = ExportCommands();
+        ConstructionReplayCommand command = new ConstructionReplayCommand {
+            commandId = commandId.Trim(), ownerId = ownerId,
+            simulationTick = simulationTick,
+            issuedAtMilliseconds = issuedAtMilliseconds,
+            priority = priority, kind = ConstructionReplayCommandKind.AdvanceEra,
+            targetCode = "age:" + targetEra.ToString().ToLowerInvariant(), quantity = 1
+        };
+        ConstructionReplayResult append = _log.TryAppend(command);
+        if (append != ConstructionReplayResult.Accepted) return append;
+
+        ConstructionReplaySnapshot replayed;
+        ConstructionReplayResult replay = ConstructionReplayExecutor.Replay(_log, null, out replayed);
+        if (replay != ConstructionReplayResult.Accepted)
+        {
+            _log = new ConstructionReplayLog();
+            for (int i = 0; i < previous.Count; i++) _log.TryAppend(previous[i]);
+            return replay;
+        }
+        _state = replayed;
+        LastRestoreResult = ConstructionReplayResult.Accepted;
+        AdvancedEraState.Set(ToImperialEra(replayed.era));
+        return LastRestoreResult;
+    }
+
     private static ImperialEra ToImperialEra(BuildingEra era)
     {
         switch (era)

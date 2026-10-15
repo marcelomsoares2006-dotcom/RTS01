@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -147,6 +148,25 @@ public class DebugConsole : MonoBehaviour
         new DebugCommand<int>("set_advanced_era", "Sets the era for advanced units and environment visuals (0 Ancient, 1 Classical, 2 Medieval, 3 Imperial).", "set_advanced_era <0-3>", (x) =>
         {
             AdvancedEraState.Set((EraImperial.Units.Advanced.ImperialEra)Mathf.Clamp(x, 0, 3));
+        });
+        new DebugCommand("advance_era", "Applies the next era through the persisted construction replay command.", "advance_era", () =>
+        {
+            if (ConstructionReplayRuntime.State == null)
+            {
+                Debug.LogError("Construction replay is not initialized; start or load a match first.");
+                return;
+            }
+            BuildingEra next = (BuildingEra)((int)ConstructionReplayRuntime.State.era + 1);
+            int owner = GameManager.instance == null || GameManager.instance.gamePlayersParameters == null
+                ? 0 : GameManager.instance.gamePlayersParameters.myPlayerId;
+            ConstructionReplayResult result = ConstructionReplayRuntime.TryAdvanceEra(
+                owner, next, Time.frameCount,
+                DateTimeOffset.UtcNow.ToUnixTimeMilliseconds(), 100,
+                "player-age-" + Guid.NewGuid().ToString("N"));
+            if (result != ConstructionReplayResult.Accepted)
+                Debug.LogWarning("Advance era rejected: " + result);
+            else
+                EventManager.TriggerEvent("AdvancedEraChanged");
         });
         new DebugCommand<int>("set_unit_formation_type", "Sets the unit formation type (by index).", "set_unit_formation_type <formation_index>", (x) =>
         {

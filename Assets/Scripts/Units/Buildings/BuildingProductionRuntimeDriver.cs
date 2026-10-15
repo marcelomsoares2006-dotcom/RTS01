@@ -142,12 +142,19 @@ public sealed class BuildingProductionRuntimeDriver : MonoBehaviour
 
     private void OnProductCompleted(string productCode)
     {
+        // The legacy catalog calls the first worker "villager" while the
+        // CharacterData asset uses the stable runtime code "worker". Keep
+        // the authored economy contract and resolve the runtime alias here.
+        string characterCode = productCode;
+        if ((Globals.CHARACTER_DATA == null || !Globals.CHARACTER_DATA.ContainsKey(characterCode))
+            && string.Equals(productCode, "villager", StringComparison.OrdinalIgnoreCase))
+            characterCode = "worker";
         CharacterData data;
         if (Globals.CHARACTER_DATA == null
-            || !Globals.CHARACTER_DATA.TryGetValue(productCode, out data)
+            || !Globals.CHARACTER_DATA.TryGetValue(characterCode, out data)
             || data == null || data.prefab == null)
         {
-            LastFailure = "Completed product has no CharacterData: " + productCode;
+            LastFailure = "Completed product has no CharacterData: " + characterCode;
             Debug.LogWarning(LastFailure);
             return;
         }

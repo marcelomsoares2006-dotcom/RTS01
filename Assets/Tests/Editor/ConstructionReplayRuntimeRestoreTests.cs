@@ -36,4 +36,17 @@ public sealed class ConstructionReplayRuntimeRestoreTests
         Assert.IsNotNull(ConstructionReplayRuntime.State);
         Assert.AreEqual(BuildingEra.Feudal, ConstructionReplayRuntime.State.era);
     }
+
+    [Test]
+    public void LiveAdvanceEraCommandUpdatesReplayAndAdvancedEraState()
+    {
+        Assert.AreEqual(ConstructionReplayResult.Accepted,
+            ConstructionReplayRuntime.Restore(new List<ConstructionReplayCommand>(), null));
+        Assert.AreEqual(ConstructionReplayResult.Accepted,
+            ConstructionReplayRuntime.TryAdvanceEra(0, BuildingEra.Feudal, 2, 2, 100, "live-age-1"));
+        Assert.AreEqual(BuildingEra.Feudal, ConstructionReplayRuntime.State.era);
+        Assert.AreEqual(EraImperial.Units.Advanced.ImperialEra.Classical, AdvancedEraState.Current);
+        Assert.IsTrue(ConstructionReplayRuntime.ExportCommands().Exists(command => command.commandId == "live-age-1"));
+        ConstructionReplayRuntime.Restore(new List<ConstructionReplayCommand>(), null);
+    }
 }

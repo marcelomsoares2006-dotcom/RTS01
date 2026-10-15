@@ -17,6 +17,9 @@ public static class EraImperialSmokeTests
     private static double nextStep;
     private static Character movingWorker;
     private static Vector3 workerStart;
+    private static string productionCode;
+    private static string queuedProductionCode;
+    private static int productionBaseline;
 
     static EraImperialSmokeTests()
     {
@@ -129,6 +132,13 @@ public static class EraImperialSmokeTests
                     path.status == NavMeshPathStatus.PathComplete, "No complete path between player spawnpoints.");
                 if (cycle < 2)
                 {
+                    if (cycle == 0)
+                    {
+                        BeginProductionAudit();
+                        SessionState.SetInt(Prefix + "Stage", 4);
+                        nextStep = EditorApplication.timeSinceStartup + 0.5;
+                        return;
+                    }
                     CharacterData workerData = Globals.CHARACTER_DATA["worker"];
                     // Unit's runtime constructor instantiates the prefab at its authored origin.
                     // In this smoke scene the origin is outside the baked NavMesh, so the
@@ -162,6 +172,15 @@ public static class EraImperialSmokeTests
                 Record($"Scenario {cycle + 1}: worker moved {distance:F2} meters.");
                 FinishScenario(cycle);
             }
+            else if (stage == 4)
+            {
+                int current = CountUnits(productionCode, GameManager.instance.gamePlayersParameters.myPlayerId);
+                if (current <= productionBaseline) return;
+                Record("PLAYMODE_PRODUCTION_PASSED: " + productionCode + " spawned in the live match.");
+                BeginWorkerMovement();
+                SessionState.SetInt(Prefix + "Stage", 3);
+                nextStep = EditorApplication.timeSinceStartup + 3;
+            }
             else
             {
                 if (SceneManager.GetSceneByName("GameScene").isLoaded) return;
@@ -188,6 +207,91 @@ public static class EraImperialSmokeTests
             SessionState.SetBool(Prefix + "Running", false);
             EditorApplication.Exit(1);
         }
+    }
+
+    private static void BeginProductionAudit()
+    {
+        int owner = GameManager.instance.gamePlayersParameters.myPlayerId;
+        BuildingProductionRuntimeDriver driver = null;
+        BuildingContentSpec spec = null;
+        BuildingContentCatalog catalog = Resources.Load<BuildingContentCatalog>("ScriptableObjects/Units/Building Content Catalog");
+        Require(catalog != null, "Building content catalog could not be loaded in the live match.");
+        bool hasProducer = false;
+        foreach (List<Unit> units in Unit.UNITS_BY_OWNER.Values)
+            for (int i = 0; i < units.Count; i++)
+            {
+                Building building = units[i] as Building;
+                if (building == null || building.Owner != owner) continue;
+                if (!building.IsAlive) continue;
+                BuildingProductionRuntimeDriver candidate = building.Transform.GetComponent<BuildingProductionRuntimeDriver>();
+                if (candidate == null || !candidate.IsBound)
+                    candidate = BuildingProductionRuntimeDriver.Attach(building);
+                BuildingContentSpec candidateSpec = catalog.Find(building.Code);
+                if (candidate != null && candidate.IsBound && candidateSpec != null
+                    && candidateSpec.production != null && candidateSpec.production.Count > 0)
+                {
+                    driver = candidate;
+                    spec = candidateSpec;
+                    hasProducer = true;
+                    break;
+                }
+            }
+        if (!hasProducer)
+        {
+            BuildingContentSpec townCenter = catalog.Find("town_center");
+            Require(townCenter != null && townCenter.buildingData != null, "Town Center production asset is missing.");
+            Transform spawnpoints = GameObject.Find("Spawnpoints").transform;
+            Vector3 requested = spawnpoints.GetChild(0).position + Vector3.right * 6f;
+            Require(NavMesh.SamplePosition(requested, out NavMeshHit placement, 20f, NavMesh.AllAreas),
+                "Could not find a NavMesh position for the production Town Center.");
+            Building liveTownCenter = new Building(townCenter.buildingData, owner);
+            liveTownCenter.SetPosition(placement.position);
+            liveTownCenter.SetConstructionHP(liveTownCenter.MaxHP);
+            driver = liveTownCenter.Transform.GetComponent<BuildingProductionRuntimeDriver>();
+            if (driver == null || !driver.IsBound) driver = BuildingProductionRuntimeDriver.Attach(liveTownCenter);
+            spec = townCenter;
+        }
+        Require(driver != null, "No operational building has a live production driver.");
+        Require(spec != null && spec.production != null && spec.production.Count > 0, "Live building has no production catalog entry.");
+        queuedProductionCode = spec.production[0].productCode;
+        productionCode = Globals.CHARACTER_DATA.ContainsKey(queuedProductionCode)
+            ? queuedProductionCode : (queuedProductionCode == "villager" ? "worker" : queuedProductionCode);
+        productionBaseline = CountUnits(productionCode, owner);
+        EconomyPlayerState auditEconomy = DataHandler.EconomyRuntime.GetOrCreatePlayer(owner);
+        foreach (EconomyResourceType resource in Enum.GetValues(typeof(EconomyResourceType)))
+            auditEconomy.stockpile.Set(resource, 1000);
+        BuildingProductionQueueResult queueResult;
+        Require(driver.TryEnqueueProduct(queuedProductionCode, out queueResult) == BuildingProductionCommandResult.Accepted,
+            "Live production enqueue rejected: " + queueResult);
+        Record("Live production enqueued: " + queuedProductionCode + " -> " + productionCode);
+        List<string> completedProducts;
+        Require(driver.Runtime.Advance(owner, 25f, out completedProducts) == BuildingProductionRuntimeResult.Accepted
+            && completedProducts.Contains(queuedProductionCode),
+            "Live production runtime did not complete the queued product.");
+    }
+
+    private static int CountUnits(string code, int owner)
+    {
+        if (Unit.UNITS_BY_OWNER == null || !Unit.UNITS_BY_OWNER.ContainsKey(owner)) return 0;
+        return Unit.UNITS_BY_OWNER[owner].Count(unit => unit != null && string.Equals(unit.Code, code, StringComparison.OrdinalIgnoreCase));
+    }
+
+    private static void BeginWorkerMovement()
+    {
+        var spawnpoints = GameObject.Find("Spawnpoints").transform;
+        Vector3 source = spawnpoints.GetChild(0).position;
+        Vector3 target = spawnpoints.GetChild(1).position;
+        Require(NavMesh.SamplePosition(source, out NavMeshHit start, 20, NavMesh.AllAreas), "No walkable start.");
+        Require(NavMesh.SamplePosition(target, out NavMeshHit end, 20, NavMesh.AllAreas), "No walkable end.");
+        CharacterData workerData = Globals.CHARACTER_DATA["worker"];
+        Vector3 authoredPosition = workerData.prefab.transform.position;
+        workerData.prefab.transform.position = start.position;
+        try { movingWorker = new Character(workerData, GameManager.instance.gamePlayersParameters.myPlayerId); }
+        finally { workerData.prefab.transform.position = authoredPosition; }
+        var manager = movingWorker.Transform.GetComponent<CharacterManager>();
+        Require(manager.agent.Warp(start.position), "Worker could not be placed on navigation mesh.");
+        workerStart = movingWorker.Transform.position;
+        Require(manager.MoveTo(end.position, false), "Worker movement command was refused.");
     }
 
     private static void FinishScenario(int cycle)

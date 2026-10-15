@@ -53,6 +53,15 @@ O smoke test deixou de instanciar o worker no `origin` fora do NavMesh antes de 
 
 O projeto só deve ser declarado concluído quando o gate de fundações, os testes Unity, o PlayMode limpo, o build Windows e o playtest standalone estiverem aprovados com evidências atuais.
 
+## Fechamento de produção e avanço de era — 15/10/2026
+
+- Produção real em partida aprovada: o smoke criou um Town Center operacional a partir do `BuildingData` do catálogo, enfileirou `villager`, consumiu economia/população, concluiu a fila pelo `BuildingProductionRuntimeDriver`, resolveu o alias legado para `worker`, instanciou a unidade e confirmou movimento no NavMesh. Marcador: `PLAYMODE_PRODUCTION_PASSED`.
+- O comando real `advance_era` foi ligado ao `ConstructionReplayRuntime.TryAdvanceEra`. A validação sequencial, o comando persistido, o replay e `AdvancedEraState` agora usam a mesma fonte de verdade; o teste `LiveAdvanceEraCommandUpdatesReplayAndAdvancedEraState` passou.
+- Validação final: EditMode 391/391, PlayMode smoke 3/3 com 0 erros, produção real aprovada e build Windows concluído com código 0.
+- Correção adicional: o contrato de produção mantém `villager` para compatibilidade, mas o driver resolve-o para o `CharacterData` real `worker`.
+
+Pendências fora deste marco: inspeção artística manual das UVs classificadas, playtest humano de interface e eventual push ao GitHub. Nenhuma delas foi executada automaticamente nesta rodada.
+
 ## Ciclo de verificação — PlayMode, eras, standalone e UV
 
 - A restauração do replay agora sincroniza `AdvancedEraState` com a era persistida, usando o mapeamento validado `Feudal -> Classical`, `Castle -> Medieval` e `Imperial -> Imperial`; a fonte de verdade continua sendo o replay salvo.
