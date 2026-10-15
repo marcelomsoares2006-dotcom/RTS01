@@ -13,14 +13,14 @@
     "Assets/CityArchitecture/Generated/LOD/Market_Classical_LOD1.fbx/MarketPost_LOD: UV0 fora de 0-1",
     "Assets/CharacterRigging/Crossbow/Models/Crossbow.fbx/Crossbow_LOD2: UV0 fora de 0-1",
     "Assets/CharacterRigging/Crossbow/Models/Crossbow.fbx/Body_LOD0: UV0 fora de 0-1",
-    "Assets/CharacterRigging/Crossbow/Models/Crossbow.fbx/Bolt_LOD0: UV0 fora de 0-1",
+    "Assets/CharacterRigging/Crossbow/Models/Crossbow.fbx/Crossbow_LOD1: UV0 fora de 0-1",
     "Assets/CharacterRigging/Crossbow/Models/Crossbow.fbx/LimbL_LOD0: UV0 fora de 0-1",
     "Assets/CharacterRigging/Crossbow/Models/Crossbow.fbx/LimbR_LOD0: UV0 fora de 0-1",
     "Assets/CharacterRigging/Crossbow/Models/Crossbow.fbx/String_LOD0: UV0 fora de 0-1",
-    "Assets/CharacterRigging/Crossbow/Models/Crossbow.fbx/Crossbow_LOD1: UV0 fora de 0-1",
+    "Assets/CharacterRigging/Crossbow/Models/Crossbow.fbx/WheelR_LOD0: UV0 fora de 0-1",
+    "Assets/CharacterRigging/Crossbow/Models/Crossbow.fbx/Bolt_LOD0: UV0 fora de 0-1",
     "Assets/CharacterRigging/Crossbow/Models/Crossbow.fbx/Trigger_LOD0: UV0 fora de 0-1",
     "Assets/CharacterRigging/Crossbow/Models/Crossbow.fbx/WheelL_LOD0: UV0 fora de 0-1",
-    "Assets/CharacterRigging/Crossbow/Models/Crossbow.fbx/WheelR_LOD0: UV0 fora de 0-1",
     "Assets/CharacterRigging/Crossbow/Models/Crossbow.fbx/Winch_LOD0: UV0 fora de 0-1",
     "Assets/CharacterRigging/LODs/HeraldicKnight/HeraldicKnight_LOD2.fbx/HeraldicKnight_Body: UV0 fora de 0-1"
   ],
@@ -12024,54 +12024,6 @@
       "mesh_objects": 3,
       "meshes": [
         {
-          "name": "Archer_LOD2",
-          "vertices": 8755,
-          "triangles": 3091,
-          "uv0": {
-            "present": true,
-            "valid": true,
-            "outside_01": 0,
-            "bounds": [
-              0.0013,
-              0.00114,
-              0.99796,
-              0.99703
-            ],
-            "tile_span": [
-              0.99666,
-              0.99589
-            ],
-            "max_overrun": 0.0,
-            "repetition_likely": false
-          },
-          "uv2": {
-            "present": false,
-            "valid": false,
-            "outside_01": 0
-          },
-          "non_manifold_edges": 4783,
-          "invalid_normals": 0,
-          "degenerate_faces": 0,
-          "materials": [
-            "Archer_Mat"
-          ],
-          "scale": [
-            1.0,
-            1.0,
-            1.0
-          ],
-          "location": [
-            0.0,
-            0.0,
-            0.0
-          ],
-          "dimensions": [
-            1.178844,
-            0.391668,
-            1.796733
-          ]
-        },
-        {
           "name": "Archer_LOD1",
           "vertices": 14623,
           "triangles": 9273,
@@ -12117,6 +12069,54 @@
             1.168819,
             0.385078,
             1.785181
+          ]
+        },
+        {
+          "name": "Archer_LOD2",
+          "vertices": 8755,
+          "triangles": 3091,
+          "uv0": {
+            "present": true,
+            "valid": true,
+            "outside_01": 0,
+            "bounds": [
+              0.0013,
+              0.00114,
+              0.99796,
+              0.99703
+            ],
+            "tile_span": [
+              0.99666,
+              0.99589
+            ],
+            "max_overrun": 0.0,
+            "repetition_likely": false
+          },
+          "uv2": {
+            "present": false,
+            "valid": false,
+            "outside_01": 0
+          },
+          "non_manifold_edges": 4783,
+          "invalid_normals": 0,
+          "degenerate_faces": 0,
+          "materials": [
+            "Archer_Mat"
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "dimensions": [
+            1.178844,
+            0.391668,
+            1.796733
           ]
         },
         {
@@ -12240,57 +12240,6 @@
           ]
         },
         {
-          "name": "Catapult_LOD2",
-          "vertices": 438,
-          "triangles": 408,
-          "uv0": {
-            "present": true,
-            "valid": true,
-            "outside_01": 0,
-            "bounds": [
-              0.00166,
-              0.0,
-              0.99972,
-              1.0
-            ],
-            "tile_span": [
-              0.99806,
-              1.0
-            ],
-            "max_overrun": 0.0,
-            "repetition_likely": false
-          },
-          "uv2": {
-            "present": false,
-            "valid": false,
-            "outside_01": 0
-          },
-          "non_manifold_edges": 376,
-          "invalid_normals": 0,
-          "degenerate_faces": 0,
-          "materials": [
-            "Catapult_Wood",
-            "Catapult_Iron",
-            "Catapult_Rope",
-            "Catapult_Stone"
-          ],
-          "scale": [
-            1.0,
-            1.0,
-            1.0
-          ],
-          "location": [
-            0.0,
-            0.0,
-            0.0
-          ],
-          "dimensions": [
-            2.2,
-            3.2,
-            2.05
-          ]
-        },
-        {
           "name": "Catapult_LOD0",
           "vertices": 4500,
           "triangles": 4976,
@@ -12340,6 +12289,57 @@
             3.225,
             2.05
           ]
+        },
+        {
+          "name": "Catapult_LOD2",
+          "vertices": 438,
+          "triangles": 408,
+          "uv0": {
+            "present": true,
+            "valid": true,
+            "outside_01": 0,
+            "bounds": [
+              0.00166,
+              0.0,
+              0.99972,
+              1.0
+            ],
+            "tile_span": [
+              0.99806,
+              1.0
+            ],
+            "max_overrun": 0.0,
+            "repetition_likely": false
+          },
+          "uv2": {
+            "present": false,
+            "valid": false,
+            "outside_01": 0
+          },
+          "non_manifold_edges": 376,
+          "invalid_normals": 0,
+          "degenerate_faces": 0,
+          "materials": [
+            "Catapult_Wood",
+            "Catapult_Iron",
+            "Catapult_Rope",
+            "Catapult_Stone"
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "dimensions": [
+            2.2,
+            3.2,
+            2.05
+          ]
         }
       ],
       "materials": [
@@ -12365,6 +12365,54 @@
       "imported": true,
       "mesh_objects": 3,
       "meshes": [
+        {
+          "name": "CombatMage_LOD2",
+          "vertices": 10617,
+          "triangles": 4200,
+          "uv0": {
+            "present": true,
+            "valid": true,
+            "outside_01": 0,
+            "bounds": [
+              0.00164,
+              0.00236,
+              0.99948,
+              0.9989
+            ],
+            "tile_span": [
+              0.99784,
+              0.99654
+            ],
+            "max_overrun": 0.0,
+            "repetition_likely": false
+          },
+          "uv2": {
+            "present": false,
+            "valid": false,
+            "outside_01": 0
+          },
+          "non_manifold_edges": 6442,
+          "invalid_normals": 0,
+          "degenerate_faces": 0,
+          "materials": [
+            "CombatMage_Mat"
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "dimensions": [
+            0.985659,
+            0.39544,
+            1.762438
+          ]
+        },
         {
           "name": "CombatMage_LOD0",
           "vertices": 31879,
@@ -12459,54 +12507,6 @@
             0.987708,
             0.392846,
             1.760298
-          ]
-        },
-        {
-          "name": "CombatMage_LOD2",
-          "vertices": 10617,
-          "triangles": 4200,
-          "uv0": {
-            "present": true,
-            "valid": true,
-            "outside_01": 0,
-            "bounds": [
-              0.00164,
-              0.00236,
-              0.99948,
-              0.9989
-            ],
-            "tile_span": [
-              0.99784,
-              0.99654
-            ],
-            "max_overrun": 0.0,
-            "repetition_likely": false
-          },
-          "uv2": {
-            "present": false,
-            "valid": false,
-            "outside_01": 0
-          },
-          "non_manifold_edges": 6442,
-          "invalid_normals": 0,
-          "degenerate_faces": 0,
-          "materials": [
-            "CombatMage_Mat"
-          ],
-          "scale": [
-            1.0,
-            1.0,
-            1.0
-          ],
-          "location": [
-            0.0,
-            0.0,
-            0.0
-          ],
-          "dimensions": [
-            0.985659,
-            0.39544,
-            1.762438
           ]
         }
       ],
@@ -12633,37 +12633,39 @@
           ]
         },
         {
-          "name": "Bolt_LOD0",
-          "vertices": 60,
-          "triangles": 66,
+          "name": "Crossbow_LOD1",
+          "vertices": 1438,
+          "triangles": 2329,
           "uv0": {
             "present": true,
             "valid": true,
-            "outside_01": 12,
+            "outside_01": 2150,
             "bounds": [
-              0.0,
-              0.0,
-              1.03,
+              -1.92,
+              -0.26,
+              7.14291,
               1.0
             ],
             "tile_span": [
-              1.03,
-              1.0
+              9.06291,
+              1.26
             ],
-            "max_overrun": 0.03000009,
-            "repetition_likely": false
+            "max_overrun": 6.14291239,
+            "repetition_likely": true
           },
           "uv2": {
             "present": false,
             "valid": false,
             "outside_01": 0
           },
-          "non_manifold_edges": 34,
+          "non_manifold_edges": 127,
           "invalid_normals": 0,
           "degenerate_faces": 0,
           "materials": [
             "Crossbow_Wood",
+            "Crossbow_DarkWood",
             "Crossbow_Iron",
+            "Crossbow_Rope",
             "Crossbow_Feather"
           ],
           "scale": [
@@ -12677,9 +12679,9 @@
             0.0
           ],
           "dimensions": [
-            0.062354,
-            0.606,
-            0.062
+            1.786,
+            2.445,
+            1.47
           ]
         },
         {
@@ -12830,24 +12832,24 @@
           ]
         },
         {
-          "name": "Crossbow_LOD1",
-          "vertices": 1438,
-          "triangles": 2329,
+          "name": "WheelR_LOD0",
+          "vertices": 460,
+          "triangles": 760,
           "uv0": {
             "present": true,
             "valid": true,
-            "outside_01": 2150,
+            "outside_01": 872,
             "bounds": [
-              -1.92,
-              -0.26,
-              7.14291,
+              -0.018,
+              -0.012,
+              6.82982,
               1.0
             ],
             "tile_span": [
-              9.06291,
-              1.26
+              6.84782,
+              1.012
             ],
-            "max_overrun": 6.14291239,
+            "max_overrun": 5.82982254,
             "repetition_likely": true
           },
           "uv2": {
@@ -12855,14 +12857,62 @@
             "valid": false,
             "outside_01": 0
           },
-          "non_manifold_edges": 127,
+          "non_manifold_edges": 96,
           "invalid_normals": 0,
           "degenerate_faces": 0,
           "materials": [
             "Crossbow_Wood",
             "Crossbow_DarkWood",
+            "Crossbow_Iron"
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "dimensions": [
+            0.22,
+            1.105,
+            1.1
+          ]
+        },
+        {
+          "name": "Bolt_LOD0",
+          "vertices": 60,
+          "triangles": 66,
+          "uv0": {
+            "present": true,
+            "valid": true,
+            "outside_01": 12,
+            "bounds": [
+              0.0,
+              0.0,
+              1.03,
+              1.0
+            ],
+            "tile_span": [
+              1.03,
+              1.0
+            ],
+            "max_overrun": 0.03000009,
+            "repetition_likely": false
+          },
+          "uv2": {
+            "present": false,
+            "valid": false,
+            "outside_01": 0
+          },
+          "non_manifold_edges": 34,
+          "invalid_normals": 0,
+          "degenerate_faces": 0,
+          "materials": [
+            "Crossbow_Wood",
             "Crossbow_Iron",
-            "Crossbow_Rope",
             "Crossbow_Feather"
           ],
           "scale": [
@@ -12876,9 +12926,9 @@
             0.0
           ],
           "dimensions": [
-            1.786,
-            2.445,
-            1.47
+            0.062354,
+            0.606,
+            0.062
           ]
         },
         {
@@ -12931,56 +12981,6 @@
         },
         {
           "name": "WheelL_LOD0",
-          "vertices": 460,
-          "triangles": 760,
-          "uv0": {
-            "present": true,
-            "valid": true,
-            "outside_01": 872,
-            "bounds": [
-              -0.018,
-              -0.012,
-              6.82982,
-              1.0
-            ],
-            "tile_span": [
-              6.84782,
-              1.012
-            ],
-            "max_overrun": 5.82982254,
-            "repetition_likely": true
-          },
-          "uv2": {
-            "present": false,
-            "valid": false,
-            "outside_01": 0
-          },
-          "non_manifold_edges": 96,
-          "invalid_normals": 0,
-          "degenerate_faces": 0,
-          "materials": [
-            "Crossbow_Wood",
-            "Crossbow_DarkWood",
-            "Crossbow_Iron"
-          ],
-          "scale": [
-            1.0,
-            1.0,
-            1.0
-          ],
-          "location": [
-            0.0,
-            0.0,
-            0.0
-          ],
-          "dimensions": [
-            0.22,
-            1.105,
-            1.1
-          ]
-        },
-        {
-          "name": "WheelR_LOD0",
           "vertices": 460,
           "triangles": 760,
           "uv0": {
@@ -13828,54 +13828,6 @@
       "mesh_objects": 3,
       "meshes": [
         {
-          "name": "PaladinHealer_LOD2",
-          "vertices": 11515,
-          "triangles": 3100,
-          "uv0": {
-            "present": true,
-            "valid": true,
-            "outside_01": 0,
-            "bounds": [
-              0.00655,
-              0.0041,
-              0.99796,
-              0.99938
-            ],
-            "tile_span": [
-              0.99141,
-              0.99528
-            ],
-            "max_overrun": 0.0,
-            "repetition_likely": false
-          },
-          "uv2": {
-            "present": false,
-            "valid": false,
-            "outside_01": 0
-          },
-          "non_manifold_edges": 5212,
-          "invalid_normals": 0,
-          "degenerate_faces": 0,
-          "materials": [
-            "PaladinHealer_Mat"
-          ],
-          "scale": [
-            1.0,
-            1.0,
-            1.0
-          ],
-          "location": [
-            0.0,
-            0.0,
-            0.0
-          ],
-          "dimensions": [
-            1.194659,
-            0.401796,
-            1.857028
-          ]
-        },
-        {
           "name": "PaladinHealer_LOD1",
           "vertices": 17353,
           "triangles": 9300,
@@ -13921,6 +13873,54 @@
             1.18912,
             0.387899,
             1.859071
+          ]
+        },
+        {
+          "name": "PaladinHealer_LOD2",
+          "vertices": 11515,
+          "triangles": 3100,
+          "uv0": {
+            "present": true,
+            "valid": true,
+            "outside_01": 0,
+            "bounds": [
+              0.00655,
+              0.0041,
+              0.99796,
+              0.99938
+            ],
+            "tile_span": [
+              0.99141,
+              0.99528
+            ],
+            "max_overrun": 0.0,
+            "repetition_likely": false
+          },
+          "uv2": {
+            "present": false,
+            "valid": false,
+            "outside_01": 0
+          },
+          "non_manifold_edges": 5212,
+          "invalid_normals": 0,
+          "degenerate_faces": 0,
+          "materials": [
+            "PaladinHealer_Mat"
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "dimensions": [
+            1.194659,
+            0.401796,
+            1.857028
           ]
         },
         {

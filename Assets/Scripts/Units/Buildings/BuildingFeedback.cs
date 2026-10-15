@@ -158,6 +158,14 @@ public sealed class BuildingFeedbackEmitter : MonoBehaviour
         Renderer renderer = _manager.meshRenderer;
         renderer.enabled = snapshot.visual != BuildingFeedbackVisualCue.Destroyed;
 
+        // Placement materials are transient UI feedback. They must never
+        // survive into the operational state, even if a construction event
+        // arrives out of order during spawn/load. Restore the authored
+        // material set before applying the health overlay.
+        if (snapshot.visual == BuildingFeedbackVisualCue.Operational
+            && _building != null)
+            _building.SetMaterials(BuildingPlacement.FIXED);
+
         // Damage is communicated without inventing a texture or model. A
         // property block preserves owner materials and is safe for both the
         // legacy and current Unity materials.

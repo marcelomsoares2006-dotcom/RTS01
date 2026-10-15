@@ -259,28 +259,30 @@
     },
     {
       "path": "Assets/CharacterRigging/Crossbow/Models/Crossbow.fbx",
-      "mesh": "Bolt_LOD0",
-      "outside": 12,
+      "mesh": "Crossbow_LOD1",
+      "outside": 2150,
       "bounds": [
-        0.0,
-        0.0,
-        1.03,
+        -1.92,
+        -0.26,
+        7.14291,
         1.0
       ],
       "tile_span": [
-        1.03,
-        1.0
+        9.06291,
+        1.26
       ],
-      "max_overrun": 0.03000009,
-      "classification": "REVISAR",
-      "rationale": "Ocorrência fora do tile sem evidência suficiente para uma correção não destrutiva.",
-      "action": "REVISÃO MANUAL; sem correção automática.",
-      "non_manifold_edges": 34,
+      "max_overrun": 6.14291239,
+      "classification": "REPETICAO_INTENCIONAL_PROVAVEL",
+      "rationale": "Span UV > 1 em peças com materiais de madeira/ferro/corda e LODs; o padrão é compatível com textura repetida/trim.",
+      "action": "MANTER; não empacotar nem reescalar automaticamente.",
+      "non_manifold_edges": 127,
       "invalid_normals": 0,
       "degenerate_faces": 0,
       "materials": [
         "Crossbow_Wood",
+        "Crossbow_DarkWood",
         "Crossbow_Iron",
+        "Crossbow_Rope",
         "Crossbow_Feather"
       ]
     },
@@ -364,30 +366,55 @@
     },
     {
       "path": "Assets/CharacterRigging/Crossbow/Models/Crossbow.fbx",
-      "mesh": "Crossbow_LOD1",
-      "outside": 2150,
+      "mesh": "WheelR_LOD0",
+      "outside": 872,
       "bounds": [
-        -1.92,
-        -0.26,
-        7.14291,
+        -0.018,
+        -0.012,
+        6.82982,
         1.0
       ],
       "tile_span": [
-        9.06291,
-        1.26
+        6.84782,
+        1.012
       ],
-      "max_overrun": 6.14291239,
+      "max_overrun": 5.82982254,
       "classification": "REPETICAO_INTENCIONAL_PROVAVEL",
       "rationale": "Span UV > 1 em peças com materiais de madeira/ferro/corda e LODs; o padrão é compatível com textura repetida/trim.",
       "action": "MANTER; não empacotar nem reescalar automaticamente.",
-      "non_manifold_edges": 127,
+      "non_manifold_edges": 96,
       "invalid_normals": 0,
       "degenerate_faces": 0,
       "materials": [
         "Crossbow_Wood",
         "Crossbow_DarkWood",
+        "Crossbow_Iron"
+      ]
+    },
+    {
+      "path": "Assets/CharacterRigging/Crossbow/Models/Crossbow.fbx",
+      "mesh": "Bolt_LOD0",
+      "outside": 12,
+      "bounds": [
+        0.0,
+        0.0,
+        1.03,
+        1.0
+      ],
+      "tile_span": [
+        1.03,
+        1.0
+      ],
+      "max_overrun": 0.03000009,
+      "classification": "REVISAR",
+      "rationale": "Ocorrência fora do tile sem evidência suficiente para uma correção não destrutiva.",
+      "action": "REVISÃO MANUAL; sem correção automática.",
+      "non_manifold_edges": 34,
+      "invalid_normals": 0,
+      "degenerate_faces": 0,
+      "materials": [
+        "Crossbow_Wood",
         "Crossbow_Iron",
-        "Crossbow_Rope",
         "Crossbow_Feather"
       ]
     },
@@ -419,33 +446,6 @@
     {
       "path": "Assets/CharacterRigging/Crossbow/Models/Crossbow.fbx",
       "mesh": "WheelL_LOD0",
-      "outside": 872,
-      "bounds": [
-        -0.018,
-        -0.012,
-        6.82982,
-        1.0
-      ],
-      "tile_span": [
-        6.84782,
-        1.012
-      ],
-      "max_overrun": 5.82982254,
-      "classification": "REPETICAO_INTENCIONAL_PROVAVEL",
-      "rationale": "Span UV > 1 em peças com materiais de madeira/ferro/corda e LODs; o padrão é compatível com textura repetida/trim.",
-      "action": "MANTER; não empacotar nem reescalar automaticamente.",
-      "non_manifold_edges": 96,
-      "invalid_normals": 0,
-      "degenerate_faces": 0,
-      "materials": [
-        "Crossbow_Wood",
-        "Crossbow_DarkWood",
-        "Crossbow_Iron"
-      ]
-    },
-    {
-      "path": "Assets/CharacterRigging/Crossbow/Models/Crossbow.fbx",
-      "mesh": "WheelR_LOD0",
       "outside": 872,
       "bounds": [
         -0.018,

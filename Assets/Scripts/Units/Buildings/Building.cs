@@ -341,6 +341,10 @@ public class Building : Unit
     private void _SetAlive(bool fromSavedData = false)
     {
         _isAlive = true;
+        // The placement preview may have left the renderer using the red
+        // Invalid material. Once construction reaches full HP the authored
+        // materials must be restored before the building enters gameplay.
+        SetMaterials(BuildingPlacement.FIXED);
         _reservedConstructionCosts.Clear();
         _bt.enabled = true;
         ComputeProduction();

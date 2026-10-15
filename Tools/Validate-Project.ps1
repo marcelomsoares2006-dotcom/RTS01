@@ -19,7 +19,10 @@ catch {
     # the project is closed. A conservative process-level fallback is safer
     # than running batch Unity against an open project.
     try {
-        $unityProcesses = @(Get-Process -Name Unity -ErrorAction Stop)
+        # On a clean machine there may be no Unity process at all. Treat that
+        # as the safe state instead of turning the validator's fallback into a
+        # false failure.
+        $unityProcesses = @(Get-Process -Name Unity -ErrorAction SilentlyContinue)
     }
     catch {
         throw "Unable to inspect Unity processes safely: $($_.Exception.Message)"
