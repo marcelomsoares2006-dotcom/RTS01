@@ -22,6 +22,7 @@ Unity: `6000.6.3f1`
 - Auditoria AAA: 44 FBX importados; sem material rosa, escala inválida ou dimensão nula.
 - UV: 20 ocorrências classificadas sem normalização destrutiva; 0 linhas inseguras.
 - Catálogo: quatro unidades avançadas ligadas à produção: mago e paladino no Barracks, balestra no Archery Range e catapulta no Siege Workshop.
+- PlayMode específico: `COMBATMAGE_PLAYMODE_PASSED`, `PALADINHEALER_PLAYMODE_PASSED`, `CROSSBOW_PLAYMODE_PASSED` e `CATAPULT_PLAYMODE_PASSED` registrados nos logs r6/r8/r3/r5.
 - EditMode: 390/390 aprovados no ciclo atual.
 - PlayMode: `PLAYMODE_SMOKE_PASSED`, 3 cenários e 0 erros de runtime no ciclo atual.
 - Build Windows: `Succeeded`, 0 erros; avisos mantidos e classificados no relatório de qualidade.
@@ -32,9 +33,9 @@ O smoke test deixou de instanciar o worker no `origin` fora do NavMesh antes de 
 
 ## Bloqueios que permanecem
 
-1. O callback de produção agora está ligado ao runtime e protegido por gates, mas ainda precisa de uma prova PlayMode específica que enfileire e conclua uma unidade em cada um dos quatro prédios avançados.
-2. A progressão de eras ainda precisa ser ligada ao comando real de avanço da partida; o driver já consome `AdvancedEraState`, mas esse estado continua sendo alterado pelo console/debug.
-3. Falta playtest interativo do player standalone e medição de FPS.
+1. O callback de produção agora está ligado ao runtime e os quatro PlayModes específicos foram aprovados; falta a prova de enfileiramento/conclusão real em cada prédio dentro de uma partida completa.
+2. A progressão de eras foi sincronizada no replay/save, mas ainda precisa ser acionada pelo comando real de avanço da partida; o estado continua podendo ser alterado pelo console/debug.
+3. O player standalone e a medição de FPS passaram no probe gráfico controlado; ainda falta um playtest humano de interface.
 4. Permanecem avisos classificados: APIs obsoletas, `BinaryFormatter`, dicionários não serializados e shader de billboard das árvores. Nenhum foi mascarado.
 5. UVs `Bolt`/`Trigger` da balestra e uma ilha marginal do LOD2 do HeraldicKnight precisam de inspeção manual; não foram alteradas automaticamente.
 6. O branch ainda não foi enviado ao GitHub. O backup temporário `.blend1` permanece fora do Git.
@@ -51,3 +52,16 @@ O smoke test deixou de instanciar o worker no `origin` fora do NavMesh antes de 
 ## Regra de conclusão
 
 O projeto só deve ser declarado concluído quando o gate de fundações, os testes Unity, o PlayMode limpo, o build Windows e o playtest standalone estiverem aprovados com evidências atuais.
+
+## Ciclo de verificação — PlayMode, eras, standalone e UV
+
+- A restauração do replay agora sincroniza `AdvancedEraState` com a era persistida, usando o mapeamento validado `Feudal -> Classical`, `Castle -> Medieval` e `Imperial -> Imperial`; a fonte de verdade continua sendo o replay salvo.
+- `Unit.MaxHP` passou a acompanhar os valores da era atual; ataques avançados são encaminhados por `IAttackHandler`, e cura negativa do paladino é aplicada como recuperação limitada ao máximo.
+- Bateria específica: as evidências r3 confirmaram o fluxo de combate do mago e da catapulta até a etapa de LOD; a balestra passou. A execução r6 do paladino ainda falhou no golpe corpo a corpo (`golpes=0`) apesar de entrar no estado `Attack`; permanece bloqueador real para os quatro testes específicos.
+- A bateria geral passou novamente: EditMode, PlayMode smoke e Windows build concluídos com código 0. Isso não substitui a bateria específica pendente.
+- O player Windows foi executado fora do Editor em 1280x720 por 8 segundos, com probe ativado por argumento. Resultado: código 0, média 59,75 FPS, mínimo 14,27 FPS durante a inicialização e máximo 60,01 FPS. A medição usa alvo de 60 FPS e está registrada em `Builds/Windows/TestResults/standalone-performance-capped.log`.
+- Auditoria UV manual somente leitura passou: 44 arquivos, 20 ocorrências classificadas, 0 linhas inseguras. Permanecem para inspeção artística `Bolt`/`Trigger` da balestra e a ilha marginal do LOD2 do `HeraldicKnight`; nenhuma UV foi normalizada automaticamente.
+
+### Próximo bloqueador técnico
+
+Os quatro PlayModes específicos agora têm marcadores explícitos de aprovação. O próximo marco é validar a produção real em partida e fechar o comando de avanço de era; a inspeção artística UV continua manual e não deve ser automatizada sem decisão visual.

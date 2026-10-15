@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using EraImperial.Units.Advanced;
 
 public enum ConstructionReplayCommandKind
 {
@@ -427,6 +428,21 @@ public static class ConstructionReplayRuntime
             return LastRestoreResult;
         }
         _state = restored;
+        // The replay snapshot is the authoritative persisted progression
+        // state. Keep advanced units/environment visuals synchronized after
+        // load instead of resetting them to Ancient unconditionally.
+        AdvancedEraState.Set(ToImperialEra(restored.era));
         return LastRestoreResult;
+    }
+
+    private static ImperialEra ToImperialEra(BuildingEra era)
+    {
+        switch (era)
+        {
+            case BuildingEra.Feudal: return ImperialEra.Classical;
+            case BuildingEra.Castle: return ImperialEra.Medieval;
+            case BuildingEra.Imperial: return ImperialEra.Imperial;
+            default: return ImperialEra.Ancient;
+        }
     }
 }

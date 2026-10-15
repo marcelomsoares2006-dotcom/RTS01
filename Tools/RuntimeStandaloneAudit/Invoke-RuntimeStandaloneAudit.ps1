@@ -51,15 +51,16 @@ if (Test-Path -LiteralPath $buildReportPath) {
 } else { Add-Check 'build' 'player Windows' 'BLOCKED' $buildReportPath 'Relatório de build ausente.' }
 
 if (Test-Path -LiteralPath $buildPath) {
-    $logArgs = "-batchmode -nographics -quit -logFile `"$standaloneLog`""
+    $logArgs = "-screen-width 1280 -screen-height 720 -screen-fullscreen 0 -era-audit-seconds=8 -logFile `"$standaloneLog`""
     if (Test-Path -LiteralPath $standaloneLog) { Remove-Item -LiteralPath $standaloneLog -Force }
     $proc = Start-Process -FilePath $buildPath -ArgumentList $logArgs -WorkingDirectory (Split-Path $buildPath) -WindowStyle Hidden -PassThru
     $exited = $proc.WaitForExit($StandaloneTimeoutSeconds * 1000)
     if ($exited) {
         $standaloneText = if (Test-Path $standaloneLog) { Get-Content -LiteralPath $standaloneLog -Raw } else { '' }
         $fatal = $standaloneText -match '(?im)(Crash|NullReferenceException|MissingReferenceException|Failed to initialize|Error loading|fatal error)'
-        if ($proc.ExitCode -eq 0 -and -not $fatal) {
-            Add-Check 'standalone-start' 'execução fora do Editor' 'PASS' $standaloneLog "Player encerrou com código 0 em modo headless; nenhum erro fatal detectado."
+        $performance = [regex]::Match($standaloneText, 'STANDALONE_PERFORMANCE_PASSED\s+(\{[^\r\n]+\})')
+        if ($proc.ExitCode -eq 0 -and -not $fatal -and $performance.Success) {
+            Add-Check 'standalone-start' 'execução fora do Editor' 'PASS' $standaloneLog "Player gráfico encerrou pelo probe com código 0; FPS: $($performance.Groups[1].Value)."
         } else {
             Add-Check 'standalone-start' 'execução fora do Editor' 'FAIL' $standaloneLog "Player encerrou com código $($proc.ExitCode) ou registrou erro fatal."
         }
@@ -108,7 +109,7 @@ $lines.Add('## Pendências observadas')
 $lines.Add('')
 $lines.Add('- A cobertura automatizada de contratos cobre produção, replay, save/load, seleção, NavMesh e combate/cerco em EditMode/PlayMode; ela não substitui um playtest humano de interface.')
 $lines.Add('- O smoke PlayMode precisa concluir o marcador final dos três cenários para fechar a evidência de reload; uma execução interrompida no cenário 3 permanece não aprovada.')
-$lines.Add('- O player Windows precisa ser executado em uma sessão limpa fora do Editor; `-batchmode -nographics -quit` é apenas um smoke de inicialização, não prova interação visual.')
+$lines.Add('- O player Windows é executado fora do Editor em 1280x720 por 8 s; o probe limita a 60 FPS, grava média/mínimo/máximo e encerra o processo. Isso é uma medição automatizada, não substitui playtest humano de interface.')
 Set-Content -LiteralPath $markdownPath -Value $lines -Encoding UTF8
 Write-Output "Runtime audit written to $jsonPath and $markdownPath"
 Write-Output "PASS=$($summary.pass) FAIL=$($summary.fail) BLOCKED=$($summary.blocked)"

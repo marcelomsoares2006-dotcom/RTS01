@@ -28,7 +28,8 @@ MonoBehaviour:
   fieldOfView: 16
   attackRange: 1.5
   attackDamage: 16
-  attackRate: 1.8
+  attackRate: 0.25
+  armor: 0
   onSelectSound: {fileID: 0}
   onMoveValidSound: {fileID: 0}
   onMoveInvalidSound: {fileID: 0}

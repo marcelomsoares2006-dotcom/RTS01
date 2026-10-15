@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 1386018077353770121}
   - component: {fileID: 689999984755342183}
   - component: {fileID: 6922945073601610210}
-  - component: {fileID: 3228070644764861300}
+  - component: {fileID: 6178828205438823559}
   - component: {fileID: 7271652839713230978}
   - component: {fileID: 6959604763138292169}
   m_Layer: 12
@@ -373,6 +373,19 @@ MonoBehaviour:
   animator: {fileID: 5771428237021254351}
   debugSpeed: -1
   damageReactionCooldown: 0.6
+--- !u!114 &6178828205438823559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4184688603527601570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f51d45ae0d95214199fcd78d5212aaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PaladinMeleeAttackController
+  animator: {fileID: 5771428237021254351}
 --- !u!114 &7271652839713230978
 MonoBehaviour:
   m_ObjectHideFlags: 0

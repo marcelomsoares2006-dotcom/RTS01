@@ -478,13 +478,19 @@ public static class CrossbowPlayModeCheck
             shotCamera.orthographicSize = ortho;
             shotCamera.transform.position = focus + new Vector3(0.3f, 0.2f, -1f).normalized * 40f;
             shotCamera.transform.rotation = Quaternion.LookRotation(focus - shotCamera.transform.position);
-            RenderTexture target = new RenderTexture(480, 360, 24);
-            Texture2D texture = new Texture2D(480, 360, TextureFormat.RGB24, false);
+            // Keep the unit large enough for the three LOD colors to be
+            // measured reliably at the far zoom; the game camera remains
+            // unchanged. This avoids classifying a visible 1-4 pixel island
+            // as "no LOD" because of the old low-resolution audit buffer.
+            const int renderWidth = 960;
+            const int renderHeight = 720;
+            RenderTexture target = new RenderTexture(renderWidth, renderHeight, 24);
+            Texture2D texture = new Texture2D(renderWidth, renderHeight, TextureFormat.RGB24, false);
             RenderTexture previous = RenderTexture.active;
             shotCamera.targetTexture = target;
             shotCamera.Render();
             RenderTexture.active = target;
-            texture.ReadPixels(new Rect(0, 0, 480, 360), 0, 0);
+            texture.ReadPixels(new Rect(0, 0, renderWidth, renderHeight), 0, 0);
             RenderTexture.active = previous;
             shotCamera.targetTexture = null;
             int[] counts = new int[3];

@@ -51,7 +51,7 @@ namespace EraImperial.AdvancedUnits.Tests.Visual
         public void WrapperPrefab_HasGameComponentsAndColliderAndAgent()
         {
             GameObject wrapper = Load<GameObject>(WrapperPath);
-            foreach (string component in new[] { "CharacterManager", "CharacterBT", "FogRendererToggler", "AdvancedUnitEraBinding", "AdvancedUnitAnimatorDriver", "PaladinHealBehaviour", "AdvancedUnitDeathEffect" })
+            foreach (string component in new[] { "CharacterManager", "CharacterBT", "FogRendererToggler", "AdvancedUnitEraBinding", "AdvancedUnitAnimatorDriver", "PaladinMeleeAttackController", "PaladinHealBehaviour", "AdvancedUnitDeathEffect" })
                 Assert.That(wrapper.GetComponent(component), Is.Not.Null, component);
             BoxCollider box = wrapper.GetComponent<BoxCollider>();
             UnityEngine.AI.NavMeshAgent agent = wrapper.GetComponent<UnityEngine.AI.NavMeshAgent>();
@@ -87,7 +87,7 @@ namespace EraImperial.AdvancedUnits.Tests.Visual
             Assert.That(new SerializedObject(wrapper.GetComponent("AdvancedUnitDeathEffect")).FindProperty("deathPrefab").objectReferenceValue, Is.EqualTo(Load<GameObject>(DeathPath)));
 
             bool hasAttackHandler = wrapper.GetComponents<MonoBehaviour>().Any(m => m.GetType().GetInterfaces().Any(i => i.Name == "IAttackHandler"));
-            Assert.That(hasAttackHandler, Is.False, "ataque corpo a corpo segue o behavior tree padrao");
+            Assert.That(hasAttackHandler, Is.True, "ataque corpo a corpo usa o handler ligado ao behavior tree");
         }
 
         [Test]
@@ -268,7 +268,8 @@ namespace EraImperial.AdvancedUnits.Tests.Visual
             PaladinEraTier ancient = contract.tiers[0];
             Assert.That(so.FindProperty("healthpoints").intValue, Is.EqualTo(ancient.healthpoints));
             Assert.That(so.FindProperty("attackDamage").intValue, Is.EqualTo(ancient.attackDamage));
-            Assert.That(so.FindProperty("attackRate").floatValue, Is.EqualTo(ancient.attackCooldown).Within(0.001f));
+            // Este asmdef de testes nao referencia Assembly-CSharp; o contrato publico do BT e o polling de 0,25 s.
+            Assert.That(so.FindProperty("attackRate").floatValue, Is.EqualTo(0.25f).Within(0.001f));
         }
 
         [Test]

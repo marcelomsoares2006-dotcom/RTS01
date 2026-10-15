@@ -31,6 +31,7 @@ public class Unit
     protected UnitData _data;
     protected Transform _transform;
     protected int _currentHealth;
+    protected int _maxHealth;
     protected int _level;
     protected bool _levelMaxedOut;
     protected UnitLevelUpData _levelUpData;
@@ -48,6 +49,7 @@ public class Unit
         _uid = System.Guid.NewGuid().ToString();
         _data = data;
         _currentHealth = data.healthpoints;
+        _maxHealth = data.healthpoints;
         _level = 1;
         _levelMaxedOut = false;
         _production = production.ToDictionary(rv => rv.code, rv => rv.amount);
@@ -117,7 +119,14 @@ public class Unit
     public void SetEraStats(int healthPoints, int attackDamage, float attackRange)
     {
         if (healthPoints > 0)
-            _currentHealth = Mathf.Min(_currentHealth, healthPoints);
+        {
+            int previousMaxHealth = _maxHealth;
+            bool wasAtMaximum = _currentHealth >= previousMaxHealth;
+            _maxHealth = healthPoints;
+            _currentHealth = wasAtMaximum
+                ? healthPoints
+                : Mathf.Min(_currentHealth, healthPoints);
+        }
         _attackDamage = Mathf.Max(0, attackDamage);
         _attackRange = Mathf.Max(0f, attackRange);
         _levelUpData = _GetLevelUpData();
@@ -282,7 +291,7 @@ public class Unit
     public string Code { get => _data.code; }
     public Transform Transform { get => _transform; }
     public int HP { get => _currentHealth; set => _currentHealth = value; }
-    public int MaxHP { get => _data.healthpoints; }
+    public int MaxHP { get => _maxHealth; }
     public int Level { get => _level; set { _level = value; } }
     public bool LevelMaxedOut { get => _levelMaxedOut; }
     public UnitLevelUpData LevelUpData { get => _levelUpData; }

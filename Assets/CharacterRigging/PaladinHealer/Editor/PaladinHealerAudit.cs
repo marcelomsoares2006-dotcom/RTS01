@@ -561,7 +561,7 @@ public static class PaladinHealerAudit
         Check(data != null && data.code == "paladin_healer" && data.prefab == wrapper, "CharacterData 'paladin_healer' referencia o wrapper");
         var ancient = tiers[0];
         Check(data != null && data.healthpoints == ancient.healthpoints && data.attackDamage == ancient.attackDamage && Mathf.Approximately(data.attackRange, ancient.attackRange) &&
-              Mathf.Approximately(data.attackRate, ancient.attackCooldown), "CharacterData com os valores da era Ancient do contrato");
+              Mathf.Approximately(data.attackRate, AdvancedUnitDataBridge.AttackPollSeconds), "CharacterData com os valores da era Ancient e polling do behavior tree; cooldown real fica no controlador");
         var catalog = Resources.LoadAll<CharacterData>("ScriptableObjects/Units/Characters");
         Check(catalog.Any(c => c.code == "paladin_healer"), "Catalogo Resources carrega 'paladin_healer' (" + catalog.Length + " personagens)");
         var codes = catalog.Select(c => c.code).ToList();

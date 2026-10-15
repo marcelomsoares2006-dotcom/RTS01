@@ -1,5 +1,6 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider))]
@@ -87,6 +88,16 @@ public class UnitManager : MonoBehaviour
     public void Attack(Transform target)
     {
         if (target == null || Unit == null || !Unit.IsAlive) return;
+        IAttackHandler advancedHandler = GetComponents<MonoBehaviour>().OfType<IAttackHandler>().FirstOrDefault();
+        if (advancedHandler == null)
+            advancedHandler = GetComponentsInChildren<MonoBehaviour>(true).OfType<IAttackHandler>().FirstOrDefault();
+        if (advancedHandler == null)
+            advancedHandler = GetComponentsInParent<MonoBehaviour>(true).OfType<IAttackHandler>().FirstOrDefault();
+        if (advancedHandler != null)
+        {
+            advancedHandler.TryHandleAttack(target);
+            return;
+        }
         UnitManager um = target.GetComponent<UnitManager>();
         if (um == null || um.Unit == null || !um.Unit.IsAlive || um.Unit.Owner == Unit.Owner)
             return;
@@ -110,7 +121,16 @@ public class UnitManager : MonoBehaviour
 
     public void TakeHit(int attackPoints)
     {
-        if (Unit == null || !Unit.IsAlive || attackPoints <= 0) return;
+        if (Unit == null || !Unit.IsAlive || attackPoints == 0) return;
+        if (attackPoints < 0)
+        {
+            // Negative impact is the established runtime signal for healing
+            // effects. Apply it directly because CombatDamageProfile is a
+            // damage-only resolver and would otherwise discard the pulse.
+            Unit.HP = Mathf.Min(Unit.MaxHP, Unit.HP - attackPoints);
+            UpdateHealthbar();
+            return;
+        }
         Unit.HP -= CombatDamageProfile.ResolveDamage(attackPoints, Unit.Armor);
         UpdateHealthbar();
         Building building = Unit as Building;

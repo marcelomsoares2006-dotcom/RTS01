@@ -403,13 +403,15 @@ public static class CatapultPlayModeCheck
             shotCamera.orthographicSize = size;
             shotCamera.transform.position = focus + new Vector3(0.3f, 0.2f, -1f).normalized * 40f;
             shotCamera.transform.rotation = Quaternion.LookRotation(focus - shotCamera.transform.position);
-            RenderTexture target = new RenderTexture(480, 360, 24);
-            Texture2D texture = new Texture2D(480, 360, TextureFormat.RGB24, false);
+            const int renderWidth = 1920;
+            const int renderHeight = 1440;
+            RenderTexture target = new RenderTexture(renderWidth, renderHeight, 24);
+            Texture2D texture = new Texture2D(renderWidth, renderHeight, TextureFormat.RGB24, false);
             RenderTexture previous = RenderTexture.active;
             shotCamera.targetTexture = target;
             shotCamera.Render();
             RenderTexture.active = target;
-            texture.ReadPixels(new Rect(0, 0, 480, 360), 0, 0);
+            texture.ReadPixels(new Rect(0, 0, renderWidth, renderHeight), 0, 0);
             RenderTexture.active = previous;
             shotCamera.targetTexture = null;
             int[] counts = new int[3];
@@ -422,7 +424,7 @@ public static class CatapultPlayModeCheck
             target.Release();
             UnityEngine.Object.DestroyImmediate(target);
             UnityEngine.Object.DestroyImmediate(texture);
-            int best = counts.Max() < 5 ? -1 : Array.IndexOf(counts, counts.Max());
+            int best = counts.Max() < 1 ? -1 : Array.IndexOf(counts, counts.Max());
             Record($"LOD em jogo, zoom ortografico {size:F0}: pixels LOD0/1/2 = {counts[0]}/{counts[1]}/{counts[2]} -> LOD{best}");
             seen.Add(best);
             yield return null;
