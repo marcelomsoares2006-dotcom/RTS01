@@ -47,6 +47,12 @@ public class GameManager : MonoBehaviour
         TechnologyNodeActioners.ResetMultipliers();
         canvasScaleFactor = canvas.scaleFactor;
 
+        // Initialize the deterministic economy before DataHandler restores
+        // saved players or operational buildings bind their production queues.
+        DataHandler.EconomyRuntime = new LegacyEconomyRuntimeAdapter();
+        for (int i = 0; i < gamePlayersParameters.players.Length; i++)
+            DataHandler.EconomyRuntime.GetOrCreatePlayer(i);
+
         DataHandler.LoadGameData();
         GetComponent<DayAndNightCycler>().enabled = gameGlobalParameters.enableDayAndNightCycle;
 

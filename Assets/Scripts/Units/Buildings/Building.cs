@@ -355,6 +355,7 @@ public class Building : Unit
         foreach (Transform vfx in _smokeVfx)
             VFXManager.instance.Unspawn(VfxType.Smoke, vfx);
         _smokeVfx.Clear();
+        BuildingProductionRuntimeDriver.Attach(this);
         if (_owner == GameManager.instance.gamePlayersParameters.myPlayerId)
         {
             if (!fromSavedData)
