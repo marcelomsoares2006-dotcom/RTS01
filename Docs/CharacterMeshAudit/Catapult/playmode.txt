@@ -1,4 +1,4 @@
-Unity 6000.6.3f1 - 2026-10-06 15:51
+Unity 6000.6.3f1 - 2026-10-14 22:03
 PASS Map1 encontrado
 Partida nova em Map1 iniciada
 PASS Globals.CHARACTER_DATA contem 'catapult'
@@ -26,19 +26,19 @@ Cluster: alvo direto a 14,0 m; vizinhos inimigos a 1,50 / 2,40 / 5,50 m; aliado 
 PASS Geometria do teste: 2 inimigos dentro do raio (queda), 1 fora, 1 aliado dentro
 PASS Dentro do alcance: a catapulta inicia o disparo (animacao Fire)
 PASS Sem dano nem projetil enquanto o braco ainda sobe (dano nao e instantaneo)
-Pedra saiu 0,42 s depois do inicio (releaseDelay 0,40 s); socket em (37.44, 32.65, 46.20) (inicio (37.44, 31.17, 44.57))
+Pedra saiu 0,41 s depois do inicio (releaseDelay 0,40 s); socket em (37.44, 32.64, 45.79) (inicio (37.44, 31.17, 44.57))
 PASS Pedra sai no instante configurado (releaseDelay)
-PASS Na saida o ProjectileSpawn acompanhou o braco: altura 1,17 -> 2,65 m
+PASS Na saida o ProjectileSpawn acompanhou o braco: altura 1,17 -> 2,64 m
 PASS Animator em Fire na saida da pedra
 PASS Projetil CatapultBoulder em voo (AdvancedProjectile adicionado em runtime ao prefab sem scripts)
 PASS O projetil nasce no socket ProjectileSpawn (na concha)
 PASS Efeito de disparo (evento CatapultRelease do clipe) instanciado
 PASS Efeito de disparo (poeira/fumaca) no ProjectileSpawn, com particulas ativas
 Captura playmode-fire: pixels magenta = 0
-Voo: 53 amostras em 1,02 s; apice 6,7 m acima da reta origem-alvo; indice do apice 20
+Voo: 29 amostras em 1,04 s; apice 6,6 m acima da reta origem-alvo; indice do apice 10
 PASS Projetil balistico em arco: sobe, passa por um apice e desce (apice > 4 m acima da reta)
 PASS Altura monotonicamente crescente ate o apice e decrescente depois
-PASS Projetil termina perto do alvo (erro horizontal 0,05 m)
+PASS Projetil termina perto do alvo (erro horizontal 0,30 m)
 PASS Efeito de impacto instanciado no ponto de impacto
 Captura playmode-impact-flash: pixels magenta = 0
 PASS Efeito de impacto com particulas ativas (poeira, fragmentos, flash)
@@ -59,10 +59,10 @@ PASS Nenhum projetil restante
 PASS Dano recebido aciona o trigger Damaged e o estado Hit
 PASS Destino de caminhada no NavMesh
 PASS Comando de movimento aceito
-Movimento: 3,8 m em 2,5 s; velocidade do agente 2,50 m/s; parametro Speed 2,48
-PASS Catapulta lenta: andou 3,8 m, Speed 2,48 (agente com velocidade maxima 2,5)
+Movimento: 3,8 m em 2,5 s; velocidade do agente 2,50 m/s; parametro Speed 2,47
+PASS Catapulta lenta: andou 3,8 m, Speed 2,47 (agente com velocidade maxima 2,5)
 PASS Animator em Move
-PASS As rodas giram durante o movimento (38,8 graus em 0,12 s)
+PASS As rodas giram durante o movimento (44,9 graus em 0,12 s)
 Captura playmode-move: pixels magenta = 0
 PASS Parada: Speed volta a ~0
 PASS Era Classical: vida 80, dano 60, alcance 22 (contrato: 80/60/22)
@@ -75,9 +75,9 @@ PASS O behavior tree (UnitManager.Attack -> IAttackHandler) conduziu um disparo 
 PASS Dano do disparo do BT = 45
 PASS LODGroup presente na unidade em jogo
 PASS 3 renderers de LOD na unidade em jogo
-LOD em jogo, zoom ortografico 8: pixels LOD0/1/2 = 521/0/0 -> LOD0
-LOD em jogo, zoom ortografico 18: pixels LOD0/1/2 = 0/84/0 -> LOD1
-LOD em jogo, zoom ortografico 26: pixels LOD0/1/2 = 0/0/38 -> LOD2
+LOD em jogo, zoom ortografico 8: pixels LOD0/1/2 = 732/0/0 -> LOD0
+LOD em jogo, zoom ortografico 18: pixels LOD0/1/2 = 0/125/0 -> LOD1
+LOD em jogo, zoom ortografico 26: pixels LOD0/1/2 = 0/0/56 -> LOD2
 PASS Troca de LOD pelo zoom da camera do jogo: 8 > LOD0, 18 > LOD1, 26 > LOD2
 PASS A unidade e removida ao zerar a vida
 PASS AdvancedUnitDeathEffect instanciou o prefab de morte

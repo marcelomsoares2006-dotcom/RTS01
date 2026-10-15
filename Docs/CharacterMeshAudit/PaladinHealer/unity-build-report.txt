@@ -1,4 +1,4 @@
-PaladinHealer - Unity build report (2026-10-06 15:55)
+PaladinHealer - Unity build report (2026-10-14 21:59)
 - Mapeamento humanoide automatico coincide com a tabela esperada (22 ossos).
 - Clip Idle: 2,533s, loop=True, humanoide=True
 - Clip Walk: 1,042s, loop=True, humanoide=True
