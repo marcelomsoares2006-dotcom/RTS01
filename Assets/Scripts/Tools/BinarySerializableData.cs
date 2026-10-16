@@ -18,6 +18,12 @@ public class BinarySerializableData
         typeof(GamePlayerData),
         typeof(BuildingProductionQueueSnapshot),
         typeof(BuildingProductionOrderSnapshot),
+        // Runtime replay/progression data must be part of the save contract.
+        // These types are [Serializable] and contain only serializable fields;
+        // omitting them silently dropped era commands and snapshots on load.
+        typeof(ConstructionReplayCommand),
+        typeof(ConstructionReplaySnapshot),
+        typeof(List<ConstructionReplayCommand>),
     };
 
     public Dictionary<string, object> properties;

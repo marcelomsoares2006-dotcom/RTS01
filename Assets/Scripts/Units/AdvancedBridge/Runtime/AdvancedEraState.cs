@@ -3,9 +3,9 @@ using EraImperial.Units.Advanced;
 using UnityEngine;
 
 /// <summary>
-/// Era atual da partida para unidades avancadas e visuais de ambiente/construcoes. A arvore tecnologica
-/// ainda nao tem progressao de era propria; este estado e o ponto unico a ser ligado a ela. Padrao: Ancient.
-/// Teste em Play Mode: comando do console de debug "set_advanced_era <0..3>".
+/// Era atual da partida para unidades avancadas e visuais de ambiente/construcoes.
+/// A progressao e aplicada pelo replay apos a politica da arvore tecnologica;
+/// partidas novas iniciam em Ancient.
 /// </summary>
 public static class AdvancedEraState
 {
