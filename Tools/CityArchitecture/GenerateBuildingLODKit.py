@@ -16,11 +16,15 @@ import sys
 from pathlib import Path
 
 import bpy
+from mathutils import Vector
 
 
 ROOT = Path(__file__).resolve().parents[2]
 SOURCE = ROOT / "Assets" / "CityArchitecture" / "Generated" / "EraBuildingKit.blend"
-OUTPUT = ROOT / "Assets" / "CityArchitecture" / "Generated" / "LOD"
+_output_value = os.environ.get("ERA_IMPERIAL_LOD_OUTPUT", "Assets/CityArchitecture/Generated/LOD")
+OUTPUT = Path(_output_value)
+if not OUTPUT.is_absolute():
+    OUTPUT = ROOT / OUTPUT
 
 BUILDINGS = {
     "House_Medieval": (0.55, 0.30),
@@ -73,7 +77,38 @@ def duplicate_hierarchy(root, collection):
         if source.parent in mapping:
             copy.parent = mapping[source.parent]
             copy.matrix_parent_inverse = source.matrix_parent_inverse.copy()
-    return mapping[root], list(mapping.values())
+    clone_root = mapping[root]
+    clone_objects = list(mapping.values())
+
+    # O kit-fonte mantém quatro prédios afastados do ponto de origem comum.
+    # Criamos uma raiz neutra por prédio e centralizamos a geometria no piso,
+    # sem alterar o .blend de origem. Isso mantém LOD0/LOD1/LOD2 alinhados.
+    bounds_min = Vector((float("inf"), float("inf"), float("inf")))
+    bounds_max = Vector((float("-inf"), float("-inf"), float("-inf")))
+    has_mesh = False
+    for obj in clone_objects:
+        if obj.type != "MESH" or obj.data is None:
+            continue
+        has_mesh = True
+        for corner in obj.bound_box:
+            point = obj.matrix_world @ Vector(corner)
+            bounds_min.x = min(bounds_min.x, point.x)
+            bounds_min.y = min(bounds_min.y, point.y)
+            bounds_min.z = min(bounds_min.z, point.z)
+            bounds_max.x = max(bounds_max.x, point.x)
+            bounds_max.y = max(bounds_max.y, point.y)
+            bounds_max.z = max(bounds_max.z, point.z)
+    if not has_mesh:
+        raise RuntimeError(f"Nenhuma malha encontrada para {root.name}")
+
+    visual_center = Vector(((bounds_min.x + bounds_max.x) * 0.5, bounds_min.y, (bounds_min.z + bounds_max.z) * 0.5))
+    export_root = bpy.data.objects.new(f"{root.name}_ExportRoot", None)
+    collection.objects.link(export_root)
+    root_world = clone_root.matrix_world.copy()
+    clone_root.parent = export_root
+    clone_root.matrix_world = root_world
+    clone_root.matrix_world.translation -= visual_center
+    return export_root, clone_objects
 
 
 def add_decimate(mesh_objects, ratio: float):
