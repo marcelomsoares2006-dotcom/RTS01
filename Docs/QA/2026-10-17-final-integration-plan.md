@@ -95,3 +95,7 @@ PlayMode harness:
 ```
 
 Ao avaliar PlayMode, o log deve ser inspecionado também quanto a `Exception`/`Error`; o marcador de cadeia não substitui essa verificação.
+
+## Addendum da rodada seguinte
+
+O harness foi corrigido para criar explicitamente um `EventManager` na cena vazia antes de entrar em PlayMode, eliminando a causa conhecida do `NullReferenceException` do `DebugConsole`. A validação geral posterior passou novamente em EditMode, PlayMode e build Windows, e o standalone passou 4/4. Uma execução direta posterior do harness voltou a ser bloqueada antes da execução pelo IPC intermitente do `LicenseClient-User`; portanto, a aceitação limpa do harness integrado permanece pendente de uma execução direta sem esse bloqueio. O código do harness está corrigido e compilado pela validação geral.
