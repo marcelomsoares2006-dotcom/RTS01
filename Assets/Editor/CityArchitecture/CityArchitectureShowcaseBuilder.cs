@@ -75,6 +75,12 @@ public static class CityArchitectureShowcaseBuilder
         Debug.Log("Showcase capturado em " + output);
     }
 
+    public static void BuildAndCapture()
+    {
+        Build();
+        Capture();
+    }
+
     private static void SelectEra(Transform root, int era)
     {
         for (int i = 0; i < root.childCount; i++)
