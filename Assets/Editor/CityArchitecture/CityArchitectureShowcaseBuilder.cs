@@ -50,7 +50,14 @@ public static class CityArchitectureShowcaseBuilder
         // Candidatos visuais reversíveis: não substituem prefabs de produção.
         var showcaseMaterials = EnsureShowcaseMaterials();
         AddTownCenterVisualCandidate(scene, showcaseMaterials);
-        string[] buildingCandidates = { "House_Medieval", "Barracks_Medieval" };
+        string[] buildingCandidates = { "House_Medieval", "Barracks_Medieval", "Market_Classical", "Temple_Imperial" };
+        var candidatePositions = new[]
+        {
+            new Vector3(4f, 0f, 17f),
+            new Vector3(12f, 0f, 17f),
+            new Vector3(17f, 0f, 6f),
+            new Vector3(19f, 0f, 15f)
+        };
         for (int i = 0; i < buildingCandidates.Length; i++)
         {
             string path = "Assets/CityArchitecture/Prefabs/EraBuildings/" + buildingCandidates[i] + ".prefab";
@@ -58,10 +65,11 @@ public static class CityArchitectureShowcaseBuilder
             if (prefab == null) throw new System.IO.FileNotFoundException("Prefab candidato ausente", path);
             GameObject instance = (GameObject)PrefabUtility.InstantiatePrefab(prefab, scene);
             instance.name = buildingCandidates[i] + "_Candidate_" + i;
-            instance.transform.position = new Vector3(5f + i * 8f, 0f, 17f);
+            instance.transform.position = candidatePositions[i];
             instance.transform.localScale = Vector3.one * 0.18f;
             ApplyShowcaseMaterials(instance, showcaseMaterials);
         }
+        AddShowcaseRoads(scene, showcaseMaterials);
 
         EditorSceneManager.SaveScene(scene, ScenePath);
         AssetDatabase.SaveAssets();
@@ -136,6 +144,47 @@ public static class CityArchitectureShowcaseBuilder
     {
         Build();
         Capture();
+    }
+
+    public static void BuildAndCaptureViews()
+    {
+        Build();
+        EditorSceneManager.OpenScene(ScenePath, OpenSceneMode.Single);
+        var camera = Object.FindFirstObjectByType<Camera>();
+        if (camera == null) throw new System.InvalidOperationException("Câmera showcase ausente.");
+        CaptureView(camera, new Vector3(31f, 30f, -36f), new Vector3(10f, 2f, 9f), "TestResults/CityArchitectureShowcase_Overview.png");
+        CaptureView(camera, new Vector3(22f, 16f, -20f), new Vector3(10f, 2f, 9f), "TestResults/CityArchitectureShowcase_Mid.png");
+        CaptureView(camera, new Vector3(15f, 10f, -4f), new Vector3(7f, 2f, 7f), "TestResults/CityArchitectureShowcase_Close.png");
+        Debug.Log("SHOWCASE_MULTI_VIEW_CAPTURED=3");
+    }
+
+    private static void CaptureView(Camera camera, Vector3 position, Vector3 target, string relativeOutput)
+    {
+        camera.transform.position = position;
+        camera.transform.LookAt(target);
+        string output = Path.GetFullPath(relativeOutput);
+        Directory.CreateDirectory(Path.GetDirectoryName(output));
+        var texture = new RenderTexture(1920, 1080, 24, RenderTextureFormat.ARGB32);
+        camera.targetTexture = texture;
+        camera.Render();
+        RenderTexture.active = texture;
+        var image = new Texture2D(1920, 1080, TextureFormat.RGB24, false);
+        image.ReadPixels(new Rect(0, 0, 1920, 1080), 0, 0);
+        image.Apply();
+        File.WriteAllBytes(output, image.EncodeToPNG());
+        camera.targetTexture = null;
+        RenderTexture.active = null;
+        Object.DestroyImmediate(image);
+        Object.DestroyImmediate(texture);
+        Debug.Log("Showcase view capturada em " + output);
+    }
+
+    private static void AddShowcaseRoads(Scene scene, Dictionary<string, Material> materials)
+    {
+        var roads = new GameObject("Showcase_Roads");
+        SceneManager.MoveGameObjectToScene(roads, scene);
+        AddShowcaseBlock(roads.transform, new Vector3(10f, 0.015f, 9f), new Vector3(22f, 0.03f, 1.4f), materials["Stone"]);
+        AddShowcaseBlock(roads.transform, new Vector3(10f, 0.02f, 9f), new Vector3(1.4f, 0.04f, 20f), materials["Stone"]);
     }
 
     private static Dictionary<string, Material> EnsureShowcaseMaterials()
