@@ -76,7 +76,7 @@ public static class CityArchitectureShowcaseBuilder
             // Tudo abaixo é uma cópia visual reversível. Nenhum prefab de produção é salvo.
             var showcaseMaterials = EnsureShowcaseMaterials();
             AddTownCenterVisualCandidate(scene, showcaseMaterials);
-            AddCityDensityVolumes(scene, showcaseMaterials, visualSources);
+            AddCityDensityVolumes(scene, showcaseMaterials);
             AddShowcaseRoads(scene, showcaseMaterials);
 
             EditorSceneManager.SaveScene(scene, ScenePath);
@@ -257,7 +257,7 @@ public static class CityArchitectureShowcaseBuilder
         Debug.Log("SHOWCASE_MULTI_VIEW_CAPTURED=4");
     }
 
-    private static void AddCityDensityVolumes(Scene scene, Dictionary<string, Material> materials, Dictionary<string, GameObject> visualSources)
+    private static void AddCityDensityVolumes(Scene scene, Dictionary<string, Material> materials)
     {
         var densityRoot = new GameObject("CityDensity_VisualVolumes");
         SceneManager.MoveGameObjectToScene(densityRoot, scene);
@@ -280,18 +280,191 @@ public static class CityArchitectureShowcaseBuilder
                 0f,
                 (row - offset) * DensityGridSpacing);
 
-            string archetype = archetypes[i % archetypes.Length];
-            string path = "Assets/CityArchitecture/Prefabs/EraBuildings/" + archetype + ".prefab";
-            GameObject instance = InstantiateVisualOnly(path, scene, visualSources);
-            instance.name = "CityDensity_VisualVolume_" + i.ToString("000") + "_" + archetype;
-            instance.transform.SetParent(densityRoot.transform, true);
-            instance.transform.rotation = Quaternion.Euler(0f, (i % 4) * 90f, 0f);
-            // Bounds e pouso são calculados somente na cópia visual da cena.
-            PositionShowcaseObject(instance, target, 0.28f);
-            ApplyShowcaseMaterials(instance, materials);
+            string archetype = GetShowcaseArchetype(column, row, archetypes);
+            bool hero = IsHeroShowcaseCell(column, row);
+            float scale = hero ? 1.08f : 0.82f;
+            BuildProceduralCityVolume(densityRoot.transform, archetype, target,
+                hero ? Quaternion.identity : Quaternion.Euler(0f, (i % 4) * 90f, 0f),
+                scale, i, hero, materials);
         }
 
-        Debug.Log("CITY_DENSITY_VISUAL_VOLUMES=" + DensityVolumeCount);
+        Debug.Log("CITY_DENSITY_VISUAL_VOLUMES=" + DensityVolumeCount + " PROCEDURAL_FACADES=4");
+    }
+
+    private static string GetShowcaseArchetype(int column, int row, string[] fallbackArchetypes)
+    {
+        if (column == 3 && row == 5) return "House_Medieval";
+        if (column == 6 && row == 5) return "Barracks_Medieval";
+        if (column == 5 && row == 3) return "Market_Classical";
+        if (column == 5 && row == 7) return "Temple_Imperial";
+        return fallbackArchetypes[(row * DensityGridSide + column) % fallbackArchetypes.Length];
+    }
+
+    private static bool IsHeroShowcaseCell(int column, int row)
+    {
+        return (column == 3 && row == 5) ||
+            (column == 6 && row == 5) ||
+            (column == 5 && row == 3) ||
+            (column == 5 && row == 7);
+    }
+
+    private static void BuildProceduralCityVolume(Transform densityRoot, string archetype, Vector3 target,
+        Quaternion rotation, float scale, int index, bool hero, Dictionary<string, Material> materials)
+    {
+        var volume = new GameObject("CityDensity_VisualVolume_" + index.ToString("000") + "_" + archetype);
+        volume.transform.SetParent(densityRoot, false);
+        volume.transform.localPosition = target;
+        volume.transform.localRotation = rotation;
+        volume.transform.localScale = Vector3.one * scale;
+
+        var architecture = new GameObject(archetype + "_ContinuousFacade");
+        architecture.transform.SetParent(volume.transform, false);
+
+        float bodyWidth = archetype == "Temple_Imperial" ? 5.00f : 4.80f;
+        float bodyDepth = archetype == "Barracks_Medieval" ? 4.20f : 4.00f;
+        Material bodyMaterial = archetype == "Temple_Imperial" ? materials["Stone"] : materials["Plaster"];
+        AddShowcaseBlock(architecture.transform, new Vector3(0f, 0.18f, 0f),
+            new Vector3(bodyWidth + 0.36f, 0.36f, bodyDepth + 0.36f), materials["Stone"], archetype + "_Plinth");
+        AddShowcaseBlock(architecture.transform, new Vector3(0f, 1.55f, 0f),
+            new Vector3(bodyWidth, 2.55f, bodyDepth), bodyMaterial, archetype + "_ContinuousBody");
+        AddShowcaseBlock(architecture.transform, new Vector3(0f, 2.86f, 0f),
+            new Vector3(bodyWidth + 0.12f, 0.16f, bodyDepth + 0.12f), materials["Trim"], archetype + "_EaveBand");
+        AddShowcaseGableRoof(architecture.transform, new Vector3(0f, 0f, 0f),
+            bodyWidth + 0.42f, bodyDepth + 0.38f, 2.92f,
+            archetype == "Temple_Imperial" ? 4.28f : 3.82f, materials["Roof"], archetype + "_RecognizableRoof");
+
+        AddShowcaseDoor(architecture.transform, new Vector3(0f, 0.98f, -bodyDepth * 0.5f - 0.07f),
+            archetype == "Temple_Imperial" ? 1.10f : 0.86f, 1.62f, materials, archetype + "_FrontDoor");
+        AddShowcaseWindow(architecture.transform, new Vector3(-1.35f, 1.82f, -bodyDepth * 0.5f - 0.08f),
+            0.58f, 0.72f, materials, archetype + "_Window_Left", !hero);
+        AddShowcaseWindow(architecture.transform, new Vector3(1.35f, 1.82f, -bodyDepth * 0.5f - 0.08f),
+            0.58f, 0.72f, materials, archetype + "_Window_Right", !hero);
+
+        if (archetype == "House_Medieval")
+            BuildHouseFacade(architecture.transform, hero, bodyDepth, materials);
+        else if (archetype == "Barracks_Medieval")
+            BuildBarracksFacade(architecture.transform, hero, bodyDepth, materials);
+        else if (archetype == "Market_Classical")
+            BuildMarketFacade(architecture.transform, hero, bodyDepth, materials);
+        else
+            BuildTempleFacade(architecture.transform, hero, bodyDepth, materials);
+    }
+
+    private static void BuildHouseFacade(Transform parent, bool detailed, float bodyDepth, Dictionary<string, Material> materials)
+    {
+        if (detailed)
+        {
+            AddShowcaseWindow(parent, new Vector3(-1.25f, 2.25f, -bodyDepth * 0.5f - 0.09f),
+                0.48f, 0.58f, materials, "House_Medieval_AtticWindow", true);
+            AddShowcaseBlock(parent, new Vector3(0f, 3.48f, -0.02f), new Vector3(0.18f, 0.78f, 0.18f),
+                materials["Stone"], "House_Medieval_Chimney");
+            AddShowcaseBlock(parent, new Vector3(-1.86f, 0.42f, -2.18f), new Vector3(0.46f, 0.68f, 0.46f),
+                materials["Wood"], "UrbanProp_House_Barrel");
+            AddShowcaseCylinder(parent, new Vector3(1.82f, 0.35f, -2.15f), 0.42f, 0.70f,
+                materials["Wood"], "UrbanProp_House_Pot");
+        }
+    }
+
+    private static void BuildBarracksFacade(Transform parent, bool detailed, float bodyDepth, Dictionary<string, Material> materials)
+    {
+        AddShowcaseBlock(parent, new Vector3(0f, 2.82f, -bodyDepth * 0.5f - 0.12f),
+            new Vector3(2.20f, 0.20f, 0.22f), materials["Wood"], "Barracks_Medieval_FrontBeam");
+        if (detailed)
+        {
+            AddShowcaseWindow(parent, new Vector3(-1.65f, 1.82f, -bodyDepth * 0.5f - 0.09f),
+                0.46f, 0.68f, materials, "Barracks_Medieval_Slit_Left", false);
+            AddShowcaseWindow(parent, new Vector3(1.65f, 1.82f, -bodyDepth * 0.5f - 0.09f),
+                0.46f, 0.68f, materials, "Barracks_Medieval_Slit_Right", false);
+            AddShowcaseBlock(parent, new Vector3(-1.74f, 0.56f, -2.28f), new Vector3(0.14f, 1.10f, 0.14f),
+                materials["Wood"], "UrbanProp_Barracks_Spear");
+            AddShowcaseBlock(parent, new Vector3(-1.46f, 0.38f, -2.28f), new Vector3(0.72f, 0.18f, 0.18f),
+                materials["Trim"], "UrbanProp_Barracks_Rack");
+            AddShowcaseCylinder(parent, new Vector3(1.72f, 0.35f, -2.18f), 0.46f, 0.72f,
+                materials["Wood"], "UrbanProp_Barracks_Barrel");
+            AddShowcaseBlock(parent, new Vector3(0.66f, 3.66f, 0f), new Vector3(1.05f, 0.62f, 0.06f),
+                materials["Trim"], "UrbanProp_Barracks_Banner");
+        }
+    }
+
+    private static void BuildMarketFacade(Transform parent, bool detailed, float bodyDepth, Dictionary<string, Material> materials)
+    {
+        float front = -bodyDepth * 0.5f - 0.34f;
+        AddShowcaseBlock(parent, new Vector3(0f, 1.72f, front), new Vector3(3.90f, 0.16f, 0.72f),
+            materials["Wood"], "Market_Classical_Awning");
+        AddShowcaseBlock(parent, new Vector3(-1.65f, 0.92f, front), new Vector3(0.14f, 1.70f, 0.14f),
+            materials["Wood"], "Market_Classical_AwningPost_L");
+        AddShowcaseBlock(parent, new Vector3(1.65f, 0.92f, front), new Vector3(0.14f, 1.70f, 0.14f),
+            materials["Wood"], "Market_Classical_AwningPost_R");
+        AddShowcaseBlock(parent, new Vector3(0f, 0.58f, front - 0.10f), new Vector3(3.82f, 0.56f, 0.54f),
+            materials["Wood"], "Market_Classical_StallCounter");
+        if (detailed)
+        {
+            AddShowcaseBlock(parent, new Vector3(-1.25f, 0.98f, front - 0.42f), new Vector3(0.58f, 0.52f, 0.46f),
+                materials["Trim"], "UrbanProp_Market_Crate_L");
+            AddShowcaseBlock(parent, new Vector3(1.20f, 0.98f, front - 0.42f), new Vector3(0.62f, 0.46f, 0.50f),
+                materials["Trim"], "UrbanProp_Market_Crate_R");
+            AddShowcaseCylinder(parent, new Vector3(0f, 1.02f, front - 0.44f), 0.46f, 0.42f,
+                materials["Roof"], "UrbanProp_Market_Basket");
+            AddShowcaseBlock(parent, new Vector3(0f, 3.42f, 0f), new Vector3(0.16f, 0.82f, 0.16f),
+                materials["Stone"], "Market_Classical_Chimney");
+        }
+    }
+
+    private static void BuildTempleFacade(Transform parent, bool detailed, float bodyDepth, Dictionary<string, Material> materials)
+    {
+        float front = -bodyDepth * 0.5f - 0.22f;
+        AddShowcaseCylinder(parent, new Vector3(-1.42f, 1.34f, front), 0.34f, 2.60f,
+            materials["Stone"], "Temple_Imperial_Column_L");
+        AddShowcaseCylinder(parent, new Vector3(1.42f, 1.34f, front), 0.34f, 2.60f,
+            materials["Stone"], "Temple_Imperial_Column_R");
+        AddShowcaseBlock(parent, new Vector3(0f, 2.70f, front), new Vector3(3.60f, 0.28f, 0.38f),
+            materials["Trim"], "Temple_Imperial_Entablature");
+        AddShowcaseBlock(parent, new Vector3(0f, 3.16f, front), new Vector3(2.72f, 0.56f, 0.26f),
+            materials["Stone"], "Temple_Imperial_Pediment");
+        if (detailed)
+        {
+            AddShowcaseWindow(parent, new Vector3(-1.46f, 2.12f, -bodyDepth * 0.5f - 0.12f),
+                0.42f, 0.70f, materials, "Temple_Imperial_Window_L", true);
+            AddShowcaseWindow(parent, new Vector3(1.46f, 2.12f, -bodyDepth * 0.5f - 0.12f),
+                0.42f, 0.70f, materials, "Temple_Imperial_Window_R", true);
+            AddShowcaseCylinder(parent, new Vector3(-2.00f, 0.34f, -2.20f), 0.42f, 0.62f,
+                materials["Trim"], "UrbanProp_Temple_Brazier_L");
+            AddShowcaseCylinder(parent, new Vector3(2.00f, 0.34f, -2.20f), 0.42f, 0.62f,
+                materials["Trim"], "UrbanProp_Temple_Brazier_R");
+            AddShowcaseBlock(parent, new Vector3(0f, 4.18f, 0f), new Vector3(0.16f, 0.80f, 0.16f),
+                materials["Trim"], "UrbanProp_Temple_Finial");
+        }
+    }
+
+    private static void AddShowcaseDoor(Transform parent, Vector3 localPosition, float width, float height,
+        Dictionary<string, Material> materials, string objectName)
+    {
+        AddShowcaseBlock(parent, localPosition, new Vector3(width, height, 0.12f), materials["Wood"], objectName);
+        AddShowcaseBlock(parent, localPosition + new Vector3(-width * 0.62f, 0f, 0f),
+            new Vector3(0.12f, height + 0.18f, 0.20f), materials["Trim"], objectName + "_Frame_L");
+        AddShowcaseBlock(parent, localPosition + new Vector3(width * 0.62f, 0f, 0f),
+            new Vector3(0.12f, height + 0.18f, 0.20f), materials["Trim"], objectName + "_Frame_R");
+        AddShowcaseBlock(parent, localPosition + new Vector3(0f, height * 0.58f, 0f),
+            new Vector3(width + 0.26f, 0.12f, 0.20f), materials["Trim"], objectName + "_Lintel");
+    }
+
+    private static void AddShowcaseWindow(Transform parent, Vector3 localPosition, float width, float height,
+        Dictionary<string, Material> materials, string objectName, bool crossbar)
+    {
+        AddShowcaseBlock(parent, localPosition, new Vector3(width, height, 0.08f), materials["Roof"], objectName + "_Glass");
+        AddShowcaseBlock(parent, localPosition + new Vector3(0f, height * 0.58f, 0f),
+            new Vector3(width + 0.18f, 0.10f, 0.14f), materials["Trim"], objectName + "_Frame_Top");
+        AddShowcaseBlock(parent, localPosition + new Vector3(0f, -height * 0.58f, 0f),
+            new Vector3(width + 0.18f, 0.10f, 0.14f), materials["Trim"], objectName + "_Frame_Bottom");
+        AddShowcaseBlock(parent, localPosition + new Vector3(-width * 0.58f, 0f, 0f),
+            new Vector3(0.10f, height + 0.18f, 0.14f), materials["Trim"], objectName + "_Frame_L");
+        AddShowcaseBlock(parent, localPosition + new Vector3(width * 0.58f, 0f, 0f),
+            new Vector3(0.10f, height + 0.18f, 0.14f), materials["Trim"], objectName + "_Frame_R");
+        if (crossbar)
+        {
+            AddShowcaseBlock(parent, localPosition, new Vector3(0.08f, height, 0.16f), materials["Trim"], objectName + "_Mullion");
+            AddShowcaseBlock(parent, localPosition, new Vector3(width, 0.08f, 0.16f), materials["Trim"], objectName + "_Transom");
+        }
     }
 
     private static GameObject InstantiateVisualOnly(string prefabPath, Scene scene, Dictionary<string, GameObject> visualSources)
@@ -409,6 +582,7 @@ public static class CityArchitectureShowcaseBuilder
         var triangles = 0;
         var densityVolumes = 0;
         var props = 0;
+        var urbanProps = 0;
         var colliders = 0;
         var monoBehaviours = 0;
         Bounds sceneBounds = default;
@@ -421,6 +595,7 @@ public static class CityArchitectureShowcaseBuilder
                 gameObjects++;
                 if (transform.name.StartsWith("CityDensity_VisualVolume_")) densityVolumes++;
                 if (transform.name == "ShowcaseProp") props++;
+                if (transform.name.StartsWith("UrbanProp_")) urbanProps++;
             }
             foreach (var transform in root.GetComponentsInChildren<Transform>(true))
             {
@@ -474,6 +649,11 @@ public static class CityArchitectureShowcaseBuilder
             "Triângulos ativos estimados: " + triangles,
             "Materiais distintos: " + materials.Count,
             "Props cúbicos showcase: " + props,
+            "Props urbanos procedurais: " + urbanProps,
+            "Fachadas procedurais hero: House, Barracks, Market, Temple",
+            "Fachadas contínuas: corpo único + plinto + faixa de beiral por volume",
+            "Telhados reconhecíveis: 100 coberturas de duas águas procedurais",
+            "Portas/janelas: vãos frontais com molduras; hero com detalhamento adicional",
             "Colliders ativos: " + colliders,
             "MonoBehaviours ativos: " + monoBehaviours,
             "Bounds da cena: " + (hasSceneBounds ? sceneBounds.ToString() : "n/a"),
