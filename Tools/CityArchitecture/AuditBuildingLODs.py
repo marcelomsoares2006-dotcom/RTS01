@@ -86,6 +86,10 @@ def compare(base, lod):
         asz = Vector(a["bounds"]["size"])
         bsz = Vector(b["bounds"]["size"])
         delta = bc - ac
+        al = Vector(a["location"])
+        bl = Vector(b["location"])
+        pivot_delta = bl - al
+        pivot_error = float(pivot_delta.length)
         # Decimate may shrink bounds, but a translation of a fragment is not
         # explained by reduction. Use a conservative 1 cm threshold.
         center_error = float(delta.length)
@@ -93,6 +97,9 @@ def compare(base, lod):
                      "base_triangles": a["triangles"], "lod_triangles": b["triangles"],
                      "center_delta": [round(float(x), 6) for x in delta],
                      "center_error": round(center_error, 6),
+                     "pivot_delta": [round(float(x), 6) for x in pivot_delta],
+                     "pivot_error": round(pivot_error, 6),
+                     "pivot_aligned": pivot_error <= 0.00001,
                      "base_size": [round(float(x), 6) for x in asz],
                      "lod_size": [round(float(x), 6) for x in bsz]})
     return rows
@@ -116,7 +123,7 @@ def main():
     result = {
         "audit": "Era Imperial architectural LOD audit",
         "mode": "read-only Blender FBX import; no asset saved",
-        "thresholds": {"fragment_center_error_m": 0.01, "promotion": "forbidden when popping/displacement remains"},
+        "thresholds": {"fragment_center_error_m": 0.01, "pivot_error_m": 0.00001, "promotion": "forbidden when popping/displacement remains"},
         "test_root": str(TEST_ROOT),
         "buildings": buildings,
     }

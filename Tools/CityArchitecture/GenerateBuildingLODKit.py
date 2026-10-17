@@ -81,8 +81,10 @@ def duplicate_hierarchy(root, collection):
     clone_objects = list(mapping.values())
 
     # O kit-fonte mantém quatro prédios afastados do ponto de origem comum.
-    # Criamos uma raiz neutra por prédio e centralizamos a geometria no piso,
-    # sem alterar o .blend de origem. Isso mantém LOD0/LOD1/LOD2 alinhados.
+    # Centralizamos somente os vértices no espaço local de cada malha.
+    # Assim o visual fica no mesmo enquadramento do LOD0 sem traduzir os
+    # objetos: location/rotation/scale (os pivôs usados pelo Unity) permanecem
+    # idênticos entre LOD0/LOD1/LOD2.
     bounds_min = Vector((float("inf"), float("inf"), float("inf")))
     bounds_max = Vector((float("-inf"), float("-inf"), float("-inf")))
     has_mesh = False
@@ -104,10 +106,17 @@ def duplicate_hierarchy(root, collection):
     visual_center = Vector(((bounds_min.x + bounds_max.x) * 0.5, bounds_min.y, (bounds_min.z + bounds_max.z) * 0.5))
     export_root = bpy.data.objects.new(f"{root.name}_ExportRoot", None)
     collection.objects.link(export_root)
+    for obj in clone_objects:
+        if obj.type != "MESH" or obj.data is None:
+            continue
+        world_to_local = obj.matrix_world.inverted()
+        for vertex in obj.data.vertices:
+            world_position = obj.matrix_world @ vertex.co
+            vertex.co = world_to_local @ (world_position - visual_center)
+        obj.data.update()
     root_world = clone_root.matrix_world.copy()
     clone_root.parent = export_root
     clone_root.matrix_world = root_world
-    clone_root.matrix_world.translation -= visual_center
     return export_root, clone_objects
 
 

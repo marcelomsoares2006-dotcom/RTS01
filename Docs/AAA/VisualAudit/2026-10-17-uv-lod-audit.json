@@ -3,9 +3,10 @@
   "mode": "read-only Blender FBX import; no asset saved",
   "thresholds": {
     "fragment_center_error_m": 0.01,
+    "pivot_error_m": 1e-05,
     "promotion": "forbidden when popping/displacement remains"
   },
-  "test_root": "D:\\AI\\EraImperial-Lod-Tests\\2026-10-17-LOD_AlignedTest",
+  "test_root": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\TestResults\\LOD-Generation-Round4",
   "buildings": [
     {
       "building": "House_Medieval",
@@ -253,7 +254,7 @@
             ]
           },
           "isolated": {
-            "path": "D:\\AI\\EraImperial-Lod-Tests\\2026-10-17-LOD_AlignedTest\\House_Medieval_LOD1.fbx",
+            "path": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\TestResults\\LOD-Generation-Round4\\House_Medieval_LOD1.fbx",
             "exists": true,
             "objects": [
               {
@@ -261,23 +262,23 @@
                 "triangles": 70,
                 "bounds": {
                   "min": [
-                    -4.0,
-                    0.065751,
-                    -3.000001
+                    -17.963682,
+                    0.054949,
+                    -2.969115
                   ],
                   "max": [
-                    3.927366,
-                    3.955852,
-                    2.938229
+                    -10.036318,
+                    3.945051,
+                    2.969114
                   ],
                   "center": [
-                    -0.036317,
-                    2.010801,
-                    -0.030886
+                    -14.0,
+                    2.0,
+                    -1e-06
                   ],
                   "size": [
-                    7.927366,
-                    3.890101,
+                    7.927364,
+                    3.890102,
                     5.93823
                   ]
                 },
@@ -298,24 +299,24 @@
                 "triangles": 58,
                 "bounds": {
                   "min": [
-                    -1.0,
-                    0.019468,
-                    -3.147947
+                    -14.992474,
+                    0.009733,
+                    -3.148461
                   ],
                   "max": [
-                    0.984947,
-                    2.599999,
-                    -2.911026
+                    -13.007526,
+                    2.590265,
+                    -2.91154
                   ],
                   "center": [
-                    -0.007527,
-                    1.309734,
-                    -3.029486
+                    -14.0,
+                    1.299999,
+                    -3.03
                   ],
                   "size": [
                     1.984947,
                     2.580532,
-                    0.236921
+                    0.236922
                   ]
                 },
                 "location": [
@@ -335,24 +336,24 @@
                 "triangles": 58,
                 "bounds": {
                   "min": [
-                    -4.5,
-                    4.151722,
-                    -3.500001
+                    -18.480591,
+                    4.152585,
+                    -3.48483
                   ],
                   "max": [
-                    4.46118,
-                    4.846551,
-                    3.469656
+                    -9.51941,
+                    4.847415,
+                    3.484827
                   ],
                   "center": [
-                    -0.01941,
-                    4.499137,
-                    -0.015172
+                    -14.0,
+                    4.5,
+                    -1e-06
                   ],
                   "size": [
-                    8.96118,
-                    0.694829,
-                    6.969656
+                    8.961181,
+                    0.69483,
+                    6.969657
                   ]
                 },
                 "location": [
@@ -384,6 +385,13 @@
                 -0.030886
               ],
               "center_error": 0.048883,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 8.0,
                 4.000001,
@@ -406,6 +414,13 @@
                 0.000514
               ],
               "center_error": 0.012316,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 2.0,
                 2.6,
@@ -428,6 +443,13 @@
                 -0.015171
               ],
               "center_error": 0.024651,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 9.0,
                 0.700001,
@@ -443,37 +465,51 @@
           "comparison_isolated": [
             {
               "object": "HouseBody",
-              "status": "DISPLACED_FRAGMENT",
+              "status": "PASS",
               "base_triangles": 108,
               "lod_triangles": 70,
               "center_delta": [
-                13.963683,
-                0.010801,
-                -0.030886
+                0.0,
+                0.0,
+                -1e-06
               ],
-              "center_error": 13.963722,
+              "center_error": 1e-06,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 8.0,
                 4.000001,
                 6.000001
               ],
               "lod_size": [
-                7.927366,
-                3.890101,
+                7.927364,
+                3.890102,
                 5.93823
               ]
             },
             {
               "object": "HouseDoor",
-              "status": "DISPLACED_FRAGMENT",
+              "status": "PASS",
               "base_triangles": 108,
               "lod_triangles": 58,
               "center_delta": [
-                13.992473,
-                0.009735,
-                0.000514
+                0.0,
+                0.0,
+                0.0
               ],
-              "center_error": 13.992476,
+              "center_error": 0.0,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 2.0,
                 2.6,
@@ -482,29 +518,36 @@
               "lod_size": [
                 1.984947,
                 2.580532,
-                0.236921
+                0.236922
               ]
             },
             {
               "object": "HouseRoof",
-              "status": "DISPLACED_FRAGMENT",
+              "status": "PASS",
               "base_triangles": 108,
               "lod_triangles": 58,
               "center_delta": [
-                13.98059,
-                -0.000863,
-                -0.015171
+                0.0,
+                0.0,
+                0.0
               ],
-              "center_error": 13.980598,
+              "center_error": 0.0,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 9.0,
                 0.700001,
                 7.0
               ],
               "lod_size": [
-                8.96118,
-                0.694829,
-                6.969656
+                8.961181,
+                0.69483,
+                6.969657
               ]
             }
           ]
@@ -632,7 +675,7 @@
             ]
           },
           "isolated": {
-            "path": "D:\\AI\\EraImperial-Lod-Tests\\2026-10-17-LOD_AlignedTest\\House_Medieval_LOD2.fbx",
+            "path": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\TestResults\\LOD-Generation-Round4\\House_Medieval_LOD2.fbx",
             "exists": true,
             "objects": [
               {
@@ -640,24 +683,24 @@
                 "triangles": 14,
                 "bounds": {
                   "min": [
-                    -3.665364,
+                    -17.772682,
                     1.371219,
                     -2.829512
                   ],
                   "max": [
-                    3.88,
+                    -10.227318,
                     2.628781,
                     2.829511
                   ],
                   "center": [
-                    0.107318,
+                    -14.0,
                     2.0,
-                    -0.0
+                    -1e-06
                   ],
                   "size": [
                     7.545364,
                     1.257562,
-                    5.659023
+                    5.659022
                   ]
                 },
                 "location": [
@@ -677,18 +720,18 @@
                 "triangles": 14,
                 "bounds": {
                   "min": [
-                    -0.956342,
-                    0.029999,
+                    -14.956342,
+                    0.056755,
                     -3.068254
                   ],
                   "max": [
-                    0.956342,
-                    2.516487,
+                    -13.043658,
+                    2.543243,
                     -2.991746
                   ],
                   "center": [
-                    0.0,
-                    1.273243,
+                    -14.0,
+                    1.299999,
                     -3.03
                   ],
                   "size": [
@@ -714,17 +757,17 @@
                 "triangles": 14,
                 "bounds": {
                   "min": [
-                    -4.334538,
+                    -18.387268,
                     4.386255,
-                    -3.412321
+                    -3.412322
                   ],
                   "max": [
-                    4.44,
+                    -9.61273,
                     4.613745,
-                    3.41232
+                    3.412319
                   ],
                   "center": [
-                    0.052731,
+                    -13.999999,
                     4.5,
                     -1e-06
                   ],
@@ -763,6 +806,13 @@
                 0.0
               ],
               "center_error": 0.107319,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 8.0,
                 4.000001,
@@ -785,6 +835,13 @@
                 0.0
               ],
               "center_error": 0.026756,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 2.0,
                 2.6,
@@ -807,6 +864,13 @@
                 0.0
               ],
               "center_error": 0.052732,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 9.0,
                 0.700001,
@@ -822,15 +886,22 @@
           "comparison_isolated": [
             {
               "object": "HouseBody",
-              "status": "DISPLACED_FRAGMENT",
+              "status": "PASS",
               "base_triangles": 108,
               "lod_triangles": 14,
               "center_delta": [
-                14.107318,
+                0.0,
+                0.0,
+                -1e-06
+              ],
+              "center_error": 1e-06,
+              "pivot_delta": [
+                0.0,
                 0.0,
                 0.0
               ],
-              "center_error": 14.107318,
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 8.0,
                 4.000001,
@@ -839,20 +910,27 @@
               "lod_size": [
                 7.545364,
                 1.257562,
-                5.659023
+                5.659022
               ]
             },
             {
               "object": "HouseDoor",
-              "status": "DISPLACED_FRAGMENT",
+              "status": "PASS",
               "base_triangles": 108,
               "lod_triangles": 14,
               "center_delta": [
-                14.0,
-                -0.026756,
+                0.0,
+                0.0,
                 0.0
               ],
-              "center_error": 14.000026,
+              "center_error": 0.0,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 2.0,
                 2.6,
@@ -866,15 +944,22 @@
             },
             {
               "object": "HouseRoof",
-              "status": "DISPLACED_FRAGMENT",
+              "status": "PASS",
               "base_triangles": 108,
               "lod_triangles": 14,
               "center_delta": [
-                14.052731,
+                1e-06,
                 0.0,
                 0.0
               ],
-              "center_error": 14.05273,
+              "center_error": 1e-06,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 9.0,
                 0.700001,
@@ -1136,7 +1221,7 @@
             ]
           },
           "isolated": {
-            "path": "D:\\AI\\EraImperial-Lod-Tests\\2026-10-17-LOD_AlignedTest\\Barracks_Medieval_LOD1.fbx",
+            "path": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\TestResults\\LOD-Generation-Round4\\Barracks_Medieval_LOD1.fbx",
             "exists": true,
             "objects": [
               {
@@ -1144,23 +1229,23 @@
                 "triangles": 58,
                 "bounds": {
                   "min": [
-                    -0.4,
-                    4.513813,
-                    -3.779128
+                    13.601925,
+                    4.506906,
+                    -3.779355
                   ],
                   "max": [
-                    0.396152,
-                    7.5,
-                    -3.620421
+                    14.398075,
+                    7.493092,
+                    -3.620648
                   ],
                   "center": [
-                    -0.001924,
-                    6.006907,
-                    -3.699775
+                    14.0,
+                    5.999999,
+                    -3.700001
                   ],
                   "size": [
-                    0.796152,
-                    2.986187,
+                    0.79615,
+                    2.986186,
                     0.158707
                   ]
                 },
@@ -1181,24 +1266,24 @@
                 "triangles": 70,
                 "bounds": {
                   "min": [
-                    -6.0,
-                    0.062321,
-                    -3.500001
+                    8.038057,
+                    0.049959,
+                    -3.471791
                   ],
                   "max": [
-                    5.923886,
-                    4.762402,
-                    3.443579
+                    19.961945,
+                    4.750041,
+                    3.471789
                   ],
                   "center": [
-                    -0.038057,
-                    2.412362,
-                    -0.028211
+                    14.000001,
+                    2.4,
+                    -1e-06
                   ],
                   "size": [
-                    11.923886,
-                    4.700081,
-                    6.94358
+                    11.923887,
+                    4.700082,
+                    6.943581
                   ]
                 },
                 "location": [
@@ -1218,24 +1303,24 @@
                 "triangles": 58,
                 "bounds": {
                   "min": [
-                    -6.5,
-                    4.701441,
-                    -4.000001
+                    7.520519,
+                    4.702168,
+                    -3.987245
                   ],
                   "max": [
-                    6.458962,
-                    5.497104,
-                    3.974486
+                    20.479481,
+                    5.497832,
+                    3.987242
                   ],
                   "center": [
-                    -0.020519,
-                    5.099272,
-                    -0.012758
+                    14.0,
+                    5.099999,
+                    -2e-06
                   ],
                   "size": [
-                    12.958962,
-                    0.795663,
-                    7.974487
+                    12.958961,
+                    0.795664,
+                    7.974486
                   ]
                 },
                 "location": [
@@ -1267,6 +1352,13 @@
                 0.000226
               ],
               "center_error": 0.007174,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 0.799999,
                 3.0,
@@ -1289,6 +1381,13 @@
                 -0.028211
               ],
               "center_error": 0.04896,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 12.0,
                 4.800001,
@@ -1311,6 +1410,13 @@
                 -0.012757
               ],
               "center_error": 0.024173,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 13.0,
                 0.800001,
@@ -1326,68 +1432,89 @@
           "comparison_isolated": [
             {
               "object": "BarracksBanner",
-              "status": "DISPLACED_FRAGMENT",
+              "status": "PASS",
               "base_triangles": 108,
               "lod_triangles": 58,
               "center_delta": [
-                -14.001924,
-                0.006907,
-                0.000226
+                0.0,
+                -1e-06,
+                0.0
               ],
-              "center_error": 14.001925,
+              "center_error": 1e-06,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 0.799999,
                 3.0,
                 0.16
               ],
               "lod_size": [
-                0.796152,
-                2.986187,
+                0.79615,
+                2.986186,
                 0.158707
               ]
             },
             {
               "object": "BarracksBody",
-              "status": "DISPLACED_FRAGMENT",
+              "status": "PASS",
               "base_triangles": 108,
               "lod_triangles": 70,
               "center_delta": [
-                -14.038057,
-                0.012362,
-                -0.028211
+                1e-06,
+                0.0,
+                -1e-06
               ],
-              "center_error": 14.038091,
+              "center_error": 1e-06,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 12.0,
                 4.800001,
                 7.000001
               ],
               "lod_size": [
-                11.923886,
-                4.700081,
-                6.94358
+                11.923887,
+                4.700082,
+                6.943581
               ]
             },
             {
               "object": "BarracksRoof",
-              "status": "DISPLACED_FRAGMENT",
+              "status": "PASS",
               "base_triangles": 108,
               "lod_triangles": 58,
               "center_delta": [
-                -14.020519,
-                -0.000728,
-                -0.012757
+                0.0,
+                -1e-06,
+                -1e-06
               ],
-              "center_error": 14.020525,
+              "center_error": 1e-06,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 13.0,
                 0.800001,
                 8.0
               ],
               "lod_size": [
-                12.958962,
-                0.795663,
-                7.974487
+                12.958961,
+                0.795664,
+                7.974486
               ]
             }
           ]
@@ -1515,7 +1642,7 @@
             ]
           },
           "isolated": {
-            "path": "D:\\AI\\EraImperial-Lod-Tests\\2026-10-17-LOD_AlignedTest\\Barracks_Medieval_LOD2.fbx",
+            "path": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\TestResults\\LOD-Generation-Round4\\Barracks_Medieval_LOD2.fbx",
             "exists": true,
             "objects": [
               {
@@ -1523,23 +1650,23 @@
                 "triangles": 14,
                 "bounds": {
                   "min": [
-                    -0.3772,
-                    4.52,
-                    -3.725148
+                    13.622801,
+                    4.585499,
+                    -3.725149
                   ],
                   "max": [
-                    0.3772,
-                    7.349001,
-                    -3.674854
+                    14.377198,
+                    7.414499,
+                    -3.674855
                   ],
                   "center": [
-                    0.0,
-                    5.934501,
-                    -3.700001
+                    14.0,
+                    5.999999,
+                    -3.700002
                   ],
                   "size": [
-                    0.754401,
-                    2.829002,
+                    0.754397,
+                    2.829,
                     0.050294
                   ]
                 },
@@ -1560,23 +1687,23 @@
                 "triangles": 14,
                 "bounds": {
                   "min": [
-                    -5.581349,
-                    1.63591,
+                    8.269325,
+                    1.635909,
                     -3.342894
                   ],
                   "max": [
-                    5.88,
+                    19.730675,
                     3.164091,
                     3.342893
                   ],
                   "center": [
-                    0.149326,
+                    14.0,
                     2.4,
-                    -0.0
+                    -1e-06
                   ],
                   "size": [
                     11.461349,
-                    1.528181,
+                    1.528182,
                     6.685787
                   ]
                 },
@@ -1597,23 +1724,23 @@
                 "triangles": 14,
                 "bounds": {
                   "min": [
-                    -6.296082,
-                    4.969373,
-                    -3.918795
+                    7.631959,
+                    4.969372,
+                    -3.918796
                   ],
                   "max": [
-                    6.44,
-                    5.230627,
+                    20.36804,
+                    5.230628,
                     3.918793
                   ],
                   "center": [
-                    0.071959,
+                    14.0,
                     5.1,
                     -1e-06
                   ],
                   "size": [
-                    12.736082,
-                    0.261254,
+                    12.736081,
+                    0.261255,
                     7.837588
                   ]
                 },
@@ -1646,6 +1773,13 @@
                 0.0
               ],
               "center_error": 0.065499,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 0.799999,
                 3.0,
@@ -1668,6 +1802,13 @@
                 0.0
               ],
               "center_error": 0.149326,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 12.0,
                 4.800001,
@@ -1690,6 +1831,13 @@
                 0.0
               ],
               "center_error": 0.071959,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 13.0,
                 0.800001,
@@ -1705,37 +1853,51 @@
           "comparison_isolated": [
             {
               "object": "BarracksBanner",
-              "status": "DISPLACED_FRAGMENT",
+              "status": "PASS",
               "base_triangles": 108,
               "lod_triangles": 14,
               "center_delta": [
-                -14.0,
-                -0.065499,
+                0.0,
+                -1e-06,
+                -1e-06
+              ],
+              "center_error": 1e-06,
+              "pivot_delta": [
+                0.0,
+                0.0,
                 0.0
               ],
-              "center_error": 14.000153,
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 0.799999,
                 3.0,
                 0.16
               ],
               "lod_size": [
-                0.754401,
-                2.829002,
+                0.754397,
+                2.829,
                 0.050294
               ]
             },
             {
               "object": "BarracksBody",
-              "status": "DISPLACED_FRAGMENT",
+              "status": "PASS",
               "base_triangles": 108,
               "lod_triangles": 14,
               "center_delta": [
-                -13.850674,
+                0.0,
+                0.0,
+                -1e-06
+              ],
+              "center_error": 1e-06,
+              "pivot_delta": [
+                0.0,
                 0.0,
                 0.0
               ],
-              "center_error": 13.850673,
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 12.0,
                 4.800001,
@@ -1743,29 +1905,36 @@
               ],
               "lod_size": [
                 11.461349,
-                1.528181,
+                1.528182,
                 6.685787
               ]
             },
             {
               "object": "BarracksRoof",
-              "status": "DISPLACED_FRAGMENT",
+              "status": "PASS",
               "base_triangles": 108,
               "lod_triangles": 14,
               "center_delta": [
-                -13.928041,
+                0.0,
                 0.0,
                 0.0
               ],
-              "center_error": 13.928042,
+              "center_error": 0.0,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 13.0,
                 0.800001,
                 8.0
               ],
               "lod_size": [
-                12.736082,
-                0.261254,
+                12.736081,
+                0.261255,
                 7.837588
               ]
             }
@@ -2241,7 +2410,7 @@
             ]
           },
           "isolated": {
-            "path": "D:\\AI\\EraImperial-Lod-Tests\\2026-10-17-LOD_AlignedTest\\Market_Classical_LOD1.fbx",
+            "path": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\TestResults\\LOD-Generation-Round4\\Market_Classical_LOD1.fbx",
             "exists": true,
             "objects": [
               {
@@ -2249,24 +2418,24 @@
                 "triangles": 58,
                 "bounds": {
                   "min": [
-                    -5.5,
-                    5.550825,
-                    -4.500001
+                    8.515919,
+                    5.551242,
+                    13.513075
                   ],
                   "max": [
-                    5.468161,
-                    6.04835,
-                    4.473846
+                    19.484081,
+                    6.048769,
+                    22.486923
                   ],
                   "center": [
-                    -0.01592,
-                    5.799587,
-                    -0.013077
+                    14.0,
+                    5.800005,
+                    18.0
                   ],
                   "size": [
-                    10.968161,
-                    0.497525,
-                    8.973847
+                    10.968163,
+                    0.497527,
+                    8.973848
                   ]
                 },
                 "location": [
@@ -2286,23 +2455,23 @@
                 "triangles": 58,
                 "bounds": {
                   "min": [
-                    -5.0,
-                    0.00234,
-                    -4.0
+                    9.025646,
+                    0.003517,
+                    14.020607
                   ],
                   "max": [
-                    4.948707,
-                    0.795315,
-                    3.958786
+                    18.974354,
+                    0.796493,
+                    21.979393
                   ],
                   "center": [
-                    -0.025647,
-                    0.398828,
-                    -0.020607
+                    14.0,
+                    0.400005,
+                    18.0
                   ],
                   "size": [
-                    9.948707,
-                    0.792975,
+                    9.948708,
+                    0.792976,
                     7.958786
                   ]
                 },
@@ -2323,23 +2492,23 @@
                 "triangles": 18,
                 "bounds": {
                   "min": [
-                    -4.361772,
-                    2.648892,
-                    0.249999
+                    9.66713,
+                    2.648897,
+                    18.25
                   ],
                   "max": [
-                    -3.638228,
-                    3.382148,
-                    5.75
+                    10.33287,
+                    3.351115,
+                    23.75
                   ],
                   "center": [
-                    -4.0,
-                    3.01552,
-                    3.0
+                    10.0,
+                    3.000006,
+                    21.0
                   ],
                   "size": [
-                    0.723543,
-                    0.733256,
+                    0.665739,
+                    0.702219,
                     5.5
                   ]
                 },
@@ -2360,24 +2529,24 @@
                 "triangles": 18,
                 "bounds": {
                   "min": [
-                    3.638228,
-                    2.648891,
-                    -5.75
+                    17.646507,
+                    2.648895,
+                    12.249999
                   ],
                   "max": [
-                    4.361772,
-                    3.382147,
-                    -0.25
+                    18.353493,
+                    3.351114,
+                    17.75
                   ],
                   "center": [
-                    4.0,
-                    3.015519,
-                    -3.0
+                    18.0,
+                    3.000004,
+                    15.0
                   ],
                   "size": [
-                    0.723543,
-                    0.733256,
-                    5.5
+                    0.706985,
+                    0.702219,
+                    5.500001
                   ]
                 },
                 "location": [
@@ -2397,23 +2566,23 @@
                 "triangles": 18,
                 "bounds": {
                   "min": [
-                    3.638228,
-                    2.648892,
-                    0.249999
+                    17.646507,
+                    2.648897,
+                    18.25
                   ],
                   "max": [
-                    4.361772,
-                    3.382148,
-                    5.75
+                    18.353493,
+                    3.351115,
+                    23.75
                   ],
                   "center": [
-                    4.0,
-                    3.01552,
-                    3.0
+                    18.0,
+                    3.000006,
+                    21.0
                   ],
                   "size": [
-                    0.723543,
-                    0.733256,
+                    0.706985,
+                    0.702219,
                     5.5
                   ]
                 },
@@ -2434,24 +2603,24 @@
                 "triangles": 18,
                 "bounds": {
                   "min": [
-                    -4.361772,
-                    2.648891,
-                    -5.75
+                    9.66713,
+                    2.648895,
+                    12.249999
                   ],
                   "max": [
-                    -3.638228,
-                    3.382147,
-                    -0.25
+                    10.33287,
+                    3.351114,
+                    17.75
                   ],
                   "center": [
-                    -4.0,
-                    3.015519,
-                    -3.0
+                    10.0,
+                    3.000004,
+                    15.0
                   ],
                   "size": [
-                    0.723543,
-                    0.733256,
-                    5.5
+                    0.665739,
+                    0.702219,
+                    5.500001
                   ]
                 },
                 "location": [
@@ -2483,6 +2652,13 @@
                 -0.013077
               ],
               "center_error": 0.020606,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 11.0,
                 0.500002,
@@ -2505,6 +2681,13 @@
                 -0.020607
               ],
               "center_error": 0.03292,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 10.0,
                 0.800001,
@@ -2527,6 +2710,13 @@
                 0.0
               ],
               "center_error": 0.01552,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 0.665739,
                 0.700001,
@@ -2549,6 +2739,13 @@
                 0.0
               ],
               "center_error": 0.01552,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 0.665739,
                 0.700001,
@@ -2571,6 +2768,13 @@
                 0.0
               ],
               "center_error": 0.01552,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 0.665741,
                 0.700001,
@@ -2593,6 +2797,13 @@
                 0.0
               ],
               "center_error": 0.01552,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 0.665741,
                 0.700001,
@@ -2608,133 +2819,175 @@
           "comparison_isolated": [
             {
               "object": "MarketAwning",
-              "status": "DISPLACED_FRAGMENT",
+              "status": "PASS",
               "base_triangles": 108,
               "lod_triangles": 58,
               "center_delta": [
-                -14.01592,
-                -0.000416,
-                -18.013077
+                0.0,
+                2e-06,
+                0.0
               ],
-              "center_error": 22.823605,
+              "center_error": 2e-06,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 11.0,
                 0.500002,
                 9.0
               ],
               "lod_size": [
-                10.968161,
-                0.497525,
-                8.973847
+                10.968163,
+                0.497527,
+                8.973848
               ]
             },
             {
               "object": "MarketPlatform",
-              "status": "DISPLACED_FRAGMENT",
+              "status": "PASS",
               "base_triangles": 108,
               "lod_triangles": 58,
               "center_delta": [
-                -14.025647,
-                -0.001175,
-                -18.020607
+                0.0,
+                2e-06,
+                0.0
               ],
-              "center_error": 22.835522,
+              "center_error": 2e-06,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 10.0,
                 0.800001,
                 8.0
               ],
               "lod_size": [
-                9.948707,
-                0.792975,
+                9.948708,
+                0.792976,
                 7.958786
               ]
             },
             {
               "object": "MarketPost",
-              "status": "DISPLACED_FRAGMENT",
+              "status": "PASS",
               "base_triangles": 36,
               "lod_triangles": 18,
               "center_delta": [
-                -14.0,
-                0.015517,
-                -18.0
+                0.0,
+                2e-06,
+                0.0
               ],
-              "center_error": 22.803514,
+              "center_error": 2e-06,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 0.665739,
                 0.700001,
                 5.500001
               ],
               "lod_size": [
-                0.723543,
-                0.733256,
-                5.5
+                0.665739,
+                0.702219,
+                5.500001
               ]
             },
             {
               "object": "MarketPost.001",
-              "status": "DISPLACED_FRAGMENT",
+              "status": "PASS",
               "base_triangles": 36,
               "lod_triangles": 18,
               "center_delta": [
-                -14.0,
-                0.015517,
-                -18.0
+                0.0,
+                3e-06,
+                0.0
               ],
-              "center_error": 22.803514,
+              "center_error": 3e-06,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 0.665739,
                 0.700001,
                 5.5
               ],
               "lod_size": [
-                0.723543,
-                0.733256,
+                0.665739,
+                0.702219,
                 5.5
               ]
             },
             {
               "object": "MarketPost.002",
-              "status": "DISPLACED_FRAGMENT",
+              "status": "PASS",
               "base_triangles": 36,
               "lod_triangles": 18,
               "center_delta": [
-                -14.0,
-                0.015517,
-                -18.0
+                0.0,
+                2e-06,
+                0.0
               ],
-              "center_error": 22.803514,
+              "center_error": 2e-06,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 0.665741,
                 0.700001,
                 5.500001
               ],
               "lod_size": [
-                0.723543,
-                0.733256,
-                5.5
+                0.706985,
+                0.702219,
+                5.500001
               ]
             },
             {
               "object": "MarketPost.003",
-              "status": "DISPLACED_FRAGMENT",
+              "status": "PASS",
               "base_triangles": 36,
               "lod_triangles": 18,
               "center_delta": [
-                -14.0,
-                0.015517,
-                -18.0
+                0.0,
+                3e-06,
+                0.0
               ],
-              "center_error": 22.803514,
+              "center_error": 3e-06,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 0.665741,
                 0.700001,
                 5.5
               ],
               "lod_size": [
-                0.723543,
-                0.733256,
+                0.706985,
+                0.702219,
                 5.5
               ]
             }
@@ -2974,7 +3227,7 @@
             ]
           },
           "isolated": {
-            "path": "D:\\AI\\EraImperial-Lod-Tests\\2026-10-17-LOD_AlignedTest\\Market_Classical_LOD2.fbx",
+            "path": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\TestResults\\LOD-Generation-Round4\\Market_Classical_LOD2.fbx",
             "exists": true,
             "objects": [
               {
@@ -2982,24 +3235,24 @@
                 "triangles": 14,
                 "bounds": {
                   "min": [
-                    -5.367966,
-                    5.718045,
-                    -4.425532
+                    8.591017,
+                    5.71805,
+                    13.574467
                   ],
                   "max": [
-                    5.45,
-                    5.881955,
-                    4.42553
+                    19.408981,
+                    5.881961,
+                    22.425529
                   ],
                   "center": [
-                    0.041017,
-                    5.8,
-                    -1e-06
+                    13.999999,
+                    5.800005,
+                    17.999998
                   ],
                   "size": [
-                    10.817966,
-                    0.16391,
-                    8.851062
+                    10.817965,
+                    0.163911,
+                    8.851063
                   ]
                 },
                 "location": [
@@ -3019,24 +3272,24 @@
                 "triangles": 14,
                 "bounds": {
                   "min": [
-                    -4.784697,
-                    0.270603,
-                    -3.881879
+                    9.147653,
+                    0.270608,
+                    14.118122
                   ],
                   "max": [
-                    4.92,
-                    0.529397,
-                    3.881879
+                    18.852348,
+                    0.529402,
+                    21.88188
                   ],
                   "center": [
-                    0.067652,
-                    0.4,
-                    0.0
+                    14.0,
+                    0.400005,
+                    18.0
                   ],
                   "size": [
-                    9.704697,
-                    0.258793,
-                    7.763757
+                    9.704696,
+                    0.258794,
+                    7.763758
                   ]
                 },
                 "location": [
@@ -3056,23 +3309,23 @@
                 "triangles": 10,
                 "bounds": {
                   "min": [
-                    -4.361772,
-                    2.617853,
-                    0.249999
+                    9.693924,
+                    2.630383,
+                    18.25
                   ],
                   "max": [
-                    -3.638228,
-                    3.382148,
-                    5.75
+                    10.306075,
+                    3.369629,
+                    23.75
                   ],
                   "center": [
-                    -4.0,
-                    3.0,
-                    3.0
+                    10.0,
+                    3.000006,
+                    21.0
                   ],
                   "size": [
-                    0.723543,
-                    0.764295,
+                    0.612151,
+                    0.739246,
                     5.5
                   ]
                 },
@@ -3093,24 +3346,24 @@
                 "triangles": 10,
                 "bounds": {
                   "min": [
-                    3.638228,
-                    2.617852,
-                    -5.75
+                    17.659904,
+                    2.638954,
+                    12.249999
                   ],
                   "max": [
-                    4.361772,
-                    3.382147,
-                    -0.25
+                    18.340096,
+                    3.361055,
+                    17.75
                   ],
                   "center": [
-                    4.0,
-                    3.0,
-                    -3.0
+                    18.0,
+                    3.000004,
+                    15.0
                   ],
                   "size": [
-                    0.723543,
-                    0.764295,
-                    5.5
+                    0.680191,
+                    0.722101,
+                    5.500001
                   ]
                 },
                 "location": [
@@ -3130,23 +3383,23 @@
                 "triangles": 10,
                 "bounds": {
                   "min": [
-                    3.638228,
-                    2.617853,
-                    0.249999
+                    17.659904,
+                    2.638955,
+                    18.25
                   ],
                   "max": [
-                    4.361772,
-                    3.382148,
-                    5.75
+                    18.340096,
+                    3.361057,
+                    23.75
                   ],
                   "center": [
-                    4.0,
-                    3.0,
-                    3.0
+                    18.0,
+                    3.000006,
+                    21.0
                   ],
                   "size": [
-                    0.723543,
-                    0.764295,
+                    0.680191,
+                    0.722101,
                     5.5
                   ]
                 },
@@ -3167,24 +3420,24 @@
                 "triangles": 10,
                 "bounds": {
                   "min": [
-                    -4.361772,
-                    2.617852,
-                    -5.75
+                    9.693924,
+                    2.630381,
+                    12.249999
                   ],
                   "max": [
-                    -3.638228,
-                    3.382147,
-                    -0.25
+                    10.306075,
+                    3.369627,
+                    17.75
                   ],
                   "center": [
-                    -4.0,
-                    3.0,
-                    -3.0
+                    10.0,
+                    3.000004,
+                    15.0
                   ],
                   "size": [
-                    0.723543,
-                    0.764295,
-                    5.5
+                    0.612151,
+                    0.739246,
+                    5.500001
                   ]
                 },
                 "location": [
@@ -3216,6 +3469,13 @@
                 0.0
               ],
               "center_error": 0.041018,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 11.0,
                 0.500002,
@@ -3238,6 +3498,13 @@
                 0.0
               ],
               "center_error": 0.067652,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 10.0,
                 0.800001,
@@ -3260,6 +3527,13 @@
                 0.0
               ],
               "center_error": 0.0,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 0.665739,
                 0.700001,
@@ -3282,6 +3556,13 @@
                 0.0
               ],
               "center_error": 0.0,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 0.665739,
                 0.700001,
@@ -3304,6 +3585,13 @@
                 0.0
               ],
               "center_error": 0.0,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 0.665741,
                 0.700001,
@@ -3326,6 +3614,13 @@
                 0.0
               ],
               "center_error": 0.0,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 0.665741,
                 0.700001,
@@ -3341,133 +3636,175 @@
           "comparison_isolated": [
             {
               "object": "MarketAwning",
-              "status": "DISPLACED_FRAGMENT",
+              "status": "PASS",
               "base_triangles": 108,
               "lod_triangles": 14,
               "center_delta": [
-                -13.958983,
-                -3e-06,
-                -18.000002
+                -1e-06,
+                2e-06,
+                -2e-06
               ],
-              "center_error": 22.778351,
+              "center_error": 3e-06,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 11.0,
                 0.500002,
                 9.0
               ],
               "lod_size": [
-                10.817966,
-                0.16391,
-                8.851062
+                10.817965,
+                0.163911,
+                8.851063
               ]
             },
             {
               "object": "MarketPlatform",
-              "status": "DISPLACED_FRAGMENT",
+              "status": "PASS",
               "base_triangles": 108,
               "lod_triangles": 14,
               "center_delta": [
-                -13.932348,
-                -3e-06,
-                -18.0
+                0.0,
+                2e-06,
+                0.0
               ],
-              "center_error": 22.762037,
+              "center_error": 2e-06,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 10.0,
                 0.800001,
                 8.0
               ],
               "lod_size": [
-                9.704697,
-                0.258793,
-                7.763757
+                9.704696,
+                0.258794,
+                7.763758
               ]
             },
             {
               "object": "MarketPost",
-              "status": "DISPLACED_FRAGMENT",
+              "status": "PASS",
               "base_triangles": 36,
               "lod_triangles": 10,
               "center_delta": [
-                -14.0,
-                -2e-06,
-                -18.0
+                0.0,
+                2e-06,
+                0.0
               ],
-              "center_error": 22.803509,
+              "center_error": 2e-06,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 0.665739,
                 0.700001,
                 5.500001
               ],
               "lod_size": [
-                0.723543,
-                0.764295,
-                5.5
+                0.612151,
+                0.739246,
+                5.500001
               ]
             },
             {
               "object": "MarketPost.001",
-              "status": "DISPLACED_FRAGMENT",
+              "status": "PASS",
               "base_triangles": 36,
               "lod_triangles": 10,
               "center_delta": [
-                -14.0,
-                -3e-06,
-                -18.0
+                0.0,
+                3e-06,
+                0.0
               ],
-              "center_error": 22.803509,
+              "center_error": 3e-06,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 0.665739,
                 0.700001,
                 5.5
               ],
               "lod_size": [
-                0.723543,
-                0.764295,
+                0.612151,
+                0.739246,
                 5.5
               ]
             },
             {
               "object": "MarketPost.002",
-              "status": "DISPLACED_FRAGMENT",
+              "status": "PASS",
               "base_triangles": 36,
               "lod_triangles": 10,
               "center_delta": [
-                -14.0,
-                -2e-06,
-                -18.0
+                0.0,
+                2e-06,
+                0.0
               ],
-              "center_error": 22.803509,
+              "center_error": 2e-06,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 0.665741,
                 0.700001,
                 5.500001
               ],
               "lod_size": [
-                0.723543,
-                0.764295,
-                5.5
+                0.680191,
+                0.722101,
+                5.500001
               ]
             },
             {
               "object": "MarketPost.003",
-              "status": "DISPLACED_FRAGMENT",
+              "status": "PASS",
               "base_triangles": 36,
               "lod_triangles": 10,
               "center_delta": [
-                -14.0,
-                -3e-06,
-                -18.0
+                0.0,
+                3e-06,
+                0.0
               ],
-              "center_error": 22.803509,
+              "center_error": 3e-06,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 0.665741,
                 0.700001,
                 5.5
               ],
               "lod_size": [
-                0.723543,
-                0.764295,
+                0.680191,
+                0.722101,
                 5.5
               ]
             }
@@ -3795,7 +4132,7 @@
             ]
           },
           "isolated": {
-            "path": "D:\\AI\\EraImperial-Lod-Tests\\2026-10-17-LOD_AlignedTest\\Temple_Imperial_LOD1.fbx",
+            "path": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\TestResults\\LOD-Generation-Round4\\Temple_Imperial_LOD1.fbx",
             "exists": true,
             "objects": [
               {
@@ -3803,24 +4140,24 @@
                 "triangles": 70,
                 "bounds": {
                   "min": [
-                    -5.0,
-                    0.087267,
-                    -2.625001
+                    -18.958694,
+                    0.073724,
+                    14.036254
                   ],
                   "max": [
-                    4.917385,
-                    5.939829,
-                    5.302489
+                    -9.041306,
+                    5.926287,
+                    21.963745
                   ],
                   "center": [
-                    -0.041307,
-                    3.013548,
-                    1.338744
+                    -14.0,
+                    3.000005,
+                    18.0
                   ],
                   "size": [
-                    9.917385,
-                    5.852562,
-                    7.92749
+                    9.917388,
+                    5.852563,
+                    7.927491
                   ]
                 },
                 "location": [
@@ -3840,24 +4177,24 @@
                 "triangles": 26,
                 "bounds": {
                   "min": [
-                    3.364722,
-                    2.303262,
-                    -5.375
+                    -10.643985,
+                    2.347308,
+                    11.249999
                   ],
                   "max": [
-                    4.635278,
-                    3.635278,
-                    1.125
+                    -9.356014,
+                    3.652699,
+                    17.75
                   ],
                   "center": [
-                    4.0,
-                    2.96927,
-                    -2.125
+                    -10.0,
+                    3.000004,
+                    14.5
                   ],
                   "size": [
-                    1.270555,
-                    1.332016,
-                    6.5
+                    1.287971,
+                    1.305391,
+                    6.500001
                   ]
                 },
                 "location": [
@@ -3877,24 +4214,24 @@
                 "triangles": 26,
                 "bounds": {
                   "min": [
-                    -4.635278,
-                    2.303262,
-                    -5.375
+                    -18.643986,
+                    2.350003,
+                    11.249999
                   ],
                   "max": [
-                    -3.364722,
-                    3.635278,
-                    1.125
+                    -17.356014,
+                    3.650005,
+                    17.75
                   ],
                   "center": [
-                    -4.0,
-                    2.96927,
-                    -2.125
+                    -18.0,
+                    3.000004,
+                    14.5
                   ],
                   "size": [
-                    1.270555,
-                    1.332016,
-                    6.5
+                    1.287971,
+                    1.300002,
+                    6.500001
                   ]
                 },
                 "location": [
@@ -3914,24 +4251,24 @@
                 "triangles": 70,
                 "bounds": {
                   "min": [
-                    -5.5,
-                    6.042749,
-                    -2.925001
+                    -19.475159,
+                    6.025545,
+                    13.706541
                   ],
                   "max": [
-                    5.450313,
-                    7.391667,
-                    -1.338088
+                    -8.524842,
+                    7.374463,
+                    15.293453
                   ],
                   "center": [
-                    -0.024843,
-                    6.717208,
-                    -2.131545
+                    -14.0,
+                    6.700004,
+                    14.499997
                   ],
                   "size": [
-                    10.950314,
-                    1.348918,
-                    1.586913
+                    10.950316,
+                    1.348917,
+                    1.586912
                   ]
                 },
                 "location": [
@@ -3963,6 +4300,13 @@
                 -0.036255
               ],
               "center_error": 0.056606,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 10.0,
                 6.000001,
@@ -3985,6 +4329,13 @@
                 0.0
               ],
               "center_error": 0.030729,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 1.299999,
                 1.300001,
@@ -4007,6 +4358,13 @@
                 0.0
               ],
               "center_error": 0.030729,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 1.299999,
                 1.300001,
@@ -4029,6 +4387,13 @@
                 -0.006543
               ],
               "center_error": 0.030921,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 11.0,
                 1.400001,
@@ -4044,90 +4409,118 @@
           "comparison_isolated": [
             {
               "object": "TempleBody",
-              "status": "DISPLACED_FRAGMENT",
+              "status": "PASS",
               "base_triangles": 108,
               "lod_triangles": 70,
               "center_delta": [
-                13.958693,
-                0.013545,
-                -16.661257
+                0.0,
+                2e-06,
+                0.0
               ],
-              "center_error": 21.735748,
+              "center_error": 2e-06,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 10.0,
                 6.000001,
                 8.000001
               ],
               "lod_size": [
-                9.917385,
-                5.852562,
-                7.92749
+                9.917388,
+                5.852563,
+                7.927491
               ]
             },
             {
               "object": "TempleColumn",
-              "status": "DISPLACED_FRAGMENT",
+              "status": "PASS",
               "base_triangles": 44,
               "lod_triangles": 26,
               "center_delta": [
-                14.0,
-                -0.030732,
-                -16.625
+                0.0,
+                2e-06,
+                0.0
               ],
-              "center_error": 21.734571,
+              "center_error": 2e-06,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 1.299999,
                 1.300001,
                 6.500001
               ],
               "lod_size": [
-                1.270555,
-                1.332016,
-                6.5
+                1.287971,
+                1.300002,
+                6.500001
               ]
             },
             {
               "object": "TempleColumn.001",
-              "status": "DISPLACED_FRAGMENT",
+              "status": "PASS",
               "base_triangles": 44,
               "lod_triangles": 26,
               "center_delta": [
-                14.0,
-                -0.030732,
-                -16.625
+                0.0,
+                2e-06,
+                0.0
               ],
-              "center_error": 21.734571,
+              "center_error": 2e-06,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 1.299999,
                 1.300001,
                 6.500001
               ],
               "lod_size": [
-                1.270555,
-                1.332016,
-                6.5
+                1.287971,
+                1.305391,
+                6.500001
               ]
             },
             {
               "object": "TemplePediment",
-              "status": "DISPLACED_FRAGMENT",
+              "status": "PASS",
               "base_triangles": 108,
               "lod_triangles": 70,
               "center_delta": [
-                13.975157,
-                0.017206,
-                -16.631544
+                0.0,
+                2e-06,
+                -2e-06
               ],
-              "center_error": 21.723571,
+              "center_error": 3e-06,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 11.0,
                 1.400001,
                 1.6
               ],
               "lod_size": [
-                10.950314,
-                1.348918,
-                1.586913
+                10.950316,
+                1.348917,
+                1.586912
               ]
             }
           ]
@@ -4292,7 +4685,7 @@
             ]
           },
           "isolated": {
-            "path": "D:\\AI\\EraImperial-Lod-Tests\\2026-10-17-LOD_AlignedTest\\Temple_Imperial_LOD2.fbx",
+            "path": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\TestResults\\LOD-Generation-Round4\\Temple_Imperial_LOD2.fbx",
             "exists": true,
             "objects": [
               {
@@ -4300,24 +4693,24 @@
                 "triangles": 52,
                 "bounds": {
                   "min": [
-                    -4.919491,
-                    2.025005,
-                    -2.545349
+                    -18.919491,
+                    2.02501,
+                    14.079651
                   ],
                   "max": [
-                    4.919491,
-                    3.974995,
-                    5.295348
+                    -9.080507,
+                    3.975,
+                    21.920349
                   ],
                   "center": [
-                    0.0,
-                    3.0,
-                    1.375
+                    -13.999999,
+                    3.000005,
+                    18.0
                   ],
                   "size": [
-                    9.838983,
-                    1.94999,
-                    7.840697
+                    9.838984,
+                    1.949991,
+                    7.840698
                   ]
                 },
                 "location": [
@@ -4337,24 +4730,24 @@
                 "triangles": 14,
                 "bounds": {
                   "min": [
-                    3.303263,
-                    2.303262,
-                    -5.375
+                    -10.615478,
+                    2.368103,
+                    11.249999
                   ],
                   "max": [
-                    4.696737,
-                    3.696738,
-                    1.125
+                    -9.384521,
+                    3.631905,
+                    17.75
                   ],
                   "center": [
-                    4.0,
-                    3.0,
-                    -2.125
+                    -10.0,
+                    3.000004,
+                    14.5
                   ],
                   "size": [
-                    1.393475,
-                    1.393476,
-                    6.5
+                    1.230956,
+                    1.263802,
+                    6.500001
                   ]
                 },
                 "location": [
@@ -4374,24 +4767,24 @@
                 "triangles": 14,
                 "bounds": {
                   "min": [
-                    -4.696737,
-                    2.303262,
-                    -5.375
+                    -18.615479,
+                    2.368103,
+                    11.249999
                   ],
                   "max": [
-                    -3.303263,
-                    3.696738,
-                    1.125
+                    -17.384521,
+                    3.631905,
+                    17.75
                   ],
                   "center": [
-                    -4.0,
-                    3.0,
-                    -2.125
+                    -18.0,
+                    3.000004,
+                    14.5
                   ],
                   "size": [
-                    1.393475,
-                    1.393476,
-                    6.5
+                    1.230957,
+                    1.263802,
+                    6.500001
                   ]
                 },
                 "location": [
@@ -4411,23 +4804,23 @@
                 "triangles": 52,
                 "bounds": {
                   "min": [
-                    -5.453176,
-                    6.479915,
-                    -2.88001
+                    -19.453175,
+                    6.479919,
+                    13.744989
                   ],
                   "max": [
-                    5.453176,
-                    6.920084,
-                    -1.369993
+                    -8.546824,
+                    6.920089,
+                    15.255007
                   ],
                   "center": [
-                    0.0,
-                    6.699999,
-                    -2.125001
+                    -13.999999,
+                    6.700005,
+                    14.499998
                   ],
                   "size": [
-                    10.906352,
-                    0.440169,
+                    10.906351,
+                    0.44017,
                     1.510017
                   ]
                 },
@@ -4460,6 +4853,13 @@
                 0.0
               ],
               "center_error": 0.0,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 10.0,
                 6.000001,
@@ -4482,6 +4882,13 @@
                 0.0
               ],
               "center_error": 0.0,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 1.299999,
                 1.300001,
@@ -4504,6 +4911,13 @@
                 0.0
               ],
               "center_error": 0.0,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 1.299999,
                 1.300001,
@@ -4526,6 +4940,13 @@
                 0.0
               ],
               "center_error": 0.0,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 11.0,
                 1.400001,
@@ -4541,89 +4962,117 @@
           "comparison_isolated": [
             {
               "object": "TempleBody",
-              "status": "DISPLACED_FRAGMENT",
+              "status": "PASS",
               "base_triangles": 108,
               "lod_triangles": 52,
               "center_delta": [
-                14.0,
-                -3e-06,
-                -16.625
+                1e-06,
+                2e-06,
+                0.0
               ],
-              "center_error": 21.734549,
+              "center_error": 2e-06,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 10.0,
                 6.000001,
                 8.000001
               ],
               "lod_size": [
-                9.838983,
-                1.94999,
-                7.840697
+                9.838984,
+                1.949991,
+                7.840698
               ]
             },
             {
               "object": "TempleColumn",
-              "status": "DISPLACED_FRAGMENT",
+              "status": "PASS",
               "base_triangles": 44,
               "lod_triangles": 14,
               "center_delta": [
-                14.0,
-                -2e-06,
-                -16.625
+                0.0,
+                2e-06,
+                0.0
               ],
-              "center_error": 21.734549,
+              "center_error": 2e-06,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 1.299999,
                 1.300001,
                 6.500001
               ],
               "lod_size": [
-                1.393475,
-                1.393476,
-                6.5
+                1.230957,
+                1.263802,
+                6.500001
               ]
             },
             {
               "object": "TempleColumn.001",
-              "status": "DISPLACED_FRAGMENT",
+              "status": "PASS",
               "base_triangles": 44,
               "lod_triangles": 14,
               "center_delta": [
-                14.0,
-                -2e-06,
-                -16.625
+                0.0,
+                2e-06,
+                0.0
               ],
-              "center_error": 21.734549,
+              "center_error": 2e-06,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 1.299999,
                 1.300001,
                 6.500001
               ],
               "lod_size": [
-                1.393475,
-                1.393476,
-                6.5
+                1.230956,
+                1.263802,
+                6.500001
               ]
             },
             {
               "object": "TemplePediment",
-              "status": "DISPLACED_FRAGMENT",
+              "status": "PASS",
               "base_triangles": 108,
               "lod_triangles": 52,
               "center_delta": [
-                14.0,
-                -3e-06,
-                -16.625
+                1e-06,
+                3e-06,
+                -1e-06
               ],
-              "center_error": 21.734549,
+              "center_error": 3e-06,
+              "pivot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pivot_error": 0.0,
+              "pivot_aligned": true,
               "base_size": [
                 11.0,
                 1.400001,
                 1.6
               ],
               "lod_size": [
-                10.906352,
-                0.440169,
+                10.906351,
+                0.44017,
                 1.510017
               ]
             }
