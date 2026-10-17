@@ -215,6 +215,7 @@ public static class CityArchitectureShowcaseBuilder
         var textures = new Dictionary<string, string>
         {
             { "Stone", "Assets/CityArchitecture/Generated/Textures/PBR_Stone.png" },
+            { "Plaster", "Assets/CityArchitecture/Generated/Textures/PBR_Plaster.png" },
             { "Wood", "Assets/CityArchitecture/Generated/Textures/PBR_Wood.png" },
             { "Roof", "Assets/CityArchitecture/Generated/Textures/PBR_Roof.png" },
             { "Trim", "Assets/CityArchitecture/Generated/Textures/PBR_Trim.png" }
@@ -244,6 +245,7 @@ public static class CityArchitectureShowcaseBuilder
     private static Color ShowcaseColor(string key)
     {
         if (key == "Stone") return new Color(0.68f, 0.62f, 0.52f, 1f);
+        if (key == "Plaster") return new Color(0.76f, 0.67f, 0.52f, 1f);
         if (key == "Wood") return new Color(0.48f, 0.25f, 0.12f, 1f);
         if (key == "Roof") return new Color(0.34f, 0.12f, 0.06f, 1f);
         return new Color(0.82f, 0.55f, 0.12f, 1f);
@@ -254,7 +256,11 @@ public static class CityArchitectureShowcaseBuilder
         foreach (var renderer in root.GetComponentsInChildren<Renderer>(true))
         {
             var name = renderer.gameObject.name.ToLowerInvariant();
-            var key = name.Contains("roof") ? "Roof" : name.Contains("door") || name.Contains("body") ? "Wood" : name.Contains("banner") ? "Trim" : "Stone";
+            var key = name.Contains("roof") ? "Roof" :
+                name.Contains("door") ? "Wood" :
+                name.Contains("banner") || name.Contains("pediment") || name.Contains("trim") ? "Trim" :
+                name.Contains("housebody") || name.Contains("plaster") ? "Plaster" :
+                "Stone";
             renderer.sharedMaterial = materials[key];
         }
     }
