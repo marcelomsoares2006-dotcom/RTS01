@@ -2,6 +2,7 @@ using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Rendering;
 using System.IO;
 using System.Collections.Generic;
 
@@ -17,7 +18,25 @@ public static class CityArchitectureShowcaseBuilder
         var light = lightGo.AddComponent<Light>();
         light.type = LightType.Directional;
         light.intensity = 1.15f;
+        light.color = new Color(1f, 0.86f, 0.70f, 1f);
         light.transform.rotation = Quaternion.Euler(45f, -35f, 0f);
+
+        var fillGo = new GameObject("Showcase Fill Light");
+        var fill = fillGo.AddComponent<Light>();
+        fill.type = LightType.Directional;
+        fill.intensity = 0.28f;
+        fill.color = new Color(0.46f, 0.62f, 0.86f, 1f);
+        fill.transform.rotation = Quaternion.Euler(25f, 145f, 0f);
+
+        var probeGo = new GameObject("Showcase Reflection Probe");
+        var probe = probeGo.AddComponent<ReflectionProbe>();
+        probe.mode = ReflectionProbeMode.Realtime;
+        probe.refreshMode = ReflectionProbeRefreshMode.OnAwake;
+        probe.timeSlicingMode = ReflectionProbeTimeSlicingMode.NoTimeSlicing;
+        probe.size = new Vector3(34f, 14f, 34f);
+        probe.center = new Vector3(10f, 3f, 9f);
+        probe.intensity = 0.65f;
+        probe.boxProjection = true;
 
         var ground = GameObject.CreatePrimitive(PrimitiveType.Plane);
         ground.name = "Showcase Ground";
