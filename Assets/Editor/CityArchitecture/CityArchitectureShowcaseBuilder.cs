@@ -34,6 +34,8 @@ public static class CityArchitectureShowcaseBuilder
         camera.transform.LookAt(new Vector3(9f, 2f, 9f));
         camera.fieldOfView = 42f;
         camera.farClipPlane = 100f;
+        camera.clearFlags = CameraClearFlags.SolidColor;
+        camera.backgroundColor = new Color(0.36f, 0.49f, 0.62f, 1f);
 
         string[] pieces = { "WallStraight", "WallCorner", "Gatehouse", "WallTowerConnector" };
         for (int i = 0; i < pieces.Length; i++)
@@ -154,9 +156,9 @@ public static class CityArchitectureShowcaseBuilder
         EditorSceneManager.OpenScene(ScenePath, OpenSceneMode.Single);
         var camera = Object.FindFirstObjectByType<Camera>();
         if (camera == null) throw new System.InvalidOperationException("Câmera showcase ausente.");
-        CaptureView(camera, new Vector3(31f, 30f, -36f), new Vector3(10f, 2f, 9f), "TestResults/CityArchitectureShowcase_Overview.png");
-        CaptureView(camera, new Vector3(22f, 16f, -20f), new Vector3(10f, 2f, 9f), "TestResults/CityArchitectureShowcase_Mid.png");
-        CaptureView(camera, new Vector3(15f, 10f, -4f), new Vector3(7f, 2f, 7f), "TestResults/CityArchitectureShowcase_Close.png");
+        CaptureView(camera, new Vector3(27f, 24f, -28f), new Vector3(10f, 2f, 9f), "TestResults/CityArchitectureShowcase_Overview.png");
+        CaptureView(camera, new Vector3(24f, 15f, -15f), new Vector3(10f, 2f, 9f), "TestResults/CityArchitectureShowcase_Mid.png");
+        CaptureView(camera, new Vector3(21f, 14f, -15f), new Vector3(7f, 2f, 7f), "TestResults/CityArchitectureShowcase_Close.png");
         Debug.Log("SHOWCASE_MULTI_VIEW_CAPTURED=3");
     }
 
