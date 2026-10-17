@@ -21,7 +21,7 @@ PASS PaladinHealerVisual.prefab existe
 PASS Animator com avatar, controller e root motion desligado
 PASS LODGroup com 3 niveis
 PASS 3 SkinnedMeshRenderer (LOD0/1/2): PaladinHealer_LOD0, PaladinHealer_LOD1, PaladinHealer_LOD2
-INFO Triangulos LOD0/1/2: 31000 / 9300 / 3100
+INFO Triangulos LOD0/1/2: 31000 / 9300 / 6200
 PASS Triangulos estritamente decrescentes por LOD, LOD0 <= 31 k
 PASS PaladinHealer_LOD0: 24 ossos, rootBone ok, pesos normalizados (vertices fora = 0), <= 4 influencias (4)
 PASS PaladinHealer_LOD0: material PaladinHealer_Mat
@@ -121,9 +121,9 @@ PASS LOD0 side: renderiza (primeiro plano 45643px, magenta 0px)
 PASS LOD1 front: renderiza (primeiro plano 36150px, magenta 0px)
 PASS LOD1 back: renderiza (primeiro plano 36775px, magenta 0px)
 PASS LOD1 side: renderiza (primeiro plano 45055px, magenta 0px)
-PASS LOD2 front: renderiza (primeiro plano 33596px, magenta 0px)
-PASS LOD2 back: renderiza (primeiro plano 33481px, magenta 0px)
-PASS LOD2 side: renderiza (primeiro plano 41758px, magenta 0px)
+PASS LOD2 front: renderiza (primeiro plano 35467px, magenta 0px)
+PASS LOD2 back: renderiza (primeiro plano 35974px, magenta 0px)
+PASS LOD2 side: renderiza (primeiro plano 44266px, magenta 0px)
 PASS Pose Idle@0,30s front: renderiza (fg 34208px, magenta 0px)
 PASS Pose Idle@0,30s side: renderiza (fg 42323px, magenta 0px)
 PASS Pose Walk@0,30s front: renderiza (fg 45429px, magenta 0px)
@@ -151,7 +151,7 @@ PASS Pose Death@5,70s side: renderiza (fg 9381px, magenta 0px)
 PASS Close-up Idle: renderiza (fg 128436px, magenta 0px)
 PASS Efeito de cura @0,12s: renderiza (fg 306206px, magenta 0px)
 PASS Efeito de cura @0,35s: renderiza (fg 306206px, magenta 0px)
-PASS Efeito de cura @0,70s: renderiza (fg 306208px, magenta 0px)
+PASS Efeito de cura @0,70s: renderiza (fg 306206px, magenta 0px)
 PASS Efeito de cura @1,05s: renderiza (fg 306206px, magenta 0px)
 PASS Prefab de morte com Animator do controller PaladinHealerDeath
 PASS Controller de morte: unico estado Death (padrao) tocando o clipe Death sozinho
@@ -180,7 +180,7 @@ PASS AdvancedUnitEraBinding.contract = PaladinHealer.asset
 PASS AdvancedUnitAnimatorDriver.animator = Animator do visual
 PASS PaladinHealBehaviour: contrato, animator, HealAuraCenter e prefab do efeito
 PASS AdvancedUnitDeathEffect.deathPrefab = PaladinHealerDeath
-PASS Ataque corpo a corpo segue o behavior tree padrao (sem IAttackHandler)
+PASS Ataque corpo a corpo usa PaladinMeleeAttackController (IAttackHandler) com cooldown por era
 PASS Efeito de cura autorado com 1 unidade de diametro em XZ (tamanho 1,000 x 1,000)
 PASS Efeito: raiz em escala 1, ParticleSystem de particulas ascendentes e PaladinHealAuraEffect (aneis expandindo)
 PASS Particulas: sobem e a escala do efeito so alarga a area de emissao
@@ -212,7 +212,7 @@ PASS Cura cresce: 6 < 9 < 13 < 18
 PASS Raio de cura cresce: 4 < 4,5 < 5 < 6
 PASS Ataque corpo a corpo em todas as eras
 PASS CharacterData 'paladin_healer' referencia o wrapper
-PASS CharacterData com os valores da era Ancient do contrato
-PASS Catalogo Resources carrega 'paladin_healer' (10 personagens)
-PASS Codigos de personagem unicos: archer, catapult, combat_mage, crossbow, dark_knight, heraldic_knight, paladin_healer, soldier, spearman, worker
+PASS CharacterData com os valores da era Ancient e polling do behavior tree; cooldown real fica no controlador
+PASS Catalogo Resources carrega 'paladin_healer' (12 personagens)
+PASS Codigos de personagem unicos: archer, battering_ram, catapult, combat_mage, crossbow, dark_knight, heraldic_knight, horseman, paladin_healer, soldier, spearman, worker
 PALADINHEALER_AUDIT_PASSED

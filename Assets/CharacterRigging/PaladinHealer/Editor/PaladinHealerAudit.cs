@@ -511,7 +511,9 @@ public static class PaladinHealerAudit
         Check(heal.contract == contract && heal.animator == animator && heal.effectOrigin != null && heal.effectOrigin.name == "HealAuraCenter" &&
               heal.healEffectPrefab == effect, "PaladinHealBehaviour: contrato, animator, HealAuraCenter e prefab do efeito");
         Check(wrapper.GetComponent<AdvancedUnitDeathEffect>().deathPrefab == death, "AdvancedUnitDeathEffect.deathPrefab = PaladinHealerDeath");
-        Check(!wrapper.GetComponents<MonoBehaviour>().Any(m => m is IAttackHandler), "Ataque corpo a corpo segue o behavior tree padrao (sem IAttackHandler)");
+        Check(wrapper.GetComponent("PaladinMeleeAttackController") != null &&
+              wrapper.GetComponents<MonoBehaviour>().Any(m => m is IAttackHandler),
+            "Ataque corpo a corpo usa PaladinMeleeAttackController (IAttackHandler) com cooldown por era");
 
         // efeito de cura: diametro 1 em XZ
         var fxRenderers = effect.GetComponentsInChildren<MeshRenderer>(true);

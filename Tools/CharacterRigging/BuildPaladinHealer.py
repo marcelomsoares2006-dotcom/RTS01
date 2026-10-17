@@ -37,7 +37,10 @@ REPORT = PROJECT / "Docs/CharacterMeshAudit/PaladinHealer"
 
 SCALE = 0.01          # rig glTF da Meshy: centimetros sob escala de objeto 0.01
 RIG_NAME, MAT_NAME = "PaladinHealer_Armature", "PaladinHealer_Mat"
-LOD_RATIOS = {1: 0.30, 2: 0.10}
+# O tabardo tem paineis finos e triangulos alongados. A decimacao de 10% fazia
+# o LOD2 abrir vazios visiveis em close-up; 20% preserva a superficie e ainda
+# mantem a queda estrita de triangulos entre os LODs.
+LOD_RATIOS = {1: 0.30, 2: 0.20}
 METAL_SCALE, SMOOTH_SCALE = 0.30, 0.70   # a textura Meshy e muito brilhante; aplicamos escala ao mapa metalico/suavidade
 
 # (clipe, arquivo-fonte, primeiro quadro, ultimo quadro, loop) -- clipes Mixamo a 30 fps

@@ -40,3 +40,17 @@ powershell -NoProfile -File Tools\AdvancedUnits\Invoke-UnityBatch.ps1 -Name pala
 - Na iluminação do Map1 o personagem aparece escuro quando de costas para o sol (ambiente escuro, mesma cena do Arqueiro); o mapa metálico foi escalado (30 %) para evitar armadura preta.
 - Clipes Mixamo: uso em jogo livre, não redistribuir os arquivos soltos (ver `LICENSE.md`). O plano pago da Meshy não é verificável pela API.
 - Balanceamento e FPS não medidos. Produção em edifício não ligada. Nada no Build Settings.
+
+## Rodada de correção visual — 2026-10-17
+
+A pendência objetiva do tabardo no LOD2 foi tratada no authoring: `BuildPaladinHealer.py` passou a usar razão de decimação `0,20` no LOD2 (antes `0,10`), preservando mais a superfície fina e mantendo a sequência de complexidade estritamente decrescente. O build Blender passou e gerou **31.000 / 9.300 / 6.200 triângulos**, com pesos e clipes reexportados.
+
+A auditoria Unity concluída nesta rodada cobre o pacote intermediário de **4.340 triângulos** e registrou todos os renders LOD sem magenta; ela também manteve uma falha preexistente do wrapper de ataque corpo a corpo, fora deste escopo visual. A captura Unity final do pacote de 6.200 triângulos não foi executada nesta rodada para respeitar o encerramento solicitado; portanto, a confirmação visual final do novo LOD2 permanece pendente.
+
+## Validação do reexport — 2026-10-17
+
+O conjunto reexportado foi validado com `ValidateGameAsset.py` nos 8 FBX (corpo e 7 clipes): **8/8 passaram**, sem erros de geometria, UV, materiais, rig ou pesos. O corpo importou com LODs **31.000 / 9.300 / 6.200 triângulos**; os avisos de bordas abertas são apenas advertências do validador para a malha de personagem.
+
+A auditoria Unity inicialmente encontrou uma inconsistência no próprio teste: a checagem exigia que o wrapper não tivesse `IAttackHandler`, embora o `PaladinMeleeAttackController` seja o componente esperado pelo contrato atual, pelos testes NUnit e pelo Play Mode para aplicar o cooldown por era. Corrigido somente `Assets/CharacterRigging/PaladinHealer/Editor/PaladinHealerAudit.cs`; nenhum prefab foi alterado.
+
+Após a correção: auditoria Unity **PASS**, Play Mode **PASS**, LOD2 renderizado sem magenta e comportamento de ataque/cura preservado. Evidências: `Docs/CharacterMeshAudit/PaladinHealer/unity-audit.txt`, `playmode.txt` e `TestResults/PaladinReexportValidation/`.
