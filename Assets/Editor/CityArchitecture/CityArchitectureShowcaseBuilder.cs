@@ -48,8 +48,9 @@ public static class CityArchitectureShowcaseBuilder
         }
 
         // Candidatos visuais reversíveis: não substituem prefabs de produção.
-        string[] buildingCandidates = { "House_Medieval", "Barracks_Medieval" };
         var showcaseMaterials = EnsureShowcaseMaterials();
+        AddTownCenterVisualCandidate(scene, showcaseMaterials);
+        string[] buildingCandidates = { "House_Medieval", "Barracks_Medieval" };
         for (int i = 0; i < buildingCandidates.Length; i++)
         {
             string path = "Assets/CityArchitecture/Prefabs/EraBuildings/" + buildingCandidates[i] + ".prefab";
@@ -91,6 +92,46 @@ public static class CityArchitectureShowcaseBuilder
         Debug.Log("Showcase capturado em " + output);
     }
 
+    private static void AddTownCenterVisualCandidate(Scene scene, Dictionary<string, Material> materials)
+    {
+        const string path = "Assets/Resources/Prefabs/Units/Buildings/TownCenter.prefab";
+        var source = PrefabUtility.LoadPrefabContents(path);
+        if (source == null) throw new System.IO.FileNotFoundException("Prefab Town Center ausente", path);
+        try
+        {
+            var mesh = source.transform.Find("Mesh");
+            if (mesh == null) throw new System.InvalidOperationException("Mesh do Town Center ausente.");
+            var visual = (GameObject)Object.Instantiate(mesh.gameObject);
+            SceneManager.MoveGameObjectToScene(visual, scene);
+            visual.name = "TownCenter_VisualCandidate";
+            visual.transform.position = new Vector3(7f, 0f, 7f);
+            visual.transform.localScale = Vector3.one * 0.55f;
+            ApplyShowcaseMaterials(visual, materials);
+
+            var props = new GameObject("TownCenter_ShowcaseProps");
+            props.transform.position = visual.transform.position;
+            AddShowcaseBlock(props.transform, new Vector3(-2.5f, 0.45f, 1.9f), new Vector3(0.9f, 0.9f, 0.9f), materials["Wood"]);
+            AddShowcaseBlock(props.transform, new Vector3(2.3f, 0.35f, -1.8f), new Vector3(1.2f, 0.7f, 0.8f), materials["Trim"]);
+            AddShowcaseBlock(props.transform, new Vector3(0f, 1.8f, 2.5f), new Vector3(0.12f, 3.6f, 0.12f), materials["Wood"]);
+            AddShowcaseBlock(props.transform, new Vector3(0f, 2.9f, 2.5f), new Vector3(0.9f, 0.55f, 0.05f), materials["Trim"]);
+        }
+        finally
+        {
+            PrefabUtility.UnloadPrefabContents(source);
+        }
+    }
+
+    private static void AddShowcaseBlock(Transform parent, Vector3 localPosition, Vector3 localScale, Material material)
+    {
+        var block = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        block.name = "ShowcaseProp";
+        block.transform.SetParent(parent, false);
+        block.transform.localPosition = localPosition;
+        block.transform.localScale = localScale;
+        block.GetComponent<Renderer>().sharedMaterial = material;
+        Object.DestroyImmediate(block.GetComponent<Collider>());
+    }
+
     public static void BuildAndCapture()
     {
         Build();
@@ -118,6 +159,7 @@ public static class CityArchitectureShowcaseBuilder
             }
             var texture = AssetDatabase.LoadAssetAtPath<Texture2D>(pair.Value);
             material.mainTexture = texture;
+            material.color = ShowcaseColor(pair.Key);
             material.SetFloat("_Glossiness", pair.Key == "Trim" ? 0.42f : 0.22f);
             material.SetFloat("_Metallic", pair.Key == "Trim" ? 0.25f : 0f);
             EditorUtility.SetDirty(material);
@@ -125,6 +167,14 @@ public static class CityArchitectureShowcaseBuilder
         }
         AssetDatabase.SaveAssets();
         return result;
+    }
+
+    private static Color ShowcaseColor(string key)
+    {
+        if (key == "Stone") return new Color(0.68f, 0.62f, 0.52f, 1f);
+        if (key == "Wood") return new Color(0.48f, 0.25f, 0.12f, 1f);
+        if (key == "Roof") return new Color(0.34f, 0.12f, 0.06f, 1f);
+        return new Color(0.82f, 0.55f, 0.12f, 1f);
     }
 
     private static void ApplyShowcaseMaterials(GameObject root, Dictionary<string, Material> materials)
