@@ -49,7 +49,8 @@ Isso é um bloqueio honesto de integração Unity/PlayMode, não uma falha do co
 - Não há evidência de produção real em um prefab/cena de produção.
 - Não há confirmação de `Unit.UNITS_BY_OWNER` recebendo a unidade concluída via partida.
 - Não há teste de UI, animação, collider, NavMesh ou spawn visual.
-- Não foi executado Unity batch nesta rodada; o histórico do projeto registra o bloqueio intermitente do `LicenseClient-User`.
+- Execução Unity batch controlada: BLOCKED antes do harness. O log `%TEMP%/EraImperial-production-runtime-cycle6.log` registra `LicenseClient-User doesn't exist` e `Licensing is not yet initialized`; nenhum marcador `PRODUCTION_RUNTIME_CYCLE6_*` foi emitido.
+- O processo batch iniciado para esta tentativa foi encerrado pelo PID exato após o bloqueio; não havia editor Unity do usuário aberto nessa tentativa.
 
 ## Verificações estáticas realizadas
 
@@ -57,6 +58,10 @@ Isso é um bloqueio honesto de integração Unity/PlayMode, não uma falha do co
 - conferência de que os dois arquivos novos ficam dentro dos diretórios autorizados;
 - `git diff --check` nos arquivos novos;
 - nenhuma alteração em prefabs, cenas ou assets de produção.
+
+## Resultado desta rodada
+
+O gate editor-free passou e o harness contém asserções para catálogo, reserva, avanço FIFO, callback de conclusão, população e dependências de materialização. A execução Unity não alcançou essas asserções por causa do `LicenseClient-User`; portanto não há PASS de produção runtime. A materialização via `BuildingProductionRuntimeDriver` continua BLOCKED por exigir uma cena/prefab de produção operacional, que este ciclo não pode alterar.
 
 ## Próximo passo desbloqueador
 
