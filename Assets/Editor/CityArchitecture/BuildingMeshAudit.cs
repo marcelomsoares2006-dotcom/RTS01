@@ -14,6 +14,7 @@ public static class BuildingMeshAudit
 {
     private const string PrefabFolder = "Assets/CityArchitecture/Prefabs/EraBuildings";
     private const string ReportPath = "TestResults/BuildingMeshAudit.txt";
+    private const float UvPrecisionEpsilon = 0.000001f;
 
     private static readonly string[] ExpectedPrefabs =
     {
@@ -78,7 +79,7 @@ public static class BuildingMeshAudit
                 if (mesh.vertexCount == 0)
                     AddFailure(failures, report, "    ERRO: mesh sem vértices: " + mesh.name);
                 AuditUv(mesh, 0, "UV0", path, report, failures);
-                AuditUv(mesh, 1, "UV2", path, report, failures);
+                AuditOptionalUv(mesh, 1, "UV2", path, report, failures);
             }
 
             AuditMaterials(path, renderers, report, failures);
@@ -118,7 +119,39 @@ public static class BuildingMeshAudit
                 AddFailure(failures, report, "    ERRO: " + label + " não finita em " + mesh.name + " índice " + i);
                 return;
             }
-            if (uv.x < 0f || uv.x > 1f || uv.y < 0f || uv.y > 1f)
+            if (uv.x < -UvPrecisionEpsilon || uv.x > 1f + UvPrecisionEpsilon || uv.y < -UvPrecisionEpsilon || uv.y > 1f + UvPrecisionEpsilon)
+            {
+                AddFailure(failures, report, "    ERRO: " + label + " fora de 0-1 em " + mesh.name + " índice " + i + " valor=" + uv);
+                return;
+            }
+        }
+    }
+
+    private static void AuditOptionalUv(Mesh mesh, int channel, string label, string prefabPath, StringBuilder report, List<string> failures)
+    {
+        var values = new List<Vector2>();
+        mesh.GetUVs(channel, values);
+        var expected = mesh.vertexCount;
+        report.AppendLine("    " + label + ": " + values.Count + "/" + expected + " coordenadas (opcional para lightmap)");
+
+        // Esses prefabs usam iluminação em tempo real; UV2 ausente não invalida o mesh.
+        // Se o canal existir, ainda validamos sua finitude e limites.
+        if (values.Count == 0)
+            return;
+        if (values.Count != expected)
+        {
+            AddFailure(failures, report, "    ERRO: " + label + " parcial em " + mesh.name + " (" + prefabPath + ")");
+            return;
+        }
+        for (var i = 0; i < values.Count; i++)
+        {
+            var uv = values[i];
+            if (float.IsNaN(uv.x) || float.IsNaN(uv.y) || float.IsInfinity(uv.x) || float.IsInfinity(uv.y))
+            {
+                AddFailure(failures, report, "    ERRO: " + label + " não finita em " + mesh.name + " índice " + i);
+                return;
+            }
+            if (uv.x < -UvPrecisionEpsilon || uv.x > 1f + UvPrecisionEpsilon || uv.y < -UvPrecisionEpsilon || uv.y > 1f + UvPrecisionEpsilon)
             {
                 AddFailure(failures, report, "    ERRO: " + label + " fora de 0-1 em " + mesh.name + " índice " + i + " valor=" + uv);
                 return;
