@@ -3,6 +3,7 @@ using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.IO;
+using System.Collections.Generic;
 
 public static class CityArchitectureShowcaseBuilder
 {
@@ -29,8 +30,8 @@ public static class CityArchitectureShowcaseBuilder
 
         var cameraGo = new GameObject("Showcase Camera");
         var camera = cameraGo.AddComponent<Camera>();
-        camera.transform.position = new Vector3(18f, 18f, -22f);
-        camera.transform.LookAt(new Vector3(6f, 2f, 6f));
+        camera.transform.position = new Vector3(24f, 22f, -30f);
+        camera.transform.LookAt(new Vector3(9f, 2f, 9f));
         camera.fieldOfView = 42f;
         camera.farClipPlane = 100f;
 
@@ -44,6 +45,21 @@ public static class CityArchitectureShowcaseBuilder
             instance.name = pieces[i] + "_Showcase_" + i;
             instance.transform.position = new Vector3((i % 2) * 12f, 0f, (i / 2) * 12f);
             SelectEra(instance.transform, i);
+        }
+
+        // Candidatos visuais reversíveis: não substituem prefabs de produção.
+        string[] buildingCandidates = { "House_Medieval", "Barracks_Medieval" };
+        var showcaseMaterials = EnsureShowcaseMaterials();
+        for (int i = 0; i < buildingCandidates.Length; i++)
+        {
+            string path = "Assets/CityArchitecture/Prefabs/EraBuildings/" + buildingCandidates[i] + ".prefab";
+            GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(path);
+            if (prefab == null) throw new System.IO.FileNotFoundException("Prefab candidato ausente", path);
+            GameObject instance = (GameObject)PrefabUtility.InstantiatePrefab(prefab, scene);
+            instance.name = buildingCandidates[i] + "_Candidate_" + i;
+            instance.transform.position = new Vector3(5f + i * 8f, 0f, 17f);
+            instance.transform.localScale = Vector3.one * 0.18f;
+            ApplyShowcaseMaterials(instance, showcaseMaterials);
         }
 
         EditorSceneManager.SaveScene(scene, ScenePath);
@@ -79,6 +95,46 @@ public static class CityArchitectureShowcaseBuilder
     {
         Build();
         Capture();
+    }
+
+    private static Dictionary<string, Material> EnsureShowcaseMaterials()
+    {
+        var textures = new Dictionary<string, string>
+        {
+            { "Stone", "Assets/CityArchitecture/Generated/Textures/PBR_Stone.png" },
+            { "Wood", "Assets/CityArchitecture/Generated/Textures/PBR_Wood.png" },
+            { "Roof", "Assets/CityArchitecture/Generated/Textures/PBR_Roof.png" },
+            { "Trim", "Assets/CityArchitecture/Generated/Textures/PBR_Trim.png" }
+        };
+        var result = new Dictionary<string, Material>();
+        foreach (var pair in textures)
+        {
+            var path = "Assets/CityArchitecture/Materials/Showcase_" + pair.Key + ".mat";
+            var material = AssetDatabase.LoadAssetAtPath<Material>(path);
+            if (material == null)
+            {
+                material = new Material(Shader.Find("Standard")) { name = "Showcase_" + pair.Key };
+                AssetDatabase.CreateAsset(material, path);
+            }
+            var texture = AssetDatabase.LoadAssetAtPath<Texture2D>(pair.Value);
+            material.mainTexture = texture;
+            material.SetFloat("_Glossiness", pair.Key == "Trim" ? 0.42f : 0.22f);
+            material.SetFloat("_Metallic", pair.Key == "Trim" ? 0.25f : 0f);
+            EditorUtility.SetDirty(material);
+            result[pair.Key] = material;
+        }
+        AssetDatabase.SaveAssets();
+        return result;
+    }
+
+    private static void ApplyShowcaseMaterials(GameObject root, Dictionary<string, Material> materials)
+    {
+        foreach (var renderer in root.GetComponentsInChildren<Renderer>(true))
+        {
+            var name = renderer.gameObject.name.ToLowerInvariant();
+            var key = name.Contains("roof") ? "Roof" : name.Contains("door") || name.Contains("body") ? "Wood" : name.Contains("banner") ? "Trim" : "Stone";
+            renderer.sharedMaterial = materials[key];
+        }
     }
 
     private static void SelectEra(Transform root, int era)
