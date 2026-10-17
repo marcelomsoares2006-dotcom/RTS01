@@ -18,6 +18,7 @@ def cube(name, loc, scale, material, bevel=.06):
 
 def stone_wall(root, x=0, z=0, length=8, height=3.2, yaw=0):
     body=cube('WallBody',(x,height/2,z),(length/2,.5,height/2),stone,.10); body.rotation_euler[2]=yaw; body.parent=root
+    walk=cube('WallWalk',(x,height+.02,z),(length/2-.18,.12,.72),stone2,.04); walk.rotation_euler[2]=yaw; walk.parent=root
     for row in range(4):
         for col in range(8):
             px=-length/2+.5+col*(length-1)/(7); pz=-.52
@@ -26,6 +27,8 @@ def stone_wall(root, x=0, z=0, length=8, height=3.2, yaw=0):
     for i in range(7):
         px=-length/2+.55+i*(length-1.1)/6
         mer=cube('Merlon_'+str(i),(x+px*math.cos(yaw),height+.35,z+px*math.sin(yaw)),(.32,.35,.38),stone,.06); mer.parent=root
+    for px in (-length*.28, length*.28):
+        post=cube('TorchBracket',(x+px*math.cos(yaw),height*.62,z+px*math.sin(yaw)-.68),(.06,.32,.06),metal,.02); post.rotation_euler[2]=yaw; post.parent=root
     return root
 
 def tower(root, x=0,z=0):
@@ -38,6 +41,9 @@ def gate(root):
     cube('GateArch',(0,4.9,0),(3.2,.65,1.25),stone,.12).parent=root
     cube('WoodenGate',(0,2.3,-1.32),(1.65,2.1,.12),wood,.04).parent=root
     for x in (-1.1,-.55,0,.55,1.1): cube('GateBand',(x,2.3,-1.48),(.08,2.15,.06),metal,.02).parent=root
+    pole=cube('BannerPole',(3.7,4.0,0),(.045,3.7,.045),wood,.015); pole.parent=root
+    banner=cube('Banner',(4.15,4.6,0),(.45,.8,.035),wood,.025); banner.parent=root
+    banner.rotation_euler[1]=math.radians(-8)
 
 root=bpy.data.objects.new('PremiumFortificationKit',None); bpy.context.collection.objects.link(root)
 wall=bpy.data.objects.new('WallStraight_Premium',None); bpy.context.collection.objects.link(wall); stone_wall(wall,0,0,8,3.2); wall.parent=root
