@@ -66,6 +66,8 @@ public static class CityArchitectureShowcaseBuilder
             GameObject instance = (GameObject)PrefabUtility.InstantiatePrefab(prefab, scene);
             instance.name = buildingCandidates[i] + "_Candidate_" + i;
             instance.transform.position = candidatePositions[i];
+            // Os candidatos têm pivôs internos deslocados nos FBX; manter a escala de showcase
+            // evita que partes flutuem e dominem o quadro. A normalização de pivô fica para authoring 3D.
             instance.transform.localScale = Vector3.one * 0.18f;
             ApplyShowcaseMaterials(instance, showcaseMaterials);
         }
