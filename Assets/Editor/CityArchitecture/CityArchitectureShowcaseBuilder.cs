@@ -40,8 +40,8 @@ public static class CityArchitectureShowcaseBuilder
 
         var ground = GameObject.CreatePrimitive(PrimitiveType.Plane);
         ground.name = "Showcase Ground";
-        ground.transform.position = new Vector3(6f, -0.02f, 6f);
-        ground.transform.localScale = new Vector3(4.5f, 1f, 4.5f);
+        ground.transform.position = new Vector3(10f, -0.02f, 10f);
+        ground.transform.localScale = new Vector3(5.5f, 1f, 5.5f);
         Object.DestroyImmediate(ground.GetComponent<Collider>());
         var groundMaterial = new Material(Shader.Find("Standard"));
         groundMaterial.color = new Color(.12f, .14f, .12f);
@@ -71,13 +71,22 @@ public static class CityArchitectureShowcaseBuilder
         // Candidatos visuais reversíveis: não substituem prefabs de produção.
         var showcaseMaterials = EnsureShowcaseMaterials();
         AddTownCenterVisualCandidate(scene, showcaseMaterials);
-        string[] buildingCandidates = { "House_Medieval", "Barracks_Medieval", "Market_Classical", "Temple_Imperial" };
+        string[] buildingCandidates =
+        {
+            "House_Medieval", "House_Medieval", "House_Medieval",
+            "Barracks_Medieval", "Barracks_Medieval",
+            "Market_Classical", "Temple_Imperial", "House_Medieval"
+        };
         var candidatePositions = new[]
         {
-            new Vector3(4f, 0f, 17f),
-            new Vector3(12f, 0f, 17f),
-            new Vector3(17f, 0f, 6f),
-            new Vector3(19f, 0f, 15f)
+            new Vector3(3.5f, 0f, 3.5f),
+            new Vector3(16.5f, 0f, 3.5f),
+            new Vector3(3.5f, 0f, 16.5f),
+            new Vector3(16.5f, 0f, 16.5f),
+            new Vector3(20.5f, 0f, 9.5f),
+            new Vector3(2.5f, 0f, 9.5f),
+            new Vector3(10f, 0f, 19.5f),
+            new Vector3(18.5f, 0f, 2.5f)
         };
         for (int i = 0; i < buildingCandidates.Length; i++)
         {
@@ -85,11 +94,11 @@ public static class CityArchitectureShowcaseBuilder
             GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(path);
             if (prefab == null) throw new System.IO.FileNotFoundException("Prefab candidato ausente", path);
             GameObject instance = (GameObject)PrefabUtility.InstantiatePrefab(prefab, scene);
-            instance.name = buildingCandidates[i] + "_Candidate_" + i;
-            instance.transform.position = candidatePositions[i];
-            // Os candidatos têm pivôs internos deslocados nos FBX; manter a escala de showcase
-            // evita que partes flutuem e dominem o quadro. A normalização de pivô fica para authoring 3D.
-            instance.transform.localScale = Vector3.one * 0.18f;
+            instance.name = "Showcase_Building_" + buildingCandidates[i] + "_" + i;
+            // Os candidatos têm pivôs internos deslocados nos FBX. Esta correção existe
+            // apenas na cópia visual da cena: usa os bounds ativos para pousar e centralizar
+            // a massa arquitetônica sem tocar no prefab de produção nem no authoring 3D.
+            PositionShowcaseObject(instance, candidatePositions[i], 0.32f);
             ApplyShowcaseMaterials(instance, showcaseMaterials);
         }
         AddShowcaseRoads(scene, showcaseMaterials);
@@ -97,6 +106,7 @@ public static class CityArchitectureShowcaseBuilder
         EditorSceneManager.SaveScene(scene, ScenePath);
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
+        WriteShowcaseMetrics(scene);
         Debug.Log("Cena de showcase criada em " + ScenePath);
     }
 
@@ -135,8 +145,7 @@ public static class CityArchitectureShowcaseBuilder
             var visual = (GameObject)Object.Instantiate(mesh.gameObject);
             SceneManager.MoveGameObjectToScene(visual, scene);
             visual.name = "TownCenter_VisualCandidate";
-            visual.transform.position = new Vector3(7f, 0f, 7f);
-            visual.transform.localScale = Vector3.one * 0.55f;
+            PositionShowcaseObject(visual, new Vector3(10f, 0f, 10f), 0.55f);
             ApplyShowcaseMaterials(visual, materials);
 
             var props = new GameObject("TownCenter_ShowcaseProps");
@@ -206,8 +215,111 @@ public static class CityArchitectureShowcaseBuilder
     {
         var roads = new GameObject("Showcase_Roads");
         SceneManager.MoveGameObjectToScene(roads, scene);
-        AddShowcaseBlock(roads.transform, new Vector3(10f, 0.015f, 9f), new Vector3(22f, 0.03f, 1.4f), materials["Stone"]);
-        AddShowcaseBlock(roads.transform, new Vector3(10f, 0.02f, 9f), new Vector3(1.4f, 0.04f, 20f), materials["Stone"]);
+        AddShowcaseBlock(roads.transform, new Vector3(10f, 0.015f, 10f), new Vector3(23f, 0.03f, 1.45f), materials["Stone"]);
+        AddShowcaseBlock(roads.transform, new Vector3(10f, 0.02f, 10f), new Vector3(1.45f, 0.04f, 22f), materials["Stone"]);
+        AddShowcaseBlock(roads.transform, new Vector3(5.5f, 0.025f, 10f), new Vector3(7f, 0.05f, 0.9f), materials["Stone"]);
+        AddShowcaseBlock(roads.transform, new Vector3(15.5f, 0.025f, 10f), new Vector3(7f, 0.05f, 0.9f), materials["Stone"]);
+        var plaza = new GameObject("Showcase_Plaza");
+        plaza.transform.SetParent(roads.transform, false);
+        AddShowcaseBlock(plaza.transform, new Vector3(10f, 0.045f, 10f), new Vector3(5.6f, 0.05f, 5.6f), materials["Trim"]);
+    }
+
+    private static void PositionShowcaseObject(GameObject instance, Vector3 target, float uniformScale)
+    {
+        instance.transform.position = Vector3.zero;
+        instance.transform.localScale = Vector3.one * uniformScale;
+        var bounds = CalculateActiveRendererBounds(instance);
+        if (!bounds.HasValue)
+        {
+            instance.transform.position = target;
+            return;
+        }
+
+        var current = instance.transform.position;
+        current += target - new Vector3(bounds.Value.center.x, 0f, bounds.Value.center.z);
+        current.y += -bounds.Value.min.y;
+        instance.transform.position = current;
+    }
+
+    private static Bounds? CalculateActiveRendererBounds(GameObject root)
+    {
+        var renderers = root.GetComponentsInChildren<Renderer>(true);
+        Bounds bounds = default;
+        var hasBounds = false;
+        foreach (var renderer in renderers)
+        {
+            if (!renderer.gameObject.activeInHierarchy) continue;
+            if (!hasBounds)
+            {
+                bounds = renderer.bounds;
+                hasBounds = true;
+            }
+            else bounds.Encapsulate(renderer.bounds);
+        }
+        return hasBounds ? bounds : (Bounds?)null;
+    }
+
+    private static void WriteShowcaseMetrics(Scene scene)
+    {
+        Directory.CreateDirectory("TestResults");
+        var meshes = new HashSet<Mesh>();
+        var materials = new HashSet<Material>();
+        var roots = scene.GetRootGameObjects();
+        var gameObjects = 0;
+        var renderers = 0;
+        var triangles = 0;
+        var buildingCandidates = 0;
+        var props = 0;
+        Bounds sceneBounds = default;
+        var hasSceneBounds = false;
+
+        foreach (var root in roots)
+        {
+            foreach (var transform in root.GetComponentsInChildren<Transform>(true))
+            {
+                gameObjects++;
+                if (transform.name.StartsWith("Showcase_Building_")) buildingCandidates++;
+                if (transform.name == "ShowcaseProp") props++;
+            }
+            foreach (var renderer in root.GetComponentsInChildren<Renderer>(true))
+            {
+                if (!renderer.gameObject.activeInHierarchy) continue;
+                renderers++;
+                if (!hasSceneBounds)
+                {
+                    sceneBounds = renderer.bounds;
+                    hasSceneBounds = true;
+                }
+                else sceneBounds.Encapsulate(renderer.bounds);
+                foreach (var material in renderer.sharedMaterials)
+                    if (material != null) materials.Add(material);
+                var meshFilter = renderer.GetComponent<MeshFilter>();
+                if (meshFilter != null && meshFilter.sharedMesh != null)
+                {
+                    meshes.Add(meshFilter.sharedMesh);
+                    for (var subMesh = 0; subMesh < meshFilter.sharedMesh.subMeshCount; subMesh++)
+                        triangles += (int)meshFilter.sharedMesh.GetIndexCount(subMesh) / 3;
+                }
+            }
+        }
+
+        var lines = new List<string>
+        {
+            "Era Imperial - CityArchitectureShowcase audit",
+            "Escopo: cópia visual da cena; prefabs de produção não são alterados.",
+            "Building candidates visuais: " + buildingCandidates,
+            "GameObjects na cena: " + gameObjects,
+            "Renderers ativos: " + renderers,
+            "Meshes distintos: " + meshes.Count,
+            "Triângulos ativos estimados: " + triangles,
+            "Materiais distintos: " + materials.Count,
+            "Props cúbicos showcase: " + props,
+            "Bounds da cena: " + (hasSceneBounds ? sceneBounds.ToString() : "n/a"),
+            "Gate AoE4 cidade densa: PENDENTE — este showcase é uma prova de composição, não 100+ construções.",
+            "Gate AoE4 estabilidade: usa a validação Unity/standalone registrada separadamente."
+        };
+        File.WriteAllLines("TestResults/CityArchitectureShowcaseAudit.txt", lines);
+        Debug.Log("SHOWCASE_METRICS buildings=" + buildingCandidates + " renderers=" + renderers + " triangles=" + triangles);
     }
 
     private static Dictionary<string, Material> EnsureShowcaseMaterials()
@@ -232,14 +344,47 @@ public static class CityArchitectureShowcaseBuilder
             }
             var texture = AssetDatabase.LoadAssetAtPath<Texture2D>(pair.Value);
             material.mainTexture = texture;
+            string normalPath = "Assets/CityArchitecture/Generated/Textures/Showcase/Showcase_" + pair.Key + "_Normal.png";
+            string metallicGlossPath = "Assets/CityArchitecture/Generated/Textures/Showcase/Showcase_" + pair.Key + "_MetallicGloss.png";
+            string aoPath = "Assets/CityArchitecture/Generated/Textures/Showcase/Showcase_" + pair.Key + "_AO.png";
+            ConfigureShowcaseMapImporter(normalPath, true);
+            ConfigureShowcaseMapImporter(metallicGlossPath, false);
+            ConfigureShowcaseMapImporter(aoPath, false);
+            var normal = AssetDatabase.LoadAssetAtPath<Texture2D>(normalPath);
+            var metallicGloss = AssetDatabase.LoadAssetAtPath<Texture2D>(metallicGlossPath);
+            var ao = AssetDatabase.LoadAssetAtPath<Texture2D>(aoPath);
+            if (normal != null) material.SetTexture("_BumpMap", normal);
+            if (metallicGloss != null) material.SetTexture("_MetallicGlossMap", metallicGloss);
+            if (ao != null) material.SetTexture("_OcclusionMap", ao);
             material.color = ShowcaseColor(pair.Key);
             material.SetFloat("_Glossiness", pair.Key == "Trim" ? 0.42f : 0.22f);
             material.SetFloat("_Metallic", pair.Key == "Trim" ? 0.25f : 0f);
+            material.SetFloat("_BumpScale", pair.Key == "Trim" ? 0.35f : 0.65f);
+            material.SetFloat("_OcclusionStrength", 0.72f);
             EditorUtility.SetDirty(material);
             result[pair.Key] = material;
         }
         AssetDatabase.SaveAssets();
         return result;
+    }
+
+    private static void ConfigureShowcaseMapImporter(string path, bool normalMap)
+    {
+        var importer = AssetImporter.GetAtPath(path) as TextureImporter;
+        if (importer == null) return;
+        bool changed = false;
+        var desiredType = normalMap ? TextureImporterType.NormalMap : TextureImporterType.Default;
+        if (importer.textureType != desiredType)
+        {
+            importer.textureType = desiredType;
+            changed = true;
+        }
+        if (!normalMap && importer.sRGBTexture)
+        {
+            importer.sRGBTexture = false;
+            changed = true;
+        }
+        if (changed) importer.SaveAndReimport();
     }
 
     private static Color ShowcaseColor(string key)
