@@ -39,6 +39,24 @@ public sealed class BuildingMaintenanceRuntimeSnapshot
         }
     }
 
+    // Constructor used by the versioned save migration boundary. It keeps
+    // deserialization independent from live scene objects and services.
+    public BuildingMaintenanceRuntimeSnapshot(
+        string savedBuildingId, int savedOwnerId, int savedCurrentHealth, int savedMaxHealth,
+        BuildingLifecycleState savedLifecycle, BuildingMaintenanceOperation savedOperation,
+        float savedProgress, bool savedBusy, BuildingMaintenanceOperationState savedOperationState)
+    {
+        buildingId = savedBuildingId;
+        ownerId = savedOwnerId;
+        currentHealth = savedCurrentHealth;
+        maxHealth = savedMaxHealth;
+        lifecycle = savedLifecycle;
+        operation = savedOperation;
+        progress = savedProgress;
+        busy = savedBusy;
+        operationState = savedOperationState;
+    }
+
     private static float Clamp01(float value)
     {
         if (value <= 0f) return 0f;
