@@ -70,7 +70,7 @@ public static class Stage5MountedRuntimeCheck
             if (!EditorApplication.isPlaying || EditorApplication.isCompiling ||
                 EditorApplication.timeSinceStartup<nextTick) return;
             Need(SceneManager.GetActiveScene().path==ScenePath,"Wrong mounted review scene.");
-            var mount=UnityEngine.Object.FindObjectsByType<Transform>()
+            var mount=UnityEngine.Object.FindObjectsByType<Transform>(FindObjectsSortMode.None)
                 .FirstOrDefault(t=>t.name=="MountedFitPrototype");
             Need(mount!=null,"Mounted prefab missing in Play Mode.");
             var animators=mount.GetComponentsInChildren<Animator>(true);

@@ -77,7 +77,7 @@ public static class Stage345RuntimeCheck
             Need(SceneManager.GetActiveScene().path==Stage345AssetSetup.ScenePath,
                  "Wrong Play scene: "+SceneManager.GetActiveScene().path);
             var actors=NewActors.Select(entry=>
-                UnityEngine.Object.FindObjectsByType<Animator>()
+                UnityEngine.Object.FindObjectsByType<Animator>(FindObjectsSortMode.None)
                 .FirstOrDefault(a=>a.name==entry.name)).ToArray();
             Need(actors.All(a=>a!=null),"Missing new actors in review scene.");
             if (!sampled)

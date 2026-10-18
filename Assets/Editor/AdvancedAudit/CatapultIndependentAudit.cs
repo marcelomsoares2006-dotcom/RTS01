@@ -568,7 +568,7 @@ public static class CatapultIndependentAudit
             GameObject animRoot = animator.gameObject;
             List<string> track = new List<string>();
             float[] ts = { 0f, 0.1f, 0.2f, 0.3f, 0.4f, 0.5f, 0.7f, 1.0f };
-            Vector3 atRelease = Vector3.zero; float lenAtRest = (spawn.position - arm.position).magnitude;
+            Vector3 atRelease = Vector3.zero;
             float minLen = float.MaxValue, maxLen = 0;
             Vector3 pRest = Vector3.zero;
             foreach (float t in ts)
@@ -684,10 +684,8 @@ public static class CatapultIndependentAudit
             {
                 AnimationClip c = LoadClip(ModelsDir + "/Catapult@" + n + ".fbx");
                 GameObject animRoot = animator.gameObject;
-                Vector3 pa = Vector3.zero, pb = Vector3.zero; Quaternion qa = Quaternion.identity, qb = Quaternion.identity;
                 Transform arm = FindDeep(inst.transform, "Arm"), wheel = FindDeep(inst.transform, "Wheel_FL"), root = FindDeep(inst.transform, "Root");
                 float deltaArm = 0, deltaWheel = 0, deltaRoot = 0;
-                Quaternion[] a0 = null;
                 c.SampleAnimation(animRoot, 0f);
                 Quaternion armA = arm.localRotation, whA = wheel.localRotation, rootA = root.localRotation; Vector3 rootPA = root.localPosition;
                 for (float t = c.length * 0.1f; t <= c.length; t += c.length * 0.1f)

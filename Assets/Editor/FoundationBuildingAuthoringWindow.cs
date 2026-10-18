@@ -495,7 +495,7 @@ public sealed class FoundationBuildingAuthoringWindow : EditorWindow
         foreach (Transform child in existingChildren)
             child.SetParent(meshRoot, true);
 
-        GameObject minimapIcon = InstantiateSupportPrefab(MinimapIconPrefab, meshRoot, "MinimapIcon");
+        InstantiateSupportPrefab(MinimapIconPrefab, meshRoot, "MinimapIcon");
         GameObject selectionCircle = InstantiateSelectionCircle(meshRoot.parent);
         GameObject fov = InstantiateSupportPrefab(FovPrefab, root.transform, "FOV");
         GameObject healthbar = InstantiateSupportPrefab(HealthbarPrefab, root.transform, "Healthbar");

@@ -376,8 +376,6 @@ public static class CombatMageIndependentAudit
                 {
                     if (m == null) { Ok("4.1", false, Path.GetFileName(p) + "/" + r.name + ": slot de material nulo"); continue; }
                     if (!seen.Add(m)) continue;
-                    bool isFx = r is ParticleSystemRenderer || r is TrailRenderer;
-                    bool isRing = r.name == "TeamRing" || r.name == "SelectionCircle" || r.name == "Fov" || r.name.ToLower().Contains("fov") || r.name == "MinimapIcon";
                     bool skinned = r is SkinnedMeshRenderer;
                     CheckMaterial("4.1", Path.GetFileName(p), m, skinned && bodyPrefab);
                 }
@@ -391,13 +389,6 @@ public static class CombatMageIndependentAudit
         {
             string mp = AssetDatabase.GUIDToAssetPath(guid);
             Material m = AssetDatabase.LoadAssetAtPath<Material>(mp);
-            int props = m.shader.GetPropertyCount();
-            for (int i = 0; i < props; i++)
-                if (m.shader.GetPropertyType(i) == ShaderPropertyType.Texture)
-                {
-                    string pn = m.shader.GetPropertyName(i);
-                    // propriedades texturizadas com referencia perdida (guid sem asset)
-                }
             CheckMaterial("4.3", "Materials", m, false);
         }
         // propriedade de cor principal nao-magenta
@@ -543,7 +534,6 @@ public static class CombatMageIndependentAudit
         // posicao: na ponta do cajado (bounds de renderers do cajado)
         Renderer[] sr = mount.GetComponentsInChildren<Renderer>().Where(r => !(r is ParticleSystemRenderer) && !(r is TrailRenderer)).ToArray();
         Bounds sb = sr[0].bounds; foreach (Renderer r in sr) sb.Encapsulate(r.bounds);
-        float distToTop = Vector3.Distance(cast.position, new Vector3(cast.position.x, sb.max.y, cast.position.z));
         Info("7.4", $"bounds do cajado (pose do prefab): min {sb.min}, max {sb.max}; CastPoint {cast.position}; mao {rightHand.position}");
         Ok("7.4", sb.Contains(cast.position) || sb.SqrDistance(cast.position) < 0.15f * 0.15f, "CastPoint dentro/junto dos bounds do cajado (dist " + Mathf.Sqrt(sb.SqrDistance(cast.position)).ToString("F3") + " m)");
         float handToCast = Vector3.Distance(rightHand.position, cast.position);
@@ -646,7 +636,6 @@ public static class CombatMageIndependentAudit
         // evento de liberacao no clipe Cast
         AnimationClip cast = contract.visual.animations.First(a => a.state == "Cast").clip;
         Info("8.18", "eventos do Cast: " + string.Join(", ", cast.events.Select(e => e.functionName + "@" + e.time.ToString("F3"))));
-        var evTargets = w.GetComponentsInChildren<MonoBehaviour>(true).Select(m => m.GetType().Name).ToList();
         foreach (AnimationEvent e in cast.events)
             Ok("8.18", w.GetComponentsInChildren<MonoBehaviour>(true).Any(m => m.GetType().GetMethod(e.functionName) != null), "evento '" + e.functionName + "' do Cast tem receptor no wrapper (senao gera erro de console)");
         // loops
@@ -894,8 +883,6 @@ public static class CombatMageIndependentAudit
         if (SessionState.GetBool(Key + "Running", false))
             BinarySerializable.DATA_DIRECTORY = SessionState.GetString(Key + "DataPath", "TestResults/CMIndepData");
     }
-
-    private static readonly List<string> _consoleErrors = new List<string>();
 
     private static void OnLog(string message, string stack, LogType type)
     {

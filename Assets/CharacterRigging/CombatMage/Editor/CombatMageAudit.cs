@@ -306,7 +306,7 @@ public static class CombatMageAudit
     static (int foreground, int magenta) Capture(Camera camera, RenderTexture target, string path)
     {
         // em Edit Mode o skinning so reflete a pose amostrada depois que o renderer e reativado
-        foreach (var smr in UnityEngine.Object.FindObjectsByType<SkinnedMeshRenderer>())
+        foreach (var smr in UnityEngine.Object.FindObjectsByType<SkinnedMeshRenderer>(FindObjectsSortMode.None))
         {
             smr.forceMatrixRecalculationPerRender = true;
             smr.updateWhenOffscreen = true;
