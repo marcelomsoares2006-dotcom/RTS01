@@ -6,6 +6,8 @@ public static class CharacterCatalogPrefabRepair
 {
     private static readonly (string dataPath, string prefabPath)[] Entries =
     {
+        ("Assets/Resources/ScriptableObjects/Units/Characters/Worker.asset",
+            "Assets/Resources/Prefabs/Units/Characters/Worker.prefab"),
         ("Assets/Resources/ScriptableObjects/Units/Characters/Spearman.asset",
             "Assets/Resources/Prefabs/Units/Characters/Spearman.prefab"),
         ("Assets/Resources/ScriptableObjects/Units/Characters/HeraldicKnight.asset",

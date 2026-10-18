@@ -24,8 +24,16 @@ public class EventManager : MonoBehaviour
                 _eventManager = FindAnyObjectByType<EventManager>();
 
                 if (!_eventManager)
-                    Debug.LogError("There needs to be one active EventManager script on a GameObject in your scene.");
+                {
+                    var host = new GameObject("EventManager");
+                    _eventManager = host.AddComponent<EventManager>();
+                    DontDestroyOnLoad(host);
+                    Debug.LogWarning("EventManager ausente na cena; instância runtime criada automaticamente.");
+                }
                 else
+                    _eventManager.Init();
+
+                if (_eventManager != null)
                     _eventManager.Init();
             }
 

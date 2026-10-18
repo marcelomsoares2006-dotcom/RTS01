@@ -22,4 +22,6 @@ Nenhum candidato foi promovido. Permanecem pendentes a validação PlayMode real
 - `UIManager.Start` agora aguarda com aviso quando os recursos do jogador ainda não foram inicializados, evitando `NullReferenceException` durante a carga.
 - `BuildingPlacer.SpawnBuilding` agora trata colocação rejeitada antes de acessar `_placedBuilding`, evitando o segundo `NullReferenceException` observado.
 - A nova execução batch ficou novamente bloqueada na inicialização/licenciamento (`LicenseClient-User`) antes de concluir a compilação. Essas duas correções ainda precisam de confirmação no PlayMode licenciado.
+- Uma tentativa posterior via `-hubIPC` estabilizou a licença e chegou ao PlayMode, mas terminou em `LIVE_PRODUCTION_PLAYMODE_BLOCKED` após 45 s. O log mostrou referências `CharacterData.prefab` incompatíveis no carregamento de Worker/Spearman e o reparador oficial foi ampliado para incluir Worker; sua execução seguinte ficou presa no IL Post Processor antes de salvar/verificar.
+- Também foram adicionados guards de criação automática do `EventManager` e fallback seguro para `GameData.gameUid`, evitando os dois erros de inicialização observados. Ainda falta confirmação de compilação/importação limpa e nova execução PlayMode.
 

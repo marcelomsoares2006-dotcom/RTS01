@@ -117,11 +117,16 @@ public class GameData : BinarySerializable
     public ConstructionReplaySnapshot constructionReplayState;
 
     public static string GetFolderPath()
-        => System.IO.Path.Combine(
+    {
+        string safeUid = string.IsNullOrWhiteSpace(gameUid) ? "Uninitialized" : gameUid;
+        if (string.IsNullOrWhiteSpace(gameUid))
+            Debug.LogWarning("GameData.gameUid ainda não foi definido; usando pasta temporária Uninitialized.");
+        return System.IO.Path.Combine(
             Application.persistentDataPath,
             DATA_DIRECTORY,
             "Games",
-            gameUid);
+            safeUid);
+    }
 
     private static string _GetFilePath()
         => System.IO.Path.Combine(GetFolderPath(), DATA_FILE_NAME);
