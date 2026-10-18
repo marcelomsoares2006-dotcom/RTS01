@@ -25,3 +25,10 @@ Nenhum candidato foi promovido. Permanecem pendentes a validação PlayMode real
 - Uma tentativa posterior via `-hubIPC` estabilizou a licença e chegou ao PlayMode, mas terminou em `LIVE_PRODUCTION_PLAYMODE_BLOCKED` após 45 s. O log mostrou referências `CharacterData.prefab` incompatíveis no carregamento de Worker/Spearman e o reparador oficial foi ampliado para incluir Worker; sua execução seguinte ficou presa no IL Post Processor antes de salvar/verificar.
 - Também foram adicionados guards de criação automática do `EventManager` e fallback seguro para `GameData.gameUid`, evitando os dois erros de inicialização observados. Ainda falta confirmação de compilação/importação limpa e nova execução PlayMode.
 
+## Rodada 2026-10-18 — catálogo reparado
+
+- `CharacterCatalogPrefabRepair.Run` foi ampliado para os 12 `CharacterData` do catálogo. A execução `TestResults/character-catalog-repair-all.log` registrou `Assigned` e `Verified` para cada entrada, eliminando os avisos anteriores de referência serializada incompatível.
+- O harness recebeu o marcador `LIVE_PRODUCTION_READINESS`, separando GameManager, economia, catálogo, Spawnpoints, NavMeshSurface e vértices de NavMesh para localizar o próximo bloqueio sem mascarar falhas.
+- Duas tentativas adicionais (`live-production-harness-diagnostic*.log`) não chegaram à cena: o Unity 6000.6.3f1 voltou a perder/reconectar o canal `LicenseClient-User` antes de executar o método. Portanto, produção real, UI, colliders, combate e cerco continuam sem PASS.
+- As correções foram registradas no commit `32abbc3` e enviadas ao branch remoto `codex/integracao-github-20261014`. Documentos de auditoria e backups `.blend1` antigos permaneceram fora do commit.
+
