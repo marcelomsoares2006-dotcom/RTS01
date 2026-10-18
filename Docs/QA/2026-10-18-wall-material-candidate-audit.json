@@ -1,0 +1,386 @@
+﻿{
+    "audit":  "Wall era candidate PBR audit",
+    "date":  "2026-10-18",
+    "status":  "PASS_STATIC_CANDIDATE_ONLY",
+    "scope":  "Candidate assets only; no production material, prefab, scene or gameplay writes",
+    "before":  {
+                   "productionMaterials":  "Standard shader; MainTex only; other PBR slots empty",
+                   "productionMaterialGitDiff":  [
+
+                                                 ]
+               },
+    "after":  {
+                  "candidateMaterials":  4,
+                  "candidateMaps":  16,
+                  "channels":  [
+                                   "_MainTex",
+                                   "_BumpMap",
+                                   "_MetallicGlossMap",
+                                   "_OcclusionMap"
+                               ],
+                  "shader":  "Built-in Standard fileID 46",
+                  "candidatePrefabReferences":  [
+
+                                                ],
+                  "mapErrors":  [
+
+                                ]
+              },
+    "sourceMapHashes":  {
+                            "PBR_Plaster.png":  "C6291B4420C4E68730E2F72EBF13D99685980B70289979C1071E1AA1E843A474",
+                            "PBR_Stone.png":  "64EC58C4F3B95801FEB8A36006D78034FB71C96B7F97514FA0534F054B61B6AE",
+                            "Showcase_Stone_AO.png":  "36C3C51ECEE968E9E572685E4F99A477214D16BB096A90DE46B22794DDD7DB84",
+                            "Showcase_Stone_Normal.png":  "2BED24BE24E261C62D88DB440B10F22B94328E9733CA303343FA8B96CE709468",
+                            "Showcase_Stone_MetallicGloss.png":  "C6F8009E76804046FA35F1E1A3AFAC96D2305D9EE0E1308C6AC208CB98C81167",
+                            "Showcase_Plaster_MetallicGloss.png":  "2D28B2A89A406CC0A76E438B8F115DD7E9996A9AC9CDD5277883B3DC14E9B8FE",
+                            "Showcase_Plaster_Normal.png":  "19EE3EF94E2E3DA30656CAA7F5C243C2662B1E8028A86BE7704479AF3E278B26",
+                            "Showcase_Plaster_AO.png":  "FB023B4508F4583423CA32FF64DBF97194F06995B4CD316135C99E4288BA6A52"
+                        },
+    "materials":  [
+                      {
+                          "era":  "Ancient",
+                          "path":  "Assets/CityArchitecture/Materials/Candidates/Wall_Ancient_Candidate.mat",
+                          "shader":  "Standard (fileID 46)",
+                          "textureSlots":  [
+                                               "_MainTex",
+                                               "_BumpMap",
+                                               "_MetallicGlossMap",
+                                               "_OcclusionMap"
+                                           ],
+                          "referencedCandidateGuids":  [
+                                                           "0000000000000000f000000000000000",
+                                                           "b90d85b3bcb94d3abe54530a98cba00a",
+                                                           "9d774da4740b4f29b8665aace2900a4d",
+                                                           "b1f9b000099a4d2691f4fe54e1d9ea49",
+                                                           "ca7084f11bbf4b8d8a8202640a53d865"
+                                                       ],
+                          "missingExpectedGuids":  [
+
+                                                   ],
+                          "scale1":  "PASS",
+                          "offset0":  "PASS",
+                          "sha256":  "5B2E2F0052A44AEA46E8386B1079E989139CB2928B8E7095ADAF6F73372503C8"
+                      },
+                      {
+                          "era":  "Classical",
+                          "path":  "Assets/CityArchitecture/Materials/Candidates/Wall_Classical_Candidate.mat",
+                          "shader":  "Standard (fileID 46)",
+                          "textureSlots":  [
+                                               "_MainTex",
+                                               "_BumpMap",
+                                               "_MetallicGlossMap",
+                                               "_OcclusionMap"
+                                           ],
+                          "referencedCandidateGuids":  [
+                                                           "0000000000000000f000000000000000",
+                                                           "c10253c51fb54ca0a98644812e28288c",
+                                                           "f1c5ffe9ef6b434786919afcdd6e3689",
+                                                           "f6e90563cda5491da8a6cf5bd32f4947",
+                                                           "aefd17dd919c4fa390316530bb19055b"
+                                                       ],
+                          "missingExpectedGuids":  [
+
+                                                   ],
+                          "scale1":  "PASS",
+                          "offset0":  "PASS",
+                          "sha256":  "ABDDE130F5E6CDDEEE75D76BEA480C12A00E133E63AD730A5DFEEBF7EAB89B55"
+                      },
+                      {
+                          "era":  "Medieval",
+                          "path":  "Assets/CityArchitecture/Materials/Candidates/Wall_Medieval_Candidate.mat",
+                          "shader":  "Standard (fileID 46)",
+                          "textureSlots":  [
+                                               "_MainTex",
+                                               "_BumpMap",
+                                               "_MetallicGlossMap",
+                                               "_OcclusionMap"
+                                           ],
+                          "referencedCandidateGuids":  [
+                                                           "0000000000000000f000000000000000",
+                                                           "90d7d8f005de4b528c1821ef38f7fdb7",
+                                                           "7b32f2aa14ad48598316a8bfc9b9eb32",
+                                                           "b86209f966664948818ca90aea2b2369",
+                                                           "02833506104f4ce190d2857ee005f857"
+                                                       ],
+                          "missingExpectedGuids":  [
+
+                                                   ],
+                          "scale1":  "PASS",
+                          "offset0":  "PASS",
+                          "sha256":  "30BD646EA019EF233CD507F81DD57E2DDA02A5AF43CCD2132262F9D33BDECC57"
+                      },
+                      {
+                          "era":  "Imperial",
+                          "path":  "Assets/CityArchitecture/Materials/Candidates/Wall_Imperial_Candidate.mat",
+                          "shader":  "Standard (fileID 46)",
+                          "textureSlots":  [
+                                               "_MainTex",
+                                               "_BumpMap",
+                                               "_MetallicGlossMap",
+                                               "_OcclusionMap"
+                                           ],
+                          "referencedCandidateGuids":  [
+                                                           "0000000000000000f000000000000000",
+                                                           "eba7af68723a42749ff427d59a2003aa",
+                                                           "7a43f1d36bfd4b16ac880b82924b5a85",
+                                                           "632cb4181bc04ed7a0290c77e244621d",
+                                                           "16adf8bb6eba4caaa454c7881cd25690"
+                                                       ],
+                          "missingExpectedGuids":  [
+
+                                                   ],
+                          "scale1":  "PASS",
+                          "offset0":  "PASS",
+                          "sha256":  "616FC556635518CC10D5B2AC0F5C27BBED20B70C1ABD3D49DABCD37393A383D2"
+                      }
+                  ],
+    "maps":  [
+                 {
+                     "era":  "Ancient",
+                     "channel":  "Albedo",
+                     "path":  "Assets/CityArchitecture/Materials/Candidates/Wall_Ancient_Albedo.png",
+                     "guid":  "9d774da4740b4f29b8665aace2900a4d",
+                     "width":  512,
+                     "height":  512,
+                     "textureType":  0,
+                     "sRGBTexture":  1,
+                     "sha256":  "64EC58C4F3B95801FEB8A36006D78034FB71C96B7F97514FA0534F054B61B6AE"
+                 },
+                 {
+                     "era":  "Ancient",
+                     "channel":  "Normal",
+                     "path":  "Assets/CityArchitecture/Materials/Candidates/Wall_Ancient_Normal.png",
+                     "guid":  "b90d85b3bcb94d3abe54530a98cba00a",
+                     "width":  512,
+                     "height":  512,
+                     "textureType":  1,
+                     "sRGBTexture":  0,
+                     "sha256":  "2BED24BE24E261C62D88DB440B10F22B94328E9733CA303343FA8B96CE709468"
+                 },
+                 {
+                     "era":  "Ancient",
+                     "channel":  "MetallicGloss",
+                     "path":  "Assets/CityArchitecture/Materials/Candidates/Wall_Ancient_MetallicGloss.png",
+                     "guid":  "b1f9b000099a4d2691f4fe54e1d9ea49",
+                     "width":  512,
+                     "height":  512,
+                     "textureType":  0,
+                     "sRGBTexture":  0,
+                     "sha256":  "C6F8009E76804046FA35F1E1A3AFAC96D2305D9EE0E1308C6AC208CB98C81167"
+                 },
+                 {
+                     "era":  "Ancient",
+                     "channel":  "AO",
+                     "path":  "Assets/CityArchitecture/Materials/Candidates/Wall_Ancient_AO.png",
+                     "guid":  "ca7084f11bbf4b8d8a8202640a53d865",
+                     "width":  512,
+                     "height":  512,
+                     "textureType":  0,
+                     "sRGBTexture":  0,
+                     "sha256":  "36C3C51ECEE968E9E572685E4F99A477214D16BB096A90DE46B22794DDD7DB84"
+                 },
+                 {
+                     "era":  "Classical",
+                     "channel":  "Albedo",
+                     "path":  "Assets/CityArchitecture/Materials/Candidates/Wall_Classical_Albedo.png",
+                     "guid":  "f1c5ffe9ef6b434786919afcdd6e3689",
+                     "width":  512,
+                     "height":  512,
+                     "textureType":  0,
+                     "sRGBTexture":  1,
+                     "sha256":  "C6291B4420C4E68730E2F72EBF13D99685980B70289979C1071E1AA1E843A474"
+                 },
+                 {
+                     "era":  "Classical",
+                     "channel":  "Normal",
+                     "path":  "Assets/CityArchitecture/Materials/Candidates/Wall_Classical_Normal.png",
+                     "guid":  "c10253c51fb54ca0a98644812e28288c",
+                     "width":  512,
+                     "height":  512,
+                     "textureType":  1,
+                     "sRGBTexture":  0,
+                     "sha256":  "19EE3EF94E2E3DA30656CAA7F5C243C2662B1E8028A86BE7704479AF3E278B26"
+                 },
+                 {
+                     "era":  "Classical",
+                     "channel":  "MetallicGloss",
+                     "path":  "Assets/CityArchitecture/Materials/Candidates/Wall_Classical_MetallicGloss.png",
+                     "guid":  "f6e90563cda5491da8a6cf5bd32f4947",
+                     "width":  512,
+                     "height":  512,
+                     "textureType":  0,
+                     "sRGBTexture":  0,
+                     "sha256":  "2D28B2A89A406CC0A76E438B8F115DD7E9996A9AC9CDD5277883B3DC14E9B8FE"
+                 },
+                 {
+                     "era":  "Classical",
+                     "channel":  "AO",
+                     "path":  "Assets/CityArchitecture/Materials/Candidates/Wall_Classical_AO.png",
+                     "guid":  "aefd17dd919c4fa390316530bb19055b",
+                     "width":  512,
+                     "height":  512,
+                     "textureType":  0,
+                     "sRGBTexture":  0,
+                     "sha256":  "FB023B4508F4583423CA32FF64DBF97194F06995B4CD316135C99E4288BA6A52"
+                 },
+                 {
+                     "era":  "Medieval",
+                     "channel":  "Albedo",
+                     "path":  "Assets/CityArchitecture/Materials/Candidates/Wall_Medieval_Albedo.png",
+                     "guid":  "7b32f2aa14ad48598316a8bfc9b9eb32",
+                     "width":  512,
+                     "height":  512,
+                     "textureType":  0,
+                     "sRGBTexture":  1,
+                     "sha256":  "64EC58C4F3B95801FEB8A36006D78034FB71C96B7F97514FA0534F054B61B6AE"
+                 },
+                 {
+                     "era":  "Medieval",
+                     "channel":  "Normal",
+                     "path":  "Assets/CityArchitecture/Materials/Candidates/Wall_Medieval_Normal.png",
+                     "guid":  "90d7d8f005de4b528c1821ef38f7fdb7",
+                     "width":  512,
+                     "height":  512,
+                     "textureType":  1,
+                     "sRGBTexture":  0,
+                     "sha256":  "2BED24BE24E261C62D88DB440B10F22B94328E9733CA303343FA8B96CE709468"
+                 },
+                 {
+                     "era":  "Medieval",
+                     "channel":  "MetallicGloss",
+                     "path":  "Assets/CityArchitecture/Materials/Candidates/Wall_Medieval_MetallicGloss.png",
+                     "guid":  "b86209f966664948818ca90aea2b2369",
+                     "width":  512,
+                     "height":  512,
+                     "textureType":  0,
+                     "sRGBTexture":  0,
+                     "sha256":  "C6F8009E76804046FA35F1E1A3AFAC96D2305D9EE0E1308C6AC208CB98C81167"
+                 },
+                 {
+                     "era":  "Medieval",
+                     "channel":  "AO",
+                     "path":  "Assets/CityArchitecture/Materials/Candidates/Wall_Medieval_AO.png",
+                     "guid":  "02833506104f4ce190d2857ee005f857",
+                     "width":  512,
+                     "height":  512,
+                     "textureType":  0,
+                     "sRGBTexture":  0,
+                     "sha256":  "36C3C51ECEE968E9E572685E4F99A477214D16BB096A90DE46B22794DDD7DB84"
+                 },
+                 {
+                     "era":  "Imperial",
+                     "channel":  "Albedo",
+                     "path":  "Assets/CityArchitecture/Materials/Candidates/Wall_Imperial_Albedo.png",
+                     "guid":  "7a43f1d36bfd4b16ac880b82924b5a85",
+                     "width":  512,
+                     "height":  512,
+                     "textureType":  0,
+                     "sRGBTexture":  1,
+                     "sha256":  "C6291B4420C4E68730E2F72EBF13D99685980B70289979C1071E1AA1E843A474"
+                 },
+                 {
+                     "era":  "Imperial",
+                     "channel":  "Normal",
+                     "path":  "Assets/CityArchitecture/Materials/Candidates/Wall_Imperial_Normal.png",
+                     "guid":  "eba7af68723a42749ff427d59a2003aa",
+                     "width":  512,
+                     "height":  512,
+                     "textureType":  1,
+                     "sRGBTexture":  0,
+                     "sha256":  "19EE3EF94E2E3DA30656CAA7F5C243C2662B1E8028A86BE7704479AF3E278B26"
+                 },
+                 {
+                     "era":  "Imperial",
+                     "channel":  "MetallicGloss",
+                     "path":  "Assets/CityArchitecture/Materials/Candidates/Wall_Imperial_MetallicGloss.png",
+                     "guid":  "632cb4181bc04ed7a0290c77e244621d",
+                     "width":  512,
+                     "height":  512,
+                     "textureType":  0,
+                     "sRGBTexture":  0,
+                     "sha256":  "2D28B2A89A406CC0A76E438B8F115DD7E9996A9AC9CDD5277883B3DC14E9B8FE"
+                 },
+                 {
+                     "era":  "Imperial",
+                     "channel":  "AO",
+                     "path":  "Assets/CityArchitecture/Materials/Candidates/Wall_Imperial_AO.png",
+                     "guid":  "16adf8bb6eba4caaa454c7881cd25690",
+                     "width":  512,
+                     "height":  512,
+                     "textureType":  0,
+                     "sRGBTexture":  0,
+                     "sha256":  "FB023B4508F4583423CA32FF64DBF97194F06995B4CD316135C99E4288BA6A52"
+                 }
+             ],
+    "uvTexelDensity":  [
+                           {
+                               "prefab":  "WallStraight.prefab",
+                               "meshSource":  "Unity built-in mesh fileID 10202; UV not serialized in prefab",
+                               "meshFilters":  36,
+                               "uv0":  "canonical built-in mesh expected 0..1; confirm in Unity",
+                               "materialUVScale":  "1,1",
+                               "materialUVOffset":  "0,0",
+                               "mapResolution":  "512x512",
+                               "texelsPerWorldUnitMin":  85.33,
+                               "texelsPerWorldUnitMax":  1219.05,
+                               "scaleRange":  [
+                                                  0.42,
+                                                  6
+                                              ],
+                               "status":  "REVIEW_RUNTIME_IMPORT"
+                           },
+                           {
+                               "prefab":  "WallCorner.prefab",
+                               "meshSource":  "Unity built-in mesh fileID 10202; UV not serialized in prefab",
+                               "meshFilters":  32,
+                               "uv0":  "canonical built-in mesh expected 0..1; confirm in Unity",
+                               "materialUVScale":  "1,1",
+                               "materialUVOffset":  "0,0",
+                               "mapResolution":  "512x512",
+                               "texelsPerWorldUnitMin":  102.4,
+                               "texelsPerWorldUnitMax":  1219.05,
+                               "scaleRange":  [
+                                                  0.42,
+                                                  5
+                                              ],
+                               "status":  "REVIEW_RUNTIME_IMPORT"
+                           },
+                           {
+                               "prefab":  "WallTowerConnector.prefab",
+                               "meshSource":  "Unity built-in mesh fileID 10202; UV not serialized in prefab",
+                               "meshFilters":  20,
+                               "uv0":  "canonical built-in mesh expected 0..1; confirm in Unity",
+                               "materialUVScale":  "1,1",
+                               "materialUVOffset":  "0,0",
+                               "mapResolution":  "512x512",
+                               "texelsPerWorldUnitMin":  150.59,
+                               "texelsPerWorldUnitMax":  1219.05,
+                               "scaleRange":  [
+                                                  0.42,
+                                                  3.4
+                                              ],
+                               "status":  "REVIEW_RUNTIME_IMPORT"
+                           },
+                           {
+                               "prefab":  "Gatehouse.prefab",
+                               "meshSource":  "Unity built-in mesh fileID 10202; UV not serialized in prefab",
+                               "meshFilters":  36,
+                               "uv0":  "canonical built-in mesh expected 0..1; confirm in Unity",
+                               "materialUVScale":  "1,1",
+                               "materialUVOffset":  "0,0",
+                               "mapResolution":  "512x512",
+                               "texelsPerWorldUnitMin":  92.25,
+                               "texelsPerWorldUnitMax":  2133.33,
+                               "scaleRange":  [
+                                                  0.24,
+                                                  5.55
+                                              ],
+                               "status":  "REVIEW_RUNTIME_IMPORT"
+                           }
+                       ],
+    "limitations":  [
+                        "Prefab YAML does not serialize built-in mesh UVs; canonical 0..1 must be confirmed by Unity 6 import/runtime.",
+                        "No Unity viewport capture was available; shader fallback, seams and lighting response remain unapproved.",
+                        "Candidates are not assigned to production prefabs and are not promoted."
+                    ]
+}

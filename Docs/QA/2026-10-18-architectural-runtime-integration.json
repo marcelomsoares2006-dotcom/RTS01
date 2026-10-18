@@ -1,0 +1,1058 @@
+{
+  "tool": "AuthorArchitecturalRuntimeIntegration.py",
+  "label": "2026-10-18",
+  "promoted": false,
+  "prefabs": [
+    {
+      "name": "Barracks_Medieval",
+      "source": "C:/Users/User/Downloads/Era Imperial/EraImperial-UnityRTS-Base/RTS01-Corrigido/Assets/CityArchitecture/Prefabs/EraBuildings/Barracks_Medieval.prefab",
+      "sourceSha256": "c223f3e55e324170c337e23180b63b611222b84a15b6100f8aa34e3ae1f01716",
+      "backup": "C:/Users/User/Downloads/Era Imperial/EraImperial-UnityRTS-Base/RTS01-Corrigido/Tools/CityArchitecture/RuntimeIntegration/2026-10-18/Backups/Assets/CityArchitecture/Prefabs/EraBuildings/Barracks_Medieval.prefab",
+      "candidate": "C:/Users/User/Downloads/Era Imperial/EraImperial-UnityRTS-Base/RTS01-Corrigido/Tools/CityArchitecture/RuntimeIntegration/2026-10-18/Candidates/Assets/CityArchitecture/Prefabs/EraBuildings/Barracks_Medieval.prefab",
+      "candidateSha256": "881334d0a24b67135ed5c58a10efd34e2270e4aba59f2a6cc01e9ba50b5682ac",
+      "rootGameObjectFileID": 6988959661360298950,
+      "lodGroupFileID": 3332045263653465805,
+      "rendererCount": 3,
+      "meshFilterCount": 3,
+      "colliderCount": 3,
+      "colliders": [
+        {
+          "gameObjectFileID": 1648108481296886802,
+          "kind": "MeshCollider",
+          "fileID": 3630629388556276341,
+          "mesh": "{fileID: 8781791475846319357, guid: 7268c8e6f7a160940ad7370504acb6cf, type: 3}"
+        },
+        {
+          "gameObjectFileID": 3469661530214720551,
+          "kind": "MeshCollider",
+          "fileID": 6261941249448463323,
+          "mesh": "{fileID: -4422265168074639203, guid: 7268c8e6f7a160940ad7370504acb6cf, type: 3}"
+        },
+        {
+          "gameObjectFileID": 4130053340171717958,
+          "kind": "MeshCollider",
+          "fileID": 9020751087619540636,
+          "mesh": "{fileID: -1202779886176118578, guid: 7268c8e6f7a160940ad7370504acb6cf, type: 3}"
+        }
+      ],
+      "emptyMarker": false,
+      "status": "CANDIDATE_READY",
+      "sourceSha256AfterAuthoring": "c223f3e55e324170c337e23180b63b611222b84a15b6100f8aa34e3ae1f01716",
+      "sourceUnchanged": true,
+      "auditFailures": []
+    },
+    {
+      "name": "House_Medieval",
+      "source": "C:/Users/User/Downloads/Era Imperial/EraImperial-UnityRTS-Base/RTS01-Corrigido/Assets/CityArchitecture/Prefabs/EraBuildings/House_Medieval.prefab",
+      "sourceSha256": "e23e2c5f24e103ef6781118e4f8ed3845b1a26cf622216ab12ca10835d9da5c6",
+      "backup": "C:/Users/User/Downloads/Era Imperial/EraImperial-UnityRTS-Base/RTS01-Corrigido/Tools/CityArchitecture/RuntimeIntegration/2026-10-18/Backups/Assets/CityArchitecture/Prefabs/EraBuildings/House_Medieval.prefab",
+      "candidate": "C:/Users/User/Downloads/Era Imperial/EraImperial-UnityRTS-Base/RTS01-Corrigido/Tools/CityArchitecture/RuntimeIntegration/2026-10-18/Candidates/Assets/CityArchitecture/Prefabs/EraBuildings/House_Medieval.prefab",
+      "candidateSha256": "9c699efec3a4329afb400b2956324a3fce464985905755916845bdeadeb9928e",
+      "rootGameObjectFileID": 486115501502025181,
+      "lodGroupFileID": 333000096521833280,
+      "rendererCount": 3,
+      "meshFilterCount": 3,
+      "colliderCount": 3,
+      "colliders": [
+        {
+          "gameObjectFileID": 2453429685564291437,
+          "kind": "MeshCollider",
+          "fileID": 289887953895967393,
+          "mesh": "{fileID: 8082454493720880963, guid: 77f38df79537c1942ba44fd888d41a4b, type: 3}"
+        },
+        {
+          "gameObjectFileID": 3594380415239280181,
+          "kind": "MeshCollider",
+          "fileID": 3246640119653232408,
+          "mesh": "{fileID: 7354331518968979582, guid: 77f38df79537c1942ba44fd888d41a4b, type: 3}"
+        },
+        {
+          "gameObjectFileID": 6165625201067592857,
+          "kind": "MeshCollider",
+          "fileID": 2269131599175986114,
+          "mesh": "{fileID: 3498433547547372887, guid: 77f38df79537c1942ba44fd888d41a4b, type: 3}"
+        }
+      ],
+      "emptyMarker": false,
+      "status": "CANDIDATE_READY",
+      "sourceSha256AfterAuthoring": "e23e2c5f24e103ef6781118e4f8ed3845b1a26cf622216ab12ca10835d9da5c6",
+      "sourceUnchanged": true,
+      "auditFailures": []
+    },
+    {
+      "name": "Market_Classical",
+      "source": "C:/Users/User/Downloads/Era Imperial/EraImperial-UnityRTS-Base/RTS01-Corrigido/Assets/CityArchitecture/Prefabs/EraBuildings/Market_Classical.prefab",
+      "sourceSha256": "b2c062b609c3110c979a9ac5d866a40caf0a63405595c7e15a1e382be962260d",
+      "backup": "C:/Users/User/Downloads/Era Imperial/EraImperial-UnityRTS-Base/RTS01-Corrigido/Tools/CityArchitecture/RuntimeIntegration/2026-10-18/Backups/Assets/CityArchitecture/Prefabs/EraBuildings/Market_Classical.prefab",
+      "candidate": "C:/Users/User/Downloads/Era Imperial/EraImperial-UnityRTS-Base/RTS01-Corrigido/Tools/CityArchitecture/RuntimeIntegration/2026-10-18/Candidates/Assets/CityArchitecture/Prefabs/EraBuildings/Market_Classical.prefab",
+      "candidateSha256": "28ca68cea6643d01ccef00fcf2e332c86a712ac02feddf5476786807e5a40958",
+      "rootGameObjectFileID": 562476410921333297,
+      "lodGroupFileID": 4522882396050028838,
+      "rendererCount": 6,
+      "meshFilterCount": 6,
+      "colliderCount": 6,
+      "colliders": [
+        {
+          "gameObjectFileID": 1198992745713881758,
+          "kind": "MeshCollider",
+          "fileID": 7255403653486453940,
+          "mesh": "{fileID: -5359254883438480193, guid: 4f1ca1165111f9c47b1298a18ae8fa8b, type: 3}"
+        },
+        {
+          "gameObjectFileID": 3166726447118930541,
+          "kind": "MeshCollider",
+          "fileID": 6895762343849058614,
+          "mesh": "{fileID: 8336180546417798332, guid: 4f1ca1165111f9c47b1298a18ae8fa8b, type: 3}"
+        },
+        {
+          "gameObjectFileID": 3251361351487541967,
+          "kind": "MeshCollider",
+          "fileID": 7124668727642788392,
+          "mesh": "{fileID: -6738335822504958869, guid: 4f1ca1165111f9c47b1298a18ae8fa8b, type: 3}"
+        },
+        {
+          "gameObjectFileID": 5555581912750789323,
+          "kind": "MeshCollider",
+          "fileID": 5381963072730679302,
+          "mesh": "{fileID: 4496193291041387693, guid: 4f1ca1165111f9c47b1298a18ae8fa8b, type: 3}"
+        },
+        {
+          "gameObjectFileID": 8526775853207008073,
+          "kind": "MeshCollider",
+          "fileID": 5640831357916246734,
+          "mesh": "{fileID: 1773527224581902599, guid: 4f1ca1165111f9c47b1298a18ae8fa8b, type: 3}"
+        },
+        {
+          "gameObjectFileID": 8576336672824385832,
+          "kind": "MeshCollider",
+          "fileID": 4278101427876256811,
+          "mesh": "{fileID: 8675757828360987800, guid: 4f1ca1165111f9c47b1298a18ae8fa8b, type: 3}"
+        }
+      ],
+      "emptyMarker": false,
+      "status": "CANDIDATE_READY",
+      "sourceSha256AfterAuthoring": "b2c062b609c3110c979a9ac5d866a40caf0a63405595c7e15a1e382be962260d",
+      "sourceUnchanged": true,
+      "auditFailures": []
+    },
+    {
+      "name": "Temple_Imperial",
+      "source": "C:/Users/User/Downloads/Era Imperial/EraImperial-UnityRTS-Base/RTS01-Corrigido/Assets/CityArchitecture/Prefabs/EraBuildings/Temple_Imperial.prefab",
+      "sourceSha256": "9a9bb5f4228c635492ef1d11a5336cf7bd3d8e2b2d0bf0d9473cd012c45bbac0",
+      "backup": "C:/Users/User/Downloads/Era Imperial/EraImperial-UnityRTS-Base/RTS01-Corrigido/Tools/CityArchitecture/RuntimeIntegration/2026-10-18/Backups/Assets/CityArchitecture/Prefabs/EraBuildings/Temple_Imperial.prefab",
+      "candidate": "C:/Users/User/Downloads/Era Imperial/EraImperial-UnityRTS-Base/RTS01-Corrigido/Tools/CityArchitecture/RuntimeIntegration/2026-10-18/Candidates/Assets/CityArchitecture/Prefabs/EraBuildings/Temple_Imperial.prefab",
+      "candidateSha256": "de93b25240e4ead26511a4ce6174f696702cd2df0bbe7374a53221eb84d19ed3",
+      "rootGameObjectFileID": 7636541333655188233,
+      "lodGroupFileID": 475888101195369779,
+      "rendererCount": 4,
+      "meshFilterCount": 4,
+      "colliderCount": 4,
+      "colliders": [
+        {
+          "gameObjectFileID": 330211306259957294,
+          "kind": "MeshCollider",
+          "fileID": 4260994025449987458,
+          "mesh": "{fileID: -4326763978413037366, guid: 4fd94453fd1e4a542bf0c19c39b8c020, type: 3}"
+        },
+        {
+          "gameObjectFileID": 4687038475008329844,
+          "kind": "MeshCollider",
+          "fileID": 4222888740564614015,
+          "mesh": "{fileID: 4836532900205101137, guid: 4fd94453fd1e4a542bf0c19c39b8c020, type: 3}"
+        },
+        {
+          "gameObjectFileID": 8036618897586387468,
+          "kind": "MeshCollider",
+          "fileID": 660515646031997778,
+          "mesh": "{fileID: 3520194355273095680, guid: 4fd94453fd1e4a542bf0c19c39b8c020, type: 3}"
+        },
+        {
+          "gameObjectFileID": 8240153262512581380,
+          "kind": "MeshCollider",
+          "fileID": 1886444008222588089,
+          "mesh": "{fileID: 8410850006097622672, guid: 4fd94453fd1e4a542bf0c19c39b8c020, type: 3}"
+        }
+      ],
+      "emptyMarker": false,
+      "status": "CANDIDATE_READY",
+      "sourceSha256AfterAuthoring": "9a9bb5f4228c635492ef1d11a5336cf7bd3d8e2b2d0bf0d9473cd012c45bbac0",
+      "sourceUnchanged": true,
+      "auditFailures": []
+    },
+    {
+      "name": "EraImperialCityBlock",
+      "source": "C:/Users/User/Downloads/Era Imperial/EraImperial-UnityRTS-Base/RTS01-Corrigido/Assets/CityArchitecture/Prefabs/EraImperialCityBlock.prefab",
+      "sourceSha256": "e9fb4a4d1cfc8cf0b60ec2258d87b16b8a48d26e4424b4557996f47cfff0ce27",
+      "backup": "C:/Users/User/Downloads/Era Imperial/EraImperial-UnityRTS-Base/RTS01-Corrigido/Tools/CityArchitecture/RuntimeIntegration/2026-10-18/Backups/Assets/CityArchitecture/Prefabs/EraImperialCityBlock.prefab",
+      "candidate": "C:/Users/User/Downloads/Era Imperial/EraImperial-UnityRTS-Base/RTS01-Corrigido/Tools/CityArchitecture/RuntimeIntegration/2026-10-18/Candidates/Assets/CityArchitecture/Prefabs/EraImperialCityBlock.prefab",
+      "candidateSha256": "343434de942041d309f11cbd83cf0818bbd8ef9643f45d8a9214456e7e957d41",
+      "rootGameObjectFileID": 6078303804686824270,
+      "lodGroupFileID": 5230587059971982500,
+      "rendererCount": 0,
+      "meshFilterCount": 0,
+      "colliderCount": 1,
+      "colliders": [
+        {
+          "gameObjectFileID": 6078303804686824270,
+          "kind": "BoxCollider",
+          "fileID": 3321566450052792668,
+          "enabled": false,
+          "reason": "source prefab has no MeshFilter"
+        }
+      ],
+      "emptyMarker": true,
+      "status": "BLOCKED_EMPTY_SOURCE",
+      "sourceSha256AfterAuthoring": "e9fb4a4d1cfc8cf0b60ec2258d87b16b8a48d26e4424b4557996f47cfff0ce27",
+      "sourceUnchanged": true,
+      "auditFailures": []
+    },
+    {
+      "name": "Gatehouse",
+      "source": "C:/Users/User/Downloads/Era Imperial/EraImperial-UnityRTS-Base/RTS01-Corrigido/Assets/CityArchitecture/Prefabs/Gatehouse.prefab",
+      "sourceSha256": "e092b4363f87e2e1b499ee390c9e06111afdfa3bd8900cb30777756ab7276730",
+      "backup": "C:/Users/User/Downloads/Era Imperial/EraImperial-UnityRTS-Base/RTS01-Corrigido/Tools/CityArchitecture/RuntimeIntegration/2026-10-18/Backups/Assets/CityArchitecture/Prefabs/Gatehouse.prefab",
+      "candidate": "C:/Users/User/Downloads/Era Imperial/EraImperial-UnityRTS-Base/RTS01-Corrigido/Tools/CityArchitecture/RuntimeIntegration/2026-10-18/Candidates/Assets/CityArchitecture/Prefabs/Gatehouse.prefab",
+      "candidateSha256": "65ed39caacfe1462b9bbdf13612e43df0b9baa02d7b750b13dca5593a81a62f2",
+      "rootGameObjectFileID": 6601768268792113395,
+      "lodGroupFileID": 3224260220700462704,
+      "rendererCount": 36,
+      "meshFilterCount": 36,
+      "colliderCount": 36,
+      "colliders": [
+        {
+          "gameObjectFileID": 10706776612256261,
+          "kind": "MeshCollider",
+          "fileID": 1614238051584968420,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 415404918264398302,
+          "kind": "MeshCollider",
+          "fileID": 5507345468595360569,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 574366557497629113,
+          "kind": "MeshCollider",
+          "fileID": 1115628036409826506,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 1070403406413989696,
+          "kind": "MeshCollider",
+          "fileID": 8419040717438567296,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 1213376306149940320,
+          "kind": "MeshCollider",
+          "fileID": 1709222213312731260,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 1240212591162839880,
+          "kind": "MeshCollider",
+          "fileID": 6236770136737495476,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 1400580645739383152,
+          "kind": "MeshCollider",
+          "fileID": 4184487609045459840,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 2058530438811997836,
+          "kind": "MeshCollider",
+          "fileID": 6431978471174678946,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 2103811383519237072,
+          "kind": "MeshCollider",
+          "fileID": 8156244226190306275,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 2658476254806467540,
+          "kind": "MeshCollider",
+          "fileID": 2314948118139889485,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 3375946803170999112,
+          "kind": "MeshCollider",
+          "fileID": 1945047233361587960,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 3880223774756325071,
+          "kind": "MeshCollider",
+          "fileID": 4374156319599170768,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 3962330148089711900,
+          "kind": "MeshCollider",
+          "fileID": 7353172028653883877,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 4397215899991983147,
+          "kind": "MeshCollider",
+          "fileID": 3075722014511184991,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 4693107220092880916,
+          "kind": "MeshCollider",
+          "fileID": 1527346610367365886,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 4929396350063966781,
+          "kind": "MeshCollider",
+          "fileID": 4712416334452931899,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 5126174312741635565,
+          "kind": "MeshCollider",
+          "fileID": 4780651310983459194,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 5334829849782558891,
+          "kind": "MeshCollider",
+          "fileID": 3770741517482993838,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 5353798290676061018,
+          "kind": "MeshCollider",
+          "fileID": 2957318797061686666,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 5434693280508309348,
+          "kind": "MeshCollider",
+          "fileID": 409362463654470878,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 5574106375966511795,
+          "kind": "MeshCollider",
+          "fileID": 1623063725170385543,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 5759169323608902635,
+          "kind": "MeshCollider",
+          "fileID": 7781691812360981924,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 6299579737365741499,
+          "kind": "MeshCollider",
+          "fileID": 7865395877111068097,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 6684634750944276775,
+          "kind": "MeshCollider",
+          "fileID": 9065102171648345858,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 6818217326235010340,
+          "kind": "MeshCollider",
+          "fileID": 7354467701304894687,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 7460110027840399423,
+          "kind": "MeshCollider",
+          "fileID": 4798835119771767096,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 7623047993499899396,
+          "kind": "MeshCollider",
+          "fileID": 2358500229722260731,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 7778791974678629607,
+          "kind": "MeshCollider",
+          "fileID": 5853123918903191322,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 7797256236517729900,
+          "kind": "MeshCollider",
+          "fileID": 551652437016688677,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 7808376696057865143,
+          "kind": "MeshCollider",
+          "fileID": 1505613657299548351,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 7811857093055759076,
+          "kind": "MeshCollider",
+          "fileID": 3121818004048459754,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 7878799567254350074,
+          "kind": "MeshCollider",
+          "fileID": 4703219239778985138,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 8050989757567093434,
+          "kind": "MeshCollider",
+          "fileID": 3450398645560859214,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 8451976421371401724,
+          "kind": "MeshCollider",
+          "fileID": 4473702472048834325,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 8483234036951248686,
+          "kind": "MeshCollider",
+          "fileID": 6752029662044691451,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 8992049456003907919,
+          "kind": "MeshCollider",
+          "fileID": 9111750934955317317,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        }
+      ],
+      "emptyMarker": false,
+      "status": "CANDIDATE_READY",
+      "sourceSha256AfterAuthoring": "e092b4363f87e2e1b499ee390c9e06111afdfa3bd8900cb30777756ab7276730",
+      "sourceUnchanged": true,
+      "auditFailures": []
+    },
+    {
+      "name": "WallCorner",
+      "source": "C:/Users/User/Downloads/Era Imperial/EraImperial-UnityRTS-Base/RTS01-Corrigido/Assets/CityArchitecture/Prefabs/WallCorner.prefab",
+      "sourceSha256": "9d4c5f48e8123889f34661c1a50e83d21298b15df705534e57a3203b05cc4560",
+      "backup": "C:/Users/User/Downloads/Era Imperial/EraImperial-UnityRTS-Base/RTS01-Corrigido/Tools/CityArchitecture/RuntimeIntegration/2026-10-18/Backups/Assets/CityArchitecture/Prefabs/WallCorner.prefab",
+      "candidate": "C:/Users/User/Downloads/Era Imperial/EraImperial-UnityRTS-Base/RTS01-Corrigido/Tools/CityArchitecture/RuntimeIntegration/2026-10-18/Candidates/Assets/CityArchitecture/Prefabs/WallCorner.prefab",
+      "candidateSha256": "8d0e60cbffa1bcaade2fbafe13c8a79075ade6f0e8b6ad935b11fb3499abe938",
+      "rootGameObjectFileID": 4396407888346814109,
+      "lodGroupFileID": 2242137071067322353,
+      "rendererCount": 32,
+      "meshFilterCount": 32,
+      "colliderCount": 32,
+      "colliders": [
+        {
+          "gameObjectFileID": 67233700267986514,
+          "kind": "MeshCollider",
+          "fileID": 6335413059317019063,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 342002742076614393,
+          "kind": "MeshCollider",
+          "fileID": 5223465649469804040,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 349351929018042533,
+          "kind": "MeshCollider",
+          "fileID": 5838476287678075173,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 432621141161906975,
+          "kind": "MeshCollider",
+          "fileID": 926313420320572282,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 597160863628354686,
+          "kind": "MeshCollider",
+          "fileID": 8112593545571479644,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 606381078230205093,
+          "kind": "MeshCollider",
+          "fileID": 7093072314897427670,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 641560980115688966,
+          "kind": "MeshCollider",
+          "fileID": 7885910369732477218,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 951103109673041450,
+          "kind": "MeshCollider",
+          "fileID": 2737222718545228833,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 1443863835788777770,
+          "kind": "MeshCollider",
+          "fileID": 6431829018575547869,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 1834073659467848707,
+          "kind": "MeshCollider",
+          "fileID": 8792431656019390635,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 2784106724191999039,
+          "kind": "MeshCollider",
+          "fileID": 8400723923354544278,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 2824348406618053476,
+          "kind": "MeshCollider",
+          "fileID": 1208867211013051222,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 3192257079915178521,
+          "kind": "MeshCollider",
+          "fileID": 5941911521657328169,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 3301476148391111066,
+          "kind": "MeshCollider",
+          "fileID": 2824654899529898957,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 3381233328324080016,
+          "kind": "MeshCollider",
+          "fileID": 5424878957794731545,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 3439944164797039422,
+          "kind": "MeshCollider",
+          "fileID": 1881842083160083753,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 3484827005024963705,
+          "kind": "MeshCollider",
+          "fileID": 8403095923089834076,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 3595349946067664069,
+          "kind": "MeshCollider",
+          "fileID": 2568474691418863920,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 4158862796558666355,
+          "kind": "MeshCollider",
+          "fileID": 1610492265980540171,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 4306038729878748483,
+          "kind": "MeshCollider",
+          "fileID": 7122159794807091981,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 4461175128322079999,
+          "kind": "MeshCollider",
+          "fileID": 4421128166628186407,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 4832042943977721308,
+          "kind": "MeshCollider",
+          "fileID": 2692856045684474953,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 5584742297689145980,
+          "kind": "MeshCollider",
+          "fileID": 6139372153713286511,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 5625068794231990320,
+          "kind": "MeshCollider",
+          "fileID": 7104136134205770471,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 6019100031609651364,
+          "kind": "MeshCollider",
+          "fileID": 3818525181916492032,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 6537768579059995727,
+          "kind": "MeshCollider",
+          "fileID": 9001321655438662275,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 6748197707792958944,
+          "kind": "MeshCollider",
+          "fileID": 7170880695377706195,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 6836378939396735326,
+          "kind": "MeshCollider",
+          "fileID": 5157454841140898604,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 7615801998309189038,
+          "kind": "MeshCollider",
+          "fileID": 9143497482040469410,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 8631403490598294658,
+          "kind": "MeshCollider",
+          "fileID": 6598909399168706600,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 8820425913921799228,
+          "kind": "MeshCollider",
+          "fileID": 507148316784928349,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 9156158360332521520,
+          "kind": "MeshCollider",
+          "fileID": 3978478409398006509,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        }
+      ],
+      "emptyMarker": false,
+      "status": "CANDIDATE_READY",
+      "sourceSha256AfterAuthoring": "9d4c5f48e8123889f34661c1a50e83d21298b15df705534e57a3203b05cc4560",
+      "sourceUnchanged": true,
+      "auditFailures": []
+    },
+    {
+      "name": "WallStraight",
+      "source": "C:/Users/User/Downloads/Era Imperial/EraImperial-UnityRTS-Base/RTS01-Corrigido/Assets/CityArchitecture/Prefabs/WallStraight.prefab",
+      "sourceSha256": "77219ea711cc0fcad7a216afd72e7cf734bd4cad40b5dd1616b8538efae87a01",
+      "backup": "C:/Users/User/Downloads/Era Imperial/EraImperial-UnityRTS-Base/RTS01-Corrigido/Tools/CityArchitecture/RuntimeIntegration/2026-10-18/Backups/Assets/CityArchitecture/Prefabs/WallStraight.prefab",
+      "candidate": "C:/Users/User/Downloads/Era Imperial/EraImperial-UnityRTS-Base/RTS01-Corrigido/Tools/CityArchitecture/RuntimeIntegration/2026-10-18/Candidates/Assets/CityArchitecture/Prefabs/WallStraight.prefab",
+      "candidateSha256": "a26c17d15dbc1d6510c52f4fac686b6de6ed46653c5ec6b8c11e9fe97a62d1d2",
+      "rootGameObjectFileID": 2542030138995361391,
+      "lodGroupFileID": 6274011647568450241,
+      "rendererCount": 36,
+      "meshFilterCount": 36,
+      "colliderCount": 36,
+      "colliders": [
+        {
+          "gameObjectFileID": 432996749733187250,
+          "kind": "MeshCollider",
+          "fileID": 3184962232714100084,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 841584179089598590,
+          "kind": "MeshCollider",
+          "fileID": 2385153176724799664,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 979636881091549962,
+          "kind": "MeshCollider",
+          "fileID": 2141531683841436925,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 1240276048902775320,
+          "kind": "MeshCollider",
+          "fileID": 5301037124892840737,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 1319528433539599778,
+          "kind": "MeshCollider",
+          "fileID": 5097655707567730628,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 1519637826450354068,
+          "kind": "MeshCollider",
+          "fileID": 4683402015853199009,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 1728882846569557338,
+          "kind": "MeshCollider",
+          "fileID": 7609689385082246768,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 1745207236110103282,
+          "kind": "MeshCollider",
+          "fileID": 8308809080959955580,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 1747939059439928784,
+          "kind": "MeshCollider",
+          "fileID": 5918455655671287113,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 2938209432310346241,
+          "kind": "MeshCollider",
+          "fileID": 7478625008396735449,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 3064847958822113344,
+          "kind": "MeshCollider",
+          "fileID": 2828652111613424601,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 3652979361950262778,
+          "kind": "MeshCollider",
+          "fileID": 1530311878574838863,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 3917681796972521942,
+          "kind": "MeshCollider",
+          "fileID": 7616900468365439386,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 4350347304352659601,
+          "kind": "MeshCollider",
+          "fileID": 3007210457102177885,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 4645348801086666408,
+          "kind": "MeshCollider",
+          "fileID": 6676058909510389057,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 4663933801128748558,
+          "kind": "MeshCollider",
+          "fileID": 4892356618396840992,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 4870043848887788607,
+          "kind": "MeshCollider",
+          "fileID": 6599227297060113031,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 5111120073900595610,
+          "kind": "MeshCollider",
+          "fileID": 1248636423438832358,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 5436691190251033046,
+          "kind": "MeshCollider",
+          "fileID": 8827750517762972546,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 5724511000832630121,
+          "kind": "MeshCollider",
+          "fileID": 9019709527975356127,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 5736444847977532352,
+          "kind": "MeshCollider",
+          "fileID": 5644276185860673667,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 5797590060841051928,
+          "kind": "MeshCollider",
+          "fileID": 540190474242882144,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 5943141313554185246,
+          "kind": "MeshCollider",
+          "fileID": 6033608972557928448,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 6079605083113346858,
+          "kind": "MeshCollider",
+          "fileID": 9047151553438330833,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 6128015433360801327,
+          "kind": "MeshCollider",
+          "fileID": 5509660286938202847,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 6250779952397367591,
+          "kind": "MeshCollider",
+          "fileID": 7779387051725870981,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 6436617444210700642,
+          "kind": "MeshCollider",
+          "fileID": 4002031380690698836,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 6890284370208356053,
+          "kind": "MeshCollider",
+          "fileID": 675645324883947076,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 7034034671806075362,
+          "kind": "MeshCollider",
+          "fileID": 186883659516148333,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 7557393006662867978,
+          "kind": "MeshCollider",
+          "fileID": 7587340412792826304,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 7576179302658337657,
+          "kind": "MeshCollider",
+          "fileID": 5904299484177913052,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 8261594669741115710,
+          "kind": "MeshCollider",
+          "fileID": 4986940684811725643,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 8589245974979494948,
+          "kind": "MeshCollider",
+          "fileID": 890635273848200104,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 8646469898498940106,
+          "kind": "MeshCollider",
+          "fileID": 6773047976827783170,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 8647794776483981140,
+          "kind": "MeshCollider",
+          "fileID": 5498919445637727895,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 8960268215499029660,
+          "kind": "MeshCollider",
+          "fileID": 1239726725450358746,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        }
+      ],
+      "emptyMarker": false,
+      "status": "CANDIDATE_READY",
+      "sourceSha256AfterAuthoring": "77219ea711cc0fcad7a216afd72e7cf734bd4cad40b5dd1616b8538efae87a01",
+      "sourceUnchanged": true,
+      "auditFailures": []
+    },
+    {
+      "name": "WallTowerConnector",
+      "source": "C:/Users/User/Downloads/Era Imperial/EraImperial-UnityRTS-Base/RTS01-Corrigido/Assets/CityArchitecture/Prefabs/WallTowerConnector.prefab",
+      "sourceSha256": "312af2805b6283fd6e4e1faf31a2e5176939c0eb401b1c8c54fa241787f5f45a",
+      "backup": "C:/Users/User/Downloads/Era Imperial/EraImperial-UnityRTS-Base/RTS01-Corrigido/Tools/CityArchitecture/RuntimeIntegration/2026-10-18/Backups/Assets/CityArchitecture/Prefabs/WallTowerConnector.prefab",
+      "candidate": "C:/Users/User/Downloads/Era Imperial/EraImperial-UnityRTS-Base/RTS01-Corrigido/Tools/CityArchitecture/RuntimeIntegration/2026-10-18/Candidates/Assets/CityArchitecture/Prefabs/WallTowerConnector.prefab",
+      "candidateSha256": "47cbde4b291659d2b3752089b6e732edee32eac0b05fbe6b235bd3f2be860c5b",
+      "rootGameObjectFileID": 3462620256222938991,
+      "lodGroupFileID": 5958111795066803181,
+      "rendererCount": 24,
+      "meshFilterCount": 24,
+      "colliderCount": 24,
+      "colliders": [
+        {
+          "gameObjectFileID": 485422908372573481,
+          "kind": "MeshCollider",
+          "fileID": 7929275351023739831,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 1489876932649900835,
+          "kind": "MeshCollider",
+          "fileID": 3614820070588378919,
+          "mesh": "{fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 1804056003697059328,
+          "kind": "MeshCollider",
+          "fileID": 4848443631827304049,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 2198060751196155228,
+          "kind": "MeshCollider",
+          "fileID": 7170823521733636525,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 2304490302623937375,
+          "kind": "MeshCollider",
+          "fileID": 4134544345514719205,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 2314750647975766022,
+          "kind": "MeshCollider",
+          "fileID": 1238258829062259218,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 2534430464646043486,
+          "kind": "MeshCollider",
+          "fileID": 4716924890243785151,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 3123430639874314479,
+          "kind": "MeshCollider",
+          "fileID": 2311376069323968394,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 3772350024664921897,
+          "kind": "MeshCollider",
+          "fileID": 4373070636464676223,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 3795369004648685243,
+          "kind": "MeshCollider",
+          "fileID": 5597776766122663186,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 3837467577852395089,
+          "kind": "MeshCollider",
+          "fileID": 3968102584795068253,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 4447298171451699090,
+          "kind": "MeshCollider",
+          "fileID": 2913749793558593817,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 5283981430014049297,
+          "kind": "MeshCollider",
+          "fileID": 224735219767399171,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 5312707138987995495,
+          "kind": "MeshCollider",
+          "fileID": 1269652090099031794,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 5376019896530698149,
+          "kind": "MeshCollider",
+          "fileID": 8194985899901407439,
+          "mesh": "{fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 5883934060735884769,
+          "kind": "MeshCollider",
+          "fileID": 1206957725721372720,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 5991644816693767072,
+          "kind": "MeshCollider",
+          "fileID": 1450677547757737000,
+          "mesh": "{fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 6059040887788198440,
+          "kind": "MeshCollider",
+          "fileID": 3709471089980844444,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 6371643300286763500,
+          "kind": "MeshCollider",
+          "fileID": 5744589914293030182,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 7650904281674584784,
+          "kind": "MeshCollider",
+          "fileID": 3959774426299213012,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 8049441939560876540,
+          "kind": "MeshCollider",
+          "fileID": 5706220208344320485,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 8720614762138390138,
+          "kind": "MeshCollider",
+          "fileID": 17248980088010099,
+          "mesh": "{fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 8844252576405672712,
+          "kind": "MeshCollider",
+          "fileID": 953231115155900956,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        },
+        {
+          "gameObjectFileID": 8932160163503467208,
+          "kind": "MeshCollider",
+          "fileID": 5981227427416891759,
+          "mesh": "{fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}"
+        }
+      ],
+      "emptyMarker": false,
+      "status": "CANDIDATE_READY",
+      "sourceSha256AfterAuthoring": "312af2805b6283fd6e4e1faf31a2e5176939c0eb401b1c8c54fa241787f5f45a",
+      "sourceUnchanged": true,
+      "auditFailures": []
+    }
+  ]
+}

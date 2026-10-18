@@ -7,6 +7,7 @@ using UnityEngine;
 public sealed class StandalonePerformanceProbe : MonoBehaviour
 {
     private readonly List<float> _samples = new List<float>(4096);
+    private readonly List<StartupSample> _startupSamples = new List<StartupSample>(256);
     private float _elapsed;
     private float _nextReport;
     private float _duration;
@@ -14,6 +15,19 @@ public sealed class StandalonePerformanceProbe : MonoBehaviour
     private string _profile = "default";
     private string _quality;
     private string _outputPath;
+    private int _requestedVSync;
+    private bool _hasRequestedVSync;
+    private string _activeScene;
+    private float _probeInstallRealtime;
+    private bool _finished;
+
+    private struct StartupSample
+    {
+        public float elapsed;
+        public float deltaSeconds;
+        public float fps;
+        public string phase;
+    }
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
     private static void Install()
@@ -42,6 +56,12 @@ public sealed class StandalonePerformanceProbe : MonoBehaviour
                     probe._quality = args[j].Substring("-era-audit-quality=".Length);
                 else if (args[j].StartsWith("-era-audit-output=", StringComparison.OrdinalIgnoreCase))
                     probe._outputPath = args[j].Substring("-era-audit-output=".Length).Trim('"');
+                else if (args[j].StartsWith("-era-audit-vsync=", StringComparison.OrdinalIgnoreCase)
+                         && int.TryParse(args[j].Substring("-era-audit-vsync=".Length), out int vsync))
+                {
+                    probe._requestedVSync = Mathf.Max(0, vsync);
+                    probe._hasRequestedVSync = true;
+                }
             }
             probe._warmupSeconds = Mathf.Clamp(probe._warmupSeconds, 0f, probe._duration - 1f);
             if (!string.IsNullOrWhiteSpace(probe._quality))
@@ -56,8 +76,11 @@ public sealed class StandalonePerformanceProbe : MonoBehaviour
             }
             // QualitySettings pode restaurar VSync ao trocar de preset. Reaplique
             // o teto da auditoria depois da seleção para evitar FPS artificial.
-            QualitySettings.vSyncCount = 0;
+            if (probe._hasRequestedVSync) QualitySettings.vSyncCount = probe._requestedVSync;
+            else QualitySettings.vSyncCount = 0;
             Application.targetFrameRate = 60;
+            probe._activeScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+            probe._probeInstallRealtime = Time.realtimeSinceStartup;
             return;
         }
     }
@@ -66,6 +89,17 @@ public sealed class StandalonePerformanceProbe : MonoBehaviour
     {
         float dt = Time.unscaledDeltaTime;
         _elapsed += dt;
+        float fps = dt > 0f && dt < 1f ? 1f / dt : 0f;
+        if (_startupSamples.Count < 256)
+        {
+            _startupSamples.Add(new StartupSample
+            {
+                elapsed = _elapsed,
+                deltaSeconds = dt,
+                fps = fps,
+                phase = _elapsed < _warmupSeconds ? "warmup" : "sustained"
+            });
+        }
         if (_elapsed >= _warmupSeconds && dt > 0f && dt < 1f) _samples.Add(1f / dt);
         if (_elapsed >= _nextReport)
         {
@@ -85,6 +119,8 @@ public sealed class StandalonePerformanceProbe : MonoBehaviour
 
     private void Finish()
     {
+        if (_finished) return;
+        _finished = true;
         if (_samples.Count == 0) return;
         float min = float.MaxValue, max = 0f, sum = 0f;
         for (int i = 0; i < _samples.Count; i++)
@@ -112,6 +148,26 @@ public sealed class StandalonePerformanceProbe : MonoBehaviour
         }
 
         var culture = System.Globalization.CultureInfo.InvariantCulture;
+        string startupCsvPath = Path.Combine(root, "startup-fps-samples.csv");
+        using (var startupCsv = new StreamWriter(startupCsvPath, false, Encoding.UTF8))
+        {
+            startupCsv.WriteLine("sampleIndex,elapsedSeconds,deltaSeconds,fps,phase,scene,vSyncCount,targetFrameRate,quality");
+            for (int i = 0; i < _startupSamples.Count; i++)
+            {
+                StartupSample sample = _startupSamples[i];
+                startupCsv.WriteLine(string.Join(",",
+                    i,
+                    sample.elapsed.ToString("F4", culture),
+                    sample.deltaSeconds.ToString("F6", culture),
+                    sample.fps.ToString("F4", culture),
+                    sample.phase,
+                    Csv(_activeScene),
+                    QualitySettings.vSyncCount,
+                    Application.targetFrameRate,
+                    Csv(_quality ?? "unchanged")));
+            }
+        }
+
         string json = "{"
             + "\"durationSeconds\":" + _elapsed.ToString("F2", culture)
             + ",\"warmupSeconds\":" + _warmupSeconds.ToString("F2", culture)
@@ -121,9 +177,15 @@ public sealed class StandalonePerformanceProbe : MonoBehaviour
             + ",\"fpsP95\":" + p95.ToString("F2", culture)
             + ",\"fpsP99\":" + p99.ToString("F2", culture)
             + ",\"fpsMax\":" + max.ToString("F2", culture)
-            + ",\"profile\":\"" + _profile + "\""
-            + ",\"quality\":\"" + (_quality ?? "unchanged") + "\""
-            + ",\"samplesPath\":\"" + csvPath + "\"}";
+            + ",\"profile\":\"" + Json(_profile) + "\""
+            + ",\"quality\":\"" + Json(_quality ?? "unchanged") + "\""
+            + ",\"scene\":\"" + Json(_activeScene) + "\""
+            + ",\"vSyncCount\":" + QualitySettings.vSyncCount
+            + ",\"targetFrameRate\":" + Application.targetFrameRate
+            + ",\"probeInstallRealtimeSeconds\":" + _probeInstallRealtime.ToString("F3", culture)
+            + ",\"startupSampleCount\":" + _startupSamples.Count
+            + ",\"samplesPath\":\"" + Json(csvPath) + "\""
+            + ",\"startupSamplesPath\":\"" + Json(startupCsvPath) + "\"}";
         string path = Path.Combine(root, "era-imperial-standalone-performance.json");
         File.WriteAllText(path, json, Encoding.UTF8);
         Debug.Log($"STANDALONE_PERFORMANCE_PASSED {json} file={path}");
@@ -137,6 +199,18 @@ public sealed class StandalonePerformanceProbe : MonoBehaviour
         int lower = Mathf.FloorToInt(index);
         int upper = Mathf.Min(lower + 1, ordered.Count - 1);
         return Mathf.Lerp(ordered[lower], ordered[upper], index - lower);
+    }
+
+    private static string Json(string value)
+    {
+        if (string.IsNullOrEmpty(value)) return string.Empty;
+        return value.Replace("\\", "\\\\").Replace("\"", "\\\"");
+    }
+
+    private static string Csv(string value)
+    {
+        if (string.IsNullOrEmpty(value)) return "\"\"";
+        return "\"" + value.Replace("\"", "\"\"") + "\"";
     }
 }
 
