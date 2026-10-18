@@ -170,6 +170,14 @@ public class UIManager : MonoBehaviour
 
         // create texts for each in-game resource (gold, wood, stone...)
         _resourceTexts = new Dictionary<InGameResource, Text>();
+        if (Globals.GAME_RESOURCES == null
+            || _myPlayerId < 0
+            || _myPlayerId >= Globals.GAME_RESOURCES.Length
+            || Globals.GAME_RESOURCES[_myPlayerId] == null)
+        {
+            Debug.LogWarning("UIManager aguardando os recursos do jogador antes de montar o painel.");
+            return;
+        }
         foreach (KeyValuePair<InGameResource, GameResource> pair in Globals.GAME_RESOURCES[_myPlayerId])
         {
             GameObject display = Instantiate(gameResourceDisplayPrefab, resourcesUIParent);

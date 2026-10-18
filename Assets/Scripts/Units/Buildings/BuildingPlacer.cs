@@ -181,7 +181,10 @@ public class BuildingPlacer : MonoBehaviour
         _placedBuilding.SetPosition(position);
         // finish up the placement
         _PlaceBuilding(false);
-        _placedBuilding.SetConstructionHP(_placedBuilding.MaxHP);
+        if (_placedBuilding != null)
+            _placedBuilding.SetConstructionHP(_placedBuilding.MaxHP);
+        else
+            Debug.LogWarning("BuildingPlacer não concluiu SpawnBuilding porque a colocação foi rejeitada.");
 
         // restore the previous state
         _placedBuilding = prevPlacedBuilding;

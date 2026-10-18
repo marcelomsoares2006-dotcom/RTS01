@@ -17,3 +17,9 @@
 
 Nenhum candidato foi promovido. Permanecem pendentes a validação PlayMode real, colliders/runtime, LOD transition, UV/seams, projéteis/combate/cerco, benchmark de 600 s e revisão PBR dentro da partida.
 
+## Correções posteriores
+
+- `UIManager.Start` agora aguarda com aviso quando os recursos do jogador ainda não foram inicializados, evitando `NullReferenceException` durante a carga.
+- `BuildingPlacer.SpawnBuilding` agora trata colocação rejeitada antes de acessar `_placedBuilding`, evitando o segundo `NullReferenceException` observado.
+- A nova execução batch ficou novamente bloqueada na inicialização/licenciamento (`LicenseClient-User`) antes de concluir a compilação. Essas duas correções ainda precisam de confirmação no PlayMode licenciado.
+
