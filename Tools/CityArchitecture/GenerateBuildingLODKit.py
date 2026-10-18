@@ -63,6 +63,14 @@ def descendants(root):
     return [obj for obj in result if obj.type == "MESH"]
 
 
+def world_center(obj):
+    """Centro dos bounds no espaço mundial, sem alterar o pivô do objeto."""
+    corners = [obj.matrix_world @ Vector(corner) for corner in obj.bound_box]
+    lo = Vector((min(v.x for v in corners), min(v.y for v in corners), min(v.z for v in corners)))
+    hi = Vector((max(v.x for v in corners), max(v.y for v in corners), max(v.z for v in corners)))
+    return (lo + hi) * 0.5
+
+
 def duplicate_hierarchy(root, collection):
     mapping = {}
     source_objects = [root] + list(root.children_recursive)
@@ -80,47 +88,22 @@ def duplicate_hierarchy(root, collection):
     clone_root = mapping[root]
     clone_objects = list(mapping.values())
 
-    # O kit-fonte mantém quatro prédios afastados do ponto de origem comum.
-    # Centralizamos somente os vértices no espaço local de cada malha.
-    # Assim o visual fica no mesmo enquadramento do LOD0 sem traduzir os
-    # objetos: location/rotation/scale (os pivôs usados pelo Unity) permanecem
-    # idênticos entre LOD0/LOD1/LOD2.
-    bounds_min = Vector((float("inf"), float("inf"), float("inf")))
-    bounds_max = Vector((float("-inf"), float("-inf"), float("-inf")))
-    has_mesh = False
-    for obj in clone_objects:
-        if obj.type != "MESH" or obj.data is None:
-            continue
-        has_mesh = True
-        for corner in obj.bound_box:
-            point = obj.matrix_world @ Vector(corner)
-            bounds_min.x = min(bounds_min.x, point.x)
-            bounds_min.y = min(bounds_min.y, point.y)
-            bounds_min.z = min(bounds_min.z, point.z)
-            bounds_max.x = max(bounds_max.x, point.x)
-            bounds_max.y = max(bounds_max.y, point.y)
-            bounds_max.z = max(bounds_max.z, point.z)
-    if not has_mesh:
+    # O kit-fonte contém quatro prédios afastados entre si. Não recentralizar
+    # os vértices no centro global do kit: isso mistura a origem do edifício
+    # com a origem da cena e desloca fragmentos quando o LOD é comparado ao
+    # LOD0. O decimate deve operar no espaço local já exportado pelo LOD0,
+    # preservando o espaço mundial, location, rotação e escala de cada objeto.
+    if not any(obj.type == "MESH" and obj.data is not None for obj in clone_objects):
         raise RuntimeError(f"Nenhuma malha encontrada para {root.name}")
-
-    visual_center = Vector(((bounds_min.x + bounds_max.x) * 0.5, bounds_min.y, (bounds_min.z + bounds_max.z) * 0.5))
     export_root = bpy.data.objects.new(f"{root.name}_ExportRoot", None)
     collection.objects.link(export_root)
-    for obj in clone_objects:
-        if obj.type != "MESH" or obj.data is None:
-            continue
-        world_to_local = obj.matrix_world.inverted()
-        for vertex in obj.data.vertices:
-            world_position = obj.matrix_world @ vertex.co
-            vertex.co = world_to_local @ (world_position - visual_center)
-        obj.data.update()
     root_world = clone_root.matrix_world.copy()
     clone_root.parent = export_root
     clone_root.matrix_world = root_world
     return export_root, clone_objects
 
 
-def add_decimate(mesh_objects, ratio: float):
+def add_decimate(mesh_objects, ratio: float, reference_centers):
     for obj in mesh_objects:
         if obj.type != "MESH" or obj.data is None:
             continue
@@ -134,6 +117,20 @@ def add_decimate(mesh_objects, ratio: float):
             bpy.ops.object.modifier_apply(modifier=modifier.name)
         finally:
             obj.select_set(False)
+
+    # Decimate pode remover triângulos de forma assimétrica e deslocar o
+    # centro dos bounds. Reposicionamos somente os vértices no espaço local,
+    # usando o centro pré-decimate do fragmento. O location/rotation/scale
+    # permanece exatamente o do LOD0.
+    for obj in mesh_objects:
+        reference = reference_centers.get(obj.name.removesuffix("_LOD"))
+        if reference is None:
+            continue
+        delta_world = reference - world_center(obj)
+        delta_local = obj.matrix_world.inverted().to_3x3() @ delta_world
+        for vertex in obj.data.vertices:
+            vertex.co += delta_local
+        obj.data.update()
 
 
 def export_fbx(root, path: Path):
@@ -182,7 +179,9 @@ def main() -> int:
             temp_collection = bpy.data.collections.new(f"__TEMP_{building}_{lod_name}")
             bpy.context.scene.collection.children.link(temp_collection)
             clone_root, clone_objects = duplicate_hierarchy(roots[0], temp_collection)
-            add_decimate([obj for obj in clone_objects if obj.type == "MESH"], ratio)
+            mesh_objects = [obj for obj in clone_objects if obj.type == "MESH"]
+            reference_centers = {obj.name.removesuffix("_LOD"): world_center(obj) for obj in mesh_objects}
+            add_decimate(mesh_objects, ratio, reference_centers)
             output_path = OUTPUT / f"{safe_name(building)}_{lod_name}.fbx"
             export_fbx(clone_root, output_path)
             exported += 1

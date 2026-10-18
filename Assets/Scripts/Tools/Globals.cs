@@ -72,7 +72,7 @@ public static class Globals
     {
         if (NAV_MESH_SURFACE == null)
         {
-            NavMeshSurface[] surfaces = UnityEngine.Object.FindObjectsOfType<NavMeshSurface>();
+            NavMeshSurface[] surfaces = UnityEngine.Object.FindObjectsByType<NavMeshSurface>(FindObjectsInactive.Exclude);
             if (surfaces != null && surfaces.Length > 0)
                 NAV_MESH_SURFACE = surfaces[0];
         }

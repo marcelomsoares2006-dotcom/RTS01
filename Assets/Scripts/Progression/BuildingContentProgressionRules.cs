@@ -69,7 +69,9 @@ public static class BuildingContentProgressionRules
             role = entry.role,
             minimumEra = entry.minimumEra,
             assetOrigin = entry.AssetStage,
+#pragma warning disable CS0618 // compatibility alias intentionally mirrors assetOrigin
             assetStage = entry.AssetStage,
+#pragma warning restore CS0618
             runtimeReady = entry.IsRuntimeReady,
             availability = state == null
                 ? BuildingAvailabilityResult.ContentUnavailable

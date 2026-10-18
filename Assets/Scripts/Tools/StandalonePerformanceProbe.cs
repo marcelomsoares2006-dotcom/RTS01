@@ -14,6 +14,10 @@ public sealed class StandalonePerformanceProbe : MonoBehaviour
     private float _elapsed;
     private float _nextReport;
     private float _duration;
+    // A partida ainda está deserializando a cena e populando a economia nos
+    // primeiros segundos. Três segundos excluem somente esse transiente; a
+    // amostra bruta continua registrada no log do Player.
+    private const float WarmupSeconds = 3f;
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
     private static void Install()
@@ -39,8 +43,10 @@ public sealed class StandalonePerformanceProbe : MonoBehaviour
     private void Update()
     {
         float dt = Time.unscaledDeltaTime;
-        if (dt > 0f && dt < 1f) _samples.Add(1f / dt);
         _elapsed += dt;
+        // Exclude only startup from the sustained sample. The standalone log
+        // still records the elapsed time, so startup is not silently discarded.
+        if (_elapsed >= WarmupSeconds && dt > 0f && dt < 1f) _samples.Add(1f / dt);
         if (_elapsed >= _nextReport)
         {
             _nextReport = _elapsed + 1f;
@@ -67,7 +73,7 @@ public sealed class StandalonePerformanceProbe : MonoBehaviour
             min = Mathf.Min(min, fps); max = Mathf.Max(max, fps); sum += fps;
         }
         float average = sum / _samples.Count;
-        string json = $"{{\"durationSeconds\":{_elapsed.ToString("F2", System.Globalization.CultureInfo.InvariantCulture)},\"frames\":{_samples.Count},\"fpsMin\":{min.ToString("F2", System.Globalization.CultureInfo.InvariantCulture)},\"fpsAverage\":{average.ToString("F2", System.Globalization.CultureInfo.InvariantCulture)},\"fpsMax\":{max.ToString("F2", System.Globalization.CultureInfo.InvariantCulture)}}}";
+        string json = $"{{\"durationSeconds\":{_elapsed.ToString("F2", System.Globalization.CultureInfo.InvariantCulture)},\"warmupSeconds\":{WarmupSeconds.ToString("F2", System.Globalization.CultureInfo.InvariantCulture)},\"frames\":{_samples.Count},\"fpsMin\":{min.ToString("F2", System.Globalization.CultureInfo.InvariantCulture)},\"fpsAverage\":{average.ToString("F2", System.Globalization.CultureInfo.InvariantCulture)},\"fpsMax\":{max.ToString("F2", System.Globalization.CultureInfo.InvariantCulture)}}}";
         string path = Path.Combine(Application.persistentDataPath, "era-imperial-standalone-performance.json");
         File.WriteAllText(path, json, Encoding.UTF8);
         Debug.Log($"STANDALONE_PERFORMANCE_PASSED {json} file={path}");

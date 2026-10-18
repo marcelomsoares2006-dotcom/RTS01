@@ -81,7 +81,7 @@ public class CoreBooter : MonoBehaviour
     private AsyncOperation _LoadMap(string map)
     {
         AsyncOperation op = SceneManager.LoadSceneAsync(map, LoadSceneMode.Additive);
-        AudioListener prevListener = Object.FindObjectOfType<AudioListener>();
+        AudioListener prevListener = Object.FindAnyObjectByType<AudioListener>();
         op.completed += (_) =>
         {
             if (prevListener != null) prevListener.enabled = false;
@@ -101,7 +101,7 @@ public class CoreBooter : MonoBehaviour
     private AsyncOperation _LoadMenu()
     {
         Time.timeScale = 1f;
-        AudioListener prevListener = Object.FindObjectOfType<AudioListener>();
+        AudioListener prevListener = Object.FindAnyObjectByType<AudioListener>();
         if (prevListener != null) prevListener.enabled = false;
         AsyncOperation op = SceneManager.LoadSceneAsync("MainMenu", LoadSceneMode.Additive);
         op.completed += (_) =>

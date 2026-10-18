@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
     {
         for (int attempt = 0; attempt < 120; attempt++)
         {
-            NavMeshSurface[] surfaces = FindObjectsOfType<NavMeshSurface>();
+            NavMeshSurface[] surfaces = FindObjectsByType<NavMeshSurface>(FindObjectsInactive.Exclude);
             foreach (NavMeshSurface surface in surfaces)
             {
                 if (surface == null)

@@ -26,6 +26,7 @@ public class BinarySerializableData
         typeof(List<ConstructionReplayCommand>),
     };
 
+    [NonSerialized]
     public Dictionary<string, object> properties;
 
     public BinarySerializableData(ScriptableObject obj, List<string> fieldsToSerialize, bool serializeAll = false)

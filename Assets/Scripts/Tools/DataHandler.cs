@@ -110,7 +110,7 @@ public class DataHandler : MonoBehaviour
         GameData data = GameData.Instance;
         if (data == null)
         {
-            Object.FindObjectOfType<CameraManager>().InitializeBounds();
+            Object.FindAnyObjectByType<CameraManager>().InitializeBounds();
             EventManager.TriggerEvent("LoadedScene");
             return;
         }
@@ -253,7 +253,7 @@ public class DataHandler : MonoBehaviour
         }
 
         Camera.main.transform.position = data.camPosition;
-        Object.FindObjectOfType<CameraManager>().InitializeBounds();
+        Object.FindAnyObjectByType<CameraManager>().InitializeBounds();
         EventManager.TriggerEvent("UpdatedResources");
         EventManager.TriggerEvent("LoadedScene");
     }

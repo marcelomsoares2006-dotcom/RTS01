@@ -19,7 +19,9 @@ OUT.mkdir(parents=True, exist_ok=True)
 
 BUILDINGS = ("House_Medieval", "Barracks_Medieval", "Market_Classical", "Temple_Imperial")
 PROD_ROOT = ROOT / "Assets" / "CityArchitecture" / "Generated"
-TEST_ROOT = Path(os.environ.get("ERA_IMPERIAL_LOD_TEST_ROOT", r"D:\AI\EraImperial-Lod-Tests\2026-10-17-LOD_AlignedTest"))
+TEST_ROOT = Path(os.environ.get("ERA_IMPERIAL_LOD_TEST_ROOT", str(ROOT / "TestResults" / "LOD-Generation-Round4")))
+TEST_LABEL = os.environ.get("ERA_IMPERIAL_LOD_TEST_LABEL", "round4")
+LEGACY_TEST_ROOT = Path(os.environ.get("ERA_IMPERIAL_LOD_LEGACY_ROOT", r"D:\AI\EraImperial-Lod-Tests\2026-10-17-LOD_AlignedTest"))
 
 
 def reset():
@@ -112,30 +114,49 @@ def main():
         base = snapshot(base_path)
         lods = []
         for level in (1, 2):
-            candidate = PROD_ROOT / "LOD" / f"{building}_LOD{level}.fbx"
-            isolated = TEST_ROOT / f"{building}_LOD{level}.fbx"
-            prod = snapshot(candidate)
-            test = snapshot(isolated)
-            lods.append({"level": level, "production": prod, "isolated": test,
+            production_path = PROD_ROOT / "LOD" / f"{building}_LOD{level}.fbx"
+            candidate_path = TEST_ROOT / f"{building}_LOD{level}.fbx"
+            legacy = LEGACY_TEST_ROOT / f"{building}_LOD{level}.fbx"
+            prod = snapshot(production_path)
+            candidate_snapshot = snapshot(candidate_path)
+            legacy_snapshot = snapshot(legacy)
+            lods.append({"level": level, "production": prod, "candidate": candidate_snapshot,
+                         "legacy_isolated": legacy_snapshot,
                          "comparison_production": compare(base, prod),
-                         "comparison_isolated": compare(base, test)})
+                         "comparison_candidate": compare(base, candidate_snapshot),
+                         "comparison_legacy_isolated": compare(base, legacy_snapshot),
+                         # Compatibilidade de leitura para relatórios antigos.
+                         "round4": candidate_snapshot if TEST_LABEL == "round4" else None,
+                         "comparison_round4": compare(base, candidate_snapshot) if TEST_LABEL == "round4" else [],
+                         "isolated": candidate_snapshot,
+                         "comparison_isolated": compare(base, candidate_snapshot)})
         buildings.append({"building": building, "lod0": base, "lods": lods})
     result = {
         "audit": "Era Imperial architectural LOD audit",
         "mode": "read-only Blender FBX import; no asset saved",
         "thresholds": {"fragment_center_error_m": 0.01, "pivot_error_m": 0.00001, "promotion": "forbidden when popping/displacement remains"},
-        "test_root": str(TEST_ROOT),
+        "candidate_label": TEST_LABEL,
+        "candidate_root": str(TEST_ROOT),
+        "legacy_isolated_root": str(LEGACY_TEST_ROOT),
         "buildings": buildings,
     }
     out = OUT / "2026-10-17-uv-lod-audit.json"
     out.write_text(json.dumps(result, indent=2, ensure_ascii=False), encoding="utf-8")
     displaced = []
+    counts = {"production": 0, "candidate": 0, "legacy_isolated": 0}
     for item in buildings:
         for lod in item["lods"]:
-            for mode in ("comparison_production", "comparison_isolated"):
-                displaced.extend((item["building"], lod["level"], mode, row)
-                                 for row in lod[mode] if row["status"] == "DISPLACED_FRAGMENT")
-    print(f"ARCH_LOD_AUDIT buildings={len(buildings)} displaced_fragments={len(displaced)} output={out}")
+            for mode, key in (("production", "comparison_production"),
+                              ("candidate", "comparison_candidate"),
+                              ("legacy_isolated", "comparison_legacy_isolated")):
+                rows = [row for row in lod[key] if row["status"] == "DISPLACED_FRAGMENT"]
+                counts[mode] += len(rows)
+                displaced.extend((item["building"], lod["level"], mode, row) for row in rows)
+    result["summary"] = {"displaced_fragments": counts, "promotion_production_blocked": counts["production"] > 0,
+                          "candidate_isolated_pass": counts["candidate"] == 0,
+                          "legacy_isolated_is_not_comparable": True}
+    out.write_text(json.dumps(result, indent=2, ensure_ascii=False), encoding="utf-8")
+    print(f"ARCH_LOD_AUDIT buildings={len(buildings)} production={counts['production']} {TEST_LABEL}={counts['candidate']} legacy_isolated={counts['legacy_isolated']} output={out}")
 
 
 if __name__ == "__main__":
