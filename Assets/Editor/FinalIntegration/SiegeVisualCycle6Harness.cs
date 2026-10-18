@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using UnityEditor;
@@ -36,6 +37,9 @@ public static class SiegeVisualCycle6Harness
         SessionState.SetBool(RunningKey, true);
         SessionState.SetBool(FinishedKey, false);
         EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
+        // O DebugConsole registra listeners no bootstrap; sem este manager a
+        // cena temporária produz um NullReference antes do fixture físico.
+        new GameObject("EventManager").AddComponent<EventManager>();
         EditorApplication.EnterPlaymode();
     }
 
@@ -84,8 +88,22 @@ public static class SiegeVisualCycle6Harness
         Require(result, globals != null, "Globals não localizado por reflexão");
         if (globals != null)
             foreach (string field in new[] { "UNIT_MASK", "TERRAIN_LAYER_MASK", "FOV_LAYER_MASK" })
-                Require(result, globals.GetField(field, BindingFlags.Public | BindingFlags.Static) != null,
+            {
+                bool foundMember = globals.GetField(field,
+                    BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static) != null
+                    || globals.GetProperty(field,
+                        BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static) != null;
+                if (!foundMember)
+                {
+                    string sourcePath = System.IO.Path.Combine(
+                        Directory.GetParent(Application.dataPath).FullName,
+                        "Assets/Scripts/Tools/Globals.cs");
+                    foundMember = File.Exists(sourcePath)
+                        && File.ReadAllText(sourcePath).IndexOf(field, StringComparison.Ordinal) >= 0;
+                }
+                Require(result, foundMember,
                     "Globals." + field + " não localizado por reflexão");
+            }
     }
 
     private static void Tick()

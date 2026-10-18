@@ -66,9 +66,12 @@ public static class HousePbrPilotAuthoring
         ConfigureTexture("HousePilot_Roof_MetallicGloss", false, false);
         ConfigureTexture("HousePilot_Roof_AO", false, false);
 
-        CreateOrUpdateMaterial("HousePilot_Wood.mat", "HousePilot_Wood", "HousePilot_Wood", 1.0f, 0.46f, 0.76f, 0.24f);
-        CreateOrUpdateMaterial("HousePilot_WoodFloor.mat", "HousePilot_Wood", "HousePilot_Wood", 1.35f, 0.40f, 0.72f, 0.24f);
-        CreateOrUpdateMaterial("HousePilot_Roof.mat", "HousePilot_Roof", "HousePilot_Roof", 1.0f, 0.38f, 0.78f, 0.30f);
+        // textureProfile is the suffix; LoadTexture adds the HousePilot_ prefix.
+        // Passing the full stem here duplicated the prefix and made the Unity
+        // capture fail with HousePilot_HousePilot_* not found.
+        CreateOrUpdateMaterial("HousePilot_Wood.mat", "HousePilot_Wood", "Wood", 1.0f, 0.46f, 0.76f, 0.24f);
+        CreateOrUpdateMaterial("HousePilot_WoodFloor.mat", "HousePilot_Wood", "Wood", 1.35f, 0.40f, 0.72f, 0.24f);
+        CreateOrUpdateMaterial("HousePilot_Roof.mat", "HousePilot_Roof", "Roof", 1.0f, 0.38f, 0.78f, 0.30f);
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh(ImportAssetOptions.ForceSynchronousImport);
     }
