@@ -964,6 +964,12 @@ namespace EraImperial.SaveMigrationV2
         private static void ValidateProductionQueue(SaveMigrationV2ProductionQueue value, string prefix, List<string> errors)
         {
             if (value == null) return;
+            // Older GameData snapshots materialize an empty queue object with
+            // default enum values. Treat that object as "no active queue";
+            // requiring a building code here would reject valid legacy saves.
+            if (string.IsNullOrWhiteSpace(value.buildingCode)
+                && (value.orders == null || value.orders.Length == 0)
+                && (value.unlockedTechnologyCodes == null || value.unlockedTechnologyCodes.Length == 0)) return;
             RequireString(value.buildingCode, prefix + ".buildingCode", errors);
             if (value.ownerId < 0 || !TryEnum(value.era, out BuildingEra era) || !TryEnum(value.assetOrigin, out BuildingContentAssetStage stage))
                 errors.Add(prefix + " estado inválido");
@@ -1012,6 +1018,12 @@ namespace EraImperial.SaveMigrationV2
         private static void ValidateReplaySnapshot(SaveMigrationV2ReplaySnapshot value, List<string> errors)
         {
             if (value == null) return;
+            // A default snapshot is emitted by old saves before the replay
+            // system was initialized and is equivalent to an omitted snapshot.
+            if (value.era == 0
+                && (value.activeBuildings == null || value.activeBuildings.Length == 0)
+                && (value.producedUnits == null || value.producedUnits.Length == 0)
+                && (value.reservations == null || value.reservations.Length == 0)) return;
             if (!TryEnum(value.era, out BuildingEra era)) errors.Add("constructionReplayState.era inválida");
             ValidateStrings(value.activeBuildings, "constructionReplayState.activeBuildings", errors);
             ValidateStrings(value.producedUnits, "constructionReplayState.producedUnits", errors);

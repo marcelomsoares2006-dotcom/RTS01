@@ -41,6 +41,32 @@ public sealed class SaveMigrationV2Tests
     }
 
     [Test]
+    public void GameDataSaveAndLoadUsesV2WithoutLegacyWriter()
+    {
+        const string uid = "save-v2-gamedata-api";
+        GameData.gameUid = uid;
+        string gamePath = Path.Combine(
+            Application.persistentDataPath, BinarySerializable.DATA_DIRECTORY,
+            "Games", uid, GameData.DATA_FILE_NAME);
+        if (File.Exists(gamePath)) File.Delete(gamePath);
+        if (File.Exists(gamePath + ".bak")) File.Delete(gamePath + ".bak");
+
+        GameData.Save(CreateGameData());
+        byte[] bytes = File.ReadAllBytes(gamePath);
+        GameData loaded = GameData.Load();
+
+        Assert.That(bytes[0], Is.EqualTo((byte)'R'));
+        Assert.That(loaded, Is.Not.Null);
+        Assert.That(loaded.players[0].units[0].uid, Is.EqualTo("unit-1"));
+        Assert.That(File.Exists(gamePath + ".legacy"), Is.False);
+
+        if (File.Exists(gamePath)) File.Delete(gamePath);
+        if (File.Exists(gamePath + ".bak")) File.Delete(gamePath + ".bak");
+        string directory = Path.GetDirectoryName(gamePath);
+        if (Directory.Exists(directory)) Directory.Delete(directory, true);
+    }
+
+    [Test]
     public void V2RejectsTruncationAndHashTamperingWithoutLegacyFallback()
     {
         GameData.gameUid = "save-v2-integrity";

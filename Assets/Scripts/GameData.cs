@@ -1,6 +1,7 @@
 using System.Runtime.Serialization;
 using System.Collections.Generic;
 using UnityEngine;
+using EraImperial.SaveMigrationV2;
 
 [System.Serializable]
 public class GamePlayerUnitData : BinarySerializable
@@ -136,13 +137,31 @@ public class GameData : BinarySerializable
     {
         // A new match deliberately has no save yet; this is not a load failure.
         string path = _GetFilePath();
-        _instance = System.IO.File.Exists(path) ? (GameData)BinarySerializable.Load(path) : null;
+        if (!System.IO.File.Exists(path) && !System.IO.File.Exists(path + ".bak"))
+        {
+            _instance = null;
+            return _instance;
+        }
+
+        SaveMigrationV2ReadResult result = SaveMigrationV2Store.Load(path);
+        if (result.Succeeded)
+        {
+            _instance = result.Data;
+            if (result.Source == SaveMigrationV2Source.Legacy)
+                Debug.LogWarning("Save legado carregado somente para compatibilidade; a próxima gravação será V2.");
+        }
+        else
+        {
+            _instance = null;
+            Debug.LogWarning($"Não foi possível carregar GameData: {result.Error ?? result.Status.ToString()}");
+        }
         return _instance;
     }
 
     public static void Save(GameData instance)
     {
-        BinarySerializable.Save(_GetFilePath(), instance);
+        if (instance == null) throw new System.ArgumentNullException(nameof(instance));
+        SaveMigrationV2Store.Save(_GetFilePath(), instance);
     }
 
 }

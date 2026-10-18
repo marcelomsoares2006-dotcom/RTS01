@@ -1,5 +1,8 @@
 using System;
 using System.IO;
+// The formatter below is retained only for the legacy compatibility bridge.
+// GameData writes through SaveMigrationV2Store; this file is not a V2 writer.
+#pragma warning disable UAC0023
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
@@ -138,3 +141,4 @@ public static class SaveFileStore
         return fullPath;
     }
 }
+#pragma warning restore UAC0023
