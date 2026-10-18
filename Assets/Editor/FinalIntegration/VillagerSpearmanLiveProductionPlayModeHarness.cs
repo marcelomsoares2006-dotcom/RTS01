@@ -248,6 +248,15 @@ public static class VillagerSpearmanLiveProductionPlayModeHarness
         return true;
     }
 
+    private static int CountUnits(string runtimeCode, int owner)
+    {
+        if (Unit.UNITS_BY_OWNER == null || !Unit.UNITS_BY_OWNER.ContainsKey(owner))
+            return 0;
+
+        return Unit.UNITS_BY_OWNER[owner].Count(item => item != null
+            && string.Equals(item.Code, runtimeCode, StringComparison.OrdinalIgnoreCase));
+    }
+
     private static Vector3 Sample(Vector3 requested)
     {
         NavMeshHit hit;
