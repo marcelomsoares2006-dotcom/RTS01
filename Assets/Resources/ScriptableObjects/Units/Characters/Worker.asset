@@ -29,6 +29,7 @@ MonoBehaviour:
   attackRange: 2
   attackDamage: 2
   attackRate: 2
+  armor: 0
   onSelectSound: {fileID: 0}
   onMoveValidSound: {fileID: 0}
   onMoveInvalidSound: {fileID: 0}

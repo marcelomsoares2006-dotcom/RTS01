@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   code: horseman
   unitName: Horseman
-  description: Cavaleiro móvel para ataques e flanqueamento.
+  description: "Cavaleiro m\xF3vel para ataques e flanqueamento."
   healthpoints: 125
-  prefab: {fileID: 100100000, guid: c3e8a1f5d9b2476ab4e0c7138f2d5603, type: 3}
+  prefab: {fileID: 4893885829384556338, guid: c3e8a1f5d9b2476ab4e0c7138f2d5603, type: 3}
   sprite: {fileID: 0}
   cost:
   - code: 0

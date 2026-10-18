@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   code: archer
   unitName: Archer
-  description: Arqueiro de apoio a distância.
+  description: "Arqueiro de apoio a dist\xE2ncia."
   healthpoints: 70
-  prefab: {fileID: 100100000, guid: a2f3e5d1b7c44e30a9f86d12c5b7e401, type: 3}
+  prefab: {fileID: 4893885829384556338, guid: a2f3e5d1b7c44e30a9f86d12c5b7e401, type: 3}
   sprite: {fileID: 0}
   cost:
   - code: 0

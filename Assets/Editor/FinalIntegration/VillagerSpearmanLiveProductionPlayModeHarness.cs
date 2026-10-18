@@ -29,6 +29,7 @@ public static class VillagerSpearmanLiveProductionPlayModeHarness
     private static double _deadline;
     private static int _stage;
     private static int _owner;
+    private static bool _readinessReported;
     private static Building _townCenter;
     private static Building _barracks;
     private static string _advancedCode;
@@ -52,6 +53,7 @@ public static class VillagerSpearmanLiveProductionPlayModeHarness
         _townCenter = null;
         _barracks = null;
         _advancedCode = null;
+        _readinessReported = false;
         Baselines.Clear();
         SessionState.SetBool(RunningKey, true);
         SessionState.SetBool(FinishedKey, false);
@@ -126,16 +128,30 @@ public static class VillagerSpearmanLiveProductionPlayModeHarness
 
     private static bool ReadyToProbe()
     {
-        if (GameManager.instance == null || DataHandler.EconomyRuntime == null)
-            return false;
-        if (Globals.CHARACTER_DATA == null
-            || !Globals.CHARACTER_DATA.ContainsKey("worker")
-            || !Globals.CHARACTER_DATA.ContainsKey("spearman"))
-            return false;
-        if (GameObject.Find("Spawnpoints") == null)
-            return false;
+        bool gameManagerReady = GameManager.instance != null;
+        bool economyReady = DataHandler.EconomyRuntime != null;
+        bool characterCatalogReady = Globals.CHARACTER_DATA != null;
+        bool workerReady = characterCatalogReady && Globals.CHARACTER_DATA.ContainsKey("worker");
+        bool spearmanReady = characterCatalogReady && Globals.CHARACTER_DATA.ContainsKey("spearman");
+        GameObject spawnpoints = GameObject.Find("Spawnpoints");
+        bool spawnpointsReady = spawnpoints != null;
         NavMeshSurface surface = UnityEngine.Object.FindAnyObjectByType<NavMeshSurface>();
-        return surface != null && NavMesh.CalculateTriangulation().vertices.Length > 0;
+        int navMeshVertices = NavMesh.CalculateTriangulation().vertices.Length;
+        bool navMeshReady = surface != null && navMeshVertices > 0;
+        if (!_readinessReported)
+        {
+            _readinessReported = true;
+            Debug.Log("LIVE_PRODUCTION_READINESS gameManager=" + gameManagerReady
+                + " economy=" + economyReady
+                + " catalog=" + characterCatalogReady
+                + " worker=" + workerReady
+                + " spearman=" + spearmanReady
+                + " spawnpoints=" + spawnpointsReady
+                + " navMeshSurface=" + (surface != null)
+                + " navMeshVertices=" + navMeshVertices);
+        }
+        return gameManagerReady && economyReady && workerReady && spearmanReady
+            && spawnpointsReady && navMeshReady;
     }
 
     private static void SetupLiveBuildingsAndQueues()

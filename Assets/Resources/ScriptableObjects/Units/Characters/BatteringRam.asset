@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   code: battering_ram
   unitName: BatteringRam
-  description: Aríete de cerco contra construções.
+  description: "Ar\xEDete de cerco contra constru\xE7\xF5es."
   healthpoints: 500
-  prefab: {fileID: 100100000, guid: e5a0c3f7b1d4498ca6e2f9350b4d7815, type: 3}
+  prefab: {fileID: 4893885829384556338, guid: e5a0c3f7b1d4498ca6e2f9350b4d7815, type: 3}
   sprite: {fileID: 0}
   cost:
   - code: 1
