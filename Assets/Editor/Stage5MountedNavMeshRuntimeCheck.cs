@@ -51,8 +51,8 @@ public static class Stage5MountedNavMeshRuntimeCheck
             Need(EditorApplication.timeSinceStartup < SessionState.GetFloat(Key + "Deadline", 0), "NavMesh test timeout.");
             Need(SessionState.GetInt(Key + "Errors", 0) == 0, "Runtime error logged.");
             if (!EditorApplication.isPlaying || EditorApplication.isCompiling || EditorApplication.timeSinceStartup < nextTick) return;
-            var mount = UnityEngine.Object.FindObjectsByType<Transform>(FindObjectsSortMode.None).FirstOrDefault(t => t.name == "MountedFitPrototype");
-            var destination = UnityEngine.Object.FindObjectsByType<Transform>(FindObjectsSortMode.None).FirstOrDefault(t => t.name == "MountedDestination");
+            var mount = UnityEngine.Object.FindObjectsByType<Transform>(FindObjectsInactive.Exclude).FirstOrDefault(t => t.name == "MountedFitPrototype");
+            var destination = UnityEngine.Object.FindObjectsByType<Transform>(FindObjectsInactive.Exclude).FirstOrDefault(t => t.name == "MountedDestination");
             Need(mount != null && destination != null, "Mounted test objects missing.");
             var agent = mount.GetComponent<NavMeshAgent>();
             var driver = mount.GetComponent<MountedMovementDriver>();

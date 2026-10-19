@@ -53,7 +53,7 @@ public static class UIIntegratedPlayModeAudit
         // A cena é aberta somente em memória. O Booter é desativado para que
         // o harness controle a composição sem abrir o menu e sem salvar a cena.
         EditorSceneManager.OpenScene("Assets/Scenes/Core.unity", OpenSceneMode.Single);
-        CoreBooter booter = UnityEngine.Object.FindFirstObjectByType<CoreBooter>();
+        CoreBooter booter = UnityEngine.Object.FindAnyObjectByType<CoreBooter>();
         if (booter != null) booter.enabled = false;
         EditorApplication.EnterPlaymode();
     }
@@ -127,11 +127,11 @@ public static class UIIntegratedPlayModeAudit
         Require(canvas.GetComponent<GraphicRaycaster>() != null, "Canvas real sem GraphicRaycaster");
         Checks.Add("Canvas real ativo com GraphicRaycaster");
 
-        EventSystem eventSystem = UnityEngine.Object.FindFirstObjectByType<EventSystem>();
+        EventSystem eventSystem = UnityEngine.Object.FindAnyObjectByType<EventSystem>();
         Require(eventSystem != null && eventSystem.isActiveAndEnabled, "EventSystem real ausente/inativo");
         Checks.Add("EventSystem real ativo");
 
-        UIManager ui = UnityEngine.Object.FindFirstObjectByType<UIManager>();
+        UIManager ui = UnityEngine.Object.FindAnyObjectByType<UIManager>();
         Require(ui != null && ui.isActiveAndEnabled, "UIManager real da partida ausente/inativo");
         Require(ui.resourcesUIParent != null, "UIManager sem resourcesUIParent");
         Require(ui.gameResourceDisplayPrefab != null, "UIManager sem prefab de ResourceDisplay");
@@ -141,7 +141,7 @@ public static class UIIntegratedPlayModeAudit
         Require(ui.techTreePanel != null && ui.gameSettingsPanel != null, "UIManager sem painéis de tecnologia/configuração");
         Checks.Add("UIManager real com painéis e prefabs ligados");
 
-        GameManager manager = UnityEngine.Object.FindFirstObjectByType<GameManager>();
+        GameManager manager = UnityEngine.Object.FindAnyObjectByType<GameManager>();
         Require(manager != null && GameManager.instance == manager, "GameManager real não inicializou");
         Checks.Add("GameManager real inicializado");
 

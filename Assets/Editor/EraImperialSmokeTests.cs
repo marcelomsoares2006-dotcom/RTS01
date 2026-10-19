@@ -120,7 +120,7 @@ public static class EraImperialSmokeTests
                         "Terrain still has missing tree prefabs.");
                 }
                 if (cycle < 2) CheckTreeVisibility(cycle);
-                Require(UnityEngine.Object.FindObjectsByType<MinimapManager>(FindObjectsSortMode.None).Any(minimap => minimap.enabled),
+                Require(UnityEngine.Object.FindObjectsByType<MinimapManager>(FindObjectsInactive.Exclude).Any(minimap => minimap.enabled),
                     "Minimap has been disabled.");
                 var spawnpoints = GameObject.Find("Spawnpoints").transform;
                 Vector3 source = spawnpoints.GetChild(0).position;

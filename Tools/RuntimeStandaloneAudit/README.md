@@ -8,6 +8,17 @@ Execute com o projeto fechado:
 powershell -ExecutionPolicy Bypass -File .\Tools\RuntimeStandaloneAudit\Invoke-RuntimeStandaloneAudit.ps1
 ```
 
+Para um soak de 600 s, o launcher calcula automaticamente uma janela de
+`600 + warm-up + 30 s`; não é necessário configurar um timeout manual:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\Tools\RuntimeStandaloneAudit\Invoke-RuntimeStandaloneAudit.ps1 -BenchmarkSeconds 600 -BenchmarkWarmupSeconds 5
+```
+
+Um valor positivo em `-StandaloneTimeoutSeconds` continua disponível como
+override explícito. O timeout fixo de 45 s é usado apenas como mínimo para
+smokes curtos.
+
 O script consome as evidências existentes, tenta iniciar `Builds/Windows/EraImperial.exe` em modo headless e grava:
 
 - `TestResults/runtime-standalone-audit.json`

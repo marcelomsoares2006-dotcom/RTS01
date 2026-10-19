@@ -58,7 +58,7 @@ public static class Stage5MountedLocomotionRuntimeCheck
             Need(EditorApplication.timeSinceStartup < SessionState.GetFloat(Key + "Deadline", 0), "Mounted locomotion timeout.");
             Need(SessionState.GetInt(Key + "Errors", 0) == 0, "Runtime error logged.");
             if (!EditorApplication.isPlaying || EditorApplication.isCompiling || EditorApplication.timeSinceStartup < nextTick) return;
-            var mount = UnityEngine.Object.FindObjectsByType<Transform>(FindObjectsSortMode.None)
+            var mount = UnityEngine.Object.FindObjectsByType<Transform>(FindObjectsInactive.Exclude)
                 .FirstOrDefault(t => t.name == "MountedFitPrototype");
             Need(mount != null, "Mounted prefab missing.");
             var sockets = mount.GetComponent<MountedSockets>();

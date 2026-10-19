@@ -1,6 +1,8 @@
 param(
     [string]$ProjectRoot = (Resolve-Path (Join-Path $PSScriptRoot '..\..')).Path,
-    [int]$StandaloneTimeoutSeconds = 45,
+    # Zero selects a duration-aware timeout. Pass a positive value only when
+    # intentionally overriding the launcher safety window.
+    [int]$StandaloneTimeoutSeconds = 0,
     [int]$BenchmarkSeconds = 8,
     [int]$BenchmarkWarmupSeconds = 3
 )
@@ -14,6 +16,21 @@ $buildReportPath = Join-Path $resultsDir 'windows-build.txt'
 $standaloneLog = Join-Path $resultsDir 'standalone-runtime.log'
 $jsonPath = Join-Path $resultsDir 'runtime-standalone-audit.json'
 $markdownPath = Join-Path $ProjectRoot 'Docs\Runtime\2026-10-14-runtime-standalone-audit.md'
+
+if ($BenchmarkSeconds -lt 3) { throw 'BenchmarkSeconds must be at least 3 seconds.' }
+if ($BenchmarkWarmupSeconds -lt 0 -or $BenchmarkWarmupSeconds -ge $BenchmarkSeconds) {
+    throw 'BenchmarkWarmupSeconds must be at least 0 and shorter than BenchmarkSeconds.'
+}
+
+# A long probe writes its final CSVs and JSON only after the requested sample
+# window. The old fixed 45 s default killed a 600 s soak before Finish(). Keep
+# the short-smoke behavior, but derive the default from the requested duration
+# and leave explicit positive overrides untouched.
+$effectiveStandaloneTimeoutSeconds = if ($StandaloneTimeoutSeconds -gt 0) {
+    $StandaloneTimeoutSeconds
+} else {
+    [Math]::Max(45, $BenchmarkSeconds + $BenchmarkWarmupSeconds + 30)
+}
 
 New-Item -ItemType Directory -Force -Path $resultsDir, (Split-Path $markdownPath -Parent) | Out-Null
 $checks = [System.Collections.Generic.List[object]]::new()
@@ -87,7 +104,7 @@ if (Test-Path -LiteralPath $buildPath) {
     $playerRelativeLog = Join-Path (Split-Path $buildPath) $relativeLog
     if (Test-Path -LiteralPath $playerRelativeLog) { Remove-Item -LiteralPath $playerRelativeLog -Force }
     $proc = Start-Process -FilePath 'cmd.exe' -ArgumentList @('/d', '/s', '/c', $cmdLine) -WorkingDirectory (Split-Path $buildPath) -WindowStyle Hidden -PassThru
-    $exited = $proc.WaitForExit($StandaloneTimeoutSeconds * 1000)
+    $exited = $proc.WaitForExit($effectiveStandaloneTimeoutSeconds * 1000)
     if ($exited) {
         if (Test-Path -LiteralPath $playerRelativeLog) {
             Copy-Item -LiteralPath $playerRelativeLog -Destination $standaloneLog -Force
@@ -110,7 +127,7 @@ if (Test-Path -LiteralPath $buildPath) {
     } else {
         $proc.Kill()
         $proc.WaitForExit()
-        Add-Check 'standalone-start' 'execução fora do Editor' 'BLOCKED' $standaloneLog "Player não encerrou em $StandaloneTimeoutSeconds s com -quit; não é considerado smoke aprovado."
+        Add-Check 'standalone-start' 'execução fora do Editor' 'BLOCKED' $standaloneLog "Player não encerrou em $effectiveStandaloneTimeoutSeconds s com -quit; não é considerado smoke aprovado."
     }
 } else { Add-Check 'standalone-start' 'execução fora do Editor' 'BLOCKED' $buildPath 'Executável Windows ausente.' }
 

@@ -232,7 +232,7 @@ public class UnitManager : MonoBehaviour
         }
 
         // play sound
-        if (contextualSource != null && Unit != null && Unit.Data != null)
+        if (contextualSource != null && Unit != null && Unit.Data != null && Unit.Data.onSelectSound != null)
             contextualSource.PlayOneShot(Unit.Data.onSelectSound);
 
         _selected = true;
@@ -266,8 +266,11 @@ public class UnitManager : MonoBehaviour
         }
 
         // play sound
-        AudioClip clip = GameManager.instance.gameGlobalParameters.onLevelUpSound;
-        contextualSource.PlayOneShot(clip);
+        AudioClip clip = GameManager.instance != null && GameManager.instance.gameGlobalParameters != null
+            ? GameManager.instance.gameGlobalParameters.onLevelUpSound
+            : null;
+        if (contextualSource != null && clip != null)
+            contextualSource.PlayOneShot(clip);
 
         // create visual effect (+ discard it after a few seconds)
         GameObject vfx = Instantiate(Resources.Load("Prefabs/Units/LevelUpVFX")) as GameObject;

@@ -24,3 +24,12 @@ As capturas de arquitetura confirmam ausência de magenta no showcase atual, mas
 2. Fazer a revisão visual Unity dos LODs Round7, UVs, seams, pivôs e materiais restantes.
 3. Executar playtest manual completo de UI, eras, combate, cerco, destruição, save/load e NavMesh.
 4. Repetir build Windows final após fechar o soak e as revisões visuais.
+
+## Atualização do ciclo 2026-10-19
+
+- Soak otimizado direto concluído: `TestResults/StandalonePerformance/optimized-600-direct/era-imperial-standalone-performance.json` registra 600,02 s, média 60,07 FPS, P95 60,04 e mínimo 20,69 FPS. O JSON/CSV estão completos e não há erro fatal; o gate de mínimo 30 FPS continua aberto por outliers.
+- O launcher foi corrigido para timeout proporcional à duração solicitada; o timeout fixo de 45 s não encerra mais benchmarks longos antes de `Finish()`.
+- Guards de áudio foram adicionados em seleção, movimento e level-up; o player não registrou mais `PlayOneShot was called with a null AudioClip` no soak novo.
+- Novo candidato LOD2 em `TestResults/LOD-Generation-Round8` removeu 22 faces degeneradas detectadas pelo reparador e passou a auditoria estática sem fragmentos deslocados. Não foi promovido para produção.
+- A auditoria independente mantém revisão visual Unity pendente: muralhas ainda são candidatas PBR, 20 UVs precisam de inspeção manual e os prefabs arquitetônicos seguem sem LODGroup/colliders serializados.
+- O harness `FinalPlaytestCoverageHarness` e correções de APIs obsoletas foram adicionados, mas a nova execução Unity ficou bloqueada por `LicenseClient-User`; não foi contado como PASS falso.

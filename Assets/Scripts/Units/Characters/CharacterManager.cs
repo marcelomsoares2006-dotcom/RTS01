@@ -35,15 +35,21 @@ public class CharacterManager : UnitManager
             return false;
         if (path.status != NavMeshPathStatus.PathComplete)
         {
-            if (playSound)
-                contextualSource.PlayOneShot(((CharacterData)Unit.Data).onMoveInvalidSound);
+            AudioClip invalidSound = Unit != null && Unit.Data is CharacterData characterData
+                ? characterData.onMoveInvalidSound
+                : null;
+            if (playSound && contextualSource != null && invalidSound != null)
+                contextualSource.PlayOneShot(invalidSound);
             return false;
         }
 
         if (!agent.SetDestination(targetPosition))
             return false;
-        if (playSound)
-            contextualSource.PlayOneShot(((CharacterData)Unit.Data).onMoveValidSound);
+        AudioClip validSound = Unit != null && Unit.Data is CharacterData validCharacterData
+            ? validCharacterData.onMoveValidSound
+            : null;
+        if (playSound && contextualSource != null && validSound != null)
+            contextualSource.PlayOneShot(validSound);
         return true;
     }
 
