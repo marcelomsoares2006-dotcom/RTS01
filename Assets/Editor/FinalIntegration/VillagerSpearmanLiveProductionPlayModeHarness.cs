@@ -35,7 +35,13 @@ public static class VillagerSpearmanLiveProductionPlayModeHarness
     private static bool _readinessReported;
     private static Building _townCenter;
     private static Building _barracks;
+    private static Building _siegeWorkshop;
+    private static Building _enemyTarget;
+    private static UnitManager _catapultManager;
+    private static CatapultCombatController _catapultController;
     private static string _advancedCode;
+    private static int _siegeShots;
+    private static double _nextSiegeShotAt;
     private static readonly Dictionary<string, int> Baselines =
         new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
 
@@ -55,7 +61,13 @@ public static class VillagerSpearmanLiveProductionPlayModeHarness
         _stage = 0;
         _townCenter = null;
         _barracks = null;
+        _siegeWorkshop = null;
+        _enemyTarget = null;
+        _catapultManager = null;
+        _catapultController = null;
         _advancedCode = null;
+        _siegeShots = 0;
+        _nextSiegeShotAt = 0.0;
         _readinessReported = false;
         Baselines.Clear();
         SessionState.SetBool(RunningKey, true);
@@ -126,7 +138,18 @@ public static class VillagerSpearmanLiveProductionPlayModeHarness
             {
                 if (!string.IsNullOrEmpty(_advancedCode)
                     && !ObserveRequiredProduct(_advancedCode, _advancedCode)) return;
-                Pass();
+                if (!ObserveRequiredProduct("catapult", "catapult")) return;
+                _catapultManager = FindOwnedUnitManager("catapult", _owner);
+                Require(_catapultManager != null, "catapulta produzida sem UnitManager real");
+                _catapultController = _catapultManager.GetComponent<CatapultCombatController>();
+                Require(_catapultController != null, "catapulta produzida sem CatapultCombatController real");
+                _stage = 3;
+                return;
+            }
+
+            if (_stage == 3)
+            {
+                RunLiveSiegeStep();
             }
         }
         catch (Exception exception)
@@ -187,6 +210,36 @@ public static class VillagerSpearmanLiveProductionPlayModeHarness
         Require(_townCenter != null && _townCenter.IsAlive, "Town Center temporário não ficou operacional");
         Require(_barracks != null && _barracks.IsAlive, "Barracks temporário não ficou operacional");
 
+        BuildingContentSpec siegeSpec = catalog.Find("siege_workshop");
+        Require(siegeSpec != null && siegeSpec.buildingData != null,
+            "Siege Workshop BuildingData ausente no catálogo");
+        Require(Globals.CHARACTER_DATA.ContainsKey("catapult"),
+            "CharacterData da catapulta ausente no catálogo runtime");
+        Require(siegeSpec.production != null && siegeSpec.production.Any(
+            p => p != null && string.Equals(p.productCode, "catapult", StringComparison.OrdinalIgnoreCase)),
+            "Siege Workshop não expõe produção de catapulta");
+
+        AdvancedEraState.Set(ImperialEra.Imperial);
+        Vector3 siegePosition = Sample(points.GetChild(0).position + Vector3.right * 4f);
+        _siegeWorkshop = SpawnOperationalBuilding(siegeSpec.buildingData, siegePosition, "siege_workshop");
+        int enemyOwner = (GameManager.instance.gamePlayersParameters.players.Length > 1)
+            ? (_owner + 1) % GameManager.instance.gamePlayersParameters.players.Length : _owner + 1;
+        _enemyTarget = SpawnOperationalBuilding(townSpec.buildingData,
+            Sample(siegePosition + Vector3.forward * 12f), "siege_target");
+        Require(_enemyTarget != null && _enemyTarget.IsAlive, "alvo BuildingManager não ficou operacional");
+        // Building's owner is authored by its constructor; rebuild the target
+        // with the adversary owner so the live attack path cannot be friendly fire.
+        UnityEngine.Object.Destroy(_enemyTarget.Transform.gameObject);
+        _enemyTarget = SpawnOperationalBuilding(townSpec.buildingData,
+            Sample(siegePosition + Vector3.forward * 12f), "siege_target_enemy", enemyOwner);
+        Require(_enemyTarget != null && _enemyTarget.IsAlive && _enemyTarget.Owner != _owner,
+            "alvo BuildingManager não recebeu proprietário adversário");
+        // Keep the authored Town Center/BuildingManager/collider intact while
+        // making this bounded PlayMode probe finish in a few real impacts.
+        // The target still receives the normal UnitManager damage path and
+        // must transition through Building destruction.
+        _enemyTarget.HP = Mathf.Min(_enemyTarget.HP, 360);
+
         EconomyPlayerState economy = DataHandler.EconomyRuntime.GetOrCreatePlayer(_owner);
         foreach (EconomyResourceType resource in Enum.GetValues(typeof(EconomyResourceType)))
             economy.stockpile.Set(resource, 10000);
@@ -194,6 +247,7 @@ public static class VillagerSpearmanLiveProductionPlayModeHarness
 
         QueueAndAdvance(_townCenter, "villager", 20f);
         QueueAndAdvance(_barracks, "spearman", 20f);
+        QueueAndAdvance(_siegeWorkshop, "catapult", 60f);
 
         // Advanced production is optional and does not turn an unavailable
         // authored runtime asset into a false failure.
@@ -212,7 +266,12 @@ public static class VillagerSpearmanLiveProductionPlayModeHarness
 
     private static Building SpawnOperationalBuilding(BuildingData data, Vector3 position, string label)
     {
-        Building building = new Building(data, _owner);
+        return SpawnOperationalBuilding(data, position, label, _owner);
+    }
+
+    private static Building SpawnOperationalBuilding(BuildingData data, Vector3 position, string label, int owner)
+    {
+        Building building = new Building(data, owner);
         building.Transform.name = "LiveProductionHarness_" + label;
         building.SetPosition(position);
         building.SetConstructionHP(building.MaxHP);
@@ -224,6 +283,42 @@ public static class VillagerSpearmanLiveProductionPlayModeHarness
             label + " não recebeu BuildingProductionRuntimeDriver: "
             + (driver == null ? "null" : driver.LastFailure));
         return building;
+    }
+
+    private static UnitManager FindOwnedUnitManager(string runtimeCode, int owner)
+    {
+        if (Unit.UNITS_BY_OWNER == null || !Unit.UNITS_BY_OWNER.ContainsKey(owner)) return null;
+        Unit unit = Unit.UNITS_BY_OWNER[owner].FirstOrDefault(item => item != null
+            && string.Equals(item.Code, runtimeCode, StringComparison.OrdinalIgnoreCase)
+            && item.Transform != null);
+        return unit == null ? null : unit.Transform.GetComponent<UnitManager>();
+    }
+
+    private static void RunLiveSiegeStep()
+    {
+        Require(_catapultManager != null && _catapultManager.Unit != null,
+            "catapulta sem UnitManager/Unit no cerco real");
+        if (_enemyTarget == null || !_enemyTarget.IsAlive || _enemyTarget.Transform == null)
+        {
+            Debug.Log("LIVE_PRODUCTION_SIEGE_PASS: SiegeWorkshop -> catapult -> BuildingManager enemy -> "
+                + "projectile/damage/destruction shots=" + _siegeShots);
+            Pass();
+            return;
+        }
+        if (EditorApplication.timeSinceStartup < _nextSiegeShotAt) return;
+        if (_siegeShots >= 12)
+            throw new InvalidOperationException("catapulta não destruiu o BuildingManager após 12 disparos válidos");
+        // Invoke the authored controller after production. BeginFire keeps
+        // this probe independent from the AI target-selection cadence while
+        // still exercising the real projectile, cooldown/release and damage
+        // path against the live BuildingManager.
+        _catapultController.BeginFire(_enemyTarget.Transform);
+        _siegeShots++;
+        Debug.Log("LIVE_PRODUCTION_SIEGE_SHOT shot=" + _siegeShots
+            + " targetHp=" + _enemyTarget.HP);
+        // Imperial catapult cooldown is 4.5 s; leave margin for release and
+        // projectile flight so each command is a valid live attack.
+        _nextSiegeShotAt = EditorApplication.timeSinceStartup + 6.0;
     }
 
     private static void QueueAndAdvance(Building building, string product, float advance)

@@ -5,11 +5,11 @@
 | Frente | Evidência | Estado |
 |---|---|---|
 | Unity/licença | `TestResults/siege-visual-cycle6-final.log` conectou a `LicenseClient-User` e atualizou a licença | PASS |
-| Cerco visual isolado | `SIEGE_VISUAL_CYCLE6_PASS`: GameObjects reais, `Rigidbody`, `SphereCollider`, `BoxCollider`, dano direto/radial, destruição e marcador de impacto | PASS técnico / integração de partida PENDENTE |
+| Cerco integrado | `LIVE_PRODUCTION_SIEGE_PASS`: SiegeWorkshop produziu catapulta real; projétil balístico causou 4 impactos (360→260→160→60) e destruiu `BuildingManager` inimigo | PASS |
 | Magenta | Capturas `CityArchitectureShowcase_Overview/Mid/Close` e `TownCenter_Showcase_D3D11` sem áreas magenta | PASS nas capturas |
-| PBR/UV/seams | Capturas mostram materiais válidos, mas o piloto PBR ainda não foi promovido; 20 ocorrências UV permanecem classificadas para revisão | REVIEW |
-| LOD | Auditoria arquitetônica mantém 23 fragmentos deslocados acima de 1 cm e nenhum `LODGroup` promovido | BLOCKED |
-| FPS | Benchmark real de 600,02 s: média 42,85 FPS, P95 60,02, mínimo 1,29 FPS por picos isolados | BLOCKED (<30 mínimo) |
+| PBR/UV/seams | House PBR capturado no Unity e promovido com backup; 20 ocorrências UV continuam classificadas para revisão manual | House PASS / UV REVIEW |
+| LOD | Auditoria Blender Round7: produção=0 e candidato=0 fragmentos deslocados; revisão visual Unity de popping ainda pendente | STATIC PASS / VISUAL REVIEW |
+| FPS | Smoke otimizado de 30,01 s: média 60,00 FPS, mínimo 50,28 FPS. Soak anterior de 600,02 s: mínimo 1,29 FPS; novo soak otimizado encerrou antes do JSON | SMOKE PASS / 600 s PENDING |
 | Benchmark contínuo | Player Windows concluiu 600,02 s com `EXIT=0`, JSON/CSV válidos e sem padrões de crash no log | PASS de duração / BLOCKED de FPS |
 
 ## Interpretação
@@ -20,8 +20,7 @@ As capturas de arquitetura confirmam ausência de magenta no showcase atual, mas
 
 ## Próximos gates
 
-1. Corrigir os picos de frame do player; o benchmark de 600 s já foi coletado em `TestResults/StandalonePerformance/benchmark600`.
-2. Reexecutar PlayMode integrado com produção real de catapulta e alvo estrutural.
-3. Corrigir os LODs em cópia isolada, revisar pivôs e só então testar `LODGroup` no Unity.
-4. Promover o piloto PBR apenas após captura Unity no Inspector/Game View.
-5. Repetir build Windows e playtest final; manter o projeto não concluído enquanto o FPS mínimo ficar abaixo de 30.
+1. Reexecutar o soak otimizado de 600 s até gerar JSON/CSV completos e confirmar mínimo ≥30 FPS.
+2. Fazer a revisão visual Unity dos LODs Round7, UVs, seams, pivôs e materiais restantes.
+3. Executar playtest manual completo de UI, eras, combate, cerco, destruição, save/load e NavMesh.
+4. Repetir build Windows final após fechar o soak e as revisões visuais.

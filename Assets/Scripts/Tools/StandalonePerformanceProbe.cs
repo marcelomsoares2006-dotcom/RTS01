@@ -103,7 +103,11 @@ public sealed class StandalonePerformanceProbe : MonoBehaviour
         if (_elapsed >= _warmupSeconds && dt > 0f && dt < 1f) _samples.Add(1f / dt);
         if (_elapsed >= _nextReport)
         {
-            _nextReport = _elapsed + 1f;
+            // Unity's file logger captures a managed stack trace for every
+            // Debug.Log. Reporting every second polluted the standalone
+            // benchmark with avoidable I/O hitches; keep progress visible
+            // while making the performance probe low-impact.
+            _nextReport = _elapsed + 10f;
             Debug.Log($"[StandalonePerformanceProbe] t={_elapsed:F1}s frames={_samples.Count} fps={CurrentAverage():F1}");
         }
         if (_elapsed >= _duration) Finish();
