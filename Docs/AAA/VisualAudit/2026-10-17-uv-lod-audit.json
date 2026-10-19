@@ -6,8 +6,8 @@
     "pivot_error_m": 1e-05,
     "promotion": "forbidden when popping/displacement remains"
   },
-  "candidate_label": "round7",
-  "candidate_root": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\TestResults\\LOD-Generation-Round7",
+  "candidate_label": "round8",
+  "candidate_root": "TestResults\\LOD-Generation-Round8",
   "legacy_isolated_root": "D:\\AI\\EraImperial-Lod-Tests\\2026-10-17-LOD_AlignedTest",
   "buildings": [
     {
@@ -256,124 +256,10 @@
             ]
           },
           "candidate": {
-            "path": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\TestResults\\LOD-Generation-Round7\\House_Medieval_LOD1.fbx",
-            "exists": true,
-            "objects": [
-              {
-                "name": "HouseBody_LOD",
-                "triangles": 70,
-                "bounds": {
-                  "min": [
-                    -17.963682,
-                    0.054949,
-                    -2.969115
-                  ],
-                  "max": [
-                    -10.036318,
-                    3.945051,
-                    2.969114
-                  ],
-                  "center": [
-                    -14.0,
-                    2.0,
-                    -1e-06
-                  ],
-                  "size": [
-                    7.927364,
-                    3.890102,
-                    5.93823
-                  ]
-                },
-                "location": [
-                  -14.0,
-                  2.0,
-                  0.0
-                ],
-                "scale": [
-                  1.0,
-                  1.0,
-                  1.0
-                ],
-                "finite": true
-              },
-              {
-                "name": "HouseDoor_LOD",
-                "triangles": 58,
-                "bounds": {
-                  "min": [
-                    -14.992474,
-                    0.009733,
-                    -3.148461
-                  ],
-                  "max": [
-                    -13.007526,
-                    2.590265,
-                    -2.91154
-                  ],
-                  "center": [
-                    -14.0,
-                    1.299999,
-                    -3.03
-                  ],
-                  "size": [
-                    1.984947,
-                    2.580532,
-                    0.236922
-                  ]
-                },
-                "location": [
-                  -14.0,
-                  1.3,
-                  -3.03
-                ],
-                "scale": [
-                  1.0,
-                  1.0,
-                  1.0
-                ],
-                "finite": true
-              },
-              {
-                "name": "HouseRoof_LOD",
-                "triangles": 58,
-                "bounds": {
-                  "min": [
-                    -18.480591,
-                    4.152585,
-                    -3.48483
-                  ],
-                  "max": [
-                    -9.51941,
-                    4.847415,
-                    3.484827
-                  ],
-                  "center": [
-                    -14.0,
-                    4.5,
-                    -1e-06
-                  ],
-                  "size": [
-                    8.961181,
-                    0.69483,
-                    6.969657
-                  ]
-                },
-                "location": [
-                  -14.0,
-                  4.5,
-                  0.0
-                ],
-                "scale": [
-                  1.0,
-                  1.0,
-                  1.0
-                ],
-                "finite": true
-              }
-            ],
-            "root_objects": [
-              "House_Medieval_ExportRoot"
-            ]
+            "path": "TestResults\\LOD-Generation-Round8\\House_Medieval_LOD1.fbx",
+            "exists": false,
+            "objects": [],
+            "root_objects": []
           },
           "legacy_isolated": {
             "path": "D:\\AI\\EraImperial-Lod-Tests\\2026-10-17-LOD_AlignedTest\\House_Medieval_LOD1.fbx",
@@ -587,90 +473,15 @@
           "comparison_candidate": [
             {
               "object": "HouseBody",
-              "status": "PASS",
-              "base_triangles": 108,
-              "lod_triangles": 70,
-              "center_delta": [
-                0.0,
-                0.0,
-                -1e-06
-              ],
-              "center_error": 1e-06,
-              "pivot_delta": [
-                0.0,
-                0.0,
-                0.0
-              ],
-              "pivot_error": 0.0,
-              "pivot_aligned": true,
-              "base_size": [
-                8.0,
-                4.000001,
-                6.000001
-              ],
-              "lod_size": [
-                7.927364,
-                3.890102,
-                5.93823
-              ]
+              "status": "MISSING_IN_LOD"
             },
             {
               "object": "HouseDoor",
-              "status": "PASS",
-              "base_triangles": 108,
-              "lod_triangles": 58,
-              "center_delta": [
-                0.0,
-                0.0,
-                0.0
-              ],
-              "center_error": 0.0,
-              "pivot_delta": [
-                0.0,
-                0.0,
-                0.0
-              ],
-              "pivot_error": 0.0,
-              "pivot_aligned": true,
-              "base_size": [
-                2.0,
-                2.6,
-                0.24
-              ],
-              "lod_size": [
-                1.984947,
-                2.580532,
-                0.236922
-              ]
+              "status": "MISSING_IN_LOD"
             },
             {
               "object": "HouseRoof",
-              "status": "PASS",
-              "base_triangles": 108,
-              "lod_triangles": 58,
-              "center_delta": [
-                0.0,
-                0.0,
-                0.0
-              ],
-              "center_error": 0.0,
-              "pivot_delta": [
-                0.0,
-                0.0,
-                0.0
-              ],
-              "pivot_error": 0.0,
-              "pivot_aligned": true,
-              "base_size": [
-                9.0,
-                0.700001,
-                7.0
-              ],
-              "lod_size": [
-                8.961181,
-                0.69483,
-                6.969657
-              ]
+              "status": "MISSING_IN_LOD"
             }
           ],
           "comparison_legacy_isolated": [
@@ -765,212 +576,23 @@
           "round4": null,
           "comparison_round4": [],
           "isolated": {
-            "path": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\TestResults\\LOD-Generation-Round7\\House_Medieval_LOD1.fbx",
-            "exists": true,
-            "objects": [
-              {
-                "name": "HouseBody_LOD",
-                "triangles": 70,
-                "bounds": {
-                  "min": [
-                    -17.963682,
-                    0.054949,
-                    -2.969115
-                  ],
-                  "max": [
-                    -10.036318,
-                    3.945051,
-                    2.969114
-                  ],
-                  "center": [
-                    -14.0,
-                    2.0,
-                    -1e-06
-                  ],
-                  "size": [
-                    7.927364,
-                    3.890102,
-                    5.93823
-                  ]
-                },
-                "location": [
-                  -14.0,
-                  2.0,
-                  0.0
-                ],
-                "scale": [
-                  1.0,
-                  1.0,
-                  1.0
-                ],
-                "finite": true
-              },
-              {
-                "name": "HouseDoor_LOD",
-                "triangles": 58,
-                "bounds": {
-                  "min": [
-                    -14.992474,
-                    0.009733,
-                    -3.148461
-                  ],
-                  "max": [
-                    -13.007526,
-                    2.590265,
-                    -2.91154
-                  ],
-                  "center": [
-                    -14.0,
-                    1.299999,
-                    -3.03
-                  ],
-                  "size": [
-                    1.984947,
-                    2.580532,
-                    0.236922
-                  ]
-                },
-                "location": [
-                  -14.0,
-                  1.3,
-                  -3.03
-                ],
-                "scale": [
-                  1.0,
-                  1.0,
-                  1.0
-                ],
-                "finite": true
-              },
-              {
-                "name": "HouseRoof_LOD",
-                "triangles": 58,
-                "bounds": {
-                  "min": [
-                    -18.480591,
-                    4.152585,
-                    -3.48483
-                  ],
-                  "max": [
-                    -9.51941,
-                    4.847415,
-                    3.484827
-                  ],
-                  "center": [
-                    -14.0,
-                    4.5,
-                    -1e-06
-                  ],
-                  "size": [
-                    8.961181,
-                    0.69483,
-                    6.969657
-                  ]
-                },
-                "location": [
-                  -14.0,
-                  4.5,
-                  0.0
-                ],
-                "scale": [
-                  1.0,
-                  1.0,
-                  1.0
-                ],
-                "finite": true
-              }
-            ],
-            "root_objects": [
-              "House_Medieval_ExportRoot"
-            ]
+            "path": "TestResults\\LOD-Generation-Round8\\House_Medieval_LOD1.fbx",
+            "exists": false,
+            "objects": [],
+            "root_objects": []
           },
           "comparison_isolated": [
             {
               "object": "HouseBody",
-              "status": "PASS",
-              "base_triangles": 108,
-              "lod_triangles": 70,
-              "center_delta": [
-                0.0,
-                0.0,
-                -1e-06
-              ],
-              "center_error": 1e-06,
-              "pivot_delta": [
-                0.0,
-                0.0,
-                0.0
-              ],
-              "pivot_error": 0.0,
-              "pivot_aligned": true,
-              "base_size": [
-                8.0,
-                4.000001,
-                6.000001
-              ],
-              "lod_size": [
-                7.927364,
-                3.890102,
-                5.93823
-              ]
+              "status": "MISSING_IN_LOD"
             },
             {
               "object": "HouseDoor",
-              "status": "PASS",
-              "base_triangles": 108,
-              "lod_triangles": 58,
-              "center_delta": [
-                0.0,
-                0.0,
-                0.0
-              ],
-              "center_error": 0.0,
-              "pivot_delta": [
-                0.0,
-                0.0,
-                0.0
-              ],
-              "pivot_error": 0.0,
-              "pivot_aligned": true,
-              "base_size": [
-                2.0,
-                2.6,
-                0.24
-              ],
-              "lod_size": [
-                1.984947,
-                2.580532,
-                0.236922
-              ]
+              "status": "MISSING_IN_LOD"
             },
             {
               "object": "HouseRoof",
-              "status": "PASS",
-              "base_triangles": 108,
-              "lod_triangles": 58,
-              "center_delta": [
-                0.0,
-                0.0,
-                0.0
-              ],
-              "center_error": 0.0,
-              "pivot_delta": [
-                0.0,
-                0.0,
-                0.0
-              ],
-              "pivot_error": 0.0,
-              "pivot_aligned": true,
-              "base_size": [
-                9.0,
-                0.700001,
-                7.0
-              ],
-              "lod_size": [
-                8.961181,
-                0.69483,
-                6.969657
-              ]
+              "status": "MISSING_IN_LOD"
             }
           ]
         },
@@ -1097,12 +719,12 @@
             ]
           },
           "candidate": {
-            "path": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\TestResults\\LOD-Generation-Round7\\House_Medieval_LOD2.fbx",
+            "path": "TestResults\\LOD-Generation-Round8\\House_Medieval_LOD2.fbx",
             "exists": true,
             "objects": [
               {
                 "name": "HouseBody_LOD",
-                "triangles": 14,
+                "triangles": 10,
                 "bounds": {
                   "min": [
                     -17.772682,
@@ -1139,7 +761,7 @@
               },
               {
                 "name": "HouseDoor_LOD",
-                "triangles": 14,
+                "triangles": 2,
                 "bounds": {
                   "min": [
                     -14.956342,
@@ -1176,7 +798,7 @@
               },
               {
                 "name": "HouseRoof_LOD",
-                "triangles": 14,
+                "triangles": 10,
                 "bounds": {
                   "min": [
                     -18.387268,
@@ -1430,7 +1052,7 @@
               "object": "HouseBody",
               "status": "PASS",
               "base_triangles": 108,
-              "lod_triangles": 14,
+              "lod_triangles": 10,
               "center_delta": [
                 0.0,
                 0.0,
@@ -1459,7 +1081,7 @@
               "object": "HouseDoor",
               "status": "PASS",
               "base_triangles": 108,
-              "lod_triangles": 14,
+              "lod_triangles": 2,
               "center_delta": [
                 0.0,
                 0.0,
@@ -1488,7 +1110,7 @@
               "object": "HouseRoof",
               "status": "PASS",
               "base_triangles": 108,
-              "lod_triangles": 14,
+              "lod_triangles": 10,
               "center_delta": [
                 1e-06,
                 0.0,
@@ -1606,12 +1228,12 @@
           "round4": null,
           "comparison_round4": [],
           "isolated": {
-            "path": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\TestResults\\LOD-Generation-Round7\\House_Medieval_LOD2.fbx",
+            "path": "TestResults\\LOD-Generation-Round8\\House_Medieval_LOD2.fbx",
             "exists": true,
             "objects": [
               {
                 "name": "HouseBody_LOD",
-                "triangles": 14,
+                "triangles": 10,
                 "bounds": {
                   "min": [
                     -17.772682,
@@ -1648,7 +1270,7 @@
               },
               {
                 "name": "HouseDoor_LOD",
-                "triangles": 14,
+                "triangles": 2,
                 "bounds": {
                   "min": [
                     -14.956342,
@@ -1685,7 +1307,7 @@
               },
               {
                 "name": "HouseRoof_LOD",
-                "triangles": 14,
+                "triangles": 10,
                 "bounds": {
                   "min": [
                     -18.387268,
@@ -1730,7 +1352,7 @@
               "object": "HouseBody",
               "status": "PASS",
               "base_triangles": 108,
-              "lod_triangles": 14,
+              "lod_triangles": 10,
               "center_delta": [
                 0.0,
                 0.0,
@@ -1759,7 +1381,7 @@
               "object": "HouseDoor",
               "status": "PASS",
               "base_triangles": 108,
-              "lod_triangles": 14,
+              "lod_triangles": 2,
               "center_delta": [
                 0.0,
                 0.0,
@@ -1788,7 +1410,7 @@
               "object": "HouseRoof",
               "status": "PASS",
               "base_triangles": 108,
-              "lod_triangles": 14,
+              "lod_triangles": 10,
               "center_delta": [
                 1e-06,
                 0.0,
@@ -2063,124 +1685,10 @@
             ]
           },
           "candidate": {
-            "path": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\TestResults\\LOD-Generation-Round7\\Barracks_Medieval_LOD1.fbx",
-            "exists": true,
-            "objects": [
-              {
-                "name": "BarracksBanner_LOD",
-                "triangles": 58,
-                "bounds": {
-                  "min": [
-                    13.601925,
-                    4.506906,
-                    -3.779355
-                  ],
-                  "max": [
-                    14.398075,
-                    7.493092,
-                    -3.620648
-                  ],
-                  "center": [
-                    14.0,
-                    5.999999,
-                    -3.700001
-                  ],
-                  "size": [
-                    0.79615,
-                    2.986186,
-                    0.158707
-                  ]
-                },
-                "location": [
-                  14.0,
-                  6.0,
-                  -3.7
-                ],
-                "scale": [
-                  1.0,
-                  1.0,
-                  1.0
-                ],
-                "finite": true
-              },
-              {
-                "name": "BarracksBody_LOD",
-                "triangles": 70,
-                "bounds": {
-                  "min": [
-                    8.038057,
-                    0.049959,
-                    -3.471791
-                  ],
-                  "max": [
-                    19.961945,
-                    4.750041,
-                    3.471789
-                  ],
-                  "center": [
-                    14.000001,
-                    2.4,
-                    -1e-06
-                  ],
-                  "size": [
-                    11.923887,
-                    4.700082,
-                    6.943581
-                  ]
-                },
-                "location": [
-                  14.0,
-                  2.4,
-                  0.0
-                ],
-                "scale": [
-                  1.0,
-                  1.0,
-                  1.0
-                ],
-                "finite": true
-              },
-              {
-                "name": "BarracksRoof_LOD",
-                "triangles": 58,
-                "bounds": {
-                  "min": [
-                    7.520519,
-                    4.702168,
-                    -3.987245
-                  ],
-                  "max": [
-                    20.479481,
-                    5.497832,
-                    3.987242
-                  ],
-                  "center": [
-                    14.0,
-                    5.099999,
-                    -2e-06
-                  ],
-                  "size": [
-                    12.958961,
-                    0.795664,
-                    7.974486
-                  ]
-                },
-                "location": [
-                  14.0,
-                  5.1,
-                  0.0
-                ],
-                "scale": [
-                  1.0,
-                  1.0,
-                  1.0
-                ],
-                "finite": true
-              }
-            ],
-            "root_objects": [
-              "Barracks_Medieval_ExportRoot"
-            ]
+            "path": "TestResults\\LOD-Generation-Round8\\Barracks_Medieval_LOD1.fbx",
+            "exists": false,
+            "objects": [],
+            "root_objects": []
           },
           "legacy_isolated": {
             "path": "D:\\AI\\EraImperial-Lod-Tests\\2026-10-17-LOD_AlignedTest\\Barracks_Medieval_LOD1.fbx",
@@ -2394,90 +1902,15 @@
           "comparison_candidate": [
             {
               "object": "BarracksBanner",
-              "status": "PASS",
-              "base_triangles": 108,
-              "lod_triangles": 58,
-              "center_delta": [
-                0.0,
-                -1e-06,
-                0.0
-              ],
-              "center_error": 1e-06,
-              "pivot_delta": [
-                0.0,
-                0.0,
-                0.0
-              ],
-              "pivot_error": 0.0,
-              "pivot_aligned": true,
-              "base_size": [
-                0.799999,
-                3.0,
-                0.16
-              ],
-              "lod_size": [
-                0.79615,
-                2.986186,
-                0.158707
-              ]
+              "status": "MISSING_IN_LOD"
             },
             {
               "object": "BarracksBody",
-              "status": "PASS",
-              "base_triangles": 108,
-              "lod_triangles": 70,
-              "center_delta": [
-                1e-06,
-                0.0,
-                -1e-06
-              ],
-              "center_error": 1e-06,
-              "pivot_delta": [
-                0.0,
-                0.0,
-                0.0
-              ],
-              "pivot_error": 0.0,
-              "pivot_aligned": true,
-              "base_size": [
-                12.0,
-                4.800001,
-                7.000001
-              ],
-              "lod_size": [
-                11.923887,
-                4.700082,
-                6.943581
-              ]
+              "status": "MISSING_IN_LOD"
             },
             {
               "object": "BarracksRoof",
-              "status": "PASS",
-              "base_triangles": 108,
-              "lod_triangles": 58,
-              "center_delta": [
-                0.0,
-                -1e-06,
-                -1e-06
-              ],
-              "center_error": 1e-06,
-              "pivot_delta": [
-                0.0,
-                0.0,
-                0.0
-              ],
-              "pivot_error": 0.0,
-              "pivot_aligned": true,
-              "base_size": [
-                13.0,
-                0.800001,
-                8.0
-              ],
-              "lod_size": [
-                12.958961,
-                0.795664,
-                7.974486
-              ]
+              "status": "MISSING_IN_LOD"
             }
           ],
           "comparison_legacy_isolated": [
@@ -2572,212 +2005,23 @@
           "round4": null,
           "comparison_round4": [],
           "isolated": {
-            "path": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\TestResults\\LOD-Generation-Round7\\Barracks_Medieval_LOD1.fbx",
-            "exists": true,
-            "objects": [
-              {
-                "name": "BarracksBanner_LOD",
-                "triangles": 58,
-                "bounds": {
-                  "min": [
-                    13.601925,
-                    4.506906,
-                    -3.779355
-                  ],
-                  "max": [
-                    14.398075,
-                    7.493092,
-                    -3.620648
-                  ],
-                  "center": [
-                    14.0,
-                    5.999999,
-                    -3.700001
-                  ],
-                  "size": [
-                    0.79615,
-                    2.986186,
-                    0.158707
-                  ]
-                },
-                "location": [
-                  14.0,
-                  6.0,
-                  -3.7
-                ],
-                "scale": [
-                  1.0,
-                  1.0,
-                  1.0
-                ],
-                "finite": true
-              },
-              {
-                "name": "BarracksBody_LOD",
-                "triangles": 70,
-                "bounds": {
-                  "min": [
-                    8.038057,
-                    0.049959,
-                    -3.471791
-                  ],
-                  "max": [
-                    19.961945,
-                    4.750041,
-                    3.471789
-                  ],
-                  "center": [
-                    14.000001,
-                    2.4,
-                    -1e-06
-                  ],
-                  "size": [
-                    11.923887,
-                    4.700082,
-                    6.943581
-                  ]
-                },
-                "location": [
-                  14.0,
-                  2.4,
-                  0.0
-                ],
-                "scale": [
-                  1.0,
-                  1.0,
-                  1.0
-                ],
-                "finite": true
-              },
-              {
-                "name": "BarracksRoof_LOD",
-                "triangles": 58,
-                "bounds": {
-                  "min": [
-                    7.520519,
-                    4.702168,
-                    -3.987245
-                  ],
-                  "max": [
-                    20.479481,
-                    5.497832,
-                    3.987242
-                  ],
-                  "center": [
-                    14.0,
-                    5.099999,
-                    -2e-06
-                  ],
-                  "size": [
-                    12.958961,
-                    0.795664,
-                    7.974486
-                  ]
-                },
-                "location": [
-                  14.0,
-                  5.1,
-                  0.0
-                ],
-                "scale": [
-                  1.0,
-                  1.0,
-                  1.0
-                ],
-                "finite": true
-              }
-            ],
-            "root_objects": [
-              "Barracks_Medieval_ExportRoot"
-            ]
+            "path": "TestResults\\LOD-Generation-Round8\\Barracks_Medieval_LOD1.fbx",
+            "exists": false,
+            "objects": [],
+            "root_objects": []
           },
           "comparison_isolated": [
             {
               "object": "BarracksBanner",
-              "status": "PASS",
-              "base_triangles": 108,
-              "lod_triangles": 58,
-              "center_delta": [
-                0.0,
-                -1e-06,
-                0.0
-              ],
-              "center_error": 1e-06,
-              "pivot_delta": [
-                0.0,
-                0.0,
-                0.0
-              ],
-              "pivot_error": 0.0,
-              "pivot_aligned": true,
-              "base_size": [
-                0.799999,
-                3.0,
-                0.16
-              ],
-              "lod_size": [
-                0.79615,
-                2.986186,
-                0.158707
-              ]
+              "status": "MISSING_IN_LOD"
             },
             {
               "object": "BarracksBody",
-              "status": "PASS",
-              "base_triangles": 108,
-              "lod_triangles": 70,
-              "center_delta": [
-                1e-06,
-                0.0,
-                -1e-06
-              ],
-              "center_error": 1e-06,
-              "pivot_delta": [
-                0.0,
-                0.0,
-                0.0
-              ],
-              "pivot_error": 0.0,
-              "pivot_aligned": true,
-              "base_size": [
-                12.0,
-                4.800001,
-                7.000001
-              ],
-              "lod_size": [
-                11.923887,
-                4.700082,
-                6.943581
-              ]
+              "status": "MISSING_IN_LOD"
             },
             {
               "object": "BarracksRoof",
-              "status": "PASS",
-              "base_triangles": 108,
-              "lod_triangles": 58,
-              "center_delta": [
-                0.0,
-                -1e-06,
-                -1e-06
-              ],
-              "center_error": 1e-06,
-              "pivot_delta": [
-                0.0,
-                0.0,
-                0.0
-              ],
-              "pivot_error": 0.0,
-              "pivot_aligned": true,
-              "base_size": [
-                13.0,
-                0.800001,
-                8.0
-              ],
-              "lod_size": [
-                12.958961,
-                0.795664,
-                7.974486
-              ]
+              "status": "MISSING_IN_LOD"
             }
           ]
         },
@@ -2904,7 +2148,7 @@
             ]
           },
           "candidate": {
-            "path": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\TestResults\\LOD-Generation-Round7\\Barracks_Medieval_LOD2.fbx",
+            "path": "TestResults\\LOD-Generation-Round8\\Barracks_Medieval_LOD2.fbx",
             "exists": true,
             "objects": [
               {
@@ -2946,7 +2190,7 @@
               },
               {
                 "name": "BarracksBody_LOD",
-                "triangles": 14,
+                "triangles": 10,
                 "bounds": {
                   "min": [
                     8.269325,
@@ -2983,7 +2227,7 @@
               },
               {
                 "name": "BarracksRoof_LOD",
-                "triangles": 14,
+                "triangles": 2,
                 "bounds": {
                   "min": [
                     7.631959,
@@ -3266,7 +2510,7 @@
               "object": "BarracksBody",
               "status": "PASS",
               "base_triangles": 108,
-              "lod_triangles": 14,
+              "lod_triangles": 10,
               "center_delta": [
                 0.0,
                 0.0,
@@ -3295,7 +2539,7 @@
               "object": "BarracksRoof",
               "status": "PASS",
               "base_triangles": 108,
-              "lod_triangles": 14,
+              "lod_triangles": 2,
               "center_delta": [
                 0.0,
                 0.0,
@@ -3413,7 +2657,7 @@
           "round4": null,
           "comparison_round4": [],
           "isolated": {
-            "path": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\TestResults\\LOD-Generation-Round7\\Barracks_Medieval_LOD2.fbx",
+            "path": "TestResults\\LOD-Generation-Round8\\Barracks_Medieval_LOD2.fbx",
             "exists": true,
             "objects": [
               {
@@ -3455,7 +2699,7 @@
               },
               {
                 "name": "BarracksBody_LOD",
-                "triangles": 14,
+                "triangles": 10,
                 "bounds": {
                   "min": [
                     8.269325,
@@ -3492,7 +2736,7 @@
               },
               {
                 "name": "BarracksRoof_LOD",
-                "triangles": 14,
+                "triangles": 2,
                 "bounds": {
                   "min": [
                     7.631959,
@@ -3566,7 +2810,7 @@
               "object": "BarracksBody",
               "status": "PASS",
               "base_triangles": 108,
-              "lod_triangles": 14,
+              "lod_triangles": 10,
               "center_delta": [
                 0.0,
                 0.0,
@@ -3595,7 +2839,7 @@
               "object": "BarracksRoof",
               "status": "PASS",
               "base_triangles": 108,
-              "lod_triangles": 14,
+              "lod_triangles": 2,
               "center_delta": [
                 0.0,
                 0.0,
@@ -4092,235 +3336,10 @@
             ]
           },
           "candidate": {
-            "path": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\TestResults\\LOD-Generation-Round7\\Market_Classical_LOD1.fbx",
-            "exists": true,
-            "objects": [
-              {
-                "name": "MarketAwning_LOD",
-                "triangles": 58,
-                "bounds": {
-                  "min": [
-                    8.515919,
-                    5.551242,
-                    13.513075
-                  ],
-                  "max": [
-                    19.484081,
-                    6.048769,
-                    22.486923
-                  ],
-                  "center": [
-                    14.0,
-                    5.800005,
-                    18.0
-                  ],
-                  "size": [
-                    10.968163,
-                    0.497527,
-                    8.973848
-                  ]
-                },
-                "location": [
-                  14.0,
-                  5.8,
-                  18.0
-                ],
-                "scale": [
-                  1.0,
-                  1.0,
-                  1.0
-                ],
-                "finite": true
-              },
-              {
-                "name": "MarketPlatform_LOD",
-                "triangles": 58,
-                "bounds": {
-                  "min": [
-                    9.025646,
-                    0.003517,
-                    14.020607
-                  ],
-                  "max": [
-                    18.974354,
-                    0.796493,
-                    21.979393
-                  ],
-                  "center": [
-                    14.0,
-                    0.400005,
-                    18.0
-                  ],
-                  "size": [
-                    9.948708,
-                    0.792976,
-                    7.958786
-                  ]
-                },
-                "location": [
-                  14.0,
-                  0.4,
-                  18.0
-                ],
-                "scale": [
-                  1.0,
-                  1.0,
-                  1.0
-                ],
-                "finite": true
-              },
-              {
-                "name": "MarketPost.001_LOD",
-                "triangles": 18,
-                "bounds": {
-                  "min": [
-                    9.66713,
-                    2.648897,
-                    18.25
-                  ],
-                  "max": [
-                    10.33287,
-                    3.351115,
-                    23.75
-                  ],
-                  "center": [
-                    10.0,
-                    3.000006,
-                    21.0
-                  ],
-                  "size": [
-                    0.665739,
-                    0.702219,
-                    5.5
-                  ]
-                },
-                "location": [
-                  10.0,
-                  3.0,
-                  21.0
-                ],
-                "scale": [
-                  1.0,
-                  1.0,
-                  1.0
-                ],
-                "finite": true
-              },
-              {
-                "name": "MarketPost.002_LOD",
-                "triangles": 18,
-                "bounds": {
-                  "min": [
-                    17.646507,
-                    2.648895,
-                    12.249999
-                  ],
-                  "max": [
-                    18.353493,
-                    3.351114,
-                    17.75
-                  ],
-                  "center": [
-                    18.0,
-                    3.000004,
-                    15.0
-                  ],
-                  "size": [
-                    0.706985,
-                    0.702219,
-                    5.500001
-                  ]
-                },
-                "location": [
-                  18.0,
-                  3.0,
-                  15.0
-                ],
-                "scale": [
-                  1.0,
-                  1.0,
-                  1.0
-                ],
-                "finite": true
-              },
-              {
-                "name": "MarketPost.003_LOD",
-                "triangles": 18,
-                "bounds": {
-                  "min": [
-                    17.646507,
-                    2.648897,
-                    18.25
-                  ],
-                  "max": [
-                    18.353493,
-                    3.351115,
-                    23.75
-                  ],
-                  "center": [
-                    18.0,
-                    3.000006,
-                    21.0
-                  ],
-                  "size": [
-                    0.706985,
-                    0.702219,
-                    5.5
-                  ]
-                },
-                "location": [
-                  18.0,
-                  3.0,
-                  21.0
-                ],
-                "scale": [
-                  1.0,
-                  1.0,
-                  1.0
-                ],
-                "finite": true
-              },
-              {
-                "name": "MarketPost_LOD",
-                "triangles": 18,
-                "bounds": {
-                  "min": [
-                    9.66713,
-                    2.648895,
-                    12.249999
-                  ],
-                  "max": [
-                    10.33287,
-                    3.351114,
-                    17.75
-                  ],
-                  "center": [
-                    10.0,
-                    3.000004,
-                    15.0
-                  ],
-                  "size": [
-                    0.665739,
-                    0.702219,
-                    5.500001
-                  ]
-                },
-                "location": [
-                  10.0,
-                  3.0,
-                  15.0
-                ],
-                "scale": [
-                  1.0,
-                  1.0,
-                  1.0
-                ],
-                "finite": true
-              }
-            ],
-            "root_objects": [
-              "Market_Classical_ExportRoot"
-            ]
+            "path": "TestResults\\LOD-Generation-Round8\\Market_Classical_LOD1.fbx",
+            "exists": false,
+            "objects": [],
+            "root_objects": []
           },
           "legacy_isolated": {
             "path": "D:\\AI\\EraImperial-Lod-Tests\\2026-10-17-LOD_AlignedTest\\Market_Classical_LOD1.fbx",
@@ -4732,177 +3751,27 @@
           "comparison_candidate": [
             {
               "object": "MarketAwning",
-              "status": "PASS",
-              "base_triangles": 108,
-              "lod_triangles": 58,
-              "center_delta": [
-                0.0,
-                2e-06,
-                0.0
-              ],
-              "center_error": 2e-06,
-              "pivot_delta": [
-                0.0,
-                0.0,
-                0.0
-              ],
-              "pivot_error": 0.0,
-              "pivot_aligned": true,
-              "base_size": [
-                11.0,
-                0.500002,
-                9.0
-              ],
-              "lod_size": [
-                10.968163,
-                0.497527,
-                8.973848
-              ]
+              "status": "MISSING_IN_LOD"
             },
             {
               "object": "MarketPlatform",
-              "status": "PASS",
-              "base_triangles": 108,
-              "lod_triangles": 58,
-              "center_delta": [
-                0.0,
-                2e-06,
-                0.0
-              ],
-              "center_error": 2e-06,
-              "pivot_delta": [
-                0.0,
-                0.0,
-                0.0
-              ],
-              "pivot_error": 0.0,
-              "pivot_aligned": true,
-              "base_size": [
-                10.0,
-                0.800001,
-                8.0
-              ],
-              "lod_size": [
-                9.948708,
-                0.792976,
-                7.958786
-              ]
+              "status": "MISSING_IN_LOD"
             },
             {
               "object": "MarketPost",
-              "status": "PASS",
-              "base_triangles": 36,
-              "lod_triangles": 18,
-              "center_delta": [
-                0.0,
-                2e-06,
-                0.0
-              ],
-              "center_error": 2e-06,
-              "pivot_delta": [
-                0.0,
-                0.0,
-                0.0
-              ],
-              "pivot_error": 0.0,
-              "pivot_aligned": true,
-              "base_size": [
-                0.665739,
-                0.700001,
-                5.500001
-              ],
-              "lod_size": [
-                0.665739,
-                0.702219,
-                5.500001
-              ]
+              "status": "MISSING_IN_LOD"
             },
             {
               "object": "MarketPost.001",
-              "status": "PASS",
-              "base_triangles": 36,
-              "lod_triangles": 18,
-              "center_delta": [
-                0.0,
-                3e-06,
-                0.0
-              ],
-              "center_error": 3e-06,
-              "pivot_delta": [
-                0.0,
-                0.0,
-                0.0
-              ],
-              "pivot_error": 0.0,
-              "pivot_aligned": true,
-              "base_size": [
-                0.665739,
-                0.700001,
-                5.5
-              ],
-              "lod_size": [
-                0.665739,
-                0.702219,
-                5.5
-              ]
+              "status": "MISSING_IN_LOD"
             },
             {
               "object": "MarketPost.002",
-              "status": "PASS",
-              "base_triangles": 36,
-              "lod_triangles": 18,
-              "center_delta": [
-                0.0,
-                2e-06,
-                0.0
-              ],
-              "center_error": 2e-06,
-              "pivot_delta": [
-                0.0,
-                0.0,
-                0.0
-              ],
-              "pivot_error": 0.0,
-              "pivot_aligned": true,
-              "base_size": [
-                0.665741,
-                0.700001,
-                5.500001
-              ],
-              "lod_size": [
-                0.706985,
-                0.702219,
-                5.500001
-              ]
+              "status": "MISSING_IN_LOD"
             },
             {
               "object": "MarketPost.003",
-              "status": "PASS",
-              "base_triangles": 36,
-              "lod_triangles": 18,
-              "center_delta": [
-                0.0,
-                3e-06,
-                0.0
-              ],
-              "center_error": 3e-06,
-              "pivot_delta": [
-                0.0,
-                0.0,
-                0.0
-              ],
-              "pivot_error": 0.0,
-              "pivot_aligned": true,
-              "base_size": [
-                0.665741,
-                0.700001,
-                5.5
-              ],
-              "lod_size": [
-                0.706985,
-                0.702219,
-                5.5
-              ]
+              "status": "MISSING_IN_LOD"
             }
           ],
           "comparison_legacy_isolated": [
@@ -5084,410 +3953,35 @@
           "round4": null,
           "comparison_round4": [],
           "isolated": {
-            "path": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\TestResults\\LOD-Generation-Round7\\Market_Classical_LOD1.fbx",
-            "exists": true,
-            "objects": [
-              {
-                "name": "MarketAwning_LOD",
-                "triangles": 58,
-                "bounds": {
-                  "min": [
-                    8.515919,
-                    5.551242,
-                    13.513075
-                  ],
-                  "max": [
-                    19.484081,
-                    6.048769,
-                    22.486923
-                  ],
-                  "center": [
-                    14.0,
-                    5.800005,
-                    18.0
-                  ],
-                  "size": [
-                    10.968163,
-                    0.497527,
-                    8.973848
-                  ]
-                },
-                "location": [
-                  14.0,
-                  5.8,
-                  18.0
-                ],
-                "scale": [
-                  1.0,
-                  1.0,
-                  1.0
-                ],
-                "finite": true
-              },
-              {
-                "name": "MarketPlatform_LOD",
-                "triangles": 58,
-                "bounds": {
-                  "min": [
-                    9.025646,
-                    0.003517,
-                    14.020607
-                  ],
-                  "max": [
-                    18.974354,
-                    0.796493,
-                    21.979393
-                  ],
-                  "center": [
-                    14.0,
-                    0.400005,
-                    18.0
-                  ],
-                  "size": [
-                    9.948708,
-                    0.792976,
-                    7.958786
-                  ]
-                },
-                "location": [
-                  14.0,
-                  0.4,
-                  18.0
-                ],
-                "scale": [
-                  1.0,
-                  1.0,
-                  1.0
-                ],
-                "finite": true
-              },
-              {
-                "name": "MarketPost.001_LOD",
-                "triangles": 18,
-                "bounds": {
-                  "min": [
-                    9.66713,
-                    2.648897,
-                    18.25
-                  ],
-                  "max": [
-                    10.33287,
-                    3.351115,
-                    23.75
-                  ],
-                  "center": [
-                    10.0,
-                    3.000006,
-                    21.0
-                  ],
-                  "size": [
-                    0.665739,
-                    0.702219,
-                    5.5
-                  ]
-                },
-                "location": [
-                  10.0,
-                  3.0,
-                  21.0
-                ],
-                "scale": [
-                  1.0,
-                  1.0,
-                  1.0
-                ],
-                "finite": true
-              },
-              {
-                "name": "MarketPost.002_LOD",
-                "triangles": 18,
-                "bounds": {
-                  "min": [
-                    17.646507,
-                    2.648895,
-                    12.249999
-                  ],
-                  "max": [
-                    18.353493,
-                    3.351114,
-                    17.75
-                  ],
-                  "center": [
-                    18.0,
-                    3.000004,
-                    15.0
-                  ],
-                  "size": [
-                    0.706985,
-                    0.702219,
-                    5.500001
-                  ]
-                },
-                "location": [
-                  18.0,
-                  3.0,
-                  15.0
-                ],
-                "scale": [
-                  1.0,
-                  1.0,
-                  1.0
-                ],
-                "finite": true
-              },
-              {
-                "name": "MarketPost.003_LOD",
-                "triangles": 18,
-                "bounds": {
-                  "min": [
-                    17.646507,
-                    2.648897,
-                    18.25
-                  ],
-                  "max": [
-                    18.353493,
-                    3.351115,
-                    23.75
-                  ],
-                  "center": [
-                    18.0,
-                    3.000006,
-                    21.0
-                  ],
-                  "size": [
-                    0.706985,
-                    0.702219,
-                    5.5
-                  ]
-                },
-                "location": [
-                  18.0,
-                  3.0,
-                  21.0
-                ],
-                "scale": [
-                  1.0,
-                  1.0,
-                  1.0
-                ],
-                "finite": true
-              },
-              {
-                "name": "MarketPost_LOD",
-                "triangles": 18,
-                "bounds": {
-                  "min": [
-                    9.66713,
-                    2.648895,
-                    12.249999
-                  ],
-                  "max": [
-                    10.33287,
-                    3.351114,
-                    17.75
-                  ],
-                  "center": [
-                    10.0,
-                    3.000004,
-                    15.0
-                  ],
-                  "size": [
-                    0.665739,
-                    0.702219,
-                    5.500001
-                  ]
-                },
-                "location": [
-                  10.0,
-                  3.0,
-                  15.0
-                ],
-                "scale": [
-                  1.0,
-                  1.0,
-                  1.0
-                ],
-                "finite": true
-              }
-            ],
-            "root_objects": [
-              "Market_Classical_ExportRoot"
-            ]
+            "path": "TestResults\\LOD-Generation-Round8\\Market_Classical_LOD1.fbx",
+            "exists": false,
+            "objects": [],
+            "root_objects": []
           },
           "comparison_isolated": [
             {
               "object": "MarketAwning",
-              "status": "PASS",
-              "base_triangles": 108,
-              "lod_triangles": 58,
-              "center_delta": [
-                0.0,
-                2e-06,
-                0.0
-              ],
-              "center_error": 2e-06,
-              "pivot_delta": [
-                0.0,
-                0.0,
-                0.0
-              ],
-              "pivot_error": 0.0,
-              "pivot_aligned": true,
-              "base_size": [
-                11.0,
-                0.500002,
-                9.0
-              ],
-              "lod_size": [
-                10.968163,
-                0.497527,
-                8.973848
-              ]
+              "status": "MISSING_IN_LOD"
             },
             {
               "object": "MarketPlatform",
-              "status": "PASS",
-              "base_triangles": 108,
-              "lod_triangles": 58,
-              "center_delta": [
-                0.0,
-                2e-06,
-                0.0
-              ],
-              "center_error": 2e-06,
-              "pivot_delta": [
-                0.0,
-                0.0,
-                0.0
-              ],
-              "pivot_error": 0.0,
-              "pivot_aligned": true,
-              "base_size": [
-                10.0,
-                0.800001,
-                8.0
-              ],
-              "lod_size": [
-                9.948708,
-                0.792976,
-                7.958786
-              ]
+              "status": "MISSING_IN_LOD"
             },
             {
               "object": "MarketPost",
-              "status": "PASS",
-              "base_triangles": 36,
-              "lod_triangles": 18,
-              "center_delta": [
-                0.0,
-                2e-06,
-                0.0
-              ],
-              "center_error": 2e-06,
-              "pivot_delta": [
-                0.0,
-                0.0,
-                0.0
-              ],
-              "pivot_error": 0.0,
-              "pivot_aligned": true,
-              "base_size": [
-                0.665739,
-                0.700001,
-                5.500001
-              ],
-              "lod_size": [
-                0.665739,
-                0.702219,
-                5.500001
-              ]
+              "status": "MISSING_IN_LOD"
             },
             {
               "object": "MarketPost.001",
-              "status": "PASS",
-              "base_triangles": 36,
-              "lod_triangles": 18,
-              "center_delta": [
-                0.0,
-                3e-06,
-                0.0
-              ],
-              "center_error": 3e-06,
-              "pivot_delta": [
-                0.0,
-                0.0,
-                0.0
-              ],
-              "pivot_error": 0.0,
-              "pivot_aligned": true,
-              "base_size": [
-                0.665739,
-                0.700001,
-                5.5
-              ],
-              "lod_size": [
-                0.665739,
-                0.702219,
-                5.5
-              ]
+              "status": "MISSING_IN_LOD"
             },
             {
               "object": "MarketPost.002",
-              "status": "PASS",
-              "base_triangles": 36,
-              "lod_triangles": 18,
-              "center_delta": [
-                0.0,
-                2e-06,
-                0.0
-              ],
-              "center_error": 2e-06,
-              "pivot_delta": [
-                0.0,
-                0.0,
-                0.0
-              ],
-              "pivot_error": 0.0,
-              "pivot_aligned": true,
-              "base_size": [
-                0.665741,
-                0.700001,
-                5.500001
-              ],
-              "lod_size": [
-                0.706985,
-                0.702219,
-                5.500001
-              ]
+              "status": "MISSING_IN_LOD"
             },
             {
               "object": "MarketPost.003",
-              "status": "PASS",
-              "base_triangles": 36,
-              "lod_triangles": 18,
-              "center_delta": [
-                0.0,
-                3e-06,
-                0.0
-              ],
-              "center_error": 3e-06,
-              "pivot_delta": [
-                0.0,
-                0.0,
-                0.0
-              ],
-              "pivot_error": 0.0,
-              "pivot_aligned": true,
-              "base_size": [
-                0.665741,
-                0.700001,
-                5.5
-              ],
-              "lod_size": [
-                0.706985,
-                0.702219,
-                5.5
-              ]
+              "status": "MISSING_IN_LOD"
             }
           ]
         },
@@ -5725,12 +4219,12 @@
             ]
           },
           "candidate": {
-            "path": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\TestResults\\LOD-Generation-Round7\\Market_Classical_LOD2.fbx",
+            "path": "TestResults\\LOD-Generation-Round8\\Market_Classical_LOD2.fbx",
             "exists": true,
             "objects": [
               {
                 "name": "MarketAwning_LOD",
-                "triangles": 14,
+                "triangles": 6,
                 "bounds": {
                   "min": [
                     8.591017,
@@ -6367,7 +4861,7 @@
               "object": "MarketAwning",
               "status": "PASS",
               "base_triangles": 108,
-              "lod_triangles": 14,
+              "lod_triangles": 6,
               "center_delta": [
                 -1e-06,
                 2e-06,
@@ -6717,12 +5211,12 @@
           "round4": null,
           "comparison_round4": [],
           "isolated": {
-            "path": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\TestResults\\LOD-Generation-Round7\\Market_Classical_LOD2.fbx",
+            "path": "TestResults\\LOD-Generation-Round8\\Market_Classical_LOD2.fbx",
             "exists": true,
             "objects": [
               {
                 "name": "MarketAwning_LOD",
-                "triangles": 14,
+                "triangles": 6,
                 "bounds": {
                   "min": [
                     8.591017,
@@ -6952,7 +5446,7 @@
               "object": "MarketAwning",
               "status": "PASS",
               "base_triangles": 108,
-              "lod_triangles": 14,
+              "lod_triangles": 6,
               "center_delta": [
                 -1e-06,
                 2e-06,
@@ -7446,161 +5940,10 @@
             ]
           },
           "candidate": {
-            "path": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\TestResults\\LOD-Generation-Round7\\Temple_Imperial_LOD1.fbx",
-            "exists": true,
-            "objects": [
-              {
-                "name": "TempleBody_LOD",
-                "triangles": 70,
-                "bounds": {
-                  "min": [
-                    -18.958694,
-                    0.073724,
-                    14.036254
-                  ],
-                  "max": [
-                    -9.041306,
-                    5.926287,
-                    21.963745
-                  ],
-                  "center": [
-                    -14.0,
-                    3.000005,
-                    18.0
-                  ],
-                  "size": [
-                    9.917388,
-                    5.852563,
-                    7.927491
-                  ]
-                },
-                "location": [
-                  -14.0,
-                  3.0,
-                  18.0
-                ],
-                "scale": [
-                  1.0,
-                  1.0,
-                  1.0
-                ],
-                "finite": true
-              },
-              {
-                "name": "TempleColumn.001_LOD",
-                "triangles": 26,
-                "bounds": {
-                  "min": [
-                    -10.643985,
-                    2.347308,
-                    11.249999
-                  ],
-                  "max": [
-                    -9.356014,
-                    3.652699,
-                    17.75
-                  ],
-                  "center": [
-                    -10.0,
-                    3.000004,
-                    14.5
-                  ],
-                  "size": [
-                    1.287971,
-                    1.305391,
-                    6.500001
-                  ]
-                },
-                "location": [
-                  -10.0,
-                  3.0,
-                  14.5
-                ],
-                "scale": [
-                  1.0,
-                  1.0,
-                  1.0
-                ],
-                "finite": true
-              },
-              {
-                "name": "TempleColumn_LOD",
-                "triangles": 26,
-                "bounds": {
-                  "min": [
-                    -18.643986,
-                    2.350003,
-                    11.249999
-                  ],
-                  "max": [
-                    -17.356014,
-                    3.650005,
-                    17.75
-                  ],
-                  "center": [
-                    -18.0,
-                    3.000004,
-                    14.5
-                  ],
-                  "size": [
-                    1.287971,
-                    1.300002,
-                    6.500001
-                  ]
-                },
-                "location": [
-                  -18.0,
-                  3.0,
-                  14.5
-                ],
-                "scale": [
-                  1.0,
-                  1.0,
-                  1.0
-                ],
-                "finite": true
-              },
-              {
-                "name": "TemplePediment_LOD",
-                "triangles": 70,
-                "bounds": {
-                  "min": [
-                    -19.475159,
-                    6.025545,
-                    13.706541
-                  ],
-                  "max": [
-                    -8.524842,
-                    7.374463,
-                    15.293453
-                  ],
-                  "center": [
-                    -14.0,
-                    6.700004,
-                    14.499997
-                  ],
-                  "size": [
-                    10.950316,
-                    1.348917,
-                    1.586912
-                  ]
-                },
-                "location": [
-                  -14.0,
-                  6.7,
-                  14.5
-                ],
-                "scale": [
-                  1.0,
-                  1.0,
-                  1.0
-                ],
-                "finite": true
-              }
-            ],
-            "root_objects": [
-              "Temple_Imperial_ExportRoot"
-            ]
+            "path": "TestResults\\LOD-Generation-Round8\\Temple_Imperial_LOD1.fbx",
+            "exists": false,
+            "objects": [],
+            "root_objects": []
           },
           "legacy_isolated": {
             "path": "D:\\AI\\EraImperial-Lod-Tests\\2026-10-17-LOD_AlignedTest\\Temple_Imperial_LOD1.fbx",
@@ -7880,119 +6223,19 @@
           "comparison_candidate": [
             {
               "object": "TempleBody",
-              "status": "PASS",
-              "base_triangles": 108,
-              "lod_triangles": 70,
-              "center_delta": [
-                0.0,
-                2e-06,
-                0.0
-              ],
-              "center_error": 2e-06,
-              "pivot_delta": [
-                0.0,
-                0.0,
-                0.0
-              ],
-              "pivot_error": 0.0,
-              "pivot_aligned": true,
-              "base_size": [
-                10.0,
-                6.000001,
-                8.000001
-              ],
-              "lod_size": [
-                9.917388,
-                5.852563,
-                7.927491
-              ]
+              "status": "MISSING_IN_LOD"
             },
             {
               "object": "TempleColumn",
-              "status": "PASS",
-              "base_triangles": 44,
-              "lod_triangles": 26,
-              "center_delta": [
-                0.0,
-                2e-06,
-                0.0
-              ],
-              "center_error": 2e-06,
-              "pivot_delta": [
-                0.0,
-                0.0,
-                0.0
-              ],
-              "pivot_error": 0.0,
-              "pivot_aligned": true,
-              "base_size": [
-                1.299999,
-                1.300001,
-                6.500001
-              ],
-              "lod_size": [
-                1.287971,
-                1.300002,
-                6.500001
-              ]
+              "status": "MISSING_IN_LOD"
             },
             {
               "object": "TempleColumn.001",
-              "status": "PASS",
-              "base_triangles": 44,
-              "lod_triangles": 26,
-              "center_delta": [
-                0.0,
-                2e-06,
-                0.0
-              ],
-              "center_error": 2e-06,
-              "pivot_delta": [
-                0.0,
-                0.0,
-                0.0
-              ],
-              "pivot_error": 0.0,
-              "pivot_aligned": true,
-              "base_size": [
-                1.299999,
-                1.300001,
-                6.500001
-              ],
-              "lod_size": [
-                1.287971,
-                1.305391,
-                6.500001
-              ]
+              "status": "MISSING_IN_LOD"
             },
             {
               "object": "TemplePediment",
-              "status": "PASS",
-              "base_triangles": 108,
-              "lod_triangles": 70,
-              "center_delta": [
-                0.0,
-                2e-06,
-                -2e-06
-              ],
-              "center_error": 3e-06,
-              "pivot_delta": [
-                0.0,
-                0.0,
-                0.0
-              ],
-              "pivot_error": 0.0,
-              "pivot_aligned": true,
-              "base_size": [
-                11.0,
-                1.400001,
-                1.6
-              ],
-              "lod_size": [
-                10.950316,
-                1.348917,
-                1.586912
-              ]
+              "status": "MISSING_IN_LOD"
             }
           ],
           "comparison_legacy_isolated": [
@@ -8116,278 +6359,27 @@
           "round4": null,
           "comparison_round4": [],
           "isolated": {
-            "path": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\TestResults\\LOD-Generation-Round7\\Temple_Imperial_LOD1.fbx",
-            "exists": true,
-            "objects": [
-              {
-                "name": "TempleBody_LOD",
-                "triangles": 70,
-                "bounds": {
-                  "min": [
-                    -18.958694,
-                    0.073724,
-                    14.036254
-                  ],
-                  "max": [
-                    -9.041306,
-                    5.926287,
-                    21.963745
-                  ],
-                  "center": [
-                    -14.0,
-                    3.000005,
-                    18.0
-                  ],
-                  "size": [
-                    9.917388,
-                    5.852563,
-                    7.927491
-                  ]
-                },
-                "location": [
-                  -14.0,
-                  3.0,
-                  18.0
-                ],
-                "scale": [
-                  1.0,
-                  1.0,
-                  1.0
-                ],
-                "finite": true
-              },
-              {
-                "name": "TempleColumn.001_LOD",
-                "triangles": 26,
-                "bounds": {
-                  "min": [
-                    -10.643985,
-                    2.347308,
-                    11.249999
-                  ],
-                  "max": [
-                    -9.356014,
-                    3.652699,
-                    17.75
-                  ],
-                  "center": [
-                    -10.0,
-                    3.000004,
-                    14.5
-                  ],
-                  "size": [
-                    1.287971,
-                    1.305391,
-                    6.500001
-                  ]
-                },
-                "location": [
-                  -10.0,
-                  3.0,
-                  14.5
-                ],
-                "scale": [
-                  1.0,
-                  1.0,
-                  1.0
-                ],
-                "finite": true
-              },
-              {
-                "name": "TempleColumn_LOD",
-                "triangles": 26,
-                "bounds": {
-                  "min": [
-                    -18.643986,
-                    2.350003,
-                    11.249999
-                  ],
-                  "max": [
-                    -17.356014,
-                    3.650005,
-                    17.75
-                  ],
-                  "center": [
-                    -18.0,
-                    3.000004,
-                    14.5
-                  ],
-                  "size": [
-                    1.287971,
-                    1.300002,
-                    6.500001
-                  ]
-                },
-                "location": [
-                  -18.0,
-                  3.0,
-                  14.5
-                ],
-                "scale": [
-                  1.0,
-                  1.0,
-                  1.0
-                ],
-                "finite": true
-              },
-              {
-                "name": "TemplePediment_LOD",
-                "triangles": 70,
-                "bounds": {
-                  "min": [
-                    -19.475159,
-                    6.025545,
-                    13.706541
-                  ],
-                  "max": [
-                    -8.524842,
-                    7.374463,
-                    15.293453
-                  ],
-                  "center": [
-                    -14.0,
-                    6.700004,
-                    14.499997
-                  ],
-                  "size": [
-                    10.950316,
-                    1.348917,
-                    1.586912
-                  ]
-                },
-                "location": [
-                  -14.0,
-                  6.7,
-                  14.5
-                ],
-                "scale": [
-                  1.0,
-                  1.0,
-                  1.0
-                ],
-                "finite": true
-              }
-            ],
-            "root_objects": [
-              "Temple_Imperial_ExportRoot"
-            ]
+            "path": "TestResults\\LOD-Generation-Round8\\Temple_Imperial_LOD1.fbx",
+            "exists": false,
+            "objects": [],
+            "root_objects": []
           },
           "comparison_isolated": [
             {
               "object": "TempleBody",
-              "status": "PASS",
-              "base_triangles": 108,
-              "lod_triangles": 70,
-              "center_delta": [
-                0.0,
-                2e-06,
-                0.0
-              ],
-              "center_error": 2e-06,
-              "pivot_delta": [
-                0.0,
-                0.0,
-                0.0
-              ],
-              "pivot_error": 0.0,
-              "pivot_aligned": true,
-              "base_size": [
-                10.0,
-                6.000001,
-                8.000001
-              ],
-              "lod_size": [
-                9.917388,
-                5.852563,
-                7.927491
-              ]
+              "status": "MISSING_IN_LOD"
             },
             {
               "object": "TempleColumn",
-              "status": "PASS",
-              "base_triangles": 44,
-              "lod_triangles": 26,
-              "center_delta": [
-                0.0,
-                2e-06,
-                0.0
-              ],
-              "center_error": 2e-06,
-              "pivot_delta": [
-                0.0,
-                0.0,
-                0.0
-              ],
-              "pivot_error": 0.0,
-              "pivot_aligned": true,
-              "base_size": [
-                1.299999,
-                1.300001,
-                6.500001
-              ],
-              "lod_size": [
-                1.287971,
-                1.300002,
-                6.500001
-              ]
+              "status": "MISSING_IN_LOD"
             },
             {
               "object": "TempleColumn.001",
-              "status": "PASS",
-              "base_triangles": 44,
-              "lod_triangles": 26,
-              "center_delta": [
-                0.0,
-                2e-06,
-                0.0
-              ],
-              "center_error": 2e-06,
-              "pivot_delta": [
-                0.0,
-                0.0,
-                0.0
-              ],
-              "pivot_error": 0.0,
-              "pivot_aligned": true,
-              "base_size": [
-                1.299999,
-                1.300001,
-                6.500001
-              ],
-              "lod_size": [
-                1.287971,
-                1.305391,
-                6.500001
-              ]
+              "status": "MISSING_IN_LOD"
             },
             {
               "object": "TemplePediment",
-              "status": "PASS",
-              "base_triangles": 108,
-              "lod_triangles": 70,
-              "center_delta": [
-                0.0,
-                2e-06,
-                -2e-06
-              ],
-              "center_error": 3e-06,
-              "pivot_delta": [
-                0.0,
-                0.0,
-                0.0
-              ],
-              "pivot_error": 0.0,
-              "pivot_aligned": true,
-              "base_size": [
-                11.0,
-                1.400001,
-                1.6
-              ],
-              "lod_size": [
-                10.950316,
-                1.348917,
-                1.586912
-              ]
+              "status": "MISSING_IN_LOD"
             }
           ]
         },
@@ -8551,7 +6543,7 @@
             ]
           },
           "candidate": {
-            "path": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\TestResults\\LOD-Generation-Round7\\Temple_Imperial_LOD2.fbx",
+            "path": "TestResults\\LOD-Generation-Round8\\Temple_Imperial_LOD2.fbx",
             "exists": true,
             "objects": [
               {
@@ -9221,7 +7213,7 @@
           "round4": null,
           "comparison_round4": [],
           "isolated": {
-            "path": "C:\\Users\\User\\Downloads\\Era Imperial\\EraImperial-UnityRTS-Base\\RTS01-Corrigido\\TestResults\\LOD-Generation-Round7\\Temple_Imperial_LOD2.fbx",
+            "path": "TestResults\\LOD-Generation-Round8\\Temple_Imperial_LOD2.fbx",
             "exists": true,
             "objects": [
               {
