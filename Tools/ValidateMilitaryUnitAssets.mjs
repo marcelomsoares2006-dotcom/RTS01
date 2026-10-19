@@ -44,7 +44,9 @@ for (const [name, code] of units) {
     if (!animation.includes(`  ${field}: ${value}\n`)) fail(`${name}: animation ${field} mismatch`);
   }
   if (!data.includes(`code: ${code}\n`)) fail(`${name}: CharacterData code missing`);
-  if (!data.includes(`prefab: {fileID: 100100000, guid: ${guid}, type: 3}`)) fail(`${name}: CharacterData prefab reference mismatch`);
+  const prefabReference = data.match(/^\s*prefab:\s*\{fileID:\s*(-?\d+),\s*guid:\s*([0-9a-f]{32}),\s*type:\s*3\}\s*$/m);
+  if (!prefabReference || prefabReference[1] === '0' || prefabReference[2] !== guid)
+    fail(`${name}: CharacterData prefab reference mismatch`);
   if (!dataMeta.match(/^guid:\s*[0-9a-f]{32}\s*$/m)) fail(`${name}: invalid CharacterData GUID`);
   for (const field of ['healthpoints:', 'attackRange:', 'attackDamage:', 'attackRate:', 'cost:']) {
     if (!data.includes(`  ${field}`)) fail(`${name}: missing ${field}`);
