@@ -40,3 +40,11 @@ Nenhum candidato foi promovido. Permanecem pendentes a validação PlayMode real
 - `final-integration-playmode.log`: **PASS** para produção, avanço até Imperial, catapulta/cerco lógico e save/load.
 - Correções runtime: prazo rearmado após reload do domínio, minimap icon opcional e `UnitManager` tolerante a `fov`, `selectionCircle` e áudio ausentes. Ainda faltam build Windows, benchmark de 600 s, FPS, validação visual manual PBR/LOD/UV e combate/cerco visual com GameObjects reais.
 
+## Build e desempenho — rodada licenciada
+
+- `final-integration-playmode.log`: **PASS** em produção, avanço de eras, catapulta/cerco lógico e save/load.
+- `ui-integrated-playmode-final.log`: **PASS** em Canvas, UIManager, widgets e eventos reais.
+- `windows-build-final.log`: **Build Successful**, sem erros de compilação; `Builds/Windows/EraImperial.exe` foi gerado.
+- EditMode registrado pelo auditor standalone: **402/402 PASS**; player Windows iniciou e encerrou sem erro fatal.
+- Duas medições standalone repetidas deram média de aproximadamente 59,8 FPS, mas mínimo de 10,40 e 14,37 FPS. A meta mínima de 30 FPS continua **BLOCKED** por picos de carregamento; benchmark de 600 s e otimização ainda não estão aprovados.
+
