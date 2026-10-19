@@ -10,7 +10,7 @@
 | PBR/UV/seams | Capturas mostram materiais válidos, mas o piloto PBR ainda não foi promovido; 20 ocorrências UV permanecem classificadas para revisão | REVIEW |
 | LOD | Auditoria arquitetônica mantém 23 fragmentos deslocados acima de 1 cm e nenhum `LODGroup` promovido | BLOCKED |
 | FPS | O probe anterior mostra média ~59,84 FPS, mas mínimo 14,37 FPS por um pico de 69,6 ms após o warm-up | BLOCKED (<30 mínimo) |
-| Benchmark contínuo | Executável Windows iniciado com `-era-audit-seconds=600`; aguardar o artefato final antes de concluir | RUNNING |
+| Benchmark contínuo | Launcher corrigido para argumentos separados; o executável atual encerra antes de criar `Player.log`/JSON (smoke e soak inconclusivos) | BLOCKED |
 
 ## Interpretação
 
@@ -20,7 +20,7 @@ As capturas de arquitetura confirmam ausência de magenta no showcase atual, mas
 
 ## Próximos gates
 
-1. Coletar e arquivar o JSON/CSV do benchmark de 600 s.
+1. Regenerar/validar o player Windows em uma sessão gráfica que produza `Player.log`; então coletar e arquivar o JSON/CSV do benchmark de 600 s.
 2. Reexecutar PlayMode integrado com produção real de catapulta e alvo estrutural.
 3. Corrigir os LODs em cópia isolada, revisar pivôs e só então testar `LODGroup` no Unity.
 4. Promover o piloto PBR apenas após captura Unity no Inspector/Game View.

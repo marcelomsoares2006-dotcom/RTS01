@@ -1,6 +1,8 @@
 param(
     [string]$ProjectRoot = (Resolve-Path (Join-Path $PSScriptRoot '..\..')).Path,
-    [int]$StandaloneTimeoutSeconds = 45
+    [int]$StandaloneTimeoutSeconds = 45,
+    [int]$BenchmarkSeconds = 8,
+    [int]$BenchmarkWarmupSeconds = 3
 )
 
 $ErrorActionPreference = 'Stop'
@@ -51,7 +53,20 @@ if (Test-Path -LiteralPath $buildReportPath) {
 } else { Add-Check 'build' 'player Windows' 'BLOCKED' $buildReportPath 'Relatório de build ausente.' }
 
 if (Test-Path -LiteralPath $buildPath) {
-    $logArgs = "-screen-width 1280 -screen-height 720 -screen-fullscreen 0 -era-audit-seconds=8 -logFile `"$standaloneLog`""
+    $outputDir = Join-Path $resultsDir 'StandalonePerformance'
+    New-Item -ItemType Directory -Force -Path $outputDir | Out-Null
+    # Use an argument array: a single composed string can be parsed as one
+    # token by Start-Process and silently skip the performance probe.
+    $logArgs = @(
+        '-screen-width', '1280',
+        '-screen-height', '720',
+        '-screen-fullscreen', '0',
+        "-era-audit-seconds=$BenchmarkSeconds",
+        "-era-audit-warmup-seconds=$BenchmarkWarmupSeconds",
+        '-era-audit-profile=runtime-standalone',
+        "-era-audit-output=$outputDir",
+        '-logFile', $standaloneLog
+    )
     if (Test-Path -LiteralPath $standaloneLog) { Remove-Item -LiteralPath $standaloneLog -Force }
     $proc = Start-Process -FilePath $buildPath -ArgumentList $logArgs -WorkingDirectory (Split-Path $buildPath) -WindowStyle Hidden -PassThru
     $exited = $proc.WaitForExit($StandaloneTimeoutSeconds * 1000)
@@ -109,7 +124,7 @@ $lines.Add('## Pendências observadas')
 $lines.Add('')
 $lines.Add('- A cobertura automatizada de contratos cobre produção, replay, save/load, seleção, NavMesh e combate/cerco em EditMode/PlayMode; ela não substitui um playtest humano de interface.')
 $lines.Add('- O smoke PlayMode precisa concluir o marcador final dos três cenários para fechar a evidência de reload; uma execução interrompida no cenário 3 permanece não aprovada.')
-$lines.Add('- O player Windows é executado fora do Editor em 1280x720 por 8 s; o probe limita a 60 FPS, grava média/mínimo/máximo e encerra o processo. Isso é uma medição automatizada, não substitui playtest humano de interface.')
+$lines.Add("- O player Windows é executado fora do Editor em 1280x720 por $BenchmarkSeconds s, com warm-up de $BenchmarkWarmupSeconds s; o probe limita a 60 FPS, grava média/mínimo/máximo e encerra o processo. Isso é uma medição automatizada, não substitui playtest humano de interface.")
 Set-Content -LiteralPath $markdownPath -Value $lines -Encoding UTF8
 Write-Output "Runtime audit written to $jsonPath and $markdownPath"
 Write-Output "PASS=$($summary.pass) FAIL=$($summary.fail) BLOCKED=$($summary.blocked)"
