@@ -33,3 +33,4 @@ As capturas de arquitetura confirmam ausência de magenta no showcase atual, mas
 - Novo candidato LOD2 em `TestResults/LOD-Generation-Round8` removeu 22 faces degeneradas detectadas pelo reparador e passou a auditoria estática sem fragmentos deslocados. Não foi promovido para produção.
 - A auditoria independente mantém revisão visual Unity pendente: muralhas ainda são candidatas PBR, 20 UVs precisam de inspeção manual e os prefabs arquitetônicos seguem sem LODGroup/colliders serializados.
 - O harness `FinalPlaytestCoverageHarness` e correções de APIs obsoletas foram adicionados, mas a nova execução Unity ficou bloqueada por `LicenseClient-User`; não foi contado como PASS falso.
+- O probe foi ajustado para emitir heartbeat a cada 60 s, reduzindo a própria interferência de I/O/stack trace nos frames medidos. A recompilação e o soak pós-ajuste permanecem pendentes enquanto o Unity não inicializa o Licensing Client.

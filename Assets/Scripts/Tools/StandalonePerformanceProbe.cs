@@ -45,6 +45,14 @@ public sealed class StandalonePerformanceProbe : MonoBehaviour
             DontDestroyOnLoad(root);
             var probe = root.AddComponent<StandalonePerformanceProbe>();
             probe._duration = Mathf.Clamp(seconds, 3f, 1800f);
+            // Reserve the expected sample count up front. This avoids list
+            // growth/GC hitches during long probes without changing samples.
+            probe._samples.Capacity = Mathf.Max(
+                probe._samples.Capacity,
+                Mathf.CeilToInt(probe._duration * 60f));
+            // Do not log on the installation frame: Unity's managed stack
+            // trace for that first Debug.Log can become a measured startup hitch.
+            probe._nextReport = 10f;
             for (int j = 0; j < args.Length; j++)
             {
                 if (args[j].StartsWith("-era-audit-warmup-seconds=", StringComparison.OrdinalIgnoreCase))
@@ -104,10 +112,9 @@ public sealed class StandalonePerformanceProbe : MonoBehaviour
         if (_elapsed >= _nextReport)
         {
             // Unity's file logger captures a managed stack trace for every
-            // Debug.Log. Reporting every second polluted the standalone
-            // benchmark with avoidable I/O hitches; keep progress visible
-            // while making the performance probe low-impact.
-            _nextReport = _elapsed + 10f;
+            // Debug.Log. A frequent progress report can itself create a
+            // frame-time outlier, so keep only a low-frequency heartbeat.
+            _nextReport = _elapsed + 60f;
             Debug.Log($"[StandalonePerformanceProbe] t={_elapsed:F1}s frames={_samples.Count} fps={CurrentAverage():F1}");
         }
         if (_elapsed >= _duration) Finish();
