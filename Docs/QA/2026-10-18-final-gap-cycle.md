@@ -9,8 +9,8 @@
 | Magenta | Capturas `CityArchitectureShowcase_Overview/Mid/Close` e `TownCenter_Showcase_D3D11` sem áreas magenta | PASS nas capturas |
 | PBR/UV/seams | Capturas mostram materiais válidos, mas o piloto PBR ainda não foi promovido; 20 ocorrências UV permanecem classificadas para revisão | REVIEW |
 | LOD | Auditoria arquitetônica mantém 23 fragmentos deslocados acima de 1 cm e nenhum `LODGroup` promovido | BLOCKED |
-| FPS | O probe anterior mostra média ~59,84 FPS, mas mínimo 14,37 FPS por um pico de 69,6 ms após o warm-up | BLOCKED (<30 mínimo) |
-| Benchmark contínuo | Launcher corrigido para argumentos separados; o executável atual encerra antes de criar `Player.log`/JSON (smoke e soak inconclusivos) | BLOCKED |
+| FPS | Benchmark real de 600,02 s: média 42,85 FPS, P95 60,02, mínimo 1,29 FPS por picos isolados | BLOCKED (<30 mínimo) |
+| Benchmark contínuo | Player Windows concluiu 600,02 s com `EXIT=0`, JSON/CSV válidos e sem padrões de crash no log | PASS de duração / BLOCKED de FPS |
 
 ## Interpretação
 
@@ -20,7 +20,7 @@ As capturas de arquitetura confirmam ausência de magenta no showcase atual, mas
 
 ## Próximos gates
 
-1. Regenerar/validar o player Windows em uma sessão gráfica que produza `Player.log`; então coletar e arquivar o JSON/CSV do benchmark de 600 s.
+1. Corrigir os picos de frame do player; o benchmark de 600 s já foi coletado em `TestResults/StandalonePerformance/benchmark600`.
 2. Reexecutar PlayMode integrado com produção real de catapulta e alvo estrutural.
 3. Corrigir os LODs em cópia isolada, revisar pivôs e só então testar `LODGroup` no Unity.
 4. Promover o piloto PBR apenas após captura Unity no Inspector/Game View.

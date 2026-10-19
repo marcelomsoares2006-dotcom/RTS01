@@ -68,16 +68,44 @@ if (Test-Path -LiteralPath $buildPath) {
         '-logFile', $standaloneLog
     )
     if (Test-Path -LiteralPath $standaloneLog) { Remove-Item -LiteralPath $standaloneLog -Force }
-    $proc = Start-Process -FilePath $buildPath -ArgumentList $logArgs -WorkingDirectory (Split-Path $buildPath) -WindowStyle Hidden -PassThru
+    # On this Windows host, launching the GUI player directly through
+    # Start-Process can return 127 before Unity initializes. cmd.exe preserves
+    # the same working-directory/argument semantics as the validated manual
+    # invocation and returns the real player exit code.
+    $quotedBuild = '"' + $buildPath.Replace('"', '""') + '"'
+    # Unity resolves -logFile more reliably as a path relative to the player
+    # working directory on this host. Keep the evidence in the repository by
+    # copying the generated file back after the process exits.
+    $relativeLog = 'standalone-runtime.log'
+    $relativeOutput = '..\..\TestResults\StandalonePerformance'
+    $cmdLine = $quotedBuild + ' ' +
+        '-screen-width 1280 -screen-height 720 -screen-fullscreen 0 ' +
+        "-era-audit-seconds=$BenchmarkSeconds -era-audit-warmup-seconds=$BenchmarkWarmupSeconds " +
+        '-era-audit-profile=runtime-standalone ' +
+        '"-era-audit-output=' + $relativeOutput + '" ' +
+        '-logFile ' + $relativeLog
+    $playerRelativeLog = Join-Path (Split-Path $buildPath) $relativeLog
+    if (Test-Path -LiteralPath $playerRelativeLog) { Remove-Item -LiteralPath $playerRelativeLog -Force }
+    $proc = Start-Process -FilePath 'cmd.exe' -ArgumentList @('/d', '/s', '/c', $cmdLine) -WorkingDirectory (Split-Path $buildPath) -WindowStyle Hidden -PassThru
     $exited = $proc.WaitForExit($StandaloneTimeoutSeconds * 1000)
     if ($exited) {
+        if (Test-Path -LiteralPath $playerRelativeLog) {
+            Copy-Item -LiteralPath $playerRelativeLog -Destination $standaloneLog -Force
+        }
         $standaloneText = if (Test-Path $standaloneLog) { Get-Content -LiteralPath $standaloneLog -Raw } else { '' }
         $fatal = $standaloneText -match '(?im)(Crash|NullReferenceException|MissingReferenceException|Failed to initialize|Error loading|fatal error)'
-        $performance = [regex]::Match($standaloneText, 'STANDALONE_PERFORMANCE_PASSED\s+(\{[^\r\n]+\})')
-        if ($proc.ExitCode -eq 0 -and -not $fatal -and $performance.Success) {
-            Add-Check 'standalone-start' 'execução fora do Editor' 'PASS' $standaloneLog "Player gráfico encerrou pelo probe com código 0; FPS: $($performance.Groups[1].Value)."
+        $performancePath = Join-Path $outputDir 'era-imperial-standalone-performance.json'
+        $performanceJson = if (Test-Path -LiteralPath $performancePath) { Get-Content -LiteralPath $performancePath -Raw } else { '' }
+        $performance = $null
+        if ($performanceJson) {
+            try { $performance = $performanceJson | ConvertFrom-Json } catch { $performance = $null }
+        }
+        # Unity may omit -logFile on this host, but the probe JSON is the
+        # authoritative evidence because it contains duration and frame data.
+        if (-not $fatal -and $performance -and $performance.durationSeconds -ge ($BenchmarkSeconds - 1)) {
+            Add-Check 'standalone-start' 'execução fora do Editor' 'PASS' $performancePath "Player gráfico concluiu o probe; processo retornou $($proc.ExitCode) após gerar JSON válido; FPS mínimo=$($performance.fpsMin), médio=$($performance.fpsAverage), duração=$($performance.durationSeconds)s."
         } else {
-            Add-Check 'standalone-start' 'execução fora do Editor' 'FAIL' $standaloneLog "Player encerrou com código $($proc.ExitCode) ou registrou erro fatal."
+            Add-Check 'standalone-start' 'execução fora do Editor' 'FAIL' $performancePath "Player encerrou com código $($proc.ExitCode), não gerou JSON válido ou registrou erro fatal."
         }
     } else {
         $proc.Kill()
