@@ -120,9 +120,22 @@ public sealed class BuildingProductionQueue
     public List<string> Advance(float deltaTime)
     {
         List<string> completed = new List<string>();
+        Advance(deltaTime, completed);
+        return completed;
+    }
+
+    /// <summary>
+    /// Advances FIFO work into a caller-owned completion buffer. The buffer is
+    /// cleared before use, so live runtime drivers can reuse it without a
+    /// per-frame managed allocation.
+    /// </summary>
+    public void Advance(float deltaTime, List<string> completed)
+    {
+        if (completed == null) throw new ArgumentNullException(nameof(completed));
+        completed.Clear();
         if (deltaTime <= 0f || float.IsNaN(deltaTime) || float.IsInfinity(deltaTime)
             || orders == null)
-            return completed;
+            return;
 
         float remainingDelta = deltaTime;
         while (remainingDelta > 0f && orders.Count > 0)
@@ -145,7 +158,6 @@ public sealed class BuildingProductionQueue
             completed.Add(order.productCode);
             orders.RemoveAt(0);
         }
-        return completed;
     }
 
     /// <summary>

@@ -16,6 +16,7 @@ public sealed class BuildingProductionRuntimeDriver : MonoBehaviour
     private BuildingContentCatalog _catalog;
     private BuildingProductionRuntimeAdapter _runtime;
     private EconomyPlayerState _economy;
+    private readonly List<string> _completedProducts = new List<string>(1);
 
     public bool IsBound { get { return _runtime != null; } }
     public string LastFailure { get; private set; }
@@ -96,8 +97,7 @@ public sealed class BuildingProductionRuntimeDriver : MonoBehaviour
             || GameManager.instance == null || GameManager.instance.gameIsPaused)
             return;
 
-        List<string> ignored;
-        _runtime.Advance(_building.Owner, Time.deltaTime, out ignored);
+        _runtime.Advance(_building.Owner, Time.deltaTime, _completedProducts);
     }
 
     private StrategicPlanningState BuildPlanningState()

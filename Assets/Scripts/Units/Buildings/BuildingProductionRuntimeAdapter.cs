@@ -102,10 +102,21 @@ public sealed class BuildingProductionRuntimeAdapter
         out List<string> completedProducts)
     {
         completedProducts = new List<string>();
+        return Advance(requesterOwnerId, deltaTime, completedProducts);
+    }
+
+    /// <summary>Advances into a caller-owned buffer to avoid per-frame allocations.</summary>
+    public BuildingProductionRuntimeResult Advance(
+        int requesterOwnerId,
+        float deltaTime,
+        List<string> completedProducts)
+    {
+        if (completedProducts == null) throw new ArgumentNullException(nameof(completedProducts));
+        completedProducts.Clear();
         BuildingProductionRuntimeResult access = ValidateAccess(requesterOwnerId);
         if (access != BuildingProductionRuntimeResult.Accepted) return access;
 
-        completedProducts = _queue.Advance(deltaTime);
+        _queue.Advance(deltaTime, completedProducts);
         if (_productCompleted != null)
             for (int i = 0; i < completedProducts.Count; i++)
                 _productCompleted(completedProducts[i]);
