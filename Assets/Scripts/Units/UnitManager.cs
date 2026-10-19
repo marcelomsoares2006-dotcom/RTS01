@@ -45,7 +45,8 @@ public class UnitManager : MonoBehaviour
 
     private void Awake()
     {
-        _meshSize = meshRenderer.GetComponent<Renderer>().bounds.size / 2;
+        Renderer mesh = meshRenderer != null ? meshRenderer.GetComponent<Renderer>() : null;
+        _meshSize = mesh != null ? mesh.bounds.size / 2 : Vector3.one * 0.5f;
 
         if (healthbar)
         {
@@ -71,8 +72,10 @@ public class UnitManager : MonoBehaviour
 
     public void EnableFOV(float size)
     {
+        if (fov == null) return;
         fov.SetActive(true);
         MeshRenderer mr = fov.GetComponent<MeshRenderer>();
+        if (mr == null || mr.material == null) return;
         mr.material = new Material(mr.material);
         StartCoroutine(_ScalingFOV(size));
     }
@@ -187,7 +190,8 @@ public class UnitManager : MonoBehaviour
         Globals.SELECTED_UNITS.Remove(this);
 
         EventManager.TriggerEvent("DeselectedUnit", Unit);
-        selectionCircle.SetActive(false);
+        if (selectionCircle != null)
+            selectionCircle.SetActive(false);
         if (healthbar)
             healthbar.SetActive(false);
         _selected = false;
@@ -219,7 +223,8 @@ public class UnitManager : MonoBehaviour
 
         Globals.SELECTED_UNITS.Add(this);
         EventManager.TriggerEvent("SelectedUnit", Unit);
-        selectionCircle.SetActive(true);
+        if (selectionCircle != null)
+            selectionCircle.SetActive(true);
         if (healthbar)
         {
             healthbar.SetActive(true);
@@ -227,7 +232,8 @@ public class UnitManager : MonoBehaviour
         }
 
         // play sound
-        contextualSource.PlayOneShot(Unit.Data.onSelectSound);
+        if (contextualSource != null && Unit != null && Unit.Data != null)
+            contextualSource.PlayOneShot(Unit.Data.onSelectSound);
 
         _selected = true;
         _selectIndex = Globals.SELECTED_UNITS.Count - 1;

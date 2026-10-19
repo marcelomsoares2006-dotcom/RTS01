@@ -91,7 +91,12 @@ public class Unit
         GamePlayersParameters p = GameManager.instance.gamePlayersParameters;
         Color c = p.players[owner].color;
         Transform minimapIcon = _transform.Find("Mesh/MinimapIcon");
-        minimapIcon.GetComponent<Renderer>().material.color = c;
+        if (minimapIcon != null)
+        {
+            Renderer minimapRenderer = minimapIcon.GetComponent<Renderer>();
+            if (minimapRenderer != null)
+                minimapRenderer.material.color = c;
+        }
 
         // prepare data for upgrade to next level
         _levelUpData = _GetLevelUpData();

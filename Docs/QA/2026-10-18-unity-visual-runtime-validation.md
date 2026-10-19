@@ -32,3 +32,11 @@ Nenhum candidato foi promovido. Permanecem pendentes a validação PlayMode real
 - Duas tentativas adicionais (`live-production-harness-diagnostic*.log`) não chegaram à cena: o Unity 6000.6.3f1 voltou a perder/reconectar o canal `LicenseClient-User` antes de executar o método. Portanto, produção real, UI, colliders, combate e cerco continuam sem PASS.
 - As correções foram registradas no commit `32abbc3` e enviadas ao branch remoto `codex/integracao-github-20261014`. Documentos de auditoria e backups `.blend1` antigos permaneceram fora do commit.
 
+## PlayMode licenciado — progresso confirmado
+
+- O Unity Hub/cliente foi reiniciado elevado e o entitlement foi resolvido; os testes seguintes conectaram ao canal `LicenseClient-User`.
+- `live-production-harness-unitmanager-guards.log`: **PASS** para produção real de villager, spearman e combat mage, com owner, NavMesh e seleção verificados.
+- `ui-integrated-playmode-final.log`: **PASS** para Canvas, UIManager, widgets de recursos e eventos reais da partida.
+- `final-integration-playmode.log`: **PASS** para produção, avanço até Imperial, catapulta/cerco lógico e save/load.
+- Correções runtime: prazo rearmado após reload do domínio, minimap icon opcional e `UnitManager` tolerante a `fov`, `selectionCircle` e áudio ausentes. Ainda faltam build Windows, benchmark de 600 s, FPS, validação visual manual PBR/LOD/UV e combate/cerco visual com GameObjects reais.
+

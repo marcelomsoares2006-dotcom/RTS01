@@ -23,7 +23,10 @@ public static class VillagerSpearmanLiveProductionPlayModeHarness
 {
     private const string RunningKey = "EraImperial.LiveProductionHarness.Running";
     private const string FinishedKey = "EraImperial.LiveProductionHarness.Finished";
-    private const double TimeoutSeconds = 45.0;
+    // Unity 6 may spend over a minute importing the authored scene stack on
+    // the first batch run. The deadline must cover startup before judging the
+    // actual live production probe.
+    private const double TimeoutSeconds = 600.0;
 
     private static bool _finished;
     private static double _deadline;
@@ -91,6 +94,12 @@ public static class VillagerSpearmanLiveProductionPlayModeHarness
 
         try
         {
+            // EnterPlaymode may reload the editor domain and reset static
+            // fields. Re-arm the deadline after that reload instead of
+            // treating the zeroed value as an immediate timeout.
+            if (_deadline <= 0.0)
+                _deadline = EditorApplication.timeSinceStartup + TimeoutSeconds;
+
             if (EditorApplication.timeSinceStartup > _deadline)
             {
                 Blocked("timeout aguardando a cena real, GameManager, catálogo ou NavMesh");
@@ -302,6 +311,17 @@ public static class VillagerSpearmanLiveProductionPlayModeHarness
     {
         _finished = true;
         SessionState.SetBool(FinishedKey, false);
+        NavMeshSurface[] surfaces = UnityEngine.Object.FindObjectsByType<NavMeshSurface>(FindObjectsInactive.Include);
+        Debug.LogWarning("LIVE_PRODUCTION_READINESS_TIMEOUT_STATE gameManager="
+            + (GameManager.instance != null)
+            + " economy=" + (DataHandler.EconomyRuntime != null)
+            + " catalog=" + (Globals.CHARACTER_DATA != null)
+            + " worker=" + (Globals.CHARACTER_DATA != null && Globals.CHARACTER_DATA.ContainsKey("worker"))
+            + " spearman=" + (Globals.CHARACTER_DATA != null && Globals.CHARACTER_DATA.ContainsKey("spearman"))
+            + " spawnpoints=" + (GameObject.Find("Spawnpoints") != null)
+            + " navMeshSurfaces=" + surfaces.Length
+            + " navMeshVertices=" + NavMesh.CalculateTriangulation().vertices.Length
+            + " compiling=" + EditorApplication.isCompiling);
         Debug.LogWarning("LIVE_PRODUCTION_PLAYMODE_BLOCKED: " + reason);
         StopAndExit(2);
     }
