@@ -20,8 +20,8 @@
 
 ## Bloqueios reproduzidos
 
-- O soak de 600 s no executável recompilado ainda precisa gerar JSON final; o launcher intermediário retorna 127, enquanto a execução direta por `cmd` funciona no smoke.
-- O FPS de 600 s válido continua 20,69 do build anterior; o smoke do build recompilado marcou mínimo 6,66 FPS em 8,01 s, portanto a meta de 30 FPS ainda não está comprovada.
+- O soak de 600 s do executável recompilado concluiu com JSON válido em `TestResults/StandalonePerformance/rebuilt-600-20261019b`: duração 600,01 s, média 60,00 FPS, mínimo 10,60 FPS. A duração passou, mas o mínimo ainda está abaixo da meta de 30 FPS.
+- O launcher intermediário ainda retorna 127; a execução mantida por `cmd` é o caminho válido neste host.
 - PBR das muralhas permanece candidato: a captura Unity mostra produção/candidato lado a lado, mas o manifesto exige revisão das imagens antes de qualquer promoção.
 - Playtest humano visual/manual continua pendente por definição: UI, pixels, controles físicos e revisão de UV/seams/LOD precisam de uma sessão interativa.
 
