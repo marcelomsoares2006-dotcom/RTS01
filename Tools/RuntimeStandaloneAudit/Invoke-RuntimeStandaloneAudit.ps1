@@ -89,13 +89,16 @@ if (Test-Path -LiteralPath $buildPath) {
     # Start-Process can return 127 before Unity initializes. cmd.exe preserves
     # the same working-directory/argument semantics as the validated manual
     # invocation and returns the real player exit code.
-    $quotedBuild = '"' + $buildPath.Replace('"', '""') + '"'
+    # Starting the full absolute path as the first quoted token makes cmd.exe
+    # return 127 on this host. The working directory is already the build
+    # directory, so use the executable name and keep the real exit code.
+    $relativeBuild = 'EraImperial.exe'
     # Unity resolves -logFile more reliably as a path relative to the player
     # working directory on this host. Keep the evidence in the repository by
     # copying the generated file back after the process exits.
     $relativeLog = 'standalone-runtime.log'
     $relativeOutput = '..\..\TestResults\StandalonePerformance'
-    $cmdLine = $quotedBuild + ' ' +
+    $cmdLine = $relativeBuild + ' ' +
         '-screen-width 1280 -screen-height 720 -screen-fullscreen 0 ' +
         "-era-audit-seconds=$BenchmarkSeconds -era-audit-warmup-seconds=$BenchmarkWarmupSeconds " +
         '-era-audit-profile=runtime-standalone ' +
