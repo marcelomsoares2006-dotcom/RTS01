@@ -20,6 +20,8 @@
 - Launcher standalone corrigido para iniciar `EraImperial.exe` relativo ao diretório de build; smoke de 8 s passou `PASS=4 FAIL=0`.
 - Com aquecimento de 5 s, o smoke de 30 s passou com mínimo 59,35 FPS e média 60,00 FPS.
 - O harness final de cobertura corrigiu o fixture V2 (`gameUid`) e compilou; ele continua bloqueando apenas a parte explicitamente humana, que não pode ser comprovada em batch.
+- O histórico de build somente leitura foi movido para `Library/BuildHistory/_readonly-backup-20261019` como backup recuperável. A recompilação seguinte removeu o warning de permissão: o build ficou em `Succeeded`, 0 erros e 14 warnings.
+- Os 14 warnings restantes foram isolados ao aviso informativo do pacote `com.unity.pipeline`: `RuntimePipelineConfig` não existe e, por isso, o Pipeline Runtime permanece desabilitado no Player. Não é usado pelo jogo e não foi ativado artificialmente.
 
 ## Bloqueios reproduzidos
 
@@ -27,11 +29,12 @@
 - O soak longo de 600 s ainda deve ser repetido com o launcher corrigido; a execução manual por `cmd` já produziu JSON válido.
 - PBR das muralhas permanece candidato: a captura Unity mostra produção/candidato lado a lado, mas o manifesto exige revisão das imagens antes de qualquer promoção.
 - Playtest humano visual/manual continua pendente por definição: UI, pixels, controles físicos e revisão de UV/seams/LOD precisam de uma sessão interativa.
+- O soak recompilado registrou um único frame abaixo de 30 FPS no startup (10,60 FPS, por volta de 3,8 s); os demais 35.818 frames ficaram acima de 30 FPS. Isso não fecha a meta de mínimo estrito, mas caracteriza o problema como hitch isolado de inicialização.
 
 ## Próximo ciclo autorizado
 
-1. Recuperar o IPC/licença pelo Unity Hub e confirmar uma sessão normal, sem administrador.
-2. Reexecutar EditMode, PlayMode, captura PBR/LOD e build Windows.
-3. Reexecutar o soak de 600 s com o código atual e exigir mínimo de 30 FPS.
-4. Fazer playtest visual/manual de UI, eras, produção, combate, cerco, destruição, save/load e NavMesh.
-5. Promover apenas os assets aprovados; então tentar novamente o push.
+1. Fazer a sessão interativa no Unity licenciado para confirmar UI, controles, UVs, seams e transições LOD.
+2. Avaliar as imagens PBR das muralhas e promover somente se a inspeção humana aprovar; manter candidatos caso contrário.
+3. Decidir se o Pipeline Runtime será necessário; se não for, manter o aviso documentado em vez de habilitar um serviço sem uso.
+4. Se a meta de mínimo estrito de 30 FPS for obrigatória, eliminar o hitch de startup e repetir o soak de 600 s.
+5. Reexecutar o playtest humano completo e publicar apenas o build aprovado. O commit funcional já está no GitHub (`7efcaf8`).
