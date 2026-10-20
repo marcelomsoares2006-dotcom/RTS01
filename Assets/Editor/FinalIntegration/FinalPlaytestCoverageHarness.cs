@@ -144,6 +144,7 @@ public static class FinalPlaytestCoverageHarness
             "coverage-" + Guid.NewGuid().ToString("N") + ".data");
         try
         {
+            GameData.gameUid = "final-playtest-coverage";
             GameData source = new GameData
             {
                 camPosition = Vector3.one,
@@ -189,7 +190,7 @@ public static class FinalPlaytestCoverageHarness
         BuildingContentCatalog catalog = Resources.Load<BuildingContentCatalog>(
             "ScriptableObjects/Units/Building Content Catalog");
         Require(catalog != null, "Building Content Catalog ausente");
-        Require(BuildingContentProgressionRules.ValidateEraContracts(catalog).Count == 0,
+        Require(BuildingContentProgressionRules.ValidateEraContracts(catalog).Count() == 0,
             "catálogo militar possui violações de era");
 
         ProjectileContract projectile = CatapultDefaults.CreateProjectile();

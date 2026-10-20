@@ -8,12 +8,22 @@
 - Auditoria estática das muralhas aprovada como candidata; a captura Unity continua obrigatória antes da promoção.
 - Último soak válido: 600,02 s, média 60,07 FPS, mínimo 20,69 FPS. Esse resultado é anterior à última otimização e não deve ser usado como validação final.
 
+## Resultados posteriores
+
+- Licenciamento recuperado: o cliente oficial resolveu os detalhes de entitlement e o Unity executou sem o timeout de `LicenseClient-User`.
+- EditMode: `402/402` testes aprovados.
+- PlayMode: smoke aprovado nos três cenários, sem erros runtime.
+- Build Windows recompilado em `2026-10-19 21:43:34`, com resultado `Succeeded`, 0 erros e 14 warnings. O executável antigo foi preservado como `Builds/Windows/EraImperial.previous-20261019.exe`.
+- Harness real de produção/cerco aprovado: villager, spearman, combat mage e catapulta instanciados com NavMesh/seleção; quatro disparos reduziram o alvo `360 -> 260 -> 160 -> 60`.
+- Captura Unity PBR das muralhas aprovada como `PASS_RUNTIME_CANDIDATE_COMPARISON_ONLY`; as imagens estão em `TestResults/WallPbrVisualQA-2026-10-19`. Nenhuma promoção foi feita automaticamente.
+- O harness final de cobertura corrigiu o fixture V2 (`gameUid`) e compilou; ele continua bloqueando apenas a parte explicitamente humana, que não pode ser comprovada em batch.
+
 ## Bloqueios reproduzidos
 
-- O Unity batch excedeu 300 s nos testes EditMode. `unit-tests.log` registra `LicenseClient-User doesn't exist`, timeout de 60 s e falha de reconexão do Licensing Client.
-- Sem sessão Unity licenciada não é possível produzir evidência válida de PBR/LOD, playtest humano, build pós-otimização ou FPS pós-otimização.
-- O cliente está instalado em `C:\Program Files\Unity Hub\UnityLicensingClient_V1\Unity.Licensing.Client.exe`, enquanto o editor continua sem criar o canal IPC `LicenseClient-User`.
-- O push ao GitHub foi tentado nesta rodada e falhou por indisponibilidade de conexão com `github.com:443`; os commits locais anteriores permanecem prontos.
+- O soak de 600 s no executável recompilado ainda precisa gerar JSON final; o launcher intermediário retorna 127, enquanto a execução direta por `cmd` funciona no smoke.
+- O FPS de 600 s válido continua 20,69 do build anterior; o smoke do build recompilado marcou mínimo 6,66 FPS em 8,01 s, portanto a meta de 30 FPS ainda não está comprovada.
+- PBR das muralhas permanece candidato: a captura Unity mostra produção/candidato lado a lado, mas o manifesto exige revisão das imagens antes de qualquer promoção.
+- Playtest humano visual/manual continua pendente por definição: UI, pixels, controles físicos e revisão de UV/seams/LOD precisam de uma sessão interativa.
 
 ## Próximo ciclo autorizado
 
